@@ -1,0 +1,7 @@
+{
+  "name": "xTendsApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
