@@ -24,3 +24,29 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+/* <CSS style | carousel iupick> */
+.ipck-container-carousel{
+  position: relative;
+  width: 100%;
+  height: auto;
+}
+.ipck-row-carousel{
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+.ipck-row-carousel::scrollbar {display: none;}
+.ipck-row-carousel::-webkit-scrollbar {display: none;}
+.ipck-col-carousel{
+  display: flex;
+}
+.ipck-item-carousel {
+  height: auto;
+  font-size: 30px;
+}
+/* </CSS style | carousel iupick> */
