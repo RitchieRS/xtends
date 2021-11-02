@@ -7,22 +7,24 @@
     <ion-row style="width:100%; height: 50%; background-color: #020c3a;">
       <ion-col class="ion-no-padding ion-align-self-center ">
         <div style="max-width:570px; margin: auto;">
-          <div>
+          <form [formGroup]="loginForm" (onSubmit)="onLogin()">
+           
             <ion-item>
               <ion-label position="floating">Usuario</ion-label>
-              <ion-input></ion-input>
+              <ion-input formControlName="user" ></ion-input>
             </ion-item>
             <ion-item>
               <ion-label position="floating">Contraseña</ion-label>
-              <ion-input></ion-input>
+              <ion-input type="password" formControlName="pass" ></ion-input>
             </ion-item>
-          </div>
+         
           <ion-grid>
             <ion-row class="ion-justify-content-center">
               <ion-col class="ion-text-center">
-                  <ion-button class="ion-margin-top"  color="primary">ENTRAR</ion-button>
+                  <ion-button type="submit" class="ion-margin-top"  color="primary">ENTRAR</ion-button>
               </ion-col>
             </ion-row>
+           
             <ion-row>
               <ion-col class="ion-text-center">
                 <p class="ion-margin-top">¿Olvidaste tu contraseña?</p>
@@ -43,6 +45,7 @@
               </ion-col>
             </ion-row>
           </ion-grid>
+        </form>
         </div>
       </ion-col>
     </ion-row>
