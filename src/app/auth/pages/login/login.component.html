@@ -1,28 +1,49 @@
-
-
-
   <ion-grid class="ion-no-margin">
-    <ion-row class="ion-justify-content-center" style="width:100%; height: 50%; background-color: azure;">
-      <ion-col class="ion-no-padding ion-align-self-center">
-         <img src="../../../../assets/icon/logo-extend.svg" style="width: 250px;">
+    <ion-row style="width:100%; height: 50%; background-color: rgb(255, 255, 255);">
+      <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
+         <img src="../../../../assets/icon/logo-extend.svg" style="width: 68%;">
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-center" style="width:100%; height: 50%; background-color: #020c3a;">
-      <ion-col class="ion-no-padding ion-align-self-center">
-        <div style="width:100%; border:solid 1px blueviolet">
-          <ion-item>
-            <ion-label position="floating">Usuario</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-label position="floating">Contraseña</ion-label>
-            <ion-input></ion-input>
-          </ion-item>
-          <ion-button class="outline" size="small" color="primary">ENTRAR</ion-button>
+    <ion-row style="width:100%; height: 50%; background-color: #020c3a;">
+      <ion-col class="ion-no-padding ion-align-self-center ">
+        <div style="max-width:570px; margin: auto;">
+          <div>
+            <ion-item>
+              <ion-label position="floating">Usuario</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="floating">Contraseña</ion-label>
+              <ion-input></ion-input>
+            </ion-item>
+          </div>
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-center">
+                  <ion-button class="ion-margin-top"  color="primary">ENTRAR</ion-button>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <p class="ion-margin-top">¿Olvidaste tu contraseña?</p>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-text-center">
+                <ion-chip class="ion-color ion-color-primary chip-outline">
+                  <ion-icon name="information-circle-outline" color="primary"></ion-icon>
+                  <ion-label>Ayuda</ion-label>
+                </ion-chip>
+              </ion-col>
+              <ion-col class="ion-text-center">
+                <ion-chip class="ion-color ion-color-primary chip-outline">
+                  <ion-icon name="share-social-outline" color="primary"></ion-icon>
+                  <ion-label>Comparte</ion-label>
+                </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-
-
