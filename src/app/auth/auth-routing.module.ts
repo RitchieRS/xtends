@@ -17,10 +17,12 @@ const routes: Routes =[
       component: LoginComponent},
     {
       path:"register",
-      component: RegisterComponent},
+      component: RegisterComponent
+    },
     {
       path:"help",
-      component: HelpComponent},
+      component: HelpComponent
+    },
     {
       path:"**",
       redirectTo:"login"
