@@ -1,3 +1,46 @@
-<p>
-  forgot works!
-</p>
+<ion-grid class="ion-no-margin">
+  <ion-row class="bg-whitex row-vertical-cincuenta">
+    <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
+      <img src="../../../../assets/icon/logo-extend.svg" class="size-logo-login" alt="Logo Extend">
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
+    <ion-col class="ion-no-padding ion-align-self-center ">
+      <div style="max-width:570px; margin: auto;">
+
+        <form [formGroup]="">
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <ion-text class="ion-text-center">
+                  <h3>Restaura tu contraseña</h3>
+                  <p>Te enviaremos por e-mail instrucciones para restablecer tu contraseña</p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+           <ion-item>
+             <ion-label position="floating">E-mail</ion-label>
+             <ion-input formControlName="user" ></ion-input>
+           </ion-item>
+
+           <ion-grid>
+             <ion-row class="ion-justify-content-center">
+               <ion-col class="ion-text-center">
+                <ion-button  class="ion-margin-top"  color="polarwhite">Ir la login</ion-button>
+               </ion-col>
+               <ion-col class="ion-text-center">
+                <ion-button color="primary" class="ion-margin-top" type="submit">
+                   Restaurar
+                 </ion-button>
+               </ion-col>
+             </ion-row>
+           </ion-grid>
+       </form>
+
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
