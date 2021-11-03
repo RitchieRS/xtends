@@ -9,11 +9,11 @@
       <ion-col class="ion-no-padding ion-align-self-center ">
         <div style="max-width:570px; margin: auto;">
           <form [formGroup]="loginForm" (onSubmit)="onLogin()">
-             <ion-item>
+             <ion-item class="ion-padding-horizontal" >
                <ion-label position="floating">Usuario</ion-label>
                <ion-input formControlName="user" ></ion-input>
              </ion-item>
-             <ion-item>
+             <ion-item class="ion-padding-horizontal">
                <ion-label position="floating">Contraseña</ion-label>
                <ion-input type="password" formControlName="pass" ></ion-input>
              </ion-item>
