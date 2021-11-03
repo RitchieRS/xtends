@@ -22,10 +22,6 @@ const routes: Routes =[
     {
       path:"help",
       component: HelpComponent
-    },
-    {
-      path:"**",
-      redirectTo:"login"
     }
    ]
   }
