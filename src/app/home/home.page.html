@@ -5,99 +5,187 @@
     </ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!-- Section Mision activas ______________________________________________-->
 <ion-content [fullscreen]="true">
+  <ion-grid class="bg-polarwhite ion-padding-bottom">
+    <ion-row class="ion-padding-horizontal">
+      <ion-col size="6" class="ion-text-start ion-align-self-center">
+        <ion-text color="navyblue">
+          <h4 class="ion-no-margin">Misiones activas</h4>
+        </ion-text>
 
-  <div class="ipck-row-carousel">
-    <div class="ipck-col-carousel">
-      <!-- <ITEM - para repetir el ng-repeat Abuebo Men> -->
-      <div class="ipck-item-carousel">
-        <ion-card class="ion-margin-end" style="width:270px" >
-          <ion-item>
-            <ion-avatar slot="start">
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-            </ion-avatar>
-            <ion-label>
-              <h3>Próxima misión.</h3>
-              <h4>Anaqueleo</h4>
-              <p>Visita 3 semanales</p>
-              <ion-grid>
-                <ion-row>
-                  <ion-col size="auto"><ion-badge color="light">1</ion-badge></ion-col>
-                  <ion-col size="auto" ><p>$300 por misión</p></ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-label>
-          </ion-item>
-        </ion-card>
-      </div>
-      <!-- </Fin ITEM - para repetir> -->
-      <!-- <ITEM - para repetir el ng-repeat Abuebo Men> -->
-        <div class="ipck-item-carousel">
-          <ion-card class="ion-margin-end" style="width:270px" >
-            <ion-item>
-              <ion-avatar slot="start">
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-              </ion-avatar>
-              <ion-label>
-                <h3>Próxima misión.</h3>
-                <h4>Anaqueleo</h4>
-                <p>Visita 3 semanales</p>
-                <ion-grid>
-                  <ion-row>
-                    <ion-col size="auto"><ion-badge color="light">1</ion-badge></ion-col>
-                    <ion-col size="auto" ><p>$300 por misión</p></ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ion-label>
-            </ion-item>
-          </ion-card>
-        </div>
-        <!-- </Fin ITEM - para repetir> -->
-        <!-- <ITEM - para repetir el ng-repeat Abuebo Men> -->
-      <div class="ipck-item-carousel">
-        <ion-card class="ion-margin-end" style="width:270px" >
-          <ion-item>
-            <ion-avatar slot="start">
-              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-            </ion-avatar>
-            <ion-label>
-              <h3>Próxima misión.</h3>
-              <h4>Anaqueleo</h4>
-              <p>Visita 3 semanales</p>
-              <ion-grid>
-                <ion-row>
-                  <ion-col size="auto"><ion-badge color="light">1</ion-badge></ion-col>
-                  <ion-col size="auto" ><p>$300 por misión</p></ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-label>
-          </ion-item>
-        </ion-card>
-      </div>
-      <!-- </Fin ITEM - para repetir> -->
-      <!-- <ITEM - para repetir el ng-repeat Abuebo Men> -->
-        <div class="ipck-item-carousel">
-          <ion-card class="ion-margin-end" style="width:270px" >
-            <ion-item>
-              <ion-avatar slot="start">
-                <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
-              </ion-avatar>
-              <ion-label>
-                <h3>Próxima misión.</h3>
-                <h4>Anaqueleo</h4>
-                <p>Visita 3 semanales</p>
-                <ion-grid>
-                  <ion-row>
-                    <ion-col size="auto"><ion-badge color="light">1</ion-badge></ion-col>
-                    <ion-col size="auto" ><p>$300 por misión</p></ion-col>
-                  </ion-row>
-                </ion-grid>
-              </ion-label>
-            </ion-item>
-          </ion-card>
-        </div>
-        <!-- </Fin ITEM - para repetir> -->
+      </ion-col>
+      <ion-col size="6" class="ion-text-end ion-align-self-center">
+        <ion-chip class="ion-color ion-color-navyblue chip-outline">
+          <ion-label>Ver todas</ion-label>
+          <ion-icon name="chevron-down-outline" color="navyblue"></ion-icon>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
 
-    </div>
-  </div>
+    <ion-row class="aka">
+      <ion-col size="12">
+      <div class="ipck-row-carousel">
+        <div class="ipck-col-carousel">
+          <!-- <ITEM - para repetir el ng-repeat> -->
+          <div class="ipck-item-carousel ion-margin-horizontal">
+            <ion-card class="ion-no-margin ion-width-sm border-radius">
+              <ion-item>
+                <div style="width: 50px;" class="ion-margin-end">
+                  <img src="../../assets/img/shell.svg">
+                </div>
+                <ion-label color="cloudysky" class="ion-text-wrap">
+                  <hr>
+                    <h2><strong>Shell</strong></h2>
+                    <h2>Anaqueleo</h2>
+                    <p>Tienes hasta el 3 de noviembre para completarla</p>
+                  <ion-grid class="">
+                    <p><strong>Visita 3 tiendas</strong></p>
+                    <ion-row>
+                      <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col>
+                      <ion-col size="auto" ><p>$300 por visita</p></ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-label>
+              </ion-item>
+            </ion-card>
+          </div>
+          <!-- </Fin ITEM - para repetir> -->
+        </div>
+      </div>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Carrpusel de Promosiones _________________________________ -->
+  <ion-grid class="bg-lightgrey ion-padding-vertical">
+    <ion-row>
+      <ion-col>
+      <div class="ipck-row-carousel">
+        <div class="ipck-col-carousel">
+          <!-- <ITEM - para repetir el ng-repeat> -->
+          <div class="ipck-item-carousel ion-margin-horizontal ">
+            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-md shadow border-radius">
+                <ion-row class="ion-align-items-center">
+                  <ion-col  size="4" class="ion-text-center">
+                    <div>
+                      <img src="../../assets/img/refiere-a-amigo.png" style="height: 100%;">
+                    </div>
+                  </ion-col>
+                  <ion-col size="8" class="ion-align-items-center">
+                    <div>
+                      <ion-card-content class="ion-no-padding">
+                        <ion-text color="polarwhite">
+                          <h1><strong>Refiere a un amigo y gana dinero</strong></h1>
+                          <p>Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.</p>
+                        </ion-text>
+                      </ion-card-content>
+                    </div>
+                  </ion-col>
+                </ion-row>
+            </ion-card>
+          </div>
+          <!-- </Fin ITEM - para repetir> -->
+        </div>
+      </div>
+    </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Misiones disponibles _________________________________ -->
+  <ion-grid class="bg-polarwhite ion-padding-bottom">
+    <ion-row class="ion-padding-horizontal">
+      <ion-col size="7" class="ion-text-start ion-align-self-center">
+        <ion-text color="navyblue">
+          <h4 class="ion-no-margin">Misiones disponibles</h4>
+        </ion-text>
+      </ion-col>
+
+      <ion-col size="5" class="ion-text-end ion-align-self-center">
+        <ion-chip class="ion-color ion-color-navyblue chip-outline">
+          <ion-label>Ver todas</ion-label>
+          <ion-icon name="chevron-down-outline" color="navyblue"></ion-icon>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+
+    <ion-grid>
+      <ion-row>
+
+        <ion-col size="12" size-lg="3" size-md="4" size-sm="6">
+          <ion-grid style="background-color: white;" class="ion-padding shadow border-radius">
+            <ion-row>
+              <ion-col size="2" class="ion-align-self-center">
+                <img src="../../assets/img/sams.png" style="width: 50px;">
+              </ion-col>
+              <ion-col size="7" class="ion-align-self-center">
+                <ion-label>
+                  <h2>Demostrador</h2>
+                  <h3>Visita 3 tiendas</h3>
+                  <p>$200 por visita</p>
+                </ion-label>
+              </ion-col>
+               <ion-col size="3" class="ion-align-self-center">
+                  <ion-chip class="ion-color-cloudysky chip-outline">
+                    <ion-icon name="chevron-down-outline" color="cloudysky"></ion-icon>
+                  </ion-chip>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+
+        <ion-col size="12" size-lg="3" size-md="4" size-sm="6">
+          <ion-grid style="background-color: white;" class="ion-padding shadow border-radius">
+            <ion-row>
+              <ion-col size="2" class="ion-align-self-center">
+                <img src="../../assets/img/shell.svg" style="width: 50px;">
+              </ion-col>
+              <ion-col size="7" class="ion-align-self-center">
+                <ion-label>
+                  <h2>Anaquelero</h2>
+                  <h3>Promosionales en tienda</h3>
+                  <p>$300 por visita</p>
+                </ion-label>
+              </ion-col>
+              <ion-col size="3" class="ion-align-self-center">
+                <ion-chip class="ion-color-cloudysky chip-outline">
+                  <ion-icon name="chevron-down-outline" color="cloudysky"></ion-icon>
+                </ion-chip>
+            </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+
+        <ion-col size="12" size-lg="3" size-md="4" size-sm="6">
+          <ion-grid style="background-color: white;" class="ion-padding shadow border-radius">
+            <ion-row>
+              <ion-col size="2" class="ion-align-self-center">
+                <img src="../../assets/img/minisu.png" style="width: 50px;">
+              </ion-col>
+              <ion-col size="7" class="ion-align-self-center">
+                <ion-label>
+                  <h2>Mystery Shoper</h2>
+                  <h3>Tiendas zona norte</h3>
+                  <p>Pago de compra + visitas</p>
+                </ion-label>
+              </ion-col>
+              <ion-col size="3" class="ion-align-self-center">
+                <ion-chip class="ion-color-cloudysky chip-outline">
+                  <ion-icon name="chevron-down-outline" color="cloudysky"></ion-icon>
+                </ion-chip>
+            </ion-col>
+
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+  </ion-grid>
+
+
+
+
+</ion-content>

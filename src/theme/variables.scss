@@ -119,6 +119,9 @@
   /** Variable Background XTEND Navy Blue **/
   --ion-background-color-navyblue: #020c3a;
 
+  /** Variable Background XTEND Night Blue **/
+  --ion-background-color-nightblue: #24335e;
+
   /** Variable Background XTEND Cloudy Sky **/
   --ion-background-color-cloudysky: #3c4654;
 
@@ -218,8 +221,41 @@
     --ion-card-background: #020c3a;
   }
 
+  // Background XTEND PolarWhite
+  .ion-bg-polarwhite{
+
+      --ion-background-color: #eff3f6;
+      --ion-background-color-rgb: 239,243,246;
+
+      --ion-text-color: #3c4654;
+      --ion-text-color-rgb: 60,70,84;
+
+      --ion-color-step-50: #e6eaee;
+      --ion-color-step-100: #dde2e6;
+      --ion-color-step-150: #d4d9de;
+      --ion-color-step-200: #cbd0d6;
+      --ion-color-step-250: #c2c8ce;
+      --ion-color-step-300: #b9bfc5;
+      --ion-color-step-350: #b0b6bd;
+      --ion-color-step-400: #a7aeb5;
+      --ion-color-step-450: #9ea5ad;
+      --ion-color-step-500: #969da5;
+      --ion-color-step-550: #8d949d;
+      --ion-color-step-600: #848b95;
+      --ion-color-step-650: #7b838d;
+      --ion-color-step-700: #727a85;
+      --ion-color-step-750: #69717d;
+      --ion-color-step-800: #606974;
+      --ion-color-step-850: #57606c;
+      --ion-color-step-900: #4e5764;
+      --ion-color-step-950: #454f5c;
+  }
+
   /** Background XTEND Navy Blue **/
   .bg-navyblue{background-color: var(--ion-background-color-navyblue) !important;}
+
+  /** Background XTEND Night Blue **/
+  .bg-nightblue{background-color: var(--ion-background-color-nightblue) !important;}
 
   /** Background XTEND Cloudy Sky **/
   .bg-cloudysky{background-color: var(--ion-background-color-cloudysky) !important;}

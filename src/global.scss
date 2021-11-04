@@ -49,8 +49,15 @@
   height: auto;
   font-size: 30px;
 }
-
-/* </CSS style | carousel iupick> */
+.ion-width-sm{
+  width: 300px !important;
+}
+.ion-width-md{
+  width: 450px !important;
+}
+.ion-width-lg{
+  width: 650px !important;
+}
 
 /* <Diseño 50% navy blue 50% whiyte > */
 .row-vertical-cincuenta{
@@ -61,4 +68,12 @@
 .size-logo-login{
   width: 68%;
   max-width:300px;
+}
+
+/* </CSS style | shodow > */
+.shadow{
+  box-shadow: 0px 0.175em 0.5em rgb(2 8 20 / 10%), 0px 0.085em 0.175em rgb(2 8 20 / 8%);
+}
+.border-radius{
+  border-radius: 10px !important;
 }
