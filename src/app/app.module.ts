@@ -11,6 +11,10 @@ import {  ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {MatExpansionModule} from '@angular/material/expansion';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
+
+
 
 
 @NgModule({
@@ -22,7 +26,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
     HttpClientModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],

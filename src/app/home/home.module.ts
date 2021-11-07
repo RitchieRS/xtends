@@ -6,6 +6,9 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import {MatExpansionModule} from '@angular/material/expansion';
+import {CdkAccordionModule} from '@angular/cdk/accordion';
+import {MatCardModule} from '@angular/material/card';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -14,7 +17,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    MatExpansionModule
+    MatExpansionModule,
+    CdkAccordionModule,
+    MatCardModule,
+    MatButtonModule
   ],
   declarations: [HomePage]
 })

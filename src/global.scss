@@ -25,6 +25,7 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
 /* <CSS style | carousel iupick> */
 .ipck-container-carousel{
   position: relative;
@@ -77,3 +78,69 @@
 .border-radius{
   border-radius: 10px !important;
 }
+
+// Angula Material Card
+.example-card {
+  max-width: 400px;
+}
+
+// Btns Google Material
+section {
+  display: table;
+}
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+
+.example-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.example-button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+p{
+  font-size: 12px !important;
+}
+
+
+
+
+
+// //Palette color Xtend
+// $indigo-palette: (
+//  50: #e8eaf6,
+//  100: #c5cae9,
+//  200: #9fa8da,
+//  300: #7986cb,
+//  // ... continues to 900
+//  contrast: (
+//    50: rgba(black, 0.87),
+//    100: rgba(black, 0.87),
+//    200: rgba(black, 0.87),
+//    300: white,
+//    // ... continues to 900
+//  )
+// );
+
+
+
+

@@ -1,3 +1,4 @@
+
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
@@ -28,23 +29,23 @@
       <div class="ipck-row-carousel">
         <div class="ipck-col-carousel">
           <!-- <ITEM - para repetir el ng-repeat> -->
-          <div class="ipck-item-carousel ion-margin-horizontal">
+          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mision of misiones">
             <ion-card class="ion-no-margin ion-width-sm border-radius">
               <ion-item>
                 <div style="width: 50px;" class="ion-margin-end">
-                  <img src="../../assets/img/shell.svg">
+                  <img src="../../assets/img/{{ mision.logoimg}}">
                 </div>
                 <ion-label color="cloudysky" class="ion-text-wrap">
                   <hr>
-                    <h2><strong>Shell</strong></h2>
-                    <h2>Anaqueleo</h2>
-                    <p>Tienes hasta el 3 de noviembre para completarla</p>
-                  <ion-grid class="">
-                    <p><strong>Visita 3 tiendas</strong></p>
-                    <ion-row>
-                      <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col>
-                      <ion-col size="auto" ><p>$300 por visita</p></ion-col>
-                    </ion-row>
+                    <h2><strong>{{ mision.marca }}</strong></h2>
+                    <h2>{{mision.tipo}}</h2>
+                    <p>{{mision.txt}}</p>
+                      <ion-grid>
+                        <p><strong>{{mision.novisitas}}</strong></p>
+                        <ion-row>
+                          <!-- <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col> -->
+                          <ion-col size="auto" ><p><strong>$</strong> {{mision.preciopago}}</p></ion-col>
+                        </ion-row>
                   </ion-grid>
                 </ion-label>
               </ion-item>
@@ -57,27 +58,27 @@
     </ion-row>
   </ion-grid>
 
-  <!-- Carrpusel de Promosiones _________________________________ -->
+  <!-- Carrousel de Promosiones _________________________________ -->
   <ion-grid class="bg-lightgrey ion-padding-vertical">
     <ion-row>
       <ion-col>
       <div class="ipck-row-carousel">
-        <div class="ipck-col-carousel">
+        <div class="ipck-col-carousel ion-align-items-center">
           <!-- <ITEM - para repetir el ng-repeat> -->
-          <div class="ipck-item-carousel ion-margin-horizontal ">
+          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor='let promocion of promociones'>
             <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-md shadow border-radius">
                 <ion-row class="ion-align-items-center">
                   <ion-col  size="4" class="ion-text-center">
-                    <div>
-                      <img src="../../assets/img/refiere-a-amigo.png" style="height: 100%;">
+                    <div class="ion-margin-end-sm">
+                      <img src="../../assets/img/{{ promocion.img }}" style="width: 100%; height: auto;">
                     </div>
                   </ion-col>
                   <ion-col size="8" class="ion-align-items-center">
                     <div>
                       <ion-card-content class="ion-no-padding">
                         <ion-text color="polarwhite">
-                          <h1><strong>Refiere a un amigo y gana dinero</strong></h1>
-                          <p>Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.</p>
+                          <h2 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h2>
+                          <p>{{ promocion.texto}}</p>
                         </ion-text>
                       </ion-card-content>
                     </div>
@@ -111,40 +112,118 @@
 
     <ion-grid>
       <ion-row>
-
-        <ion-col size="12" size-lg="3" size-md="4" size-sm="6">
-          <ion-grid style="background-color: white;" class="ion-padding shadow border-radius">
+        <ion-col size="12" size-xl="3" size-lg="4" size-md="6" size-sm="6">
+          <ion-grid  class="ion-no-padding border-radius">
             <ion-row>
-              <ion-col size="2" class="ion-align-self-center">
-                <img src="../../assets/img/sams.png" style="width: 50px;">
-              </ion-col>
-              <ion-col size="7" class="ion-align-self-center">
-                <ion-label>
-                  <h2>Demostrador</h2>
-                  <h3>Visita 3 tiendas</h3>
-                  <p>$200 por visita</p>
-                </ion-label>
-              </ion-col>
-               <ion-col size="3" class="ion-align-self-center">
-                  <ion-chip class="ion-color-cloudysky chip-outline">
-                    <ion-icon name="chevron-down-outline" color="cloudysky"></ion-icon>
-                  </ion-chip>
+              <ion-col>
+                <mat-accordion>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false"
+                                       class="bg-whitex border-radius">
+                    <mat-expansion-panel-header class="bg-whitex border-radius" style="height: 80px; width: auto; color: blue;">
+                      <mat-panel-description>
+
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col size="3" class="ion-align-self-center ion-margin-end">
+                              <img src="../../assets/img/shell.svg" style="width: 50px; height: auto;">
+                            </ion-col>
+                            <ion-col size="8" class="ion-align-self-center">
+                              <ion-label>
+                                <ion-text color="cloudysky">
+                                  <h2>Demostradora</h2>
+                                  <h3>Visita 3 tiendas</h3>
+                                  <p>$200 por visita</p>
+                                </ion-text>
+                              </ion-label>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <mat-card class="example-card bg-whitex" style="color: black; box-shadow: none;">
+                      <mat-card-header>
+                        <mat-card-title>Shiba Inu</mat-card-title>
+                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image src="https://blog.citytroops.com/wp-content/uploads/2020/03/Promotor-control-CityTroops.png" alt="Photo of a Shiba Inu">
+                      <mat-card-content>
+                        <p>
+                          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                          bred for hunting.
+                        </p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                      </mat-card-actions>
+                    </mat-card>
+
+                  </mat-expansion-panel>
+                </mat-accordion>
               </ion-col>
             </ion-row>
+          </ion-grid>
+        </ion-col>
+        <!-- __________________ -->
+        <ion-col size="12" size-xl="3" size-lg="4" size-md="6" size-sm="6">
+          <ion-grid  class="ion-no-padding border-radius">
+            <ion-row>
+              <ion-col>
+                <mat-accordion>
+                  <mat-expansion-panel (opened)="panelOpenState = true"
+                                       (closed)="panelOpenState = false"
+                                       class=" border-radius">
+                    <mat-expansion-panel-header class="bg-whitex border-radius" style="height: 80px; width: auto; color: blue;">
+                      <mat-panel-description>
 
-              <mat-accordion>
-                <mat-expansion-panel (opened)="panelOpenState = true"
-                                     (closed)="panelOpenState = false">
-                  <mat-expansion-panel-header>
-                    <mat-panel-description>
+                        <ion-grid>
+                          <ion-row>
+                            <ion-col size="3" class="ion-align-self-center ion-margin-end">
+                              <img src="../../assets/img/sams.png" style="width: 50px; height: auto;">
+                            </ion-col>
+                            <ion-col size="8" class="ion-align-self-center">
+                              <ion-label>
+                                <ion-text color="cloudysky">
+                                  <h2>Demostrador</h2>
+                                  <h3>Visita 3 tiendas</h3>
+                                  <p>$200 por visita</p>
+                                </ion-text>
+                              </ion-label>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
 
-                    </mat-panel-description>
-                  </mat-expansion-panel-header>
-                  <p>I'm visible because I am open</p>
-                </mat-expansion-panel>
-              </mat-accordion>
+                      </mat-panel-description>
+                    </mat-expansion-panel-header>
 
+                    <mat-card class="example-card bg-whitex">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>Shiba Inu</mat-card-title>
+                        <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image src="https://blog.citytroops.com/wp-content/uploads/2020/03/Promotor-control-CityTroops.png" alt="Photo of a Shiba Inu">
+                      <mat-card-content>
+                        <p>
+                          The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                          A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                          bred for hunting.
+                        </p>
+                      </mat-card-content>
+                      <mat-card-actions>
+                        <button mat-button>LIKE</button>
+                        <button mat-button>SHARE</button>
+                      </mat-card-actions>
+                    </mat-card>
 
+                  </mat-expansion-panel>
+                </mat-accordion>
+              </ion-col>
+            </ion-row>
           </ion-grid>
         </ion-col>
       </ion-row>
@@ -157,5 +236,6 @@
 
 
 
-
 </ion-content>
+
+
