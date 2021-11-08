@@ -10,19 +10,24 @@ const routes: Routes =[
   path:'',
   children:[
     {
-      path:"forgot",
-      component: ForgotComponent},
-    {
       path:"login",
-      component: LoginComponent},
-    {
-      path:"register",
-      component: RegisterComponent
+      component: LoginComponent,
+      pathMatch:'full'
     },
     {
-      path:"help",
-      component: HelpComponent
-    }
+      path: 'forgot',
+      component: ForgotComponent,
+      pathMatch:'full'
+    },
+    {
+      path: 'register',
+      component: RegisterComponent,
+      pathMatch:'full'
+    },
+   /*  {
+      path: '**',
+      redirectTo:'login'
+    }*/
    ]
   }
 ];
@@ -32,8 +37,9 @@ const routes: Routes =[
 @NgModule({
   declarations: [],
   imports:[
-    RouterModule.forChild(routes)
-  ]
+    RouterModule.forChild(routes),
+  ],
+  exports:[ RouterModule]
  
 })
 export class AuthRoutingModule { }

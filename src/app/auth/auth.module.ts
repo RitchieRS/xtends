@@ -12,13 +12,17 @@ import { ReactiveFormsModule } from '@angular/forms';
   declarations: [
     RegisterComponent,
     LoginComponent,
-    ForgotComponent,
-    FormsModule
+    ForgotComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     IonicModule,
+  ],
+  exports:[
+    RegisterComponent,
+    LoginComponent,
+    ForgotComponent
   ]
 })
 export class AuthModule { }

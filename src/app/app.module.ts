@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -28,7 +29,8 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatExpansionModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],
