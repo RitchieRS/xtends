@@ -11,18 +11,17 @@ const routes: Routes =[
   children:[
     {
       path:"login",
-      component: LoginComponent,
-      pathMatch:'full'
+      component: LoginComponent
+   
     },
     {
       path: 'forgot',
-      component: ForgotComponent,
-      pathMatch:'full'
+      component: ForgotComponent
+      
     },
     {
       path: 'register',
-      component: RegisterComponent,
-      pathMatch:'full'
+      component: RegisterComponent
     },
    /*  {
       path: '**',

@@ -26,12 +26,12 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  onLogin(value: any): void{
+  onLogin(): void{
 
-    this.user.user = (<HTMLInputElement>document.getElementById("userfield")).value;
-    this.user.password = (<HTMLInputElement>document.getElementById("passfield")).value;
+    //this.user.user = (<HTMLInputElement>document.getElementById("userfield")).value;
+    //this.user.password = (<HTMLInputElement>document.getElementById("passfield")).value;
   
-
+    console.log(this.loginForm.value); 
     console.log(this.user);
   
 

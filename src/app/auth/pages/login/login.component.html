@@ -8,19 +8,19 @@
     <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
       <ion-col class="ion-no-padding ion-align-self-center ">
         <div style="max-width:570px; margin: auto;">
-          <form  [formGroup]="loginForm" >
+          <form  [formGroup]="loginForm"  (ngSubmit)="onLogin()">
              <ion-item class="ion-padding-horizontal" >
-               <ion-label position="floating">Usuario</ion-label>
-               <ion-input   id="userfield"  ></ion-input>
+               <ion-label position="floating"   >Usuario</ion-label>
+               <ion-input   id="userfield" formControlName="user" ></ion-input>
              </ion-item>
              <ion-item class="ion-padding-horizontal">
-               <ion-label position="floating">Contraseña</ion-label>
-               <ion-input type="password" id="passfield"  ></ion-input>
+               <ion-label  position="floating">Contraseña</ion-label>
+               <ion-input formControlName="password"  type="password" id="passfield"  ></ion-input>
              </ion-item>
              <ion-grid>
                <ion-row class="ion-justify-content-center">
                  <ion-col class="ion-text-center">
-                     <ion-button (click)="onLogin()" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
+                     <ion-button  type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
                  </ion-col>
                </ion-row>
              </ion-grid>
@@ -29,7 +29,7 @@
          <ion-grid>
            <ion-row>
              <ion-col class="ion-text-center">
-               <p   (click)="forgotPage()"   class="ion-margin-top">¿Olvidaste tu contraseña?</p>
+               <p routerLink="/auth/forgot"   class="ion-margin-top">¿Olvidaste tu contraseña?</p>
              </ion-col>
            </ion-row>
            <ion-row>
