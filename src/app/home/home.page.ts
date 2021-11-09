@@ -43,6 +43,31 @@ export class HomePage {
 
   ];
 
+  misdisponibles = [
+    {
+      logoimg:'shell.svg',
+      tipo:'Anaquelero',
+      novisitas:'Visita 3 tiendas',
+      preciopago:'$300 por visita',
+      btnlink:'',
+      nivel:'Bronce',
+      canal:'Especializado',
+      cadena:'Autozone',
+      tiempopromedio:'30 min',
+     },
+     {
+      logoimg:'sams.png',
+      tipo:'Demostrador',
+      novisitas:'Visita 5 tiendas',
+      preciopago:'$200 por visita',
+      btnlink:'',
+      nivel:'Plata',
+      canal:'Especializado',
+      cadena:'Sams',
+      tiempopromedio:'40 min',
+     },
+  ];
+
   panelOpenState = false;
   constructor() {}
 
