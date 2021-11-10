@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/xservices/auth/login.service';
-import { FormBuilder } from '@angular/forms';
-
+import {  FormGroup,Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -9,18 +9,44 @@ import { FormBuilder } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm = this.fb.group({
-    user:[''],
-    pass:['']
-  })
+  
+  public loginForm: FormGroup;
+  public user: any; 
+  myInput:any;
+  constructor(private router: Router,private login : LoginService, private fb : FormBuilder) { }
 
-  constructor(private login : LoginService, private fb : FormBuilder) { }
-
-  ngOnInit() {}
+  ngOnInit() {
+    this.loginForm = this.fb.group({
+      user: ['', Validators.required],
+      password: ['', Validators.required]
+    });
+    this.user = {
+      user: null,
+      password: null
+    }
+  }
 
   onLogin(): void{
-    const formValue = this.loginForm.value;
-    console.log(formValue);
+
+    //this.user.user = (<HTMLInputElement>document.getElementById("userfield")).value;
+    //this.user.password = (<HTMLInputElement>document.getElementById("passfield")).value;
+  
+    console.log(this.loginForm.value); 
+    console.log(this.user);
+  
+
+    /* this.user.login = this.loginForm.value.login;
+    this.user.eMail = this.loginForm.value.email;
+    this.user.password = this.loginForm.value.confirmedPassword; */
+
+   
+    
+  }
+  logChange(event) {
+    console.log(event);
+  }
+  forgotPage(){
+    this.router.navigate(['forgot'])
   }
 
 }
