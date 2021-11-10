@@ -1,8 +1,10 @@
-<ion-header #header><app-header></app-header></ion-header>
+<ion-header #header>
+  <app-header></app-header>
+</ion-header>
 
 <!-- Section Mision activas ______________________________________________-->
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  <div class="padding-top-menu-dtc bg-polarwhite">
+  <div class="padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
   <ion-grid class="bg-polarwhite ion-padding-bottom">
     <ion-row class="ion-padding-horizontal">
       <ion-col size="6" class="ion-text-start ion-align-self-center">
@@ -206,6 +208,36 @@
 
   </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar style="height: 50px;">
+
+      <ion-tabs>
+        <ion-tab-bar slot="bottom" style="border-top: blue 0px solid;">
+          <ion-tab-button tab="schedule">
+            <ion-icon name="flag-outline" color="primary"></ion-icon>
+          </ion-tab-button>
+
+          <ion-tab-button tab="speakers">
+            <ion-icon name="wallet-outline" color="primary"></ion-icon>
+          </ion-tab-button>
+
+          <ion-tab-button tab="map" class="">
+            <ion-icon name="people-outline" color="primary"></ion-icon>
+          </ion-tab-button>
+
+          <ion-tab-button tab="about">
+            <ion-icon name="person-circle-outline" color="primary"></ion-icon>
+          </ion-tab-button>
+        </ion-tab-bar>
+      </ion-tabs>
+
+  </ion-toolbar>
+</ion-footer>
+
+
+
+
+
 
 
 
