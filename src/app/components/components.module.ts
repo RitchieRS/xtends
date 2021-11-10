@@ -5,20 +5,24 @@ import { IonicModule } from '@ionic/angular';
 import {MatIconModule} from '@angular/material/icon';
 
 import { HeaderComponent } from './header/header.component';
+import { HideHeaderDirective } from './header/hide-header.directive';
+// import { SharedDirectivesModule } from '../directives/shared-directives.module';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    HideHeaderDirective
   ],
   exports:[
-    HeaderComponent
+    HeaderComponent,
+    HideHeaderDirective
   ],
   imports: [
     CommonModule,
     IonicModule,
-    MatIconModule
+    MatIconModule,
   ]
 })
 export class ComponentsModule { }

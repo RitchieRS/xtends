@@ -121,6 +121,17 @@ p{
   font-size: 12px !important;
 }
 
+// Styls for menu animation HideHover
+
+ion-content {
+  --offset-top: 200px;
+  position: absolute;
+}
+
+.padding-top-menu-dtc{
+  padding-top: 140px !important;
+}
+
 
 
 // //Palette color Xtend

@@ -16,10 +16,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
 
 import {MatIconModule} from '@angular/material/icon';
-
-
-
-
+import { ComponentsModule } from './components/components.module';
 
 
 @NgModule({
@@ -36,6 +33,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
+    ComponentsModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],

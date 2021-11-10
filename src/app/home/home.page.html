@@ -1,10 +1,8 @@
-<app-header></app-header>
-
-
-
+<ion-header #header><app-header></app-header></ion-header>
 
 <!-- Section Mision activas ______________________________________________-->
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="padding-top-menu-dtc bg-polarwhite">
   <ion-grid class="bg-polarwhite ion-padding-bottom">
     <ion-row class="ion-padding-horizontal">
       <ion-col size="6" class="ion-text-start ion-align-self-center">
@@ -205,6 +203,8 @@
       </ion-row>
     </ion-grid>
   </ion-grid>
+
+  </div>
 </ion-content>
 
 

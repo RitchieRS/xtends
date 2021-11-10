@@ -10,8 +10,9 @@ import {CdkAccordionModule} from '@angular/cdk/accordion';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 import {MatGridListModule} from '@angular/material/grid-list';
-import { ComponentsModule } from '../components/components.module';
 import {MatIconModule} from '@angular/material/icon';
+
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -28,8 +29,9 @@ import {MatIconModule} from '@angular/material/icon';
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
-    ComponentsModule,
     MatIconModule,
+
+    ComponentsModule
   ],
   declarations: [HomePage]
 })
