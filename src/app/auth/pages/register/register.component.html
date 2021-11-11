@@ -1,3 +1,44 @@
-<p>
-  register works!
-</p>
+<ion-grid class="ion-no-margin ion-no-padding">
+  <ion-row class="bg-whitex row-vertical-cincuenta">
+    <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
+      <img src="../../../../assets/icon/logo-extend.svg" class="size-logo-login" alt="Logo Extend">
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
+    <ion-col class="ion-no-padding ion-align-self-center ">
+      <div style="max-width:570px; margin: auto;">
+        <form >
+           <ion-item class="ion-padding-horizontal" >
+             <ion-label position="floating"   >Nombre</ion-label>
+             <ion-input   id="userfield" formControlName="user" ></ion-input>
+           </ion-item>
+           <ion-item class="ion-padding-horizontal">
+             <ion-label  position="floating">A. Paterno</ion-label>
+             <ion-input formControlName="password"  type="password" id="passfield"  ></ion-input>
+           </ion-item>
+           <ion-grid>
+             <ion-row class="ion-justify-content-center">
+               <ion-col class="ion-text-center">
+                   <ion-button  type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
+               </ion-col>
+             </ion-row>
+           </ion-grid>
+       </form>
+
+       <ion-grid>
+
+         <ion-row>
+
+           <ion-col class="ion-text-center">
+             <ion-chip class="ion-color ion-color-primary chip-outline">
+               <ion-icon name="share-social-outline" color="primary"></ion-icon>
+               <ion-label>Regístrate</ion-label>
+             </ion-chip>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>

@@ -82,6 +82,7 @@
   --ion-color-navyblue-contrast-rgb: 255,255,255;
   --ion-color-navyblue-shade: #020b33;
   --ion-color-navyblue-tint: #1b244e;
+  --ion-border-color: #eff3f6;
 
   /** Variables color XTEND Extend Cloudy Sky **/
   --ion-color-cloudysky: #3c4654;
@@ -104,16 +105,17 @@
   --ion-color-ligthgrey-rgb: 208,211,221;
   --ion-color-ligthgrey-contrast: #020c3a;
   --ion-color-ligthgrey-contrast-rgb: 0,0,0;
-  --ion-color-ligthgrey-shade: #b7bac2;
+  --ion-color-ligthgrey-shade: #069e27;
   --ion-color-ligthgrey-tint: #d5d7e0;
 
   /** Variables color XTEND Polar White **/
   --ion-color-polarwhite: #eff3f6;
   --ion-color-polarwhite-rgb: 239,243,246;
-  --ion-color-polarwhite-contrast: #000000;
+  --ion-color-polarwhite-contrast: #020c3a;
   --ion-color-polarwhite-contrast-rgb: 0,0,0;
   --ion-color-polarwhite-shade: #d2d6d8;
   --ion-color-polarwhite-tint: #f1f4f7;
+
 
 
   /** Variable Background XTEND Navy Blue **/
@@ -138,7 +140,11 @@
   --ion-background-color-whitex: white;
 
   --ion-font-family: "Montserrat";
+
+
 }
+
+
 
 .montserrat{
   font-family:var(--ion-font-family) !important;
@@ -154,6 +160,7 @@
   --ion-color-contrast-rgb: var(--ion-color-navyblue-contrast-rgb) !important;
   --ion-color-shade: var(--ion-color-navyblue-shade) !important;
   --ion-color-tint:var(--ion-color-navyblue-tint) !important;
+  --ion-border-color:var(--ion-border-color);
 }
 
 /** Color XTEND Extend Cloudy Sky **/
@@ -279,7 +286,6 @@
 
   /** Background XTEND Whitex **/
   .bg-whitex{background-color: var(--ion-background-color-whitex) !important;}
-
 
 
 

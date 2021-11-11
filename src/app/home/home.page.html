@@ -4,56 +4,65 @@
 
 <!-- Section Mision activas ______________________________________________-->
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  <div class="padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
-  <ion-grid class="bg-polarwhite ion-padding-bottom">
-    <ion-row class="ion-padding-horizontal">
-      <ion-col size="6" class="ion-text-start ion-align-self-center">
-        <ion-text color="navyblue">
-          <h4 class="ion-no-margin">Misiones activas</h4>
-        </ion-text>
 
-      </ion-col>
-      <ion-col size="6" class="ion-text-end ion-align-self-center">
-        <ion-chip class="ion-color ion-color-navyblue chip-outline">
-          <ion-label>Ver todas</ion-label>
-          <ion-icon name="chevron-down-outline" color="navyblue"></ion-icon>
-        </ion-chip>
-      </ion-col>
-    </ion-row>
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+     <ion-grid class="bg-polarwhite ion-padding-bottom">
+       <ion-row class="ion-padding-horizontal">
+         <ion-col size="6" class="ion-text-start ion-align-self-center">
+           <ion-text color="navyblue">
+             <h4 class="ion-no-margin">Misiones activas</h4>
+           </ion-text>
 
-    <ion-row class="aka">
-      <ion-col size="12">
-      <div class="ipck-row-carousel">
-        <div class="ipck-col-carousel">
-          <!-- <ITEM - para repetir el ng-repeat> -->
-          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mision of misiones">
-            <ion-card class="ion-no-margin ion-width-sm border-radius">
-              <ion-item>
-                <div style="width: 50px;" class="ion-margin-end">
-                  <img src="../../assets/img/{{ mision.logoimg}}">
-                </div>
-                <ion-label color="cloudysky" class="ion-text-wrap">
-                  <hr>
-                    <h2><strong>{{ mision.marca }}</strong></h2>
-                    <h2>{{mision.tipo}}</h2>
-                    <p>{{mision.txt}}</p>
-                      <ion-grid>
-                        <p><strong>{{mision.novisitas}}</strong></p>
-                        <ion-row>
-                          <!-- <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col> -->
-                          <ion-col size="auto" ><p><strong>$</strong> {{mision.preciopago}}</p></ion-col>
-                        </ion-row>
-                  </ion-grid>
-                </ion-label>
-              </ion-item>
-            </ion-card>
-          </div>
-          <!-- </Fin ITEM - para repetir> -->
-        </div>
-      </div>
-    </ion-col>
-    </ion-row>
-  </ion-grid>
+         </ion-col>
+         <ion-col size="6" class="ion-text-end ion-align-self-center">
+           <ion-chip class="ion-color ion-color-navyblue chip-outline ">
+             <ion-label>Ver todas</ion-label>
+             <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
+           </ion-chip>
+         </ion-col>
+       </ion-row>
+
+       <ion-row class="aka">
+         <ion-col size="12">
+         <div class="ipck-row-carousel">
+           <div class="ipck-col-carousel ion-padding-vertical">
+             <!-- <ITEM - para repetir el ng-repeat> -->
+             <div class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mision of misiones">
+               <ion-card class="ion-no-margin ion-width-sm border-radius">
+                 <ion-item>
+                   <div style="width: 50px;" class="ion-margin-end">
+                     <img src="../../assets/img/{{ mision.logoimg}}">
+                   </div>
+                   <ion-label color="cloudysky" class="ion-text-wrap">
+                     <hr>
+                       <h2><strong>{{ mision.marca }}</strong></h2>
+                       <h2>{{mision.tipo}}</h2>
+                       <p>{{mision.txt}}</p>
+                         <ion-grid>
+                           <p><strong>{{mision.novisitas}}</strong></p>
+                           <ion-row>
+                             <!-- <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col> -->
+                             <ion-col size="auto" ><p><strong>$</strong> {{mision.preciopago}}</p></ion-col>
+                           </ion-row>
+                     </ion-grid>
+                   </ion-label>
+                 </ion-item>
+                 <ion-fab  vertical="bottom" horizontal="end" >
+                  <!-- <ion-fab-button color="whitex">
+                    <ion-icon name="chevron-forward-outline" color="navyblue" ></ion-icon>
+                  </ion-fab-button> -->
+                  <button mat-icon-button>
+                    <mat-icon class="color-cloudysky">navigate_next</mat-icon>
+                  </button>
+                </ion-fab>
+               </ion-card>
+             </div>
+             <!-- </Fin ITEM - para repetir> -->
+           </div>
+         </div>
+       </ion-col>
+       </ion-row>
+     </ion-grid>
 
   <!-- Carrousel de Promosiones _________________________________ -->
   <ion-grid class="bg-lightgrey ion-padding-vertical">
@@ -102,7 +111,7 @@
       <ion-col size="5" class="ion-text-end ion-align-self-center">
         <ion-chip class="ion-color ion-color-navyblue chip-outline">
           <ion-label>Ver todas</ion-label>
-          <ion-icon name="chevron-down-outline" color="navyblue"></ion-icon>
+          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
         </ion-chip>
       </ion-col>
     </ion-row>
@@ -114,11 +123,11 @@
           <ion-grid  class="ion-no-padding border-radius">
             <ion-row>
               <ion-col>
-                <mat-accordion>
+                <mat-accordion style="padding: 0px;">
                   <mat-expansion-panel (opened)="panelOpenState = true"
                                        (closed)="panelOpenState = false"
-                                       class="bg-whitex border-radius">
-                    <mat-expansion-panel-header class="bg-whitex border-radius" style="height: 80px; width: auto; color: blue;">
+                                       class="bg-whitex border-radius ion-no-padding">
+                    <mat-expansion-panel-header class="bg-whitex border-radius" style="height: 80px; width: auto;">
                       <mat-panel-description>
 
                         <ion-grid>
@@ -131,7 +140,7 @@
                                 <ion-text color="cloudysky">
                                   <h2>{{ misdisponible.tipo}}</h2>
                                   <h3>{{ misdisponible.novisitas}}</h3>
-                                  <p>{{ misdisponible.preciopago}}</p>
+                                  <p><strong>{{ misdisponible.preciopago}}</strong></p>
                                 </ion-text>
                               </ion-label>
                             </ion-col>
@@ -140,60 +149,85 @@
 
                       </mat-panel-description>
                     </mat-expansion-panel-header>
+                         <div style="box-shadow: none; padding:0px;">
+                              <ion-grid class="ion-no-padding">
+                                <ion-row class="bg-navyblue">
+                                  <ion-col size="8" class="ion-padding">
+                                   <div class="ion-text-start" style="color:white;">
+                                     <ion-label>
+                                       <ion-text>
+                                         <h2><strong>{{ misdisponible.tipo}}</strong></h2>
+                                         <h4><ion-icon name="medal-outline"></ion-icon> Para Nivel {{ misdisponible.nivel}}</h4>
+                                       </ion-text>
+                                     </ion-label>
+                                   </div>
+                                  </ion-col>
+                                  <ion-col size="4" class="ion-padding">
+                                   <div class="ion-text-end" style="color: white;">
+                                     <ion-label>
+                                       <ion-text>
+                                         <p>pago</p>
+                                         <h2><strong>$300</strong></h2>
+                                       </ion-text>
+                                     </ion-label>
+                                   </div>
+                                 </ion-col>
+                                </ion-row>
+                              </ion-grid>
+                                 <div>
+                                   <ion-card class="ion-padding ion-margin-top">
+                                       <ion-label >
+                                         <ion-text>
+                                           <p>
+                                           <strong>Canal</strong> {{ misdisponible.canal}}<br>
+                                           <strong>Cadena:</strong> {{ misdisponible.cadena}}<br>
+                                           <strong>Tiempo visita promedio:</strong> {{ misdisponible.tiempopromedio}}
+                                         </p>
+                                         </ion-text>
+                                       </ion-label>
+                                   </ion-card>
+                                 </div>
+                                 <div>
+                                   <ion-card class="ion-padding ion-margin-top">
+                                       <ion-label >
+                                         <ion-text>
+                                           <p><strong>Canal:</strong></p>
+                                           <p>Jalapa, Veracruz</p>
+                                           <p>Morelia, Michoacán</p>
+                                           <p>Celaya, Guanajuato</p>
+                                         </ion-text>
+                                       </ion-label>
+                                   </ion-card>
+                                 </div>
 
-                    <mat-card class="bg-whitex" style="color: black; box-shadow: none;">
-                         <ion-grid class="ion-no-padding">
-                           <ion-row>
-                             <ion-col size="8">
-                              <mat-card-title>{{ misdisponible.tipo}}</mat-card-title>
-                              <mat-card-subtitle>{{ misdisponible.nivel}}</mat-card-subtitle>
-                             </ion-col>
-                             <ion-col size="4">
-                              <mat-card-title class="ion-text-end">$300</mat-card-title>
-                              <mat-card-subtitle class="ion-text-end">pago</mat-card-subtitle>
-                            </ion-col>
-                           </ion-row>
-                         </ion-grid>
-                      <mat-card-content>
-                        <p>
-                          Canal: {{ misdisponible.canal}}<br>
-                          Cadena: {{ misdisponible.cadena}}<br>
-                          Tiempo visita promedio: {{ misdisponible.tiempopromedio}}
-                        </p>
-                      </mat-card-content>
-                      <ion-grid class="bg-polarwhite ion-padding-bottom">
-                        <ion-row class="ion-padding-horizontal-sm">
-                          <ion-col size="12" class="ion-text-start ion-align-self-center">
-                            <ion-text color="navyblue">
-                              <h4 class="ion-margin-sm">Ciudades:</h4>
-                              <ion-list>
-                                <ion-item color="polarwhite">
-                                  <ion-label>Jalapa, Veracruz</ion-label>
-                                </ion-item>
-                                <ion-item color="polarwhite">
-                                  <ion-label>Poza Rica. Veracruz</ion-label>
-                                </ion-item>
-                                <ion-item color="polarwhite">
-                                  <ion-label>Colima, Colima</ion-label>
-                                </ion-item>
-                                <ion-item color="polarwhite">
-                                  <ion-label>León, Guanajuato</ion-label>
-                                </ion-item>
-                                <ion-item color="polarwhite">
-                                  <ion-label>Irapuato, Guanajuato</ion-label>
-                                </ion-item>
-                              </ion-list>
+                                   <div>
+                                     <mat-grid-list cols="2" rowHeight="4:1">
+                                       <mat-grid-tile>
+                                         <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                           <mat-icon>share</mat-icon> Compartir
+                                         </button>
+                                       </mat-grid-tile>
+                                       <mat-grid-tile>
+                                         <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" >
+                                           Ver detalles <mat-icon >chevron_right</mat-icon>
+                                         </button>
+                                       </mat-grid-tile>
+                                     </mat-grid-list>
+                                   </div>
+                                   <!-- <p class="ion-text-center">
 
-                            </ion-text>
-                          </ion-col>
-                        </ion-row>
-                        </ion-grid>
-                      <mat-card-actions>
-                        <button mat-raised-button color="secondary">Compartir</button>
-                        <button mat-raised-button color="primary">Ver deatlles</button>
-                      </mat-card-actions>
-                    </mat-card>
+                                     <ion-chip outline color="navyblue" class="iup-border-buttom-blue">
+                                       <ion-icon name="share-social-outline"></ion-icon>
+                                       <ion-label>Compartir</ion-label>
+                                     </ion-chip>
 
+                                     <ion-chip outline color="navyblue" class="iup-border-buttom-blue">
+
+                                       <ion-label>Ver detalles</ion-label>
+                                       <ion-icon name="chevron-forward-outline"></ion-icon>
+                                     </ion-chip>
+                                   </p> -->
+                         </div>
                   </mat-expansion-panel>
                 </mat-accordion>
               </ion-col>
@@ -205,6 +239,29 @@
       </ion-row>
     </ion-grid>
   </ion-grid>
+  <ion-grid>
+    <ion-row class="ion-padding-horizontal">
+      <ion-col size="6" class="ion-text-start ion-align-self-center">
+        <ion-text color="navyblue">
+          <h4 class="ion-no-margin">Buscar por zona</h4>
+        </ion-text>
+
+      </ion-col>
+      <ion-col size="6" class="ion-text-end ion-align-self-center">
+        <ion-chip class="ion-color ion-color-navyblue chip-outline ">
+          <ion-label>Ver todas</ion-label>
+          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
+        </ion-chip>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.755724009331!2d-99.10873338401346!3d19.379726986914502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff0216788e79%3A0xd976142e110eedf9!2sZech%20inK%20Tattoo%20Studio!5e0!3m2!1ses-419!2smx!4v1636659065201!5m2!1ses-419!2smx" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   </div>
 </ion-content>
@@ -212,7 +269,7 @@
   <ion-toolbar style="height: 50px;">
 
       <ion-tabs>
-        <ion-tab-bar slot="bottom" style="border-top: blue 0px solid;">
+        <ion-tab-bar slot="bottom" class="no-border">
           <ion-tab-button tab="schedule">
             <ion-icon name="flag-outline" color="primary"></ion-icon>
           </ion-tab-button>
