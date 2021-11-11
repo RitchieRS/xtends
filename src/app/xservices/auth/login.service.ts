@@ -5,6 +5,7 @@ import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { UserResponse,User } from 'src/app/xmodels/user';
 import { catchError, map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { ControlContainer } from '@angular/forms';
 
 const helper = new JwtHelperService();
 @Injectable({
@@ -20,8 +21,10 @@ export class LoginService {
     return this.loggedIn.asObservable();
   }
 
-  login(authData: User): Observable<UserResponse | void>{
-    return this.http.post<UserResponse>(`${environment.API_URL}`, authData).pipe(
+  login(authData: User):any {///Observable<UserResponse | void>{
+
+      console.log("Login");
+    /*return this.http.post<UserResponse>(`${environment.API_URL}`, authData).pipe(
           map(( res :  UserResponse)=>{
             console.log('Usuario'+res.token);
             this.saveToken(res.token);
@@ -29,7 +32,7 @@ export class LoginService {
             return res;
           }),
           catchError((err)=> this.handeleError(err))
-        );
+        );*/
   };
   logauth(): void{}
   private checkToken():void{

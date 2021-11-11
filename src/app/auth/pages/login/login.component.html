@@ -1,54 +1,54 @@
-  <ion-grid class="ion-no-margin ion-no-padding">
-    <ion-row class="bg-whitex row-vertical-cincuenta">
-      <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
-        <img src="../../../../assets/icon/logo-extend.svg" class="size-logo-login" alt="Logo Extend">
-      </ion-col>
-    </ion-row>
+<ion-grid class="ion-no-margin ion-no-padding">
+  <ion-row class="bg-whitex row-vertical-cincuenta">
+    <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
+      <img src="../../../../assets/icon/logo-extend.svg" class="size-logo-login" alt="Logo Extend">
+    </ion-col>
+  </ion-row>
 
-    <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
-      <ion-col class="ion-no-padding ion-align-self-center ">
-        <div style="max-width:570px; margin: auto;">
+  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
+    <ion-col class="ion-no-padding ion-align-self-center ">
+      <div style="max-width:570px; margin: auto;">
           <form  [formGroup]="loginForm"  (ngSubmit)="onLogin()">
-             <ion-item class="ion-padding-horizontal" >
-               <ion-label position="floating"   >Usuario</ion-label>
-               <ion-input   id="userfield" formControlName="user" ></ion-input>
-             </ion-item>
-             <ion-item class="ion-padding-horizontal">
-               <ion-label  position="floating">Contraseña</ion-label>
-               <ion-input formControlName="password"  type="password" id="passfield"  ></ion-input>
-             </ion-item>
-             <ion-grid>
-               <ion-row class="ion-justify-content-center">
-                 <ion-col class="ion-text-center">
-                     <ion-button  type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
-                 </ion-col>
-               </ion-row>
-             </ion-grid>
-         </form>
+           <ion-item class="ion-padding-horizontal" >
+             <ion-label position="floating"   >Usuario</ion-label>
+             <ion-input   id="userfield" formControlName="user" ></ion-input>
+           </ion-item>
+           <ion-item class="ion-padding-horizontal">
+             <ion-label  position="floating">Contraseña</ion-label>
+             <ion-input formControlName="password"  type="password" id="passfield"  ></ion-input>
+           </ion-item>
+           <ion-grid>
+             <ion-row class="ion-justify-content-center">
+               <ion-col class="ion-text-center">
+                   <ion-button [disabled]="loginForm.invalid" type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
+               </ion-col>
+             </ion-row>
+           </ion-grid>
+          </form>
+       <ion-grid>
+         <ion-row>
+           <ion-col class="ion-text-center">
+             <p routerLink="/auth/forgot"   class="ion-margin-top">¿Olvidaste tu contraseña?</p>
+           </ion-col>
+         </ion-row>
+         <ion-row>
+           <ion-col class="ion-text-center">
+             <ion-chip class="ion-color ion-color-primary chip-outline">
+               <ion-icon name="information-circle-outline" color="primary"></ion-icon>
+               <ion-label>Ayuda</ion-label>
+             </ion-chip>
+           </ion-col>
+           <ion-col class="ion-text-center">
+             <ion-chip class="ion-color ion-color-primary chip-outline">
+               <ion-icon name="share-social-outline" color="primary"></ion-icon>
+               <ion-label>Comparte</ion-label>
+             </ion-chip>
+           </ion-col>
+         </ion-row>
+       </ion-grid>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-grid>
 
-         <ion-grid>
-           <ion-row>
-             <ion-col class="ion-text-center">
-               <p routerLink="/auth/forgot"   class="ion-margin-top">¿Olvidaste tu contraseña?</p>
-             </ion-col>
-           </ion-row>
-           <ion-row>
-             <ion-col class="ion-text-center">
-               <ion-chip class="ion-color ion-color-primary chip-outline">
-                 <ion-icon name="information-circle-outline" color="primary"></ion-icon>
-                 <ion-label>Ayuda</ion-label>
-               </ion-chip>
-             </ion-col>
-             <ion-col class="ion-text-center">
-               <ion-chip class="ion-color ion-color-primary chip-outline">
-                 <ion-icon name="share-social-outline" color="primary"></ion-icon>
-                 <ion-label>Comparte</ion-label>
-               </ion-chip>
-             </ion-col>
-           </ion-row>
-         </ion-grid>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 
