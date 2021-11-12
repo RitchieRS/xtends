@@ -25,7 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   onLogin(): void{      
-    console.log(this.loginForm.value);
+ 
+    this.router.navigate(['home'])
     const formValue = this.loginForm.value; 
     this.login.login(formValue).subscribe((res) =>{
         console.log(res);
