@@ -1,3 +1,5 @@
+
+<ion-content class="bg-navyblue">
 <ion-grid class="ion-no-margin ion-no-padding">
   <ion-row class="bg-whitex row-vertical-cincuenta">
     <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
@@ -5,40 +7,54 @@
     </ion-col>
   </ion-row>
 
-  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
+  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta ion-padding">
     <ion-col class="ion-no-padding ion-align-self-center ">
-      <div style="max-width:570px; margin: auto;">
-        <form >
-           <ion-item class="ion-padding-horizontal" >
-             <ion-label position="floating"   >Nombre</ion-label>
-             <ion-input   id="userfield" formControlName="user" ></ion-input>
-           </ion-item>
-           <ion-item class="ion-padding-horizontal">
-             <ion-label  position="floating">A. Paterno</ion-label>
-             <ion-input formControlName="password"  type="password" id="passfield"  ></ion-input>
-           </ion-item>
+      <div class="ion-text-center" style="max-width:570px; margin: auto;">
+
+        <form>
+
+          <ion-text color="polarwhite">
+            <h1>Registro</h1>
+          </ion-text>
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="man-outline"></ion-icon> Nombre</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">A. Paterno</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">A. Materno</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="mail-outline"></ion-icon> E mail</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="phone-portrait-outline"></ion-icon> Celular</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="keypad-outline"></ion-icon> Contraseña</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating"><ion-icon name="key-outline"></ion-icon> Confirma contraseña</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+
            <ion-grid>
              <ion-row class="ion-justify-content-center">
                <ion-col class="ion-text-center">
-                   <ion-button  type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
+                   <ion-button  type="submit" class="ion-margin-top"  color="polarwhite">Regístrate</ion-button>
                </ion-col>
              </ion-row>
            </ion-grid>
        </form>
-
-       <ion-grid>
-
-         <ion-row>
-
-           <ion-col class="ion-text-center">
-             <ion-chip class="ion-color ion-color-primary chip-outline">
-               <ion-icon name="share-social-outline" color="primary"></ion-icon>
-               <ion-label>Regístrate</ion-label>
-             </ion-chip>
-           </ion-col>
-         </ion-row>
-       </ion-grid>
       </div>
     </ion-col>
   </ion-row>
 </ion-grid>
+</ion-content>
