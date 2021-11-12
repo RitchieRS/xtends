@@ -1,8 +1,8 @@
-@use '@angular/material' as mat;
+@import '~@angular/material/theming';
 
-@include mat.core();
+@include mat-core();
 
-//  GAMA DE COLORES
+//  GAMA DE COLORES Creamos la galeria de colores con las variantes de tonalidades
 $my-primary-color:(
   50 : #e1e2e7,
   100 : #b3b6c4,
@@ -71,41 +71,41 @@ $my-accent-color: (
 
 
 $my-warn-color: (
-  50 : #e8e9ea,
-  100 : #c5c8cc,
-  200 : #9ea3aa,
-  300 : #777e87,
-  400 : #59626e,
-  500 : #3c4654,
-  600 : #363f4d,
-  700 : #2e3743,
-  800 : #272f3a,
-  900 : #1a2029,
-  A100 : #6fa7ff,
-  A200 : #3c87ff,
-  A400 : #0968ff,
-  A700 : #005cef,
+  50 : #feefe0,
+    100 : #fcd6b3,
+    200 : #fbbb80,
+    300 : #f9a04d,
+    400 : #f78b26,
+    500 : #f67700,
+    600 : #f56f00,
+    700 : #f36400,
+    800 : #f25a00,
+    900 : #ef4700,
+    A100 : #ffffff,
+    A200 : #ffe9e3,
+    A400 : #ffc2b0,
+    A700 : #ffaf96,
     contrast: (
-      50 : #000000,
-      100 : #000000,
-      200 : #000000,
-      300 : #ffffff,
-      400 : #ffffff,
-      500 : #ffffff,
-      600 : #ffffff,
-      700 : #ffffff,
+      50 : #020c3a,
+      100 : #020c3a,
+      200 : #020c3a,
+      300 : #020c3a,
+      400 : #020c3a,
+      500 : #020c3a,
+      600 : #020c3a,
+      700 : #020c3a,
       800 : #ffffff,
       900 : #ffffff,
-      A100 : #000000,
-      A200 : #ffffff,
-      A400 : #ffffff,
-      A700 : #ffffff,
+      A100 : #020c3a,
+      A200 : #020c3a,
+      A400 : #020c3a,
+      A700 : #020c3a,
     )
 );
 
 
 
-//  PALETA DE COLORES
+//  PALETA DE COLORES Declaramos la paleta de colores que creamos arriva con el nombre de nuestra paleta
 
 $my-palette-primary: mat-palette($my-primary-color);
 $my-palette-accent: mat-palette($my-accent-color);
