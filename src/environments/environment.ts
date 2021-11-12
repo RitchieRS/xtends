@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL:'https://emetrix.com.mx'
+  API_URL:'https://xtendapp.com/dummy/'
 };
 
 /*

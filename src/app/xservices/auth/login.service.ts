@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { UserResponse,User } from 'src/app/xmodels/user';
 import { catchError, map } from 'rxjs/operators';
@@ -15,24 +15,35 @@ export class LoginService {
 
   constructor(private http : HttpClient) { }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 
+      'Access-Control-Allow-Origin':'*',
+      'Authorization':'authkey',
+      'userid':'1'
+    })
+  };
+
   private loggedIn =  new BehaviorSubject<boolean>(false);
 
   get isLogged(): Observable<boolean>{
     return this.loggedIn.asObservable();
   }
 
-  login(authData: User):any {///Observable<UserResponse | void>{
+  login(authData: User):Observable<UserResponse| void>{
+    const headers = new HttpHeaders()
+      .append('Content-Type', 'application/json')
+      .append('Access-Control-Allow-Headers', 'Content-Type')
+      .append('Access-Control-Allow-Methods', 'GET')
+      .append('Access-Control-Allow-Origin', '*');
 
-      console.log("Login");
-    /*return this.http.post<UserResponse>(`${environment.API_URL}`, authData).pipe(
+      
+    return this.http.post<UserResponse>(`${environment.API_URL}login.php`, authData,{headers}).pipe(
           map(( res :  UserResponse)=>{
-            console.log('Usuario'+res.token);
-            this.saveToken(res.token);
-            this.loggedIn.next(true);
+            console.log('Usuario'+res);
             return res;
           }),
           catchError((err)=> this.handeleError(err))
-        );*/
+    );
   };
   logauth(): void{}
   private checkToken():void{
