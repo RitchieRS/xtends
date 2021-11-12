@@ -140,7 +140,7 @@
                                 <ion-text color="cloudysky">
                                   <h2>{{ misdisponible.tipo}}</h2>
                                   <h3>{{ misdisponible.novisitas}}</h3>
-                                  <p><strong>{{ misdisponible.preciopago}}</strong></p>
+                                  <p><strong>{{ misdisponible.preciopago}}</strong> por visita</p>
                                 </ion-text>
                               </ion-label>
                             </ion-col>
@@ -167,7 +167,7 @@
                                      <ion-label>
                                        <ion-text>
                                          <p>pago</p>
-                                         <h2><strong>$300</strong></h2>
+                                         <h2><strong>{{ misdisponible.preciopago}} </strong></h2>
                                        </ion-text>
                                      </ion-label>
                                    </div>
@@ -200,7 +200,7 @@
                                    </ion-card>
                                  </div>
 
-                                   <div>
+                                   <div style="margin-top: 10px;">
                                      <mat-grid-list cols="2" rowHeight="4:1">
                                        <mat-grid-tile>
                                          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
@@ -214,19 +214,6 @@
                                        </mat-grid-tile>
                                      </mat-grid-list>
                                    </div>
-                                   <!-- <p class="ion-text-center">
-
-                                     <ion-chip outline color="navyblue" class="iup-border-buttom-blue">
-                                       <ion-icon name="share-social-outline"></ion-icon>
-                                       <ion-label>Compartir</ion-label>
-                                     </ion-chip>
-
-                                     <ion-chip outline color="navyblue" class="iup-border-buttom-blue">
-
-                                       <ion-label>Ver detalles</ion-label>
-                                       <ion-icon name="chevron-forward-outline"></ion-icon>
-                                     </ion-chip>
-                                   </p> -->
                          </div>
                   </mat-expansion-panel>
                 </mat-accordion>
@@ -266,7 +253,8 @@
 
   </div>
 </ion-content>
-<ion-footer>
+<app-footer></app-footer>
+<!-- <ion-footer>
   <ion-toolbar style="height: 50px;">
 
       <ion-tabs>
@@ -290,7 +278,7 @@
       </ion-tabs>
 
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->
 
 
 
