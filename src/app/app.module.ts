@@ -21,6 +21,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { ComponentsModule } from './components/components.module';
 
+import { AuthModule } from './auth/auth.module';
 
 
 @NgModule({
@@ -42,7 +43,7 @@ import { ComponentsModule } from './components/components.module';
     MatGridListModule,
     MatIconModule,
     ComponentsModule,
-
+    AuthModule,
     RouterModule,
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],

@@ -14,7 +14,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 
-
 import { ComponentsModule } from '../components/components.module';
 
 
@@ -27,16 +26,14 @@ import { ComponentsModule } from '../components/components.module';
     FormsModule,
     IonicModule,
     HomePageRoutingModule,
-    MatExpansionModule,
     CdkAccordionModule,
+    MatExpansionModule,
     MatCardModule,
     MatButtonModule,
     MatGridListModule,
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-
-
     ComponentsModule
   ],
   declarations: [HomePage]

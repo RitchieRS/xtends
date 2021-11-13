@@ -5,6 +5,7 @@ import { ForgotComponent } from './pages/forgot/forgot.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
+import {RecoveryComponent} from './pages/recovery/recovery.component';
 
 
 const routes: Routes =[
@@ -12,7 +13,7 @@ const routes: Routes =[
   path:'',
   children:[
     {
-      path:"login",
+      path:'login',
       component: LoginComponent
 
     },
@@ -25,6 +26,10 @@ const routes: Routes =[
       path: 'register',
       component: RegisterComponent
     },
+    {
+    path: 'recovery',
+      component: RecoveryComponent
+    }
    /*  {
       path: '**',
       redirectTo:'login'
