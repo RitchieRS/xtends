@@ -27,10 +27,19 @@ const routes: Routes =[
       component: RegisterComponent
     },
     {
+<<<<<<< HEAD
     path: 'recovery',
       component: RecoveryComponent
     }
    /*  {
+=======
+      path: 'help',
+      component : HelpComponent
+    },
+    
+
+    /* {
+>>>>>>> origin
       path: '**',
       redirectTo:'login'
     }*/

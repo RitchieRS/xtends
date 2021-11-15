@@ -1,11 +1,20 @@
 export type Role = 'SUSCRIPTOR' | 'ADMIN';
 export interface User {
-    username: string;
-    password: string;
+    user: string;
+    pass: string;
 }
 export interface UserResponse{
-    message: string;
+    idError : number;
+    resp: MiddleUser;
+}
+export interface MiddleUser{
+    usuario : UserRest;
+}
+export interface UserRest{
+    apat: string;
+    email: string;
+    fecha: string;
+    nombre: string;
+    nombreCompleto: string;
     token: string;
-    iduser: number;
-    role:   Role;
 }
