@@ -65,6 +65,22 @@
 .ion-width-lg{
   width: 650px !important;
 }
+// Login desing
+.iup-box-center-xy{
+position: relative;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.iup-box-center-xy >div{
+  width: 100%;
+  height: 100%;
+  max-width: 680px;
+  max-height: 1360px;
+  overflow: auto;
+}
 
 /* <Diseño 50% navy blue 50% whiyte > */
 .row-vertical-cincuenta{
@@ -175,6 +191,10 @@ ion-content {
   border-color:#020c3a #020c3a #020c3a !important;
   border-bottom: solid 3px #1e9ad5!important;
 
+}
+
+.ion-overflow-auto{
+  overflow:auto;
 }
 
 
