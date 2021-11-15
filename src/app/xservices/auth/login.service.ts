@@ -2,10 +2,10 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { BehaviorSubject, Observable, throwError } from 'rxjs';
-import { UserResponse,User } from 'src/app/xmodels/user';
+import { UserResponse,User, UserRest } from 'src/app/xmodels/user';
 import { catchError, map } from 'rxjs/operators';
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { ControlContainer } from '@angular/forms';
+import { InfoService } from 'src/app/xservices/user/info.service';
 
 const helper = new JwtHelperService();
 @Injectable({
@@ -13,16 +13,10 @@ const helper = new JwtHelperService();
 })
 export class LoginService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient,private saveInfoUsers : InfoService) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({ 
-      'Access-Control-Allow-Origin':'*',
-      'Authorization':'authkey',
-      'userid':'1'
-    })
-  };
-
+  
+  
   private loggedIn =  new BehaviorSubject<boolean>(false);
 
   get isLogged(): Observable<boolean>{
@@ -30,16 +24,16 @@ export class LoginService {
   }
 
   login(authData: User):Observable<UserResponse| void>{
-    const headers = new HttpHeaders()
-      .append('Content-Type', 'application/json')
-      .append('Access-Control-Allow-Headers', 'Content-Type')
-      .append('Access-Control-Allow-Methods', 'GET')
-      .append('Access-Control-Allow-Origin', '*');
-
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+    
+  //{"user": "benjamin.glz@gmail.com","pass": "B3nj4miiin.!hdu3kS}"
       
-    return this.http.post<UserResponse>(`${environment.API_URL}login.php`, authData,{headers}).pipe(
+    return this.http.post<UserResponse>(`${environment.API_URL}`, authData).pipe(
           map(( res :  UserResponse)=>{
-            console.log('Usuario'+res);
+            this.saveToken(res.resp.usuario.token);
+            this.saveInfoUsers.setInformation(res.resp.usuario);
             return res;
           }),
           catchError((err)=> this.handeleError(err))

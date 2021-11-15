@@ -3,5 +3,11 @@
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/dummy",
+      "proxyUrl": "https://xtendapp.com/dummy"
+    }
+  ]
 }

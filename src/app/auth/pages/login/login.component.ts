@@ -19,14 +19,14 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.fb.group({
       "user": ['', [Validators.required,Validators.minLength(4)]],
-      "password": ['', [Validators.required,Validators.minLength(4)]]
+      "pass": ['', [Validators.required,Validators.minLength(4)]]
     });
   
   }
 
   onLogin(): void{      
  
-    this.router.navigate(['home'])
+    
     const formValue = this.loginForm.value; 
     this.login.login(formValue).subscribe((res) =>{
         console.log(res);
