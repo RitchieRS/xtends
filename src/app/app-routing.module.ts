@@ -15,6 +15,14 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
+    path: 'mission',
+    loadChildren: () => import('./mission/mission.module').then( m => m.MissionModule)
+  },
+  {
+    path: 'wallet',
+    loadChildren: () => import('./wallet/wallet.module').then( m => m.WalletModule)
+  },
+  {
     path: '**',
     redirectTo: 'auth',
     pathMatch: 'full'

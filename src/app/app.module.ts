@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouteReuseStrategy } from '@angular/router';
+import { RouteReuseStrategy, Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -22,6 +22,8 @@ import { MatInputModule } from '@angular/material/input';
 import { ComponentsModule } from './components/components.module';
 
 import { AuthModule } from './auth/auth.module';
+import { MissionModule } from './mission/mission.module';
+import { WalletModule } from './wallet/wallet.module';
 
 
 @NgModule({
@@ -45,6 +47,8 @@ import { AuthModule } from './auth/auth.module';
     ComponentsModule,
     AuthModule,
     RouterModule,
+    MissionModule,
+    WalletModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],
