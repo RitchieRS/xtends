@@ -19,8 +19,8 @@ const routes: Routes = [
     loadChildren: () => import('./mission/mission.module').then( m => m.MissionModule)
   },
   {
-    path: 'wallet',
-    loadChildren: () => import('./wallet/wallet.module').then( m => m.WalletModule)
+    path: 'profile',
+    loadChildren: () => import('./profile/profile.module').then( m => m.ProfileModule)
   },
   {
     path: '**',

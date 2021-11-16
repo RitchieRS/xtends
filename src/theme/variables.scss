@@ -28,12 +28,12 @@
   --ion-color-tertiary-tint: #6370ff;
 
   /** success **/
-  --ion-color-success: #2dd36f;
-  --ion-color-success-rgb: 45, 211, 111;
+  --ion-color-success: #7fb73f;
+  --ion-color-success-rgb: 60, 70, 84;
   --ion-color-success-contrast: #ffffff;
   --ion-color-success-contrast-rgb: 255, 255, 255;
-  --ion-color-success-shade: #28ba62;
-  --ion-color-success-tint: #42d77d;
+  --ion-color-success-shade: #7fb73f;
+  --ion-color-success-tint: #7fb73f;
 
   /** warning **/
   --ion-color-warning: #ffc409;
@@ -138,6 +138,11 @@
 
   /** Variable Background XTEND Whitex **/
   --ion-background-color-whitex: white;
+
+  /** Variable Background XTEND Verde **/
+  --ion-background-color-green: #7fb73f;
+
+
 
   --ion-font-family: "Montserrat";
 
@@ -286,6 +291,9 @@
 
   /** Background XTEND Whitex **/
   .bg-whitex{background-color: var(--ion-background-color-whitex) !important;}
+
+  /** Background XTEND Green **/
+  .bg-green{background-color: var(--ion-background-color-green) !important;}
 
 
 
