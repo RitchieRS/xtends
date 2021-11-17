@@ -11,6 +11,7 @@ import { MatGridListModule}  from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule}  from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { ProfileComponent } from './profile.component';
 
@@ -38,6 +39,7 @@ const routes: Routes = [
     MatIconModule,
     MatExpansionModule,
     MatInputModule,
+    MatRadioModule
   ],
   exports: [RouterModule]
 })

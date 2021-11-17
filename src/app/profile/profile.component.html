@@ -8,15 +8,31 @@
       <ion-card>
         <ion-card-header class="ion-text-center">
 
-          <ion-card-title><h1>Arturo Ramírez Juárez</h1></ion-card-title>
-          <ion-card-subtitle>
+          <ion-card-title class="">
             <ion-text color="navyblue">
-              <h5>
-                <span class="material-icons color-green">verified</span> Calificación: 4.5
-              </h5>
-            </ion-text>
+              <h1><strong>Arturo Ramírez Juárez</strong></h1>
+              <!-- <div style="display: flex;
+              align-items: center; text-align: center; align-self: center;">
+              <div style=" height: 24px;">
+                <span class="material-icons color-green">verified</span>
+              </div>
+              <div style=" text-align: left;">
+                <h5 >
+                  Calificación: 4.5
+               </h5>
+              </div>
 
-          </ion-card-subtitle>
+              </div> -->
+            </ion-text>
+              <div>
+                <h5>
+                  <span class="material-icons color-green icon-position-top-six">verified</span> Calificación: 4.5
+                </h5>
+              </div>
+
+
+          </ion-card-title>
+
         </ion-card-header>
         <ion-card-content>
           <ion-text color="navyblue" class="ion-text-center">
@@ -191,8 +207,63 @@
         </ion-card-content>
       </ion-card>
     </div>
+    <div class="iup-box-center bg-silverblue ion-padding-vertical">
+      <div>
+        <ion-card>
+          <ion-card-header>
+           <ion-text color="navyblue">
+             <h1>
+               Tu información
+             </h1>
+           </ion-text>
+          </ion-card-header>
+          <ion-card-content>
+            <form class="iup-form" color="primary">
+
+              <mat-form-field class="iup-full-width" appearance="fill">
+                <mat-label>Nombre:</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="Nicolas">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="iup-full-width" appearance="fill">
+                <mat-label>A. Paterno</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="Tesla">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="iup-full-width" appearance="fill">
+                <mat-label>A. Materno</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="Tesla">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="iup-full-width" appearance="fill">
+                <mat-label>E-mail</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="tesla@gmail.com">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <mat-form-field class="iup-full-width" appearance="fill">
+                <mat-label>Móvil</mat-label>
+                <input matInput placeholder="Ex. Pizza" value="5540197392">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+              </mat-form-field>
+              <div style="white-space: nowrap; overflow: auto; height: 34px;">
+                <mat-radio-group aria-label="Select an option">
+                  <mat-radio-button value="1"><p>Estoy deacuerdo con los términos de confidencialidad.</p></mat-radio-button>
+                </mat-radio-group>
+              </div>
+
+
+
+            </form>
+          </ion-card-content>
+
+        </ion-card>
+
+      </div>
+    </div>
+
 
   </div>
+
 </ion-content>
 <ion-footer>
 

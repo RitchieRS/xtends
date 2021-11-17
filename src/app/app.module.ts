@@ -18,6 +18,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import {MatRadioModule} from '@angular/material/radio';
 
 import { ComponentsModule } from './components/components.module';
 
@@ -50,7 +51,8 @@ import { ProfileModule } from './profile/profile.module';
     RouterModule,
     MissionModule,
     // WalletModule,
-    ProfileModule
+    ProfileModule,
+    MatRadioModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],

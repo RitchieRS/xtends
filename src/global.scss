@@ -284,6 +284,24 @@ ion-content {
   height: 10px;
 }
 
+.icon-position-top-six{
+  transform: translate(0px,6px);
+}
+
+.iup-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.iup-full-width {
+  width: 100%;
+}
+
+.mat-form-field-appearance-fill .mat-form-field-flex {
+  background-color: rgba(0, 0, 0, 0.0);
+  color: #020c3a;
+}
 
 
 
