@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 
 import { ProfileComponent } from './profile.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -39,7 +40,8 @@ const routes: Routes = [
     MatIconModule,
     MatExpansionModule,
     MatInputModule,
-    MatRadioModule
+    MatRadioModule,
+    ComponentsModule
   ],
   exports: [RouterModule]
 })

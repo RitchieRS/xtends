@@ -12,6 +12,7 @@ import { MatExpansionModule}  from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 
 import { MissionComponent } from './mission.component';
+import { ComponentsModule } from '../components/components.module';
 
 const routes: Routes = [
   {
@@ -33,6 +34,7 @@ const routes: Routes = [
     MatIconModule,
     MatExpansionModule,
     MatInputModule,
+    ComponentsModule
   ],
   exports: [RouterModule]
 })

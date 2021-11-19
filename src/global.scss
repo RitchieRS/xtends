@@ -25,6 +25,8 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+
+
 .iup-box-center{
   max-width: 1280px;
   position: relative;
@@ -43,6 +45,10 @@
 .img-full{
   width: 100%;
   height: auto;
+}
+
+.img-icon{
+  max-width: 50px;
 }
 
 .border-rodondos{
@@ -289,6 +295,9 @@ ion-content {
 }
 
 .iup-form {
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
   min-width: 150px;
   max-width: 500px;
   width: 100%;
@@ -302,6 +311,34 @@ ion-content {
   background-color: rgba(0, 0, 0, 0.0);
   color: #020c3a;
 }
+
+.example-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+
+section{
+  position: relative;
+  margin: auto;
+}
+
+.iup-button-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.iup-button-row .mat-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.mat-form-field-label {
+  color:var(--ion-color-silverblue) !important;
+}
+
 
 
 
