@@ -17,4 +17,18 @@ export interface UserRest{
     nombre: string;
     nombreCompleto: string;
     token: string;
+    confirmaEmail:string;
 }
+export interface UserRegister{
+    name:  string;
+    apat:  string;
+    email: string;
+    phone: string;
+    pass:  string;
+}
+export interface UserRegisterResponse{
+    idError : number;
+    resp: MiddleUser;
+}
+
+

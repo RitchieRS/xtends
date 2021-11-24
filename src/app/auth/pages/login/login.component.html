@@ -17,12 +17,20 @@
              <ion-label  position="floating">Contraseña</ion-label>
              <ion-input formControlName="pass"  type="password" id="passfield"  ></ion-input>
            </ion-item>
+           <div *ngIf="isSignUpFailed" class="invalid-feedback">
+            Usuario Inválido.
+           </div>
            <ion-grid>
              <ion-row class="ion-justify-content-center">
                <ion-col class="ion-text-center">
                    <ion-button [disabled]="loginForm.invalid" type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
                </ion-col>
              </ion-row>
+             <ion-row class="ion-justify-content-center">
+              <ion-col class="ion-text-center">
+                  <ion-button routerLink="/auth/register" type="submit" class="ion-margin-top"  color="polarwhite">Registrate</ion-button>
+              </ion-col>
+            </ion-row>
            </ion-grid>
           </form>
        <ion-grid>

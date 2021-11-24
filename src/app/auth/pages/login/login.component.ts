@@ -29,9 +29,11 @@ export class LoginComponent implements OnInit {
     
     const formValue = this.loginForm.value; 
     this.login.login(formValue).subscribe((res) =>{
-        console.log(res);
-        if(res){
+        console.log(res['idError']);
+        if(res['idError']==0){
           this.router.navigate(['home'])
+        }else{
+          this.isSignUpFailed = true;
         }
       })
     

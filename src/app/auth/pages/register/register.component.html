@@ -8,40 +8,69 @@
       </ion-row>
 
       <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
+        <form [formGroup]="registerForm"  (ngSubmit)="onRegister()" >
         <ion-col class="ion-no-padding ion-align-self-center ">
               <ion-text color="polarwhite ion-text-center">
                 <h1>Registro</h1>
               </ion-text>
               <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating"><ion-icon name="man-outline"></ion-icon> Nombre</ion-label>
-                <ion-input></ion-input>
+                <ion-label  position="floating"><ion-icon name="man-outline"></ion-icon> Nombre</ion-label>
+                <ion-input formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" ></ion-input>
               </ion-item>
+              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                <div *ngIf="f.name.errors.required">Debe escribir su nombre</div>
+                <div *ngIf="f.name.errors.minlength">El nombre debe ser mayor a 4 caracteres</div>
+              </div>
               <ion-item class="ion-padding-horizontal">
                 <ion-label position="floating">A. Paterno</ion-label>
-                <ion-input></ion-input>
+                <ion-input formControlName="apat"  ></ion-input>
               </ion-item>
-
+              <div *ngIf="submitted && f.apat.errors" class="invalid-feedback">
+                <div *ngIf="f.apat.errors.required">Debe escribir un apellido</div>
+                <div *ngIf="f.apat.errors.minlength">Debe escrbir mas de 4 caracteres</div>
+              </div>
               <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating"><ion-icon name="mail-outline"></ion-icon> E mail</ion-label>
-                <ion-input></ion-input>
+                <ion-label  position="floating"><ion-icon name="mail-outline"></ion-icon> E mail</ion-label>
+                <ion-input formControlName="email" style="color:white;" ></ion-input>
               </ion-item>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">El email es requerido</div>
+                <div *ngIf="f.email.errors.email">El email es inválido</div>
+              </div>
               <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating"><ion-icon name="phone-portrait-outline"></ion-icon> Celular</ion-label>
-                <ion-input></ion-input>
+                <ion-label  position="floating"><ion-icon name="phone-portrait-outline"></ion-icon> Celular</ion-label>
+                <ion-input formControlName="phone" (keypress)="numberOnly($event)" type="number" ></ion-input>
               </ion-item>
+              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <div *ngIf="f.phone.errors.required">El teléfono es requerido</div>
+              </div>
               <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating"><ion-icon name="keypad-outline"></ion-icon> Contraseña</ion-label>
-                <ion-input></ion-input>
+                <ion-label  position="floating"><ion-icon name="keypad-outline"></ion-icon> Contraseña</ion-label>
+                <ion-input formControlName="pass" ></ion-input>
               </ion-item>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.pass.errors.required">Ingrese una contraseña</div>
+                <div *ngIf="f.pass.errors.minlength">Debe escrbir más de 6 caracteres</div>
+                <div *ngIf="f.pass.errors.maxlength">Debe escrbir menos de 16 caracteres</div>
+              </div>
               <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating"><ion-icon name="key-outline"></ion-icon> Confirma contraseña</ion-label>
-                <ion-input></ion-input>
+                <ion-label position="floating"><ion-icon name="key-outline"></ion-icon>Confirma contraseña</ion-label>
+                <ion-input  formControlName="repass" ></ion-input>
               </ion-item>
+              <div *ngIf="f.repass.errors" class="invalid-feedback">
+                <div *ngIf="f.repass.errors.required">Debe confirmar su contraseña</div>
+              </div>
+              <div *ngIf="submitted && confirmPass" class="invalid-feedback">
+                  La contraseña no coincide
+              </div>
+              <div *ngIf="isRegisterFailed" class="invalid-feedback">
+                Fallo el registro :c
+               </div>
         </ion-col>
         <ion-col>
           <ion-row class="ion-justify-content-center ion-padding">
             <ion-col class="ion-text-center">
-                <ion-button  fill="outline" type="submit" class="ion-margin-top"  color="polarwhite">
+                <ion-button  routerLink="/auth/login" fill="outline" type="submit" class="ion-margin-top"  color="polarwhite">
                  <ion-icon name="chevron-back-outline"></ion-icon>
                   Atras
                  </ion-button>
@@ -54,6 +83,7 @@
             </ion-col>
           </ion-row>
         </ion-col>
+        </form>
       </ion-row>
     </ion-grid>
 </div>

@@ -42,7 +42,7 @@ const routes: Routes =[
     RouterModule.forChild(routes),
     MatIconModule
   ],
-  exports:[ RouterModule]
+  exports:[ RouterModule ]
 
 })
 export class AuthRoutingModule { }

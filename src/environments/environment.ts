@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-   API_URL:'http://54.200.96.192:55000/api/login'
+   API_URL:'http://54.200.96.192:55000/api/'
   //API_URL: 'https://admin.puntazos.com.mx/xtendS/login.php'
 };
 
