@@ -7,84 +7,107 @@
         </ion-col>
       </ion-row>
 
-      <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
-        <form [formGroup]="registerForm"  (ngSubmit)="onRegister()" >
-        <ion-col class="ion-no-padding ion-align-self-center ">
-              <ion-text color="polarwhite ion-text-center">
-                <h1>Registro</h1>
-              </ion-text>
-              <ion-item class="ion-padding-horizontal">
-                <ion-label  position="floating"><ion-icon name="man-outline"></ion-icon> Nombre</ion-label>
-                <ion-input formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" ></ion-input>
-              </ion-item>
-              <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                <div *ngIf="f.name.errors.required">Debe escribir su nombre</div>
-                <div *ngIf="f.name.errors.minlength">El nombre debe ser mayor a 4 caracteres</div>
-              </div>
-              <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating">A. Paterno</ion-label>
-                <ion-input formControlName="apat"  ></ion-input>
-              </ion-item>
-              <div *ngIf="submitted && f.apat.errors" class="invalid-feedback">
-                <div *ngIf="f.apat.errors.required">Debe escribir un apellido</div>
-                <div *ngIf="f.apat.errors.minlength">Debe escrbir mas de 4 caracteres</div>
-              </div>
-              <ion-item class="ion-padding-horizontal">
-                <ion-label  position="floating"><ion-icon name="mail-outline"></ion-icon> E mail</ion-label>
-                <ion-input formControlName="email" style="color:white;" ></ion-input>
-              </ion-item>
-              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.email.errors.required">El email es requerido</div>
-                <div *ngIf="f.email.errors.email">El email es inválido</div>
-              </div>
-              <ion-item class="ion-padding-horizontal">
-                <ion-label  position="floating"><ion-icon name="phone-portrait-outline"></ion-icon> Celular</ion-label>
-                <ion-input formControlName="phone" (keypress)="numberOnly($event)" type="number" ></ion-input>
-              </ion-item>
-              <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
-                <div *ngIf="f.phone.errors.required">El teléfono es requerido</div>
-              </div>
-              <ion-item class="ion-padding-horizontal">
-                <ion-label  position="floating"><ion-icon name="keypad-outline"></ion-icon> Contraseña</ion-label>
-                <ion-input formControlName="pass" ></ion-input>
-              </ion-item>
-              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                <div *ngIf="f.pass.errors.required">Ingrese una contraseña</div>
-                <div *ngIf="f.pass.errors.minlength">Debe escrbir más de 6 caracteres</div>
-                <div *ngIf="f.pass.errors.maxlength">Debe escrbir menos de 16 caracteres</div>
-              </div>
-              <ion-item class="ion-padding-horizontal">
-                <ion-label position="floating"><ion-icon name="key-outline"></ion-icon>Confirma contraseña</ion-label>
-                <ion-input  formControlName="repass" ></ion-input>
-              </ion-item>
-              <div *ngIf="f.repass.errors" class="invalid-feedback">
-                <div *ngIf="f.repass.errors.required">Debe confirmar su contraseña</div>
-              </div>
-              <div *ngIf="submitted && confirmPass" class="invalid-feedback">
-                  La contraseña no coincide
-              </div>
-              <div *ngIf="isRegisterFailed" class="invalid-feedback">
-                Fallo el registro :c
-               </div>
-        </ion-col>
-        <ion-col>
-          <ion-row class="ion-justify-content-center ion-padding">
-            <ion-col class="ion-text-center">
-                <ion-button  routerLink="/auth/login" fill="outline" type="submit" class="ion-margin-top"  color="polarwhite">
-                 <ion-icon name="chevron-back-outline"></ion-icon>
-                  Atras
-                 </ion-button>
-            </ion-col>
-            <ion-col>
-                <ion-button  type="submit" class="ion-margin-top" color="primary">
-                  Regístrate
-                  <ion-icon name="chevron-forward-outline"></ion-icon>
-                 </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-col>
-        </form>
-      </ion-row>
+
+      <form [formGroup]="registerForm"  (ngSubmit)="onRegister()" >
+        <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
+
+          <ion-col class="ion-no-padding ion-align-self-center ">
+                <ion-text color="polarwhite ion-text-center">
+                  <h1>Registro</h1>
+                </ion-text>
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label  position="floating"><ion-icon name="man-outline"></ion-icon> Nombre</ion-label>
+                  <ion-input formControlName="name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }" ></ion-input>
+                </ion-item>
+
+                  <ion-text *ngIf="submitted && f.name.errors" color="danger" class="ion-text-center invalid-feedback">
+                    <p *ngIf="f.name.errors.required">Debe escribir su nombre</p>
+                    <p *ngIf="f.name.errors.minlength">El nombre debe ser mayor a 4 caracteres</p>
+                  </ion-text>
+
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label position="floating">A. Paterno</ion-label>
+                  <ion-input formControlName="apat"  ></ion-input>
+                </ion-item>
+
+                  <ion-text *ngIf="submitted && f.apat.errors" color="danger" class="ion-text-center invalid-feedback">
+                    <p *ngIf="f.apat.errors.required">Debe escribir un apellido</p>
+                    <p *ngIf="f.apat.errors.minlength">Debe escrbir mas de 4 caracteres</p>
+                  </ion-text>
+
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label  position="floating"><ion-icon name="mail-outline"></ion-icon> E mail</ion-label>
+                  <ion-input formControlName="email" style="color:white;" ></ion-input>
+                </ion-item>
+
+                  <ion-text *ngIf="submitted && f.email.errors" color="danger" class="ion-text-center invalid-feedback">
+                    <p *ngIf="f.email.errors.required">El email es requerido</p>
+                    <p *ngIf="f.email.errors.email">El email es inválido</p>
+                  </ion-text>
+
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label  position="floating"><ion-icon name="phone-portrait-outline"></ion-icon> Celular</ion-label>
+                  <ion-input formControlName="phone" (keypress)="numberOnly($event)" type="number" ></ion-input>
+                </ion-item>
+
+                  <ion-text *ngIf="submitted && f.phone.errors" color="danger" class="ion-text-center invalid-feedback">
+                    <p *ngIf="f.phone.errors.required">El teléfono es requerido</p>
+                  </ion-text>
+
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label  position="floating"><ion-icon name="keypad-outline"></ion-icon> Contraseña</ion-label>
+                  <ion-input formControlName="pass" ></ion-input>
+                </ion-item>
+
+                  <ion-text *ngIf="submitted && f.email.errors" color="danger" class="ion-text-center invalid-feedback">
+                     <p *ngIf="f.pass.errors.required">Ingrese una contraseña</p>
+                     <p *ngIf="f.pass.errors.minlength">Debe escrbir más de 6 caracteres</p>
+                     <p *ngIf="f.pass.errors.maxlength">Debe escrbir menos de 16 caracteres</p>
+                  </ion-text>
+
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label position="floating"><ion-icon name="key-outline"></ion-icon>Confirma contraseña</ion-label>
+                  <ion-input  formControlName="repass" ></ion-input>
+                </ion-item>
+
+                  <ion-text *ngIf="f.repass.errors" color="danger" class="ion-text-center invalid-feedback">
+                    <p *ngIf="f.repass.errors.required">Debe confirmar su contraseña</p>
+                  </ion-text>
+
+
+                  <ion-text *ngIf="submitted && confirmPass" color="danger" class="ion-text-center invalid-feedback">
+                      <p>La contraseña no coincide</p>
+                  </ion-text>
+
+
+
+                  <ion-text *ngIf="isRegisterFailed" color="danger" class="invalid-feedback">
+                    <p>Fallo el registro :c</p>
+                  </ion-text>
+
+          </ion-col>
+          <ion-col>
+            <ion-row class="ion-justify-content-center ion-padding">
+              <ion-col class="ion-text-center">
+                  <ion-button  routerLink="/auth/login" fill="outline" type="submit" class="ion-margin-top"  color="polarwhite">
+                   <ion-icon name="chevron-back-outline"></ion-icon>
+                    Atras
+                   </ion-button>
+              </ion-col>
+              <ion-col>
+                  <ion-button  type="submit" class="ion-margin-top" color="primary">
+                    Regístrate
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                   </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+
+        </ion-row>
+      </form>
+
+
+
     </ion-grid>
 </div>
 </div>

@@ -10,16 +10,16 @@
       <div style="max-width:570px; margin: auto;">
           <form  [formGroup]="loginForm"  (ngSubmit)="onLogin()">
            <ion-item class="ion-padding-horizontal" >
-             <ion-label position="floating"   >Usuario</ion-label>
+             <ion-label position="floating">Usuario</ion-label>
              <ion-input   id="userfield" formControlName="user" ></ion-input>
            </ion-item>
            <ion-item class="ion-padding-horizontal">
              <ion-label  position="floating">Contraseña</ion-label>
              <ion-input formControlName="pass"  type="password" id="passfield"  ></ion-input>
            </ion-item>
-           <div *ngIf="isSignUpFailed" class="invalid-feedback">
-            Usuario Inválido.
-           </div>
+           <ion-text color="danger" *ngIf="isSignUpFailed" class="invalid-feedback ion-text-center">
+            <p>Usuario Inválido.</p>
+           </ion-text>
            <ion-grid>
              <ion-row class="ion-justify-content-center">
                <ion-col class="ion-text-center">
