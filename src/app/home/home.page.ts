@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-
+import { HomeService  } from 'src/app/xservices/home/home.service';
+import { Router } from '@angular/router';
+import { Home, Section1, Section1Content,Section3,Section3Content } from '../xmodels/home';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -7,8 +9,11 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  misiones = [
-    {
+  missions:Section1;
+  missionsData :Section1Content[];
+  missionAval:Section3;
+  missionsAvalData :Section3Content[];
+   /* {
      logoimg:'shell.svg',
      marca:'shell',
      tipo:'Anaquelero',
@@ -26,7 +31,7 @@ export class HomePage {
       preciopago:'400 por visita',
       btnlink:''
      },
-  ];
+  ];*/
 
   promociones = [
     {
@@ -70,6 +75,42 @@ export class HomePage {
   ];
 
   panelOpenState = false;
-  constructor() {}
+  dataHome : Home;
+  reqHome : string;
+  isMissionsOn=false;
+
+  
+  constructor(private homeService : HomeService) {}
+  
+  ngOnInit() {
+
+     this.reqHome = localStorage.getItem('token');
+     //console.log(this.reqHome);
+     this.homeService.getDataHome(this.reqHome).subscribe((res) =>{
+       if(res){
+        this.dataHome=  res;+
+        console.log(this.dataHome);
+        /* Misiones Activas*/
+        if(this.dataHome.section1.content.length>=1){
+         this.missions = this.dataHome.section1;
+         this.missionsData = this.dataHome.section1.content;
+         console.log(this.missionsData);
+        }
+        /* Misiones Disponibles*/
+        if(this.dataHome.section3.content.length>=1){
+          this.missionAval = this.dataHome.section3;
+          this.missionsAvalData = this.dataHome.section3.content;
+          console.log(this.missionsAvalData);
+         }
+        console.log(this.dataHome.section1);
+        
+        console.log(this.dataHome);
+       }
+       
+      
+    
+    }) 
+  }
+  
 
 }

@@ -23,10 +23,8 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfileModule)
   },
   {
-    path: '**',
-    redirectTo: 'auth',
-    pathMatch: 'full'
-  },
+    path: '', redirectTo: 'auth', pathMatch: 'full'
+  }
 ];
 
 @NgModule({

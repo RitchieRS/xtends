@@ -24,24 +24,24 @@
        <ion-row class="aka">
          <ion-col size="12">
          <div class="ipck-row-carousel">
-           <div class="ipck-col-carousel ion-padding-vertical">
+           <div *ngIf="isMissionsOn==false" class="ipck-col-carousel ion-padding-vertical">
              <!-- <ITEM - para repetir el ng-repeat> -->
-             <div class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mision of misiones">
+             <div  class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mission of missionsData">
                <ion-card class="ion-no-margin ion-width-sm border-radius">
                  <ion-item>
                    <div style="width: 50px;" class="ion-margin-end">
-                     <img src="../../assets/img/{{ mision.logoimg}}">
+                     <img src="../../assets/img/shell.svg">
                    </div>
                    <ion-label color="cloudysky" class="ion-text-wrap">
                      <hr>
-                       <h2><strong>{{ mision.marca }}</strong></h2>
-                       <h2>{{mision.tipo}}</h2>
-                       <p>{{mision.txt}}</p>
+                       <h2><strong>{{ mission.nombreCliente }}</strong></h2>
+                       <h2>{{mission.nombreActividad}}</h2>
+                       <p>{{mission.actividad}}</p>
                          <ion-grid>
-                           <p><strong>{{mision.novisitas}}</strong></p>
+                           <p><strong></strong></p>
                            <ion-row>
                              <!-- <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col> -->
-                             <ion-col size="auto" ><p><strong>$</strong> {{mision.preciopago}}</p></ion-col>
+                             <ion-col size="auto" ><p><strong>$</strong> {{mission.pago}}</p></ion-col>
                            </ion-row>
                      </ion-grid>
                    </ion-label>
@@ -57,6 +57,9 @@
                </ion-card>
              </div>
              <!-- </Fin ITEM - para repetir> -->
+           </div>
+           <div *ngIf="isMissionsOn==true">
+              <strong>Aún no tienes misiones</strong>
            </div>
          </div>
        </ion-col>
@@ -120,7 +123,7 @@
     <ion-grid>
       <ion-row>
         <!-- <ITEM - para repetir el ng-repeat> -->
-        <ion-col size="12" size-xl="3" size-lg="4" size-md="6" size-sm="6" *ngFor="let misdisponible of misdisponibles">
+        <ion-col size="12" size-xl="3" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalData">
           <ion-grid  class="ion-no-padding border-radius">
             <ion-row>
               <ion-col>
@@ -138,9 +141,9 @@
                             <ion-col size="12" class="ion-align-self-center">
                               <ion-label>
                                 <ion-text color="cloudysky">
-                                  <h1>{{ misdisponible.tipo}}</h1>
-                                  <h3>{{ misdisponible.novisitas}}</h3>
-                                  <p><strong>{{ misdisponible.preciopago}}</strong> por visita</p>
+                                  <h1>{{ available.nombreActividad}}</h1>
+                                  <h3>{{ available.descripcion}}</h3>
+                                  <p><strong>{{ available.pago}}</strong> por visita</p>
                                 </ion-text>
                               </ion-label>
                             </ion-col>
@@ -156,8 +159,8 @@
                                    <div class="ion-text-start">
                                      <ion-label>
                                        <ion-text color="polarwhite">
-                                         <h2><strong>{{ misdisponible.tipo}}</strong></h2>
-                                         <h4><ion-icon name="medal-outline"></ion-icon> Para Nivel {{ misdisponible.nivel}}</h4>
+                                         <h2><strong>{{ available.nombreActividad}}</strong></h2>
+                                         <h4><ion-icon name="medal-outline"></ion-icon> Para Nivel {{ available.nivel }}</h4>
                                        </ion-text>
                                      </ion-label>
                                    </div>
@@ -167,7 +170,7 @@
                                      <ion-label>
                                        <ion-text color="polarwhite">
                                          <p>pago</p>
-                                         <h2><strong>{{ misdisponible.preciopago}} </strong></h2>
+                                         <h2><strong>{{ available.pago}} </strong></h2>
                                        </ion-text>
                                      </ion-label>
                                    </div>
@@ -179,9 +182,9 @@
                                        <ion-label >
                                          <ion-text color="cloudysky">
                                            <p>
-                                           <strong>Canal</strong> {{ misdisponible.canal}}<br>
-                                           <strong>Cadena:</strong> {{ misdisponible.cadena}}<br>
-                                           <strong>Tiempo visita promedio:</strong> {{ misdisponible.tiempopromedio}}
+                                           <strong>Canal</strong> {{ available.detalle.canal}}<br>
+                                           <strong>Cadena:</strong> {{ available.detalle.cadena}}<br>
+                                           <strong>Tiempo visita promedio:</strong> {{ available.detalle.tiempo}}
                                          </p>
                                          </ion-text>
                                        </ion-label>
@@ -192,9 +195,8 @@
                                        <ion-label>
                                          <ion-text color="cloudysky">
                                            <p><strong>Canal:</strong></p>
-                                           <p>Jalapa, Veracruz</p>
-                                           <p>Morelia, Michoacán</p>
-                                           <p>Celaya, Guanajuato</p>
+                                           <p>{{available.detalle.sucursal}}</p>
+                                           
                                          </ion-text>
                                        </ion-label>
                                    </ion-card>

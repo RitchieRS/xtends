@@ -46,14 +46,14 @@ export class RegisterComponent implements OnInit {
     }
     this.confirmPass=false;
     console.log("Todo Ok");
-    /*this.register.register(formValue).subscribe((res) =>{
+     this.register.register(formValue).subscribe((res) =>{
       console.log(res['idError']);
       if(res['idError']==0){
         this.router.navigate(['home'])
       }else{
         this.isRegisterFailed = true;
       }
-    })*/
+    }) 
 
 
   }
