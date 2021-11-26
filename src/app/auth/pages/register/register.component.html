@@ -70,7 +70,7 @@
                   <ion-input  formControlName="repass" ></ion-input>
                 </ion-item>
 
-                  <ion-text *ngIf="f.repass.errors" color="danger" class="ion-text-center invalid-feedback">
+                  <ion-text *ngIf="submitted && f.repass.errors" color="danger" class="ion-text-center invalid-feedback">
                     <p *ngIf="f.repass.errors.required">Debe confirmar su contraseña</p>
                   </ion-text>
 
@@ -78,9 +78,6 @@
                   <ion-text *ngIf="submitted && confirmPass" color="danger" class="ion-text-center invalid-feedback">
                       <p>La contraseña no coincide</p>
                   </ion-text>
-
-
-
                   <ion-text *ngIf="isRegisterFailed" color="danger" class="invalid-feedback">
                     <p>Fallo el registro :c</p>
                   </ion-text>
