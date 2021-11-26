@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class RegisterComponent implements OnInit {
 
   public registerForm: FormGroup;
-  iisRegisterFailed = false;
+  isRegisterFailed = false;
   confirmPass = false;
   errorMessage = '';
   submitted =false; 
