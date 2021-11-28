@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthRoutingModule } from './auth/auth-routing.module';
-
+import { CheckLoginGuard } from './shared/guards/check-login.guard';
 
 
 const routes: Routes = [
   {
     path: 'auth',
-    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule)
+    loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule),
+    canActivate:[CheckLoginGuard]
   },
 
   {
@@ -23,7 +24,7 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfileModule)
   },
   {
-    path: '', redirectTo: 'auth', pathMatch: 'full'
+    path: '**', redirectTo: 'auth', pathMatch: 'full',
   }
 ];
 

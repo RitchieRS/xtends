@@ -6,11 +6,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {RecoveryComponent} from './pages/recovery/recovery.component';
-
+import { CheckLoginGuard } from '.././shared/guards/check-login.guard';
 
 const routes: Routes =[
   {
   path:'',
+  canActivate:[CheckLoginGuard],
   children:[
     {
       path:'login',

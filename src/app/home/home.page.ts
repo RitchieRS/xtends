@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
 import { Home, Section1, Section1Content,Section3,Section3Content } from '../xmodels/home';
+import { LoginService } from '../xservices/auth/login.service';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -80,9 +81,14 @@ export class HomePage {
   isMissionsOn=false;
 
   
-  constructor(private homeService : HomeService) {}
+  constructor(private homeService : HomeService,private auth : LoginService) {}
   
   ngOnInit() {
+
+    console.log(this.auth.isLogged)
+    this.auth.isLogged.subscribe( (log:any)=>{
+        console.log(log)
+    })
 
      this.reqHome = localStorage.getItem('token');
      //console.log(this.reqHome);

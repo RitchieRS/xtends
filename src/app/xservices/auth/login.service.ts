@@ -18,7 +18,6 @@ export class LoginService {
   
   
   private loggedIn =  new BehaviorSubject<boolean>(false);
-
   get isLogged(): Observable<boolean>{
     return this.loggedIn.asObservable();
   }
@@ -34,6 +33,7 @@ export class LoginService {
           map(( res :  UserResponse)=>{
             if(res.resp.usuario!==undefined){
                 this.saveToken(res.resp.usuario.token);
+                this.loggedIn.next(true);
                 this.saveInfoUsers.setInformation(res.resp.usuario);
             }
             return res;
@@ -42,11 +42,13 @@ export class LoginService {
     );
   };
 
+
   logauth(): void{}
   private checkToken():void{
     const userToken = localStorage.getItem('token');
     const isExpired = helper.isTokenExpired(userToken);
-    this.loggedIn.next(false);
+    isExpired ? this.logauth() : this.loggedIn.next(true);
+    
   }
   private saveToken(token: string):void{
     localStorage.setItem('token',token);
