@@ -15,24 +15,6 @@ export class HomeService {
 
   constructor(private http : HttpClient,private saveInfoUsers : InfoService) { }
 
-
-
-  createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'Basic ' +
-      btoa('username:password')); 
-  }
-
-  get(url) {
-    let headers = new Headers();
-    this.createAuthorizationHeader(headers);
-    return this.http.get(url, );
-  }
-
-  
-  
-
-
- 
   getDataHome( token : string):Observable<Home| void>{
     const httpOptions = {
       headers: new HttpHeaders({

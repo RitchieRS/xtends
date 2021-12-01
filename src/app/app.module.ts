@@ -26,6 +26,7 @@ import { AuthModule } from './auth/auth.module';
 import { MissionModule } from './mission/mission.module';
 // import { WalletModule } from './wallet/wallet.module';
 import { ProfileModule } from './profile/profile.module';
+import { AuthInterceptorService } from './xservices/interceptor/auth-interceptor.service';
 
 
 @NgModule({

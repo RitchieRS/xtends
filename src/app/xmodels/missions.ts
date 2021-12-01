@@ -1,3 +1,8 @@
+
+export interface ReqMission {
+    idTienda: number;
+    idProyecto:  number;
+}
 export interface Mission {
     idError: number;
     resp:    Resp;
