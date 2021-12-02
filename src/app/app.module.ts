@@ -24,7 +24,7 @@ import { ComponentsModule } from './components/components.module';
 
 import { AuthModule } from './auth/auth.module';
 import { MissionModule } from './mission/mission.module';
-// import { WalletModule } from './wallet/wallet.module';
+import { WalletModule } from './wallet/wallet.module';
 import { ProfileModule } from './profile/profile.module';
 
 @NgModule({
@@ -42,14 +42,13 @@ import { ProfileModule } from './profile/profile.module';
     MatCardModule,
     MatButtonModule,
     MatInputModule,
-
     MatGridListModule,
     MatIconModule,
     ComponentsModule,
     AuthModule,
     RouterModule,
     MissionModule,
-    // WalletModule,
+    WalletModule,
     ProfileModule,
     MatRadioModule
   ],
