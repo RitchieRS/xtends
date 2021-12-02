@@ -1,4 +1,6 @@
+
 <ion-content>
+
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
     <ion-card>
       <ion-grid>
@@ -60,17 +62,22 @@
 
 
     <ion-row class="ion-padding-horizontal">
-      <ion-col size="7" class="ion-text-start ion-align-self-center">
+      <ion-col size="6" class="ion-text-start ion-align-self-center">
         <ion-text color="navyblue">
           <h6 class="ion-no-margin">Detalle de movimientos</h6>
         </ion-text>
       </ion-col>
 
-      <ion-col size="5" class="ion-text-end ion-align-self-center">
-        <ion-chip class="ion-color ion-color-navyblue chip-outline">
-          <ion-label>Periodo</ion-label>
-          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
-        </ion-chip>
+      <ion-col size="12" class="ion-text-end ion-align-self-center">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter a date range</mat-label>
+          <mat-date-range-input [rangePicker]="picker">
+            <input matStartDate placeholder="Start date">
+            <input matEndDate placeholder="End date">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker></mat-date-range-picker>
+        </mat-form-field>
       </ion-col>
     </ion-row>
     <ion-card class="ion-margin-vertical">

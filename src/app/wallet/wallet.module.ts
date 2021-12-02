@@ -14,6 +14,9 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import { MovementComponent } from './movement/movement.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 const routes: Routes = [
   {
     path: '',
@@ -42,7 +45,12 @@ const routes: Routes = [
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    CdkAccordionModule,
+    MatCardModule,
+    MatNativeDateModule,
+    MatDatepickerModule
+
   ],
   exports:[
     WalletComponent,
