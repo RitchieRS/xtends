@@ -35,6 +35,8 @@ export interface Section2 {
 export interface Section2Content {
     id:  number;
     img: string;
+    titulo: string;
+    descripcion: string;
 }
 
 export interface Section3 {

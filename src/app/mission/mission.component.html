@@ -4,10 +4,10 @@
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
 
-    <div>
+    <div  >
       <ion-card>
       <ion-grid>
-        <ion-row>
+        <ion-row >
           <ion-col size="2" class="ion-align-self-center ion-margin-end">
             <div class="box-img border-rodondos">
               <img src="../../assets/img/shell.svg" class="img-full img-icon">
@@ -16,7 +16,7 @@
           <ion-col size="9" class="ion-align-self-center">
             <ion-label>
               <ion-text color="navyblue">
-                <h1>SHELL</h1>
+                <h1>{{nombreCliente}}</h1>
               </ion-text>
             </ion-label>
           </ion-col>
@@ -28,8 +28,10 @@
            <div class="ion-text-start">
              <ion-label>
                <ion-text color="polarwhite">
-                 <h2><strong>Promotoría</strong></h2>
-                 <h4><ion-icon name="medal-outline"></ion-icon> Para Nivel Dorada</h4>
+                 <h2><strong>{{nombreActividad}}</strong></h2>
+                 <h4 *ngIf="nivel==1" ><ion-icon  name="medal-outline"></ion-icon> Para Nivel Bronce</h4>
+                 <h4 *ngIf="nivel==2"><ion-icon   name="medal-outline"></ion-icon> Para Nivel Plata</h4>
+                 <h4 *ngIf="nivel==3"><ion-icon  name="medal-outline"></ion-icon> Para Nivel Dorado</h4>
                </ion-text>
              </ion-label>
            </div>
@@ -39,7 +41,7 @@
              <ion-label>
                <ion-text color="polarwhite">
                  <p>pago</p>
-                 <h2><strong>$200 </strong></h2>
+                 <h2><strong>${{pago}} </strong></h2>
                </ion-text>
              </ion-label>
            </div>
@@ -52,8 +54,8 @@
                  <ion-text color="cloudysky">
                    <p>
                    <strong>Canal: </strong> Jalapa, Veracruz<br>
-                   <strong>Cadena: </strong> Shell<br>
-                   <strong>Tiempo visita: </strong> 30 minutos
+                   <strong>Cadena: </strong>{{cadena}}<br>
+                   <strong>Tiempo visita: </strong> {{tiempo}}
                  </p>
                  </ion-text>
                </ion-label>
@@ -64,9 +66,7 @@
                <ion-label>
                  <ion-text color="cloudysky">
                    <p><strong>Canal:</strong></p>
-                   <p>Jalapa, Veracruz</p>
-                   <p>Morelia, Michoacán</p>
-                   <p>Celaya, Guanajuato</p>
+                   <p>{{ciudad}}, {{estado}}</p> 
                  </ion-text>
                </ion-label>
            </ion-card>
@@ -85,15 +85,15 @@
                <ion-col>
                  <ion-grid style="max-width: 380px;">
                    <ion-row>
-                     <ion-col size="4">
+                     <ion-col size="4" *ngFor="let item of habilidades">
                       <div class="iup-car">
                         <div class="box-certificado">
                            <div class="bg-certificado-one"></div>
                         </div>
-                        <ion-text color="navyblue"><p>Certificado 1</p></ion-text>
+                        <ion-text color="navyblue"><p>{{item.nombreHabilidad}}</p></ion-text>
                       </div>
                      </ion-col>
-                     <ion-col size="4">
+                    <!-- <ion-col size="4">
                       <div class="iup-car">
                         <div class="box-certificado">
                            <div class="bg-certificado-two"></div>
@@ -108,7 +108,7 @@
                         </div>
                         <ion-text color="navyblue"><p>Certificado 3</p></ion-text>
                       </div>
-                    </ion-col>
+                    </ion-col>-->
                    </ion-row>
 
                  </ion-grid>

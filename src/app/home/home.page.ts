@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
-import { Home, Section1, Section1Content,Section3,Section3Content } from '../xmodels/home';
+import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
 @Component({
   selector: 'app-home',
@@ -12,6 +12,8 @@ export class HomePage {
 
   missions:Section1;
   missionsData :Section1Content[];
+  banner:Section2;
+  bannerData :Section2Content[];
   missionAval:Section3;
   missionsAvalData :Section3Content[];
    /* {
@@ -102,6 +104,12 @@ export class HomePage {
          this.missionsData = this.dataHome.section1.content;
          console.log(this.missionsData);
         }
+        /* Banners*/
+        if(this.dataHome.section2.content.length>=1){
+          this.banner = this.dataHome.section2;
+          this.bannerData = this.dataHome.section2.content;
+          console.log(this.missionsData);
+         }
         /* Misiones Disponibles*/
         if(this.dataHome.section3.content.length>=1){
           this.missionAval = this.dataHome.section3;

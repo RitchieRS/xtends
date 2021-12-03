@@ -30,7 +30,7 @@
                <ion-card class="ion-no-margin ion-width-sm border-radius">
                  <ion-item>
                    <div style="width: 50px;" class="ion-margin-end">
-                     <img src="../../assets/img/shell.svg">
+                     <img src="{{mission.logoCliente}}">
                    </div>
                    <ion-label color="cloudysky" class="ion-text-wrap">
                      <hr>
@@ -73,13 +73,13 @@
       <div class="ipck-row-carousel">
         <div class="ipck-col-carousel ion-align-items-center">
           <!-- <ITEM - para repetir el ng-repeat> -->
-          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor='let promocion of promociones'>
+          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor='let promocion of bannerData'>
             <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-md shadow border-radius">
                 <ion-row class="ion-align-items-center">
                   <ion-col  size="4" class="ion-text-center">
                     <div class="ion-margin-end-sm">
                       <div class="box-img border-rodondos">
-                        <img src="../../assets/img/{{ promocion.img }}" class="img-full">
+                        <img src="{{ promocion.img }}" class="img-full">
                       </div>
                     </div>
                   </ion-col>
@@ -88,7 +88,7 @@
                       <ion-card-content class="ion-no-padding">
                         <ion-text color="polarwhite">
                           <h2 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h2>
-                          <p>{{ promocion.texto}}</p>
+                          <p>{{ promocion.descripcion}}</p>
                         </ion-text>
                       </ion-card-content>
                     </div>

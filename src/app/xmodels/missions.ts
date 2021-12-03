@@ -3,12 +3,12 @@ export interface ReqMission {
     idTienda: number;
     idProyecto:  number;
 }
-export interface Mission {
+export interface Mission{
     idError: number;
-    resp:    Resp;
+    resp:    RespMission;
 }
 
-export interface Resp {
+export interface RespMission {
     idUsuario:       number;
     idTienda:        number;
     idProyecto:      number;
@@ -17,17 +17,7 @@ export interface Resp {
     pago:            string;
     nivel:           number;
     detalle:         Detalle;
-    certificados:    Certificados;
-}
-
-export interface Certificados {
-    c1: C1;
-    c2: C1;
-    c3: C1;
-}
-
-export interface C1 {
-    nombre: string;
+    habilidades:     Habilidades[];
 }
 
 export interface Detalle {
@@ -37,4 +27,10 @@ export interface Detalle {
     tiempo:   string;
     estado:   string;
     ciudad:   string;
+}
+
+export interface Habilidades {
+    idHabilidad:     number;
+    nombreNivel:     string;
+    nombreHabilidad: string;
 }

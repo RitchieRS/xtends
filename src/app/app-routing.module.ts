@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthRoutingModule } from './auth/auth-routing.module';
+import { MissionRoutingModule } from './mission/mission-routing.module';
+import { MissionModule } from './mission/mission.module';
 import { CheckLoginGuard } from './shared/guards/check-login.guard';
 import { WalletRoutingModule } from './wallet/wallet-routing.module';
 
@@ -40,7 +42,8 @@ const routes: Routes = [
   exports: [
     RouterModule,
     AuthRoutingModule,
-    WalletRoutingModule
+    WalletRoutingModule,
+    MissionRoutingModule
   ]
 })
 export class AppRoutingModule { }
