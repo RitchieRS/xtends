@@ -25,23 +25,16 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.mat-button-wrapper{
+  color: #020c3a;
+}
 .iup-border-left{
-  border-left: #7fb73f solid 0.4em !important;
+  border-left: #603fa5 solid 0.3em !important;
 }
-
-.iup-border-left-two{
-  border-left: #020c3a solid 0.4em !important;
-}
-
-.iup-border-bottom-grey{
-  border-bottom: solid 1px #d0d3dd;
-}
-
 
 .iup-icon-size-xl{
   font-size: 3.5em;
 }
-
 
 .iup-txt-hide{
     display: inline-block;
@@ -340,9 +333,6 @@ ion-content {
   margin: 6px 0px;
 }
 
-.border-r-white{
-  border-right: solid 2px white;
-}
 
 .border-r-navyblue{
   border-right: solid 2px #020c3a;
@@ -366,6 +356,8 @@ ion-content {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 
 .iup-full-width {

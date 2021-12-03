@@ -1,6 +1,5 @@
 
 <ion-content>
-
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
     <ion-card>
       <ion-grid>
@@ -62,99 +61,88 @@
 
 
     <ion-row class="ion-padding-horizontal">
-      <ion-col size="6" class="ion-text-start ion-align-self-center">
+      <ion-col size="12" class="ion-text-start ion-align-self-center">
         <ion-text color="navyblue">
           <h6 class="ion-no-margin">Detalle de movimientos</h6>
         </ion-text>
       </ion-col>
-
-      <ion-col size="12" class="ion-text-end ion-align-self-center">
-        <mat-form-field appearance="fill">
-          <mat-label>Enter a date range</mat-label>
-          <mat-date-range-input [rangePicker]="picker">
-            <input matStartDate placeholder="Start date">
-            <input matEndDate placeholder="End date">
-          </mat-date-range-input>
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-date-range-picker #picker></mat-date-range-picker>
-        </mat-form-field>
-      </ion-col>
     </ion-row>
     <ion-card class="ion-margin-vertical">
-      <ion-grid class="ion-no-margin ion-no-padding">
-        <ion-row class="ion-padding-start ion-margin-vertical iup-border-left">
-          <ion-col size="6" class="iup-border-bottom-grey">
-             <ion-grid class="ion-no-margin ion-no-padding">
-               <ion-row>
-                 <ion-col size="12" class="ion-align-self-end  ion-padding-bottom">
-                   <ion-text color="cloudysky ">
-                     <h6 class="ion-no-margin" style="font-weight: 600;">Shell Autozone</h6>
-                     <p class="ion-no-margin">Promotoría</p>
-                   </ion-text>
-                 </ion-col>
-                 <ion-col size="12" class="ion-align-self-end ion-no-padding">
-                  <ion-text color="cloudysky">
-                    <p class="ion-no-margin">13·oct·2021</p>
-                  </ion-text>
-                </ion-col>
-               </ion-row>
-             </ion-grid>
-          </ion-col>
-          <ion-col size="6" class="ion-align-self-end iup-border-bottom-grey">
-            <ion-text color="cloudysky" class="ion-text-right ion-text-end">
-              <h6 class="ion-no-margin ion-padding-horizontal" style="font-weight: 600;">+ $250.00 mx</h6>
-            </ion-text>
-            <ion-text color="cloudysky" class="ion-text-right ion-text-end">
-              <p class="ion-no-margin ion-padding-horizontal">Liberado</p>
-            </ion-text>
-          </ion-col>
-        </ion-row>
-
-        <ion-row>
-          <ion-col>
-
+      <ion-grid>
+        <ion-row class="ion-margin">
+          <ion-col size="12" class="ion-text-end ion-align-self-center">
+            <mat-form-field appearance="fill">
+              <mat-label>Periodo</mat-label>
+              <mat-date-range-input [rangePicker]="picker">
+                <input matStartDate placeholder="Inicio">
+                <input matEndDate placeholder="Final">
+              </mat-date-range-input>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field>
           </ion-col>
         </ion-row>
       </ion-grid>
+      <ion-grid class="ion-no-margin ion-no-padding" *ngFor='let detallemovimiento of detallemovimientos'>
+        <ion-row class="ion-no-margin ion-no-padding">
+          <ion-col class="ion-no-margin ion-no-padding">
+            <mat-accordion>
+              <mat-expansion-panel style="margin: 0px; padding: 0px; box-shadow:0px 0px 0px 0px;">
+                <mat-expansion-panel-header style="margin: 0px 0px 0px 0px; padding: 0px 16px 0px 0px;">
+                  <mat-panel-title>
+                    <ion-grid class="ion-no-margin ion-no-padding">
+                    <!-- aqui va lo del cambio de color dependiendo del status de su pago: [ngStyle]="{borderLeft: '4px solid #7fb73f'}"-->
+                    <ion-row class="ion-padding-start ion-margin-vertical" [ngStyle]="{borderLeft: '4px solid #7fb73f'}">
+                      <ion-col size="6" class="iup-border-bottom-grey">
+                         <ion-grid class="ion-no-margin ion-no-padding">
+                           <ion-row>
+                             <ion-col size="12" class="ion-align-self-end  ion-padding-bottom">
+                               <ion-text color="cloudysky ">
+                                 <h6 class="ion-no-margin" style="font-weight: 600;">{{detallemovimiento.movimiento}}</h6>
+                                 <p class="ion-no-margin">{{detallemovimiento.mision}}</p>
+                               </ion-text>
+                             </ion-col>
+                             <ion-col size="12" class="ion-align-self-end ion-no-padding">
+                              <ion-text color="cloudysky">
+                                <p class="ion-no-margin">{{detallemovimiento.fecha}}</p>
+                              </ion-text>
+                            </ion-col>
+                           </ion-row>
+                         </ion-grid>
+                      </ion-col>
+                      <ion-col size="6" class="ion-align-self-end iup-border-bottom-grey">
+                        <ion-text color="cloudysky" class="ion-text-right ion-text-end">
+                          <h6 class="ion-no-margin ion-padding-horizontal"><span style="font-weight: 600;" [ngStyle]="{color: 'cloudysky'}">{{detallemovimiento.operacion}}${{detallemovimiento.monto}}</span> {{detallemovimiento.moneda}}</h6>
+                        </ion-text>
+                        <ion-text color="cloudysky" class="ion-text-right ion-text-end">
+                          <p class="ion-no-margin ion-padding-horizontal">{{detallemovimiento.estado}}</p>
+                        </ion-text>
+                      </ion-col>
+                    </ion-row>
 
+                    <ion-row>
+                      <ion-col>
 
-      <ion-grid class="ion-no-margin ion-no-padding">
-        <ion-row class="ion-padding-start ion-margin-vertical iup-border-left-two">
-          <ion-col size="6" class="iup-border-bottom-grey">
-             <ion-grid class="ion-no-margin ion-no-padding">
-               <ion-row>
-                 <ion-col size="12" class="ion-align-self-end  ion-padding-bottom">
-                   <ion-text color="cloudysky ">
-                     <h6 class="ion-no-margin" style="font-weight: 600;">Shell Autozone</h6>
-                     <p class="ion-no-margin">Promotoría</p>
-                   </ion-text>
-                 </ion-col>
-                 <ion-col size="12" class="ion-align-self-end ion-no-padding">
-                  <ion-text color="cloudysky">
-                    <p class="ion-no-margin">13·oct·2021</p>
-                  </ion-text>
-                </ion-col>
-               </ion-row>
-             </ion-grid>
-          </ion-col>
-          <ion-col size="6" class="ion-align-self-end iup-border-bottom-grey">
-            <ion-text color="danger" class="ion-text-right ion-text-end">
-              <h6 class="ion-no-margin ion-padding-horizontal" style="font-weight: 600;">- $250.00 mx</h6>
-            </ion-text>
-            <ion-text color="cloudysky" class="ion-text-right ion-text-end">
-              <p class="ion-no-margin ion-padding-horizontal">Pago se servicio</p>
-            </ion-text>
-          </ion-col>
-        </ion-row>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  </mat-panel-title>
 
-        <ion-row>
-          <ion-col>
-
+                </mat-expansion-panel-header>
+                <ion-gris>
+                  <ion-row>
+                    <ion-col class="ion-padding-horizontal">
+                      <ion-text>
+                        Contenido del movimiento
+                      </ion-text>
+                    </ion-col>
+                  </ion-row>
+                </ion-gris>
+              </mat-expansion-panel>
+            </mat-accordion>
           </ion-col>
         </ion-row>
       </ion-grid>
-
-
     </ion-card>
   </div>
 </ion-content>
