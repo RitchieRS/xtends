@@ -31,4 +31,35 @@ export interface UserRegisterResponse{
     resp: MiddleUser;
 }
 
+export interface UserProfile {
+    idError: number;
+    resp:    ProfileResp;
+}
+
+export interface ProfileResp {
+    idUsuario:    number;
+    nombre:       string;
+    email:        string;
+    nivelXtender: string;
+    nivelesDatos: NivelesDatos;
+    informacion:  Capacitacion;
+    zonaInteres:  Capacitacion;
+    capacitacion: Capacitacion;
+    accesos:      Accesos;
+}
+
+export interface Accesos {
+    credencias:  string;
+    cartaAcceso: string;
+}
+
+export interface Capacitacion {
+}
+
+export interface NivelesDatos {
+    datosComplemento:   string;
+    referidosInvitados: string;
+    fotoID:             number;
+}
+
 

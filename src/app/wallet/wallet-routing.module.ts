@@ -14,20 +14,18 @@ const routes: Routes =[
 
     },
     {
-      path: 'movements',
+      path: 'movement',
       component: MovementComponent
 
     },
     {
     path: '',
-      component: WalletComponent
+      component: MovementComponent
     }
 
    ]
   }
 ];
-
-
 
 @NgModule({
   declarations: [],

@@ -93,7 +93,7 @@ export class HomePage {
     })
 
      this.reqHome = localStorage.getItem('token');
-     //console.log(this.reqHome);
+     console.log(this.reqHome);
      this.homeService.getDataHome(this.reqHome).subscribe((res) =>{
        if(res){
         this.dataHome=  res;+
