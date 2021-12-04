@@ -2,7 +2,6 @@
   <app-header></app-header>
 </ion-header>
 
-<!-- Section Mision activas ______________________________________________-->
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
      <ion-grid class="bg-polarwhite ion-padding-bottom">
@@ -204,7 +203,7 @@
 
                                  <section style="margin-top: 10px;">
                                   <div class="iup-button-row">
-                                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                    <button routerLink="/wallet" mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
                                       <mat-icon>share</mat-icon> Compartir
                                     </button>
                                     <button routerLink="/mission/{{available.idTienda}}/{{available.idProyecto}}"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked" >
@@ -270,9 +269,10 @@
   </ion-grid>
 
   </div>
+ 
 </ion-content>
-<app-footer></app-footer>
 
+<app-footer></app-footer>
 
 
 

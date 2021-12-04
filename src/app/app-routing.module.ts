@@ -3,9 +3,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { AuthRoutingModule } from './auth/auth-routing.module';
 import { MissionRoutingModule } from './mission/mission-routing.module';
 import { MissionModule } from './mission/mission.module';
+import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { CheckLoginGuard } from './shared/guards/check-login.guard';
 import { WalletRoutingModule } from './wallet/wallet-routing.module';
-
+import { ComponentsModule } from './components/components.module';
 
 const routes: Routes = [
   {
@@ -43,7 +44,8 @@ const routes: Routes = [
     RouterModule,
     AuthRoutingModule,
     WalletRoutingModule,
-    MissionRoutingModule
+    MissionRoutingModule,
+    ProfileRoutingModule
   ]
 })
 export class AppRoutingModule { }

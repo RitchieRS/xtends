@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovementComponent } from './movement/movement.component';
+import {MatIconModule} from '@angular/material/icon';
 import { WalletComponent } from './wallet/wallet.component';
-import { MatIconModule } from '@angular/material/icon';
-
+import { MovementComponent } from './movement/movement.component';
 
 const routes: Routes =[
   {
@@ -15,7 +14,7 @@ const routes: Routes =[
 
     },
     {
-      path: 'movement',
+      path: 'movements',
       component: MovementComponent
 
     },
