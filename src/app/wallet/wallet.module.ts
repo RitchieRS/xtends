@@ -14,7 +14,10 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import { ComponentsModule } from '../components/components.module';
 import { MovementComponent } from './movement/movement.component';
+
 import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 
 @NgModule({
@@ -36,7 +39,12 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatGridListModule
+    MatGridListModule,
+    MatCardModule,
+    CdkAccordionModule,
+    ComponentsModule,
+    RouterModule,
+    MatDatepickerModule
   ],
   exports:[
     WalletComponent,

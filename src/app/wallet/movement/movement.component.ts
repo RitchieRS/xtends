@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 
+
 @Component({
   selector: 'app-movement',
   templateUrl: './movement.component.html',
@@ -43,7 +44,7 @@ export class MovementComponent implements OnInit {
   ];
 
   constructor(private route: ActivatedRoute,private srvWallet : WalletService) { }
-  
+
   ngOnInit() {
     const token = localStorage.getItem('token');
     this.srvWallet.getWalletMovements(token).subscribe((res) =>{
