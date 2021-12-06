@@ -36,6 +36,7 @@ export class HomePage {
      },
   ];*/
 
+
   promociones = [
     {
       img:'refiere-a-amigo.png',
@@ -82,9 +83,9 @@ export class HomePage {
   reqHome : string;
   isMissionsOn=false;
 
-  
+
   constructor(private homeService : HomeService,private auth : LoginService) {}
-  
+
   ngOnInit() {
 
     console.log(this.auth.isLogged)
@@ -117,14 +118,16 @@ export class HomePage {
           console.log(this.missionsAvalData);
          }
         console.log(this.dataHome.section1);
-        
+
         console.log(this.dataHome);
        }
-       
-      
-    
-    }) 
+
+
+
+
+
+    })
   }
-  
+
 
 }

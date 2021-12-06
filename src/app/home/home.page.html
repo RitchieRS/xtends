@@ -122,7 +122,7 @@
     <ion-grid>
       <ion-row>
         <!-- <ITEM - para repetir el ng-repeat> -->
-        <ion-col size="12" size-xl="3" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalData">
+        <ion-col size="12" size-xl="4" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalData">
           <ion-grid  class="ion-no-padding border-radius">
             <ion-row>
               <ion-col>
@@ -133,11 +133,11 @@
                     <mat-expansion-panel-header class="bg-whitex border-radius">
                       <mat-panel-description>
                         <ion-grid>
-                          <ion-row>
-                            <!-- <ion-col size="3" class="ion-align-self-center ion-margin-end">
-                              <img src="../../assets/img/{{ misdisponible.logoimg}}" style="width: 50px; height: auto;">
-                            </ion-col> -->
-                            <ion-col size="12" class="ion-align-self-center">
+                          <ion-row class="ion-justify-content-center">
+                            <ion-col size="2" class="ion-align-self-center ion-margin-end">
+                              <ion-icon color="demostrador" class="iup-icon-size-xl" src="../../assets/icon/mystery.svg"></ion-icon>
+                            </ion-col>
+                            <ion-col size="9" class="ion-align-self-center">
                               <ion-label>
                                 <ion-text color="cloudysky">
                                   <h1>{{ available.nombreActividad}}</h1>
@@ -153,18 +153,21 @@
                     </mat-expansion-panel-header>
                          <div>
                               <ion-grid class="ion-no-padding">
-                                <ion-row class="bg-navyblue">
-                                  <ion-col size="8" class="ion-padding">
+                                <ion-row [ngClass]="'bg-navyblue'" class="ion-justify-content-center ion-padding">
+                                  <ion-col size="2" class="ion-align-self-center ion-margin-end" >
+                                    <ion-icon color="demostrador" class="iup-icon-size-xl" src="../../assets/icon/mystery.svg" ></ion-icon>
+                                  </ion-col>
+                                  <ion-col size="6" class="ion-padding">
                                    <div class="ion-text-start">
                                      <ion-label>
                                        <ion-text color="polarwhite">
                                          <h2><strong>{{ available.nombreActividad}}</strong></h2>
-                                         <h4><ion-icon name="medal-outline"></ion-icon> Para Nivel {{ available.nivel }}</h4>
+                                         <h4>Para Nivel {{ available.nivel }}</h4>
                                        </ion-text>
                                      </ion-label>
                                    </div>
                                   </ion-col>
-                                  <ion-col size="4" class="ion-padding">
+                                  <ion-col size="3" class="ion-padding">
                                    <div class="ion-text-end">
                                      <ion-label>
                                        <ion-text color="polarwhite">
@@ -195,7 +198,7 @@
                                          <ion-text color="cloudysky">
                                            <p><strong>Canal:</strong></p>
                                            <p>{{available.detalle.sucursal}}</p>
-                                           
+
                                          </ion-text>
                                        </ion-label>
                                    </ion-card>
@@ -269,7 +272,7 @@
   </ion-grid>
 
   </div>
- 
+
 </ion-content>
 
 <app-footer></app-footer>
