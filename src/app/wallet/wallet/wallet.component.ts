@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Servicio, WalletResponse } from 'src/app/xmodels/wallet';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 
 @Component({
@@ -9,6 +10,9 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 })
 export class WalletComponent implements OnInit {
 
+  dataWallet : WalletResponse;
+  servicios: Servicio[];
+
   constructor(private route: ActivatedRoute,private srvWallet : WalletService) { }
   
   ngOnInit() {
@@ -16,6 +20,8 @@ export class WalletComponent implements OnInit {
     this.srvWallet.getWalletInformation(token).subscribe((res) =>{
       if(res){
         console.log(res);
+        this.dataWallet = res; 
+        this.servicios = this.dataWallet.servicios;
       }
     })
   }

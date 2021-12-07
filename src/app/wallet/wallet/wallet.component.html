@@ -24,19 +24,19 @@
             <ion-col>
               <ion-text color="cloudysky">
                 <h1 class="iup-txt-xxl">
-                  $1,560.00 mx
+                  ${{dataWallet.saldoTotal}} mx
                 </h1>
               </ion-text>
               <ion-text color="navyblue">
                 <h5>
-                  Por liberar $1,560.00 mx
+                  Por liberar ${{dataWallet.saldoPendiente}} mx
                 </h5>
               </ion-text>
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col>
-              <ion-button expand="block" shape="round">ver movimientos</ion-button>
+              <ion-button expand="block" routerLink="/wallet/movement"shape="round">ver movimientos</ion-button>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -104,7 +104,7 @@
         </ion-row>
 
         <ion-row class="ion-padding">
-          <ion-col size="3" class="ion-no-padding">
+          <ion-col *ngFor="let srv of servicios" size="3" class="ion-no-padding">
             <div class="iup-car">
               <div class="box-servicios">
                   <img src="../../assets/img/cfe.png" class="img-full">

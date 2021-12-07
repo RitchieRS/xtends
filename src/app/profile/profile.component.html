@@ -10,7 +10,7 @@
 
           <ion-card-title class="">
             <ion-text color="navyblue">
-              <h1><strong>Arturo Ramírez Juárez</strong></h1>
+              <h1><strong>{{profileData.nombre}}</strong></h1>
               <!-- <div style="display: flex;
               align-items: center; text-align: center; align-self: center;">
               <div style=" height: 24px;">
@@ -36,7 +36,7 @@
         </ion-card-header>
         <ion-card-content>
           <ion-text color="navyblue" class="ion-text-center">
-            <h1>Xtender nivel <strong>PLATA</strong></h1>
+            <h1>Xtender nivel <strong>{{profileData.nivelXtender}}</strong></h1>
           </ion-text>
           <ion-grid>
             <ion-row >
@@ -178,7 +178,7 @@
                 </ion-text>
               </ion-col>
               <ion-col>
-                <ion-progress-bar color="success" value="0.5" class="border-radius-xl height-progress"></ion-progress-bar>
+                <ion-progress-bar color="success" value="{{datosCompletosN}}" class="border-radius-xl height-progress"></ion-progress-bar>
               </ion-col>
             </ion-row>
             <ion-row class="ion-justify-content-center ion-align-items-center">
@@ -188,7 +188,7 @@
                 </ion-text>
               </ion-col>
               <ion-col>
-                <ion-progress-bar color="success" value="0.7" class="border-radius-xl height-progress"></ion-progress-bar>
+                <ion-progress-bar color="success" value="{{referidosPorcentajeN}}" class="border-radius-xl height-progress"></ion-progress-bar>
               </ion-col>
             </ion-row>
             <ion-row class="ion-justify-content-center ion-align-items-center">
@@ -197,7 +197,7 @@
                   <p>Foto ID</p>
                 </ion-text>
               </ion-col>
-              <ion-col class="ion-align-self-center ion-text-center">
+              <ion-col *ngIf="fotoId==1" class="ion-align-self-center ion-text-center">
                 <span class="material-icons color-green">
                   done_outline
                   </span>
