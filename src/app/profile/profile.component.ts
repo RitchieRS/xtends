@@ -20,7 +20,7 @@ export class ProfileComponent implements OnInit {
   referidosPorcentajeN:number;
   fotoId:number;
   constructor(private route: ActivatedRoute,private srvProfile : InfoService) { }
-  
+
   ngOnInit() {
     const token = localStorage.getItem('token');
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
