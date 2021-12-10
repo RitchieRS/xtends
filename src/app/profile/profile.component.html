@@ -266,18 +266,176 @@
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
+                  <hr>
+                  <p>
+                    <mat-form-field appearance="outline" class="iup-full-width">
+                      <mat-label class="mat-label-color-navyblue">Fecha de nacimiento</mat-label>
+                      <input matInput [matDatepicker]="picker">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+                    </mat-form-field>
+                  </p>
 
-                  <div style="white-space: nowrap; overflow: auto; height: 34px;">
-                    <mat-radio-group aria-label="Select an option">
-                      <mat-radio-button value="1"><p>Estoy de acuerdo con los términos de confidencialidad</p></mat-radio-button>
-                    </mat-radio-group>
-                  </div>
                 </form>
-                <section style="margin-top: 10px;">
+
+                <ion-grid class="ion-margin-horizontal">
+                  <ion-row class="ion-justify-content-center ion-align-items-center">
+                    <ion-col>
+                      <ion-text color="navyblue">
+                        <p>INE</p>
+                      </ion-text>
+                    </ion-col>
+                    <ion-col *ngIf="fotoId==1" class="ion-align-self-center ion-text-center">
+                      <span class="material-icons color-green">
+                        done_outline
+                        </span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-justify-content-center ion-align-items-center">
+                    <ion-col>
+                      <ion-text color="navyblue">
+                        <p>CURP</p>
+                      </ion-text>
+                    </ion-col>
+                    <ion-col *ngIf="fotoId==1" class="ion-align-self-center ion-text-center">
+                      <span class="material-icons color-green">
+                        done_outline
+                        </span>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-text color="navyblue">
+                        <h1>Preferencias</h1>
+                      </ion-text>
+                    </ion-col>
+                    <ion-col>
+                      <p>
+                       <mat-form-field appearance="outline" class="iup-full-width">
+                         <mat-label class="mat-label-color-navyblue">Tipo de trabajo de interés</mat-label>
+                         <mat-select [(value)]="selectedTrabajoInteres" multiple>
+                           <mat-optgroup label="Tipo de trabajo de interés">
+                             <mat-option value="promotor">Promotor</mat-option>
+                             <mat-option value="mystery">Mystery Shoper</mat-option>
+                             <mat-option value="anaqueleo">Anaqueleo</mat-option>
+                           </mat-optgroup>
+                         </mat-select>
+                       </mat-form-field>
+                      </p>
+                      <ion-text color="navyblue">
+                        {{selectedTrabajoInteres}}
+                      </ion-text>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <p>
+                      <mat-form-field appearance="outline" class="iup-full-width">
+                        <mat-label class="mat-label-color-navyblue">Zona de interés</mat-label>
+                        <mat-select [(value)]="selectedZonaInteres" multiple>
+                          <mat-optgroup label="Tipo de trabajo de interés">
+                            <mat-option value="promotor">Tlaxcala</mat-option>
+                            <mat-option value="mystery">Guadalajara</mat-option>
+                            <mat-option value="anaqueleo">Michoacán</mat-option>
+                            <mat-option value="promotor">Oaxaca</mat-option>
+                            <mat-option value="mystery">Sonora</mat-option>
+                            <mat-option value="anaqueleo">CDMX</mat-option>
+                          </mat-optgroup>
+                        </mat-select>
+                      </mat-form-field>
+                    </p>
+                    <ion-text>
+                      {{selectedZonaInteres}}
+                    </ion-text>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-text color="navyblue">
+                        <h1>Domicilio</h1>
+                      </ion-text>
+                    </ion-col>
+                    <ion-col size="12">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">Calle</mat-label>
+                          <input matInput placeholder="Apologistas">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                    <ion-col size="6">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">No.Ext.</mat-label>
+                          <input matInput placeholder="5">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                    <ion-col size="6">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">No.Int.</mat-label>
+                          <input matInput placeholder="2">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                    <ion-col size="12">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">Colonía</mat-label>
+                          <input matInput placeholder="Iztapalapa">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                    <ion-col size="12">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">Alcaldía</mat-label>
+                          <input matInput placeholder="Iztapalapa">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                    <ion-col size="6">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">C.P.</mat-label>
+                          <input matInput placeholder="09420">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                    <ion-col size="6">
+                      <p>
+                        <mat-form-field appearance="outline" class="iup-full-width">
+                          <mat-label class="mat-label-color-navyblue">C.d.</mat-label>
+                          <input matInput placeholder="México">
+                        </mat-form-field>
+                      </p>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col size="12">
+                      <div style="white-space: nowrap; overflow: auto; height: 34px;">
+                        <mat-radio-group aria-label="Select an option">
+                          <mat-radio-button value="1"><p>Estoy de acuerdo con los términos de confidencialidad</p></mat-radio-button>
+                        </mat-radio-group>
+                      </div>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <!-- <section style="margin-top: 10px;">
                   <div class="iup-button-row">
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> Guardar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" > Cancelar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" > Limpiar</button>
+                  </div>
+                </section> -->
+
+
+                <section style="margin-top: 10px;">
+                  <div class="iup-button-row">
+                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> Cargar comprobante de domicilio</button>
                   </div>
                 </section>
               </mat-expansion-panel>

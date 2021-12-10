@@ -9,7 +9,8 @@ import { InfoService } from '../xservices/user/info.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-
+  selectedTrabajoInteres: string;
+  selectedZonaInteres: string;
 
   userResponse : UserProfile;
   profileData : ProfileResp;

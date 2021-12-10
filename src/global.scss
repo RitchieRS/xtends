@@ -25,6 +25,9 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.mat-form-field-wrapper{
+  padding-bottom: 0.05em !important;
+}
 
 .mat-label-color-navyblue{
   color: #020c3a !important;

@@ -22,6 +22,9 @@ import {MatRadioModule} from '@angular/material/radio';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { ComponentsModule } from './components/components.module';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
 
 import { AuthModule } from './auth/auth.module';
 import { MissionModule } from './mission/mission.module';
@@ -53,7 +56,10 @@ import { ProfileModule } from './profile/profile.module';
     ProfileModule,
     MatRadioModule,
     MatNativeDateModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDividerModule
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],

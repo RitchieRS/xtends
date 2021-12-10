@@ -15,6 +15,11 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { ComponentsModule } from '../components/components.module';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 
 
@@ -35,7 +40,11 @@ import { ComponentsModule } from '../components/components.module';
     MatFormFieldModule,
     MatInputModule,
     ComponentsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDatepickerModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDividerModule
   ],
   declarations: [ProfileComponent]
 })
