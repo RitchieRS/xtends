@@ -139,7 +139,7 @@
                                 Colores: {AzulFuerte, mystery = #161949 | AzulCielo, promotor = #229bd6 | Morado, demostrador = #825aa5 | Verde, anaqueleo = #90c04e}
                                 Icons : {mystery.svg | promotoria.svg | demostrador.svg | anaqueleo.svg}
                               -->
-                              <ion-icon [ngStyle]="{color: '#161949'}" class="iup-icon-size-xl" src="../../assets/icon/mystery.svg"></ion-icon>
+                              <ion-icon [ngStyle]="{color: tipoServicio(available.nombreActividad).color}" class="iup-icon-size-xl" src="../../assets/icon/{{tipoServicio(available.nombreActividad).logo}}"></ion-icon>
                             </ion-col>
                             <ion-col size="9" class="ion-align-self-center">
                               <ion-label>
