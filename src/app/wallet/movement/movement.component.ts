@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { MovimientoResponse, Movimiento } from 'src/app/xmodels/movements';
+import { WalletResponse } from 'src/app/xmodels/wallet';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 
 
@@ -9,6 +11,12 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
   styleUrls: ['./movement.component.scss'],
 })
 export class MovementComponent implements OnInit {
+
+  dataWallet:MovimientoResponse;
+  saldoPendiente: number;
+  saldoTotal: number;
+  totalGanado: number;
+  movimientos: Movimiento[];
 
   detallemovimientos =[
     {
@@ -49,9 +57,45 @@ export class MovementComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.srvWallet.getWalletMovements(token).subscribe((res) =>{
       if(res){
-        console.log(res);
+        
+        this.dataWallet = res;
+        this.saldoPendiente = this.dataWallet.saldoPendiente;
+        this.saldoTotal = this.dataWallet.saldoTotal;
+        this.totalGanado = this.dataWallet.totalGanado;
+        this.movimientos = this.dataWallet.movimientos;
+        this.movimientos.forEach((move: Movimiento) => {
+          move.color = this.color(move.idEstatus);
+      });
+        console.log(this.movimientos);
+
+
       }
     })
   }
 
+  color(idColor:number):string{
+  let colorEx ="#7fb73f";
+  console.log(idColor);
+  switch(idColor) { 
+    case 1: { 
+      colorEx ="#7fb73f";
+      break;
+    } 
+    case 2: { 
+      colorEx ="#825aa5";
+      break;
+    } 
+    case 3: { 
+      colorEx ="#229bd6";
+      break;
+    } 
+    default: { 
+
+    }
+      colorEx ="#7fb73f";
+      break; 
+    } 
+    return colorEx;
+  }
+  
 }

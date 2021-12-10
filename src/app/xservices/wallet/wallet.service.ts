@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { WalletResponse } from 'src/app/xmodels/wallet';
+import { MovimientoResponse } from 'src/app/xmodels/movements';
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +33,7 @@ export class WalletService {
           catchError((err)=> this.handeleError(err))
     );
   };
-  getWalletMovements(token : string):Observable<WalletResponse | void>{
+  getWalletMovements(token : string):Observable<MovimientoResponse | void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -44,9 +45,8 @@ export class WalletService {
   
     const request = {};
 
-    return this.http.post<WalletResponse>(`${environment.API_URL}wallet/details`,request ,httpOptions).pipe(
-          map(( res : WalletResponse)=>{
-            console.log(res);
+    return this.http.post<MovimientoResponse>(`${environment.API_URL}wallet/details`,request ,httpOptions).pipe(
+          map(( res : MovimientoResponse)=>{
             return res;
           }),
           catchError((err)=> this.handeleError(err))

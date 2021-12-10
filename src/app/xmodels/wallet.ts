@@ -1,6 +1,7 @@
 export interface WalletResponse {
     saldoTotal:     number;
     saldoPendiente: number;
+    totalGanado:    number;
     servicios:      Servicio[];
     productos:      Producto[];
 }
@@ -17,3 +18,4 @@ export interface Servicio {
     nombre: string;
     img:    null;
 }
+

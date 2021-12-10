@@ -9,7 +9,7 @@
     <ion-col class="ion-no-padding ion-align-self-center ">
       <div style="max-width:570px; margin: auto;">
 
-        <form>
+        <form [formGroup]="forgotForm" (ngSubmit)="onForgot()" >
           <ion-grid >
             <ion-row>
               <ion-col class="ion-padding">
@@ -23,18 +23,23 @@
 
            <ion-item>
              <ion-label position="floating">E-mail</ion-label>
-             <ion-input  ></ion-input>
+             <ion-input formControlName="email" ></ion-input>
+
            </ion-item>
+           <ion-text *ngIf="submitted && f.email.errors" color="danger" class="ion-text-center invalid-feedback">
+            <p *ngIf="f.email.errors.required">El email es requerido</p>
+            <p *ngIf="f.email.errors.email">El email es inválido</p>
+          </ion-text>
 
            <ion-grid class="ion-padding">
              <ion-row class="ion-justify-content-center">
                <ion-col class="ion-text-center">
-                <ion-button  class="ion-margin-top"  color="polarwhite">Ir al registro</ion-button>
+                <ion-button  class="ion-margin-top" routerLink="/auth/register" color="polarwhite">Ir al registro</ion-button>
                </ion-col>
                <ion-col class="ion-text-center">
                 <ion-button color="primary" class="ion-margin-top" type="submit">
                    Enviar
-                 </ion-button>
+                </ion-button>
                </ion-col>
              </ion-row>
            </ion-grid>
