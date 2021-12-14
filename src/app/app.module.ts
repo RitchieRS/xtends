@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
+import { AgmCoreModule } from '@agm/core';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -59,7 +60,10 @@ import { ProfileModule } from './profile/profile.module';
     MatDatepickerModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
+    }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],
