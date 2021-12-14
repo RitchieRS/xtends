@@ -129,40 +129,40 @@ export class HomePage {
     })
   }
 
- 
+
   tipoServicio(tipo:string):any{
     let type={
       color:"",
       logo:""
     };
-    switch(tipo) { 
-      case "Promotoria": { 
-        type.color='#161949';
+    switch(tipo) {
+      case "Promotoria": {
+        type.color='#229bd6';
         type.logo="promotoria.svg"
         break;
-      } 
-      case  "Mistery": { 
-        type.color='#229bd6';
+      }
+      case  "Mistery": {
+        type.color='#161949';
         type.logo="mystery.svg"
         break;
-      } 
-      case "Demostración": { 
+      }
+      case "Demostración": {
         type.color='#825aa5';
         type.logo="demostrador.svg"
         break;
-      } 
-      case "Anaqueleo": { 
+      }
+      case "Anaqueleo": {
         type.color='#90c04e';
         type.logo="anaqueleo.svg"
         break;
-      } 
-      default: { 
-  
+      }
+      default: {
+
       }
       type.color='#90c04e';
       type.logo="anaqueleo.svg"
       break;
-      } 
+      }
       return type;
     }
 

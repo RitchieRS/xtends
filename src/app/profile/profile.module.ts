@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
@@ -26,6 +26,14 @@ import {MatDividerModule} from '@angular/material/divider';
 
 
 @NgModule({
+  schemas:[
+    CUSTOM_ELEMENTS_SCHEMA
+  ],
+
+  declarations: [
+    ProfileComponent
+  ],
+
   imports: [
     CommonModule,
     FormsModule,
@@ -46,7 +54,10 @@ import {MatDividerModule} from '@angular/material/divider';
     MatSelectModule,
     MatDividerModule
   ],
-  declarations: [ProfileComponent]
+  exports:[
+    ProfileComponent
+  ]
+
 })
 export class ProfileModule {}
 

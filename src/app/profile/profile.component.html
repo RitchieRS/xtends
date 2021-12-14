@@ -1,42 +1,13 @@
 <ion-header #header>
   <app-header></app-header>
 </ion-header>
-
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  <div class="iup-box-center padding-bottom-dtc bg-polarwhite">
-    <div>
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
       <ion-card>
-        <ion-card-header class="ion-text-center">
-
-          <ion-card-title class="">
-            <ion-text color="navyblue">
-              <h1><strong>{{profileData.nombre}}</strong></h1>
-              <!-- <div style="display: flex;
-              align-items: center; text-align: center; align-self: center;">
-              <div style=" height: 24px;">
-                <span class="material-icons color-green">verified</span>
-              </div>
-              <div style=" text-align: left;">
-                <h5 >
-                  Calificación: 4.5
-               </h5>
-              </div>
-
-              </div> -->
-            </ion-text>
-              <div>
-                <h5>
-                  <span class="material-icons color-green icon-position-top-six">verified</span> Calificación: 4.5
-                </h5>
-              </div>
-
-
-          </ion-card-title>
-
-        </ion-card-header>
         <ion-card-content>
           <ion-text color="navyblue" class="ion-text-center">
-            <h1>Xtender nivel <strong>{{profileData.nivelXtender}}</strong></h1>
+            <!-- El pedo estaba de aqui amig0 quite el nivel y jalo <ion-card> -->
+            <h1>Xtender nivel <strong>Plata</strong></h1>
           </ion-text>
           <ion-grid>
             <ion-row >
@@ -163,7 +134,6 @@
                   <p>Elite</p>
                 </ion-text>
               </ion-col>
-
             </ion-row>
           </ion-grid>
         </ion-card-content>
@@ -206,9 +176,9 @@
           </ion-grid>
         </ion-card-content>
       </ion-card>
-    </div>
+
     <div class="iup-box-center bg-silverblue ion-padding-vertical">
-      <div>
+
         <ion-card>
           <!-- <ion-card-header>
            <ion-text color="navyblue">
@@ -439,7 +409,7 @@
                   </div>
                 </section>
               </mat-expansion-panel>
-              <mat-expansion-panel >
+              <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <ion-text color="navyblue">
@@ -456,7 +426,7 @@
                 </div>
               </mat-expansion-panel>
 
-              <mat-expansion-panel >
+              <mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <ion-text color="navyblue">
@@ -467,42 +437,65 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div>
-                  <ion-grid class="ion-margin-horizontal">
-                    <ion-row>
-                      <ion-col size="2" class="ion-align-self-center ion-margin-end">
-                        <div class="box-img border-rodondos">
-                          <ion-icon size="large" src="../../assets/icon/circle.svg" color="primary"></ion-icon>
-                        </div>
-                      </ion-col>
-                      <ion-col size="9" class="ion-align-self-center">
-                        <ion-label>
-                          <ion-text color="cloudysky">
-                            <h2 class="ion-no-margin">Básico de Promotoría</h2>
-                            <p>Avance</p>
-                            <ion-progress-bar color="primary" value="0.25" class="border-radius-xl height-progress ion-margin-vertical"></ion-progress-bar>
-                          </ion-text>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
-                    <ion-row>
-                      <ion-col size="2" class="ion-align-self-center ion-margin-end">
-                        <div class="box-img border-rodondos">
-                          <ion-icon size="large" src="../../assets/icon/circle.svg" color="success"></ion-icon>
-                        </div>
-                      </ion-col>
-                      <ion-col size="9" class="ion-align-self-center">
-                        <ion-label>
-                          <ion-text color="cloudysky">
-                            <h2 class="ion-no-margin">Fotografía Anaquel</h2>
-                            <p>Avance</p>
-                            <ion-progress-bar color="success" value="0.50" class="border-radius-xl height-progress ion-margin-vertical"></ion-progress-bar>
-                          </ion-text>
-                        </ion-label>
-                      </ion-col>
-                    </ion-row>
+                  <mat-accordion>
+                  <!-- Aqui  va el ngFor -->
+                  <mat-expansion-panel class="mat-expansion-inter" *ngFor="let habilidad of habilidades">
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <ion-grid class="ion-no-margin">
+                          <ion-row>
+                            <ion-col size="2" class="ion-align-self-center ion-margin-end">
+                              <div class="box-img border-rodondos">
+                                <ion-icon size="large" src="../../assets/icon/circle.svg" [ngStyle]="{'color': habilidad.color}"></ion-icon>
+                              </div>
+                            </ion-col>
+                            <ion-col size="9" class="ion-align-self-center">
+                              <ion-label>
+                                <ion-text color="cloudysky">
+                                  <h2 class="ion-no-margin">{{habilidad.tipo}}</h2>
+                                  <p>Avance</p>
+                                  <ion-progress-bar color="{{habilidad.colortwo}}" value="{{habilidad.avance}}"
+                                  class="border-radius-xl height-progress ion-margin-vertical">
+                                </ion-progress-bar>
+                                </ion-text>
+                              </ion-label>
+                            </ion-col>
+                          </ion-row>
+                        </ion-grid>
+                      </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div>
+                      <ion-grid class="ion-margin-horizontal">
+                        <!-- aquí va el ngFor -->
+                        <ion-row class="ion-margin-bottom" *ngFor="let paso of pasos">
+                          <ion-col size="2" class="ion-align-self-center">
+                              <ion-icon size="large" color="{{paso.colortwo}}" name="{{paso.icon}}"></ion-icon>
+                          </ion-col>
+                          <ion-col size="8" class="ion-align-self-center">
+                            <ion-label>
+                              <ion-text color="cloudysky">
+                                <p class="ion-no-margin"><strong>{{paso.title}}</strong></p>
+                                <p>{{paso.video}}</p>
+                              </ion-text>
+                            </ion-label>
+                          </ion-col>
+                          <ion-col size="2" class="ion-align-self-center ion-text-right">
+                            <ion-label>
+                              <ion-text color="cloudysky">
+                                <p class="ion-no-margin">Score</p>
+                              </ion-text>
+                              <ion-text color="{{paso.colortwo}}">
+                                <p>{{paso.score}}</p>
+                              </ion-text>
+                            </ion-label>
+                          </ion-col>
+                        </ion-row>
 
-
-                  </ion-grid>
+                      </ion-grid>
+                    </div>
+                  </mat-expansion-panel>
+                  <!-- /Fin del ngFor -->
+                </mat-accordion>
                 </div>
               </mat-expansion-panel>
 
@@ -518,7 +511,7 @@
                 </mat-expansion-panel-header>
                 <div>
                   <mat-accordion>
-                    <mat-expansion-panel>
+                    <mat-expansion-panel class="mat-expansion-inter">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                           <ion-text color="navyblue">
@@ -529,27 +522,6 @@
                         </mat-panel-title>
                       </mat-expansion-panel-header>
                       <form class="iup-form" color="primary">
-                        <p>
-                          <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
-                            <input matInput placeholder="Nicolas">
-                            <mat-icon matSuffix>edit</mat-icon>
-                          </mat-form-field>
-                        </p>
-                        <p>
-                          <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">A. Materno</mat-label>
-                            <input matInput placeholder="Tesla">
-                            <mat-icon matSuffix>edit</mat-icon>
-                          </mat-form-field>
-                        </p>
-                        <p>
-                          <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">A. Paterno</mat-label>
-                            <input matInput placeholder="Tesla">
-                            <mat-icon matSuffix>edit</mat-icon>
-                          </mat-form-field>
-                        </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
                             <mat-label class="mat-label-color-navyblue">Puesto</mat-label>
@@ -601,7 +573,7 @@
 
                     </mat-expansion-panel>
 
-                    <mat-expansion-panel>
+                    <mat-expansion-panel class="mat-expansion-inter">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                           <ion-text color="navyblue">
@@ -613,7 +585,7 @@
                       </mat-expansion-panel-header>
                     </mat-expansion-panel>
 
-                    <mat-expansion-panel>
+                    <mat-expansion-panel class="mat-expansion-inter">
                       <mat-expansion-panel-header>
                         <mat-panel-title>
                           <ion-text color="navyblue">
@@ -633,7 +605,7 @@
 
           </ion-card-content>
         </ion-card>
-      </div>
+
     </div>
 
 
@@ -641,6 +613,4 @@
 
 </ion-content>
 
-<!-- <app-footer>
-
-</app-footer> -->
+<app-footer></app-footer>

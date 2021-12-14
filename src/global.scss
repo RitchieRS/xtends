@@ -25,8 +25,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-.mat-form-field-wrapper{
-  padding-bottom: 0.05em !important;
+// .mat-form-field-wrapper{
+//   padding-bottom: 0.05em !important;
+// }
+.mat-expansion-inter{
+  margin: 0px 10px 12px 10px !important;
+  border-radius: 0.5em !important;
 }
 
 .mat-label-color-navyblue{
@@ -236,12 +240,12 @@ p{
 
 // Styls for menu animation HideHover
 ion-content {
-  --offset-top: 200px;
+  --offset-top: 100px;
   position: absolute;
 }
 
 .padding-top-menu-dtc{
-  padding-top: 156px !important;
+  padding-top: 86px !important;
 }
 
 
@@ -320,15 +324,15 @@ ion-content {
   border-radius: 8px;
 }
 
-.bg-certificado-one{
-  background-color: yellow;
-}
-.bg-certificado-two{
-  background-color: rgb(32, 0, 92);
-}
-.bg-certificado-tree{
-  background-color: pink;
-}
+// .bg-certificado-one{
+//   background-color: yellow;
+// }
+// .bg-certificado-two{
+//   background-color: rgb(32, 0, 92);
+// }
+// .bg-certificado-tree{
+//   background-color: pink;
+// }
 
 // Xtender nivel styles
 .border-radius-xl{

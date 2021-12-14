@@ -57,7 +57,6 @@ export class MovementComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.srvWallet.getWalletMovements(token).subscribe((res) =>{
       if(res){
-        
         this.dataWallet = res;
         this.saldoPendiente = this.dataWallet.saldoPendiente;
         this.saldoTotal = this.dataWallet.saldoTotal;
@@ -76,26 +75,26 @@ export class MovementComponent implements OnInit {
   color(idColor:number):string{
   let colorEx ="#7fb73f";
   console.log(idColor);
-  switch(idColor) { 
-    case 1: { 
+  switch(idColor) {
+    case 1: {
       colorEx ="#7fb73f";
       break;
-    } 
-    case 2: { 
+    }
+    case 2: {
       colorEx ="#825aa5";
       break;
-    } 
-    case 3: { 
+    }
+    case 3: {
       colorEx ="#229bd6";
       break;
-    } 
-    default: { 
+    }
+    default: {
 
     }
       colorEx ="#7fb73f";
-      break; 
-    } 
+      break;
+    }
     return colorEx;
   }
-  
+
 }

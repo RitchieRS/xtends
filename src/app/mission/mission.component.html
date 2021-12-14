@@ -66,7 +66,7 @@
                <ion-label>
                  <ion-text color="cloudysky">
                    <p><strong>Canal:</strong></p>
-                   <p>{{ciudad}}, {{estado}}</p> 
+                   <p>{{ciudad}}, {{estado}}</p>
                  </ion-text>
                </ion-label>
            </ion-card>
@@ -83,32 +83,48 @@
                 </ion-text>
                </ion-col>
                <ion-col>
-                 <ion-grid style="max-width: 380px;">
+                 <ion-grid>
                    <ion-row>
-                     <ion-col size="4" *ngFor="let item of habilidades">
+                     <!-- <ion-col size="4" *ngFor="let item of habilidades">
                       <div class="iup-car">
                         <div class="box-certificado">
                            <div class="bg-certificado-one"></div>
                         </div>
                         <ion-text color="navyblue"><p>{{item.nombreHabilidad}}</p></ion-text>
                       </div>
-                     </ion-col>
-                    <!-- <ion-col size="4">
+                     </ion-col> -->
+                     <ion-col size="6" size-lg="3">
                       <div class="iup-car">
                         <div class="box-certificado">
-                           <div class="bg-certificado-two"></div>
+                           <ion-icon color="primary" style="font-size: 64px;" src="../../assets/icon/promotoria.svg"></ion-icon>
                         </div>
-                        <ion-text color="navyblue"><p>Certificado 2</p></ion-text>
+                        <ion-text color="navyblue"><p>Promotoría</p></ion-text>
                       </div>
                     </ion-col>
-                    <ion-col size="4">
+                    <ion-col size="6" size-lg="3">
                       <div class="iup-car">
                         <div class="box-certificado">
-                           <div class="bg-certificado-tree"></div>
+                          <ion-icon color="tertiary" style="font-size: 64px;" src="../../assets/icon/demostrador.svg"></ion-icon>
                         </div>
-                        <ion-text color="navyblue"><p>Certificado 3</p></ion-text>
+                        <ion-text color="navyblue"><p>Demostrador</p></ion-text>
                       </div>
-                    </ion-col>-->
+                    </ion-col>
+                    <ion-col size="6" size-lg="3">
+                      <div class="iup-car">
+                        <div class="box-certificado">
+                           <ion-icon color="success" style="font-size: 64px;" src="../../assets/icon/anaqueleo.svg"></ion-icon>
+                        </div>
+                        <ion-text color="navyblue"><p>Anaqueleo</p></ion-text>
+                      </div>
+                    </ion-col>
+                    <ion-col size="6" size-lg="3">
+                      <div class="iup-car">
+                        <div class="box-certificado">
+                           <ion-icon color="navyblue" style="font-size: 64px;" src="../../assets/icon/mystery.svg"></ion-icon>
+                        </div>
+                        <ion-text color="navyblue"><p>Mystery shoper</p></ion-text>
+                      </div>
+                    </ion-col>
                    </ion-row>
 
                  </ion-grid>

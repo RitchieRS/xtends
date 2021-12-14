@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'wallet',
     loadChildren: () => import('./wallet/wallet.module').then( m => m.WalletModule)
   },
+  // este path de abajo yo lo puse amigo si quieres eliminalo
+  {
+    path: 'mission',
+    loadChildren: () => import('./mission/mission.module').then( m => m.MissionModule)
+  },
   {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
   }
