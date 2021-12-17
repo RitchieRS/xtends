@@ -1,5 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivationStart, Router, RouterOutlet } from '@angular/router';
+import { SearchService } from '../../xservices/search/search.service';
+import { PopoverController} from '@ionic/angular';
+import { PopoverInfoComponent} from '../popover-info/popover-info.component';
 
 @Component({
   selector: 'app-header',
@@ -8,16 +11,52 @@ import { ActivationStart, Router, RouterOutlet } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+
   @ViewChild(RouterOutlet) outlet: RouterOutlet;
+  itemsx: any[] = [];
+  textoBuscar: string = '';
+
+
+
 
 constructor(
-    private router: Router
+        private router: Router,
+        private searchService: SearchService,
+        private popoverCtrl: PopoverController
 ) { }
+
+
+
 
 ngOnInit(): void {
     this.router.events.subscribe(e => {
         if (e instanceof ActivationStart && e.snapshot.outlet === "errorpage")
             this.outlet.deactivate();
     });
+
+    this.searchService.getItemsx().subscribe( itemsx => {
+      this.itemsx = itemsx;
+    });
 }
+
+onSearchChange( event ){
+  // console.log(event);
+  this.textoBuscar = event.detail.value;
+}
+
+
+
+async presentPopover(ev: any) {
+  const popover = await this.popoverCtrl.create({
+    component: PopoverInfoComponent,
+    event: ev,
+    translucent: false,
+    mode: 'ios',
+    cssClass:'popOver'
+  });
+  await popover.present();
+
+
+}
+
 }

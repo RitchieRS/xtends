@@ -273,6 +273,7 @@
                         </span>
                     </ion-col>
                   </ion-row>
+                  <hr>
                   <ion-row>
                     <ion-col size="12">
                       <ion-text color="navyblue">
@@ -295,28 +296,6 @@
                       <ion-text color="navyblue">
                         {{selectedTrabajoInteres}}
                       </ion-text>
-                    </ion-col>
-                  </ion-row>
-                  <ion-row>
-                    <ion-col size="12">
-                      <p>
-                      <mat-form-field appearance="outline" class="iup-full-width">
-                        <mat-label class="mat-label-color-navyblue">Zona de interés</mat-label>
-                        <mat-select [(value)]="selectedZonaInteres" multiple>
-                          <mat-optgroup label="Tipo de trabajo de interés">
-                            <mat-option value="promotor">Tlaxcala</mat-option>
-                            <mat-option value="mystery">Guadalajara</mat-option>
-                            <mat-option value="anaqueleo">Michoacán</mat-option>
-                            <mat-option value="promotor">Oaxaca</mat-option>
-                            <mat-option value="mystery">Sonora</mat-option>
-                            <mat-option value="anaqueleo">CDMX</mat-option>
-                          </mat-optgroup>
-                        </mat-select>
-                      </mat-form-field>
-                    </p>
-                    <ion-text>
-                      {{selectedZonaInteres}}
-                    </ion-text>
                     </ion-col>
                   </ion-row>
                   <ion-row>
@@ -382,16 +361,42 @@
                       </p>
                     </ion-col>
                   </ion-row>
-
                   <ion-row>
-                    <ion-col size="12">
-                      <div style="white-space: nowrap; overflow: auto; height: 34px;">
-                        <mat-radio-group aria-label="Select an option">
-                          <mat-radio-button value="1"><p>Estoy de acuerdo con los términos de confidencialidad</p></mat-radio-button>
-                        </mat-radio-group>
+                    <section>
+                      <div class="iup-button-row">
+                        <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> Cargar comprobante de domicilio</button>
                       </div>
+                    </section>
+                  </ion-row>
+                  <hr>
+                  <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                      <ion-text color="navyblue">
+                         <h2><strong>Comparte en Redes Sociales</strong></h2>
+                      </ion-text>
+                    </ion-col>
+                    <ion-col size="12" class="ion-text-center">
+                      <ion-button fill="clear">
+                        <ion-icon size="large" color="primary" name="logo-facebook" class="ion-margin"></ion-icon>
+                      </ion-button>
+                      <ion-button fill="clear">
+                        <ion-icon  size="large" color="primary" name="logo-instagram" class="ion-margin"></ion-icon>
+                      </ion-button>
                     </ion-col>
                   </ion-row>
+                  <ion-row>
+                    <ion-col size="12">
+                      <ion-list>
+                        <ion-item>
+                          <ion-checkbox color="primary"  slot="start" mode="ios"></ion-checkbox>
+                          <p> 2. Estoy de acuerdo con los términos de confidencialidad</p>
+                        </ion-item>
+                      </ion-list>
+
+                    </ion-col>
+                  </ion-row>
+
+
                 </ion-grid>
 
                 <!-- <section style="margin-top: 10px;">
@@ -403,11 +408,6 @@
                 </section> -->
 
 
-                <section style="margin-top: 10px;">
-                  <div class="iup-button-row">
-                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> Cargar comprobante de domicilio</button>
-                  </div>
-                </section>
               </mat-expansion-panel>
               <mat-expansion-panel>
                 <mat-expansion-panel-header>
@@ -557,10 +557,12 @@
                           </div>
                         </section>
 
-                        <div class="ion-margin-vertical" style="white-space: nowrap; overflow: auto; height: 34px;">
-                          <mat-radio-group aria-label="Select an option">
-                            <mat-radio-button value="1"><p>Estoy de acuerdo con los términos de confidencialidad</p></mat-radio-button>
-                          </mat-radio-group>
+                        <div class="ion-margin-vertical" >
+
+                          <ion-item>
+                            <ion-checkbox color="primary"  slot="start"></ion-checkbox><p> Estoy de acuerdo con los términos de confidencialidad</p>
+                          </ion-item>
+
                         </div>
                       </form>
                       <section style="margin-top: 10px;">

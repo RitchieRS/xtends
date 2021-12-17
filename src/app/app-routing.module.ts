@@ -7,6 +7,7 @@ import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { CheckLoginGuard } from './shared/guards/check-login.guard';
 import { WalletRoutingModule } from './wallet/wallet-routing.module';
 import { ComponentsModule } from './components/components.module';
+import { SlidePageRoutingModule } from './slide/slide-routing.module';
 
 const routes: Routes = [
   {
@@ -37,8 +38,13 @@ const routes: Routes = [
     loadChildren: () => import('./mission/mission.module').then( m => m.MissionModule)
   },
   {
+    path: 'slide',
+    loadChildren: () => import('./slide/slide.module').then( m => m.SlidePageModule)
+  },
+  {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
-  }
+  },
+
 ];
 
 @NgModule({
@@ -50,7 +56,8 @@ const routes: Routes = [
     AuthRoutingModule,
     WalletRoutingModule,
     MissionRoutingModule,
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    SlidePageRoutingModule
   ]
 })
 export class AppRoutingModule { }

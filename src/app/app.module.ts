@@ -4,7 +4,7 @@ import { RouteReuseStrategy, Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
@@ -26,11 +26,18 @@ import { ComponentsModule } from './components/components.module';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AuthModule } from './auth/auth.module';
 import { MissionModule } from './mission/mission.module';
 import { WalletModule } from './wallet/wallet.module';
 import { ProfileModule } from './profile/profile.module';
+import { PipesModule } from './pipes/pipes.module';
+import { SlidePageModule } from './slide/slide.module';
+
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -55,17 +62,21 @@ import { ProfileModule } from './profile/profile.module';
     MissionModule,
     WalletModule,
     ProfileModule,
+    SlidePageModule,
     MatRadioModule,
     MatNativeDateModule,
     MatDatepickerModule,
     MatCheckboxModule,
     MatSelectModule,
     MatDividerModule,
+    PipesModule,
+    MatDialogModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
   bootstrap: [AppComponent],
+
 })
 export class AppModule {}

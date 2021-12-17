@@ -5,17 +5,60 @@
         <img style="height:50px" src="../../assets/icon/logo-extend.svg">
       </ion-col>
       <ion-col size="6"  class="ion-text-center ion-align-self-center">
-          <ion-searchbar outline animated placeholder="Buscar"></ion-searchbar>
+          <ion-searchbar outline animated
+          placeholder="Buscar" mode="ios"
+          (ionChange)="onSearchChange( $event)"
+          [debounce]="500"
+          >
+          </ion-searchbar>
       </ion-col>
       <ion-col size="4"  class="ion-text-center ion-align-self-center ion-no-padding">
-        <ion-chip outline color="silverblue">
+        <ion-chip outline color="silverblue" (click)="presentPopover( $event )" expand="block">
           <ion-icon color="navyblue" name="funnel"></ion-icon>
           <ion-label color="navyblue">Filtrar</ion-label>
         </ion-chip>
-        <!-- <ion-icon style="font-size: 32px;" color="primary" name="person-circle-outline"></ion-icon> -->
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-list>
+    <ion-item *ngFor="let itemx of itemsx | filtro:textoBuscar">
+      <ion-label>{{itemx.title}}</ion-label>
+    </ion-item>
+  </ion-list>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- Este es el menu pasado  -->
   <!-- <ion-toolbar class="iup-box-center">
     <ion-grid class="ion-padding">
