@@ -11,7 +11,7 @@ export class SlidePage implements OnInit {
    {
      title:'Bienvenido a Xtend',
      subtitle:'Chambear y ganar una lana extra será más rápido, sencillo y seguro',
-     img:'icon/logo-extend.svg',
+     img:'icon/extend-for-back-dark.svg',
    },
    {
     title:'Regístrate y elige tu misíon',
