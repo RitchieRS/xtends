@@ -561,9 +561,13 @@
                           <ion-row>
                             <ion-col>
                               <!-- AQUI VA LA FIRMA AMIGO -->
-                              <div style="border: solid 1px red;">
+
+                              <canvas id="firma" class="text-center"></canvas>
+                              
+                              
+                             <!-- <div style="border: solid 1px red;">
                                   aqui ponle la firma amigo
-                              </div>
+                              </div>-->
                             </ion-col>
                           </ion-row>
                         </ion-grid>
@@ -580,7 +584,7 @@
                         <div class="iup-button-row">
                           <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> Guardar</button>
                           <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" > Cancelar</button>
-                          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" > Limpiar</button>
+                          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" id="limpiar" > Limpiar</button>
                         </div>
                       </section>
 
@@ -625,5 +629,3 @@
   </div>
 
 </ion-content>
-
-<app-footer></app-footer>
