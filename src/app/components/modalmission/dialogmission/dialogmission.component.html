@@ -1,10 +1,13 @@
-
+<!--
+  Colores: {AzulFuerte, mystery = #161949 | AzulCielo, promotor = #229bd6 | Morado, demostrador = #825aa5 | Verde, anaqueleo = #90c04e}
+  Icons : {mystery.svg | promotoria.svg | demostrador.svg | anaqueleo.svg}
+-->
 <div mat-dialog-content>
   <div>
     <ion-grid class="ion-no-padding">
-      <ion-row [ngStyle]="{'background':'red'}" class="ion-justify-content-center ion-padding">
+      <ion-row [ngStyle]="{'background':'#229bd6'}" class="ion-justify-content-center ion-padding">
         <ion-col size="2" class="ion-align-self-center ion-margin-end" >
-          <ion-icon [ngStyle]="{'color':'red', 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/promotoria.svg" ></ion-icon>
+          <ion-icon [ngStyle]="{'color':'#229bd6', 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/promotoria.svg" ></ion-icon>
         </ion-col>
         <ion-col size="6" class="ion-padding">
          <div class="ion-text-start">
@@ -66,9 +69,14 @@
           </button>
         </div>
       </section>
-  
+      <section style="margin-top: 10px;">
+        <div class="iup-button-row">
+          <button mat-button mat-dialog-close>
+            <span class="material-icons">highlight_off</span> Cerrar
+          </button>
+        </div>
+      </section>
+        
   </div>
 </div>
-<div mat-dialog-actions>
-  <button mat-button mat-dialog-close>Close</button>
-</div>
+

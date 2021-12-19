@@ -24,7 +24,26 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+// <Styles the modal mission>
+.mat-dialog-container{
+  margin: 0px !important;
+  padding: 0px !important;
+}
 
+.mat-dialog-content{
+  margin: 0px !important;
+  padding: 0px !important;
+}
+.cdk-overlay-pane{
+  width: 90% !important;
+  max-width: 500px !important;
+}
+
+.cdk-overlay-dark-backdrop {
+  background: #020c3a82 !important;
+}
+// </Styles the modal mission>
+// <Styles pop filtros>
 .popOver{
 
   .popover-arrow.sc-ion-popover-ios::after{
@@ -49,11 +68,8 @@
   height: auto;
   background-color: #020c3a;
 }
+// </Styles pop filtros>
 
-
-// .mat-form-field-wrapper{
-//   padding-bottom: 0.05em !important;
-// }
 .mat-expansion-inter{
   margin: 0px 10px 12px 10px !important;
   border-radius: 0.5em !important;
