@@ -1,0 +1,49 @@
+<form class="example-form">
+  <mat-form-field appearance="outline" class="iup-full-width">
+    <mat-icon matSuffix class="ion-color-navyblue">search</mat-icon>
+    <mat-label>  Zonas de interes</mat-label>
+    <span matPrefix><mat-icon matSuffix class="ion-color-navyblue">add_location</mat-icon></span>
+    <input type="text"
+           placeholder="Pick one"
+           aria-label="Number"
+           matInput
+           [formControl]="myControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+        <mat-icon matSuffix class="ion-color-navyblue">add_location_alt</mat-icon> {{option}}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+</form>
+<ion-list>
+  <!-- <ion-item>
+    <ion-icon slot="start" name="location-outline"></ion-icon>
+    <ion-label>Ubicación Actual</ion-label>
+    <ion-input></ion-input>
+  </ion-item> -->
+  <ion-item>
+    <ion-input></ion-input>
+    <ion-chip mode="ios" outline color="navyblue" slot="start">
+      <ion-icon name="location-outline" color="navyblue"></ion-icon>
+      <ion-label><strong>Ubicación Actual</strong></ion-label>
+    </ion-chip>
+  </ion-item>
+  <ion-item>
+    <ion-input></ion-input>
+    <ion-chip mode="ios" outline color="navyblue" slot="start">
+      <ion-icon name="location-outline" color="navyblue"></ion-icon>
+      <ion-label>Michoacán, Lazaro CardenAz</ion-label>
+      <ion-icon name="close"></ion-icon>
+    </ion-chip>
+  </ion-item>
+  <ion-item>
+    <ion-input></ion-input>
+    <ion-chip mode="ios" outline color="navyblue" slot="start">
+      <ion-icon name="location-outline" color="navyblue"></ion-icon>
+      <ion-label>Tlaxcal, Tlaxcala</ion-label>
+      <ion-icon name="close"></ion-icon>
+    </ion-chip>
+  </ion-item>
+
+</ion-list>

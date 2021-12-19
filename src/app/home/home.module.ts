@@ -5,14 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 import { AgmCoreModule } from '@agm/core';
 import { HomePageRoutingModule } from './home-routing.module';
-import {CdkAccordionModule} from '@angular/cdk/accordion';
-import {MatCardModule} from '@angular/material/card';
-import {MatButtonModule} from '@angular/material/button';
-import {MatGridListModule} from '@angular/material/grid-list';
-import {MatIconModule} from '@angular/material/icon';
-import {MatFormFieldModule} from '@angular/material/form-field';
-import {MatExpansionModule} from '@angular/material/expansion';
-import {MatInputModule} from '@angular/material/input';
+import { CdkAccordionModule } from '@angular/cdk/accordion';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatInputModule } from '@angular/material/input';
 
 import { ComponentsModule } from '../components/components.module';
 
