@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule} from '@ionic/angular';
 
-// Google Materials Angular
+// Materials Angular
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -22,6 +22,8 @@ import { ZonesComponent } from './zones/zones.component';
 import { HideHeaderDirective } from './header/hide-header.directive';
 import { PipesModule } from '../pipes/pipes.module';
 import { PopoverInfoComponent } from './popover-info/popover-info.component';
+import { ModalmissionComponent } from './modalmission/modalmission.component';
+import { DialogmissionComponent } from './modalmission/dialogmission/dialogmission.component';
 
 
 
@@ -31,14 +33,18 @@ import { PopoverInfoComponent } from './popover-info/popover-info.component';
     HeaderComponent,
     ZonesComponent,
     HideHeaderDirective,
-    PopoverInfoComponent
+    PopoverInfoComponent,
+    ModalmissionComponent,
+    DialogmissionComponent
   ],
   exports:[
     FooterComponent,
     HeaderComponent,
     ZonesComponent,
     HideHeaderDirective,
-    PopoverInfoComponent
+    PopoverInfoComponent,
+    ModalmissionComponent,
+    DialogmissionComponent
   ],
   imports: [
     CommonModule,

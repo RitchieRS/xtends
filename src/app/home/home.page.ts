@@ -3,6 +3,7 @@ import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
 import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',

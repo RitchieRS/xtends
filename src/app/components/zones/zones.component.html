@@ -5,7 +5,6 @@
     <span matPrefix><mat-icon matSuffix class="ion-color-navyblue">add_location</mat-icon></span>
     <input type="text"
            placeholder="Pick one"
-           aria-label="Number"
            matInput
            [formControl]="myControl"
            [matAutocomplete]="auto">
@@ -16,34 +15,17 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
-<ion-list>
-  <!-- <ion-item>
-    <ion-icon slot="start" name="location-outline"></ion-icon>
-    <ion-label>Ubicación Actual</ion-label>
-    <ion-input></ion-input>
-  </ion-item> -->
-  <ion-item>
-    <ion-input></ion-input>
-    <ion-chip mode="ios" outline color="navyblue" slot="start">
-      <ion-icon name="location-outline" color="navyblue"></ion-icon>
-      <ion-label><strong>Ubicación Actual</strong></ion-label>
-    </ion-chip>
-  </ion-item>
-  <ion-item>
-    <ion-input></ion-input>
-    <ion-chip mode="ios" outline color="navyblue" slot="start">
-      <ion-icon name="location-outline" color="navyblue"></ion-icon>
-      <ion-label>Michoacán, Lazaro CardenAz</ion-label>
-      <ion-icon name="close"></ion-icon>
-    </ion-chip>
-  </ion-item>
-  <ion-item>
-    <ion-input></ion-input>
-    <ion-chip mode="ios" outline color="navyblue" slot="start">
-      <ion-icon name="location-outline" color="navyblue"></ion-icon>
-      <ion-label>Tlaxcal, Tlaxcala</ion-label>
-      <ion-icon name="close"></ion-icon>
-    </ion-chip>
-  </ion-item>
-
-</ion-list>
+<ion-chip mode="ios" outline color="navyblue" slot="start">
+  <ion-icon name="location-outline" color="navyblue"></ion-icon>
+  <ion-label><strong>Ubicación Actual</strong></ion-label>
+</ion-chip>
+<ion-chip mode="ios" outline color="navyblue" slot="start">
+  <ion-icon name="location-outline" color="navyblue"></ion-icon>
+  <ion-label>Michoacán, Lazaro CardenAz</ion-label>
+  <ion-icon name="close"></ion-icon>
+</ion-chip>
+<ion-chip mode="ios" outline color="navyblue" slot="start">
+  <ion-icon name="location-outline" color="navyblue"></ion-icon>
+  <ion-label>Tlaxcala, Tlaxcala</ion-label>
+  <ion-icon name="close"></ion-icon>
+</ion-chip>
