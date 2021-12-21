@@ -20,6 +20,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDividerModule} from '@angular/material/divider';
+import {MatTabsModule} from '@angular/material/tabs';
 
 
 
@@ -53,7 +54,8 @@ import {MatDividerModule} from '@angular/material/divider';
     MatDatepickerModule,
     MatCheckboxModule,
     MatSelectModule,
-    MatDividerModule
+    MatDividerModule,
+    MatTabsModule
   ],
   exports:[
     ProfileComponent

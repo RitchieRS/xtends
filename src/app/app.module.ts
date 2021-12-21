@@ -35,6 +35,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatTabsModule } from '@angular/material/tabs';
 
 
 
@@ -73,6 +74,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     PipesModule,
     MatDialogModule,
     MatAutocompleteModule,
+    MatTabsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),

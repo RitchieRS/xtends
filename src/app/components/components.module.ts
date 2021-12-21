@@ -24,6 +24,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { PopoverInfoComponent } from './popover-info/popover-info.component';
 import { ModalmissionComponent } from './modalmission/modalmission.component';
 import { DialogmissionComponent } from './modalmission/dialogmission/dialogmission.component';
+import { FirmaComponent } from './firma/firma.component';
 
 
 
@@ -35,7 +36,8 @@ import { DialogmissionComponent } from './modalmission/dialogmission/dialogmissi
     HideHeaderDirective,
     PopoverInfoComponent,
     ModalmissionComponent,
-    DialogmissionComponent
+    DialogmissionComponent,
+    FirmaComponent,
   ],
   exports:[
     FooterComponent,
@@ -44,7 +46,8 @@ import { DialogmissionComponent } from './modalmission/dialogmission/dialogmissi
     HideHeaderDirective,
     PopoverInfoComponent,
     ModalmissionComponent,
-    DialogmissionComponent
+    DialogmissionComponent,
+    FirmaComponent,
   ],
   imports: [
     CommonModule,

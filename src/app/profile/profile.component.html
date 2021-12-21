@@ -554,26 +554,75 @@
                               <mat-icon aria-hidden="false">add_a_photo</mat-icon>
                               CARGAR FOTO
                             </button>
-                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
-                              <mat-icon aria-hidden="false">gesture</mat-icon>
-                              FIRMA
-                            </button>
                           </div>
                         </section>
-                        <ion-grid>
-                          <ion-row>
-                            <ion-col>
-                              <!-- AQUI VA LA FIRMA AMIGO -->
-
-                              <canvas id="firma" class="text-center"></canvas>
-                              
-                              
-                             <!-- <div style="border: solid 1px red;">
-                                  aqui ponle la firma amigo
-                              </div>-->
-                            </ion-col>
-                          </ion-row>
-                        </ion-grid>
+                        <hr>
+                              <!-- <mat-tab-group>
+                                <mat-tab dynamicHeight>
+                                    <ng-template mat-tab-label>
+                                      <span class="material-icons">add_a_photo</span>
+                                      <span>MI FOTO</span>
+                                    </ng-template>
+                                    <div class="example-small-box mat-elevation-z4">
+                                      Small content
+                                    </div>
+                                </mat-tab>
+                                <mat-tab>
+                                  <ng-template mat-tab-label>
+                                    <span class="material-icons">gesture</span>
+                                    <span> FIRMA</span>
+                                  </ng-template>
+                                  <div class="example-large-box mat-elevation-z4">
+                                  </div>
+                              </mat-tab>
+                            </mat-tab-group>
+                             --> 
+                             <ion-grid>
+                               <ion-row>
+                                 <ion-col>
+                                  <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                    <mat-icon aria-hidden="false">gesture</mat-icon>
+                                    FIRMA
+                                  </button>
+                                 </ion-col>
+                                 <ion-col>
+                                  <div style="border: solid 1px #9da8b6; border-radius: 20px;">
+                                    <app-firma></app-firma>
+                                    </div>
+                                </ion-col>
+                                <ion-col>
+                                  <section style="margin-top: 10px;">
+                                    <div class="iup-button-row">
+                                      <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                        LIMPIAR
+                                      </button>
+                                      <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                        GUARDAR
+                                      </button>
+                                    </div>
+                                  </section>
+                                </ion-col>
+                               </ion-row>
+                             </ion-grid>    
+                             <!-- <section style="margin-top: 10px;">
+                              <div class="iup-button-row">
+                                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                  <mat-icon aria-hidden="false">gesture</mat-icon>
+                                  FIRMA
+                                </button>
+                                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                  LIMPIAR
+                                </button>
+                                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+                                  GUARDAR
+                                </button>
+                              </div>
+                              <div style="border: solid 1px #9da8b6; border-radius: 20px;">
+                                <app-firma></app-firma>
+                                </div>
+                            </section>                   -->
+                             
+                            
 
                         <div class="ion-margin-vertical" >
 
