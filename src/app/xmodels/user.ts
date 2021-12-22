@@ -2,6 +2,8 @@ export type Role = 'SUSCRIPTOR' | 'ADMIN';
 export interface User {
     user: string;
     pass: string;
+    lat: any;
+    lgn: any;
 }
 export interface UserResponse{
     idError : number;

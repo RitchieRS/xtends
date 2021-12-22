@@ -3,6 +3,7 @@ import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
 import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
+import { TransitionCheckState } from '@angular/material/checkbox';
 
 @Component({
   selector: 'app-home',
@@ -17,6 +18,8 @@ export class HomePage {
   bannerData :Section2Content[];
   missionAval:Section3;
   missionsAvalData :Section3Content[];
+  lat:any;
+  lng:any;
    /* {
      logoimg:'shell.svg',
      marca:'shell',
@@ -88,6 +91,11 @@ export class HomePage {
   constructor(private homeService : HomeService,private auth : LoginService) {}
 
   ngOnInit() {
+
+    this.lat = Number(localStorage.getItem('lat'));
+    this.lng = Number(localStorage.getItem('lng'));
+    console.log(this.lat);
+    console.log(this.lng );
 
     console.log(this.auth.isLogged)
     this.auth.isLogged.subscribe( (log:any)=>{

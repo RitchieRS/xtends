@@ -2,5 +2,12 @@
 	"appId": "io.ionic.starter",
 	"appName": "xTendsApp",
 	"webDir": "www",
-	"bundledWebRuntime": false
+	"bundledWebRuntime": false,
+	"server": {
+		"hostname": "54.200.96.192",
+		"androidScheme": "http"
+	},
+	"android": {
+		"allowMixedContent": true
+	}
 }
