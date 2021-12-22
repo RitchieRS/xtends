@@ -1,0 +1,147 @@
+<ion-header #header>
+  <app-header></app-header>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-grid class="bg-polarwhite ion-padding-bottom">
+      <ion-row class="ion-padding-horizontal">
+        <ion-col size="7" class="ion-text-start ion-align-self-center">
+          <ion-text color="navyblue">
+            <h5 class="ion-no-margin">Misiones disponibles</h5>
+          </ion-text>
+        </ion-col>
+  
+        <ion-col size="5" class="ion-text-end ion-align-self-center">
+          <ion-chip class="ion-color ion-color-navyblue chip-outline">
+            <ion-label>Ver todas</ion-label>
+            <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
+          </ion-chip>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="2" class="ion-align-self-center ion-margin-end">
+              <div style="width: 50px;" class="ion-margin-end">
+                <img src="../../assets/img/shell.svg">
+              </div>
+            </ion-col>
+            <ion-col size="7" class="ion-align-self-center">
+              <ion-label>
+                <ion-text color="cloudysky">
+                  <h2><strong>Shell</strong></h2>
+                  <h3>Promotoría Shell</h3>
+                  <p>Tiempo de visita. 30 min.</p>
+                </ion-text>
+              </ion-label>
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-center ion-margin-end">
+              <button mat-icon-button>
+                <mat-icon class="color-cloudysky">navigate_next</mat-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="2" class="ion-align-self-center ion-margin-end">
+              <div style="width: 50px;" class="ion-margin-end">
+                <img src="../../assets/img/minisu.png">
+              </div>
+            </ion-col>
+            <ion-col size="7" class="ion-align-self-center">
+              <ion-label>
+                <ion-text color="cloudysky">
+                  <h2><strong>Minisu</strong></h2>
+                  <h3>Promotoría Minisu</h3>
+                  <p>Tiempo de visita. 30 min.</p>
+                </ion-text>
+              </ion-label>
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-center ion-margin-end">
+              <button mat-icon-button>
+                <mat-icon class="color-cloudysky">navigate_next</mat-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+
+    <ion-grid class="bg-polarwhite ion-padding-bottom">
+      <ion-row class="ion-padding-horizontal">
+        <ion-col size="4" class="ion-text-start ion-align-self-center">
+          <ion-text color="navyblue">
+            <h5 class="ion-no-margin">Misiones realizadas</h5>
+          </ion-text>
+        </ion-col>
+  
+        <ion-col size="8" class="ion-text-end ion-align-self-center">
+          <mat-form-field appearance="outline" style="width: 180px;">
+            <mat-label>Periodo</mat-label>
+            <mat-date-range-input [rangePicker]="picker">
+              <input matStartDate placeholder="Inicio">
+              <input matEndDate placeholder="Final">
+            </mat-date-range-input>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-date-range-picker #picker></mat-date-range-picker>
+          </mat-form-field>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-justify-content-center ion-margin-vertical">
+            <ion-col size="10" class="ion-align-self-center">
+              <ion-label>
+                <ion-text color="cloudysky">
+                  <h2><strong>Shell Autozone</strong></h2>
+                  <h3>Visita Promotoría</h3>
+                  <p>Autozone Satélite</p>
+                  <p>13.oct.2021</p>
+                </ion-text>
+              </ion-label>
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-center ion-margin-end">
+              <button mat-icon-button>
+                <mat-icon class="color-cloudysky">navigate_next</mat-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <hr>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-justify-content-center ion-margin-vertical">
+            <ion-col size="10" class="ion-align-self-center">
+              <ion-label>
+                <ion-text color="cloudysky">
+                  <h2><strong>Shell Autozone</strong></h2>
+                  <h3>Visita Promotoría</h3>
+                  <p>Autozone Satélite</p>
+                  <p>13.oct.2021</p>
+                </ion-text>
+              </ion-label>
+            </ion-col>
+            <ion-col size="1" class="ion-align-self-center ion-margin-end">
+              <button mat-icon-button>
+                <mat-icon class="color-cloudysky">navigate_next</mat-icon>
+              </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    
+  </div>
+
+</ion-content>
+<app-footer></app-footer>

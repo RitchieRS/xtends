@@ -25,6 +25,8 @@ import { PopoverInfoComponent } from './popover-info/popover-info.component';
 import { ModalmissionComponent } from './modalmission/modalmission.component';
 import { DialogmissionComponent } from './modalmission/dialogmission/dialogmission.component';
 import { FirmaComponent } from './firma/firma.component';
+import { ModalacceptmissionComponent } from './modalacceptmission/modalacceptmission.component';
+import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptmission/dialogacceptmission.component';
 
 
 
@@ -38,6 +40,8 @@ import { FirmaComponent } from './firma/firma.component';
     ModalmissionComponent,
     DialogmissionComponent,
     FirmaComponent,
+    ModalacceptmissionComponent,
+    DialogacceptmissionComponent,
   ],
   exports:[
     FooterComponent,
@@ -48,6 +52,8 @@ import { FirmaComponent } from './firma/firma.component';
     ModalmissionComponent,
     DialogmissionComponent,
     FirmaComponent,
+    ModalacceptmissionComponent,
+    DialogacceptmissionComponent,
   ],
   imports: [
     CommonModule,

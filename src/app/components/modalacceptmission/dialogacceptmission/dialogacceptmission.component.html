@@ -1,0 +1,45 @@
+<div mat-dialog-content>
+  <div>
+    <ion-grid class="ion-no-padding">
+      <ion-row [ngStyle]="{'background':'#229bd6'}" class="ion-justify-content-center">
+         
+        <ion-col size="3" class="ion-padding">
+         
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid >
+      <ion-row class="ion-justify-content-center">
+         
+        <ion-col size="12" class="ion-padding">
+          <ion-text class="ion-text-center">
+             <h4>
+               Haz aceptado la misión Shell Promotoría, tienes 24 horas para realizarla.
+               <br>¿La realizarás ahora o después?
+             </h4>
+          </ion-text>
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+      
+  
+       <section style="margin-top: 10px;">
+        <div class="iup-button-row">
+          <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked">
+             DESPUÉS
+          </button>
+          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" >
+            AHORA <mat-icon >chevron_right</mat-icon>
+          </button>
+        </div>
+      </section>
+      <section style="margin-top: 10px;">
+        <div class="iup-button-row">
+          <button mat-button mat-dialog-close>
+            <span class="material-icons">highlight_off</span> Cerrar
+          </button>
+        </div>
+      </section>
+        
+  </div>
+</div>
