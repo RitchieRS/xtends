@@ -31,8 +31,7 @@
                    <div style="width: 50px;" class="ion-margin-end">
                      <img src="{{mission.logoCliente}}">
                    </div>
-                   <ion-label color="cloudysky" class="ion-text-wrap">
-                     <hr>
+                   <ion-label color="cloudysky" class="ion-text-wrap ion-margin-top ion-padding-top">
                        <h2><strong>{{ mission.nombreCliente }}</strong></h2>
                        <h2>{{mission.nombreActividad}}</h2>
                        <p>{{mission.actividad}}</p>
@@ -161,7 +160,7 @@
                                   <ion-col size="2" class="ion-align-self-center ion-margin-end" >
                                     <ion-icon [ngStyle]="{color:tipoServicio(available.nombreActividad).color, 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/{{tipoServicio(available.nombreActividad).logo}}" ></ion-icon>
                                   </ion-col>
-                                  <ion-col size="6" class="ion-padding">
+                                  <ion-col size="6" class="ion-padding-vertical">
                                    <div class="ion-text-start">
                                      <ion-label>
                                        <ion-text color="polarwhite">

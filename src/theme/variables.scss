@@ -150,6 +150,9 @@
   /** Variable Background XTEND Verde **/
   --ion-background-color-green: #7fb73f;
 
+  /** Variable Background XTEND Primary **/
+  --ion-background-color-primary: #1e9ad5;
+
 
 
 
@@ -352,6 +355,9 @@
 
   /** Background XTEND Green **/
   .bg-green{background-color: var(--ion-background-color-green) !important;}
+
+  /** Background XTEND Primary **/
+  .bg-primary{background-color: var(--ion-background-color-primary) !important;}
 
 
 // @media (prefers-color-scheme: dark) {

@@ -24,7 +24,6 @@ import { PipesModule } from '../pipes/pipes.module';
 import { PopoverInfoComponent } from './popover-info/popover-info.component';
 import { ModalmissionComponent } from './modalmission/modalmission.component';
 import { DialogmissionComponent } from './modalmission/dialogmission/dialogmission.component';
-import { FirmaComponent } from './firma/firma.component';
 import { ModalacceptmissionComponent } from './modalacceptmission/modalacceptmission.component';
 import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptmission/dialogacceptmission.component';
 
@@ -39,7 +38,6 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
     PopoverInfoComponent,
     ModalmissionComponent,
     DialogmissionComponent,
-    FirmaComponent,
     ModalacceptmissionComponent,
     DialogacceptmissionComponent,
   ],
@@ -51,7 +49,6 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
     PopoverInfoComponent,
     ModalmissionComponent,
     DialogmissionComponent,
-    FirmaComponent,
     ModalacceptmissionComponent,
     DialogacceptmissionComponent,
   ],
