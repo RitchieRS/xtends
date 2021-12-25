@@ -36,6 +36,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MissionsModule } from './missions/missions.module';
 
 
 
@@ -62,6 +63,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     AuthModule,
     RouterModule,
     MissionModule,
+    MissionsModule,
     WalletModule,
     ProfileModule,
     SlidePageModule,

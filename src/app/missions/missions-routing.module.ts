@@ -1,17 +1,31 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { MatIconModule } from '@angular/material/icon';
+import { MymissionsComponent } from './mymissions/mymissions.component';
 
-import { MissionsPage } from './missions.page';
-
-const routes: Routes = [
+const routes: Routes =[
   {
+  path:'',
+  children:[
+    {
+      path:'mymissions',
+      component: MymissionsComponent
+    },
+    {
     path: '',
-    component: MissionsPage
+      component: MymissionsComponent
+    }
+   ]
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  declarations: [],
+  imports:[
+    RouterModule.forChild(routes),
+    MatIconModule
+  ],
+  exports:[ RouterModule ]
+
 })
-export class MissionsPageRoutingModule {}
+export class MissionsRoutingModule { }

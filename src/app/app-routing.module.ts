@@ -6,7 +6,8 @@ import { ProfileRoutingModule } from './profile/profile-routing.module';
 import { CheckLoginGuard } from './shared/guards/check-login.guard';
 import { WalletRoutingModule } from './wallet/wallet-routing.module';
 import { SlidePageRoutingModule } from './slide/slide-routing.module';
-import { MissionsPageRoutingModule } from './missions/missions-routing.module';
+import { MissionsRoutingModule } from './missions/missions-routing.module';
+
 
 const routes: Routes = [
   {
@@ -42,7 +43,7 @@ const routes: Routes = [
   },
   {
     path: 'missions',
-    loadChildren: () => import('./missions/missions.module').then( m => m.MissionsPageModule)
+    loadChildren: () => import('./missions/missions.module').then( m => m.MissionsModule)
   },
   {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
@@ -62,8 +63,7 @@ const routes: Routes = [
     MissionRoutingModule,
     ProfileRoutingModule,
     SlidePageRoutingModule,
-    MissionsPageRoutingModule,
-
+    MissionsRoutingModule,
   ]
 })
 export class AppRoutingModule { }
