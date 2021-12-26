@@ -16,6 +16,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ComponentsModule } from '../components/components.module';
 
 import { MymissionsComponent } from './mymissions/mymissions.component';
+import { StartMissionComponent } from './start-mission/start-mission.component';
+import { CheckInComponent } from './check-in/check-in.component';
 
 @NgModule({
   schemas:[
@@ -23,6 +25,8 @@ import { MymissionsComponent } from './mymissions/mymissions.component';
   ],
   declarations: [
     MymissionsComponent,
+    StartMissionComponent,
+    CheckInComponent,
   ],
   imports: [
     CommonModule,
@@ -42,6 +46,8 @@ import { MymissionsComponent } from './mymissions/mymissions.component';
   ],
   exports: [
     MymissionsComponent,
+    StartMissionComponent,
+    CheckInComponent,
   ],
 })
 export class MissionsModule { }

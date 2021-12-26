@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MymissionsComponent } from './mymissions/mymissions.component';
+import { StartMissionComponent } from './start-mission/start-mission.component';
+import { CheckInComponent } from './check-in/check-in.component';
 
 const routes: Routes =[
   {
@@ -10,6 +12,14 @@ const routes: Routes =[
     {
       path:'mymissions',
       component: MymissionsComponent
+    },
+    {
+      path: 'start-mission',
+      component: StartMissionComponent
+    },
+    {
+      path: 'check-in',
+      component: CheckInComponent
     },
     {
     path: '',
