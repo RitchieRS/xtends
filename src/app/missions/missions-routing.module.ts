@@ -4,6 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MymissionsComponent } from './mymissions/mymissions.component';
 import { StartMissionComponent } from './start-mission/start-mission.component';
 import { CheckInComponent } from './check-in/check-in.component';
+import { PendingMissionComponent } from './pending-mission/pending-mission.component';
 
 const routes: Routes =[
   {
@@ -22,8 +23,8 @@ const routes: Routes =[
       component: CheckInComponent
     },
     {
-    path: '',
-      component: MymissionsComponent
+      path: 'pending-mission',
+       component: PendingMissionComponent
     }
    ]
   }

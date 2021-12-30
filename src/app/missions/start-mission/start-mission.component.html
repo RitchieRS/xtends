@@ -49,7 +49,7 @@
                         <ion-row class="ion-justify-content-center">
                           <ion-col size="10">
                             <ion-text color=navyblue>
-                              <p>Ingreso a tienda</p>
+                              <h6>Ingreso a tienda</h6>
                             </ion-text>
                           </ion-col>
                           <ion-col size="1" class="ion-align-self-center ion-text-center">
@@ -62,16 +62,29 @@
                       </ion-grid>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-item>
+                      <p> 1. Registro en vitacora de la tienda</p> <ion-checkbox color="primary"  slot="start"></ion-checkbox>
+                    </ion-item>
+                    <ion-item>
+                      <p> 2. Saludar al jefe de piso</p> <ion-checkbox color="primary"  slot="start"></ion-checkbox>
+                    </ion-item>
+                    <div class="iup-button-row">
+                      <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                         GUARDAR
+                      </button>
+                    </div>
+                  </div>
                 </mat-expansion-panel>
            
-                <mat-expansion-panel >
+                <mat-expansion-panel>
                   <mat-expansion-panel-header >
                     <mat-panel-title>
                       <ion-grid>
                         <ion-row class="ion-justify-content-center">
                           <ion-col size="10">
                             <ion-text color=navyblue>
-                              <p>Anaquel | Bunker</p>
+                              <h6>Anaquel | Bunker</h6>
                             </ion-text>
                           </ion-col>
                           <ion-col size="1" class="ion-align-self-center ion-text-center">
@@ -84,9 +97,59 @@
                       </ion-grid>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-grid class="ion-no-padding">
+                      <ion-row>
+                        <ion-col size="12" class="ion-padding-horizontal">
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>Toma fotografía del anaquel y como lo encontraste</strong></p>
+                          </ion-text>
+                        </ion-col>
+                        <ion-col size="12">
+                          <div class="iup-button-row">
+                            <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                               TOMAR FOTO
+                            </button>
+                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                              BUSCAR EN GALERÍA
+                            </button>
+                          </div>
+                        </ion-col>
+                        <ion-col size="12">
+                          <ion-segment scrollable style="padding-bottom: 16px !important; padding-top: 16px !important;" class="bg-whitex">
+                            <ion-segment-button>
+                              <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/patines.jpg");'></div>
+                            </ion-segment-button>
+                            <ion-segment-button>
+                              <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/imagenes_swipes-02.png");'></div>
+                            </ion-segment-button>
+                            <ion-segment-button>
+                              <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/izzi.png");'></div>
+                            </ion-segment-button>
+                            <ion-segment-button>
+                              <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/patines.jpg");'></div>
+                            </ion-segment-button>
+                            <ion-segment-button>
+                              <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/patines.jpg");'></div>
+                            </ion-segment-button>
+                          </ion-segment>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <ion-grid class="ion-margin-top">
+                      <ion-row>
+                        <ion-col size="12" class="ion-padding-horizontal">
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>Buscar el producto</strong></p>
+                          </ion-text>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    
+                  </div>
                 </mat-expansion-panel>
                 
-                <mat-expansion-panel >
+                <mat-expansion-panel>
                   <mat-expansion-panel-header >
                     <mat-panel-title>
                       <ion-grid>
@@ -200,8 +263,8 @@
             </ion-col>
             <ion-col size="12" class="ion-margin">
               <div class="iup-button-row">
-                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> ENVIAR</button>
-                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked"> REVIZAR</button>
+                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> ENVIAR</button>
+                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> REVIZAR</button>
               </div>
             </ion-col>
           </ion-row>

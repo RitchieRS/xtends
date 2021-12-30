@@ -18,6 +18,7 @@ import { ComponentsModule } from '../components/components.module';
 import { MymissionsComponent } from './mymissions/mymissions.component';
 import { StartMissionComponent } from './start-mission/start-mission.component';
 import { CheckInComponent } from './check-in/check-in.component';
+import { PendingMissionComponent } from './pending-mission/pending-mission.component';
 
 @NgModule({
   schemas:[
@@ -27,6 +28,7 @@ import { CheckInComponent } from './check-in/check-in.component';
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
+    PendingMissionComponent,
   ],
   imports: [
     CommonModule,
@@ -48,6 +50,7 @@ import { CheckInComponent } from './check-in/check-in.component';
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
+    PendingMissionComponent
   ],
 })
 export class MissionsModule { }

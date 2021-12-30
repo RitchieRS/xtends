@@ -1,0 +1,130 @@
+<ion-header #header>
+  <app-header></app-header>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <div>
+      <ion-card>
+        <ion-grid class="ion-no-padding">
+          <ion-row [ngClass]="'bg-skybluextend'">
+            <ion-col size="3" class="ion-padding ion-justify-content-center ion-align-self-center">
+              <div class="box-img border-rodondos">
+                <img src="../../assets/img/shell.svg" class="img-full img-icon">
+              </div>
+            </ion-col>
+            <ion-col size="9" class="ion-padding">
+             <div class="ion-text-start">
+               <ion-label>
+                 <ion-text color="polarwhite">
+                   <h3><strong>Promotoría SHELL</strong></h3>
+                   <h4>Para Xtenders Nivel Bronce</h4>
+                 </ion-text>
+               </ion-label>
+             </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div>
+          <ion-card class="ion-padding ion-margin">
+              <ion-label >
+                <ion-text color="cloudysky">
+                  <p>
+                  <strong>Canal:</strong> Especializado<br>
+                  <strong>Cadena:</strong> Autozone<br>
+                  <strong>Tiempo visita promedio:</strong> 30 mins.<br>
+                </p>
+                </ion-text>
+              </ion-label>
+          </ion-card>
+        </div>
+        <div>
+          <ion-card class="ion-padding ion-margin">
+              <ion-label>
+                <ion-text color="cloudysky">
+                  <p><strong>Actividades:</strong></p>
+                  <p>· Situación actual de anauel</p>
+                  <p>· Preciadores</p>
+                  <p>· Bodega "cero"</p>
+                  <p>· Validación de inventarios</p>
+                  <p>· Limpieza de Anaquel</p>
+                  <p>· Freteo</p>
+                  <p>· Captura de fondos</p>
+                </ion-text>
+              </ion-label>
+          </ion-card>
+        </div>
+        <ion-grid class="ion-padding">
+                <ion-row>
+                  <ion-col size="12">
+                    <ion-text color="navyblue ion-text-center">
+                      <p><strong>Capacitación y habilidades requeridas:</strong></p>
+                    </ion-text>
+                   </ion-col>
+                  <ion-col size="4" size-lg="3">
+                   <div class="iup-car">
+                     <div class="">
+                        <ion-icon color="primary" style="font-size: 64px;" src="../../assets/icon/promotoria.svg"></ion-icon>
+                     </div>
+                     <ion-text color="navyblue ion-text-center"><p>Habilidad Promotoría</p></ion-text>
+                   </div>
+                 </ion-col>
+                 <ion-col size="4" size-lg="3">
+                   <div class="iup-car">
+                     <div class="">
+                       <ion-icon color="tertiary" style="font-size: 64px;" src="../../assets/icon/demostrador.svg"></ion-icon>
+                     </div>
+                     <ion-text color="navyblue ion-text-center"><p>Habilidad Demostrador</p></ion-text>
+                   </div>
+                 </ion-col>
+                 <ion-col size="4" size-lg="3">
+                   <div class="iup-car">
+                     <div class="">
+                        <ion-icon color="success" style="font-size: 64px;" src="../../assets/icon/anaqueleo.svg"></ion-icon>
+                     </div>
+                     <ion-text color="navyblue ion-text-center"><p>Habilidad Anaqueleo</p></ion-text>
+                   </div>
+                 </ion-col>
+                 <ion-col size="4" size-lg="3">
+                   <div class="iup-car">
+                     <div class="">
+                        <ion-icon color="navyblue" style="font-size: 64px;" src="../../assets/icon/mystery.svg"></ion-icon>
+                     </div>
+                     <ion-text color="navyblue ion-text-center"><p>Habilidad Mystery shoper</p></ion-text>
+                   </div>
+                 </ion-col>
+                 <ion-col size="4" size-lg="3">
+                  <div class="iup-car">
+                    <div class="">
+                       <ion-icon color="skybluextend" style="font-size: 64px;" src="../../assets/icon/circle.svg"></ion-icon>
+                    </div>
+                    <ion-text color="navyblue ion-text-center"><p>Capacitación Marca</p></ion-text>
+                  </div>
+                </ion-col>
+                <ion-col size="4" size-lg="3">
+                  <div class="iup-car">
+                    <div class="">
+                       <ion-icon color="greenxtend" style="font-size: 64px;" src="../../assets/icon/circle.svg"></ion-icon>
+                    </div>
+                    <ion-text color="navyblue ion-text-center"><p>Capacitación Producto</p></ion-text>
+                  </div>
+                </ion-col>
+                </ion-row>
+          <ion-row class="ion-justify-content-center ion-align-items-center ion-margin-bottom">
+            <ion-col>
+             <section>
+                 <div class="iup-button-row">
+                  <!-- <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked" [ngClass]="'lb-btn-redxtend'">
+                    CHECK IN 
+                    <mat-icon >chevron_right</mat-icon>
+                </button> -->
+                <app-modalcheckin></app-modalcheckin>
+                 </div>
+             </section>
+            </ion-col>
+           </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+<app-footer></app-footer>

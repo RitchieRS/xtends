@@ -25,6 +25,20 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.iup-box-pre-view-photo{
+  width: 60px; 
+  height: 60px; 
+  border:solid 1px var(--ion-color-navybluextend);
+  border-radius: 5px;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
+:before{
+  opacity: 0 !important;
+}
+
 .list-md{
   padding-top: 0px !important;
     padding-bottom: 0px !important
@@ -348,18 +362,20 @@ ion-content {
 
 // Stilos especiales de elementos extend
 
-.iup-border-buttom-blue{
-  border-bottom: #1e9ad5 solid 3px !important;
-}
 
 .mat-btn-xtend-navyblue-stroked{
   color: #020c3a !important;
-  border-color:#020c3a #020c3a #020c3a !important;
-  border-bottom: solid 3px #1e9ad5!important;
+  border-top-color:#020c3a !important;
+  border-right-color:#020c3a !important;
+  border-left-color:#020c3a !important;
 }
 
-.xte-line-bottom-blue{
-  border-bottom: solid 3px #1e9ad5!important;
+// variables de line bottom btns
+.lb-btn-redxtend{
+  border-bottom: solid 3px var(--ion-color-redxtend) !important;
+}
+.lb-btn-skybluextend{
+  border-bottom: solid 3px var(--ion-color-skybluextend) !important;
 }
 
 .ion-overflow-auto{

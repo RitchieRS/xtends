@@ -26,6 +26,8 @@ import { ModalmissionComponent } from './modalmission/modalmission.component';
 import { DialogmissionComponent } from './modalmission/dialogmission/dialogmission.component';
 import { ModalacceptmissionComponent } from './modalacceptmission/modalacceptmission.component';
 import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptmission/dialogacceptmission.component';
+import { ModalcheckinComponent } from './modalcheckin/modalcheckin.component';
+import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheckin.component';
 
 
 
@@ -40,6 +42,8 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
     DialogmissionComponent,
     ModalacceptmissionComponent,
     DialogacceptmissionComponent,
+    ModalcheckinComponent,
+    DialogcheckinComponent,
   ],
   exports:[
     FooterComponent,
@@ -51,6 +55,8 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
     DialogmissionComponent,
     ModalacceptmissionComponent,
     DialogacceptmissionComponent,
+    ModalcheckinComponent,
+    DialogcheckinComponent,
   ],
   imports: [
     CommonModule,
