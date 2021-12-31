@@ -1,0 +1,13 @@
+.sc-ion-searchbar-ios-h ,.sc-ion-searchbar-md-h{
+    padding: 8px !important;
+    border: solid 1px  var(--ion-color-silverblue);
+    border-radius: 10px !important;
+    --background: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.0);
+    --box-shadow: none;
+    --cancel-button-color: var(--ion-color-primary, #020c3a);
+    --clear-button-color:#020c3a;
+    --color:#020c3a;
+    --icon-color:#020c3a;
+    --placeholder-opacity: 1;
+    height: 32px;
+    }

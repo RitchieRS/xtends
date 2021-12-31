@@ -161,8 +161,14 @@ hr{
   padding: 0px !important;
 }
 
-.iup-margin-sm{
-  margin: 4px !important;
+.iup-margin-md{
+  margin: 8px !important;
+}
+.iup-margin-top-md{
+  margin-top: 8px !important;
+  margin-bottom: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
 }
 .iup-margin-vertical-md{
   margin-top: 8px !important;
@@ -170,9 +176,50 @@ hr{
   margin-left: 0px !important;
   margin-right: 0px !important;
 }
+.iup-margin-horizontal-md{
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+
+
+.iup-margin-sm{
+  margin: 4px !important;
+}
+.iup-margin-top-sm{
+  margin-top: 4px !important;
+  margin-bottom: 0px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.iup-margin-vertical-md{
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.iup-margin-horizontal-md{
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-left: 4px !important;
+  margin-right: 4px !important;
+}
 
 .iup-margin-xs{
   margin: 2px !important;
+}
+.iup-margin-vertical-xs{
+  margin-top: 2px !important;
+  margin-bottom: 2px !important;
+  margin-left: 0px !important;
+  margin-right: 0px !important;
+}
+.iup-margin-horizontal-xs{
+  margin-top: 0px !important;
+  margin-bottom: 0px !important;
+  margin-left: 2px !important;
+  margin-right: 2px !important;
 }
 
 .iup-txt-xxl{
