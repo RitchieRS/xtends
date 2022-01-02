@@ -25,6 +25,22 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+.mat-stroked-button{
+font-size: 0.8em !important;
+padding: 0 8px !important;
+}
+
+.box-img-product{
+  position: relative; 
+  width: 80px; 
+  height: 80px; 
+  margin: auto 0px auto auto; 
+  border: solid 1px var(--ion-color-navybluextend);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: contain;
+}
+
 .iup-box-pre-view-photo{
   width: 60px; 
   height: 60px; 

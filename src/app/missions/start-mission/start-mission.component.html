@@ -154,23 +154,12 @@
                       </ion-row>
                       
                       <ion-row class="ion-padding-horizontal">
-                        <ion-col size="12">
+                        <ion-col size="12" class="ion-text-center">
                           <ion-chip outline color="silverblue" expand="block">
                             <ion-icon name="barcode-outline"></ion-icon>
                             <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
                           </ion-chip>  
                         </ion-col>
-                        <!-- <ion-col size="6">
-                          <ion-text color="navyblue">
-                            <p class="ion-no-margin"><strong>Capturar el código</strong></p>
-                          </ion-text>
-                        </ion-col>
-                        <ion-col size="6">
-                          <ion-chip outline color="silverblue" expand="block">
-                            <ion-icon name="barcode-outline"></ion-icon>
-                            <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
-                          </ion-chip>  
-                        </ion-col> -->
                       </ion-row>
                       <ion-row class="ion-margin-horizontal">
                         <ion-col size="6" class="ion-align-self-center">
@@ -279,7 +268,7 @@
                         <ion-row class="ion-justify-content-center">
                           <ion-col size="10">
                             <ion-text color=navyblue>
-                              <p>Inventarios</p>
+                              <h6>Inventarios</h6>
                             </ion-text>
                           </ion-col>
                           <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
@@ -292,6 +281,89 @@
                       </ion-grid>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-grid class="ion-no-padding">
+                      <ion-row>
+                        <ion-col size="12" class="ion-padding-horizontal">
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>Añadir producto</strong></p>
+                          </ion-text>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row class="ion-margin">
+                        <ion-col size="8">
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>Nombre completo del producto</strong></p>
+                            <p class="ion-no-margin">Presentación 326ml, vidrio, versión amarilla para llevar a casa.</p>
+                          </ion-text>
+                        </ion-col>
+                        <ion-col size="4" class="ion-align-self-center">
+                           <div class="box-img-product" style='background-image: url("../../../assets/img/patines.jpg");'></div>
+                        </ion-col>
+                      </ion-row>
+                      <ion-row class="ion-margin-horizontal">
+                        <ion-col>
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>SKU</strong> 917867</p>
+                          </ion-text>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <hr>
+                    <ion-grid class="ion-margin-top">
+                      <ion-row>
+                        <ion-col size="12" class="ion-padding-horizontal">
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>Capturar información del producto</strong></p>
+                          </ion-text>
+                          <form class="" color="primary">
+                            <p>
+                              <mat-form-field appearance="outline" class="iup-full-width">
+                                <mat-label class="mat-label-color-navyblue">Precio</mat-label>
+                                <input matInput placeholder="$">
+                              </mat-form-field>
+                            </p>
+                            <p>
+                              <mat-form-field appearance="outline" class="iup-full-width">
+                                <mat-label class="mat-label-color-navyblue">Sharing</mat-label>
+                                <input matInput placeholder="Sharing">
+                              </mat-form-field>
+                            </p>
+                            <p>
+                              <mat-form-field appearance="outline" class="iup-full-width">
+                                <mat-label class="mat-label-color-navyblue">Inventario</mat-label>
+                                <input matInput placeholder="Inventario">
+                              </mat-form-field>
+                            </p>
+                          </form>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <hr>
+                    <ion-grid>
+                      <ion-row class="ion-justify-content-center">
+                        <ion-col size="12" class="ion-align-self-center ion-text-center">
+                          <ion-chip outline color="silverblue" expand="block">
+                            <ion-icon name="barcode-outline"></ion-icon>
+                            <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
+                          </ion-chip>  
+                        </ion-col>
+                        <ion-col size="12" class="ion-margin-vertical">
+                          <div class="iup-button-row">
+                            <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                               GUARDAR
+                            </button>
+                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                              LIMPIAR
+                            </button>
+                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                              CANCELAR
+                            </button>
+                          </div>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                  </div>
                 </mat-expansion-panel>
                 
                 <mat-expansion-panel >
