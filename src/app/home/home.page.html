@@ -72,7 +72,7 @@
         <div class="ipck-col-carousel ion-align-items-center">
           <!-- <ITEM - para repetir el ng-repeat> -->
           <div class="ipck-item-carousel ion-margin-horizontal" *ngFor='let promocion of bannerData'>
-            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-md shadow border-radius">
+            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-sm shadow border-radius">
                 <ion-row class="ion-align-items-center">
                   <ion-col  size="4" class="ion-text-center">
                     <div class="ion-margin-end-sm">
@@ -111,9 +111,9 @@
       </ion-col>
 
       <ion-col size="5" class="ion-text-end ion-align-self-center">
-        <ion-chip class="ion-color ion-color-navyblue chip-outline">
-          <ion-label>Ver todas</ion-label>
-          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
+        <ion-chip outline color="silverblue" expand="block">
+          <ion-icon color="navyblue" name="funnel"></ion-icon>
+          <ion-label color="navyblue">Filtrar</ion-label>
         </ion-chip>
       </ion-col>
     </ion-row>
@@ -255,9 +255,9 @@
 
       </ion-col>
       <ion-col size="6" class="ion-text-end ion-align-self-center">
-        <ion-chip class="ion-color ion-color-navyblue chip-outline ">
-          <ion-label>Ver todas</ion-label>
-          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
+        <ion-chip outline color="silverblue" expand="block">
+          <ion-icon color="navyblue" name="funnel"></ion-icon>
+          <ion-label color="navyblue">Filtrar</ion-label>
         </ion-chip>
       </ion-col>
     </ion-row>
@@ -276,14 +276,14 @@
           <ion-col>
            <app-modalmission></app-modalmission>
           </ion-col>
-        </ion-row>    
+        </ion-row>
         <!-- /Modal missiones de los ocion del mapa, hay que cargarles los servicios amigo TEST -->
       </ion-col>
     </ion-row>
   </ion-grid>
 
   </div>
-  
+
 
 </ion-content>
 

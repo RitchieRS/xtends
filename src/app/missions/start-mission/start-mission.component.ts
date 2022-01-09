@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogCaptureproductinfoComponent } from '../modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 
 @Component({
   selector: 'app-start-mission',
   templateUrl: './start-mission.component.html',
   styleUrls: ['./start-mission.component.scss'],
 })
-export class StartMissionComponent implements OnInit {
+export class StartMissionComponent  {
 
   productos = [
     {
@@ -46,8 +48,11 @@ export class StartMissionComponent implements OnInit {
      },
   ]
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
-  ngOnInit() {}
+
+  openDialog(){
+    this.dialog.open(DialogCaptureproductinfoComponent);
+  }
 
 }

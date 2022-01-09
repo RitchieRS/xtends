@@ -37,7 +37,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-     
+
         <ion-grid class="ion-no-margin ion-no-padding">
           <ion-row class="ion-no-margin ion-no-padding">
             <ion-col size="12" class="ion-no-margin">
@@ -76,7 +76,7 @@
                     </div>
                   </div>
                 </mat-expansion-panel>
-           
+
                 <mat-expansion-panel>
                   <mat-expansion-panel-header >
                     <mat-panel-title>
@@ -152,13 +152,13 @@
                           </ion-searchbar>
                         </ion-col>
                       </ion-row>
-                      
+
                       <ion-row class="ion-padding-horizontal">
                         <ion-col size="12" class="ion-text-center">
                           <ion-chip outline color="silverblue" expand="block">
                             <ion-icon name="barcode-outline"></ion-icon>
                             <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
-                          </ion-chip>  
+                          </ion-chip>
                         </ion-col>
                       </ion-row>
                       <ion-row class="ion-margin-horizontal">
@@ -172,7 +172,7 @@
                           <ion-text color="navyblue" class="ion-text-left"><p><strong>Presencia</strong></p></ion-text>
                         </ion-col>
                       </ion-row>
-                       <ion-row *ngFor="let producto of productos" class="ion-margin-horizontal">
+                       <ion-row *ngFor="let producto of productos" class="ion-margin-horizontal" (click)="openDialog()">
                         <ion-col size="6" class="ion-align-self-center">
                           <ion-text color="navyblue" class="ion-text-left"><p>{{producto.nombre}}</p></ion-text>
                         </ion-col>
@@ -199,10 +199,10 @@
                                 <ion-label>
                                   <ion-text color="navyblue">
                                     <p>Pregunta uno</p>
-                                  </ion-text>   
+                                  </ion-text>
                                 </ion-label>
                               </ion-list-header>
-                          
+
                               <ion-item>
                                 <ion-label>
                                   <ion-text color="navyblue">
@@ -213,7 +213,7 @@
                                 </ion-label>
                                 <ion-radio slot="start" value="opcion uno"></ion-radio>
                               </ion-item>
-                          
+
                               <ion-item>
                                 <ion-text color="navyblue">
                                   <p>
@@ -222,7 +222,7 @@
                                 </ion-text>
                                 <ion-radio slot="start" value="opcion dos"></ion-radio>
                               </ion-item>
-                          
+
                               <ion-item>
                                 <ion-text color="navyblue">
                                   <p>
@@ -238,7 +238,7 @@
                     </ion-grid>
                   </div>
                 </mat-expansion-panel>
-                
+
                 <mat-expansion-panel>
                   <mat-expansion-panel-header >
                     <mat-panel-title>
@@ -260,7 +260,7 @@
                     </mat-panel-title>
                   </mat-expansion-panel-header>
                 </mat-expansion-panel>
-                
+
                 <mat-expansion-panel >
                   <mat-expansion-panel-header >
                     <mat-panel-title>
@@ -281,91 +281,9 @@
                       </ion-grid>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  <div class="ion-padding-horizontal">
-                    <ion-grid class="ion-no-padding">
-                      <ion-row>
-                        <ion-col size="12" class="ion-padding-horizontal">
-                          <ion-text color="navyblue">
-                            <p class="ion-no-margin"><strong>Añadir producto</strong></p>
-                          </ion-text>
-                        </ion-col>
-                      </ion-row>
-                      <ion-row class="ion-margin">
-                        <ion-col size="8">
-                          <ion-text color="navyblue">
-                            <p class="ion-no-margin"><strong>Nombre completo del producto</strong></p>
-                            <p class="ion-no-margin">Presentación 326ml, vidrio, versión amarilla para llevar a casa.</p>
-                          </ion-text>
-                        </ion-col>
-                        <ion-col size="4" class="ion-align-self-center">
-                           <div class="box-img-product" style='background-image: url("../../../assets/img/patines.jpg");'></div>
-                        </ion-col>
-                      </ion-row>
-                      <ion-row class="ion-margin-horizontal">
-                        <ion-col>
-                          <ion-text color="navyblue">
-                            <p class="ion-no-margin"><strong>SKU</strong> 917867</p>
-                          </ion-text>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                    <hr>
-                    <ion-grid class="ion-margin-top">
-                      <ion-row>
-                        <ion-col size="12" class="ion-padding-horizontal">
-                          <ion-text color="navyblue">
-                            <p class="ion-no-margin"><strong>Capturar información del producto</strong></p>
-                          </ion-text>
-                          <form class="" color="primary">
-                            <p>
-                              <mat-form-field appearance="outline" class="iup-full-width">
-                                <mat-label class="mat-label-color-navyblue">Precio</mat-label>
-                                <input matInput placeholder="$">
-                              </mat-form-field>
-                            </p>
-                            <p>
-                              <mat-form-field appearance="outline" class="iup-full-width">
-                                <mat-label class="mat-label-color-navyblue">Sharing</mat-label>
-                                <input matInput placeholder="Sharing">
-                              </mat-form-field>
-                            </p>
-                            <p>
-                              <mat-form-field appearance="outline" class="iup-full-width">
-                                <mat-label class="mat-label-color-navyblue">Inventario</mat-label>
-                                <input matInput placeholder="Inventario">
-                              </mat-form-field>
-                            </p>
-                          </form>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                    <hr>
-                    <ion-grid>
-                      <ion-row class="ion-justify-content-center">
-                        <ion-col size="12" class="ion-align-self-center ion-text-center">
-                          <ion-chip outline color="silverblue" expand="block">
-                            <ion-icon name="barcode-outline"></ion-icon>
-                            <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
-                          </ion-chip>  
-                        </ion-col>
-                        <ion-col size="12" class="ion-margin-vertical">
-                          <div class="iup-button-row">
-                            <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                               GUARDAR
-                            </button>
-                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
-                              LIMPIAR
-                            </button>
-                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
-                              CANCELAR
-                            </button>
-                          </div>
-                        </ion-col>
-                      </ion-row>
-                    </ion-grid>
-                  </div>
+                  <div>contenido</div>
                 </mat-expansion-panel>
-                
+
                 <mat-expansion-panel >
                   <mat-expansion-panel-header >
                     <mat-panel-title>
@@ -387,7 +305,7 @@
                     </mat-panel-title>
                   </mat-expansion-panel-header>
                 </mat-expansion-panel>
-                
+
                 <mat-expansion-panel >
                   <mat-expansion-panel-header >
                     <mat-panel-title>
@@ -409,8 +327,8 @@
                     </mat-panel-title>
                   </mat-expansion-panel-header>
                 </mat-expansion-panel>
-                
-                <mat-expansion-panel >
+
+                <mat-expansion-panel>
                   <mat-expansion-panel-header >
                     <mat-panel-title>
                       <ion-grid>
@@ -431,7 +349,7 @@
                     </mat-panel-title>
                   </mat-expansion-panel-header>
                 </mat-expansion-panel>
-                
+
               </mat-accordion>
             </ion-col>
             <ion-col size="12" class="ion-margin">

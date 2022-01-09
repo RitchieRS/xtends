@@ -19,6 +19,9 @@ import { MymissionsComponent } from './mymissions/mymissions.component';
 import { StartMissionComponent } from './start-mission/start-mission.component';
 import { CheckInComponent } from './check-in/check-in.component';
 import { PendingMissionComponent } from './pending-mission/pending-mission.component';
+import { ModalCaptureproductinfoComponent } from './modal-captureproductinfo/modal-captureproductinfo.component';
+import { DialogCaptureproductinfoComponent } from './modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   schemas:[
@@ -29,6 +32,8 @@ import { PendingMissionComponent } from './pending-mission/pending-mission.compo
     StartMissionComponent,
     CheckInComponent,
     PendingMissionComponent,
+    ModalCaptureproductinfoComponent,
+    DialogCaptureproductinfoComponent,
   ],
   imports: [
     CommonModule,
@@ -44,13 +49,17 @@ import { PendingMissionComponent } from './pending-mission/pending-mission.compo
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatDialogModule,
+    MatButtonModule,
   ],
   exports: [
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
-    PendingMissionComponent
+    PendingMissionComponent,
+    ModalCaptureproductinfoComponent,
+    DialogCaptureproductinfoComponent,
   ],
 })
 export class MissionsModule { }
