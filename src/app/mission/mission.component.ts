@@ -48,6 +48,7 @@ export class MissionComponent  {
       "idTienda": idTienda,
       "idProyecto": idProyecto
     };
+    this.srvMission.keepMissionInfo(dataMission);
     this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
       if(res){
         this.infMission = res;
@@ -70,6 +71,10 @@ export class MissionComponent  {
       }
     })
 
+  }
+
+  acceptMissionXProyect(){
+    console.log("Start Mission");
   }
 
 }

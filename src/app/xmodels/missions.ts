@@ -34,3 +34,12 @@ export interface Habilidades {
     nombreNivel:     string;
     nombreHabilidad: string;
 }
+
+export interface ResMissionAccepted {
+    idError: number;
+    resp:    RespMission;
+}
+
+export interface RespMission {
+    msg: string;
+}
