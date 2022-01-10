@@ -36,7 +36,7 @@ const routes: Routes = [
   {
     path: 'mission',
     loadChildren: () => import('./mission/mission.module').then( m => m.MissionModule)
-  },  
+  },
   {
     path: 'slide',
     loadChildren: () => import('./slide/slide.module').then( m => m.SlidePageModule)
@@ -48,7 +48,7 @@ const routes: Routes = [
   {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
   },
-  
+
 
 ];
 
