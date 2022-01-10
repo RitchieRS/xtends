@@ -39,15 +39,12 @@
                            <p><strong></strong></p>
                            <ion-row>
                              <!-- <ion-col size="auto"><ion-badge color="cloudysky">1</ion-badge></ion-col> -->
-                             <ion-col size="auto" ><p><strong>$</strong> {{mission.pago}}</p></ion-col>
+                             <ion-col size="auto" ><p><strong>$ {{mission.pago}}</strong></p></ion-col>
                            </ion-row>
                      </ion-grid>
                    </ion-label>
                  </ion-item>
                  <ion-fab  vertical="bottom" horizontal="end" >
-                  <!-- <ion-fab-button color="whitex">
-                    <ion-icon name="chevron-forward-outline" color="navyblue" ></ion-icon>
-                  </ion-fab-button> -->
                   <button routerLink="/mission/{{mission.idTienda}}/{{mission.idProyecto}}" mat-icon-button>
                     <mat-icon class="color-cloudysky">navigate_next</mat-icon>
                   </button>
@@ -85,7 +82,7 @@
                     <div>
                       <ion-card-content class="ion-no-padding">
                         <ion-text color="polarwhite">
-                          <h2 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h2>
+                          <h3 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h3>
                           <p>{{ promocion.descripcion}}</p>
                         </ion-text>
                       </ion-card-content>
@@ -143,8 +140,8 @@
                             <ion-col size="9" class="ion-align-self-center">
                               <ion-label>
                                 <ion-text color="cloudysky">
-                                  <h1>{{ available.nombreActividad}}</h1>
-                                  <h3>{{ available.descripcion}}</h3>
+                                  <h2>{{ available.nombreActividad}}</h2>
+                                  <h4>{{ available.descripcion}}</h4>
                                   <p><strong>$ {{ available.pago}}</strong> por visita</p>
                                 </ion-text>
                               </ion-label>

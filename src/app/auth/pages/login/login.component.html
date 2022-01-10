@@ -1,12 +1,12 @@
-<ion-grid class="ion-no-margin ion-no-padding">
-  <ion-row class="bg-whitex row-vertical-cincuenta">
+<ion-grid class="ion-no-margin ion-no-padding bg-navyblue ion-align-self-center" style="width:100%;">
+  <ion-row class="bg-whitex row-vertical-cincuenta ion-align-self-center">
     <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
       <img src="../../../../assets/icon/logo-extend.svg" class="size-logo-login" alt="Logo Extend">
     </ion-col>
   </ion-row>
 
-  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
-    <ion-col class="ion-no-padding ion-align-self-center ">
+  <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-auto ion-align-self-center">
+    <ion-col class="ion-no-padding ion-align-self-center">
       <div style="max-width:570px; margin: auto;">
           <form  [formGroup]="loginForm"  (ngSubmit)="onLogin()">
            <ion-item class="ion-padding-horizontal" >
@@ -22,33 +22,31 @@
            </ion-text>
            <ion-grid>
              <ion-row class="ion-justify-content-center">
-               <ion-col class="ion-text-center">
-                   <ion-button [disabled]="loginForm.invalid" type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
+               <ion-col size="6" class="ion-text-center">
+                  <ion-button routerLink="/auth/register" type="submit" class="ion-margin-top"  color="polarwhite">Registrate</ion-button>
+               </ion-col>
+               <ion-col size="6" class="ion-text-center">
+                  <ion-button [disabled]="loginForm.invalid" type="submit" class="ion-margin-top"  color="polarwhite">ENTRAR</ion-button>
                </ion-col>
              </ion-row>
-             <ion-row class="ion-justify-content-center">
-              <ion-col class="ion-text-center">
-                  <ion-button routerLink="/auth/register" type="submit" class="ion-margin-top"  color="polarwhite">Registrate</ion-button>
-              </ion-col>
-            </ion-row>
            </ion-grid>
           </form>
        <ion-grid>
          <ion-row>
            <ion-col class="ion-text-center">
-            <ion-button routerLink="/auth/forgot" fill="clear" size="large" color="polarwhite">¿Olvidaste tu contraseña?</ion-button>
+            <ion-button routerLink="/auth/forgot" fill="clear"  color="polarwhite">¿Olvidaste tu contraseña?</ion-button>
            </ion-col>
          </ion-row>
          <ion-row>
            <ion-col class="ion-text-center">
              <ion-chip (click)="getMyLocation()" class="ion-color ion-color-primary chip-outline">
-               <ion-icon name="information-circle-outline" color="primary"></ion-icon>
+               <ion-icon name="information-circle-outline" color="skybluextend"></ion-icon>
                <ion-label>Ayuda</ion-label>
              </ion-chip>
            </ion-col>
            <ion-col class="ion-text-center">
              <ion-chip class="ion-color ion-color-primary chip-outline">
-               <ion-icon name="share-social-outline" color="primary"></ion-icon>
+               <ion-icon name="share-social-outline" color="skybluextend"></ion-icon>
                <ion-label>Comparte</ion-label>
              </ion-chip>
            </ion-col>

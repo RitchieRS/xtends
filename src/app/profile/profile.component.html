@@ -1,5 +1,5 @@
 <ion-header #header>
-  <app-header></app-header>
+  <app-header-two></app-header-two>
 </ion-header>
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
@@ -178,7 +178,6 @@
       </ion-card>
 
     <div class="iup-box-center bg-silverblue ion-padding-vertical">
-
         <ion-card>
           <!-- <ion-card-header>
            <ion-text color="navyblue">
@@ -193,9 +192,9 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                       <ion-text color="navyblue">
-                        <h1>
+                        <h3>
                           Tu información
-                        </h1>
+                        </h3>
                       </ion-text>
                   </mat-panel-title>
 
@@ -249,6 +248,7 @@
                 </form>
 
                 <ion-grid class="ion-margin-horizontal">
+                  <form class="iup-form">
                   <ion-row class="ion-justify-content-center ion-align-items-center">
                     <ion-col>
                       <ion-text color="navyblue">
@@ -277,7 +277,7 @@
                   <ion-row>
                     <ion-col size="12">
                       <ion-text color="navyblue">
-                        <h1>Preferencias</h1>
+                        <h3>Preferencias</h3>
                       </ion-text>
                     </ion-col>
                     <ion-col>
@@ -298,12 +298,14 @@
                       </ion-text>
                     </ion-col>
                   </ion-row>
+                  <hr>
                   <ion-row>
                     <ion-col size="12">
                       <ion-text color="navyblue">
-                        <h1>Domicilio</h1>
+                        <h3>Domicilio</h3>
                       </ion-text>
                     </ion-col>
+
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
@@ -395,8 +397,7 @@
 
                     </ion-col>
                   </ion-row>
-
-
+                </form>
                 </ion-grid>
 
                 <!-- <section style="margin-top: 10px;">
@@ -413,9 +414,9 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <ion-text color="navyblue">
-                        <h1>
+                        <h3>
                           Zonas en las que te mueves
-                        </h1>
+                        </h3>
                     </ion-text>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
@@ -426,7 +427,7 @@
                   <p>
                     <app-zones></app-zones>
                   </p>
-                  
+
                 </div>
               </mat-expansion-panel>
 
@@ -434,9 +435,9 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <ion-text color="navyblue">
-                        <h1>
+                        <h3>
                           Habilidades Xtend
-                        </h1>
+                        </h3>
                     </ion-text>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
@@ -507,9 +508,9 @@
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <ion-text color="navyblue">
-                        <h1>
+                        <h3>
                           Credencial
-                        </h1>
+                        </h3>
                     </ion-text>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
@@ -576,20 +577,19 @@
                                   </div>
                               </mat-tab>
                             </mat-tab-group>
-                             --> 
-                             <ion-grid>
+                             -->
+                             <ion-grid class="ion-padding-vertical">
                                <ion-row>
-                                 <ion-col>
+                                 <ion-col size="12">
                                   <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                                     <mat-icon aria-hidden="false">gesture</mat-icon>
                                     FIRMA
                                   </button>
                                  </ion-col>
-                                 <ion-col>
-                                  <div style="border: solid 1px #9da8b6; border-radius: 20px;">
-                                    <!--<app-firma></app-firma>-->
+                                 <ion-col size="12" class="ion-padding-vertical">
+                                  <div class="box-firma">
                                     <canvas id="firma" class="text-center"></canvas>
-                                    </div>
+                                  </div>
                                 </ion-col>
                                 <ion-col>
                                   <section style="margin-top: 10px;">
@@ -604,7 +604,7 @@
                                   </section>
                                 </ion-col>
                                </ion-row>
-                             </ion-grid>    
+                             </ion-grid>
                              <!-- <section style="margin-top: 10px;">
                               <div class="iup-button-row">
                                 <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
@@ -622,8 +622,8 @@
                                 <app-firma></app-firma>
                                 </div>
                             </section>                   -->
-                             
-                            
+
+
 
                         <div class="ion-margin-vertical" >
 

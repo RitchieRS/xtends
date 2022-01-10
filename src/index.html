@@ -25,11 +25,23 @@
                 correccionX = posicion.x;
                 correccionY = posicion.y;
 
-                miCanvas.width = 600;
+                miCanvas.width = 440;
                 miCanvas.height = 250;
 
                 if (window.matchMedia("(min-width: 320px)").matches){
-                    miCanvas.width = 350;
+                    miCanvas.width = 220;
+                    miCanvas.height = 250;
+                }
+                if (window.matchMedia("(min-width: 360px)").matches){
+                    miCanvas.width = 228;
+                    miCanvas.height = 250;
+                }
+                if (window.matchMedia("(min-width: 390px)").matches){
+                    miCanvas.width = 238;
+                    miCanvas.height = 250;
+                }
+                if (window.matchMedia("(min-width: 412px)").matches){
+                    miCanvas.width = 280;
                     miCanvas.height = 250;
                 }
                 if (window.matchMedia("(min-width: 500px)").matches){
@@ -41,7 +53,7 @@
                     miCanvas.height = 250;
                 }
                 if (window.matchMedia("(min-width: 992px)").matches){
-                    miCanvas.width = 616;
+                    miCanvas.width = 440;
                     miCanvas.height = 250;
                 }
 

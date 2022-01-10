@@ -28,6 +28,7 @@ import { ModalacceptmissionComponent } from './modalacceptmission/modalacceptmis
 import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptmission/dialogacceptmission.component';
 import { ModalcheckinComponent } from './modalcheckin/modalcheckin.component';
 import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheckin.component';
+import { HeaderTwoComponent } from './header-two/header-two.component';
 
 
 
@@ -35,6 +36,7 @@ import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheck
   declarations: [
     FooterComponent,
     HeaderComponent,
+    HeaderTwoComponent,
     ZonesComponent,
     HideHeaderDirective,
     PopoverInfoComponent,
@@ -48,6 +50,7 @@ import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheck
   exports:[
     FooterComponent,
     HeaderComponent,
+    HeaderTwoComponent,
     ZonesComponent,
     HideHeaderDirective,
     PopoverInfoComponent,
