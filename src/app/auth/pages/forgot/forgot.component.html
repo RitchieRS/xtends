@@ -1,4 +1,4 @@
-<ion-grid class="ion-no-margin ion-no-padding">
+<ion-grid class="ion-no-margin ion-no-padding bg-navyblue">
   <ion-row class="bg-whitex row-vertical-cincuenta">
     <ion-col class="ion-no-padding ion-align-self-center ion-text-center">
       <img src="../../../../assets/icon/logo-extend.svg" class="size-logo-login" alt="Logo Extend">
@@ -12,20 +12,20 @@
         <form [formGroup]="forgotForm" (ngSubmit)="onForgot()" >
           <ion-grid >
             <ion-row>
-              <ion-col class="ion-padding">
+              <ion-col class="ion-padding" size="12">
                 <ion-text class="ion-text-center">
                   <h3>Olvidaste tu contraseña.</h3>
                   <p>Ingresa tu e-mail y te enviaremos instrucciones para restablecer tu contraseña.</p>
                 </ion-text>
               </ion-col>
+              <ion-col size="12">
+                <ion-item class="ion-padding-horizontal">
+                  <ion-label position="floating">E-mail</ion-label>
+                  <ion-input formControlName="email" ></ion-input>
+                </ion-item>
+              </ion-col>
             </ion-row>
           </ion-grid>
-
-           <ion-item>
-             <ion-label position="floating">E-mail</ion-label>
-             <ion-input formControlName="email" ></ion-input>
-
-           </ion-item>
            <ion-text *ngIf="submitted && f.email.errors" color="danger" class="ion-text-center invalid-feedback">
             <p *ngIf="f.email.errors.required">El email es requerido</p>
             <p *ngIf="f.email.errors.email">El email es inválido</p>
