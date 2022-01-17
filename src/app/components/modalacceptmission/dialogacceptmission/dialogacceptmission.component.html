@@ -12,15 +12,10 @@
       <ion-row class="ion-justify-content-center">
          
         <ion-col size="12" class="ion-padding">
-          <ion-text *ngIf="accepted==false"class="ion-text-center">
-             <h4  >
-               Haz aceptado la misión Shell Promotoría, tienes 24 horas para realizarla.
-               <br>¿La realizarás ahora o después?
-             </h4 >
-          </ion-text>
-          <ion-text *ngIf="accepted==true"class="ion-text-center">
+
+          <ion-text class="ion-text-center">
             <h4  >
-              {{message}}
+              {{data.message}}
             </h4 >
          </ion-text>
        </ion-col>
@@ -29,11 +24,11 @@
       
   
        <section style="margin-top: 10px;">
-        <div *ngIf="accepted==false" class="iup-button-row">
-          <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+        <div  class="iup-button-row">
+          <button (click)="home()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
              DESPUÉS
           </button>
-          <button (click)="acceptMission()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+          <button   (click)="missionPending()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
             AHORA <mat-icon >chevron_right</mat-icon>
           </button>
         </div>

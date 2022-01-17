@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MissionService } from '../xservices/mission/mission.service';
-import { Mission ,RespMission,Habilidades } from '../xmodels/missions'
+import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/missions'
  
 @Component({
   selector: 'app-mission',
@@ -21,6 +21,10 @@ export class MissionComponent  {
   ciudad: string;
   estado: string;
   tiempo: string;
+  dataMission : ReqMission;
+  token: string;
+  message = '';
+  accepted = false;
   habilidades:Habilidades[];
   promociones = [
     {
@@ -52,7 +56,7 @@ export class MissionComponent  {
     this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
       if(res){
         this.infMission = res;
-        
+
         this.missionDetail  = this.infMission.resp;
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.nombreActividad = this.missionDetail.nombreActividad;
@@ -72,6 +76,8 @@ export class MissionComponent  {
     })
 
   }
+
+  
 
   acceptMissionXProyect(){
     console.log("Start Mission");
