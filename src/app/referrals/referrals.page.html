@@ -1,0 +1,97 @@
+<ion-header #header>
+  <app-header-two titulo="Referidos"></app-header-two>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-card>
+      <ion-card-content class="ion-no-padding">
+        <ion-grid>
+          <ion-row class="ion-justify-content-center ion-align-items-center">
+            <ion-col size="12" class="ion-padding">
+              <ion-text color="navyblue" class="ion-text-center">
+                <h6><strong>Refiere amigos para subir de nivel</strong></h6>
+              </ion-text>
+              <ion-text color="navyblue">
+                <p class="iup-margin-top-md">
+                  Comparte el siguiente código por whatsapp o por QR a tus amigos, cada referido completado contará para subir de nivel Xtend
+                </p>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid class="ion-no-padding">
+          <ion-row [ngClass]="'bg-navyblue'" class="ion-justify-content-center ion-padding">
+            <ion-col size="12" class="ion-align-self-center bg-whitex ion-padding-vertical border-rodondos">
+               <ion-text class="ion-text-center" color="navybluextend">
+                 <h2><strong>kahfuiw348573984fh</strong></h2>
+               </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6" class="ion-text-center">
+          <button mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <ion-icon name="qr-code-outline" size="large" class="ion-padding-top" color="primary"></ion-icon> <br> VER CÓDIGO QR
+          </button>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+          <button mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <ion-icon name="share-social-outline" size="large" class="ion-padding-top" color="primary" ></ion-icon> <br> COMPARTE
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-card>
+      <ion-card-content>
+        <ion-grid class="ion-no-padding">
+          <ion-row class="ion-justify-content-center ion-align-items-center">
+            <ion-col size="12" class="ion-margin-vertical">
+              <ion-text color="navyblue">
+                <h6><strong>Gana dinero, por cada referido que complete la misión en estos lugares</strong></h6>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-card class="ion-no-padding ion-no-margin border-radius">
+          <ion-card-content class="ion-no-padding">
+            <ion-grid>
+              <ion-row class="ion-align-items-center">
+                <ion-col size="2">
+                  <div style="width: 40px;" class="ion-margin-end">
+                    <img src="./../../assets/img/shell.svg">
+                  </div>
+                </ion-col>
+                <ion-col size="8" class="ion-align-items-center">
+                  <ion-text color="cloudysky" class="ion-text-wrap">
+                    <h2><strong>Shell</strong></h2>
+                    <p>Promotoría en Autozone</p>
+                    <p class="iup-margin-top-md">
+                      <strong>Ciudades:</strong><br>
+                      Jalapa, Posa Rica
+                    </p>
+                    <p>
+                      <strong>Tiempo de la visita: </strong>30 mins.
+                    </p>
+                </ion-text>
+                </ion-col>
+                <ion-col size="2" class="ion-align-items-center">
+                    <button mat-icon-button>
+                      <mat-icon class="color-cloudysky">navigate_next</mat-icon>
+                    </button>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-card-content>
+        </ion-card>
+
+
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<app-footer></app-footer>

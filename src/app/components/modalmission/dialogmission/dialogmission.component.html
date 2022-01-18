@@ -1,11 +1,7 @@
-<!--
-  Colores: {AzulFuerte, mystery = #161949 | AzulCielo, promotor = #229bd6 | Morado, demostrador = #825aa5 | Verde, anaqueleo = #90c04e}
-  Icons : {mystery.svg | promotoria.svg | demostrador.svg | anaqueleo.svg}
--->
 <div mat-dialog-content>
   <div>
     <ion-grid class="ion-no-padding">
-      <ion-row [ngStyle]="{'background':'#229bd6'}" class="ion-justify-content-center ion-padding">
+      <ion-row [ngClass]="'bg-skybluextend'" class="ion-justify-content-center ion-padding">
         <ion-col size="2" class="ion-align-self-center ion-margin-end" >
           <ion-icon [ngStyle]="{'color':'#229bd6', 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/promotoria.svg" ></ion-icon>
         </ion-col>
@@ -58,7 +54,7 @@
             </ion-label>
         </ion-card>
       </div>
-  
+
        <section style="margin-top: 10px;">
         <div class="iup-button-row">
           <button routerLink="/wallet" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
@@ -69,14 +65,23 @@
           </button>
         </div>
       </section>
-      <section style="margin-top: 10px;">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="12" class="ion-align-self-center ion-margin-end ion-text-right">
+            <button mat-icon-button mat-dialog-close>
+              <mat-icon>highlight_off</mat-icon>
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <!-- <section style="margin-top: 10px;">
         <div class="iup-button-row">
           <button mat-button mat-dialog-close>
             <span class="material-icons">highlight_off</span> Cerrar
           </button>
         </div>
-      </section>
-        
+      </section> -->
+
   </div>
 </div>
 

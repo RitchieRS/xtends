@@ -1,16 +1,17 @@
 <div mat-dialog-content>
   <div>
     <ion-grid class="ion-no-padding">
-      <ion-row [ngClass]="'bg-purplextend'" class="ion-justify-content-center">
-         
-        <ion-col size="3" class="ion-padding">
-         
-       </ion-col>
+      <ion-row [ngClass]="'bg-purplextend'" class="ion-justify-content-center ion-padding">
+        <ion-col size="12" class="ion-align-self-center ion-margin-end ion-text-right">
+          <button mat-icon-button mat-dialog-close>
+            <mat-icon>highlight_off</mat-icon>
+          </button>
+        </ion-col>
       </ion-row>
     </ion-grid>
     <ion-grid >
       <ion-row class="ion-justify-content-center">
-         
+
         <ion-col size="12" class="ion-padding">
           <ion-text class="ion-text-center">
              <h4>
@@ -20,15 +21,15 @@
        </ion-col>
       </ion-row>
     </ion-grid>
-       <section style="margin-top: 10px; margin-bottom: 16px;">
+       <section class="ion-margin-bottom ion-padding-bottom">
         <div class="iup-button-row">
           <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
              IR A CONTENIDO
           </button>
-          <button mat-dialog-close mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+          <!-- <button mat-dialog-close mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
             CERRAR
-          </button>
+          </button> -->
         </div>
-      </section>      
+      </section>
   </div>
 </div>

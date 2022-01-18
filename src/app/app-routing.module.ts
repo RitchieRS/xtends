@@ -9,6 +9,7 @@ import { SlidePageRoutingModule } from './slide/slide-routing.module';
 import { MissionsRoutingModule } from './missions/missions-routing.module';
 
 
+
 const routes: Routes = [
   {
     path: 'auth',
@@ -46,9 +47,16 @@ const routes: Routes = [
     loadChildren: () => import('./missions/missions.module').then( m => m.MissionsModule)
   },
   {
+    path: 'referrals',
+    loadChildren: () => import('./referrals/referrals.module').then( m => m.ReferralsPageModule)
+  },
+  {
+    path: 'active-missions',
+    loadChildren: () => import('./active-missions/active-missions.module').then( m => m.ActiveMissionsPageModule)
+  },
+  {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
   },
-
 
 ];
 
