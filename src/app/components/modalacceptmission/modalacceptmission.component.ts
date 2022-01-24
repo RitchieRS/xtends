@@ -16,13 +16,12 @@ export class ModalacceptmissionComponent {
   token: string;
   message = '';
   accepted = false;
+  idPV=0;
   constructor(public dialog: MatDialog,private route: ActivatedRoute,private srvMission : MissionService) { 
-    const idTienda = Number(localStorage.getItem('idTienda'));
-    const idProyecto = Number(localStorage.getItem('idProyecto'));
+    this.idPV = Number(localStorage.getItem('idPV'));
     this.token = localStorage.getItem('token');
     this.dataMission = {
-      "idTienda": idTienda,
-      "idProyecto": idProyecto
+      "idPV": this.idPV,
     };
   }
   
@@ -40,7 +39,9 @@ export class ModalacceptmissionComponent {
         this.message = res.resp.msg;
         this.accepted =true;
         this.dialog.open(DialogacceptmissionComponent, {
-          data: { message: this.message },
+          data: { message: this.message ,
+                  idPV: this.idPV
+                },
         })
         
       }

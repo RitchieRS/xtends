@@ -80,3 +80,9 @@ export interface Section4Content {
     lat:        number;
     long:       number;
 }
+
+
+export interface HomeLocation {
+    lat:    number;
+    lgn: number;
+}

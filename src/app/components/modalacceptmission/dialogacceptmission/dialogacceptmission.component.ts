@@ -10,7 +10,7 @@ import { ActivationStart, Router, RouterOutlet } from '@angular/router';
 export class DialogacceptmissionComponent implements OnInit {
   
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {message:string},private router: Router,private matDialog: MatDialog) {
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {message:string,idPV:string },private router: Router,private matDialog: MatDialog) {
     
 
    }
@@ -29,7 +29,7 @@ export class DialogacceptmissionComponent implements OnInit {
     }
     missionPending(): void{
       this.matDialog.closeAll();
-      this.router.navigate(['pending-mission'])
+      this.router.navigate(['pending-mission/'+this.data.idPV])
     }
 
  

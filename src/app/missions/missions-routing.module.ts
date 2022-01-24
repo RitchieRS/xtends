@@ -15,15 +15,15 @@ const routes: Routes =[
       component: MymissionsComponent
     },
     {
-      path: 'start-mission',
+      path: 'start-mission/:idPV',
       component: StartMissionComponent
     },
     {
-      path: 'check-in',
+      path: 'check-in/:idPV',
       component: CheckInComponent
     },
     {
-      path: 'pending-mission',
+      path: 'pending-mission/:idPV',
        component: PendingMissionComponent
     }
    ]

@@ -2,24 +2,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { CheckinReq } from 'src/app/xmodels/checkin';
 import { UserResponse, User, UserRest, ProfileResp, UserProfile } from 'src/app/xmodels/user';
 import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class InfoService {
+export class CheckinserviceService  {
 
   constructor(private http : HttpClient) { }
 
-  public setInformation(data : UserRest):void{
-    console.log("Start save Data");
-    localStorage.setItem('apat',data.apat);
-    localStorage.setItem('email',data.email);
-    localStorage.setItem('nombre',data.nombre);
-    localStorage.setItem('nombreCompleto',data.nombreCompleto);
-  }
+  
 
-  getProfileInformation(token : string):Observable<UserProfile| void>{
+  checkin(token : string, dataCheck : any):Observable<CheckinReq| void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -28,8 +23,8 @@ export class InfoService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.get<UserProfile>(`${environment.API_URL}user`,httpOptions).pipe(
-          map(( res :  UserProfile)=> {
+    return this.http.post<CheckinReq>(`${environment.API_URL}visitas/checkin`,dataCheck,httpOptions).pipe(
+          map(( res : any )=> {
             console.log(res);
             return res; 
           }),
@@ -47,3 +42,4 @@ export class InfoService {
   }
 
 }
+

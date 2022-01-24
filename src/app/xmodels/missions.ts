@@ -1,7 +1,6 @@
 
 export interface ReqMission {
-    idTienda: number;
-    idProyecto:  number;
+    idPV: number;
 }
 export interface Mission{
     idError: number;
@@ -9,7 +8,6 @@ export interface Mission{
 }
 
 export interface RespMission {
-    idUsuario:       number;
     idTienda:        number;
     idProyecto:      number;
     nombreCliente:   string;

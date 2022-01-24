@@ -45,12 +45,10 @@ export class MissionComponent  {
   constructor(private route: ActivatedRoute,private srvMission : MissionService ) { }
 
   ngOnInit() {
-    const idTienda = Number(this.route.snapshot.paramMap.get('idTienda'));
-    const idProyecto = Number(this.route.snapshot.paramMap.get('idProyecto'));
+    const idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     const token = localStorage.getItem('token');
     const dataMission = {
-      "idTienda": idTienda,
-      "idProyecto": idProyecto
+      "idPV": idPV
     };
     this.srvMission.keepMissionInfo(dataMission);
     this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{

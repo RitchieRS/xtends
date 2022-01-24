@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
-import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content } from '../xmodels/home';
+import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content, HomeLocation } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
 import { TransitionCheckState } from '@angular/material/checkbox';
 
@@ -86,6 +86,7 @@ export class HomePage {
   dataHome : Home;
   reqHome : string;
   isMissionsOn=false;
+  location:HomeLocation;
 
 
   constructor(private homeService : HomeService,private auth : LoginService) {}
@@ -102,9 +103,17 @@ export class HomePage {
         console.log(log)
     })
 
+    this.location = {
+      "lat" : Number(this.lat),
+      "lgn" : Number(this.lng)
+    }
+
+    
+
      this.reqHome = localStorage.getItem('token');
      console.log(this.reqHome);
-     this.homeService.getDataHome(this.reqHome).subscribe((res) =>{
+     this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
+      console.log(res);
        if(res){
         this.dataHome=  res;+
         console.log(this.dataHome);
