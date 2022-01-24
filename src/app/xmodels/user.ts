@@ -44,18 +44,60 @@ export interface ProfileResp {
     email:        string;
     nivelXtender: string;
     nivelesDatos: NivelesDatos;
-    informacion:  Capacitacion;
-    zonaInteres:  Capacitacion;
+    informacion:  Informacion;
+    zonaInteres:  ZonaInteres;
     capacitacion: Capacitacion;
-    accesos:      Accesos;
-}
-
-export interface Accesos {
-    credencias:  string;
-    cartaAcceso: string;
+    credenciales: Credenciales;
 }
 
 export interface Capacitacion {
+    habilidades: Habilidades;
+}
+
+export interface Habilidades {
+    "Envío de información por plataforma": EnvíoDeInformaciónPorPlataforma;
+    "Ingreso a tienda por personal":       EnvíoDeInformaciónPorPlataforma;
+}
+
+export interface EnvíoDeInformaciónPorPlataforma {
+    color:  Color;
+    cursos: Curso[];
+}
+
+export interface Color {
+    color: string;
+}
+
+export interface Curso {
+    nombre:          string;
+    mecanica:        string;
+    puntajePosible:  number;
+    puntajeObtenido: number;
+    score:           number;
+    aprobado:        number;
+}
+
+export interface Credenciales {
+    puesto:   string;
+    imss:     string;
+    rfc:      string;
+    urlFirma: string;
+}
+
+export interface Informacion {
+    nombre:          string;
+    apat:            string;
+    amat:            string;
+    email:           string;
+    movil:           string;
+    fechaNacimiento: Date;
+    dirCalle:        string;
+    dirNumExt:       string;
+    dirNumInt:       string;
+    dirColonia:      string;
+    dirAlcadia:      string;
+    dirCd:           string;
+    dirCP:           string;
 }
 
 export interface NivelesDatos {
@@ -64,4 +106,5 @@ export interface NivelesDatos {
     fotoID:             number;
 }
 
-
+export interface ZonaInteres {
+}

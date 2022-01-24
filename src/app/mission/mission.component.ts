@@ -26,6 +26,7 @@ export class MissionComponent  {
   message = '';
   accepted = false;
   habilidades:Habilidades[];
+  TextState="Enviar";
   promociones = [
     {
       img:'refiere-a-amigo.png',

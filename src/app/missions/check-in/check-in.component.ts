@@ -7,7 +7,7 @@ import { Capacitor, Plugins } from "@capacitor/core";
 import { LocationService } from "src/app//xservices/gservice/location.service"
 const { Toast } = Plugins;
 import { Geolocation } from '@capacitor/geolocation';
-
+import { MapsAPILoader } from '@agm/core';
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
@@ -24,11 +24,12 @@ export class CheckInComponent implements OnInit {
               private route: ActivatedRoute,
               private locationService: LocationService,
               public ngZone: NgZone,
-              private router: Router) { 
+              private router: Router,
+              private _mapsAPILoader: MapsAPILoader) { 
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.token = localStorage.getItem('token');
     this.lat = 19.4216458;
-    this.lgn = 99.0691779;
+    this.lgn = -99.0691779;
 
     this.dataCheckIn = {
       "id": this.idPV,
@@ -37,6 +38,9 @@ export class CheckInComponent implements OnInit {
                     "longitud":this.lgn
                    }
      };
+     this._mapsAPILoader.load().then(() => {
+      //do stuff here
+      });
    
     
     /**

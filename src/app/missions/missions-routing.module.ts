@@ -5,6 +5,7 @@ import { MymissionsComponent } from './mymissions/mymissions.component';
 import { StartMissionComponent } from './start-mission/start-mission.component';
 import { CheckInComponent } from './check-in/check-in.component';
 import { PendingMissionComponent } from './pending-mission/pending-mission.component';
+import { AgmCoreModule } from '@agm/core';
 
 const routes: Routes =[
   {
@@ -34,7 +35,8 @@ const routes: Routes =[
   declarations: [],
   imports:[
     RouterModule.forChild(routes),
-    MatIconModule
+    MatIconModule,
+    AgmCoreModule
   ],
   exports:[ RouterModule ]
 

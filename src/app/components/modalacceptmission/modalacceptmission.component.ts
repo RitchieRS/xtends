@@ -17,6 +17,7 @@ export class ModalacceptmissionComponent {
   message = '';
   accepted = false;
   idPV=0;
+  TextState="Aceptar Misión";
   constructor(public dialog: MatDialog,private route: ActivatedRoute,private srvMission : MissionService) { 
     this.idPV = Number(localStorage.getItem('idPV'));
     this.token = localStorage.getItem('token');
@@ -33,11 +34,12 @@ export class ModalacceptmissionComponent {
 
   openMissionAccept(){
     console.log(this.dataMission);
-    
+    this.TextState = "Espere.."
     this.srvMission.acceptMissionXTiendaProyecto(this.dataMission,this.token).subscribe((res) =>{
       if(res){
         this.message = res.resp.msg;
         this.accepted =true;
+        
         this.dialog.open(DialogacceptmissionComponent, {
           data: { message: this.message ,
                   idPV: this.idPV

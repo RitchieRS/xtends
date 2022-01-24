@@ -44,6 +44,11 @@ onSearchChange( event ){
   this.textoBuscar = event.detail.value;
 }
 
+gohome(){
+  console.log("gohome")
+  this.router.navigate(['home']);
+}
+
 
 
 async presentPopover(ev: any) {
