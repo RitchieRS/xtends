@@ -58,17 +58,23 @@ export class CheckInComponent implements OnInit {
     //this.srvMission.keepMissionInfo(dataMission);
   }
 
-  ngOnInit() {
-  }
-
   checkIn(){
     //console.log(this.dataCheckIn);
+    this.router.navigate(['start-mission/'+this.idPV])
     this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
        console.log(res)
-       this.router.navigate(['start-mission/'+this.idPV])
+       
     })
 
   } 
+
+  ngOnInit() {
+    (async () => {
+      const data = await this.getMyLocation()
+    })();
+  }
+
+ 
 
   async getMyLocation() {
     

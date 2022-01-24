@@ -94,7 +94,7 @@ export class StartMissionComponent  {
   }
 
   async ngOnInit() {
-    this.loadFiles();
+     this.loadFiles();    
   }
 
 
@@ -163,7 +163,11 @@ export class StartMissionComponent  {
   }
  
   async deleteImage(file: LocalFile) {
-    // TODO
+    await Filesystem.deleteFile({
+        directory: Directory.Data,
+        path: file.path
+    });
+  //  this.presentToast('File removed.');
   }
 
   async selectCamera() {
@@ -233,5 +237,16 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
   };
   reader.readAsDataURL(blob);
 });
+
+
+async sendSondeo(){
+  this.presentToast('Sondeo Enviado');
+  this.router.navigate(['home']);
+  
+this.images.forEach( (file)=>{
+    this.deleteImage(file)
+})
+
+}
 
 }
