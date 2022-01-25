@@ -22,7 +22,7 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
-    path: 'mission/:idTienda/:idProyecto',
+    path: 'mission/:idPV',
     loadChildren: () => import('./mission/mission.module').then( m => m.MissionModule)
   },
   {

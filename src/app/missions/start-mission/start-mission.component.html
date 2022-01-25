@@ -107,20 +107,20 @@
                         </ion-col>
                         <ion-col size="12">
                           <div class="iup-button-row">
-                            <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                            <button (click)="selectCamera()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                                TOMAR FOTO
                             </button>
-                            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                            <button (click)="selectGalery()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
                               BUSCAR EN GALERÍA
                             </button>
                           </div>
                         </ion-col>
                         <ion-col size="12">
-                          <ion-segment scrollable style="padding-bottom: 16px !important; padding-top: 16px !important;" class="bg-whitex">
-                            <ion-segment-button>
-                              <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/patines.jpg");'></div>
+                          <ion-segment  scrollable style="padding-bottom: 16px !important; padding-top: 16px !important;" class="bg-whitex">
+                            <ion-segment-button *ngFor="let file of images; let i = index" >
+                              <div class="iup-box-pre-view-photo" style='background-image: url("{{file.data}}");'></div>
                             </ion-segment-button>
-                            <ion-segment-button>
+                            <!--<ion-segment-button>
                               <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/imagenes_swipes-02.png");'></div>
                             </ion-segment-button>
                             <ion-segment-button>
@@ -131,7 +131,7 @@
                             </ion-segment-button>
                             <ion-segment-button>
                               <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/patines.jpg");'></div>
-                            </ion-segment-button>
+                            </ion-segment-button>-->
                           </ion-segment>
                         </ion-col>
                       </ion-row>
@@ -352,17 +352,11 @@
 
               </mat-accordion>
             </ion-col>
-            <ion-col size="12" class="ion-margin-vertical">
-              <ion-grid>
-                <ion-row>
-                  <ion-col size="6" class="ion-text-center">
-                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> ENVIAR</button>
-                  </ion-col>
-                  <ion-col size="6" class="ion-text-center">
-                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> REVIZAR</button>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
+            <ion-col size="12" class="ion-margin">
+              <div class="iup-button-row">
+                <button mat-stroked-button (click)="sendSondeo()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> ENVIAR</button>
+                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> REVIZAR</button>
+              </div>
             </ion-col>
           </ion-row>
         </ion-grid>

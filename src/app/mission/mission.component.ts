@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MissionService } from '../xservices/mission/mission.service';
-import { Mission ,RespMission,Habilidades } from '../xmodels/missions'
+import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/missions'
  
 @Component({
   selector: 'app-mission',
@@ -21,7 +21,12 @@ export class MissionComponent  {
   ciudad: string;
   estado: string;
   tiempo: string;
+  dataMission : ReqMission;
+  token: string;
+  message = '';
+  accepted = false;
   habilidades:Habilidades[];
+  TextState="Enviar";
   promociones = [
     {
       img:'refiere-a-amigo.png',
@@ -41,18 +46,16 @@ export class MissionComponent  {
   constructor(private route: ActivatedRoute,private srvMission : MissionService ) { }
 
   ngOnInit() {
-    const idTienda = Number(this.route.snapshot.paramMap.get('idTienda'));
-    const idProyecto = Number(this.route.snapshot.paramMap.get('idProyecto'));
+    const idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     const token = localStorage.getItem('token');
     const dataMission = {
-      "idTienda": idTienda,
-      "idProyecto": idProyecto
+      "idPV": idPV
     };
     this.srvMission.keepMissionInfo(dataMission);
     this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
       if(res){
         this.infMission = res;
-        
+
         this.missionDetail  = this.infMission.resp;
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.nombreActividad = this.missionDetail.nombreActividad;
@@ -72,6 +75,8 @@ export class MissionComponent  {
     })
 
   }
+
+  
 
   acceptMissionXProyect(){
     console.log("Start Mission");

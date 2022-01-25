@@ -56,7 +56,7 @@
 
                 <ion-item class="ion-padding-horizontal">
                   <ion-label  position="floating"><ion-icon name="keypad-outline"></ion-icon> Contraseña</ion-label>
-                  <ion-input formControlName="pass" ></ion-input>
+                  <ion-input formControlName="pass" type="password" ></ion-input>
                 </ion-item>
 
                   <ion-text *ngIf="submitted && f.email.errors" color="danger" class="ion-text-center invalid-feedback">
@@ -67,7 +67,7 @@
 
                 <ion-item class="ion-padding-horizontal">
                   <ion-label position="floating"><ion-icon name="key-outline"></ion-icon>Confirma contraseña</ion-label>
-                  <ion-input  formControlName="repass" ></ion-input>
+                  <ion-input  formControlName="repass"  type="password" ></ion-input>
                 </ion-item>
 
                   <ion-text *ngIf="submitted && f.repass.errors" color="danger" class="ion-text-center invalid-feedback">

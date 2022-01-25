@@ -45,7 +45,7 @@
                    </ion-label>
                  </ion-item>
                  <ion-fab  vertical="bottom" horizontal="end" >
-                  <button routerLink="/mission/{{mission.idTienda}}/{{mission.idProyecto}}" mat-icon-button>
+                  <button routerLink="/mission/{{mission.idPV}}" mat-icon-button>
                     <mat-icon class="color-cloudysky">navigate_next</mat-icon>
                   </button>
                 </ion-fab>
@@ -118,7 +118,7 @@
     <ion-grid>
       <ion-row>
         <!-- <ITEM - para colocar el ngFor> -->
-        <ion-col size="12" size-xl="4" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalData">
+        <ion-col size="12" size-xl="4" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalDataAux">
           <ion-grid  class="ion-no-padding border-radius">
             <ion-row>
               <ion-col>
@@ -209,7 +209,7 @@
                                     <button routerLink="/wallet" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                                       <mat-icon>share</mat-icon> Compartir
                                     </button>
-                                    <button routerLink="/mission/{{available.idTienda}}/{{available.idProyecto}}"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                                    <button routerLink="/mission/{{available.idPV}}"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
                                       Ver detalles <mat-icon >chevron_right</mat-icon>
                                     </button>
                                   </div>
@@ -262,12 +262,36 @@
       <ion-col size="12">
        <div >
           <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.755724009331!2d-99.10873338401346!3d19.379726986914502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff0216788e79%3A0xd976142e110eedf9!2sZech%20inK%20Tattoo%20Studio!5e0!3m2!1ses-419!2smx!4v1636659065201!5m2!1ses-419!2smx"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->
-          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" [disableDefaultUI]="false">
-            <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]=true></agm-marker>
+          <agm-map [latitude]="lat" [longitude]="lng" 
+          [zoom]="15"
+          [disableDefaultUI]="false"
+          [zoomControl]="false">
+
+            <agm-marker  
+            [latitude]="lat" 
+            [longitude]="lng" 
+            [iconUrl]="pinchoLocation"
+            >
+            </agm-marker>
+
+
+            <agm-marker *ngFor="let m of missionsAvalDatamap; let i = index" 
+            [latitude]="m.lat" 
+            [longitude]="m.long" 
+            [iconUrl]="m.color"
+            (markerClick)="actionPin(m)"
+             >
+            </agm-marker>
+
+
           </agm-map>
        </div>
       </ion-col>
       <ion-col>
+
+<!--<ion-icon color="purplextend" size="large" name="location"></ion-icon>
+<ion-icon color="greenxtend" size="large" name="location"></ion-icon>
+<ion-icon color="redxtend" size="large" name="location"></ion-icon>--->
         <!-- Modal missiones de los ocion del mapa, hay que cargarles los servicios amigo TEST -->
         <ion-row>
           <ion-col>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { ReqMission } from 'src/app/xmodels/missions';
+import { MissionService } from 'src/app/xservices/mission/mission.service';
 import { DialogacceptmissionComponent } from './dialogacceptmission/dialogacceptmission.component';
 
 @Component({
@@ -9,9 +12,42 @@ import { DialogacceptmissionComponent } from './dialogacceptmission/dialogaccept
 })
 export class ModalacceptmissionComponent {
 
-  constructor(public dialog: MatDialog) { }
+  dataMission : ReqMission;
+  token: string;
+  message = '';
+  accepted = false;
+  idPV=0;
+  TextState="Aceptar Misión";
+  constructor(public dialog: MatDialog,private route: ActivatedRoute,private srvMission : MissionService) { 
+    this.idPV = Number(localStorage.getItem('idPV'));
+    this.token = localStorage.getItem('token');
+    this.dataMission = {
+      "idPV": this.idPV,
+    };
+  }
   
   openDialog(){
-    this.dialog.open(DialogacceptmissionComponent)
+    
+    
+  }
+
+
+  openMissionAccept(){
+    console.log(this.dataMission);
+    this.TextState = "Espere.."
+    this.srvMission.acceptMissionXTiendaProyecto(this.dataMission,this.token).subscribe((res) =>{
+      if(res){
+        this.message = res.resp.msg;
+        this.accepted =true;
+        
+        this.dialog.open(DialogacceptmissionComponent, {
+          data: { message: this.message ,
+                  idPV: this.idPV
+                },
+        })
+        
+      }
+  
+    })
   }
 }

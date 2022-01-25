@@ -1,16 +1,16 @@
 <div mat-dialog-content>
   <div>
     <ion-grid class="ion-no-padding">
-      <ion-row [ngClass]="'bg-skybluextend'" class="ion-justify-content-center ion-padding">
+      <ion-row [ngClass]="[colorServicio]" class="ion-justify-content-center ion-padding">
         <ion-col size="2" class="ion-align-self-center ion-margin-end" >
-          <ion-icon [ngStyle]="{'color':'#229bd6', 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/promotoria.svg" ></ion-icon>
+          <ion-icon [ngStyle]="{'color':'{{typeActivity.color}}', 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="{{typeActivity.logo}}" ></ion-icon>
         </ion-col>
         <ion-col size="6" class="ion-padding">
          <div class="ion-text-start">
            <ion-label>
              <ion-text color="polarwhite">
-               <h2><strong>Promotoría</strong></h2>
-               <h4>Para Nivel 1</h4>
+               <h2><strong>{{typeActivity.actividad}}</strong></h2>
+               <h4>{{data.mivel}}</h4>
              </ion-text>
            </ion-label>
          </div>
@@ -20,7 +20,7 @@
            <ion-label>
              <ion-text color="polarwhite">
                <p>pago</p>
-               <h2><strong>$ 300</strong></h2>
+               <h2><strong>$ {{data.precio}}</strong></h2>
              </ion-text>
            </ion-label>
          </div>
@@ -32,9 +32,9 @@
              <ion-label >
                <ion-text color="cloudysky">
                  <p>
-                 <strong>Canal</strong> Especializada<br>
-                 <strong>Cadena:</strong> AUTOZONE<br>
-                 <strong>Tiempo visita promedio:</strong> 1 hr.
+                 <strong>Canal</strong> {{data.canal}}<br>
+                 <strong>Cadena:</strong> {{data.cadena}}<br>
+                 <strong>Tiempo visita promedio:</strong> {{data.tiempo}}
                </p>
                </ion-text>
              </ion-label>
@@ -46,7 +46,7 @@
               <ion-text color="cloudysky">
                 <p>
                 <strong>Ubicación</strong><br>
-                Autozone Centro<br>
+                {{data.sucursal}}<br>
                 Colonia Centro
                 09430
               </p>
@@ -60,7 +60,7 @@
           <button routerLink="/wallet" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
             <mat-icon>share</mat-icon> Compartir
           </button>
-          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+          <button (click)="missionPending()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
             Ver detalles <mat-icon >chevron_right</mat-icon>
           </button>
         </div>

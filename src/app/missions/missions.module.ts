@@ -22,7 +22,7 @@ import { PendingMissionComponent } from './pending-mission/pending-mission.compo
 import { ModalCaptureproductinfoComponent } from './modal-captureproductinfo/modal-captureproductinfo.component';
 import { DialogCaptureproductinfoComponent } from './modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
@@ -52,6 +52,7 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatDatepickerModule,
     MatDialogModule,
     MatButtonModule,
+    AgmCoreModule
   ],
   exports: [
     MymissionsComponent,

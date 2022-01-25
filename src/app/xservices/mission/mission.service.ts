@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { ReqMission,Mission, ResMissionAccepted} from 'src/app/xmodels/missions';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { Sondeo } from 'src/app/xmodels/sondeo';
 
 @Injectable({
   providedIn: 'root'
@@ -53,6 +54,28 @@ export class MissionService {
           catchError((err)=> this.handeleError(err))
     );
   };
+
+  getSondeoXmission(token : string,request: any):Observable<Sondeo | void>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+  
+    
+    return this.http.post<Sondeo>(`${environment.API_URL}sondeos`,request ,httpOptions).pipe(
+          map(( res :  Sondeo)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
   private handeleError(err) : Observable<never>{
     let erroMessage = "An error has ocurred";
     if(err){
@@ -66,8 +89,7 @@ export class MissionService {
 
   public keepMissionInfo(data : any):void{
     console.log("Start save Data");
-    localStorage.setItem('idTienda',data.idTienda);
-    localStorage.setItem('idProyecto',data.idProyecto);
+    localStorage.setItem('idPV',data.idPV);
   
   }
 

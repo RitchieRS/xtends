@@ -77,6 +77,18 @@ export class ProfileComponent implements OnInit {
   referidosPorcentajeStr:string;
   referidosPorcentajeN:number;
   fotoId:number;
+  amat:string;
+  apat: string;
+  dirAlcadia: string;
+  dirCP: string;
+  dirCalle:string;
+  dirCd: string;
+  dirColonia:string;
+  dirNumExt: string;
+  dirNumInt: string;
+  email: string;
+  fechaNacimiento: Date;
+  movil: string;
   constructor(private route: ActivatedRoute,private srvProfile : InfoService) { }
 
   ngOnInit() {
@@ -85,7 +97,19 @@ export class ProfileComponent implements OnInit {
       if(res){
         this.userResponse = res;
         this.profileData = this.userResponse.resp;
-        this.nombre = this.profileData.nombre;
+        this.nombre = this.profileData.informacion.nombre; 
+        this.amat = this.profileData.informacion.amat;
+        this.apat = this.profileData.informacion.apat;
+        this.dirAlcadia = this.profileData.informacion.dirAlcadia;
+        this.dirCP = this.profileData.informacion.dirCP;
+        this.dirCalle = this.profileData.informacion.dirCalle;
+        this.dirCd = this.profileData.informacion.dirCd;
+        this.dirColonia = this.profileData.informacion.dirColonia;
+        this.dirNumExt = this.profileData.informacion.dirNumExt;
+        this.dirNumInt = this.profileData.informacion.dirNumInt;
+        this.email =  this.profileData.informacion.email;
+        this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
+        this.movil = this.profileData.informacion.movil;
 
         this.datosCompletosStr = this.profileData.nivelesDatos.datosComplemento;
         this.datosCompletosN = Number(this.datosCompletosStr.substring(0,this.datosCompletosStr.length-1))/100;

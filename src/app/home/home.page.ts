@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
-import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content } from '../xmodels/home';
+import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content, HomeLocation, Section4Content, Section4 } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
 import { TransitionCheckState } from '@angular/material/checkbox';
+import { DialogmissionComponent } from '../components/modalmission/dialogmission/dialogmission.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-home',
@@ -12,14 +14,27 @@ import { TransitionCheckState } from '@angular/material/checkbox';
 })
 export class HomePage {
 
+  currentIndex = 10;
+  itemsMission= [...Array(this.currentIndex).keys()];
   missions:Section1;
   missionsData :Section1Content[];
   banner:Section2;
   bannerData :Section2Content[];
   missionAval:Section3;
   missionsAvalData :Section3Content[];
+  missionsAvalDataAux :Section3Content[];
+  missionAvalmap:Section4;
+  missionsAvalDatamap :Section4Content[];
+  missionsAvalDataAuxmap :Section4Content[];
   lat:any;
   lng:any;
+  pinchoLocation= {
+    url: './assets/icon/location-navybluextend.svg',
+    scaledSize: {
+        width: 40,
+        height: 60
+    }
+  }
    /* {
      logoimg:'shell.svg',
      marca:'shell',
@@ -86,9 +101,15 @@ export class HomePage {
   dataHome : Home;
   reqHome : string;
   isMissionsOn=false;
+  location:HomeLocation;
+  renderOptions = {
+    suppressMarkers: true,
+  }
 
 
-  constructor(private homeService : HomeService,private auth : LoginService) {}
+  constructor(private homeService : HomeService,
+              private auth : LoginService,
+              public dialog: MatDialog) {}
 
   ngOnInit() {
 
@@ -102,12 +123,22 @@ export class HomePage {
         console.log(log)
     })
 
+    this.location = {
+      "lat" : Number(this.lat),
+      "lgn" : Number(this.lng)
+    }
+
+    
+
+    
+
      this.reqHome = localStorage.getItem('token');
      console.log(this.reqHome);
-     this.homeService.getDataHome(this.reqHome).subscribe((res) =>{
+     this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
+      console.log(res);
        if(res){
-        this.dataHome=  res;+
-        console.log(this.dataHome);
+        this.dataHome=  res;
+        //console.log(this.dataHome);
         /* Misiones Activas*/
         if(this.dataHome.section1.content.length>=1){
          this.missions = this.dataHome.section1;
@@ -124,11 +155,23 @@ export class HomePage {
         if(this.dataHome.section3.content.length>=1){
           this.missionAval = this.dataHome.section3;
           this.missionsAvalData = this.dataHome.section3.content;
-          console.log(this.missionsAvalData);
+          this.missionsAvalDataAux = this.missionsAvalData.slice(0,5);
+         // console.log(this.missionsAvalData);
          }
-        console.log(this.dataHome.section1);
+         /* Misiones Disponibles*/
+        if(this.dataHome.section4.content.length>=1){
+          this.missionAvalmap = this.dataHome.section4;
+          this.missionsAvalDatamap = this.dataHome.section4.content;
+          this.missionAvalmap.content.forEach(element => {
+            element.color = this.pincho(element.colorServicio)
+                        
+          });
+          this.missionsAvalDataAuxmap = this.missionsAvalDatamap.slice(0,5);
+          console.log(this.missionsAvalDatamap);
+         }
+        //console.log(this.dataHome.section1);
 
-        console.log(this.dataHome);
+       // console.log(this.dataHome);
        }
 
 
@@ -139,6 +182,24 @@ export class HomePage {
   }
 
 
+  actionPin(mission : any){
+    console.log("Hola soy un pincho");
+    this.dialog.open(DialogmissionComponent,{
+                                            data:{
+                                              canal: mission.canal,
+                                              ciudad: mission.ciudad,
+                                              colorServicio: mission.colorServicio,
+                                              estado: mission.estado,
+                                              idPV: mission.idPV,
+                                              sucursal: mission.sucursal,
+                                              tiempo: mission.tiempo
+                                            }
+                                          });
+
+   }
+
+ 
+
   tipoServicio(tipo:string):any{
     let type={
       color:"",
@@ -148,6 +209,7 @@ export class HomePage {
       case "Promotoria": {
         type.color='#229bd6';
         type.logo="promotoria.svg"
+
         break;
       }
       case  "Mistery": {
@@ -174,6 +236,40 @@ export class HomePage {
       }
       return type;
     }
+
+    pincho(tipo:string):any{
+      let type = {
+            url: './assets/icon/location-redxtend.svg',
+            scaledSize: {
+                width: 40,
+                height: 60
+            }
+          };
+      switch(tipo) {
+        case "redxtend": {
+          type.url='./assets/icon/location-redxtend.svg';
+          break;
+        }
+        case "skybluextend": {
+          type.url='./assets/icon/location-skybluextend.svg';
+          break;
+        }
+        case  "greenxtend": {
+          type.url='./assets/icon/location-greenxtend.svg';
+          break;
+        }
+        case "purplextend": {
+          type.url='./assets/icon/location-purplextend.svg';
+          break;
+        }
+       
+        default: {
+  
+        }
+        break;
+        }
+        return type;
+      }
 
 
 }

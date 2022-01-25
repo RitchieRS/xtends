@@ -54,8 +54,6 @@ export class RegisterComponent implements OnInit {
         this.isRegisterFailed = true;
       }
     }) 
-
-
   }
 
   numberOnly(event): boolean {

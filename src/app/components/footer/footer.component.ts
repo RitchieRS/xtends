@@ -23,5 +23,8 @@ export class FooterComponent implements OnInit {
   wallet(){
     this.router.navigate(['wallet/main'])
   }
+  home(){
+    this.router.navigate(['home'])
+  }
 
 }
