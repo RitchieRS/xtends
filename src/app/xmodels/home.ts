@@ -69,6 +69,7 @@ export interface Section4 {
 }
 
 export interface Section4Content {
+    color:  any;
     idTienda:   number;
     idProyecto: number;
     canal:      string;
@@ -79,6 +80,8 @@ export interface Section4Content {
     ciudad:     string;
     lat:        number;
     long:       number;
+    colorServicio: string;
+
 }
 
 

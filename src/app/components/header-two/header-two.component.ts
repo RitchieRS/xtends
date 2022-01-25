@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivationStart, Router, RouterOutlet } from '@angular/router';
 import { SearchService } from '../../xservices/search/search.service';
 import { PopoverController} from '@ionic/angular';
+import { Location } from '@angular/common';
 import { PopoverInfoComponent} from '../popover-info/popover-info.component';
 @Component({
   selector: 'app-header-two',
@@ -23,7 +24,8 @@ export class HeaderTwoComponent implements OnInit {
 constructor(
         private router: Router,
         private searchService: SearchService,
-        private popoverCtrl: PopoverController
+        private popoverCtrl: PopoverController,
+        private location: Location
 ) { }
 
 
@@ -52,6 +54,7 @@ gohome(){
 
 
 
+
 async presentPopover(ev: any) {
   const popover = await this.popoverCtrl.create({
     component: PopoverInfoComponent,
@@ -62,6 +65,12 @@ async presentPopover(ev: any) {
   });
   await popover.present();
 
+
+}
+
+back() : void{
+
+  this.location.back();
 
 }
 

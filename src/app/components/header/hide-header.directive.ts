@@ -1,4 +1,5 @@
 import { Directive, OnInit, Input, Renderer2, HostListener } from '@angular/core';
+
 import { DomController } from '@ionic/angular';
 
 @Directive({

@@ -31,8 +31,9 @@ export class LoginComponent implements OnInit {
               public ngZone: NgZone,
               private locationService: LocationService) { 
                 
-    this.lat = 12.93448;
-    this.lng = 77.6192;
+    this.lat = 19.4216458;
+  
+    this.lng = -99.0691779;
   }
 
   ngOnInit() {
