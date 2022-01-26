@@ -7,6 +7,7 @@ import { CheckLoginGuard } from './shared/guards/check-login.guard';
 import { WalletRoutingModule } from './wallet/wallet-routing.module';
 import { SlidePageRoutingModule } from './slide/slide-routing.module';
 import { MissionsRoutingModule } from './missions/missions-routing.module';
+import { XtendLevelsRoutingModule } from './xtend-levels/xtend-levels-routing.module';
 
 
 
@@ -55,6 +56,10 @@ const routes: Routes = [
     loadChildren: () => import('./active-missions/active-missions.module').then( m => m.ActiveMissionsPageModule)
   },
   {
+    path: 'xtend-levels',
+    loadChildren: () => import('./xtend-levels/xtend-levels.module').then( m => m.XtendLevelsModule)
+  },
+  {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
   },
 
@@ -72,6 +77,7 @@ const routes: Routes = [
     ProfileRoutingModule,
     SlidePageRoutingModule,
     MissionsRoutingModule,
+    XtendLevelsRoutingModule
   ]
 })
 export class AppRoutingModule { }

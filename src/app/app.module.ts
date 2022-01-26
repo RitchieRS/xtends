@@ -19,6 +19,7 @@ import { WalletModule } from './wallet/wallet.module';
 import { ProfileModule } from './profile/profile.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SlidePageModule } from './slide/slide.module';
+import { XtendLevelsModule } from "./xtend-levels/xtend-levels.module";
 
 // Google Materials Angular
 import { MatCardModule } from '@angular/material/card';
@@ -66,6 +67,7 @@ import { MissionsModule } from './missions/missions.module';
     MissionsModule,
     WalletModule,
     ProfileModule,
+    XtendLevelsModule,
     SlidePageModule,
     MatRadioModule,
     MatNativeDateModule,
