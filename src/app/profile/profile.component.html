@@ -202,36 +202,36 @@
                 <form class="iup-form" color="primary">
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
-                      <input matInput placeholder="{{nombre}}">
+                      <mat-label class="mat-label-color-navyblue">{{nombre}}</mat-label>
+                      <input matInput placeholder="Modificar Nombre">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">A. Materno</mat-label>
-                      <input matInput placeholder="{{amat}}">
+                      <mat-label class="mat-label-color-navyblue">{{amat}}</mat-label>
+                      <input matInput placeholder="Modificar A. Materno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">A. Paterno</mat-label>
-                      <input matInput placeholder="{{apat}}">
+                      <mat-label class="mat-label-color-navyblue">{{apat}}</mat-label>
+                      <input matInput placeholder="Modificar A. Paterno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">E-mail</mat-label>
-                      <input matInput placeholder="{{email}}">
+                      <mat-label class="mat-label-color-navyblue">{{email}}</mat-label>
+                      <input matInput placeholder="Modificar Mail">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">Móvil</mat-label>
-                      <input matInput placeholder="{{movil}}">
+                      <mat-label class="mat-label-color-navyblue">{{movil}}</mat-label>
+                      <input matInput placeholder="Modificar Móvil">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
@@ -247,7 +247,7 @@
 
                 </form>
 
-                <ion-grid class="ion-margin-horizontal">
+                <ion-grid class="ion-margin-vertical">
                   <form class="iup-form">
                   <ion-row class="ion-justify-content-center ion-align-items-center">
                     <ion-col>
@@ -309,66 +309,86 @@
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">Calle</mat-label>
-                          <input matInput placeholder="{{dirCalle}}">
+                          <mat-label class="mat-label-color-navyblue">{{dirCalle}}</mat-label>
+                          <input matInput placeholder="Modificar Calle">
                         </mat-form-field>
                       </p>
                     </ion-col>
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">No.Ext.</mat-label>
-                          <input matInput placeholder="{{dirNumExt}}">
+                          <mat-label class="mat-label-color-navyblue">No.Ext. {{dirNumExt}}</mat-label>
+                          <input matInput placeholder="Modificar No.Ext.">
                         </mat-form-field>
                       </p>
                     </ion-col>
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">No.Int.</mat-label>
-                          <input matInput placeholder="{{dirNumInt}}">
+                          <mat-label class="mat-label-color-navyblue">No.Int. {{dirNumInt}}</mat-label>
+                          <input matInput placeholder="Modificar No.Int.">
                         </mat-form-field>
                       </p>
                     </ion-col>
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">Colonía</mat-label>
-                          <input matInput placeholder="{{dirColonia}}">
+                          <mat-label class="mat-label-color-navyblue">{{dirColonia}}</mat-label>
+                          <input matInput placeholder="Modificar Colonía">
                         </mat-form-field>
                       </p>
                     </ion-col>
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">Alcaldía</mat-label>
-                          <input matInput placeholder="{{dirAlcadia}}">
+                          <mat-label class="mat-label-color-navyblue">{{dirAlcadia}}</mat-label>
+                          <input matInput placeholder="Modificar Alcaldía">
                         </mat-form-field>
                       </p>
                     </ion-col>
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">C.P.</mat-label>
-                          <input matInput placeholder="{{dirCP}}">
+                          <mat-label class="mat-label-color-navyblue">C.P. {{dirCP}}</mat-label>
+                          <input matInput placeholder="Modificar C.P.">
                         </mat-form-field>
                       </p>
                     </ion-col>
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">C.d.</mat-label>
-                          <input matInput placeholder="México">
+                          <mat-label class="mat-label-color-navyblue">México</mat-label>
+                          <input matInput placeholder="Modificar C.d.">
                         </mat-form-field>
                       </p>
                     </ion-col>
                   </ion-row>
                   <ion-row>
-                    <section>
-                      <div class="iup-button-row">
-                        <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio</button>
-                      </div>
-                    </section>
+                    <ion-col>
+                      <ion-grid class="ion-no-padding">
+                        <ion-row class="ion-no-margin">
+                          <ion-col size="12">
+                            <section>
+                              <div class="iup-button-row">
+                                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio</button>
+                              </div>
+                            </section>
+                          </ion-col>
+                          <ion-col size="12" class="ion-text-center">
+                            <ion-chip>
+                              <ion-avatar>
+                                <img src="../../../assets/img/patines.jpg">
+                              </ion-avatar>
+                              <ion-label>¡Comprobante listo!</ion-label>
+                              <ion-icon name="close-circle"></ion-icon>
+                            </ion-chip>
+                          </ion-col>
+                        </ion-row>
+
+                      </ion-grid>
+
+                    </ion-col>
+
                   </ion-row>
                   <hr>
                   <ion-row>
@@ -400,13 +420,13 @@
                 </form>
                 </ion-grid>
 
-                <!-- <section style="margin-top: 10px;">
+                <section style="margin-top: 10px;">
                   <div class="iup-button-row">
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                   </div>
-                </section> -->
+                </section>
 
 
               </mat-expansion-panel>
@@ -450,8 +470,8 @@
                         <ion-grid class="ion-no-margin">
                           <ion-row>
                             <ion-col size="2" class="ion-align-self-center ion-margin-end">
-                              <div class="box-img border-rodondos">
-                                <ion-icon size="large" src="../../assets/icon/circle.svg" [ngStyle]="{'color': habilidad.color}"></ion-icon>
+                              <div class="">
+                                <ion-icon size="large" src="../../assets/icon/{{habilidad.icon}}" color="{{habilidad.color}}"></ion-icon>
                               </div>
                             </ion-col>
                             <ion-col size="9" class="ion-align-self-center">
@@ -473,10 +493,10 @@
                       <ion-grid class="ion-margin-horizontal">
                         <!-- aquí va el ngFor -->
                         <ion-row class="ion-margin-bottom" *ngFor="let paso of pasos">
-                          <ion-col size="2" class="ion-align-self-center">
-                              <ion-icon size="large" color="{{paso.colortwo}}" name="{{paso.icon}}"></ion-icon>
+                          <ion-col size="2" class="ion-align-self-center ion-text-center">
+                              <ion-icon size="small" color="{{paso.colortwo}}" name="{{paso.icon}}"></ion-icon>
                           </ion-col>
-                          <ion-col size="8" class="ion-align-self-center">
+                          <ion-col size="7" class="ion-align-self-center">
                             <ion-label>
                               <ion-text color="cloudysky">
                                 <p class="ion-no-margin"><strong>{{paso.title}}</strong></p>
@@ -484,7 +504,7 @@
                               </ion-text>
                             </ion-label>
                           </ion-col>
-                          <ion-col size="2" class="ion-align-self-center ion-text-right">
+                          <ion-col size="3" class="ion-align-self-center ion-text-right">
                             <ion-label>
                               <ion-text color="cloudysky">
                                 <p class="ion-no-margin">Score</p>

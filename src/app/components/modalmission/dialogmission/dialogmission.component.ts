@@ -22,13 +22,13 @@ export class DialogmissionComponent implements OnInit {
 
                                                     },
                                                     private router: Router,
-                                                    private matDialog: MatDialog) { 
+                                                    private matDialog: MatDialog) {
 
                                                       this.colorServicio = "bg-"+data.colorServicio;
                                                       console.log(this.colorServicio);
                                                       this.typeActivity = this.tipoServicio(data.colorServicio);
 
-                                                      
+
                                                      }
 
   ngOnInit() {}
@@ -46,25 +46,25 @@ export class DialogmissionComponent implements OnInit {
     };
     switch(tipo) {
       case "skybluextend": {
-        type.color='#229bd6';
+        type.color='skybluextend';
         type.logo="../../assets/icon/promotoria.svg";
         type.actividad="Promotoría";
         break;
       }
       case  "navybluextend": {
-        type.color='#161949';
+        type.color='navybluextend';
         type.logo="../../assets/icon/mystery.svg"
         type.actividad="Mietery Shoper";
         break;
       }
       case "purplextend": {
-        type.color='#825aa5';
+        type.color='purplextend';
         type.logo="../../assets/icon/demostrador.svg";
         type.actividad="Demostrador";
         break;
       }
       case "greenxtend": {
-        type.color='#90c04e';
+        type.color='greenxtend';
         type.logo="../../assets/icon/anaqueleo.svg"
         type.actividad="Anaqueleo";
         break;

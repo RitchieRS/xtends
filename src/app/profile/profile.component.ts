@@ -11,17 +11,19 @@ import { InfoService } from '../xservices/user/info.service';
 export class ProfileComponent implements OnInit {
   habilidades = [
     {
-      color:'#229bd6',
+      color:'skybluextend',
       colortwo:'primary',
       tipo:'Básico de Promotoría',
       avance:'0.5',
+      icon:'promotoria.svg',
       // pasos:['1. Ingresox','2. Documentación','3. Ubicación', '4. Limpieza', '5. Precios']
     },
     {
-      color:'#90c04e',
+      color:'greenxtend',
       colortwo:'success',
       tipo:'Fotografía Anaquel',
       avance:'0.25',
+      icon:'anaqueleo.svg',
     },
   ];
   pasos = [
@@ -97,7 +99,7 @@ export class ProfileComponent implements OnInit {
       if(res){
         this.userResponse = res;
         this.profileData = this.userResponse.resp;
-        this.nombre = this.profileData.informacion.nombre; 
+        this.nombre = this.profileData.informacion.nombre;
         this.amat = this.profileData.informacion.amat;
         this.apat = this.profileData.informacion.apat;
         this.dirAlcadia = this.profileData.informacion.dirAlcadia;

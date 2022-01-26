@@ -8,7 +8,7 @@
        <ion-row class="ion-padding-horizontal">
          <ion-col size="6" class="ion-text-start ion-align-self-center">
            <ion-text color="navyblue">
-             <h4 class="ion-no-margin">Misiones activas</h4>
+             <h1 class="ion-no-margin">Misiones activas</h1>
            </ion-text>
 
          </ion-col>
@@ -101,16 +101,16 @@
   <!-- Misiones disponibles _________________________________ -->
   <ion-grid class="bg-polarwhite ion-padding-bottom">
     <ion-row class="ion-padding-horizontal">
-      <ion-col size="7" class="ion-text-start ion-align-self-center">
+      <ion-col size="6" class="ion-text-start ion-align-self-center">
         <ion-text color="navyblue">
-          <h4 class="ion-no-margin">Misiones disponibles</h4>
+          <h1 class="ion-no-margin">Misiones disponibles</h1>
         </ion-text>
       </ion-col>
 
-      <ion-col size="5" class="ion-text-end ion-align-self-center">
-        <ion-chip outline color="silverblue" expand="block">
-          <ion-icon color="navyblue" name="funnel"></ion-icon>
-          <ion-label color="navyblue">Filtrar</ion-label>
+      <ion-col size="6" class="ion-text-end ion-align-self-center">
+        <ion-chip class="ion-color ion-color-navyblue chip-outline ">
+          <ion-label>Ver todas</ion-label>
+          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
         </ion-chip>
       </ion-col>
     </ion-row>
@@ -247,14 +247,14 @@
     <ion-row class="ion-padding-horizontal">
       <ion-col size="6" class="ion-text-start ion-align-self-center">
         <ion-text color="navyblue">
-          <h4 class="ion-no-margin">Buscar por zona</h4>
+          <h1 class="ion-no-margin">Buscar por zona</h1>
         </ion-text>
 
       </ion-col>
       <ion-col size="6" class="ion-text-end ion-align-self-center">
-        <ion-chip outline color="silverblue" expand="block">
-          <ion-icon color="navyblue" name="funnel"></ion-icon>
-          <ion-label color="navyblue">Filtrar</ion-label>
+        <ion-chip class="ion-color ion-color-navyblue chip-outline ">
+          <ion-label>Ver todas</ion-label>
+          <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
         </ion-chip>
       </ion-col>
     </ion-row>
@@ -262,22 +262,22 @@
       <ion-col size="12">
        <div >
           <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.755724009331!2d-99.10873338401346!3d19.379726986914502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff0216788e79%3A0xd976142e110eedf9!2sZech%20inK%20Tattoo%20Studio!5e0!3m2!1ses-419!2smx!4v1636659065201!5m2!1ses-419!2smx"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->
-          <agm-map [latitude]="lat" [longitude]="lng" 
+          <agm-map [latitude]="lat" [longitude]="lng"
           [zoom]="15"
           [disableDefaultUI]="false"
           [zoomControl]="false">
 
-            <agm-marker  
-            [latitude]="lat" 
-            [longitude]="lng" 
+            <agm-marker
+            [latitude]="lat"
+            [longitude]="lng"
             [iconUrl]="pinchoLocation"
             >
             </agm-marker>
 
 
-            <agm-marker *ngFor="let m of missionsAvalDatamap; let i = index" 
-            [latitude]="m.lat" 
-            [longitude]="m.long" 
+            <agm-marker *ngFor="let m of missionsAvalDatamap; let i = index"
+            [latitude]="m.lat"
+            [longitude]="m.long"
             [iconUrl]="m.color"
             (markerClick)="actionPin(m)"
              >
