@@ -13,22 +13,22 @@
         </ion-col> -->
       </ion-row>
     </ion-grid>
-    <ion-card>
+    <ion-card *ngFor="let available of missionsAvalData" >
       <ion-card-content>
         <ion-grid class="ion-no-padding">
           <ion-row class="ion-justify-content-center">
             <ion-col size="2" class="ion-align-self-center ion-margin-end">
               <div style="width: 50px;" class="ion-margin-end">
-                <img src="../../assets/img/shell.svg">
+                <img src="{{available.logoCliente}}">
               </div>
             </ion-col>
             <ion-col size="7" class="ion-align-self-center">
               <ion-label>
                 <ion-text color="cloudysky">
-                  <h2><strong>Shell</strong></h2>
-                  <h3>Promotoría Shell</h3>
-                  <p>Tiempo de visita. 30 min.</p>
-                  <p>Pago<strong> $250</strong></p>
+                  <h2><strong>{{available.nombreCliente}}</strong></h2>
+                  <h3>{{available.actividad}}</h3>
+                  <p>Tiempo de visita. 30 min. valid_heidi </p>
+                  <p>Pago<strong> ${{available.pago}}</strong></p>
                 </ion-text>
               </ion-label>
             </ion-col>
@@ -41,7 +41,7 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <ion-card>
+   <!-- <ion-card>
       <ion-card-content>
         <ion-grid class="ion-no-padding">
           <ion-row class="ion-justify-content-center">
@@ -68,7 +68,7 @@
           </ion-row>
         </ion-grid>
       </ion-card-content>
-    </ion-card>
+    </ion-card>-->
   </div>
 
 </ion-content>

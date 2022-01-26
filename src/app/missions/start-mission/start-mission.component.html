@@ -41,8 +41,8 @@
         <ion-grid class="ion-no-margin ion-no-padding">
           <ion-row class="ion-no-margin ion-no-padding">
             <ion-col size="12" class="ion-no-margin">
-              <mat-accordion>
-                <mat-expansion-panel>
+              <mat-accordion *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo" >
+                <!--<mat-expansion-panel>
                   <mat-expansion-panel-header>
                     <mat-panel-title>
                       <ion-grid>
@@ -131,7 +131,7 @@
                             </ion-segment-button>
                             <ion-segment-button>
                               <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/patines.jpg");'></div>
-                            </ion-segment-button>-->
+                            </ion-segment-button>
                           </ion-segment>
                         </ion-col>
                       </ion-row>
@@ -237,7 +237,7 @@
                       </ion-row>
                     </ion-grid>
                   </div>
-                </mat-expansion-panel>
+                
 
                 <mat-expansion-panel>
                   <mat-expansion-panel-header >
@@ -348,7 +348,187 @@
                       </ion-grid>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
+                </mat-expansion-panel>--->
+
+                <mat-expansion-panel *ngSwitchCase="'unicaRadio'" >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      <ion-grid>
+                        <ion-row class="ion-justify-content-center">
+                          <ion-col size="10">
+                            <ion-text color=navyblue>
+                              <h6>{{p.pregunta}}</h6>
+                            </ion-text>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-list radio-group>
+                    <ion-item  *ngFor="let radio of p.opciones; let rad = index" for="Option-{{rad}}">
+                      
+                      <p> {{radio.opcion}}</p>  <ion-checkbox color="primary"  slot="start" id="Option-{{i + '-'+ rad}}"  (click)="checkboxClick($event)"  ></ion-checkbox>
+                    
+                    </ion-item>
+                  </ion-list>
+                    <div class="iup-button-row">
+                      <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                         GUARDAR
+                      </button>
+                    </div>
+                  </div>
                 </mat-expansion-panel>
+
+
+                <mat-expansion-panel *ngSwitchCase="'numerica'" >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      <ion-grid>
+                        <ion-row class="ion-justify-content-center">
+                          <ion-col size="10">
+                            <ion-text color=navyblue>
+                              <h6>{{p.pregunta}}</h6>
+                            </ion-text>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-item >
+                      <ion-input type="number" value="0"></ion-input>
+                     </ion-item>
+                    <div class="iup-button-row">
+                      <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                         GUARDAR
+                      </button>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel *ngSwitchCase="'abierta'" >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      <ion-grid>
+                        <ion-row class="ion-justify-content-center">
+                          <ion-col size="10">
+                            <ion-text color=navyblue>
+                              <h6>{{p.pregunta}}</h6>
+                            </ion-text>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-item >
+                      <ion-input placeholder="Escribe aquì tu respuesta"></ion-input>
+                     </ion-item>
+                    <div class="iup-button-row">
+                      <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                         GUARDAR
+                      </button>
+                    </div>
+                  </div>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel *ngSwitchCase="'informartiva'" >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      <ion-grid>
+                        <ion-row class="ion-justify-content-center">
+                          <ion-col size="10">
+                            <ion-text color=navyblue>
+                              <h6>{{p.pregunta}}</h6>
+                            </ion-text>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  
+                </mat-expansion-panel>
+
+                <mat-expansion-panel *ngSwitchCase="'fotografia'" >
+                  <mat-expansion-panel-header >
+                    <mat-panel-title>
+                      <ion-grid>
+                        <ion-row class="ion-justify-content-center">
+                          <ion-col size="10">
+                            <ion-text color=navyblue>
+                              <h6>{{p.pregunta}}</h6>
+                            </ion-text>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                            <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
+                    </mat-panel-title>
+                  </mat-expansion-panel-header>
+                  <div class="ion-padding-horizontal">
+                    <ion-grid class="ion-no-padding">
+                      <ion-row>
+                        <ion-col size="12" class="ion-padding-horizontal">
+                          <ion-text color="navyblue">
+                            <p class="ion-no-margin"><strong>Toma fotografía del anaquel y como lo encontraste</strong></p>
+                          </ion-text>
+                        </ion-col>
+                        <ion-col size="12">
+                          <div class="iup-button-row">
+                            <button (click)="selectCamera()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                               TOMAR FOTO
+                            </button>
+                          </div>
+                        </ion-col>
+                        <ion-col size="12">
+                          <ion-segment  scrollable style="padding-bottom: 16px !important; padding-top: 16px !important;" class="bg-whitex">
+                            <ion-segment-button *ngFor="let file of images; let i = index" >
+                              <div class="iup-box-pre-view-photo" style='background-image: url("{{file.data}}");'></div>
+                            </ion-segment-button>
+                          </ion-segment>
+                        </ion-col>
+                      </ion-row>
+                    </ion-grid>
+                    <hr>
+                  </div>
+                  
+                </mat-expansion-panel>
+
+
+                <!---
+                
+                
+                
+                -->
 
               </mat-accordion>
             </ion-col>

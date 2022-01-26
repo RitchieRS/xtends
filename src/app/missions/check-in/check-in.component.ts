@@ -137,6 +137,7 @@ export class CheckInComponent implements OnInit {
   }
 
   clearWatch() {
+    
     if (this.watchId != null) {
       Geolocation.clearWatch({ id: this.watchId });
     }

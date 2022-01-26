@@ -55,7 +55,7 @@ export class MissionService {
     );
   };
 
-  getSondeoXmission(token : string,request: any):Observable<Sondeo | void>{
+  getSondeoXmission(token : string,request: any):Observable<Sondeo>{
     console.log(request);
     const httpOptions = {
       headers: new HttpHeaders({

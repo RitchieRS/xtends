@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class HomePage {
 
-  currentIndex = 10;
+  currentIndex = 5;
   itemsMission= [...Array(this.currentIndex).keys()];
   missions:Section1;
   missionsData :Section1Content[];
@@ -155,7 +155,7 @@ export class HomePage {
         if(this.dataHome.section3.content.length>=1){
           this.missionAval = this.dataHome.section3;
           this.missionsAvalData = this.dataHome.section3.content;
-          this.missionsAvalDataAux = this.missionsAvalData.slice(0,5);
+          this.missionsAvalDataAux = this.dataHome.section3.content.slice(0,5);
          // console.log(this.missionsAvalData);
          }
          /* Misiones Disponibles*/
@@ -166,7 +166,7 @@ export class HomePage {
             element.color = this.pincho(element.colorServicio)
                         
           });
-          this.missionsAvalDataAuxmap = this.missionsAvalDatamap.slice(0,5);
+          
           console.log(this.missionsAvalDatamap);
          }
         //console.log(this.dataHome.section1);
@@ -179,6 +179,13 @@ export class HomePage {
 
 
     })
+  }
+
+  seeMore(){
+    this.currentIndex += 5;
+    console.log(this.currentIndex);
+    this.missionsAvalDataAux  = this.missionsAvalData;
+    this.missionsAvalDataAux = this.missionsAvalDataAux.slice(0,this.currentIndex);
   }
 
 
