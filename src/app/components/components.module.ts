@@ -29,6 +29,9 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
 import { ModalcheckinComponent } from './modalcheckin/modalcheckin.component';
 import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheckin.component';
 import { HeaderTwoComponent } from './header-two/header-two.component';
+import { FirmComponent } from './firm/firm.component';
+import { SignaturePadModule } from 'angular2-signaturepad';
+
 
 
 
@@ -46,6 +49,7 @@ import { HeaderTwoComponent } from './header-two/header-two.component';
     DialogacceptmissionComponent,
     ModalcheckinComponent,
     DialogcheckinComponent,
+    FirmComponent,
   ],
   exports:[
     FooterComponent,
@@ -60,6 +64,7 @@ import { HeaderTwoComponent } from './header-two/header-two.component';
     DialogacceptmissionComponent,
     ModalcheckinComponent,
     DialogcheckinComponent,
+    FirmComponent,
   ],
   imports: [
     CommonModule,
@@ -76,6 +81,7 @@ import { HeaderTwoComponent } from './header-two/header-two.component';
     MatButtonModule,
     MatDialogModule,
     MatAutocompleteModule,
+    SignaturePadModule,
   ]
 })
 export class ComponentsModule { }
