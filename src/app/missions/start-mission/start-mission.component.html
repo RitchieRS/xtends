@@ -237,7 +237,7 @@
                       </ion-row>
                     </ion-grid>
                   </div>
-                
+
 
                 <mat-expansion-panel>
                   <mat-expansion-panel-header >
@@ -373,9 +373,9 @@
                   <div class="ion-padding-horizontal">
                     <ion-list radio-group>
                     <ion-item  *ngFor="let radio of p.opciones; let rad = index" for="Option-{{rad}}">
-                      
+
                       <p> {{radio.opcion}}</p>  <ion-checkbox color="primary"  slot="start" id="Option-{{i + '-'+ rad}}"  (click)="checkboxClick($event)"  ></ion-checkbox>
-                    
+
                     </ion-item>
                   </ion-list>
                     <div class="iup-button-row">
@@ -471,7 +471,7 @@
                       </ion-grid>
                     </mat-panel-title>
                   </mat-expansion-panel-header>
-                  
+
                 </mat-expansion-panel>
 
                 <mat-expansion-panel *ngSwitchCase="'fotografia'" >
@@ -520,14 +520,14 @@
                     </ion-grid>
                     <hr>
                   </div>
-                  
+
                 </mat-expansion-panel>
 
 
                 <!---
-                
-                
-                
+
+
+
                 -->
 
               </mat-accordion>
@@ -540,6 +540,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
+        <ion-button (click)="openDialog()">fbksjdhfk</ion-button>
       </ion-card>
     </div>
   </div>
