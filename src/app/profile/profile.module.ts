@@ -1,7 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ProfileComponent } from './profile.component';
 import { ComponentsModule } from '../components/components.module';
@@ -41,6 +41,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     FormsModule,
     IonicModule,
     ProfileRoutingModule,
+    ReactiveFormsModule,
     CdkAccordionModule,
     MatExpansionModule,
     MatCardModule,

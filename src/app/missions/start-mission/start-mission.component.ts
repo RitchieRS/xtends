@@ -811,7 +811,7 @@ export class StartMissionComponent  {
 
   async ngOnInit() {
     
-    // this.loadFiles();    
+     this.loadFiles();    
   }
 
 

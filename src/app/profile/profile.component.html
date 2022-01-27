@@ -199,39 +199,39 @@
                   </mat-panel-title>
 
                 </mat-expansion-panel-header>
-                <form class="iup-form" color="primary">
+                <form  [formGroup]="userForm" class="iup-form" color="primary" >
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">{{nombre}}</mat-label>
-                      <input matInput placeholder="Modificar Nombre">
+                      <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">{{amat}}</mat-label>
-                      <input matInput placeholder="Modificar A. Materno">
+                      <input formControlName="amat" matInput placeholder="Modificar A. Materno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">{{apat}}</mat-label>
-                      <input matInput placeholder="Modificar A. Paterno">
+                      <input formControlName="apat" matInput placeholder="Modificar A. Paterno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">{{email}}</mat-label>
-                      <input matInput placeholder="Modificar Mail">
+                      <input formControlName="email" matInput placeholder="Modificar Mail">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">{{movil}}</mat-label>
-                      <input matInput placeholder="Modificar Móvil">
+                      <input formControlName="movil" matInput placeholder="Modificar Móvil">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
@@ -239,16 +239,15 @@
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">Fecha de nacimiento</mat-label>
-                      <input matInput [matDatepicker]="picker">
+                      <input formControlName="fechaNacimiento" matInput [matDatepicker]="picker">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                     </mat-form-field>
                   </p>
 
-                </form>
-
-                <ion-grid class="ion-margin-vertical">
-                  <form class="iup-form">
+              
+                 <ion-grid class="ion-margin-vertical">
+                  
                   <ion-row class="ion-justify-content-center ion-align-items-center">
                     <ion-col>
                       <ion-text color="navyblue">
@@ -310,7 +309,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">{{dirCalle}}</mat-label>
-                          <input matInput placeholder="Modificar Calle">
+                          <input formControlName="dirCalle" matInput placeholder="Modificar Calle">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -318,7 +317,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">No.Ext. {{dirNumExt}}</mat-label>
-                          <input matInput placeholder="Modificar No.Ext.">
+                          <input formControlName="dirNumExt" matInput placeholder="Modificar No.Ext.">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -326,7 +325,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">No.Int. {{dirNumInt}}</mat-label>
-                          <input matInput placeholder="Modificar No.Int.">
+                          <input formControlName="dirNumInt" matInput placeholder="Modificar No.Int.">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -334,7 +333,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">{{dirColonia}}</mat-label>
-                          <input matInput placeholder="Modificar Colonía">
+                          <input formControlName="dirColonia" matInput placeholder="Modificar Colonía">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -342,7 +341,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">{{dirAlcadia}}</mat-label>
-                          <input matInput placeholder="Modificar Alcaldía">
+                          <input formControlName="dirAlcadia" matInput placeholder="Modificar Alcaldía">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -350,7 +349,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">C.P. {{dirCP}}</mat-label>
-                          <input matInput placeholder="Modificar C.P.">
+                          <input formControlName="dirCP" matInput placeholder="Modificar C.P.">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -358,7 +357,7 @@
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
                           <mat-label class="mat-label-color-navyblue">México</mat-label>
-                          <input matInput placeholder="Modificar C.d.">
+                          <input  matInput placeholder="Modificar C.d.">
                         </mat-form-field>
                       </p>
                     </ion-col>
@@ -369,13 +368,16 @@
                         <ion-row class="ion-no-margin">
                           <ion-col size="12">
                             <section>
-                              <div class="iup-button-row">
-                                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio</button>
+                              <div *ngIf=" images.length == 0 " class="iup-button-row">
+                                <button (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio</button>
+                              </div>
+                              <div *ngIf="images.length > 0 &&  imgDom==false"  class="iup-button-row">
+                                <button  *ngFor="let file of images; let i = index" (click)="startUpload(file)" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Subir</button>
                               </div>
                             </section>
                           </ion-col>
                           <ion-col size="12" class="ion-text-center">
-                            <ion-chip>
+                            <ion-chip [hidden]="!imgDom">
                               <ion-avatar>
                                 <img src="../../../assets/img/patines.jpg">
                               </ion-avatar>
@@ -410,23 +412,25 @@
                     <ion-col size="12">
                       <ion-list>
                         <ion-item>
-                          <ion-checkbox color="primary"  slot="start" mode="ios"></ion-checkbox>
+                          <ion-checkbox formControlName="terminos" color="primary"  slot="start" mode="ios"></ion-checkbox>
                           <p> 2. Estoy de acuerdo con los términos de confidencialidad</p>
                         </ion-item>
                       </ion-list>
 
                     </ion-col>
                   </ion-row>
-                </form>
+                
                 </ion-grid>
+              
 
                 <section style="margin-top: 10px;">
                   <div class="iup-button-row">
-                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
+                    <button mat-stroked-button type="submit" (click)="updateData()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                   </div>
                 </section>
+              </form>
 
 
               </mat-expansion-panel>

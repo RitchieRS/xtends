@@ -1,8 +1,22 @@
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileResp, UserProfile } from '../xmodels/user';
 import { InfoService } from '../xservices/user/info.service';
+import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
+import { Filesystem, Directory } from '@capacitor/filesystem';
+import { LoadingController, Platform, ToastController } from '@ionic/angular';
+import { MatDialog } from '@angular/material/dialog';
 
+
+const IMAGE_DIR = 'stored-images';
+ 
+interface LocalFile {
+  name: string;
+  path: string;
+  data: string;
+}
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -91,9 +105,42 @@ export class ProfileComponent implements OnInit {
   email: string;
   fechaNacimiento: Date;
   movil: string;
-  constructor(private route: ActivatedRoute,private srvProfile : InfoService) { }
+  userForm: FormGroup;
+  images: LocalFile[] = [];
+  
+  imgDom=false;
+  constructor(private route: ActivatedRoute,
+              private srvProfile : InfoService,
+              public fb  : FormBuilder,
+              private plt: Platform,
+              private loadingCtrl: LoadingController,
+              private toastCtrl: ToastController,
+              public dialog: MatDialog) { }
 
   ngOnInit() {
+
+    this.userForm = this.fb.group({
+      "nombre": ['', [Validators.minLength(4)]],
+      "apat": ['', [Validators.minLength(4)]],
+      "amat": ['', [Validators.minLength(4)]],
+      "dirAlcadia": ['', [Validators.minLength(4)]],
+      "dirCP": ['',[Validators.pattern("^[0-9]*$"),
+      Validators.minLength(5)]],
+      "dirCalle": ['', [Validators.minLength(4)]],
+      "dirCd": ['', [Validators.minLength(4)]],
+      "dirColonia": ['', [Validators.minLength(4)]],
+      "dirNumExt": ['', [Validators.minLength(4)]],
+      "dirNumInt": ['', [Validators.minLength(4)]],
+      "email": ['', [
+                    Validators.email]],
+      "fechaNacimiento": ['', []],
+      "movil": ['',[ Validators.pattern("^[0-9]*$")]],
+      "terminos": [false,[ Validators.required]]
+    });
+
+
+
+   
     const token = localStorage.getItem('token');
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
       if(res){
@@ -118,9 +165,183 @@ export class ProfileComponent implements OnInit {
         this.referidosPorcentajeStr =  this.profileData.nivelesDatos.referidosInvitados;
         this.referidosPorcentajeN = Number(this.referidosPorcentajeStr.substring(0,this.referidosPorcentajeStr.length-1))/100;
         this.fotoId = this.profileData.nivelesDatos.fotoID;
+        this.userForm.setValue({
+          "nombre": this.nombre,
+          "apat": this.apat,
+          "amat": this.amat,
+          "dirAlcadia": this.dirAlcadia,
+          "dirCP": this.dirCP,
+          "dirCalle": this.dirCalle,
+          "dirCd": this.dirCd,
+          "dirColonia": this.dirColonia,
+          "dirNumExt": this.dirNumExt,
+          "dirNumInt": this.dirNumInt,
+          "email": this.email,
+          "fechaNacimiento":this.fechaNacimiento,
+          "movil": this.movil,
+          "terminos": false
+        })
+     
 
       }
     })
+
+
+
+
+   
+    
+  }
+
+ 
+  async loadFiles() {
+    this.images = [];
+ 
+    const loading = await this.loadingCtrl.create({
+      message: 'Loading data...',
+    });
+    await loading.present();
+ 
+    Filesystem.readdir({
+      path: IMAGE_DIR,
+      directory: Directory.Data,
+    }).then(result => {
+      this.loadFileData(result.files);
+    },
+      async (err) => {
+        // Folder does not yet exists!
+        await Filesystem.mkdir({
+          path: IMAGE_DIR,
+          directory: Directory.Data,
+        });
+      }
+    ).then(_ => {
+      loading.dismiss();
+    });
+  }
+ 
+  // Get the actual base64 data of an image
+  // base on the name of the file
+  async loadFileData(fileNames: string[]) {
+    for (let f of fileNames) {
+      const filePath = `${IMAGE_DIR}/${f}`;
+ 
+      const readFile = await Filesystem.readFile({
+        path: filePath,
+        directory: Directory.Data,
+      });
+ 
+      this.images.push({
+        name: f,
+        path: filePath,
+        data: `data:image/jpeg;base64,${readFile.data}`,
+      });
+    }
+  }
+ 
+  // Little helper
+  async presentToast(text) {
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+    });
+    toast.present();
+  }
+ 
+
+ 
+  async deleteImage(file: LocalFile) {
+    await Filesystem.deleteFile({
+        directory: Directory.Data,
+        path: file.path
+    });
+  //  this.presentToast('File removed.');
+  }
+
+  async selectCamera() {
+    const image = await Camera.getPhoto({
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera // Camera, Photos or Prompt!
+    });
+ 
+    if (image) {
+        this.saveImage(image)
+    }
+} 
+    async selectDocument() {
+      const image = await Camera.getPhoto({
+          quality: 90,
+          allowEditing: false,
+          resultType: CameraResultType.Uri,
+          source: CameraSource.Prompt // Camera, Photos or Prompt!
+      });
+
+      if (image) {
+          this.saveImage(image)
+      }
+    }
+// Create a new file from a capture image
+async saveImage(photo: Photo) {
+  const base64Data = await this.readAsBase64(photo);
+
+  const fileName = new Date().getTime() + '.jpeg';
+  const savedFile = await Filesystem.writeFile({
+      path: `${IMAGE_DIR}/${fileName}`,
+      data: base64Data,
+      directory: Directory.Data
+  });
+
+  // Reload the file list
+  // Improve by only loading for the new image and unshifting array!
+  this.loadFiles();
+}
+
+// https://ionicframework.com/docs/angular/your-first-app/3-saving-photos
+private async readAsBase64(photo: Photo) {
+  if (this.plt.is('hybrid')) {
+      const file = await Filesystem.readFile({
+          path: photo.path
+      });
+
+      return file.data;
+  }
+  else {
+      // Fetch the photo, read as a blob, then convert to base64 format
+      const response = await fetch(photo.webPath);
+      const blob = await response.blob();
+
+      return await this.convertBlobToBase64(blob) as string;
+  }
+}
+
+// Helper function
+convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
+  const reader = new FileReader;
+  reader.onerror = reject;
+  reader.onload = () => {
+      resolve(reader.result);
+  };
+  reader.readAsDataURL(blob);
+});
+
+
+async startUpload(file: LocalFile) {
+  this.imgDom =true;
+  const response = await fetch(file.data);
+  const blob = await response.blob();
+  const formData = new FormData();
+  formData.append('imgDomicilio', blob, file.name);
+  console.log(formData);
+  this.deleteImage(file)
+  //this.uploadData(formData);
+}
+
+
+  updateData(){
+    console.log("soy un input")
+    console.log(this.userForm.value) 
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Home, HomeLocation, Section1, Section1Content } from '../xmodels/home';
+import { AMission, ContentMission, MisionSection1, Mission, RespMission } from '../xmodels/missions';
 import { HomeService } from '../xservices/home/home.service';
+import { MissionService } from '../xservices/mission/mission.service';
 
 @Component({
   selector: 'app-active-missions',
@@ -9,16 +11,16 @@ import { HomeService } from '../xservices/home/home.service';
 })
 export class ActiveMissionsPage implements OnInit {
 
-  missionAval:Section1;
-  missionsAvalData :Section1Content[];
-  missionsAvalDataAux :Section1Content[];
-  dataHome : Home;
+  missionAval : MisionSection1;
+  //missionsAvalData : AMission[];
+  dataAMission : AMission;
+  listMission : ContentMission[];
   reqHome : string;
   location:HomeLocation;
   lat:any;
   lng:any;
 
-  constructor(private homeService : HomeService) { }
+  constructor(private mision : MissionService) { }
 
   ngOnInit() {
 
@@ -29,23 +31,22 @@ export class ActiveMissionsPage implements OnInit {
       "lgn" : Number(this.lng)
     }
     this.reqHome = localStorage.getItem('token');
-    this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
+    this.mision.getMissionXuser(this.reqHome).subscribe((res) =>{
       console.log(res);
-       if(res){
-        this.dataHome=  res;
-     
+        if(res){
+         this.dataAMission =  res;
          /* Misiones Disponibles*/
-         if(this.dataHome.section1.content.length>=1){
-          this.missionAval = this.dataHome.section1;
-          this.missionsAvalData = this.dataHome.section1.content;
-          this.missionsAvalDataAux = this.missionsAvalData.slice(0,5);
-         // console.log(this.missionsAvalData);
-         }
+           if(this.dataAMission.section1.content.length>=1){
+            this.missionAval = this.dataAMission.section1;
+            this.listMission = this.missionAval.content;
+
+             console.log(this.missionAval.content);
+          }
         //console.log(this.dataHome.section1);
 
        // console.log(this.dataHome);
        }
-    })
+     })
   }
 
   

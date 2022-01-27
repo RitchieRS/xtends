@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { ReqMission,Mission, ResMissionAccepted} from 'src/app/xmodels/missions';
+import { ReqMission,Mission, ResMissionAccepted, AMission} from 'src/app/xmodels/missions';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Sondeo } from 'src/app/xmodels/sondeo';
@@ -69,6 +69,28 @@ export class MissionService {
     
     return this.http.post<Sondeo>(`${environment.API_URL}sondeos`,request ,httpOptions).pipe(
           map(( res :  Sondeo)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+  
+
+  getMissionXuser(token : string):Observable<AMission>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+  
+    
+    return this.http.get<AMission>(`${environment.API_URL}missions/user`,httpOptions).pipe(
+          map(( res :  AMission)=>{
             console.log(res);
             return res;
           }),

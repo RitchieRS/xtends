@@ -41,3 +41,32 @@ export interface ResMissionAccepted {
 export interface RespMission {
     msg: string;
 }
+
+
+export interface AMission {
+    section1: MisionSection1;
+    section2: MisionSection2;
+}
+
+export interface MisionSection1 {
+    name:    string;
+    content: ContentMission[];
+}
+
+export interface ContentMission {
+    idPV:        number;
+    cliente:     string;
+    proyecto:    string;
+    logoCliente: string;
+    cadena:      string;
+    sucursal:    string;
+    estado:      string;
+    ciudad:      string;
+    comentarios: string;
+    tiempo:      string;
+    pago:        string;
+}
+export interface MisionSection2 {
+    name:    string;
+    content: string;
+}
