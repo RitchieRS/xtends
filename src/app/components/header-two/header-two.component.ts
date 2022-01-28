@@ -68,11 +68,7 @@ async presentPopover(ev: any) {
 
 }
 
-back() : void{
 
-  this.location.back();
-
-}
 
 }
 

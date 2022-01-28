@@ -1,8 +1,9 @@
 <ion-content>
   <ion-slides pager="true" class="ion-padding">
 
-    <ion-slide class="ion-padding" *ngFor="let slidextend of slidsextend">
-      <ion-grid>
+    <ion-slide class="ion-padding" *ngFor="let slidextend of slidsextend;let i = index"  (click)="login(i)">
+      <ion-grid >
+  
         <ion-row>
           <ion-col size="12">
             <img src="../../assets/{{slidextend.img}}">

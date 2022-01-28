@@ -108,7 +108,7 @@
                              </ion-col>
                              <ion-col size="12" class="ion-align-self-end ion-no-padding">
                               <ion-text color="cloudysky">
-                                <p class="ion-no-margin">{{detallemovimiento.fecha}}</p>
+                                <p class="ion-no-margin">{{detallemovimiento.fecha | date:'short' }}</p>
                               </ion-text>
                             </ion-col>
                            </ion-row>
@@ -136,9 +136,15 @@
                 <ion-gris>
                   <ion-row>
                     <ion-col class="ion-padding-horizontal">
-                      <ion-text>
+                      <p class="ion-no-margin">
                         {{detallemovimiento.detalle}}
-                      </ion-text>
+                      </p>
+                      <p class="ion-no-margin">
+                        Cadena: {{detallemovimiento.cadena}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Sucursal: {{detallemovimiento.sucursal}}
+                      </p>
                     </ion-col>
                   </ion-row>
                 </ion-gris>

@@ -1,6 +1,6 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { ProfileResp, UserProfile } from '../xmodels/user';
 import { InfoService } from '../xservices/user/info.service';
@@ -84,7 +84,7 @@ export class ProfileComponent implements OnInit {
   ];
   selectedTrabajoInteres: string;
   selectedZonaInteres: string;
-
+  panelOpenState: boolean = false;
   userResponse : UserProfile;
   profileData : ProfileResp;
   nombre : string;
@@ -107,6 +107,16 @@ export class ProfileComponent implements OnInit {
   movil: string;
   userForm: FormGroup;
   images: LocalFile[] = [];
+  nivelXtender:string;
+  nivelTermo=([...Array(16).fill(0)]);
+  imgDomicilio:LocalFile;
+  searchCitiesFiler:string;
+
+  puesto:   string;
+  imss:     string;
+  rfc:      string;
+  urlFirma: string;
+
   
   imgDom=false;
   constructor(private route: ActivatedRoute,
@@ -118,85 +128,35 @@ export class ProfileComponent implements OnInit {
               public dialog: MatDialog) { }
 
   ngOnInit() {
-
+    console.log(this.nivelTermo);
     this.userForm = this.fb.group({
-      "nombre": ['', [Validators.minLength(4)]],
-      "apat": ['', [Validators.minLength(4)]],
-      "amat": ['', [Validators.minLength(4)]],
-      "dirAlcadia": ['', [Validators.minLength(4)]],
-      "dirCP": ['',[Validators.pattern("^[0-9]*$"),
+       nombre : ['', [Validators.minLength(4)]],
+       apat: ['', [Validators.minLength(4)]],
+       amat: ['', [Validators.minLength(4)]],
+       dirAlcadia : ['', [Validators.minLength(4)]],
+       dirCP: ['',[Validators.pattern("^[0-9]*$"),
       Validators.minLength(5)]],
-      "dirCalle": ['', [Validators.minLength(4)]],
-      "dirCd": ['', [Validators.minLength(4)]],
-      "dirColonia": ['', [Validators.minLength(4)]],
-      "dirNumExt": ['', [Validators.minLength(4)]],
-      "dirNumInt": ['', [Validators.minLength(4)]],
-      "email": ['', [
+       dirCalle: ['', [Validators.minLength(4)]],
+      dirCd: ['', [Validators.minLength(4)]],
+      dirColonia: ['', [Validators.minLength(4)]],
+      dirNumExt: ['', [Validators.minLength(4)]],
+      dirNumInt: ['', [Validators.minLength(4)]],
+      email: ['', [
                     Validators.email]],
-      "fechaNacimiento": ['', []],
-      "movil": ['',[ Validators.pattern("^[0-9]*$")]],
-      "terminos": [false,[ Validators.required]]
+       fechaNacimiento: ['', []],
+      movil: ['',[ Validators.pattern("^[0-9]*$")]],
+      terminos: [false,[ Validators.required,Validators.required]]
+      
+
     });
-
-
-
-   
-    const token = localStorage.getItem('token');
-    this.srvProfile.getProfileInformation(token).subscribe((res) =>{
-      if(res){
-        this.userResponse = res;
-        this.profileData = this.userResponse.resp;
-        this.nombre = this.profileData.informacion.nombre;
-        this.amat = this.profileData.informacion.amat;
-        this.apat = this.profileData.informacion.apat;
-        this.dirAlcadia = this.profileData.informacion.dirAlcadia;
-        this.dirCP = this.profileData.informacion.dirCP;
-        this.dirCalle = this.profileData.informacion.dirCalle;
-        this.dirCd = this.profileData.informacion.dirCd;
-        this.dirColonia = this.profileData.informacion.dirColonia;
-        this.dirNumExt = this.profileData.informacion.dirNumExt;
-        this.dirNumInt = this.profileData.informacion.dirNumInt;
-        this.email =  this.profileData.informacion.email;
-        this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
-        this.movil = this.profileData.informacion.movil;
-
-        this.datosCompletosStr = this.profileData.nivelesDatos.datosComplemento;
-        this.datosCompletosN = Number(this.datosCompletosStr.substring(0,this.datosCompletosStr.length-1))/100;
-        this.referidosPorcentajeStr =  this.profileData.nivelesDatos.referidosInvitados;
-        this.referidosPorcentajeN = Number(this.referidosPorcentajeStr.substring(0,this.referidosPorcentajeStr.length-1))/100;
-        this.fotoId = this.profileData.nivelesDatos.fotoID;
-        this.userForm.setValue({
-          "nombre": this.nombre,
-          "apat": this.apat,
-          "amat": this.amat,
-          "dirAlcadia": this.dirAlcadia,
-          "dirCP": this.dirCP,
-          "dirCalle": this.dirCalle,
-          "dirCd": this.dirCd,
-          "dirColonia": this.dirColonia,
-          "dirNumExt": this.dirNumExt,
-          "dirNumInt": this.dirNumInt,
-          "email": this.email,
-          "fechaNacimiento":this.fechaNacimiento,
-          "movil": this.movil,
-          "terminos": false
-        })
-     
-
-      }
-    })
-
-
-
-
-   
     
+
+    this.initData();  
   }
 
  
   async loadFiles() {
-    this.images = [];
- 
+    this.images =[];
     const loading = await this.loadingCtrl.create({
       message: 'Loading data...',
     });
@@ -296,6 +256,7 @@ async saveImage(photo: Photo) {
   // Reload the file list
   // Improve by only loading for the new image and unshifting array!
   this.loadFiles();
+
 }
 
 // https://ionicframework.com/docs/angular/your-first-app/3-saving-photos
@@ -329,19 +290,110 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
 
 async startUpload(file: LocalFile) {
   this.imgDom =true;
+  this.imgDomicilio = file;
+  console.log(file.name)
   const response = await fetch(file.data);
   const blob = await response.blob();
   const formData = new FormData();
-  formData.append('imgDomicilio', blob, file.name);
+  formData.append('imgDomicilio', blob, file.name); 
   console.log(formData);
   this.deleteImage(file)
   //this.uploadData(formData);
 }
 
 
-  updateData(){
-    console.log("soy un input")
-    console.log(this.userForm.value) 
+  async updateData(){
+    
+    const token = localStorage.getItem('token');
+    console.log("soy un input");
+    if(this.userForm.value.terminos==false){
+      this.presentToast('Acepte los términos y condiciones');
+      return;
+    }
+    this.presentToast('Actualizando Información.');
+  
+    
+    ;(await this.srvProfile.updateProfileInformation(token, this.userForm.value, this.imgDomicilio)).subscribe((res) =>{
+      if(res){
+        this.panelOpenState = false;
+        this.initData();
+        this.presentToast('Listo.');
+        this.images.forEach( (file) =>{
+          this.deleteImage(file)
+         })
+      
+
+      }
+    })
+
+
+  }
+
+
+  initData(){
+    const token = localStorage.getItem('token');
+    this.srvProfile.getProfileInformation(token).subscribe((res) =>{
+      if(res){
+        this.userResponse = res;
+        this.profileData = this.userResponse.resp;
+        this.nombre = this.profileData.informacion.nombre;
+        this.amat = this.profileData.informacion.amat;
+        this.apat = this.profileData.informacion.apat;
+        this.dirAlcadia = this.profileData.informacion.dirAlcadia;
+        this.dirCP = this.profileData.informacion.dirCP;
+        this.dirCalle = this.profileData.informacion.dirCalle;
+        this.dirCd = this.profileData.informacion.dirCd;
+        this.dirColonia = this.profileData.informacion.dirColonia;
+        this.dirNumExt = this.profileData.informacion.dirNumExt;
+        this.dirNumInt = this.profileData.informacion.dirNumInt;
+        this.email =  this.profileData.informacion.email;
+        this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
+        this.movil = this.profileData.informacion.movil;
+
+        this.nivelXtender = this.profileData.nivelXtender;
+
+        this.datosCompletosStr = this.profileData.nivelesDatos.datosComplemento;
+        this.datosCompletosN = Number(this.datosCompletosStr.substring(0,this.datosCompletosStr.length-1))/100;
+        this.referidosPorcentajeStr =  this.profileData.nivelesDatos.referidosInvitados;
+        this.referidosPorcentajeN = Number(this.referidosPorcentajeStr.substring(0,this.referidosPorcentajeStr.length-1))/100;
+        this.fotoId = this.profileData.nivelesDatos.fotoID;
+        this.puesto = this.profileData.credenciales.puesto;
+        this.imss  = this.profileData.credenciales.imss;
+        this.rfc  = this.profileData.credenciales.rfc;
+        this.urlFirma= this.profileData.credenciales.urlFirma;
+        
+        this.userForm.setValue({
+          nombre: this.nombre,
+          apat: this.apat,
+          amat: this.amat,
+          dirAlcadia: this.dirAlcadia,
+          dirCP: this.dirCP,
+          dirCalle: this.dirCalle,
+          dirCd: this.dirCd,
+          dirColonia: this.dirColonia,
+          dirNumExt: this.dirNumExt,
+          dirNumInt: this.dirNumInt,
+          email: this.email,
+          fechaNacimiento:this.fechaNacimiento,
+          movil: this.movil,
+          terminos: false
+
+        })
+     
+
+      }
+    })
+  }
+
+  isFull(name: string,field:string){
+    if(name.length==0){
+      return "Coloca aquí tu "+ field;
+    }
+    
+  }
+
+closePanel() {
+    this.panelOpenState = false;
   }
 
 }

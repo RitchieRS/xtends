@@ -98,6 +98,7 @@ export interface Informacion {
     dirAlcadia:      string;
     dirCd:           string;
     dirCP:           string;
+    
 }
 
 export interface NivelesDatos {
@@ -105,6 +106,7 @@ export interface NivelesDatos {
     referidosInvitados: string;
     fotoID:             number;
 }
+
 
 export interface ZonaInteres {
 }

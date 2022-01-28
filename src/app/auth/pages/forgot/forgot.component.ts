@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/xservices/auth/login.service';
 import { FormGroup,Validators, FormBuilder, AbstractControl } from '@angular/forms';
+import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-forgot',
@@ -14,7 +15,7 @@ export class ForgotComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   submitted =false; 
-  constructor(private router: Router,private login : LoginService, private fb : FormBuilder) { }
+  constructor(private router: Router,private login : LoginService, private fb : FormBuilder,private toastCtrl: ToastController,) { }
 
   get f(): { [key: string]: AbstractControl } {
     return this.forgotForm.controls;
@@ -29,19 +30,27 @@ export class ForgotComponent implements OnInit {
   }
   onForgot(): void{  
     this.submitted =true;  
-    console.log("ya casi")   
- 
+   this.presentToast("Se te ha enviado un email.")
     
-    /*const formValue = this.loginForm.value; 
-    this.login.login(formValue).subscribe((res) =>{
+    const formValue = this.forgotForm.value; 
+    this.login.forgot(formValue).subscribe((res) =>{
         console.log(res['idError']);
         if(res['idError']==0){
-          this.router.navigate(['home'])
+          this.router.navigate(['login'])
         }else{
           this.isSignUpFailed = true;
         }
-      })*/
+      })
     
   }
+
+  async presentToast(text) {
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+    });
+    toast.present();
+  }
+ 
 
 }

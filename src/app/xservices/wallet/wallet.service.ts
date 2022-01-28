@@ -47,6 +47,7 @@ export class WalletService {
 
     return this.http.post<MovimientoResponse>(`${environment.API_URL}wallet/details`,request ,httpOptions).pipe(
           map(( res : MovimientoResponse)=>{
+            console.log(res);
             return res;
           }),
           catchError((err)=> this.handeleError(err))

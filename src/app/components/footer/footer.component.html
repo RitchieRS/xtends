@@ -3,7 +3,7 @@
       <div>
     <!--<ion-tabs></ion-tabs>-->
         <ion-tab-bar slot="bottom" class="no-border">
-          <ion-tab-button (click)="home()" tab="schedule">
+          <ion-tab-button (click)="back()" tab="schedule">
             <!-- <ion-icon name="flag-outline" color="primary"></ion-icon> -->
             <ion-icon name="arrow-back-circle-outline" color="primary"></ion-icon>
           </ion-tab-button>
@@ -12,8 +12,8 @@
             <ion-icon (click)="wallet()" name="wallet-outline" color="primary"></ion-icon>
           </ion-tab-button>
 
-          <ion-tab-button tab="map" class="">
-            <ion-icon name="people-outline" color="primary"></ion-icon>
+          <ion-tab-button  tab="map" class="">
+            <ion-icon (click)="referrals()" name="people-outline" color="primary"></ion-icon>
           </ion-tab-button>
 
           <ion-tab-button  (click)="profile()" tab="about">

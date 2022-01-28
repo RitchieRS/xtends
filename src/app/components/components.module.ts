@@ -31,6 +31,8 @@ import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheck
 import { HeaderTwoComponent } from './header-two/header-two.component';
 import { FirmComponent } from './firm/firm.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -38,6 +40,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 @NgModule({
   declarations: [
     FooterComponent,
+    SocialShareBtnComponent,
     HeaderComponent,
     HeaderTwoComponent,
     ZonesComponent,
@@ -65,12 +68,14 @@ import { SignaturePadModule } from 'angular2-signaturepad';
     ModalcheckinComponent,
     DialogcheckinComponent,
     FirmComponent,
+    SocialShareBtnComponent,
   ],
   imports: [
     CommonModule,
     IonicModule,
     MatIconModule,
     PipesModule,
+    ReactiveFormsModule,
     MatDatepickerModule,
     MatCheckboxModule,
     MatSelectModule,

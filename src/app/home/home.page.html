@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  <app-firm></app-firm>
+  
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
      <ion-grid class="bg-polarwhite ion-padding-bottom">
        <ion-row class="ion-padding-horizontal">
@@ -207,9 +207,7 @@
 
                                  <section style="margin-top: 10px;">
                                   <div class="iup-button-row">
-                                    <button routerLink="/wallet" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                                      <mat-icon>share</mat-icon> Compartir
-                                    </button>
+                                    <app-social-share-btn></app-social-share-btn>
                                     <button routerLink="/mission/{{available.idPV}}"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
                                       Ver detalles <mat-icon >chevron_right</mat-icon>
                                     </button>
@@ -265,8 +263,9 @@
           <!--<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3763.755724009331!2d-99.10873338401346!3d19.379726986914502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d1ff0216788e79%3A0xd976142e110eedf9!2sZech%20inK%20Tattoo%20Studio!5e0!3m2!1ses-419!2smx!4v1636659065201!5m2!1ses-419!2smx"  style="border:0;" allowfullscreen="" loading="lazy"></iframe>-->
           <agm-map [latitude]="lat" [longitude]="lng"
           [zoom]="15"
-          [disableDefaultUI]="false"
-          [zoomControl]="false">
+          [disableDefaultUI]="true"
+          [zoomControl]="false"
+          [AgmFullscreenControl]="false">
 
             <agm-marker
             [latitude]="lat"

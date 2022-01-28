@@ -50,6 +50,9 @@ export class MovementComponent implements OnInit {
       colorServicio:'red'
     },
   ];
+  nombreCliente: any;
+  nombreServicio: any;
+  cadena: Movimiento[];
 
   constructor(private route: ActivatedRoute,private srvWallet : WalletService) { }
 
@@ -62,6 +65,8 @@ export class MovementComponent implements OnInit {
         this.saldoTotal = this.dataWallet.saldoTotal;
         this.totalGanado = this.dataWallet.totalGanado;
         this.movimientos = this.dataWallet.movimientos;
+     
+       
         this.movimientos.forEach((move: Movimiento) => {
           move.color = this.color(move.idEstatus);
       });

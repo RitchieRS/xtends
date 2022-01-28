@@ -2,11 +2,21 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { UserResponse, User, UserRest, ProfileResp, UserProfile } from 'src/app/xmodels/user';
+import { UserResponse, User, UserRest, ProfileResp, UserProfile, Informacion } from 'src/app/xmodels/user';
 import { environment } from 'src/environments/environment';
+
+
+interface LocalFile {
+  name: string;
+  path: string;
+  data: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class InfoService {
 
   constructor(private http : HttpClient) { }
@@ -30,6 +40,44 @@ export class InfoService {
     };
     return this.http.get<UserProfile>(`${environment.API_URL}user`,httpOptions).pipe(
           map(( res :  UserProfile)=> {
+            console.log(res);
+            return res; 
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+  ///api/user/cities
+  getCitiesInformation(token : string):Observable<any| void>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+    return this.http.get<any>(`${environment.API_URL}user/cities`,httpOptions).pipe(
+          map(( res :  any)=> {
+            console.log(res);
+            return res; 
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+  async updateProfileInformation(token : string,infoUser: Informacion, _file : LocalFile):Promise<Observable<Informacion | void>>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<Informacion>(`${environment.API_URL}user`,infoUser,httpOptions).pipe(
+          map(( res :  any)=> {
             console.log(res);
             return res; 
           }),

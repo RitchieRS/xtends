@@ -20,6 +20,13 @@ export class CheckInComponent implements OnInit {
   lat: any;
   lgn: any;
   watchId: any;
+  pinchoLocation= {
+    url: './assets/icon/location-navybluextend.svg',
+    scaledSize: {
+        width: 40,
+        height: 60
+    }
+  }
   constructor(private checks:CheckinserviceService,
               private route: ActivatedRoute,
               private locationService: LocationService,

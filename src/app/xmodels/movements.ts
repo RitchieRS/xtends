@@ -1,4 +1,7 @@
 export interface MovimientoResponse {
+    sucursal: any;
+    nombreServicio: any;
+    nombreCliente: any;
     saldoTotal:     number;
     saldoPendiente: number;
     totalGanado:    number;
@@ -15,4 +18,6 @@ export interface Movimiento {
     estatus:        string;
     idEstatus:      number;
     color :          string;
+    sucursal:       string;
+    cadena:         string;
 }

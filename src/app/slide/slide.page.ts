@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-slide',
@@ -30,9 +31,16 @@ export class SlidePage implements OnInit {
   },
   ];
 
-  constructor() { }
+  constructor(private router: Router,) { }
 
   ngOnInit() {
+  }
+  login(i: number){
+    console.log("Soy un slide")
+    if(i==3){
+    this.router.navigate(['login']);
+    localStorage.setItem('new','1');
+    }
   }
 
 }

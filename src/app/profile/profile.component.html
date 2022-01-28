@@ -4,10 +4,10 @@
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
       <ion-card>
-        <ion-card-content>
+        <ion-card-content routerLink="/xtend-levels" >
           <ion-text color="navyblue" class="ion-text-center">
             <!-- El pedo estaba de aqui amig0 quite el nivel y jalo <ion-card> -->
-            <h1>Xtender nivel <strong>Plata</strong></h1>
+            <h1>Xtender nivel <strong>{{nivelXtender}}</strong></h1>
           </ion-text>
           <ion-grid>
             <ion-row >
@@ -19,19 +19,19 @@
                       <ion-grid class="ion-no-padding ion-no-margin">
                         <ion-row class="ion-no-padding ion-no-margin">
                           <!-- sub-nivel-bronce 0%-25% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[0]}">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-bronce 25%-50% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[1]}">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-bronce 50%-75% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[2]}">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-bronce 75%-100% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[3]}">
                             <div class="col-subnivel"></div>
                           </ion-col>
                         </ion-row>
@@ -42,19 +42,19 @@
                       <ion-grid class="ion-no-padding ion-no-margin">
                         <ion-row class="ion-no-padding ion-no-margin">
                           <!-- sub-nivel-plata 0%-25% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[4] }">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-plata 25%-50% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[5] }">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-plata 50%-75% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[6] }">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-plata 75%-100% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[7] }">
                             <div class="col-subnivel"></div>
                           </ion-col>
                         </ion-row>
@@ -66,19 +66,19 @@
                       <ion-grid class="ion-no-padding ion-no-margin">
                         <ion-row class="ion-no-padding ion-no-margin">
                           <!-- sub-nivel-Oro 0%-25% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[8] }">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-Oro 25%-50% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '0'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[9] }">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-Oro 50%-75% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '0'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[10] }">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-Oro 75%-100% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '0'}">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[11] }">
                             <div class="col-subnivel"></div>
                           </ion-col>
                         </ion-row>
@@ -90,19 +90,19 @@
                       <ion-grid class="ion-no-padding ion-no-margin">
                         <ion-row class="ion-no-padding ion-no-margin">
                           <!-- sub-nivel-Elite 0%-25% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[12]}">
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-Elite 25%-50% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
-                            <div class="col-subnivel "></div>
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[13]}">
+                            <div class="col-subnivel ">{{nivelTermo[0]}}</div>
                           </ion-col>
                           <!-- sub-nivel-Elite 50%-75% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[14]}" >
                             <div class="col-subnivel "></div>
                           </ion-col>
                           <!-- sub-nivel-Elite 75%-100% -->
-                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
+                          <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[15]}">
                             <div class="col-subnivel"></div>
                           </ion-col>
                         </ion-row>
@@ -188,7 +188,7 @@
           </ion-card-header> -->
           <ion-card-content class="ion-justify-content-center">
             <mat-accordion>
-              <mat-expansion-panel >
+              <mat-expansion-panel [(expanded)]="panelOpenState" >
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                       <ion-text color="navyblue">
@@ -202,35 +202,36 @@
                 <form  [formGroup]="userForm" class="iup-form" color="primary" >
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">{{nombre}}</mat-label>
+                      <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
                       <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
+                  
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">{{amat}}</mat-label>
-                      <input formControlName="amat" matInput placeholder="Modificar A. Materno">
-                      <mat-icon matSuffix>edit</mat-icon>
-                    </mat-form-field>
-                  </p>
-                  <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">{{apat}}</mat-label>
+                      <mat-label class="mat-label-color-navyblue"> A. Paterno</mat-label>
                       <input formControlName="apat" matInput placeholder="Modificar A. Paterno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">{{email}}</mat-label>
-                      <input formControlName="email" matInput placeholder="Modificar Mail">
+                      <mat-label class="mat-label-color-navyblue">A. Materno</mat-label>
+                      <input formControlName="amat" matInput placeholder="Modificar A. Materno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
-                      <mat-label class="mat-label-color-navyblue">{{movil}}</mat-label>
+                      <mat-label class="mat-label-color-navyblue">EMail</mat-label>
+                      <input formControlName="email" matInput placeholder="Modificar EMail">
+                      <mat-icon matSuffix>edit</mat-icon>
+                    </mat-form-field>
+                  </p>
+                  <p>
+                    <mat-form-field appearance="outline" class="iup-full-width">
+                      <mat-label class="mat-label-color-navyblue"> Móvil</mat-label>
                       <input formControlName="movil" matInput placeholder="Modificar Móvil">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
@@ -308,7 +309,7 @@
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">{{dirCalle}}</mat-label>
+                          <mat-label class="mat-label-color-navyblue">Calle</mat-label>
                           <input formControlName="dirCalle" matInput placeholder="Modificar Calle">
                         </mat-form-field>
                       </p>
@@ -316,7 +317,7 @@
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">No.Ext. {{dirNumExt}}</mat-label>
+                          <mat-label class="mat-label-color-navyblue">No.Ext. </mat-label>
                           <input formControlName="dirNumExt" matInput placeholder="Modificar No.Ext.">
                         </mat-form-field>
                       </p>
@@ -324,7 +325,7 @@
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">No.Int. {{dirNumInt}}</mat-label>
+                          <mat-label class="mat-label-color-navyblue">No.Int. </mat-label>
                           <input formControlName="dirNumInt" matInput placeholder="Modificar No.Int.">
                         </mat-form-field>
                       </p>
@@ -332,7 +333,7 @@
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">{{dirColonia}}</mat-label>
+                          <mat-label class="mat-label-color-navyblue">Colonía</mat-label>
                           <input formControlName="dirColonia" matInput placeholder="Modificar Colonía">
                         </mat-form-field>
                       </p>
@@ -340,7 +341,7 @@
                     <ion-col size="12">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">{{dirAlcadia}}</mat-label>
+                          <mat-label class="mat-label-color-navyblue">Alcaldía</mat-label>
                           <input formControlName="dirAlcadia" matInput placeholder="Modificar Alcaldía">
                         </mat-form-field>
                       </p>
@@ -348,7 +349,7 @@
                     <ion-col size="6">
                       <p>
                         <mat-form-field appearance="outline" class="iup-full-width">
-                          <mat-label class="mat-label-color-navyblue">C.P. {{dirCP}}</mat-label>
+                          <mat-label class="mat-label-color-navyblue">C.P.</mat-label>
                           <input formControlName="dirCP" matInput placeholder="Modificar C.P.">
                         </mat-form-field>
                       </p>
@@ -426,7 +427,7 @@
                 <section style="margin-top: 10px;">
                   <div class="iup-button-row">
                     <button mat-stroked-button type="submit" (click)="updateData()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
-                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
+                    <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
                     <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                   </div>
                 </section>
@@ -554,21 +555,21 @@
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
                             <mat-label class="mat-label-color-navyblue">Puesto</mat-label>
-                            <input matInput placeholder="{{email}}">
+                            <input matInput placeholder="{{puesto}}">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
                             <mat-label class="mat-label-color-navyblue">No. IMSS</mat-label>
-                            <input matInput placeholder="{{movil}}">
+                            <input matInput placeholder="{{imss}}">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
                             <mat-label class="mat-label-color-navyblue">RFC</mat-label>
-                            <input matInput placeholder="5540197392">
+                            <input matInput placeholder="{{rfc}}">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
@@ -576,7 +577,7 @@
                         <section style="margin-top: 10px;">
                           <div class="iup-button-row">
                             <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
-                              <mat-icon aria-hidden="false">add_a_photo</mat-icon>
+                              <mat-icon (click)="selectDocument()" aria-hidden="false">add_a_photo</mat-icon>
                               CARGAR FOTO
                             </button>
                           </div>
@@ -612,7 +613,7 @@
                                  </ion-col>
                                  <ion-col size="12" class="ion-padding-vertical">
                                   <div class="box-firma">
-                                    <canvas id="firma" class="text-center"></canvas>
+                                    <app-firm></app-firm>
                                   </div>
                                 </ion-col>
                                 <ion-col>
@@ -660,7 +661,7 @@
                       <section style="margin-top: 10px;">
                         <div class="iup-button-row">
                           <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
-                          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
+                          <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
                           <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" id="limpiar" > Limpiar</button>
                         </div>
                       </section>

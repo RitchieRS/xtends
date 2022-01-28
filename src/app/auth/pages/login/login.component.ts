@@ -34,6 +34,13 @@ export class LoginComponent implements OnInit {
     this.lat = 19.4216458;
   
     this.lng = -99.0691779;
+
+    if(localStorage.getItem('new')==null){
+      this.router.navigate(['slide'])
+    }
+  
+
+    //
   }
 
   ngOnInit() {
@@ -59,6 +66,7 @@ export class LoginComponent implements OnInit {
     this.login.login(formValue).subscribe((res) =>{
         console.log(res['idError']);
         if(res['idError']==0){
+          localStorage.setItem('new','1');
           this.router.navigate(['home'])
         }else{
           this.isSignUpFailed = true;
