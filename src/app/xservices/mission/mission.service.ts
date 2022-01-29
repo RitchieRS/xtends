@@ -34,7 +34,7 @@ export class MissionService {
     );
   };
 
-  acceptMissionXTiendaProyecto(request: ReqMission,token : string):Observable<ResMissionAccepted | void>{
+  acceptMissionXTiendaProyecto(request: ReqMission,token : string):Observable<ResMissionAccepted >{
     console.log(request);
     const httpOptions = {
       headers: new HttpHeaders({

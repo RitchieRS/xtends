@@ -4,10 +4,10 @@
     <mat-label>  Zonas de interes</mat-label>
     <span matPrefix><mat-icon matSuffix class="ion-color-navyblue">add_location</mat-icon></span>
     <input type="text"
-           placeholder="Pick one"
+           placeholder="Ciudad"
            matInput
            [formControl]="myControl"
-           [matAutocomplete]="auto">
+           [matAutocomplete]="auto"  >
     <mat-autocomplete #auto="matAutocomplete">
       <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="addOption(option)">
         <mat-icon matSuffix  class="ion-color-navyblue">add_location_alt</mat-icon> {{option}}

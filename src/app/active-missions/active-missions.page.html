@@ -13,13 +13,13 @@
         </ion-col> -->
       </ion-row>
     </ion-grid>
-    <div *ngIf="listMission.length==0" class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
-      <ion-grid class="bg-polarwhite ion-padding-bottom">
+   
+      <ion-grid *ngIf="listMissionlength == 0" class="bg-polarwhite ion-padding-bottom">
         <ion-row class="ion-padding-horizontal">
           <h2><strong>Aún no tienes missiones activas.</strong></h2>
         </ion-row>
       </ion-grid>
-    </div>
+  
     
     <ion-card *ngFor="let available of listMission; let i = index" >
       <ion-card-content>
@@ -36,7 +36,7 @@
                   <h2><strong>{{available.cliente}}</strong></h2>
                   <h3>{{available.proyecto}}</h3>
                   <p>Tiempo de visita {{available.tiempo}} </p>
-                  <p>Pago<strong> ${{available.pago}} valid_heidi </strong></p>
+                  <p>Pago<strong> ${{available.pago}}  </strong></p>
                 </ion-text>
               </ion-label>
             </ion-col>

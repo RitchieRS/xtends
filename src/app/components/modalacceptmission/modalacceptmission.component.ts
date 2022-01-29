@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
-import { ReqMission } from 'src/app/xmodels/missions';
+import { ReqMission, ResMissionAccepted } from 'src/app/xmodels/missions';
 import { MissionService } from 'src/app/xservices/mission/mission.service';
+import { DialogcheckinComponent } from '../modalcheckin/dialogcheckin/dialogcheckin.component';
 import { DialogacceptmissionComponent } from './dialogacceptmission/dialogacceptmission.component';
 
 @Component({
@@ -15,6 +16,7 @@ export class ModalacceptmissionComponent {
   dataMission : ReqMission;
   token: string;
   message = '';
+  isMission : ResMissionAccepted;
   accepted = false;
   idPV=0;
   TextState="Aceptar Misión";
@@ -36,7 +38,9 @@ export class ModalacceptmissionComponent {
     console.log(this.dataMission);
     this.TextState = "Espere.."
     this.srvMission.acceptMissionXTiendaProyecto(this.dataMission,this.token).subscribe((res) =>{
-      if(res){
+      this.isMission = res; 
+      if(this.isMission.idError==0){ 
+        
         this.message = res.resp.msg;
         this.accepted =true;
         
@@ -46,6 +50,10 @@ export class ModalacceptmissionComponent {
                 },
         })
         
+      }else{
+        
+        this.dialog.open(DialogcheckinComponent)
+
       }
   
     })

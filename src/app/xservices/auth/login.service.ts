@@ -88,7 +88,7 @@ export class LoginService {
     });
   //{"user": "benjamin.glz@gmail.com","pass": "B3nj4miiin.!hdu3kS}"
       
-    return this.http.post<any>(`${environment.API_URL}forgot`,form).pipe(
+    return this.http.post<any>(`${environment.API_URL}user/pass`,form).pipe(
           map(( res :  any)=>{
             if(res.resp.usuario!==undefined){
               this.saveToken(res.resp.usuario.token);

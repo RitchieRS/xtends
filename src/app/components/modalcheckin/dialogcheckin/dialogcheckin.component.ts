@@ -1,4 +1,6 @@
+import { Router} from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialogcheckin',
@@ -7,8 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DialogcheckinComponent implements OnInit {
 
-  constructor() { }
+  constructor(public dialog: MatDialog,private router: Router) { }
 
   ngOnInit() {}
+
+  home(){
+    this.dialog.closeAll();
+    this.router.navigate(['/home']);
+  }
 
 }

@@ -14,7 +14,7 @@ export class CheckinserviceService  {
 
   
 
-  checkin(token : string, dataCheck : any):Observable<CheckinReq| void>{
+  checkin(token : string, dataCheck : any):Observable<CheckinReq >{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -24,7 +24,7 @@ export class CheckinserviceService  {
       responseType: 'json' as 'json'
     };
     return this.http.post<CheckinReq>(`${environment.API_URL}visitas/checkin`,dataCheck,httpOptions).pipe(
-          map(( res : any )=> {
+          map(( res : CheckinReq )=> {
             console.log(res);
             return res; 
           }),

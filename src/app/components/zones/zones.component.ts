@@ -30,14 +30,15 @@ export class ZonesComponent implements OnInit {
     let storedCities = JSON.parse(localStorage.getItem("my_colors"));
     this.options = storedCities;
 
-    this.srvInf.getCitiesInformation(token).subscribe((res)=>{
+    /*this.srvInf.getCitiesInformation(token).subscribe((res)=>{
       
       Object.keys(res).forEach(val => {
         console.log(res[val]);
         this.options.push(res[val].estado+","+res[val].ciudad);
       });
       console.log(this.options);
-    })
+    })*/
+    this.options = this.ciudades;
   }
 
   delete(str){
@@ -68,5 +69,119 @@ export class ZonesComponent implements OnInit {
   onlyUnique(value, index, self) {
     return self.indexOf(value) === index;
   }
+
+
+  ciudades = [
+    "Edo. De México,Tenancingo",
+    "Aguascalientes,Calvillo",
+    "Baja California Norte,Loreto",
+    "Baja California Norte,San Felipe",
+    "Baja California Norte,Tecate",
+    "Baja California Norte,Tecate",
+    "Baja California Sur,Comondú",
+    "Baja California Sur,El Vizcaíno",
+    "Chiapas,Cintalapa de Figueroa",
+    "Chiapas,Huixtla",
+    "Chiapas,Palenque",
+    "Chiapas,Tonalá",
+    "Chiapas,Villaflores",
+    "Chihuahua,Camargo",
+    "Coahuila,Cd. Sabinas",
+    "Coahuila,Melchor Muzquiz",
+    "Coahuila,Nava",
+    "Coahuila,Nueva Rosita",
+    "Coahuila,Parras",
+    "Coahuila,Ramos Arizpe",
+    "Coahuila,San Pedro de las Colinas",
+    "Colima,Tecoman",
+    "Durango,Lerdo",
+    "Durango,Santiago Papasquiaro",
+    "Durango,Vicente Guerrero",
+    "Edo. De México,San Mateo Atenco",
+    "Edo. De México,Tenancingo",
+    "Edo. De México,Tianguistenco",
+    "Guanajuato,Acámbaro",
+    "Guanajuato,Apaseo el Alto",
+    "Guanajuato,Cortázar",
+    "Guanajuato,Dolores Hidalgo",
+    "Guanajuato,Pénjamo",
+    "Guanajuato,Salvatierra",
+    "Guanajuato,San Francisco del Rincón",
+    "Guanajuato,San Luis de la Paz",
+    "Guanajuato,San Miguel de Allende",
+    "Guanajuato,Silao",
+    "Guanajuato,Uriangato",
+    "Guanajuato,Valle de Santiago",
+    "Guanajuato,Yuriria",
+    "Guerrero,Taxco",
+    "Hidalgo,Actopan",
+    "Hidalgo,Cd. Sahagún",
+    "Hidalgo,Ixmiquilpan",
+    "Hidalgo,Mineral de la Reforma",
+    "Hidalgo,Progreso de Obregón",
+    "Michoacán,Cd. Hidalgo",
+    "Michoacán,Pátzcuaro",
+    "Michoacán,Zacapú",
+    "Michoacán,Zitácuaro",
+    "Michoacán - Sur,Sahuayo Michoacán",
+    "Morelos,Jojutla",
+    "Morelos,Yautepec",
+    "Nayarit,Ixtlán del Río",
+    "Nayarit,Santiago Ixcuintla",
+    "Oaxaca,Huajuapan de león",
+    "Oaxaca,Juchitán",
+    "Oaxaca,Matias Romero Avedano",
+    "Oaxaca,San Pedro Mixtepec",
+    "Oaxaca,Santiago Pinotepa",
+    "Puebla,Atlixco",
+    "Puebla,Cd. Izúcar de Matamoros",
+    "Puebla,Tecamachalco",
+    "Puebla,Teziutlán",
+    "Querétaro,Tequisquiapan",
+    "San Luis Potosí,Ébano",
+    "Sinaloa,El Dorado",
+    "Sinaloa,Navolato",
+    "Sonora,Agua Prieta",
+    "Sonora,Agua Prieta",
+    "Sonora,Cananea",
+    "Sonora,Heroica Caborca",
+    "Sonora,Magdalena de Kino",
+    "Sonora,Puerto Peñasco",
+    "Sonora,San Luis Río Colorado",
+    "Sonora,San Luis Río Colorado",
+    "Sonora,San Luis Río Colorado",
+    "Sonora,Santa Ana",
+    "Sonora,Sonoyta",
+    "Tabasco,Macuspana",
+    "Tabasco,Teapa",
+    "Tamaulipas,Cd. Mante",
+    "Tamaulipas,Miguel Alemán",
+    "Tamaulipas,Río Bravo",
+    "Tamaulipas,Valle Hermoso",
+    "Veracruz,Acayucan",
+    "Veracruz,Agua Dulce",
+    "Veracruz,Cardel",
+    "Veracruz,Huauchinango",
+    "Veracruz,Huejutla",
+    "Veracruz,Jáltipan",
+    "Veracruz,Mtz de la Torre",
+    "Veracruz,Panuco",
+    "Veracruz,San Andrés Tuxtla",
+    "Veracruz,San Bautista Tuxtepec",
+    "Veracruz,Tantoyuca",
+    "Veracruz,Tulancingo",
+    "Veracruz,Villa Cazones",
+    "Yucatán,Champotón",
+    "Zacatecas,Calera",
+    "Zacatecas,Guadalupe",
+    "Zacatecas,Jerez",
+    "Zacatecas,Rio Grande",
+    "CDMX,Venustiano Carranza",
+    "CDMX,Benito Juárez",
+    "CDMX,Coyoacán",
+    "CDMX,Iztacalco",
+    "CDMX,Álvaro Obregón",
+    "CDMX,Azcapotzalco"
+];
 
 }

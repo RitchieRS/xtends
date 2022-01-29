@@ -2,7 +2,7 @@ import { Component, OnInit, NgZone } from '@angular/core';
 import { LoginService } from 'src/app/xservices/auth/login.service';
 import { FormGroup,Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { Share } from '@capacitor/share';
 import { Capacitor, Plugins } from "@capacitor/core";
 import { LocationService } from "src/app//xservices/gservice/location.service"
 const { Toast } = Plugins;
@@ -39,8 +39,6 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['slide'])
     }
   
-
-    //
   }
 
   ngOnInit() {
@@ -145,6 +143,16 @@ export class LoginComponent implements OnInit {
     if (this.watchId != null) {
       Geolocation.clearWatch({ id: this.watchId });
     }
+  }
+
+  async shareElement(){
+    console.log("Hola Soy un share");
+    await Share.share({
+      title: 'Usen xtend de mi compa',
+      text: 'xTendsApp',
+      url: 'https://xtendapp.com/',
+      dialogTitle: 'Comparte con tus amigos.',
+    });
   }
 
 

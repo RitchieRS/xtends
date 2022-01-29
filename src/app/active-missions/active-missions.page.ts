@@ -19,6 +19,7 @@ export class ActiveMissionsPage implements OnInit {
   location:HomeLocation;
   lat:any;
   lng:any;
+  listMissionlength=0;
 
   constructor(private mision : MissionService) { }
 
@@ -39,6 +40,7 @@ export class ActiveMissionsPage implements OnInit {
            if(this.dataAMission.section1.content.length>=1){
             this.missionAval = this.dataAMission.section1;
             this.listMission = this.missionAval.content;
+            this.listMissionlength = this.listMission.length;
 
              console.log(this.missionAval.content);
           }

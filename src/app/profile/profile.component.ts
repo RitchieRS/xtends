@@ -151,7 +151,11 @@ export class ProfileComponent implements OnInit {
     });
     
 
-    this.initData();  
+    this.initData(); 
+
+   
+    
+      
   }
 
  
@@ -361,6 +365,11 @@ async startUpload(file: LocalFile) {
         this.imss  = this.profileData.credenciales.imss;
         this.rfc  = this.profileData.credenciales.rfc;
         this.urlFirma= this.profileData.credenciales.urlFirma;
+        for(var i = 0; i < this.nivelTermo.length; i++){
+          if(i<Number(this.nivelXtender)){
+            this.nivelTermo[i]=1;
+          }
+        }
         
         this.userForm.setValue({
           nombre: this.nombre,

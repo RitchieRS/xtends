@@ -8,6 +8,7 @@ import { LocationService } from "src/app//xservices/gservice/location.service"
 const { Toast } = Plugins;
 import { Geolocation } from '@capacitor/geolocation';
 import { MapsAPILoader } from '@agm/core';
+import { ToastController } from '@ionic/angular';
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
@@ -19,7 +20,9 @@ export class CheckInComponent implements OnInit {
   token = "";
   lat: any;
   lgn: any;
+  checkin : CheckinReq;
   watchId: any;
+  isLocationAvailalble=0;
   pinchoLocation= {
     url: './assets/icon/location-navybluextend.svg',
     scaledSize: {
@@ -32,14 +35,15 @@ export class CheckInComponent implements OnInit {
               private locationService: LocationService,
               public ngZone: NgZone,
               private router: Router,
-              private _mapsAPILoader: MapsAPILoader) { 
+              private _mapsAPILoader: MapsAPILoader,
+              private toastCtrl: ToastController,) { 
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.token = localStorage.getItem('token');
     this.lat = 19.4216458;
     this.lgn = -99.0691779;
 
     this.dataCheckIn = {
-      "id": this.idPV,
+      "idPV": this.idPV,
       "contenido" : {
                     "latitud":this.lat,
                     "longitud":this.lgn
@@ -65,11 +69,24 @@ export class CheckInComponent implements OnInit {
     //this.srvMission.keepMissionInfo(dataMission);
   }
 
+
+
+
+
+
   checkIn(){
     //console.log(this.dataCheckIn);
     this.router.navigate(['start-mission/'+this.idPV])
     this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
        console.log(res)
+       this.checkin = res;
+       //this.router.navigate(['start-mission/'+this.idPV])
+       /*this.isLocationAvailalble  = this.checkin.idError;
+       if(this.isLocationAvailalble==1){
+         this.presentToast(this.checkin.resp)
+       }else{
+        
+       }*/
        
     })
 
@@ -149,6 +166,18 @@ export class CheckInComponent implements OnInit {
       Geolocation.clearWatch({ id: this.watchId });
     }
   }
+
+   // Little helper
+   async presentToast(text) {
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+    });
+    toast.present();
+  }
+
+
+
 
 
 

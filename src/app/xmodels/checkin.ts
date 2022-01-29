@@ -7,6 +7,8 @@ export interface CheckinReq {
     contenido?:  Contenido;
     info?:       Info;
     config?:     Config;
+    idError: number;
+    resp:    string;
 }
 
 export interface Config {
@@ -26,6 +28,11 @@ export interface Contenido {
     latitud?:      string;
     longitud?:     string;
     respuestas?:   Respuesta[];
+}
+
+export interface CheckInResp {
+    idError: number;
+    resp:    string;
 }
 
 export interface Respuesta {
