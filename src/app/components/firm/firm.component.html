@@ -1,3 +1,21 @@
-<div style="position:relative; width: 90%; height: 200px; background-color: white; margin:10px auto 10px auto;">
-  <signature-pad [options]="signaturePadOptions" (onBeginEvent)="drawStart()" (onEndEvent)="drawComplete()"></signature-pad>
+<div class="box-firma">
+  <div style="position:relative; width: 250px; height: 250px; background-color: white; margin:10px auto 10px auto;">
+    <canvas #firmaDigital width="250" height="230"></canvas>
+  </div>
 </div>
+
+<ion-col>
+  <section style="margin-top: 10px;">
+    <div class="iup-button-row">
+      <button (click)="limpiarFirma()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+        LIMPIAR
+      </button>
+      <button (click)="guardarPNG()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+        GUARDAR
+      </button>
+    </div>
+  </section>
+</ion-col>
+
+
+

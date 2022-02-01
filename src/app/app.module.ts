@@ -19,7 +19,7 @@ import { WalletModule } from './wallet/wallet.module';
 import { ProfileModule } from './profile/profile.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SlidePageModule } from './slide/slide.module';
-import { XtendLevelsModule } from "./xtend-levels/xtend-levels.module";
+import { XtendLevelsModule } from './xtend-levels/xtend-levels.module';
 
 // Google Materials Angular
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +38,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
-
+import { SignaturePadModule } from 'angular2-signaturepad';
 
 
 
@@ -79,6 +79,7 @@ import { MissionsModule } from './missions/missions.module';
     MatDialogModule,
     MatAutocompleteModule,
     MatTabsModule,
+    SignaturePadModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),

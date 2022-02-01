@@ -30,11 +30,11 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
 import { ModalcheckinComponent } from './modalcheckin/modalcheckin.component';
 import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheckin.component';
 import { HeaderTwoComponent } from './header-two/header-two.component';
-import { FirmComponent } from './firm/firm.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrintcredentialComponent } from './printcredential/printcredential.component';
+import { FirmComponent } from './firm/firm.component';
 
 
 
@@ -54,8 +54,8 @@ import { PrintcredentialComponent } from './printcredential/printcredential.comp
     DialogacceptmissionComponent,
     ModalcheckinComponent,
     DialogcheckinComponent,
-    FirmComponent,
     PrintcredentialComponent,
+    FirmComponent,
   ],
   exports:[
     FooterComponent,
@@ -70,9 +70,9 @@ import { PrintcredentialComponent } from './printcredential/printcredential.comp
     DialogacceptmissionComponent,
     ModalcheckinComponent,
     DialogcheckinComponent,
-    FirmComponent,
     SocialShareBtnComponent,
     PrintcredentialComponent,
+    FirmComponent,
   ],
   imports: [
     CommonModule,

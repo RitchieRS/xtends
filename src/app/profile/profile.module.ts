@@ -27,6 +27,7 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 
 
+
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
@@ -56,7 +57,7 @@ import {MatTabsModule} from '@angular/material/tabs';
     MatCheckboxModule,
     MatSelectModule,
     MatDividerModule,
-    MatTabsModule
+    MatTabsModule,
   ],
   exports:[
     ProfileComponent
