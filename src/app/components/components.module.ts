@@ -1,3 +1,4 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule} from '@ionic/angular';
@@ -33,6 +34,7 @@ import { FirmComponent } from './firm/firm.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PrintcredentialComponent } from './printcredential/printcredential.component';
 
 
 
@@ -53,6 +55,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     ModalcheckinComponent,
     DialogcheckinComponent,
     FirmComponent,
+    PrintcredentialComponent,
   ],
   exports:[
     FooterComponent,
@@ -69,6 +72,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogcheckinComponent,
     FirmComponent,
     SocialShareBtnComponent,
+    PrintcredentialComponent,
   ],
   imports: [
     CommonModule,
