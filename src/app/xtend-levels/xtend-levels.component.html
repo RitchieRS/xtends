@@ -154,22 +154,25 @@
       <ion-row>
         <ion-col>
         <div class="ipck-row-carousel">
-          <div class="ipck-col-carousel ion-align-items-center">
+          <div class="ipck-col-carousel ion-align-items-top">
             <!-- <ITEM - para repetir el ng-repeat> -->
-            <div class="ipck-item-carousel ion-margin-horizontal" *ngFor="let nivel of niveles">
+            <div class="ipck-item-carousel ion-margin-horizontal" *ngFor="let nivel of dataniveles">
               <ion-card class="ion-no-margin ion-padding  ion-width-sm shadow border-radius">
                 <ion-grid>
+                  <ion-row>
+
+                  </ion-row>
                   <ion-row>
                     <ion-col size="3" class="ion-align-self-center ion-text-right">
                       <img src="../../assets/icon/{{nivel.icon}}" style="width:40px; height: 40px;">
                     </ion-col>
                     <ion-col size="9" class="ion-text-left ion-align-self-center">
                       <ion-text color="navybluextend">
-                       <h3>Nivel <strong>{{nivel.titulo}}</strong></h3>
+                       <h3>Nivel <strong>{{nivel.title}}</strong></h3>
                       </ion-text>
                     </ion-col>
                   </ion-row>
-                  <ion-row *ngFor="let documento of documentos">
+                  <ion-row *ngFor="let docs of nivel.docs">
                     <ion-col size="2" class="ion-align-self-center">
                       <span class="material-icons color-skyblue" style="font-size: 20px;">
                         done_outline
@@ -177,7 +180,7 @@
                     </ion-col>
                     <ion-col size="10" class="ion-align-self-center">
                       <ion-text color="navybluextend">
-                        <p>{{documento.titulo}}</p>
+                        <p>{{docs.title}}</p>
                       </ion-text>
                     </ion-col>
                   </ion-row>
