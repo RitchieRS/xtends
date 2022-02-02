@@ -1,0 +1,72 @@
+<div mat-dialog-content>
+  <div>
+    <ion-grid class="ion-margin">
+      <ion-row class="ion-justify-items-center">
+        <ion-col size="12" class="ion-align-self-center ion-text-center">
+
+              <ion-grid>
+                <ion-row class="ion-justify-content-center ion-align-items-center">
+                  <ion-col size="12" class="ion-padding">
+                    <ion-text color="navyblue">
+                      <h6 class="iup-margin-top-md">
+                        Comparte este código a un amigo, puedes hacerlo por correo electrónico o WhatsApp.
+                      </h6>
+                    </ion-text>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              <ion-grid class="ion-no-padding">
+                <ion-row [ngClass]="'bg-navyblue'" class="ion-justify-content-center ion-padding">
+                  <ion-col size="10" class="ion-align-self-center bg-whitex ion-no-padding border-rodondos">
+                     <ion-text class="ion-text-center" color="navybluextend">
+                       <h6><strong>kahfuiw348573984fh</strong></h6>
+                     </ion-text>
+                  </ion-col>
+                  <ion-col size="2">
+
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+
+        </ion-col>
+        <ion-col size="12" class="ion-text-center">
+           <form>
+            <p>
+              <mat-form-field appearance="outline" class="iup-full-width">
+                <mat-label class="mat-label-color-navyblue">E-mail</mat-label>
+                <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
+                <mat-icon matSuffix class="material-icons-outlined">email_outline</mat-icon>
+              </mat-form-field>
+            </p>
+            <p>
+            <mat-form-field appearance="outline" class="iup-full-width">
+              <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
+              <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
+              <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field appearance="outline" class="iup-full-width">
+              <mat-label class="mat-label-color-navyblue">Apellido</mat-label>
+              <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
+              <mat-icon matSuffix>face</mat-icon>
+            </mat-form-field>
+          </p>
+           </form>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+           <button mat-dialog-close mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+             CERRAR
+           </button>
+        </ion-col>
+        <ion-col size="6" class="ion-text-center">
+          <button mat-dialog-close mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            ENVIAR
+          </button>
+       </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</div>
+
+
