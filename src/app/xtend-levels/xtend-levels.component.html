@@ -180,7 +180,7 @@
                     </ion-col>
                     <ion-col size="10" class="ion-align-self-center">
                       <ion-text color="navybluextend">
-                        <p>{{docs.title}}</p>
+                        <p class="ion-no-padding">{{docs.title}}</p>
                       </ion-text>
                     </ion-col>
                   </ion-row>
@@ -192,7 +192,7 @@
                        </ion-text>
                     </ion-col>
                   </ion-row>
-                  <ion-row *ngFor="let beneficio of beneficios">
+                  <ion-row *ngFor="let beneficios of nivel.beneficios">
                     <ion-col size="2" class="ion-align-self-center">
                       <span class="material-icons color-skyblue" style="font-size: 20px;">
                         done_outline
@@ -200,7 +200,7 @@
                     </ion-col>
                     <ion-col size="10" class="ion-align-self-center">
                       <ion-text color="navybluextend">
-                        <p>{{beneficio.titulo}}</p>
+                        <p>{{beneficios.title}}</p>
                       </ion-text>
                     </ion-col>
                   </ion-row>
