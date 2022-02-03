@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-modalcodigo',
@@ -18,4 +19,6 @@ export class ModalcodigoComponent{
   selector: 'dialogcodigo',
   templateUrl: './dialogcodigo.html',
 })
-export class DialogCodigo {}
+export class DialogCodigo {
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+}

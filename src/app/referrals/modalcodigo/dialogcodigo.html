@@ -15,23 +15,10 @@
                   </ion-col>
                 </ion-row>
               </ion-grid>
-              <ion-grid class="ion-no-padding">
-                <ion-row [ngClass]="'bg-navyblue'" class="ion-justify-content-center ion-padding">
-                  <ion-col size="10" class="ion-align-self-center bg-whitex ion-no-padding border-rodondos">
-                     <ion-text class="ion-text-center" color="navybluextend">
-                       <h6><strong>kahfuiw348573984fh</strong></h6>
-                     </ion-text>
-                  </ion-col>
-                  <ion-col size="2">
-
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-
+              <app-clipboard></app-clipboard>
         </ion-col>
-        <ion-col size="12" class="ion-text-center">
-           <form>
-            <p>
+        <ion-col size="12">
+            <!-- <p>
               <mat-form-field appearance="outline" class="iup-full-width">
                 <mat-label class="mat-label-color-navyblue">E-mail</mat-label>
                 <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
@@ -51,8 +38,35 @@
               <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
               <mat-icon matSuffix>face</mat-icon>
             </mat-form-field>
+          </p> -->
+          <form class="example-form">
+            <p>
+            <mat-form-field class="iup-full-width" appearance="outline">
+              <mat-label class="mat-label-color-navyblue">Email</mat-label>
+              <input type="email" matInput [formControl]="emailFormControl" placeholder="Eje. miemail@gmail.com">
+              <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('email requerido')">
+                Por favor, introduce un e-mail válido
+              </mat-error>
+              <mat-error *ngIf="emailFormControl.hasError('email requerido')">
+                Email requerido
+              </mat-error>
+            </mat-form-field>
           </p>
-           </form>
+          <p>
+            <mat-form-field class="iup-full-width" appearance="outline">
+              <mat-label type="text" class="mat-label-color-navyblue">Nombre</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </p>
+          <p>
+            <mat-form-field class="iup-full-width" appearance="outline">
+              <mat-label type="text" class="mat-label-color-navyblue">Apellido</mat-label>
+              <input matInput>
+            </mat-form-field>
+          </p>
+
+          </form>
+
         </ion-col>
         <ion-col size="6" class="ion-text-center">
            <button mat-dialog-close mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
@@ -68,5 +82,3 @@
     </ion-grid>
   </div>
 </div>
-
-

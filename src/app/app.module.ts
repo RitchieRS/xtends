@@ -39,6 +39,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
 
 
 
@@ -80,6 +82,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
     MatAutocompleteModule,
     MatTabsModule,
     SignaturePadModule,
+    ClipboardModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),

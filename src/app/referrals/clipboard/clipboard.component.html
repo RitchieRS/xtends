@@ -1,0 +1,16 @@
+<ion-grid class="ion-no-padding">
+  <ion-row [ngClass]="'bg-navyblue'" class="ion-justify-content-center ion-padding">
+    <ion-col size="10" class="ion-align-self-center bg-whitex ion-no-padding border-rodondos">
+       <ion-text class="ion-text-center" color="navybluextend" style="overflow: hidden;">
+         <ion-textarea style="font-weight: 600; max-height: 38px;" mode="ios" color="navybluextend" id="clipboard-example-textarea" [(ngModel)]="value"></ion-textarea>
+       </ion-text>
+    </ion-col>
+    <ion-col size="2">
+      <!-- <button [cdkCopyToClipboard]="value">Copy</button> -->
+      <ion-button [cdkCopyToClipboard]="value"  (click)="presentToast()" color="navybluextend" mode="ios" size="default" fill="clear">
+        <ion-icon color="polarwhite" name="copy-outline" ></ion-icon>
+      </ion-button>
+
+    </ion-col>
+  </ion-row>
+</ion-grid>

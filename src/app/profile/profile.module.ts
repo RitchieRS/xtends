@@ -25,9 +25,6 @@ import {MatTabsModule} from '@angular/material/tabs';
 
 
 
-
-
-
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA

@@ -15,6 +15,9 @@ import { DialogQr, ModalqrComponent } from './modalqr/modalqr.component';
 import { DialogCodigo, ModalcodigoComponent } from './modalcodigo/modalcodigo.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ClipboardComponent } from './clipboard/clipboard.component';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+
 
 @NgModule({
   schemas:[
@@ -31,7 +34,8 @@ import { MatInputModule } from '@angular/material/input';
     ReferralsPageRoutingModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    ClipboardModule,
   ],
   declarations: [
     ReferralsPage,
@@ -39,11 +43,13 @@ import { MatInputModule } from '@angular/material/input';
     DialogQr,
     ModalcodigoComponent,
     DialogCodigo,
+    ClipboardComponent,
   ],
   exports:[
     ModalqrComponent,
     ModalcodigoComponent,
     DialogCodigo,
+    ClipboardComponent,
   ]
 })
 export class ReferralsPageModule {}
