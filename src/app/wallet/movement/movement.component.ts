@@ -13,9 +13,9 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 export class MovementComponent implements OnInit {
 
   dataWallet:MovimientoResponse;
-  saldoPendiente: number;
-  saldoTotal: number;
-  totalGanado: number;
+  saldoPendiente = 0.0;
+  saldoTotal=  0.0;
+  totalGanado=  0.0;
   movimientos: Movimiento[];
 
   detallemovimientos =[

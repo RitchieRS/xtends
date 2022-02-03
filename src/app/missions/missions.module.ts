@@ -14,7 +14,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ComponentsModule } from '../components/components.module';
-
+import { ComponentsSondeoModule } from '../components-sondeo/components-sondeo.module';
 import { MymissionsComponent } from './mymissions/mymissions.component';
 import { StartMissionComponent } from './start-mission/start-mission.component';
 import { CheckInComponent } from './check-in/check-in.component';
@@ -41,6 +41,7 @@ import { AgmCoreModule } from '@agm/core';
     RouterModule,
     IonicModule,
     ComponentsModule,
+    ComponentsSondeoModule,
     CdkAccordionModule,
     MatExpansionModule,
     MatCardModule,

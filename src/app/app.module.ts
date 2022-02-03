@@ -20,6 +20,7 @@ import { ProfileModule } from './profile/profile.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SlidePageModule } from './slide/slide.module';
 import { XtendLevelsModule } from './xtend-levels/xtend-levels.module';
+import { ComponentsSondeoModule } from './components-sondeo/components-sondeo.module';
 
 // Google Materials Angular
 import { MatCardModule } from '@angular/material/card';
@@ -63,6 +64,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     MatGridListModule,
     MatIconModule,
     ComponentsModule,
+    ComponentsSondeoModule,
     AuthModule,
     RouterModule,
     MissionModule,

@@ -2,19 +2,20 @@
   <ion-row>
     <ion-col class="ion-text-center">
       <ion-text color="polarwhite">
-         <h5><ion-icon  name="funnel"></ion-icon> Espesifica tu búsqueda</h5>
+         <h5><ion-icon  name="funnel"></ion-icon> Específica tu búsqueda</h5>
       </ion-text>
     </ion-col>
   </ion-row>
   <ion-row>
     <ion-col class="bg-whitex ion-text-center ion-padding">
+      <form [formGroup]="filterForm"  (ngSubmit)="filter()" >
       <p>
         <mat-form-field appearance="outline" class="iup-full-width">
-          <mat-label class="mat-label-color-navyblue">Tipo de misión</mat-label>
-          <mat-select multiple>
-            <mat-optgroup label="Tipo de trabajo de interés">
+          <mat-label  class="mat-label-color-navyblue">Tipo de misión</mat-label>
+          <mat-select formControlName="type"  multiple>
+            <mat-optgroup  label="Tipo de trabajo de interés">
               <mat-option value="promotor">Promotor</mat-option>
-              <mat-option value="mystery">Mystery Shoper</mat-option>
+              <mat-option value="mistery">Mistery Shoper</mat-option>
               <mat-option value="anaqueleo">Anaqueleo</mat-option>
             </mat-optgroup>
           </mat-select>
@@ -24,18 +25,19 @@
          <app-zones></app-zones>
        </p>
        <p>
-        <mat-form-field appearance="outline" class="iup-full-width">
+        <mat-form-field   appearance="outline" class="iup-full-width">
           <mat-label class="mat-label-color-navyblue">Fecha</mat-label>
-          <input matInput [matDatepicker]="picker">
+          <input matInput formControlName="date" [matDatepicker]="picker">
           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
           <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
         </mat-form-field>
       </p>
       <section>
         <div class="iup-button-row">
-          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">Filtrar <span class="material-icons">chevron_right</span></button>
+          <button type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">Filtrar <span class="material-icons">chevron_right</span></button>
         </div>
       </section>
+      </form>
     </ion-col>
 
   </ion-row>

@@ -12,8 +12,8 @@ export class WalletComponent implements OnInit {
 
   dataWallet : WalletResponse;
   servicios: Servicio[];
-  saldoPendiente: number;
-  saldoTotal: number;
+  saldoPendiente= 0.00;
+  saldoTotal=0.00;
 
   constructor(private route: ActivatedRoute,private srvWallet : WalletService) { }
   
@@ -23,7 +23,7 @@ export class WalletComponent implements OnInit {
       if(res){
         console.log(res);
         this.dataWallet = res;
-        this.saldoPendiente = this.dataWallet.saldoPendiente;
+        this.saldoPendiente = (this.dataWallet.saldoPendiente>=0 ||this.dataWallet.saldoPendiente!==null) ?this.dataWallet.saldoPendiente:0;
         this.saldoTotal = this.dataWallet.saldoTotal; 
         this.servicios = this.dataWallet.servicios;
         

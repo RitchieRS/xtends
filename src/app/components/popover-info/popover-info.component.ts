@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 @Component({
   selector: 'app-popover-info',
@@ -7,8 +9,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopoverInfoComponent implements OnInit {
 
-  constructor() { }
+  public filterForm: FormGroup;
+  constructor(private storage: StorageHelperService,
+              private fb : FormBuilder) { }
+              
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.filterForm = this.fb.group({
+      "type": ['', [Validators.required]],
+      "date": ['', [Validators.required,Validators.minLength(4)]]
+    });
+    
+  }
+
+
+  filter(){
+    const formValue = this.filterForm.value;
+    console.log(formValue);
+  }
+
+
+
+
+
 
 }

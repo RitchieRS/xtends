@@ -6,6 +6,8 @@ import { LoginService } from '../xservices/auth/login.service';
 import { TransitionCheckState } from '@angular/material/checkbox';
 import { DialogmissionComponent } from '../components/modalmission/dialogmission/dialogmission.component';
 import { MatDialog } from '@angular/material/dialog';
+import { StorageHelperService } from '../xservices/storage/storage-helper.service';
+import { InfoService } from '../xservices/user/info.service';
 
 @Component({
   selector: 'app-home',
@@ -28,6 +30,7 @@ export class HomePage {
   missionsAvalDataAuxmap :Section4Content[];
   lat:any;
   lng:any;
+  options: string[] = [];
   pinchoLocation= {
     url: './assets/icon/location-navybluextend.svg',
     scaledSize: {
@@ -35,67 +38,7 @@ export class HomePage {
         height: 60
     }
   }
-   /* {
-     logoimg:'shell.svg',
-     marca:'shell',
-     tipo:'Anaquelero',
-     txt:'Tienes hasta el 3 de noviembre para completarla',
-     novisitas:'Visita 3 tiendas',
-     preciopago:'300 por visita',
-     btnlink:''
-    },
-    {
-      logoimg:'minisu.png',
-      marca:'minisu',
-      tipo:'Promotor',
-      txt:'Tienes hasta el 5 de noviembre para completarla',
-      novisitas:'Visita 6 tiendas',
-      preciopago:'400 por visita',
-      btnlink:''
-     },
-  ];*/
 
-
-  promociones = [
-    {
-      img:'refiere-a-amigo.png',
-      titulo:'Refiere a un amigo y gana dinero',
-      texto:'Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.',
-      btnlink:''
-    },
-    {
-      img:'minisu.png',
-      titulo:'Refiere a un amigo y gana dinero',
-      texto:'Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.',
-      btnlink:''
-    },
-
-  ];
-
-  misdisponibles = [
-    {
-      logoimg:'shell.svg',
-      tipo:'Anaquelero',
-      novisitas:'Visita 3 tiendas',
-      preciopago:'$300 ',
-      btnlink:'',
-      nivel:'Bronce',
-      canal:'Especializado',
-      cadena:'Autozone',
-      tiempopromedio:'30 min',
-     },
-     {
-      logoimg:'sams.png',
-      tipo:'Demostrador',
-      novisitas:'Visita 5 tiendas',
-      preciopago:'$200',
-      btnlink:'',
-      nivel:'Plata',
-      canal:'Especializado',
-      cadena:'Sams',
-      tiempopromedio:'40 min',
-     },
-  ];
 
   panelOpenState = false;
   dataHome : Home;
@@ -109,7 +52,11 @@ export class HomePage {
 
   constructor(private homeService : HomeService,
               private auth : LoginService,
-              public dialog: MatDialog) {}
+              public dialog: MatDialog,
+              private storage: StorageHelperService,
+              private srvInf: InfoService) {
+
+              }
 
   ngOnInit() {
 
@@ -117,7 +64,6 @@ export class HomePage {
     this.lng = Number(localStorage.getItem('lng'));
     console.log(this.lat);
     console.log(this.lng );
-
     console.log(this.auth.isLogged)
     this.auth.isLogged.subscribe( (log:any)=>{
         console.log(log)
@@ -127,58 +73,9 @@ export class HomePage {
       "lat" : Number(this.lat),
       "lgn" : Number(this.lng)
     }
-
-    
-
-    
-
-     this.reqHome = localStorage.getItem('token');
-     console.log(this.reqHome);
-     this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
-      console.log(res);
-       if(res){
-        this.dataHome=  res;
-        //console.log(this.dataHome);
-        /* Misiones Activas*/
-        if(this.dataHome.section1.content.length>=1){
-         this.missions = this.dataHome.section1;
-         this.missionsData = this.dataHome.section1.content;
-         console.log(this.missionsData);
-        }
-        /* Banners*/
-        if(this.dataHome.section2.content.length>=1){
-          this.banner = this.dataHome.section2;
-          this.bannerData = this.dataHome.section2.content;
-          console.log(this.missionsData);
-         }
-        /* Misiones Disponibles*/
-        if(this.dataHome.section3.content.length>=1){
-          this.missionAval = this.dataHome.section3;
-          this.missionsAvalData = this.dataHome.section3.content;
-          this.missionsAvalDataAux = this.dataHome.section3.content.slice(0,5);
-         // console.log(this.missionsAvalData);
-         }
-         /* Misiones Disponibles*/
-        if(this.dataHome.section4.content.length>=1){
-          this.missionAvalmap = this.dataHome.section4;
-          this.missionsAvalDatamap = this.dataHome.section4.content;
-          this.missionAvalmap.content.forEach(element => {
-            element.color = this.pincho(element.colorServicio)
-                        
-          });
-          
-          console.log(this.missionsAvalDatamap);
-         }
-        //console.log(this.dataHome.section1);
-
-       // console.log(this.dataHome);
-       }
-
-
-
-
-
-    })
+    this.reqHome = localStorage.getItem('token');
+    this.loadZones()
+    this.loadDataMission();
   }
 
   seeMore(){
@@ -276,6 +173,55 @@ export class HomePage {
         break;
         }
         return type;
+      }
+
+
+     loadZones():void{
+        this.srvInf.getCitiesInformation(this.reqHome).subscribe((res)=>{
+          this.storage.setObject('zone', res);
+         })
+      }
+      loadDataMission():void{
+        this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
+          console.log(res);
+           if(res){
+            this.dataHome=  res;
+            //console.log(this.dataHome);
+            /* Misiones Activas*/
+            if(this.dataHome.section1.content.length>=1){
+             this.missions = this.dataHome.section1;
+             this.missionsData = this.dataHome.section1.content;
+             console.log(this.missionsData);
+            }
+            /* Banners*/
+            if(this.dataHome.section2.content.length>=1){
+              this.banner = this.dataHome.section2;
+              this.bannerData = this.dataHome.section2.content;
+              console.log(this.missionsData);
+             }
+            /* Misiones Disponibles*/
+            if(this.dataHome.section3.content.length>=1){
+              this.missionAval = this.dataHome.section3;
+              this.missionsAvalData = this.dataHome.section3.content;
+              this.missionsAvalDataAux = this.dataHome.section3.content.slice(0,5);
+             // console.log(this.missionsAvalData);
+             }
+             /* Misiones Disponibles*/
+            if(this.dataHome.section4.content.length>=1){
+              this.missionAvalmap = this.dataHome.section4;
+              this.missionsAvalDatamap = this.dataHome.section4.content;
+              this.missionAvalmap.content.forEach(element => {
+                element.color = this.pincho(element.colorServicio)
+                            
+              });
+              
+              console.log(this.missionsAvalDatamap);
+             }
+            //console.log(this.dataHome.section1);
+    
+           // console.log(this.dataHome);
+           }
+        })
       }
 
 

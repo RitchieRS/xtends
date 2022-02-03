@@ -58,7 +58,6 @@ export class InfoService {
     };
     return this.http.get<any>(`${environment.API_URL}user/cities`,httpOptions).pipe(
           map(( res :  any)=> {
-            console.log(res);
             return res; 
           }),
           catchError((err)=> this.handeleError(err))
