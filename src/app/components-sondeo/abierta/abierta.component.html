@@ -7,29 +7,31 @@
           <ion-row class="ion-justify-content-center">
             <ion-col size="10">
               <ion-text color=navyblue>
-                <!--<h6>{{p.pregunta}}</h6>-->
+                <h6>{{pregunta}}</h6>
               </ion-text>
             </ion-col>
-            <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+            <ion-col *ngIf="isValid==0" size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
               <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
             </ion-col>
-            <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+            <ion-col *ngIf="isValid==1"  size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
               <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
             </ion-col>
           </ion-row>
         </ion-grid>
       </mat-panel-title>
     </mat-expansion-panel-header>
-    <div class="ion-padding-horizontal">
-      <ion-item >
-        <ion-input placeholder="Escribe aquì tu respuesta"></ion-input>
-      </ion-item>
-      <div class="iup-button-row">
-        <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-          GUARDAR
-        </button>
+    <form [formGroup]="abiertaGoup"  (ngSubmit)="submit()"  >
+      <div class="ion-padding-horizontal">
+        <ion-item >
+          <ion-input formControlName="abierta" placeholder="Escribe aquì tu respuesta" value="{{respuestaStr}}"></ion-input>
+        </ion-item>
+        <div class="iup-button-row">
+          <button   type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            GUARDAR
+          </button>
+        </div>
       </div>
-    </div>
+   </form>
   </mat-expansion-panel>
 </mat-accordion>
 

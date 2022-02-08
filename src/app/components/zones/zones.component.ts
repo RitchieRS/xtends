@@ -53,7 +53,12 @@ export class ZonesComponent implements OnInit {
       if(element==str) {this.selected.splice(index,1)};
    });
    this.storage.setObject('zone-stored',this.selected);
-   //localStorage.setItem("my_colors", JSON.stringify(this.selected));
+   /*localStorage.setItem("my_colors", JSON.stringify(this.selected));
+   this.storage.getObject('zone-stored').then((storedzone: any) => {
+       this.selected = storedzone;
+    });
+    this.storage.setObject('zone-stored',this.selected);
+   */
    
   }
 

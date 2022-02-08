@@ -269,7 +269,7 @@
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">Fecha de nacimiento</mat-label>
-                      <input formControlName="fechaNacimiento" matInput [matDatepicker]="picker">
+                      <input formControlName="fechaNacimiento" matInput [matDatepicker]="picker" readonly>
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
                     </mat-form-field>
@@ -398,9 +398,8 @@
                         <ion-row class="ion-no-margin">
                           <ion-col size="12">
                             <section>
-                              <div *ngIf=" images.length == 0 " class="iup-button-row">
-                                <button (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio</button>
-                              </div>
+                              <app-foto-dom
+                                           ></app-foto-dom>
                               <div *ngIf="images.length > 0 &&  imgDom==false"  class="iup-button-row">
                                 <button  *ngFor="let file of images; let i = index" (click)="startUpload(file)" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Subir</button>
                               </div>

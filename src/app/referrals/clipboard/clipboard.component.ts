@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
 @Component({
@@ -6,11 +6,17 @@ import { ToastController } from '@ionic/angular';
   templateUrl: './clipboard.component.html',
   styleUrls: ['./clipboard.component.scss'],
 })
-export class ClipboardComponent  {
+export class ClipboardComponent implements OnInit {
+  @Input() code : string;
 
-  value =`kahfuiw348573984fh`;
-  constructor(private toastCtrl: ToastController) { }
-
+  referidoCode:string;
+  constructor(private toastCtrl: ToastController) {
+    
+   }
+  ngOnInit(): void {
+    this.referidoCode = localStorage.getItem('referido');
+  }
+  
 
   async presentToast() {
     const toast = await this.toastCtrl.create({

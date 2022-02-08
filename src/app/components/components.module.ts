@@ -35,6 +35,8 @@ import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrintcredentialComponent } from './printcredential/printcredential.component';
 import { FirmComponent } from './firm/firm.component';
+import { FotoIdComponent } from './foto-id/foto-id.component';
+import { FotoDomComponent } from './foto-dom/foto-dom.component';
 
 
 
@@ -56,6 +58,8 @@ import { FirmComponent } from './firm/firm.component';
     DialogcheckinComponent,
     PrintcredentialComponent,
     FirmComponent,
+    FotoIdComponent,
+    FotoDomComponent 
   ],
   exports:[
     FooterComponent,
@@ -73,6 +77,8 @@ import { FirmComponent } from './firm/firm.component';
     SocialShareBtnComponent,
     PrintcredentialComponent,
     FirmComponent,
+    FotoIdComponent,
+    FotoDomComponent 
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import {MatDialog} from '@angular/material/dialog';
 import {FormControl, Validators} from '@angular/forms';
 
@@ -7,14 +7,19 @@ import {FormControl, Validators} from '@angular/forms';
   templateUrl: './modalcodigo.component.html',
   styleUrls: ['./modalcodigo.component.scss'],
 })
-export class ModalcodigoComponent{
+export class ModalcodigoComponent {
 
-  constructor(public dialog: MatDialog) { }
-  openDialog() {
+@Input() codeReco : string;
+
+constructor(public dialog: MatDialog) { 
+  console.log(this.codeReco);
+}
+
+  
+openDialog() {
     this.dialog.open(DialogCodigo,{});
   }
 }
-
 @Component({
   selector: 'dialogcodigo',
   templateUrl: './dialogcodigo.html',

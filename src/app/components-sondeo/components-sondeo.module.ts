@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AbiertaComponent } from './abierta/abierta.component';
+import { UnicaRadioComponent } from './unica-radio/unica-radio.component';
+import { FotografiaComponent } from './fotografia/fotografia.component';
 
 
 
@@ -25,10 +27,14 @@ import { AbiertaComponent } from './abierta/abierta.component';
 
 @NgModule({
   declarations: [
-    AbiertaComponent
+    AbiertaComponent,
+    UnicaRadioComponent,
+    FotografiaComponent
   ],
   exports:[
-    AbiertaComponent
+    AbiertaComponent,
+    UnicaRadioComponent,
+    FotografiaComponent
   ],
   imports: [
     CommonModule,
