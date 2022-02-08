@@ -35,6 +35,7 @@ import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrintcredentialComponent } from './printcredential/printcredential.component';
 import { FirmComponent } from './firm/firm.component';
+import { PreloadComponent } from './preload/preload.component';
 
 
 
@@ -56,6 +57,7 @@ import { FirmComponent } from './firm/firm.component';
     DialogcheckinComponent,
     PrintcredentialComponent,
     FirmComponent,
+    PreloadComponent
   ],
   exports:[
     FooterComponent,
@@ -73,6 +75,7 @@ import { FirmComponent } from './firm/firm.component';
     SocialShareBtnComponent,
     PrintcredentialComponent,
     FirmComponent,
+    PreloadComponent
   ],
   imports: [
     CommonModule,

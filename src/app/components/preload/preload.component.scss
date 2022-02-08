@@ -1,0 +1,30 @@
+
+.body-preload{
+  background-color: white;
+height: 100% !important;
+width: 100% !important;
+position: fixed !important;
+z-index: 100000000 !important;
+margin: 0px !important;
+padding: 0px !important;
+
+transition: all 1s ease;
+-o-transition: all 1s ease;
+-webkit-transition: all 1s ease;
+}
+.flex-preload {
+display: flex;
+justify-content: center;
+align-items: center;
+align-items: baseline;
+height: 100%;
+background-color: #e3ebf3;
+}
+
+.flex-preload>div {
+background-color: #e3ebf3;
+color: white;
+width: 120px;
+height: 120px;
+align-self: center;
+}
