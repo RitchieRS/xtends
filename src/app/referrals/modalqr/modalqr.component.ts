@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {MatDialog} from '@angular/material/dialog';
+import { Component, Inject, Input } from '@angular/core';
+import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modalqr',
@@ -8,9 +8,16 @@ import {MatDialog} from '@angular/material/dialog';
 })
 export class ModalqrComponent {
 
-  constructor(public dialog: MatDialog) { }
+
+  @Input() imageqr : string;
+
+  constructor(public dialog: MatDialog) {
+    console.log(this.imageqr);
+   }
   openDialog() {
-    this.dialog.open(DialogQr);
+    this.dialog.open(DialogQr,{
+      data: { qrimage: this.imageqr,text:"texto test" },
+    });
   }
 }
 
@@ -19,4 +26,14 @@ export class ModalqrComponent {
   selector: 'dialogqr',
   templateUrl: './dialogqr.html',
 })
-export class DialogQr {}
+export class DialogQr {
+  text:string;
+  urlQR:string
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { qrimage: string,text:string}){
+    console.log(this.data.qrimage);
+    console.log(this.data.text);
+    this.urlQR = this.data.qrimage;
+  }
+  
+  
+}

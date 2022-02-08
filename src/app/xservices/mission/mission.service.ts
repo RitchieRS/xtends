@@ -55,6 +55,27 @@ export class MissionService {
     );
   };
 
+  sendSondeo(request : any ,token : string):Observable<ResMissionAccepted >{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+  
+    
+    return this.http.post<Mission>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+          map(( res :  Mission)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
   getSondeoXmission(token : string,request: any):Observable<Sondeo>{
     console.log(request);
     const httpOptions = {

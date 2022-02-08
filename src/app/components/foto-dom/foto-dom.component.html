@@ -1,0 +1,9 @@
+
+
+
+<div  *ngIf=" imgLgt == 0 " class="iup-button-row">
+  <button (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio {{imgLgt}}</button>
+</div>
+<div *ngIf=" imgLgt >= 1 " class="iup-button-row">
+  <button (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Actualizar Imagen</button>
+</div>

@@ -1,20 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastController } from '@ionic/angular';
-import { Respuesta } from 'src/app/xmodels/checkin';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 @Component({
-  selector: 'app-abierta',
-  templateUrl: './abierta.component.html',
-  styleUrls: ['./abierta.component.scss'],
+  selector: 'app-unica-radio',
+  templateUrl: './unica-radio.component.html',
+  styleUrls: ['./unica-radio.component.scss'],
 })
-export class AbiertaComponent implements OnInit {
+export class UnicaRadioComponent implements OnInit {
 
-  
-
-
-  public abiertaGoup: FormGroup;
+  public unicaRGroup: FormGroup;
 
   @Input() dependePregunta: number;
   @Input() dependeRespuesta: number;
@@ -29,51 +25,47 @@ export class AbiertaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   isValid = 0;
+  selected=-1;
   idStrQuest = "";
   RequiredValue:Validators[];
   respuestas={
     idPregunta:"",
     tipo:      "",
-    respuesta:  ""
-  }
+    respuesta:  "",
+    selected: -1
+  };
+  
   respuestaStr:string;
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
               private storage: StorageHelperService) { }
-
   ngOnInit() {
     this.idStrQuest =  this.idPregunta.toString();
-    if(this.obligatorio==1){
-     this.RequiredValue.push(Validators.required);
-    }
-    this.abiertaGoup = this.fb.group({
-      "abierta": ['', this.RequiredValue],
+    this.unicaRGroup = this.fb.group({
+      "unicaRadio": ['', this.RequiredValue],
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
-     this.respuestaStr = question.respuesta;
-     this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-    });
-   this.respuestas = {
-      idPregunta:this.idStrQuest,
-      tipo:      this.tipo,
-      respuesta: this.respuestaStr
-    }
-   
+      this.respuestaStr = question.respuesta;
+      this.selected = question.selected;
+      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+      console.log(this.respuestaStr);
+     });
+     
   }
-
-  submit(){
-    console.log("algo");
-    
-    if(this.abiertaGoup.status=="VALID"){
+  submit(){   
+    if(this.unicaRGroup.status=="VALID"){
       this.isValid = 1;
-      this.respuestas.respuesta = this.abiertaGoup.get('abierta').value;
+      this.respuestas.idPregunta = this.idStrQuest;
+      this.respuestas.respuesta = this.respuestaStr;
+      this.respuestas.tipo = this.tipo;
+      this.respuestas.selected = this.selected;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
 
     }
-
   }
-
-
-
+  onChange(i,value){
+    this.respuestaStr=value;
+    this.selected=i;      
+  }
 }

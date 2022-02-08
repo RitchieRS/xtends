@@ -15,7 +15,7 @@ export class ForgotComponent implements OnInit {
   isSignUpFailed = false;
   errorMessage = '';
   submitted =false; 
-  constructor(private router: Router,private login : LoginService, private fb : FormBuilder,private toastCtrl: ToastController,) { }
+  constructor(private router: Router,private login : LoginService, private fb : FormBuilder,private toastCtrl: ToastController) { }
 
   get f(): { [key: string]: AbstractControl } {
     return this.forgotForm.controls;
