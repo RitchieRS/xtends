@@ -15,7 +15,7 @@ export class ClipboardComponent  {
   async presentToast() {
     const toast = await this.toastCtrl.create({
       message: '¡Código copiado!',
-      duration: 2000,
+      // duration: 2000,
       // cssClass: 'iup-ion-toast',
       color: 'dark',
       position: 'top',

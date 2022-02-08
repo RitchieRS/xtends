@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  
+
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
      <ion-grid class="bg-polarwhite ion-padding-bottom">
        <ion-row class="ion-padding-horizontal">
@@ -26,7 +26,7 @@
          <div class="ipck-row-carousel">
            <div *ngIf="isMissionsOn==false" class="ipck-col-carousel ion-padding-vertical">
              <!-- <ITEM - para repetir el ng-repeat> -->
-             <div  class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mission of missionsData">
+             <div  class="ipck-item-carousel iup-margin-md" *ngFor="let mission of missionsData">
                <ion-card class="ion-no-margin ion-width-sm border-radius">
                  <ion-item>
                    <div style="width: 50px;" class="ion-margin-end">
@@ -69,8 +69,8 @@
       <div class="ipck-row-carousel">
         <div class="ipck-col-carousel ion-align-items-center">
           <!-- <ITEM - para repetir el ng-repeat> -->
-          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor='let promocion of bannerData'>
-            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-sm shadow border-radius">
+          <div class="ipck-item-carousel iup-margin-md" *ngFor='let promocion of bannerData'>
+            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-xsm shadow border-radius">
                 <ion-row class="ion-align-items-center">
                   <ion-col  size="4" class="ion-text-center">
                     <div class="ion-margin-end-sm">
@@ -83,7 +83,7 @@
                     <div>
                       <ion-card-content class="ion-no-padding">
                         <ion-text color="polarwhite">
-                          <h3 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h3>
+                          <h5 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h5>
                           <p>{{ promocion.descripcion}}</p>
                         </ion-text>
                       </ion-card-content>
