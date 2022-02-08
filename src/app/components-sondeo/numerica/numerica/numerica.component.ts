@@ -4,13 +4,16 @@ import { ToastController } from '@ionic/angular';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 @Component({
-  selector: 'app-unica-radio',
-  templateUrl: './unica-radio.component.html',
-  styleUrls: ['./unica-radio.component.scss'],
+  selector: 'app-numerica',
+  templateUrl: './numerica.component.html',
+  styleUrls: ['./numerica.component.scss'],
 })
-export class UnicaRadioComponent implements OnInit {
+export class NumericaComponent implements OnInit {
 
-  public unicaRGroup: FormGroup;
+  
+
+
+  public numericaGroup: FormGroup;
 
   @Input() dependePregunta: number;
   @Input() dependeRespuesta: number;
@@ -25,51 +28,51 @@ export class UnicaRadioComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   isValid = 0;
-  selected=-1;
   idStrQuest = "";
-  idOpcion =  "";
   RequiredValue:Validators[];
   respuestas={
     idPregunta:"",
     tipo:      "",
-    respuesta:  "",
-    idOpcion: "",
-    selected: -1
-  };
-  
+    respuesta:  ""
+  }
   respuestaStr:string;
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
               private storage: StorageHelperService) { }
+
   ngOnInit() {
     this.idStrQuest =  this.idPregunta.toString();
-    this.unicaRGroup = this.fb.group({
-      "unicaRadio": ['', this.RequiredValue],
+    if(this.obligatorio==1){
+     this.RequiredValue.push(Validators.required);
+    }
+    this.numericaGroup = this.fb.group({
+      "numerica": ['', this.RequiredValue],
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
-      this.respuestaStr = question.respuesta;
-      this.selected = question.selected;
-      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-      console.log(this.respuestaStr);
-     });
-     
+     this.respuestaStr = question.respuesta;
+     this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+    });
+   this.respuestas = {
+      idPregunta:this.idStrQuest,
+      tipo:      this.tipo,
+      respuesta: this.respuestaStr
+    }
+   
   }
-  submit(){   
-    if(this.unicaRGroup.status=="VALID"){
+
+  submit(){
+    console.log("algo");
+    
+    if(this.numericaGroup.status=="VALID"){
       this.isValid = 1;
-      this.respuestas.idPregunta = this.idStrQuest;
-      this.respuestas.respuesta = this.respuestaStr;
-      this.respuestas.tipo = this.tipo;
-      this.respuestas.selected = this.selected;
-      this.respuestas.idOpcion = this.idOpcion;
+      this.respuestas.respuesta = this.numericaGroup.get('numerica').value;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
 
     }
+
   }
-  onChange(i,value,id){
-    this.respuestaStr=value;
-    this.idOpcion = id; 
-    this.selected=i;      
-  }
+
+
+
 }

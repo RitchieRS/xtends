@@ -29,7 +29,7 @@ interface LocalFile {
 export class StartMissionComponent  {
   images: LocalFile[] = [];
   dataSondeResponse : Sondeo
-
+  isLoaded=0;
   abiertaParent:string;
  
 
@@ -107,8 +107,11 @@ export class StartMissionComponent  {
       idPV :  this.idPV,
       respuestas:[]
     }
+
+    
     
     this.servMission.getSondeoXmission(this.token,this.dataSondeo).subscribe((res) =>{
+        this.isLoaded=1;
         this.dataSondeResponse  = res;
         this.idRespuestaSondeo.idrespuestas=[];
         this.preguntas = this.dataSondeResponse.resp.preguntas;
@@ -127,6 +130,14 @@ export class StartMissionComponent  {
     
     
         
+  }
+
+  async presentToast(text) {
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+    });
+    toast.present();
   }
 
   async loadFiles(paths:any, callback: (param:any) => any) {
@@ -205,6 +216,8 @@ async sendSondeo(){
     }
   this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
         console.log(res);
+        this.presentToast('Enviando respuestas..');
+        this.router.navigate(['/home']);
        
    })  
      

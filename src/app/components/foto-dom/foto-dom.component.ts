@@ -1,13 +1,13 @@
+import { getLocaleTimeFormat } from '@angular/common';
 import { Component, OnInit} from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { LocalFile } from 'src/app/xmodels/file';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
-import { InfoService } from 'src/app/xservices/user/info.service';
 
-const IMAGE_DIR = 'stored-images';
 
+const IMAGE_DIR = 'stored-images'; 
 @Component({
   selector: 'app-foto-dom',
   templateUrl: './foto-dom.component.html',
@@ -17,11 +17,10 @@ const IMAGE_DIR = 'stored-images';
 
 
 export class FotoDomComponent implements OnInit {
-
-  images : LocalFile[];
   imgDom = false;
-  idStrQuest="";
   imgLgt=0;
+  idStrQuest:string;
+  images:LocalFile[];
   respuestas = {
     idPregunta:"",
     tipo:      "",
@@ -29,24 +28,24 @@ export class FotoDomComponent implements OnInit {
     paths: [],
     saveImages:[]
   };
+  
   constructor(
-    private srvProfile : InfoService,
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private storage: StorageHelperService) { }
+    private storage: StorageHelperService
+    ) { }
 
   ngOnInit() {
     this.idStrQuest="app-foto-dom";
-    console.log(this.idStrQuest);
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths= [...question.paths];
-      this.imgLgt =this.respuestas.paths.length;
+      this.imgLgt = this.respuestas.paths.length;
       console.log(this.respuestas.paths);
       this.loadFiles();
      });
 
-     console.log(this.images.length);
+
   }
 
   async loadFiles() {
@@ -185,8 +184,5 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
   };
   reader.readAsDataURL(blob);
 });
-
-
-
 
 }

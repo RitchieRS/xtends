@@ -68,7 +68,7 @@ export class ZonesComponent implements OnInit {
     this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
     //localStorage.setItem("my_colors", JSON.stringify(this.selected));
     this.storage.setObject('zone-stored',this.selected);
-    this.myControl.reset();
+    //this.myControl.reset();
     //console.dir(this.selected);
   }
 

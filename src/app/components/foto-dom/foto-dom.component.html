@@ -1,9 +1,12 @@
 
 
+<ion-row   class="ion-justify-content-center ion-align-items-center">
+<div   *ngIf= " imgLgt == 0" class="iup-button-row">
+  <button  (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio</button>
+</div>
+<div  *ngIf= " imgLgt >= 0" class="iup-button-row">
+  <button  (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Actualizar Comprobante</button>
+</div>
+</ion-row>
 
-<div  *ngIf=" imgLgt == 0 " class="iup-button-row">
-  <button (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Cargar comprobante de domicilio {{imgLgt}}</button>
-</div>
-<div *ngIf=" imgLgt >= 1 " class="iup-button-row">
-  <button (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Actualizar Imagen</button>
-</div>
+

@@ -29,6 +29,14 @@ export class InfoService {
     localStorage.setItem('nombreCompleto',data.nombreCompleto);
   }
 
+  public logOut(data : UserRest):void{
+    console.log("Start save Data");
+    localStorage.setItem('apat',undefined);
+    localStorage.setItem('email',undefined);
+    localStorage.setItem('nombre',undefined);
+    localStorage.setItem('nombreCompleto',undefined);
+  }
+
   getProfileInformation(token : string):Observable<UserProfile| void>{
     const httpOptions = {
       headers: new HttpHeaders({
@@ -83,6 +91,28 @@ export class InfoService {
           catchError((err)=> this.handeleError(err))
     );
   };
+
+  sendSelfFoto(request : any ,token : string):Observable<any>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+  
+    
+    return this.http.post<any>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+          map(( res :  any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
   private handeleError(err) : Observable<never>{
     let erroMessage = "An error has ocurred";
     if(err){
@@ -90,7 +120,6 @@ export class InfoService {
     }
     window.alert(erroMessage);
     return throwError(erroMessage);
-
   }
 
 }

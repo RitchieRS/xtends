@@ -15,11 +15,7 @@
     </ion-grid>
 
       <ion-grid *ngIf="listMissionlength == 0" class="bg-polarwhite ion-padding-bottom">
-        <ion-row class="ion-padding-horizontal">
-          <ion-text class="navyblue">
-          <h3><strong>Aún no tienes missiones activas.</strong></h3>
-        </ion-text>
-        </ion-row>
+        <app-preload></app-preload>
       </ion-grid>
 
 

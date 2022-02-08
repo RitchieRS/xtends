@@ -24,7 +24,7 @@
       <ion-list  radio-group>
       <ion-item  *ngFor="let radio of opciones; let i = index"    >
 
-        <p> {{radio.opcion}}</p>  <ion-checkbox  [checked]="selected === i" (click)="onChange(i,radio.opcion)" color="primary" slot="start"></ion-checkbox>
+        <p> {{radio.opcion}}</p>  <ion-checkbox  [checked]="selected === i" (click)="onChange(i,radio.opcion,radio.idOpcion)" color="primary" slot="start"></ion-checkbox>
 
       </ion-item>
     </ion-list>

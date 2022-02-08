@@ -23,8 +23,8 @@ export class WalletComponent implements OnInit {
       if(res){
         console.log(res);
         this.dataWallet = res;
-        this.saldoPendiente = (this.dataWallet.saldoPendiente>=0 ||this.dataWallet.saldoPendiente!==null) ?this.dataWallet.saldoPendiente:0;
-        this.saldoTotal = this.dataWallet.saldoTotal; 
+        this.saldoPendiente = (this.dataWallet.saldoPendiente == null ) ? 0:this.dataWallet.saldoPendiente;
+        this.saldoTotal = this.dataWallet.saldoTotal==null ? 0: this.saldoTotal ; 
         this.servicios = this.dataWallet.servicios;
         
       }

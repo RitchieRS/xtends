@@ -8,6 +8,7 @@ import { DialogmissionComponent } from '../components/modalmission/dialogmission
 import { MatDialog } from '@angular/material/dialog';
 import { StorageHelperService } from '../xservices/storage/storage-helper.service';
 import { InfoService } from '../xservices/user/info.service';
+import { toTypeScript } from '@angular/compiler';
 
 @Component({
   selector: 'app-home',
@@ -17,13 +18,15 @@ import { InfoService } from '../xservices/user/info.service';
 export class HomePage {
 
   currentIndex = 5;
-  itemsMission= [...Array(this.currentIndex).keys()];
+  itemsMission = [...Array(this.currentIndex).keys()];
   missions:Section1;
+  isLoaded=0;
   missionsData :Section1Content[];
   banner:Section2;
   bannerData :Section2Content[];
   missionAval:Section3;
   missionsAvalData :Section3Content[];
+  missionsAvalDataFil :Section3Content[];
   missionsAvalDataAux :Section3Content[];
   missionAvalmap:Section4;
   missionsAvalDatamap :Section4Content[];
@@ -38,6 +41,7 @@ export class HomePage {
         height: 60
     }
   }
+  filterType=[{}];
 
 
   panelOpenState = false;
@@ -68,6 +72,18 @@ export class HomePage {
     this.auth.isLogged.subscribe( (log:any)=>{
         console.log(log)
     })
+    this.filterType=[];
+    this.storage.getObject('filter').then((filter: any) => { 
+
+      console.log(filter.length)
+      
+      for (let i = 0; i < filter.length; i++) {
+        console.log(filter[i]);
+        this.filterType.push({"nombreActividad" : filter[i]});
+      }
+        //this.filterType.push({"nombreActividad" : filter});
+    });
+    console.log(this.filterType);
 
     this.location = {
       "lat" : Number(this.lat),
@@ -184,6 +200,7 @@ export class HomePage {
       loadDataMission():void{
         this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
           console.log(res);
+          this.isLoaded=1;
            if(res){
             this.dataHome=  res;
             //console.log(this.dataHome);
@@ -201,10 +218,18 @@ export class HomePage {
              }
             /* Misiones Disponibles*/
             if(this.dataHome.section3.content.length>=1){
+
               this.missionAval = this.dataHome.section3;
-              this.missionsAvalData = this.dataHome.section3.content;
-              this.missionsAvalDataAux = this.dataHome.section3.content.slice(0,5);
-             // console.log(this.missionsAvalData);
+              this.missionsAvalDataFil = this.dataHome.section3.content;
+              //values.filter(t=>t.category ==='Science');
+              this.missionsAvalData = this.dataHome.section3.content; 
+                
+            
+              
+              console.log(this.missionsAvalData);
+             
+              this.missionsAvalDataAux = this.missionsAvalData.slice(0,5)
+              
              }
              /* Misiones Disponibles*/
             if(this.dataHome.section4.content.length>=1){
@@ -225,4 +250,19 @@ export class HomePage {
       }
 
 
+}
+
+
+import { Pipe, PipeTransform } from '@angular/core';
+@Pipe({
+    name: 'actividad',
+    pure: false
+})
+export class Actividad implements PipeTransform {
+    transform(items: any[], filter: any): any {
+        if (!items || !filter) {
+            return items;
+        }
+        return items.filter(item => item.nombreActividad.indexOf(filter.nombreActividad) !== -1);
+    }
 }

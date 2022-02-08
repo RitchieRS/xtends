@@ -1,3 +1,12 @@
-<p>
-  foto-curp works!
-</p>
+<ion-row class="ion-justify-content-center ion-align-items-center">
+  <ion-col>
+    <ion-text (click)="selectDocument()" color="navyblue">
+      <p>CURP</p>
+    </ion-text>
+  </ion-col>
+  <ion-col *ngIf="imgLgt >= 1" class="ion-align-self-center ion-text-center">
+    <span class="material-icons color-green">
+      done_outline
+      </span>
+  </ion-col>
+</ion-row>

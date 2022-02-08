@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule} from '@ionic/angular';
-
+import { BrowserModule } from '@angular/platform-browser';
 // Materials Angular
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -35,12 +35,11 @@ import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { PrintcredentialComponent } from './printcredential/printcredential.component';
 import { FirmComponent } from './firm/firm.component';
-<<<<<<< HEAD
 import { PreloadComponent } from './preload/preload.component';
-=======
-import { FotoIdComponent } from './foto-id/foto-id.component';
 import { FotoDomComponent } from './foto-dom/foto-dom.component';
->>>>>>> 02bff811b4e92ca2ff806fab7fe028b8357940e6
+import { FotoIdComponent } from './foto-id/foto-id.component';
+import { FotoCurpComponent } from './foto-curp/foto-curp.component';
+import { FotoSelfComponent } from './foto-self/foto-self.component';
 
 
 
@@ -62,12 +61,11 @@ import { FotoDomComponent } from './foto-dom/foto-dom.component';
     DialogcheckinComponent,
     PrintcredentialComponent,
     FirmComponent,
-<<<<<<< HEAD
-    PreloadComponent
-=======
+    PreloadComponent,
     FotoIdComponent,
-    FotoDomComponent 
->>>>>>> 02bff811b4e92ca2ff806fab7fe028b8357940e6
+    FotoDomComponent,
+    FotoCurpComponent,
+    FotoSelfComponent
   ],
   exports:[
     FooterComponent,
@@ -85,12 +83,11 @@ import { FotoDomComponent } from './foto-dom/foto-dom.component';
     SocialShareBtnComponent,
     PrintcredentialComponent,
     FirmComponent,
-<<<<<<< HEAD
-    PreloadComponent
-=======
+    PreloadComponent,
     FotoIdComponent,
-    FotoDomComponent 
->>>>>>> 02bff811b4e92ca2ff806fab7fe028b8357940e6
+    FotoDomComponent,
+    FotoCurpComponent,
+    FotoSelfComponent
   ],
   imports: [
     CommonModule,

@@ -1,3 +1,14 @@
-<p>
-  foto-id works!
-</p>
+
+
+
+
+  <ion-col>
+    <ion-text (click)="selectDocument()" color="navyblue">
+      <p>INE</p>
+    </ion-text>
+  </ion-col>
+  <ion-col  *ngIf="imgLgt >= 1" class="ion-align-self-center ion-text-center">
+      <span  class="material-icons color-green">
+        done_outline
+      </span>
+  </ion-col>

@@ -38,6 +38,10 @@
           </ion-row>
         </ion-grid>
 
+        <div *ngIf="isLoaded==0" style="height: 250px;">
+          <app-preload></app-preload>
+        </div>
+
         <ion-grid class="ion-no-margin ion-no-padding">
           <ion-row class="ion-no-margin ion-no-padding">
             <ion-col size="12" class="ion-no-margin">
@@ -367,37 +371,21 @@
                 </div>
 
 
-                <mat-expansion-panel *ngSwitchCase="'numerica'" >
-                  <mat-expansion-panel-header >
-                    <mat-panel-title>
-                      <ion-grid>
-                        <ion-row class="ion-justify-content-center">
-                          <ion-col size="10">
-                            <ion-text color=navyblue>
-                              <h6>{{p.pregunta}}</h6>
-                            </ion-text>
-                          </ion-col>
-                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
-                            <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
-                          </ion-col>
-                          <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
-                            <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
-                          </ion-col>
-                        </ion-row>
-                      </ion-grid>
-                    </mat-panel-title>
-                  </mat-expansion-panel-header>
-                  <div class="ion-padding-horizontal">
-                    <ion-item >
-                      <ion-input type="number" value="0"></ion-input>
-                     </ion-item>
-                    <div class="iup-button-row">
-                      <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                         GUARDAR
-                      </button>
-                    </div>
-                  </div>
-                </mat-expansion-panel>
+                <div *ngSwitchCase="'numerica'" >
+                  <app-numerica [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage" >
+                               </app-numerica>
+                </div>
 
                 <div *ngSwitchCase="'abierta'" >
                   <app-abierta

@@ -20,6 +20,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { AbiertaComponent } from './abierta/abierta.component';
 import { UnicaRadioComponent } from './unica-radio/unica-radio.component';
 import { FotografiaComponent } from './fotografia/fotografia.component';
+import { NumericaComponent } from './numerica/numerica/numerica.component';
 
 
 
@@ -29,12 +30,14 @@ import { FotografiaComponent } from './fotografia/fotografia.component';
   declarations: [
     AbiertaComponent,
     UnicaRadioComponent,
-    FotografiaComponent
+    FotografiaComponent,
+    NumericaComponent
   ],
   exports:[
     AbiertaComponent,
     UnicaRadioComponent,
-    FotografiaComponent
+    FotografiaComponent,
+    NumericaComponent
   ],
   imports: [
     CommonModule,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 @Component({
@@ -10,7 +11,9 @@ import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.s
 export class PopoverInfoComponent implements OnInit {
 
   public filterForm: FormGroup;
-  constructor(private storage: StorageHelperService,
+  constructor(
+              private router: Router,
+              private storage: StorageHelperService,
               private fb : FormBuilder) { }
               
 
@@ -27,6 +30,8 @@ export class PopoverInfoComponent implements OnInit {
   filter(){
     const formValue = this.filterForm.value;
     console.log(formValue);
+    this.storage.setObject('filter',formValue.type);
+     window.location.reload();
   }
 
 
