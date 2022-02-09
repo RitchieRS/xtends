@@ -16,7 +16,9 @@ export class ZonesComponent implements OnInit {
 
   myControl = new FormControl();
   options: string[] = [];
-  selected: string[] = [];
+  selected = ["Tenancingo,Edo. De México",
+  "Calvillo,Aguascalientes",
+  "LoretoBaja California Norte"];
   filteredOptions: Observable<string[]>;
 
   constructor(private srvInf: InfoService,
@@ -30,11 +32,11 @@ export class ZonesComponent implements OnInit {
       map(value => this._filter(value)),
     );
 
-    //let storedCities = JSON.parse(localStorage.getItem("my_colors"));
-    //this.options = storedCities;
+     /*let storedCities = JSON.parse(localStorage.getItem("my_colors"));
+     this.selected = storedCities;*/
 
-    this.storage.getObject('zone-stored').then((storedzone: any) => {
-       this.selected = storedzone;
+     this.storage.getObject('zone-stored').then((storedzone: any) => {
+       this.selected.push(storedzone);
     });
 
     this.storage.getObject('zone').then((zones: any) => {
@@ -63,9 +65,9 @@ export class ZonesComponent implements OnInit {
   }
 
   addOption(option){
-    console.log(option)
+    alert(option)
     this.selected.push(option)
-    this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
+    //this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
     //localStorage.setItem("my_colors", JSON.stringify(this.selected));
     this.storage.setObject('zone-stored',this.selected);
     //this.myControl.reset();
@@ -85,9 +87,9 @@ export class ZonesComponent implements OnInit {
 
 
   ciudades = [
-    "Edo. De México,Tenancingo",
-    "Aguascalientes,Calvillo",
-    "Baja California Norte,Loreto",
+    "Tenancingo,Edo. De México",
+    "Calvillo,Aguascalientes",
+    "LoretoBaja California Norte",
     "Baja California Norte,San Felipe",
     "Baja California Norte,Tecate",
     "Baja California Norte,Tecate",

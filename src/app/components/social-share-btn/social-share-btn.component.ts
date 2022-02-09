@@ -15,8 +15,8 @@ export class SocialShareBtnComponent implements OnInit {
     console.log("Hola Soy un share");
     await Share.share({
       title: 'Usen xtend de mi compa',
-      text: 'xTendsApp',
-      url: 'https://xtendapp.com/',
+      text: 'Esta misión te interesará:Promotoria',
+      url: 'https://xtendapp.com/images/img_invitation.jpeg',
       dialogTitle: 'Comparte con tus amigos.',
     });
   }

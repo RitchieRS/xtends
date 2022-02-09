@@ -1,7 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProfileResp, UserProfile } from '../xmodels/user';
 import { InfoService } from '../xservices/user/info.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
@@ -119,7 +119,8 @@ export class ProfileComponent implements OnInit {
 
   
   imgDom=false;
-  constructor(private route: ActivatedRoute,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
               private srvProfile : InfoService,
               public fb  : FormBuilder,
               private plt: Platform,
@@ -403,6 +404,11 @@ async startUpload(file: LocalFile) {
 
 closePanel() {
     this.panelOpenState = false;
+  }
+
+  closeSession() {
+
+     this.router.navigate(['auth']);
   }
 
 }
