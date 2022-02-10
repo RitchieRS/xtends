@@ -49,7 +49,7 @@ export class InfoService {
     return this.http.get<UserProfile>(`${environment.API_URL}user`,httpOptions).pipe(
           map(( res :  UserProfile)=> {
             console.log(res);
-            return res; 
+            return res;
           }),
           catchError((err)=> this.handeleError(err))
     );
@@ -66,7 +66,7 @@ export class InfoService {
     };
     return this.http.get<any>(`${environment.API_URL}user/cities`,httpOptions).pipe(
           map(( res :  any)=> {
-            return res; 
+            return res;
           }),
           catchError((err)=> this.handeleError(err))
     );
@@ -86,7 +86,7 @@ export class InfoService {
     return this.http.post<Informacion>(`${environment.API_URL}user`,infoUser,httpOptions).pipe(
           map(( res :  any)=> {
             console.log(res);
-            return res; 
+            return res;
           }),
           catchError((err)=> this.handeleError(err))
     );
@@ -102,9 +102,31 @@ export class InfoService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.post<any>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+          map(( res :  any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+  // SERVICIO DE FIRMA
+  sendFirma(request : any ,token : string):Observable<any>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<any>(`${environment.API_URL}user/signature`,request ,httpOptions).pipe(
           map(( res :  any)=>{
             console.log(res);
             return res;

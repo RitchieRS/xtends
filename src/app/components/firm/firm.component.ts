@@ -1,5 +1,10 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { from } from 'rxjs';
 import SignaturePad from 'signature_pad';
+import { InfoService } from 'src/app/xservices/user/info.service';
+
+
+
 
 @Component({
   selector: 'app-firm',
@@ -12,7 +17,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
    signaturePad:any;
    firma:any;
 
-  constructor() { }
+  constructor(private firmaService: InfoService) { }
 
   ngAfterViewInit(): void {
     this.signaturePad = new SignaturePad(this.signaturePadElement.nativeElement);
@@ -45,9 +50,39 @@ export class FirmComponent implements OnInit, AfterViewInit {
      this.firma = blob;
      document.body.appendChild(a);
      a.click();
+    //  console.log(dataURL);
      window.URL.revokeObjectURL(url);
    }
   }
+// <ENVIAR FIRMA
+  enviarf(dataURL:any, nombre:any){
+    if(navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome')=== -1){
+      window.open(dataURL);
+    }
+    else{
+      const blob = this.URLtoBlob(dataURL);
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = nombre;
+      this.firma = blob;
+      document.body.appendChild(a);
+      a.click();
+      const firmaUrl = dataURL;
+      const firmaup = {
+        firma64 : firmaUrl
+      };
+      const token = localStorage.getItem('token');
+      this.firmaService.sendFirma(firmaup,token).subscribe(
+        rest => {
+          console.log(rest);
+        }
+      )
+      // console.log(firmaUrl);
+    }
+   }
+
+
 
   URLtoBlob(dataURL:any){
    const partes= dataURL.split(';base64,');
@@ -71,5 +106,17 @@ export class FirmComponent implements OnInit, AfterViewInit {
      this.firma = u;
    }
  }
+
+// ENVIAR FIRMA
+ enviarFirm(){
+  if(this.signaturePad.isEmpty()){
+    alert('Debe firmar el documento.');
+  }
+  else{
+    const u = this.signaturePad.toDataURL();
+    this.enviarf(u, 'firma.png');
+    this.firma = u;
+  }
+}
 
 }
