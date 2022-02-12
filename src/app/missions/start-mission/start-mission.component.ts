@@ -109,7 +109,7 @@ export class StartMissionComponent  {
     }
 
     
-    
+    try{
     this.servMission.getSondeoXmission(this.token,this.dataSondeo).subscribe((res) =>{
         this.isLoaded=1;
         this.dataSondeResponse  = res;
@@ -122,8 +122,12 @@ export class StartMissionComponent  {
                 this.idRespuestaSondeo.idrespuestas.push(this.valueid);
             }
         );
+        ///alert(this.idRespuestaSondeo)
       //this.router.navigate(['start-mission/'+this.idPV])
-   })  
+      })  
+    }catch(e){
+      alert(e);
+    }
   }
   
   async ngOnInit() {
@@ -182,8 +186,9 @@ export class StartMissionComponent  {
                 name: f,
                 path: filePath,
                 data: `data:image/jpeg;base64,${readFile.data}`,
+                recursive: true
             });
-            console.log(imgResult);
+            ///console.log(imgResult);
             return imgResult
         }
     }
@@ -197,29 +202,40 @@ export class StartMissionComponent  {
   
 
 async sendSondeo(){
-   this.respuestasSondeo.respuestas=[];
+   try{
+   //this.respuestasSondeo.respuestas=[];
    this.respuestasSondeo.idPV = this.idPV.toString();
+  // alert("Finish");
    for(let i of this.idRespuestaSondeo.idrespuestas){ 
-        await Promise.resolve(this.storage.getObject(i).then((question: any) => {
+    //   alert(i)
+        await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
+        //  alert("Finish");
               if(question!=null){
                 this.respuestasSondeo.respuestas.push(question);
+              //  alert("Finish");
               }
         }));
     }
     for(let i of this.respuestasSondeo.respuestas){ 
-                    if(i['tipo'] == 'fotografia'){
+      //alert("For");
+                    if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
+                     // alert("tipo -path");
                         await Promise.resolve( this.loadFiles(i['paths'],data => {
+                         /// alert("promise resolve load files");
                             i['saveImages'] = data;
                         }));
                     }         
 
     }
   this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
-        console.log(res);
+        ///alert(res);
         this.presentToast('Enviando respuestas..');
         this.router.navigate(['/home']);
        
-   })  
+   }) 
+  }catch(e){
+    this.presentToast('Error inesperado..'); 
+  } 
      
     
 

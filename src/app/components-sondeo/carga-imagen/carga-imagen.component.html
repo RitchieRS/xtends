@@ -1,0 +1,49 @@
+<mat-accordion>
+  <mat-expansion-panel  >
+    <mat-expansion-panel-header >
+      <mat-panel-title>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-text color=navyblue>
+                <h6>{{pregunta}}</h6>
+              </ion-text>
+            </ion-col>
+            <ion-col size="1"  *ngIf="isValid==0" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+            <ion-col size="1"  *ngIf="isValid==1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div class="ion-padding-horizontal">
+      <ion-grid class="ion-no-padding">
+        <ion-row>
+          <ion-col size="12" class="ion-padding-horizontal">
+            <ion-text color="navyblue">
+              <p class="ion-no-margin"><strong>Selecciona una fotografia de tu galería</strong></p>
+            </ion-text>
+          </ion-col>
+          <ion-col size="12">
+            <div class="iup-button-row">
+              <button (click)="openCamera()" *ngIf="isValid==0" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                Galería
+              </button>
+            </div>
+          </ion-col>
+          <ion-col size="12">
+            <ion-segment  scrollable style="padding-bottom: 16px !important; padding-top: 16px !important;" class="bg-whitex">
+              <ion-segment-button *ngFor="let file of images; let i = index" (click)="inf(file)" >
+                <div  class="iup-box-pre-view-photo" style='background-image: url("{{file.data}}");'></div>
+              </ion-segment-button>
+            </ion-segment>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <hr>
+    </div>
+  </mat-expansion-panel>
+  </mat-accordion>

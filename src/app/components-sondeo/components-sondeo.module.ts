@@ -21,6 +21,10 @@ import { AbiertaComponent } from './abierta/abierta.component';
 import { UnicaRadioComponent } from './unica-radio/unica-radio.component';
 import { FotografiaComponent } from './fotografia/fotografia.component';
 import { NumericaComponent } from './numerica/numerica/numerica.component';
+import { CarruselComponent } from './carrusel/carrusel.component';
+import { EmailComponent } from './email/email.component';
+import { CargaImagenComponent } from './carga-imagen/carga-imagen.component';
+import { FechaComponent } from './fecha/fecha.component';
 
 
 
@@ -29,15 +33,23 @@ import { NumericaComponent } from './numerica/numerica/numerica.component';
 @NgModule({
   declarations: [
     AbiertaComponent,
+    EmailComponent,
+    FechaComponent,
     UnicaRadioComponent,
     FotografiaComponent,
-    NumericaComponent
+    NumericaComponent,
+    CarruselComponent,
+    CargaImagenComponent
   ],
   exports:[
     AbiertaComponent,
+    EmailComponent,
+    FechaComponent,
     UnicaRadioComponent,
     FotografiaComponent,
-    NumericaComponent
+    NumericaComponent,
+    CarruselComponent,
+    CargaImagenComponent
   ],
   imports: [
     CommonModule,

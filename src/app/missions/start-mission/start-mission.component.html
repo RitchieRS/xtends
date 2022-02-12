@@ -370,7 +370,37 @@
                 </app-unica-radio>
                 </div>
 
-
+                
+                <div *ngSwitchCase="'carrusel'" >
+                  <app-carrusel  [dependePregunta]="p.dependePregunta"
+                                    [dependeRespuesta]="p.dependeRespuesta"
+                                    [idPregunta]="p.idPregunta"
+                                    [maximo]="p.maximo"
+                                    [minimo]="p.minimo"
+                                    [obligatorio]="p.obligatorio"
+                                    [opciones]="p.opciones"
+                                    [orden]="p.orden"
+                                    [pregunta]="p.pregunta"
+                                    [puntaje]="p.puntaje"
+                                    [tipo]="p.tipo"
+                                    [urlImage]="p.urlImage" >
+                </app-carrusel>
+                </div>
+                <div *ngSwitchCase="'email'" >
+                  <app-email  [dependePregunta]="p.dependePregunta"
+                                    [dependeRespuesta]="p.dependeRespuesta"
+                                    [idPregunta]="p.idPregunta"
+                                    [maximo]="p.maximo"
+                                    [minimo]="p.minimo"
+                                    [obligatorio]="p.obligatorio"
+                                    [opciones]="p.opciones"
+                                    [orden]="p.orden"
+                                    [pregunta]="p.pregunta"
+                                    [puntaje]="p.puntaje"
+                                    [tipo]="p.tipo"
+                                    [urlImage]="p.urlImage" >
+                </app-email>
+                </div>
                 <div *ngSwitchCase="'numerica'" >
                   <app-numerica [dependePregunta]="p.dependePregunta"
                                 [dependeRespuesta]="p.dependeRespuesta"
@@ -386,7 +416,36 @@
                                 [urlImage]="p.urlImage" >
                                </app-numerica>
                 </div>
-
+                <div *ngSwitchCase="'cargaimagen'" >
+                  <app-carga-imagen [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage" >
+                </app-carga-imagen>
+                </div>
+                <div *ngSwitchCase="'fecha'" >
+                  <app-fecha [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage" >
+                </app-fecha>
+                </div>
                 <div *ngSwitchCase="'abierta'" >
                   <app-abierta
                                 [dependePregunta]="p.dependePregunta"

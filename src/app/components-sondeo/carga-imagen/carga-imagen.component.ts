@@ -7,13 +7,13 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 const IMAGE_DIR = 'stored-images';
-@Component({
-  selector: 'app-fotografia',
-  templateUrl: './fotografia.component.html',
-  styleUrls: ['./fotografia.component.scss'],
-})
 
-export class FotografiaComponent implements OnInit {
+@Component({
+  selector: 'app-carga-imagen',
+  templateUrl: './carga-imagen.component.html',
+  styleUrls: ['./carga-imagen.component.scss'],
+})
+export class CargaImagenComponent implements OnInit {
 
 
   @Input() dependePregunta: number;
@@ -120,7 +120,7 @@ export class FotografiaComponent implements OnInit {
                     quality: 90,
                     allowEditing: false,
                     resultType: CameraResultType.Uri,
-                    source: CameraSource.Camera // Camera, Photos or Prompt!
+                    source: CameraSource.Photos // Camera, Photos or Prompt!
                 });
              
                 if (image) {

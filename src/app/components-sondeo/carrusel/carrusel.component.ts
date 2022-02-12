@@ -8,12 +8,12 @@ import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.s
 
 const IMAGE_DIR = 'stored-images';
 @Component({
-  selector: 'app-fotografia',
-  templateUrl: './fotografia.component.html',
-  styleUrls: ['./fotografia.component.scss'],
+  selector: 'app-carrusel',
+  templateUrl: './carrusel.component.html',
+  styleUrls: ['./carrusel.component.scss'],
 })
 
-export class FotografiaComponent implements OnInit {
+export class CarruselComponent implements OnInit {
 
 
   @Input() dependePregunta: number;
@@ -224,7 +224,6 @@ export class FotografiaComponent implements OnInit {
   }
 
   inf(file){
-    this.isValid=0;
     this.deleteImage(file)
     /*this.images.forEach( (file)=>{
  
