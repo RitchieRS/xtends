@@ -29,7 +29,8 @@
            <div *ngIf="isMissionsOn==false" class="ipck-col-carousel ion-padding-vertical">
              <!-- <ITEM - para repetir el ng-repeat> -->
 
-              <div *ngIf="isLoaded==0">
+              <!-- <div *ngIf="isLoaded==0"> -->
+                <div class="body-preload" *ngIf="isLoaded==0">
                 <app-preload></app-preload>
               </div>
              <div  class="ipck-item-carousel iup-margin-md" *ngFor="let mission of missionsData">
@@ -193,7 +194,7 @@
                                            <p>
                                            <strong>Canal</strong> {{ available.detalle.canal}}<br>
                                            <strong>Cadena:</strong> {{ available.detalle.cadena}}<br>
-                                           <strong>Tiempo visita promedio:</strong> {{ available.detalle.tiempo}}
+                                           <strong>Tipo de categoría:</strong> {{ available.detalle.tiempo}}
                                          </p>
                                          </ion-text>
                                        </ion-label>
