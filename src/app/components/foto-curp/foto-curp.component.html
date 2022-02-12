@@ -1,8 +1,12 @@
-<ion-row class="ion-justify-content-center ion-align-items-center">
-  <ion-col>
-    <ion-text (click)="selectDocument()" color="navyblue">
-      <p>CURP</p>
-    </ion-text>
+<ion-row class="ion-justify-content-center ion-align-items-center ion-no-margin ion-no-padding">
+  <ion-col size="12" class="ion-margin-bottom ion-no-padding">
+    <ion-item fill="outline" type="ios" lines="none" (click)="selectDocument()">
+      <ion-icon color="navyblue" slot="start" name="camera-outline"></ion-icon>
+      <ion-label><ion-text color="navyblue"><h3>CURP</h3></ion-text></ion-label>
+    </ion-item>
+    <!-- <ion-text (click)="selectDocument()" color="navyblue">
+      <p><ion-icon name="camera-outline"></ion-icon> CURP</p>
+    </ion-text> -->
   </ion-col>
   <ion-col *ngIf="imgLgt >= 1" class="ion-align-self-center ion-text-center">
     <span class="material-icons color-green">

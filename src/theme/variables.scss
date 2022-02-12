@@ -157,6 +157,14 @@
   --ion-color-polarwhite-shade: #d2d6d8;
   --ion-color-polarwhite-tint: #f1f4f7;
 
+  /** Variables color XTEND Whitex **/
+  --ion-color-whitex: white;
+  --ion-color-whitex-rgb: 244, 245, 248;
+  --ion-color-whitex-contrast: #020c3a;
+  --ion-color-whitex-contrast-rgb: 0, 0, 0;
+  --ion-color-whitex-shade: #d7d8da;
+  --ion-color-whitex-tint: #f5f6f9;
+
 
 
   /** Variable Background XTEND Navy Blue **/
@@ -315,6 +323,16 @@
   --ion-color-contrast-rgb: var(--ion-color-polarwhite-contrast-rgb) !important;
   --ion-color-shade: var(--ion-color-polarwhite-shade) !important;
   --ion-color-tint:var(--ion-color-polarwhite-tint) !important;
+}
+
+/** Color XTEND Extend Polar White **/
+.ion-color-whitex{
+  --ion-color-base:var(--ion-color-whitex) !important;
+  --ion-color-rgb:var(--ion-color-whitex-rgb) !important;
+  --ion-color-contrast:var(--ion-color-whitex-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-whitex-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-whitex-shade) !important;
+  --ion-color-tint:var(--ion-color-whitex-tint) !important;
 }
 
 /** Background XTEND Navy Blue **/

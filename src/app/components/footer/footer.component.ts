@@ -19,21 +19,25 @@ export class FooterComponent implements OnInit {
   }
 
   profile(){
-    this.router.navigate(['profile'])
+    this.router.navigate(['profile']);
   }
   wallet(){
-    this.router.navigate(['wallet/main'])
+    this.router.navigate(['wallet/main']);
   }
   home(){
-    this.router.navigate(['home'])
+    this.router.navigate(['home']);
   }
   referrals(){
-    this.router.navigate(['referrals'])
+    this.router.navigate(['referrals']);
   }
   back() : void{
 
     this.location.back();
-  
-  }
+
+  };
+  closeSession() {
+
+    this.router.navigate(['auth']);
+ }
 
 }

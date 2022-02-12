@@ -61,13 +61,13 @@ export class FirmComponent implements OnInit, AfterViewInit {
     }
     else{
       const blob = this.URLtoBlob(dataURL);
-      const url = window.URL.createObjectURL(blob);
-      const a = document.createElement('a');
-      a.href = url;
-      a.download = nombre;
-      this.firma = blob;
-      document.body.appendChild(a);
-      a.click();
+      // const url = window.URL.createObjectURL(blob);
+      // const a = document.createElement('a');
+      // a.href = url;
+      // a.download = nombre;
+      // this.firma = blob;
+      // document.body.appendChild(a);
+      // a.click();
       const firmaUrl = dataURL;
       const firmaup = {
         firma64 : firmaUrl
@@ -77,7 +77,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
         rest => {
           console.log(rest);
         }
-      )
+      );
       // console.log(firmaUrl);
     }
    }
@@ -116,6 +116,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
     const u = this.signaturePad.toDataURL();
     this.enviarf(u, 'firma.png');
     this.firma = u;
+    alert('¡Firma enviada!');
   }
 }
 
