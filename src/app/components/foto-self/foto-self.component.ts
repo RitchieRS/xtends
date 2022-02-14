@@ -42,7 +42,7 @@ export class FotoSelfComponent implements OnInit {
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths= [...question.paths];
       this.imgLgt = this.respuestas.paths.length;
-      console.log(this.respuestas.paths);
+      console.log(this.imgLgt);
       this.loadFiles();
      });
 
@@ -93,6 +93,7 @@ export class FotoSelfComponent implements OnInit {
           this.respuestas.saveImages = this.images;
           this.storage.setObject(this.idStrQuest,this.respuestas);
           this.sendInf();
+        
       }
     }
   }
@@ -149,7 +150,8 @@ async saveImage(photo: Photo) {
   const savedFile = await Filesystem.writeFile({
       path: `${IMAGE_DIR}/${fileName}`,
       data: base64Data,
-      directory: Directory.Data
+      directory: Directory.Data,
+      recursive: true
   });
 
   // Reload the file list

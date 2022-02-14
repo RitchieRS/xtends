@@ -17,6 +17,10 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 
+import { MatCardModule } from '@angular/material/card';
+import { MatGridListModule } from '@angular/material/grid-list';
+
+
 import { AbiertaComponent } from './abierta/abierta.component';
 import { UnicaRadioComponent } from './unica-radio/unica-radio.component';
 import { FotografiaComponent } from './fotografia/fotografia.component';
@@ -25,6 +29,8 @@ import { CarruselComponent } from './carrusel/carrusel.component';
 import { EmailComponent } from './email/email.component';
 import { CargaImagenComponent } from './carga-imagen/carga-imagen.component';
 import { FechaComponent } from './fecha/fecha.component';
+import { SkuComponent } from './sku/sku.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 
@@ -39,7 +45,8 @@ import { FechaComponent } from './fecha/fecha.component';
     FotografiaComponent,
     NumericaComponent,
     CarruselComponent,
-    CargaImagenComponent
+    CargaImagenComponent,
+    SkuComponent
   ],
   exports:[
     AbiertaComponent,
@@ -49,7 +56,8 @@ import { FechaComponent } from './fecha/fecha.component';
     FotografiaComponent,
     NumericaComponent,
     CarruselComponent,
-    CargaImagenComponent
+    CargaImagenComponent,
+    SkuComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +74,10 @@ import { FechaComponent } from './fecha/fecha.component';
     MatButtonModule,
     MatDialogModule,
     MatAutocompleteModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatCardModule,
+    MatGridListModule,
+    ComponentsModule,
   ]
 })
 export class ComponentsSondeoModule { }

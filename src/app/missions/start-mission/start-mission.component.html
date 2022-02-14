@@ -502,6 +502,24 @@
                                  ></app-fotografia>
                 </div>
 
+                
+                <div *ngSwitchCase="'sku'" >
+                  <app-sku
+                                [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [productos]="p.productos"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage" >
+                                ></app-sku>
+                </div>
 
 
                 <!---

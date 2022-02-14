@@ -44,6 +44,10 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 
 
 
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+
+
+
 
 
 @NgModule({
@@ -89,7 +93,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
+  providers: [BarcodeScanner ,{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy,}],
   bootstrap: [AppComponent],
 
 })

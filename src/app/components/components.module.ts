@@ -40,6 +40,7 @@ import { FotoDomComponent } from './foto-dom/foto-dom.component';
 import { FotoIdComponent } from './foto-id/foto-id.component';
 import { FotoCurpComponent } from './foto-curp/foto-curp.component';
 import { FotoSelfComponent } from './foto-self/foto-self.component';
+import { CamBcComponent } from './cam-bc/cam-bc.component';
 
 
 
@@ -65,7 +66,8 @@ import { FotoSelfComponent } from './foto-self/foto-self.component';
     FotoIdComponent,
     FotoDomComponent,
     FotoCurpComponent,
-    FotoSelfComponent
+    FotoSelfComponent,
+    CamBcComponent
   ],
   exports:[
     FooterComponent,
@@ -87,7 +89,8 @@ import { FotoSelfComponent } from './foto-self/foto-self.component';
     FotoIdComponent,
     FotoDomComponent,
     FotoCurpComponent,
-    FotoSelfComponent
+    FotoSelfComponent,
+    CamBcComponent
   ],
   imports: [
     CommonModule,
@@ -106,6 +109,7 @@ import { FotoSelfComponent } from './foto-self/foto-self.component';
     MatDialogModule,
     MatAutocompleteModule,
     SignaturePadModule,
+  
   ]
 })
 export class ComponentsModule { }

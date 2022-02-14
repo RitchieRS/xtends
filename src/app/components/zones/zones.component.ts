@@ -16,9 +16,7 @@ export class ZonesComponent implements OnInit {
 
   myControl = new FormControl();
   options: string[] = [];
-  selected = ["Tenancingo,Edo. De México",
-  "Calvillo,Aguascalientes",
-  "LoretoBaja California Norte"];
+  selected:string[]=[];
   filteredOptions: Observable<string[]>;
 
   constructor(private srvInf: InfoService,
@@ -36,7 +34,10 @@ export class ZonesComponent implements OnInit {
      this.selected = storedCities;*/
 
      this.storage.getObject('zone-stored').then((storedzone: any) => {
-       this.selected.push(storedzone);
+       Object.keys(storedzone).forEach(val => {
+        //console.log(zones[val]);
+        this.selected.push(storedzone[val]);
+      });
     });
 
     this.storage.getObject('zone').then((zones: any) => {
@@ -65,11 +66,14 @@ export class ZonesComponent implements OnInit {
   }
 
   addOption(option){
-    alert(option)
+    try{
     this.selected.push(option)
-    //this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
-    //localStorage.setItem("my_colors", JSON.stringify(this.selected));
+    this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
+   // localStorage.setItem("my_colors", JSON.stringify(this.selected));
     this.storage.setObject('zone-stored',this.selected);
+   }catch(e){
+     alert(e);
+   }
     //this.myControl.reset();
     //console.dir(this.selected);
   }

@@ -85,6 +85,7 @@ export class FotoCurpComponent implements OnInit {
             name: f,
             path: filePath,
             data: `data:image/jpeg;base64,${readFile.data}`,
+
           });
       }
     }
@@ -142,7 +143,8 @@ async saveImage(photo: Photo) {
   const savedFile = await Filesystem.writeFile({
       path: `${IMAGE_DIR}/${fileName}`,
       data: base64Data,
-      directory: Directory.Data
+      directory: Directory.Data,
+      recursive: true
   });
 
   // Reload the file list
