@@ -30,7 +30,7 @@
         </ion-col>
         <ion-col class="ion-margin">
           <ion-searchbar outline animated
-            placeholder="BUSCAR PRODUCTO" mode="ios"
+            placeholder="{{barcode}}" mode="ios"
             [debounce]="500"
           >
           </ion-searchbar>
@@ -38,7 +38,9 @@
       </ion-row>
 
       <ion-row class="ion-padding-horizontal">
-        <app-cam-bc></app-cam-bc>
+        <app-cam-bc
+                 (barcodeResult)="receiveBarCode($event)"
+                 ></app-cam-bc>
       </ion-row>
       <ion-row class="ion-margin-horizontal">
         <ion-col size="6" class="ion-align-self-center">

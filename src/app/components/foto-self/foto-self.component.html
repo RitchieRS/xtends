@@ -1,9 +1,9 @@
-<button *nfIf="imgLgt==0" (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+<button *ngIf=" imgLgt == 0 "   (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
   <mat-icon  aria-hidden="false">add_a_photo</mat-icon>
   CARGAR FOTO
 </button>
 
-<button *nfIf="imgLgt>=0" (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
-  <mat-icon  aria-hidden="false">add_a_photo</mat-icon>
+<button *ngIf=" imgLgt>=0 " (click)="selectDocument()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+  <mat-icon  aria-hidden="false">done</mat-icon>
   Foto Cargada
 </button>

@@ -23,11 +23,16 @@ export class SkuComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
 
-  
+  barcode="Busca el producto";
+
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
     console.log(this.productos);
+  }
+
+  receiveBarCode($event) {
+    this.barcode = $event
   }
 
   openDialog(producto:any){

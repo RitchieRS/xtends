@@ -149,6 +149,7 @@ async saveImage(photo: Photo) {
   // Reload the file list
   // Improve by only loading for the new image and unshifting array!
   this.loadFiles();
+  this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
   this.respuestas.saveImages.push(savedFile);
   this.storage.setObject(this.idStrQuest,this.respuestas);
