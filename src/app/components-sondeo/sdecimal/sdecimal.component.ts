@@ -4,11 +4,11 @@ import { ToastController } from '@ionic/angular';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 @Component({
-  selector: 'app-numerica',
-  templateUrl: './numerica.component.html',
-  styleUrls: ['./numerica.component.scss'],
+  selector: 'app-sdecimal',
+  templateUrl: './sdecimal.component.html',
+  styleUrls: ['./sdecimal.component.scss'],
 })
-export class NumericaComponent implements OnInit {
+export class SdecimalComponent implements OnInit {
 
   
 
@@ -27,6 +27,19 @@ export class NumericaComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  /*
+  dependePregunta: 61
+dependeRespuesta: 0
+idPregunta: 64
+maximo: 0
+minimo: 0
+obligatorio: 0
+orden: 38
+pregunta: "Captura del Sharing"
+puntaje: 0
+tipo: "decimal"
+urlImage: "0"
+  */
   isValid = 0;
   idStrQuest = "";
   RequiredValue:Validators[];
@@ -50,8 +63,9 @@ export class NumericaComponent implements OnInit {
       "numerica": ['', this.RequiredValue],
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
-     this.respuestaStr = question.respuesta;
+     this.respuestaStr = question.respuesta.toString();
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+     console.log(this.isValid);
     });
    this.respuestas = {
       idPregunta:this.idStrQuest,
@@ -63,12 +77,13 @@ export class NumericaComponent implements OnInit {
   }
 
   submit(){
-    console.log(this.numericaGroup.status);
+    
     
     if(this.numericaGroup.status=="VALID"){
-      this.isValid = 1;
+      
       this.respuestas.respuesta = this.numericaGroup.get('numerica').value;
-      this.respuestas.valid = 1 ;
+      this.respuestas.valid = (Number.isNaN(this.numericaGroup.get('numerica').value)== true ) ? 0 : 1 ;
+      this.isValid = this.respuestas.valid;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
 

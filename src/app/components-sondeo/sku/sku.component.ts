@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { DialogCaptureproductinfoComponent } from 'src/app/missions/modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { ProductoComponent } from './producto/producto.component';
 
 @Component({
@@ -31,21 +32,33 @@ export class SkuComponent implements OnInit {
     console.log(this.productos);
   }
 
+  isValid=0;
+
   receiveBarCode($event) {
     this.barcode = $event
   }
 
-  openDialog(producto:any){
-    this.dialog.open(ProductoComponent,{
-      data: {
-        img : producto.img,
-        nombre : producto.nombre,
-        presentacion : producto.presentacion,
-        preguntas : producto.preguntas,
-        sku : producto.sku,
+  async openDialog(producto:any,index:number){
+    console.log(index);
+    const dialogRef = this.dialog.open(DialogCaptureproductinfoComponent ,{
+          data: {
+            img : producto.img,
+            nombre : producto.nombre,
+            presentacion : producto.presentacion,
+            preguntas : producto.preguntas,
+            sku : producto.sku,
+            index: index
+          }
+        });
+        dialogRef.afterClosed()
+            .toPromise() // here you have a Promise instead an Observable
+            .then(result => {
+                this.isValid=Number(result);
+                console.log(this.isValid);
+            });
 
-      }
-    });
   }
+
+  
 
 }

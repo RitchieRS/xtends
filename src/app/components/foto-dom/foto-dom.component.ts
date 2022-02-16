@@ -5,6 +5,7 @@ import { Directory, Filesystem } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { LocalFile } from 'src/app/xmodels/file';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
+import { InfoService } from 'src/app/xservices/user/info.service';
 
 
 const IMAGE_DIR = 'stored-images'; 
@@ -33,7 +34,8 @@ export class FotoDomComponent implements OnInit {
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private storage: StorageHelperService
+    private storage: StorageHelperService,
+    private srvInf: InfoService,
     ) { }
 
   ngOnInit() {
@@ -152,9 +154,11 @@ async saveImage(photo: Photo) {
   // Reload the file list
   // Improve by only loading for the new image and unshifting array!
   this.loadFiles();
+  this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
-  this.respuestas.saveImages.push(savedFile);
+  this.respuestas.saveImages.push({img64:base64Data});
   this.storage.setObject(this.idStrQuest,this.respuestas);
+  this.sendInf();
 
 }
 
@@ -185,5 +189,18 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
   };
   reader.readAsDataURL(blob);
 });
+
+sendInf() {
+  const token = localStorage.getItem('token');
+   console.log(this.respuestas);
+   if(this.respuestas.paths.length>0){
+      this.srvInf.sendDomFoto(this.respuestas,token).subscribe((res) =>{
+            this.images.forEach( (file) =>{
+              this.deleteImage(file)
+            })
+            this.storage.removeItem(this.idStrQuest);
+      })
+   }
+  }
 
 }

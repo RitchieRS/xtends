@@ -1,98 +1,120 @@
 <div mat-dialog-content>
+  <ion-grid class="ion-no-padding">
+    <ion-row [ngClass]="'bg-purplextend'" class="ion-justify-content-end ion-padding">
+      <ion-col size="3">
+            <ion-fab-button mat-dialog-close color="purplextend">
+              <ion-icon name="close-outline" color="polarwhite"></ion-icon>
+            </ion-fab-button>
+    </ion-col>
+    </ion-row>
+   </ion-grid>
+  <div class="ion-padding">
     <ion-grid class="ion-no-padding">
-      <ion-row [ngClass]="'bg-purplextend'" class="ion-justify-content-end ion-padding">
-        <ion-col size="3">
-              <ion-fab-button mat-dialog-close color="purplextend">
-                <ion-icon name="close-outline" color="polarwhite"></ion-icon>
-              </ion-fab-button>
-      </ion-col>
+      <ion-row class="ion-margin">
+        <ion-col size="8">
+          <ion-text color="navyblue">
+            <p class="ion-no-margin"><strong>{{data.nombre}}</strong></p>
+            <p class="ion-no-margin">{{data.presentacion}}</p>
+          </ion-text>
+        </ion-col>
+        <ion-col size="4" class="ion-align-self-center">
+           <div class="box-img-product" style='background-image: url("{{data.img}}");'></div>
+        </ion-col>
       </ion-row>
-     </ion-grid>
-    <div class="ion-padding">
-      <ion-grid class="ion-no-padding">
-        <ion-row class="ion-margin">
-          <ion-col size="8">
-            <ion-text color="navyblue">
-              <p class="ion-no-margin"><strong>Nombre completo del producto</strong></p>
-              <p class="ion-no-margin">Presentación 326ml, vidrio, versión amarilla para llevar a casa.</p>
-            </ion-text>
-          </ion-col>
-          <ion-col size="4" class="ion-align-self-center">
-             <div class="box-img-product" style='background-image: url("../../../assets/img/patines.jpg");'></div>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-margin-horizontal">
-          <ion-col>
-            <ion-text color="navyblue">
-              <p class="ion-no-margin"><strong>SKU</strong> 917867</p>
-            </ion-text>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <hr>
-      <ion-grid class="ion-margin-top">
-        <ion-row>
-          <ion-col size="12" class="ion-padding-horizontal">
-            <ion-text color="navyblue">
-              <p class="ion-no-margin"><strong>Capturar información del producto</strong></p>
-            </ion-text>
-            <form class="" color="primary">
-              <p>
-                <mat-form-field appearance="outline" class="iup-full-width">
-                  <mat-label class="mat-label-color-navyblue">Precio</mat-label>
-                  <input matInput placeholder="$">
-                </mat-form-field>
-              </p>
-              <p>
-                <mat-form-field appearance="outline" class="iup-full-width">
-                  <mat-label class="mat-label-color-navyblue">Sharing</mat-label>
-                  <input matInput placeholder="Sharing">
-                </mat-form-field>
-              </p>
-              <p>
-                <mat-form-field appearance="outline" class="iup-full-width">
-                  <mat-label class="mat-label-color-navyblue">Inventario</mat-label>
-                  <input matInput placeholder="Inventario">
-                </mat-form-field>
-              </p>
-            </form>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <hr>
-      <ion-grid>
-        <ion-row class="ion-justify-content-center">
-          <ion-col size="12" class="ion-align-self-center ion-text-center">
-            <ion-chip outline color="silverblue" expand="block">
-              <ion-icon name="barcode-outline"></ion-icon>
-              <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
-            </ion-chip>
-          </ion-col>
-          <ion-col size="12" class="ion-margin-vertical">
-            <ion-grid>
-              <ion-row >
-                <ion-col size="6" class="ion-text-center">
-                  <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                    Limpiar
-                  </button>
-                </ion-col>
-                <ion-col size="6" class="ion-text-center">
-                  <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
-                    Guardar
-                  </button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-      <!-- <section style="margin-top: 10px;">
-        <div class="iup-button-row">
-          <button mat-button mat-dialog-close>
-            <span class="material-icons">highlight_off</span> Cerrar
-          </button>
-        </div>
-      </section> -->
-    </div>
+      <ion-row class="ion-margin-horizontal">
+        <ion-col>
+          <ion-text color="navyblue">
+            <p class="ion-no-margin"><strong>SKU</strong> 917867</p>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <hr>
+    <ion-grid class="ion-margin-top">
+      <ion-row>
+        <ion-col size="12" class="ion-padding-horizontal">
+          <ion-text color="navyblue">
+            <p class="ion-no-margin"><strong>Capturar información del producto</strong></p>
+          </ion-text>
+
+              <div *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo"  >
+                <div *ngSwitchCase="'numerica'"  > 
+                  <app-snumerica
+                                [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [productos]="p.productos"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage" 
+                               ></app-snumerica>
+                  </div>
+
+                    
+                  <div *ngSwitchCase="'decimal'"  > 
+                    <app-sdecimal
+                                [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [productos]="p.productos"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage" 
+                               ></app-sdecimal>
+                  </div>
+
+                    
+              </div>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <hr>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <!--<ion-col size="12" class="ion-align-self-center ion-text-center">
+          <ion-chip outline color="silverblue" expand="block">
+            <ion-icon name="barcode-outline"></ion-icon>
+            <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
+          </ion-chip>
+        </ion-col>-->
+        <ion-col size="12" class="ion-margin-vertical">
+          <ion-grid>
+            <ion-row >
+              <ion-col size="6" class="ion-text-center">
+                <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                  Limpiar
+                </button>
+              </ion-col>
+              <ion-col size="6" class="ion-text-center">
+                <button (click)="submit()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                  Guardar
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- <section style="margin-top: 10px;">
+      <div class="iup-button-row">
+        <button mat-button mat-dialog-close>
+          <span class="material-icons">highlight_off</span> Cerrar
+        </button>
+      </div>
+    </section> -->
+  </div>
 
 </div>

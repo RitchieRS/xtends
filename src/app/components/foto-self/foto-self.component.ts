@@ -92,7 +92,6 @@ export class FotoSelfComponent implements OnInit {
           });
           this.respuestas.saveImages = this.images;
           this.storage.setObject(this.idStrQuest,this.respuestas);
-          this.sendInf();
         
       }
     }
@@ -159,8 +158,9 @@ async saveImage(photo: Photo) {
   this.loadFiles();
   this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
-  this.respuestas.saveImages.push(savedFile);
+  this.respuestas.saveImages.push({img64: base64Data});
   this.storage.setObject(this.idStrQuest,this.respuestas);
+  this.sendInf();
   
 
 }

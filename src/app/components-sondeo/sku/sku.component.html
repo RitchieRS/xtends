@@ -53,70 +53,21 @@
           <ion-text color="navyblue" class="ion-text-left"><p><strong>Presencia</strong></p></ion-text>
         </ion-col>
       </ion-row>
-       <ion-row *ngFor="let producto of productos" class="ion-margin-horizontal" (click)="openDialog(producto)">
+       <ion-row *ngFor="let producto of productos; let i = index ;" class="ion-margin-horizontal" (click)="openDialog(producto,i+1)">
         <ion-col size="6" class="ion-align-self-center">
           <ion-text color="navyblue" class="ion-text-left"><p>{{producto.nombre}}</p></ion-text>
         </ion-col>
         <ion-col size="3" class="ion-align-self-center">
           <ion-text color="navyblue" class="ion-text-left"><p>{{producto.presentacion}}</p></ion-text>
         </ion-col>
-        <ion-col size="3" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+        <ion-col *ngIf="(index+1) == isValid" size="3" class="ion-align-self-center ion-text-center iup-margin-top-sm">
           <ion-icon name="close-circle" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>
+        </ion-col>
+        <ion-col *ngIf="(index+1) == isValid" size="3" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+          <!--<ion-icon name="close-circle" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>-->
         </ion-col>
       </ion-row>
     </ion-grid>
-    <hr>
-    <ion-grid class="ion-margin-top">
-      <ion-row>
-        <ion-col size="12" class="ion-padding-horizontal">
-          <ion-text color="navyblue">
-            <p class="ion-no-margin"><strong>Formulario opción multiple</strong></p>
-          </ion-text>
-        </ion-col>
-        <ion-col>
-          <ion-list>
-            <ion-radio-group value="pregunta" mode="md">
-              <ion-list-header>
-                <ion-label>
-                  <ion-text color="navyblue">
-                    <p>Pregunta uno</p>
-                  </ion-text>
-                </ion-label>
-              </ion-list-header>
-
-              <ion-item>
-                <ion-label>
-                  <ion-text color="navyblue">
-                    <p>
-                      Opción uno
-                    </p>
-                  </ion-text>
-                </ion-label>
-                <ion-radio slot="start" value="opcion uno"></ion-radio>
-              </ion-item>
-
-              <ion-item>
-                <ion-text color="navyblue">
-                  <p>
-                    Opción dos
-                  </p>
-                </ion-text>
-                <ion-radio slot="start" value="opcion dos"></ion-radio>
-              </ion-item>
-
-              <ion-item>
-                <ion-text color="navyblue">
-                  <p>
-                    Opción tres
-                  </p>
-                </ion-text>
-                <ion-radio slot="start" value="opcion tres"></ion-radio>
-              </ion-item>
-            </ion-radio-group>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-     </ion-grid>
     </div> 
   </mat-expansion-panel>
   </mat-accordion>

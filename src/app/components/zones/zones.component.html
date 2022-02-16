@@ -15,12 +15,14 @@
     </mat-autocomplete>
   </mat-form-field>
 </form>
-<!--<ion-chip mode="ios" outline color="navyblue" slot="start">
+<ion-chip mode="ios" outline color="navyblue" slot="start">
   <ion-icon name="location-outline" color="navyblue"></ion-icon>
   <ion-label><strong>Ubicación Actual</strong></ion-label>
-</ion-chip>-->
+</ion-chip>
 <ion-chip *ngFor="let option of selected" outline color="navyblue" slot="start">
+  <div  >
   <ion-icon name="location-outline" color="navyblue"></ion-icon>
   <ion-label>{{option}}</ion-label>
   <ion-icon (click)="delete(option)" name="close"></ion-icon>
+  </div>
 </ion-chip>

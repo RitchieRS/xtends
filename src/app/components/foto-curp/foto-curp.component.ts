@@ -30,7 +30,8 @@ export class FotoCurpComponent implements OnInit {
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private storage: StorageHelperService
+    private storage: StorageHelperService,
+    private srvInf: InfoService
     ) { }
 
   ngOnInit() {
@@ -152,8 +153,9 @@ async saveImage(photo: Photo) {
   this.loadFiles();
   this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
-  this.respuestas.saveImages.push(savedFile);
+  this.respuestas.saveImages.push({img64:base64Data});
   this.storage.setObject(this.idStrQuest,this.respuestas);
+  this.sendInf();
 
 }
 
@@ -184,5 +186,18 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
   };
   reader.readAsDataURL(blob);
 });
+
+sendInf() {
+  const token = localStorage.getItem('token');
+   console.log(this.respuestas);
+   if(this.respuestas.paths.length>0){
+      this.srvInf.sendCURPFoto(this.respuestas,token).subscribe((res) =>{
+            this.images.forEach( (file) =>{
+              this.deleteImage(file)
+            })
+            this.storage.removeItem(this.idStrQuest);
+      })
+   }
+  }
 
 }

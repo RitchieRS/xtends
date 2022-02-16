@@ -113,6 +113,69 @@ export class InfoService {
     );
   };
 
+  sendCURPFoto(request : any ,token : string):Observable<any>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<any>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+          map(( res :  any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+  sendDomFoto(request : any ,token : string):Observable<any>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<any>(`${environment.API_URL}user/dom`,request ,httpOptions).pipe(
+          map(( res :  any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+  sendINEFoto(request : any ,token : string):Observable<any>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<any>(`${environment.API_URL}user/iner`,request ,httpOptions).pipe(
+          map(( res :  any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
   // SERVICIO DE FIRMA
   sendFirma(request : any ,token : string):Observable<any>{
     console.log(request);

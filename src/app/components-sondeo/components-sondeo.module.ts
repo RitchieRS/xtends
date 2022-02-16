@@ -31,6 +31,8 @@ import { CargaImagenComponent } from './carga-imagen/carga-imagen.component';
 import { FechaComponent } from './fecha/fecha.component';
 import { SkuComponent } from './sku/sku.component';
 import { ComponentsModule } from '../components/components.module';
+import { SnumericaComponent } from './snumerica/snumerica.component';
+import { SdecimalComponent } from './sdecimal/sdecimal.component';
 
 
 
@@ -46,7 +48,9 @@ import { ComponentsModule } from '../components/components.module';
     NumericaComponent,
     CarruselComponent,
     CargaImagenComponent,
-    SkuComponent
+    SkuComponent,
+    SnumericaComponent,
+    SdecimalComponent
   ],
   exports:[
     AbiertaComponent,
@@ -57,7 +61,9 @@ import { ComponentsModule } from '../components/components.module';
     NumericaComponent,
     CarruselComponent,
     CargaImagenComponent,
-    SkuComponent
+    SkuComponent,
+    SnumericaComponent,
+    SdecimalComponent
   ],
   imports: [
     CommonModule,
@@ -77,7 +83,7 @@ import { ComponentsModule } from '../components/components.module';
     MatExpansionModule,
     MatCardModule,
     MatGridListModule,
-    ComponentsModule,
+    ComponentsModule
   ]
 })
 export class ComponentsSondeoModule { }
