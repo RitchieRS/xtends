@@ -14,9 +14,9 @@
       </ion-row>
     </ion-grid>
 
-      <ion-grid *ngIf="listMissionlength == 0" class="bg-polarwhite ion-padding-bottom">
+      <div *ngIf="listMissionlength == 0" class="body-preload">
         <app-preload></app-preload>
-      </ion-grid>
+      </div>
 
 
     <ion-card *ngFor="let available of listMission; let i = index" >

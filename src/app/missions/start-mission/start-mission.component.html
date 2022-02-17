@@ -28,7 +28,7 @@
         </ion-grid>
         <ion-grid>
           <ion-row>
-            <ion-col class="ion-padding-horizontal">
+            <ion-col size="10" class="ion-padding">
               <ion-text color="navyblue">
                 <h6>
                   Durante tu visita, llena el formulario correspondiente:
@@ -38,7 +38,7 @@
           </ion-row>
         </ion-grid>
 
-        <div *ngIf="isLoaded==0" style="height: 250px;">
+        <div *ngIf="isLoaded==0" class="body-preload">
           <app-preload></app-preload>
         </div>
 
@@ -124,7 +124,7 @@
                             <ion-segment-button *ngFor="let file of images; let i = index" >
                               <div class="iup-box-pre-view-photo" style='background-image: url("{{file.data}}");'></div>
                             </ion-segment-button>
-                            <!--<ion-segment-button>
+                             <ion-segment-button>
                               <div class="iup-box-pre-view-photo" style='background-image: url("../../../assets/img/imagenes_swipes-02.png");'></div>
                             </ion-segment-button>
                             <ion-segment-button>
@@ -370,7 +370,7 @@
                 </app-unica-radio>
                 </div>
 
-                
+
                 <div *ngSwitchCase="'carrusel'" >
                   <app-carrusel  [dependePregunta]="p.dependePregunta"
                                     [dependeRespuesta]="p.dependeRespuesta"
@@ -502,7 +502,7 @@
                                  ></app-fotografia>
                 </div>
 
-                
+
                 <div *ngSwitchCase="'sku'" >
                   <app-sku
                                 [dependePregunta]="p.dependePregunta"
@@ -538,7 +538,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <ion-button (click)="openDialog()">Btn para test del modal</ion-button>
+        <!-- <ion-button (click)="openDialog()">Btn para test del modal</ion-button> -->
       </ion-card>
     </div>
   </div>

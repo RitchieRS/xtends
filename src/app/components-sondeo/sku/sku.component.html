@@ -19,7 +19,7 @@
       </ion-grid>
     </mat-panel-title>
    </mat-expansion-panel-header>
-    
+
     <div class="ion-padding-horizontal">
     <ion-grid class="ion-margin-top">
       <ion-row>
@@ -50,7 +50,7 @@
           <ion-text color="navyblue" class="ion-text-left"><p><strong>Pres</strong></p></ion-text>
         </ion-col>
         <ion-col size="3" class="ion-align-self-center">
-          <ion-text color="navyblue" class="ion-text-left"><p><strong>Presencia</strong></p></ion-text>
+          <ion-text color="navyblue" class="ion-text-left"><p><strong>Presencia.</strong></p></ion-text>
         </ion-col>
       </ion-row>
        <ion-row *ngFor="let producto of productos; let i = index ;" class="ion-margin-horizontal" (click)="openDialog(producto,i+1)">
@@ -60,19 +60,19 @@
         <ion-col size="3" class="ion-align-self-center">
           <ion-text color="navyblue" class="ion-text-left"><p>{{producto.presentacion}}</p></ion-text>
         </ion-col>
-        <ion-col *ngIf="(index+1) == isValid" size="3" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+        <ion-col *ngIf="(index+1) == isValid" size="2" class="ion-align-self-center ion-text-center iup-margin-top-sm">
           <ion-icon name="close-circle" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>
         </ion-col>
-        <ion-col *ngIf="(index+1) == isValid" size="3" class="ion-align-self-center ion-text-center iup-margin-top-sm">
-          <!--<ion-icon name="close-circle" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>-->
+        <ion-col *ngIf="(index+1) == isValid" size="2" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+          <ion-icon name="checkmark-done-outline" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
-    </div> 
+    </div>
   </mat-expansion-panel>
   </mat-accordion>
 
-  
-  
+
+
 
 
