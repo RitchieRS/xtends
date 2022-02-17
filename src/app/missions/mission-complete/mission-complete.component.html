@@ -1,0 +1,78 @@
+<ion-header #header>
+  <app-header-two titulo="Check-out"></app-header-two>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <div>
+      <ion-card>
+        <ion-grid class="ion-no-padding">
+          <ion-row [ngClass]="'bg-skybluextend'">
+            <ion-col size="3" class="ion-padding ion-justify-content-center ion-align-self-center">
+              <div class="box-img border-rodondos">
+                <img src="../../assets/img/shell.svg" class="img-full img-icon">
+              </div>
+            </ion-col>
+            <ion-col size="9" class="ion-padding">
+             <div class="ion-text-start">
+               <ion-label>
+                 <ion-text color="polarwhite">
+                   <h3><strong>Marca</strong></h3>
+                   <h4>Proyecto</h4>
+                   <h4>Tienda la Comer | Santa Jose</h4>
+                   <h4>Ciudad de México</h4>
+                 </ion-text>
+               </ion-label>
+             </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12" class="ion-padding-horizontal ion-text-center">
+              <img src="../../../assets/img/LOGO_XTEND.png" style="width: 200px;">
+              <ion-text color="navyblue" class="ion-text-center">
+                <h1>
+                  <strong>Tu misión a sido registrada con éxito.</strong>
+                </h1>
+              </ion-text>
+              <ion-text color="navyblue" class="ion-text-center">
+                <h4>
+                  Datos enviados 850 k
+                </h4>
+              </ion-text>
+              <ion-text color="navyblue" class="ion-text-center">
+                <p>
+                  La visita ser  validada lo más pronto
+posible, en caso de dudas o
+aclaraciones, puedes contactarte con
+nuestro equipo de soporte.
+                </p>
+              </ion-text>
+              <ion-text color="navyblue" class="ion-text-center">
+                <h2>
+                  Con Xtend, sigue ganándote una lanita extra.
+                </h2>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <div class="iup-button-row">
+                <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">Misiones pendientes</button>
+              </div>
+            </ion-col>
+            <ion-col size="12">
+              <div class="iup-button-row">
+                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">HOME</button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card>
+    </div>
+  </div>
+</ion-content>
+<app-footer></app-footer>

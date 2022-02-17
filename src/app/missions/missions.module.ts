@@ -23,6 +23,8 @@ import { ModalCaptureproductinfoComponent } from './modal-captureproductinfo/mod
 import { DialogCaptureproductinfoComponent } from './modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AgmCoreModule } from '@agm/core';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { MissionCompleteComponent } from './mission-complete/mission-complete.component';
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
@@ -31,6 +33,8 @@ import { AgmCoreModule } from '@agm/core';
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
+    CheckOutComponent,
+    MissionCompleteComponent,
     PendingMissionComponent,
     ModalCaptureproductinfoComponent,
     DialogCaptureproductinfoComponent,
@@ -59,6 +63,8 @@ import { AgmCoreModule } from '@agm/core';
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
+    CheckOutComponent,
+    MissionCompleteComponent,
     PendingMissionComponent,
     ModalCaptureproductinfoComponent,
     DialogCaptureproductinfoComponent,
