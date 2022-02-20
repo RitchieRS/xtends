@@ -13,9 +13,10 @@ import { InfoService } from 'src/app/xservices/user/info.service';
 })
 export class FirmComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('firmaDigital', {static:true}) signaturePadElement:any;
-   signaturePad:any;
-   firma:any;
+  @ViewChild('firmaDigital', {static:true})
+   signaturePadElement: any;
+   signaturePad: any;
+   firma: any;
 
   constructor(private firmaService: InfoService) { }
 

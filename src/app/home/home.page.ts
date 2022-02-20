@@ -73,10 +73,10 @@ export class HomePage {
         console.log(log)
     })
     this.filterType=[];
-    this.storage.getObject('filter').then((filter: any) => { 
+    this.storage.getObject('filter').then((filter: any) => {
 
       console.log(filter.length)
-      
+
       for (let i = 0; i < filter.length; i++) {
         console.log(filter[i]);
         this.filterType.push({"nombreActividad" : filter[i]});
@@ -118,7 +118,7 @@ export class HomePage {
 
    }
 
- 
+
 
   tipoServicio(tipo:string):any{
     let type={
@@ -182,9 +182,9 @@ export class HomePage {
           type.url='./assets/icon/location-purplextend.svg';
           break;
         }
-       
+
         default: {
-  
+
         }
         break;
         }
@@ -222,14 +222,14 @@ export class HomePage {
               this.missionAval = this.dataHome.section3;
               this.missionsAvalDataFil = this.dataHome.section3.content;
               //values.filter(t=>t.category ==='Science');
-              this.missionsAvalData = this.dataHome.section3.content; 
-                
-            
-              
+              this.missionsAvalData = this.dataHome.section3.content;
+
+
+
               console.log(this.missionsAvalData);
-             
+
               this.missionsAvalDataAux = this.missionsAvalData.slice(0,5)
-              
+
              }
              /* Misiones Disponibles*/
             if(this.dataHome.section4.content.length>=1){
@@ -237,13 +237,13 @@ export class HomePage {
               this.missionsAvalDatamap = this.dataHome.section4.content;
               this.missionAvalmap.content.forEach(element => {
                 element.color = this.pincho(element.colorServicio)
-                            
+
               });
-              
+
               console.log(this.missionsAvalDatamap);
              }
             //console.log(this.dataHome.section1);
-    
+
            // console.log(this.dataHome);
            }
         })

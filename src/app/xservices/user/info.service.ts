@@ -176,7 +176,7 @@ export class InfoService {
     );
   };
 
-  // SERVICIO DE FIRMA
+  // SERVICIO DE ENVIO A DB FIRMA
   sendFirma(request : any ,token : string):Observable<any>{
     console.log(request);
     const httpOptions = {
