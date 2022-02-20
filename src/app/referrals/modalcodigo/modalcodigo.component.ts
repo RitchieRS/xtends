@@ -9,13 +9,13 @@ import {FormControl, Validators} from '@angular/forms';
 })
 export class ModalcodigoComponent {
 
-@Input() codeReco : string;
+@Input() codeReco: string;
 
-constructor(public dialog: MatDialog) { 
+constructor(public dialog: MatDialog) {
   console.log(this.codeReco);
 }
 
-  
+
 openDialog() {
     this.dialog.open(DialogCodigo,{});
   }
