@@ -27,6 +27,7 @@ export class NumericaComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   isValid = 0;
   idStrQuest = "";
   RequiredValue:Validators[];
@@ -42,7 +43,8 @@ export class NumericaComponent implements OnInit {
               private storage: StorageHelperService) { }
 
   ngOnInit() {
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    console.log(this.idStrQuest);
     if(this.obligatorio==1){
      this.RequiredValue.push(Validators.required);
     }
@@ -66,12 +68,11 @@ export class NumericaComponent implements OnInit {
     console.log(this.numericaGroup.status);
     
     if(this.numericaGroup.status=="VALID"){
-      this.isValid = 1;
-      this.respuestas.respuesta = this.numericaGroup.get('numerica').value;
-      this.respuestas.valid = 1 ;
+      this.respuestas.valid = (this.numericaGroup.get('numerica').value == null ) ? 0 : 1 ;
+      this.isValid = this.respuestas.valid;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
-
+      this.isValid = 0;
     }
 
   }

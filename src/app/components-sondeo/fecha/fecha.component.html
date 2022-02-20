@@ -1,6 +1,4 @@
-<mat-accordion>
-  <mat-expansion-panel >
-    <mat-expansion-panel-header >
+
       <mat-panel-title>
         <ion-grid>
           <ion-row class="ion-justify-content-center">
@@ -18,12 +16,12 @@
           </ion-row>
         </ion-grid>
       </mat-panel-title>
-    </mat-expansion-panel-header>
+  
     <form [formGroup]="abiertaGoup"  (ngSubmit)="submit()"  >
       <div class="ion-padding-horizontal">
         <ion-item >
           <mat-form-field   appearance="outline" class="iup-full-width">
-          <input matInput formControlName="date" value="{{respuestaStr}}" [matDatepicker]="picker" readonly>
+          <input matInput formControlName="date" value="{{respuestaStr}}" [matDatepicker]="picker"  readonly>
           <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
           <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
           </mat-form-field>
@@ -35,5 +33,4 @@
         </div>
       </div>
    </form>
-  </mat-expansion-panel>
-</mat-accordion>
+

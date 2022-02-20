@@ -28,13 +28,16 @@ export class AbiertaComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   isValid = 0;
   idStrQuest = "";
-  RequiredValue:Validators[];
+  RequiredValue:Validators[]=[];
   respuestas={
     idPregunta:"",
     tipo:      "",
-    respuesta:  ""
+    respuesta:  "",
+    valid:0,
+    obligatorio:0
   }
   respuestaStr:string;
   constructor(private fb : FormBuilder,
@@ -42,7 +45,8 @@ export class AbiertaComponent implements OnInit {
               private storage: StorageHelperService) { }
 
   ngOnInit() {
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    console.log(this.idStrQuest);
     if(this.obligatorio==1){
      this.RequiredValue.push(Validators.required);
     }
@@ -50,26 +54,33 @@ export class AbiertaComponent implements OnInit {
       "abierta": ['', this.RequiredValue],
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
+      console.log(question);
      this.respuestaStr = question.respuesta;
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+     this.respuestas = {
+                        idPregunta:this.idStrQuest,
+                        tipo:      this.tipo,
+                        respuesta: this.respuestaStr,
+                        valid: this.isValid,
+                        obligatorio : this.obligatorio
+                        }
+                        this.storage.setObject(this.idStrQuest,this.respuestas);
     });
-   this.respuestas = {
-      idPregunta:this.idStrQuest,
-      tipo:      this.tipo,
-      respuesta: this.respuestaStr
-    }
+   
    
   }
 
   submit(){
-    console.log("algo");
-    
+    console.log("abierta");
     if(this.abiertaGoup.status=="VALID"){
-      this.isValid = 1;
+      console.log((this.abiertaGoup.get('abierta').value));
       this.respuestas.respuesta = this.abiertaGoup.get('abierta').value;
+      this.respuestas.valid = ((this.abiertaGoup.get('abierta').value).trim() == '' ) ? 0 : 1 ;
+      this.isValid = this.respuestas.valid;
+      this.obligatorio =this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
-
+      this.isValid=0;
     }
 
   }

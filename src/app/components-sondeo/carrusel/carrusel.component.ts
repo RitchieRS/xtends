@@ -28,12 +28,14 @@ export class CarruselComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   respuestas={
     idPregunta:"",
     tipo:      "",
     respuesta:  "",
     paths: [],
-    saveImages:[]
+    saveImages:[],
+    obligatorio:0
   };
   isValid = 0;
   selected=-1;
@@ -208,15 +210,26 @@ export class CarruselComponent implements OnInit {
             });
 
   ngOnInit() {
+
+   
     
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.isValid = question.saveImages.length>0 ? 1 : 0;
      
       this.respuestas.paths= [...question.paths];
+      console.log(question);
+      if(question.idPregunta==''){
+        this.respuestas.idPregunta = this.idStrQuest;
+        this.respuestas.tipo = this.tipo;
+        this.respuestas.obligatorio = this.obligatorio;
+        this.storage.setObject(this.idStrQuest,this.respuestas);
+      }
      // alert(this.respuestas.paths[0]);
+      //
       this.loadFiles();
      });
+     
   }
 
   openCamera(){
@@ -234,6 +247,7 @@ export class CarruselComponent implements OnInit {
   loadInformation(){
     this.respuestas.idPregunta = this.idStrQuest;
     this.respuestas.tipo = this.tipo;
+    this.respuestas.obligatorio = this.obligatorio;
     //alert(this.respuestas.tipo);
     //alert(this.respuestas.paths[0])
     this.storage.setObject(this.idStrQuest,this.respuestas);

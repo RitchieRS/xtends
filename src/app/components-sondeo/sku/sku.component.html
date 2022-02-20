@@ -1,6 +1,5 @@
-<mat-accordion>
-  <mat-expansion-panel >
-    <mat-expansion-panel-header >
+
+    
     <mat-panel-title>
       <ion-grid>
         <ion-row class="ion-justify-content-center">
@@ -18,7 +17,7 @@
         </ion-row>
       </ion-grid>
     </mat-panel-title>
-   </mat-expansion-panel-header>
+  
 
     <div class="ion-padding-horizontal">
     <ion-grid class="ion-margin-top">
@@ -60,17 +59,37 @@
         <ion-col size="3" class="ion-align-self-center">
           <ion-text color="navyblue" class="ion-text-left"><p>{{producto.presentacion}}</p></ion-text>
         </ion-col>
-        <ion-col *ngIf="(index+1) == isValid" size="2" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+        <ion-col *ngIf="isValid==1" size="2" class="ion-align-self-center ion-text-center iup-margin-top-sm">
           <ion-icon name="close-circle" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>
         </ion-col>
-        <ion-col *ngIf="(index+1) == isValid" size="2" class="ion-align-self-center ion-text-center iup-margin-top-sm">
-          <ion-icon name="checkmark-done-outline" color="{{producto.color}}" style="font-size: 20px;"></ion-icon>
+        <ion-col *ngIf="isValid==0" size="2" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+          <ion-icon name="checkmark-circle" color="greenxtend" style="font-size: 20px;"></ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <!--<ion-col size="12" class="ion-align-self-center ion-text-center">
+          <ion-chip outline color="silverblue" expand="block">
+            <ion-icon name="barcode-outline"></ion-icon>
+            <ion-label color="navyblue">CAPTURAR CODIGO DE BARRAS</ion-label>
+          </ion-chip>
+        </ion-col>-->
+       <!--<ion-col size="12" class="ion-margin-vertical">
+          <ion-grid>
+            <ion-row >
+              <ion-col size="6" class="ion-text-center">
+                <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                  Guardar
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-col>-->
+      </ion-row>
+    </ion-grid>
     </div>
-  </mat-expansion-panel>
-  </mat-accordion>
+ 
 
 
 

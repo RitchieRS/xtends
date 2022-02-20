@@ -24,6 +24,7 @@ export class UnicaRadioComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   isValid = 0;
   selected=-1;
   idStrQuest = "";
@@ -34,7 +35,9 @@ export class UnicaRadioComponent implements OnInit {
     tipo:      "",
     respuesta:  "",
     idOpcion: "",
-    selected: -1
+    selected: -1,
+    valid:0,
+    obligatorio:0
   };
   
   respuestaStr:string;
@@ -42,7 +45,7 @@ export class UnicaRadioComponent implements OnInit {
               private toastCtrl: ToastController,
               private storage: StorageHelperService) { }
   ngOnInit() {
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.unicaRGroup = this.fb.group({
       "unicaRadio": ['', this.RequiredValue],
     });
@@ -56,20 +59,23 @@ export class UnicaRadioComponent implements OnInit {
   }
   submit(){   
     if(this.unicaRGroup.status=="VALID"){
-      this.isValid = 1;
+      
       this.respuestas.idPregunta = this.idStrQuest;
+      
       this.respuestas.respuesta = this.respuestaStr;
       this.respuestas.tipo = this.tipo;
       this.respuestas.selected = this.selected;
+      this.isValid = this.respuestaStr == undefined ? 0 :1;
       this.respuestas.idOpcion = this.idOpcion;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
-
+      this.isValid =0;
     }
   }
   onChange(i,value,id){
     this.respuestaStr=value;
     this.idOpcion = id; 
-    this.selected=i;      
+    this.selected=i;  
+    this.submit();    
   }
 }

@@ -23,12 +23,15 @@ export class SkuComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
-
+  @Input() idSondeo: string;
+  idStrQuest:string
   barcode="Busca el producto";
 
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    console.log(this.idStrQuest);
     console.log(this.productos);
   }
 
@@ -47,7 +50,9 @@ export class SkuComponent implements OnInit {
             presentacion : producto.presentacion,
             preguntas : producto.preguntas,
             sku : producto.sku,
-            index: index
+            index: index,
+            idPregunta : this.idPregunta,
+            idInventario : this.idStrQuest
           }
         });
         dialogRef.afterClosed()

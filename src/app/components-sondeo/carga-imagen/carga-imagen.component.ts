@@ -28,12 +28,15 @@ export class CargaImagenComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   respuestas={
     idPregunta:"",
     tipo:      "",
     respuesta:  "",
     paths: [],
-    saveImages:[]
+    saveImages:[],
+    obligatorio:0,
+    valid:0,
   };
   isValid = 0;
   selected=-1;
@@ -45,10 +48,13 @@ export class CargaImagenComponent implements OnInit {
               private plt: Platform,
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
-              private storage: StorageHelperService) { }
+              private storage: StorageHelperService) { 
+                
+              }
 
               async loadFiles() {
                 this.images = [];
+                
                 const loading = await this.loadingCtrl.create({
                   message: 'Cargando Imagenes...',
                 });
@@ -88,6 +94,7 @@ export class CargaImagenComponent implements OnInit {
                         path: filePath,
                         data: `data:image/jpeg;base64,${readFile.data}`,
                       });
+                      this.isValid=1;
                    }
                 }
               }
@@ -207,16 +214,22 @@ export class CargaImagenComponent implements OnInit {
               reader.readAsDataURL(blob);
             });
 
-  ngOnInit() {
-    
-    this.idStrQuest =  this.idPregunta.toString();
-    this.storage.getObject(this.idStrQuest).then((question: any) => {
-      this.isValid = question.saveImages.length>0 ? 1 : 0;
-     
+  async ngOnInit() {
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    this.storage.getObject(this.idStrQuest).then(async (question: any) => {
+      this.isValid = Number(question.valid);//question.saveImages.length>0 ? 1 : 0;
       this.respuestas.paths= [...question.paths];
-     // alert(this.respuestas.paths[0]);
-      this.loadFiles();
+      //this.storage.setObject(this.idStrQuest,this.respuestas); 
+      console.log(question);
+      if(question.idPregunta==''){
+        this.respuestas.idPregunta = this.idStrQuest.toString();
+        this.respuestas.tipo = this.tipo;
+        this.respuestas.obligatorio = this.obligatorio;
+        this.storage.setObject(this.idStrQuest,this.respuestas);
+      }
      });
+     await this.loadFiles();
+    
   }
 
   openCamera(){
@@ -226,6 +239,7 @@ export class CargaImagenComponent implements OnInit {
   inf(file){
     this.isValid=0;
     this.deleteImage(file)
+    this.images = [];
     /*this.images.forEach( (file)=>{
  
     })*/
@@ -233,8 +247,11 @@ export class CargaImagenComponent implements OnInit {
   }
 
   loadInformation(){
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.respuestas.idPregunta = this.idStrQuest;
     this.respuestas.tipo = this.tipo;
+    this.respuestas.obligatorio = this.obligatorio;
+    this.respuestas.valid = 1;
     //alert(this.respuestas.tipo);
     //alert(this.respuestas.paths[0])
     this.storage.setObject(this.idStrQuest,this.respuestas);

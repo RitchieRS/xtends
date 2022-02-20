@@ -28,13 +28,16 @@ export class EmailComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   isValid = 0;
   idStrQuest = "";
-  RequiredValue:Validators[]=[Validators.email];
+  RequiredValue:Validators[]=[Validators.email,Validators.required];
   respuestas={
     idPregunta:"",
     tipo:      "",
-    respuesta:  ""
+    respuesta:  "",
+    valid:0,
+    obligatorio:0
   }
   respuestaStr:string;
   constructor(private fb : FormBuilder,
@@ -42,7 +45,8 @@ export class EmailComponent implements OnInit {
               private storage: StorageHelperService) { }
 
   ngOnInit() {
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    console.log(this.idStrQuest);
     if(this.obligatorio==1){
      this.RequiredValue.push(Validators.required);
     }
@@ -52,23 +56,29 @@ export class EmailComponent implements OnInit {
     this.storage.getObject(this.idStrQuest).then((question: any) => {
      this.respuestaStr = question.respuesta;
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-    });
-   this.respuestas = {
+     this.respuestas = {
       idPregunta:this.idStrQuest,
       tipo:      this.tipo,
-      respuesta: this.respuestaStr
+      respuesta: this.respuestaStr,
+      valid: this.isValid,
+      obligatorio:this.obligatorio
     }
+    this.storage.setObject(this.idStrQuest,this.respuestas);
+    });
+   
    
   }
 
   submit(){
     
     if(this.emailGroup.status=="VALID"){
-      this.isValid = 1;
+      this.respuestas.valid = (this.emailGroup.get('email').value == null ) ? 0 : 1 ;
       this.respuestas.respuesta = this.emailGroup.get('email').value;
+      this.isValid = this.respuestas.valid;
+      this.respuestas.obligatorio = this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
-
+      this.isValid = 0;
     }
 
   }

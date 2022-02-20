@@ -21,13 +21,12 @@
     <form [formGroup]="unicaRGroup" (ngSubmit)="submit()">
     <div class="ion-padding-horizontal">
       <ion-list  radio-group>
-      <ion-item  *ngFor="let radio of opciones; let i = index"   (click)="onChange(i,radio.opcion,radio.idOpcion)" >
+      <ion-item  *ngFor="let radio of opciones; let i = index"   (click)="submit()" >
 
-        <p> {{radio.opcion}}</p>  <ion-checkbox  [checked]="selected === i"  color="primary" slot="start"></ion-checkbox>
+        <p> {{radio.opcion}}</p>  <ion-checkbox  color="primary" slot="start"></ion-checkbox>
 
       </ion-item>
     </ion-list>
     
      </div>
      </form>
-

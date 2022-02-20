@@ -10,6 +10,7 @@ import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.s
 export class DialogCaptureproductinfoComponent implements OnInit {
   preguntas:any;
   valueid =0;
+  idPregunta="";
   idRespuestaSondeo={
     idrespuestas:[]
   }
@@ -20,13 +21,16 @@ export class DialogCaptureproductinfoComponent implements OnInit {
                                                       presentacion : string,
                                                       preguntas : any[],
                                                       sku : string,
-                                                      index:number
+                                                      index:number,
+                                                      idPregunta:number,
+                                                      idInventario: string
                                                     },
                                                     private storage: StorageHelperService,
                                                     private dialogRef: MatDialogRef<DialogCaptureproductinfoComponent>) { 
 
 
                                                       this.preguntas = data.preguntas;
+                                                      this.idPregunta = data.idInventario+ '||' ;
                                                       
 
   }
@@ -63,10 +67,13 @@ export class DialogCaptureproductinfoComponent implements OnInit {
 
   async countValid():Promise<number>{
     let countValid=0;
+    let count=0;
     for(let i of this.idRespuestaSondeo.idrespuestas){ 
       //   alert(i)
-          await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
+          console.log(this.idPregunta +  i.toString()+'||'+ count);
+          await Promise.resolve(this.storage.getObject(this.idPregunta +  i.toString()+'||'+ count ).then((question: any) => {
           //  alert("Finish");
+          count++;
   
           if(question.valid==1){
             countValid = this.data.index;

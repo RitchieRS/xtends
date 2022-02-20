@@ -28,12 +28,14 @@ export class FotografiaComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   respuestas={
     idPregunta:"",
     tipo:      "",
     respuesta:  "",
     paths: [],
-    saveImages:[]
+    saveImages:[],
+    obligatorio:0
   };
   isValid = 0;
   selected=-1;
@@ -162,6 +164,8 @@ export class FotografiaComponent implements OnInit {
               this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
               
               this.respuestas.saveImages.push(savedFile);
+
+              this.respuestas.obligatorio = this.obligatorio;
               
               this.isValid=1;
             
@@ -209,14 +213,21 @@ export class FotografiaComponent implements OnInit {
 
   ngOnInit() {
     
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.isValid = question.saveImages.length>0 ? 1 : 0;
-     
       this.respuestas.paths= [...question.paths];
+      if(question.idPregunta==''){
+        this.respuestas.idPregunta = this.idStrQuest;
+        this.respuestas.tipo = this.tipo;
+        this.respuestas.obligatorio = this.obligatorio;
+        this.storage.setObject(this.idStrQuest,this.respuestas);
+      }
      // alert(this.respuestas.paths[0]);
+     // this.storage.setObject(this.idStrQuest,this.respuestas);
       this.loadFiles();
      });
+    
   }
 
   openCamera(){
@@ -233,6 +244,7 @@ export class FotografiaComponent implements OnInit {
   }
 
   loadInformation(){
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.respuestas.idPregunta = this.idStrQuest;
     this.respuestas.tipo = this.tipo;
     //alert(this.respuestas.tipo);

@@ -1,8 +1,7 @@
 
-<mat-accordion>
-  <!-- En el mat-expansion lleva un hideToggle, para esconder el icon -->
-  <mat-expansion-panel>
-    <mat-expansion-panel-header >
+   
+<div> 
+  
       <mat-panel-title>
         <ion-grid>
           <ion-row class="ion-justify-content-center">
@@ -20,19 +19,12 @@
           </ion-row>
         </ion-grid>
       </mat-panel-title>
-    </mat-expansion-panel-header>
+
     <form [formGroup]="abiertaGoup"  (ngSubmit)="submit()"  >
       <div class="ion-padding-horizontal">
         <ion-item >
-          <ion-input formControlName="abierta" placeholder="Escribe aquì tu respuesta" value="{{respuestaStr}}"></ion-input>
+          <ion-input type="text" formControlName="abierta" placeholder="Escribe aquì tu respuesta" (change)="submit()" value="{{respuestaStr}}"></ion-input>
         </ion-item>
-        <div class="iup-button-row">
-          <button   type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-            GUARDAR
-          </button>
-        </div>
       </div>
    </form>
-  </mat-expansion-panel>
-</mat-accordion>
-
+</div>

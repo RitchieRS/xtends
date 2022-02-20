@@ -8,7 +8,7 @@ import { MissionService } from 'src/app/xservices/mission/mission.service';
 import { DialogCaptureproductinfoComponent } from '../modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
-import { Sondeo } from 'src/app/xmodels/sondeo';
+import { Pregunta, Producto, ProductoPregunta, Sondeo } from 'src/app/xmodels/sondeo';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 const IMAGE_DIR = 'stored-images';
@@ -33,7 +33,7 @@ export class StartMissionComponent  {
   abiertaParent:string;
  
 
-  preguntas = [];
+  preguntas: any;
  
   productos = [
     {
@@ -88,6 +88,15 @@ export class StartMissionComponent  {
     respuestas:[]
   }
   valueid:any
+  preguntaAx:Pregunta[];
+  productosAx:Producto[];
+  preguntaPreguntaAx:ProductoPregunta[];
+  idSondeoStr:string;
+  idPreguntaStr:string;
+  idSkuStr:String;
+  idPreguntaPreguntaStr:string;
+  validSondeo=0;
+
   
   constructor(private checks:CheckinserviceService,
     private route: ActivatedRoute,
@@ -109,34 +118,57 @@ export class StartMissionComponent  {
     }
 
     
-    try{
-    this.servMission.getSondeoXmission(this.token,this.dataSondeo).subscribe((res) =>{
-        this.isLoaded=1;
-        this.dataSondeResponse  = res;
-        this.idRespuestaSondeo.idrespuestas=[];
-        this.preguntas = this.dataSondeResponse.resp.preguntas;
-        Object.entries(this.dataSondeResponse.resp.preguntas).forEach(
-            ([key, value]) =>{ 
-                
-                this.valueid = value['idPregunta'];
-                this.idRespuestaSondeo.idrespuestas.push(this.valueid);
-            }
-        );
-        ///alert(this.idRespuestaSondeo)
-      //this.router.navigate(['start-mission/'+this.idPV])
-      })  
-    }catch(e){
-      alert(e);
-    }
+    
   }
   
   async ngOnInit() {
     
-    
+    try{
+      console.log("start mission fill information")
+      this.servMission.getSondeoXmission(this.token,this.dataSondeo).subscribe((res) =>{
+          this.isLoaded=1;
+          this.dataSondeResponse  = res;
+          this.idRespuestaSondeo.idrespuestas=[];
+          this.preguntas = this.dataSondeResponse.resp;
+          Object.entries(this.dataSondeResponse.resp).forEach(
+              ([key, value]) =>{ 
+                  this.idSondeoStr = value['idSondeo'].toString();
+                  this.preguntaAx = value['preguntas']; //
+                 
+                  Object.entries(this.preguntaAx).forEach(
+                    ([key, value]) =>{ 
+                         
+                          this.idPreguntaStr = value['idPregunta'].toString();
+                          this.productosAx = value['productos'];
+                          if(this.productosAx!==undefined){
+                            Object.entries(this.productosAx).forEach(
+                              ([key, value]) =>{ 
+                                this.idSkuStr = value['sku'].toString();
+                                this.preguntaPreguntaAx =value['preguntas'];
+                                Object.entries(this.preguntaPreguntaAx).forEach(
+                                  ([key, value]) =>{ 
+                                    this.idPreguntaPreguntaStr = value['idPregunta'].toString();
+                                    this.idRespuestaSondeo.idrespuestas.push(this.idSondeoStr+'||'+this.idPreguntaStr+'||'+this.idSkuStr+'||'+this.idPreguntaPreguntaStr);
+                                })
+                            })
+
+                          }else{
+                            this.idRespuestaSondeo.idrespuestas.push(this.idSondeoStr+'||'+this.idPreguntaStr);
+                          }
+                    })
+                 
+                }
+          );
+          console.log(this.idRespuestaSondeo.idrespuestas);
+        })  
+      }catch(e){
+        alert(e);
+      }
         
   }
 
   async presentToast(text) {
+
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
@@ -203,39 +235,37 @@ export class StartMissionComponent  {
 
 async sendSondeo(){
    try{
-   //this.respuestasSondeo.respuestas=[];
-   this.respuestasSondeo.idPV = this.idPV.toString();
-  // alert("Finish");
-   for(let i of this.idRespuestaSondeo.idrespuestas){ 
-    //   alert(i)
-        await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
-        //  alert("Finish");
-              if(question!=null){
-                this.respuestasSondeo.respuestas.push(question);
-              //  alert("Finish");
-              }
-        }));
-    }
-    for(let i of this.respuestasSondeo.respuestas){ 
-      //alert("For");
-                    if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
-                     // alert("tipo -path");
-                        await Promise.resolve( this.loadFiles(i['paths'],data => {
-                         /// alert("promise resolve load files");
-                            i['saveImages'] = data;
-                        }));
-                    }         
+          if(this.validSondeo==1){
+          this.respuestasSondeo.idPV = this.idPV.toString();
+          for(let i of this.idRespuestaSondeo.idrespuestas){ 
+         
+                await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
+                      if(question!=null){
+                        this.respuestasSondeo.respuestas.push(question);
+                      }
+                }));
+            }
+            for(let i of this.respuestasSondeo.respuestas){ 
+                            if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
+                                await Promise.resolve( this.loadFiles(i['paths'],data => {
+                                    i['saveImages'] = data;
+                                }));
+                            }         
 
-    }
-  this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
-        ///alert(res);
-        this.presentToast('Enviando respuestas..');
-        this.router.navigate(['/home']);
-       
-   }) 
-  }catch(e){
-    this.presentToast('Error inesperado..'); 
-  } 
+            }
+          this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
+                ///alert(res);
+                this.presentToast('Enviando respuestas..');
+                this.router.navigate(['/home']);
+              
+          });
+        }else{
+          this.presentToast('Antes Valide el sondeo'); 
+        }
+
+      }catch(e){
+            this.presentToast('Error inesperado..'); 
+      } 
      
     
 
@@ -244,6 +274,51 @@ async sendSondeo(){
     
 
 }
+
+
+async review(){
+   try{
+  let obligatorioTotal=0;
+  let validTotal=0;
+   this.respuestasSondeo.respuestas=[];
+   this.respuestasSondeo.idPV = this.idPV.toString();
+   for(let i of this.idRespuestaSondeo.idrespuestas){ 
+        await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
+              if(question!=null){
+                this.respuestasSondeo.respuestas.push(question);
+              }
+        }));
+    }
+    for(let i of this.respuestasSondeo.respuestas){ 
+
+                    if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
+                        await Promise.resolve( this.loadFiles(i['paths'],data => {
+                            i['saveImages'] = data;
+                        }));
+                    }
+                    if(i['valid']==1){
+                      validTotal++;
+                    }
+                    if(i['obligatorio']==1){
+                      obligatorioTotal++;
+                    }            
+
+    }
+    if(validTotal >=obligatorioTotal){
+      this.validSondeo=1;
+      this.presentToast('Sondeo Válidado'); 
+    }
+    
+    console.log('Validos: '+validTotal)
+    console.log('Obligatorio: '+obligatorioTotal)
+    console.log(this.respuestasSondeo);
+  }catch(e){
+    this.presentToast('Error inesperado..'); 
+  } 
+     
+}
+
+
 
 
 }

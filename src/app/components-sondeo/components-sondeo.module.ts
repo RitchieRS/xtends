@@ -33,6 +33,9 @@ import { SkuComponent } from './sku/sku.component';
 import { ComponentsModule } from '../components/components.module';
 import { SnumericaComponent } from './snumerica/snumerica.component';
 import { SdecimalComponent } from './sdecimal/sdecimal.component';
+import { SectionComponent } from './section/section.component';
+import { MultipleComponent } from './multiple/multiple.component';
+import { GpsComponent } from './gps/gps.component';
 
 
 
@@ -50,7 +53,10 @@ import { SdecimalComponent } from './sdecimal/sdecimal.component';
     CargaImagenComponent,
     SkuComponent,
     SnumericaComponent,
-    SdecimalComponent
+    SdecimalComponent,
+    SectionComponent,
+    MultipleComponent,
+    GpsComponent
   ],
   exports:[
     AbiertaComponent,
@@ -63,7 +69,10 @@ import { SdecimalComponent } from './sdecimal/sdecimal.component';
     CargaImagenComponent,
     SkuComponent,
     SnumericaComponent,
-    SdecimalComponent
+    SdecimalComponent,
+    SectionComponent,
+    MultipleComponent,
+    GpsComponent
   ],
   imports: [
     CommonModule,

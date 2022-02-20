@@ -28,13 +28,15 @@ export class FechaComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
   isValid = 0;
   idStrQuest = "";
-  RequiredValue:Validators[];
+  RequiredValue:Validators[]=[Validators.required];
   respuestas={
     idPregunta:"",
     tipo:      "",
-    respuesta:  ""
+    respuesta:  "",
+    obligatorio:0
   }
   respuestaStr:string;
   constructor(private fb : FormBuilder,
@@ -42,34 +44,37 @@ export class FechaComponent implements OnInit {
               private storage: StorageHelperService) { }
 
   ngOnInit() {
-    this.idStrQuest =  this.idPregunta.toString();
-    if(this.obligatorio==1){
-     this.RequiredValue.push(Validators.required);
-    }
+    this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    console.log(this.idStrQuest);
+   
     this.abiertaGoup = this.fb.group({
       "date": ['', this.RequiredValue],
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
      this.respuestaStr = question.respuesta;
+     console.log(this.respuestaStr);
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+     this.respuestas = {
+                      idPregunta:this.idStrQuest,
+                      tipo:      this.tipo,
+                      respuesta: this.respuestaStr,
+                      obligatorio: this.obligatorio
+                    }
+                    this.storage.setObject(this.idStrQuest,this.respuestas);
     });
-   this.respuestas = {
-      idPregunta:this.idStrQuest,
-      tipo:      this.tipo,
-      respuesta: this.respuestaStr
-    }
+   
    
   }
 
   submit(){
-    console.log("algo");
-    
+
     if(this.abiertaGoup.status=="VALID"){
       this.isValid = 1;
       this.respuestas.respuesta = this.abiertaGoup.get('date').value;
+      this.respuestas.obligatorio =this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
-
+      this.isValid = 0;
     }
 
   }

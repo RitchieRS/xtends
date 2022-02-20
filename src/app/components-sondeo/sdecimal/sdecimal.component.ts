@@ -27,6 +27,8 @@ export class SdecimalComponent implements OnInit {
   @Input() puntaje: number;
   @Input() tipo: string;
   @Input() urlImage: string;
+  @Input() idSondeo: string;
+  @Input() sku: number;
   /*
   dependePregunta: 61
 dependeRespuesta: 0
@@ -47,7 +49,8 @@ urlImage: "0"
     idPregunta:"",
     tipo:      "",
     respuesta:  "",
-    valid:0
+    valid:0,
+    obligatorio:0
   }
   respuestaStr:string;
   constructor(private fb : FormBuilder,
@@ -55,7 +58,8 @@ urlImage: "0"
               private storage: StorageHelperService) { }
 
   ngOnInit() {
-    this.idStrQuest =  this.idPregunta.toString();
+    this.idStrQuest =  this.idSondeo + '||' + this.sku + '||' +this.idPregunta.toString();
+    console.log(this.idStrQuest);
     if(this.obligatorio==1){
      this.RequiredValue.push(Validators.required);
     }
@@ -63,16 +67,18 @@ urlImage: "0"
       "numerica": ['', this.RequiredValue],
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
-     this.respuestaStr = question.respuesta.toString();
-     this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-     console.log(this.isValid);
+            this.respuestaStr = question.respuesta.toString();
+            this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+            this.respuestas = {
+              idPregunta:this.idStrQuest,
+              tipo:      this.tipo,
+              respuesta: this.respuestaStr,
+              valid:this.isValid,
+              obligatorio: this.obligatorio
+            }
+            this.storage.setObject(this.idStrQuest,this.respuestas);   
     });
-   this.respuestas = {
-      idPregunta:this.idStrQuest,
-      tipo:      this.tipo,
-      respuesta: this.respuestaStr,
-      valid:this.isValid
-    }
+  
    
   }
 
@@ -84,6 +90,7 @@ urlImage: "0"
       this.respuestas.respuesta = this.numericaGroup.get('numerica').value;
       this.respuestas.valid = (Number.isNaN(this.numericaGroup.get('numerica').value)== true ) ? 0 : 1 ;
       this.isValid = this.respuestas.valid;
+      this.respuestas.obligatorio = this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
 
