@@ -74,21 +74,16 @@ export class CheckInComponent implements OnInit {
 
 
 
-  checkIn(){
+  async checkIn(){
     //console.log(this.dataCheckIn);
-    this.router.navigate(['start-mission/'+this.idPV])
-    this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
+    
+    const chek = await this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
        console.log(res)
        this.checkin = res;
-       //this.router.navigate(['start-mission/'+this.idPV])
-       /*this.isLocationAvailalble  = this.checkin.idError;
-       if(this.isLocationAvailalble==1){
-         this.presentToast(this.checkin.resp)
-       }else{
-
-       }*/
-
+ 
     })
+
+    this.router.navigate(['start-mission/'+this.idPV])
 
   }
 
@@ -175,6 +170,11 @@ export class CheckInComponent implements OnInit {
       duration: 3000,
     });
     toast.present();
+  }
+
+  async refreshUbication(){
+    const data = await this.getMyLocation();
+    this.presentToast("Ubicación actualizada");
   }
 
 

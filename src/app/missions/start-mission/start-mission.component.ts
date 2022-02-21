@@ -256,12 +256,15 @@ async sendSondeo(){
                             }
 
             }
+
+       const serve = await  this.presentToast('Enviando respuestas..');
           this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
-                ///alert(res);
-                this.presentToast('Enviando respuestas..');
-                this.router.navigate(['/check-out/:idPV']);
+                console.log(res);
+                //this.router.navigate(['home']);
+               
 
           });
+          this.router.navigate(['check-out/'+this.idPV.toString()]);
         }else{
           this.presentToast('Antes Valide el sondeo');
         }

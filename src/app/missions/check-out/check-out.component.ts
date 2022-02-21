@@ -76,6 +76,7 @@ export class CheckOutComponent implements OnInit {
   //Btn refresh ubication
   async refreshUbication(){
     const data = await this.getMyLocation();
+    this.presentToast("Ubicación actualizada");
   }
 
   async getMyLocation() {

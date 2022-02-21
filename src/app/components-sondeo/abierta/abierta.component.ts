@@ -56,7 +56,7 @@ export class AbiertaComponent implements OnInit {
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       console.log(question);
      this.respuestaStr = question.respuesta;
-     this.isValid = this.respuestaStr.length>0 ? 1 : 0;
+     this.isValid = this.respuestaStr.trim().length>0 ? 1 : 0;
      this.respuestas = {
                         idPregunta:this.idStrQuest,
                         tipo:      this.tipo,
