@@ -1,14 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { InfoService } from 'src/app/xservices/user/info.service';
 
 
-import pdfMake from "pdfmake/build/pdfmake";
-import pdfFonts from "pdfmake/build/vfs_fonts";
-pdfMake.vfs = pdfFonts.pdfMake.vfs;
+// import pdfMake from "pdfmake/build/pdfmake";
+// import pdfFonts from "pdfmake/build/vfs_fonts";
+// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 import { Plugin } from '@capacitor/core';
-import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+// import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
 
-import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+// import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-printcredential',
@@ -20,55 +21,65 @@ export class PrintcredentialComponent {
   pdfObj = null;
 
   constructor(
-    private fileOpener: FileOpener,
-    private plt: Platform
+    // private fileOpener: FileOpener,
+    // private plt: Platform,
+    // private CredenServiceget: InfoService,
   ) { }
 
-  pdfDownload(){
-    const docDef = {
-      pageSize: 'A4',
-      pageOrientation: 'portrait',
-      pageMargins: [20, 10, 40, 60],
-      content: [
-        'Pdf Titulo',
-        'Contenido txt'
-      ]
-    }
+  // pdfDownload():void{
+  //   const token = localStorage.getItem('token');
+  //   this.CredenServiceget.getCredential(credenaa,token).subscribe(
+  //     rest => {
+  //       console.log(rest);
+  //     }
+  //   );
+  // }
 
-    // crea el pdf
-    this.pdfObj = pdfMake.createPdf(docDef);
+  // pdfDownload(){
+  //   const docDef = {
+  //     pageSize: 'A4',
+  //     pageOrientation: 'portrait',
+  //     pageMargins: [20, 10, 40, 60],
+  //     content: [
+  //       'Pdf Titulo',
+  //       'Contenido txt'
+  //     ]
+  //   }
 
-    if(this.plt.is('cordova')){
+  //   // crea el pdf
+  //   this.pdfObj = pdfMake.createPdf(docDef);
 
-      this.pdfObj.getBase64(async (data) => {
-        try{
-          let path = `demopdf/demoionicpdf.pdf`;
+  //   if(this.plt.is('cordova')){
 
-          const result = await Filesystem.writeFile({
-            path,
-            data:data,
-            directory: Directory.Documents,
-            recursive: true
+  //     this.pdfObj.getBase64(async (data) => {
+  //       try{
+  //         let path = `demopdf/demoionicpdf.pdf`;
 
-          });
+  //         const result = await Filesystem.writeFile({
+  //           path,
+  //           data:data,
+  //           directory: Directory.Documents,
+  //           recursive: true
 
-          this.fileOpener.open(`${result.uri}`, 'application/pdf');
-        } catch(e) {
+  //         });
 
-          console.log ("tester achu cordova");
+  //         this.fileOpener.open(`${result.uri}`, 'application/pdf');
+  //       } catch(e) {
 
-        }
+  //         console.log ("tester achu cordova");
 
-      });
-    }else{
+  //       }
 
-      //descraga el pdf
-    this.pdfObj.download('test-web.pdf');
+  //     });
+  //   }else{
 
-    }
+  //     //descraga el pdf
+  //   this.pdfObj.download('test-web.pdf');
+
+  //   }
 
 
-  }
+  // }
 
 
 }

@@ -41,7 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+// import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 // import { PDFGenerator, PDFGeneratorOriginal } from '@awesome-cordova-plugins/pdf-generator';
 // import { PDFGenerator } from '@awesome-cordova-plugins/pdf-generator';
 
@@ -99,7 +99,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     }),
   ],
   providers: [
-    FileOpener,
+    // FileOpener,
     // PDFGenerator,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},

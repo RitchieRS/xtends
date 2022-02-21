@@ -21,7 +21,7 @@ export class InfoService {
 
   constructor(private http : HttpClient) { }
 
-  public setInformation(data : UserRest):void{
+  public setInformation(data: UserRest):void{
     console.log("Start save Data");
     localStorage.setItem('apat',data.apat);
     localStorage.setItem('email',data.email);
@@ -36,6 +36,22 @@ export class InfoService {
     localStorage.setItem('nombre',undefined);
     localStorage.setItem('nombreCompleto',undefined);
   }
+
+    ///api/user/credential
+    getCredential(token: string): Observable<any| void>{
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Accept': 'text/html',
+          'Content-Type': 'application/json',
+          'Authorization' : token
+        }),
+        responseType: 'json' as 'json'
+      };
+      return this.http.get<any>(`${environment.API_URL}user/credential`,httpOptions).pipe(
+            map(( res:  any)=> {return res;}),
+            catchError((err)=> this.handeleError(err))
+      );
+    };
 
   getProfileInformation(token : string):Observable<UserProfile| void>{
     const httpOptions = {
@@ -71,6 +87,7 @@ export class InfoService {
           catchError((err)=> this.handeleError(err))
     );
   };
+
 
   async updateProfileInformation(token : string,infoUser: Informacion, _file : LocalFile):Promise<Observable<Informacion | void>>{
     const httpOptions = {
@@ -177,7 +194,7 @@ export class InfoService {
   };
 
   // SERVICIO DE ENVIO A DB FIRMA
-  sendFirma(request : any ,token : string):Observable<any>{
+  sendFirma(request: any ,token: string): Observable<any>{
     console.log(request);
     const httpOptions = {
       headers: new HttpHeaders({
@@ -190,7 +207,7 @@ export class InfoService {
 
 
     return this.http.post<any>(`${environment.API_URL}user/signature`,request ,httpOptions).pipe(
-          map(( res :  any)=>{
+          map(( res:  any)=>{
             console.log(res);
             return res;
           }),

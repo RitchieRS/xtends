@@ -98,6 +98,11 @@ export class CheckInComponent implements OnInit {
     })();
   }
 
+  //Btn refresh ubication
+  async refreshUbication(){
+    const data = await this.getMyLocation();
+  }
+
 
 
   async getMyLocation() {

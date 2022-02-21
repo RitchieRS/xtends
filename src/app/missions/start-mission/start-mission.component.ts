@@ -12,7 +12,7 @@ import { Pregunta, Producto, ProductoPregunta, Sondeo } from 'src/app/xmodels/so
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 
 const IMAGE_DIR = 'stored-images';
- 
+
 interface LocalFile {
   name: string;
   path: string;
@@ -31,10 +31,10 @@ export class StartMissionComponent  {
   dataSondeResponse : Sondeo
   isLoaded=0;
   abiertaParent:string;
- 
+
 
   preguntas: any;
- 
+
   productos = [
     {
      nombre:'Producto uno',
@@ -97,7 +97,7 @@ export class StartMissionComponent  {
   idPreguntaPreguntaStr:string;
   validSondeo=0;
 
-  
+
   constructor(private checks:CheckinserviceService,
     private route: ActivatedRoute,
     private locationService: LocationService,
@@ -107,7 +107,7 @@ export class StartMissionComponent  {
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
-    private storage: StorageHelperService) { 
+    private storage: StorageHelperService) {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.token = localStorage.getItem('token');
     this.lat = 19.4216458;
@@ -117,12 +117,12 @@ export class StartMissionComponent  {
       respuestas:[]
     }
 
-    
-    
+
+
   }
-  
+
   async ngOnInit() {
-    
+
     try{
       console.log("start mission fill information")
       this.servMission.getSondeoXmission(this.token,this.dataSondeo).subscribe((res) =>{
@@ -131,22 +131,22 @@ export class StartMissionComponent  {
           this.idRespuestaSondeo.idrespuestas=[];
           this.preguntas = this.dataSondeResponse.resp;
           Object.entries(this.dataSondeResponse.resp).forEach(
-              ([key, value]) =>{ 
+              ([key, value]) =>{
                   this.idSondeoStr = value['idSondeo'].toString();
                   this.preguntaAx = value['preguntas']; //
-                 
+
                   Object.entries(this.preguntaAx).forEach(
-                    ([key, value]) =>{ 
-                         
+                    ([key, value]) =>{
+
                           this.idPreguntaStr = value['idPregunta'].toString();
                           this.productosAx = value['productos'];
                           if(this.productosAx!==undefined){
                             Object.entries(this.productosAx).forEach(
-                              ([key, value]) =>{ 
+                              ([key, value]) =>{
                                 this.idSkuStr = value['sku'].toString();
                                 this.preguntaPreguntaAx =value['preguntas'];
                                 Object.entries(this.preguntaPreguntaAx).forEach(
-                                  ([key, value]) =>{ 
+                                  ([key, value]) =>{
                                     this.idPreguntaPreguntaStr = value['idPregunta'].toString();
                                     this.idRespuestaSondeo.idrespuestas.push(this.idSondeoStr+'||'+this.idPreguntaStr+'||'+this.idSkuStr+'||'+this.idPreguntaPreguntaStr);
                                 })
@@ -156,15 +156,15 @@ export class StartMissionComponent  {
                             this.idRespuestaSondeo.idrespuestas.push(this.idSondeoStr+'||'+this.idPreguntaStr);
                           }
                     })
-                 
+
                 }
           );
           console.log(this.idRespuestaSondeo.idrespuestas);
-        })  
+        })
       }catch(e){
         alert(e);
       }
-        
+
   }
 
   async presentToast(text) {
@@ -182,7 +182,7 @@ export class StartMissionComponent  {
       message: 'Recopilando...',
     });
     await loading.present();
- 
+
     Filesystem.readdir({
       path: IMAGE_DIR,
       directory: Directory.Data,
@@ -201,7 +201,7 @@ export class StartMissionComponent  {
        callback(imgResult);
     });
   }
- 
+
   // Get the actual base64 data of an image
   // base on the name of the file
   async loadFileData(fileNames: string[],paths:any) {
@@ -231,47 +231,47 @@ export class StartMissionComponent  {
   openDialog(){
     this.dialog.open(DialogCaptureproductinfoComponent);
   }
-  
+
 
 async sendSondeo(){
    try{
           if(this.validSondeo==1){
           this.respuestasSondeo.idPV = this.idPV.toString();
-          for(let i of this.idRespuestaSondeo.idrespuestas){ 
-         
+          for(let i of this.idRespuestaSondeo.idrespuestas){
+
                 await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
                       if(question!=null){
                         this.respuestasSondeo.respuestas.push(question);
                       }
                 }));
             }
-            for(let i of this.respuestasSondeo.respuestas){ 
+            for(let i of this.respuestasSondeo.respuestas){
                             if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
                                 await Promise.resolve( this.loadFiles(i['paths'],data => {
                                     i['saveImages'] = data;
                                 }));
-                            }         
+                            }
 
             }
           this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
                 ///alert(res);
                 this.presentToast('Enviando respuestas..');
-                this.router.navigate(['/home']);
-              
+                this.router.navigate(['/check-out/:idPV']);
+
           });
         }else{
-          this.presentToast('Antes Valide el sondeo'); 
+          this.presentToast('Antes Valide el sondeo');
         }
 
       }catch(e){
-            this.presentToast('Error inesperado..'); 
-      } 
-     
-    
+            this.presentToast('Error inesperado..');
+      }
 
-    
 
-    
+
+
+
+
 
 }
 
@@ -282,14 +282,14 @@ async review(){
   let validTotal=0;
    this.respuestasSondeo.respuestas=[];
    this.respuestasSondeo.idPV = this.idPV.toString();
-   for(let i of this.idRespuestaSondeo.idrespuestas){ 
+   for(let i of this.idRespuestaSondeo.idrespuestas){
         await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
               if(question!=null){
                 this.respuestasSondeo.respuestas.push(question);
               }
         }));
     }
-    for(let i of this.respuestasSondeo.respuestas){ 
+    for(let i of this.respuestasSondeo.respuestas){
 
                     if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
                         await Promise.resolve( this.loadFiles(i['paths'],data => {
@@ -301,21 +301,21 @@ async review(){
                     }
                     if(i['obligatorio']==1){
                       obligatorioTotal++;
-                    }            
+                    }
 
     }
     if(validTotal >=obligatorioTotal){
       this.validSondeo=1;
-      this.presentToast('Sondeo Válidado'); 
+      this.presentToast('Sondeo Válidado');
     }
-    
+
     console.log('Validos: '+validTotal)
     console.log('Obligatorio: '+obligatorioTotal)
     console.log(this.respuestasSondeo);
   }catch(e){
-    this.presentToast('Error inesperado..'); 
-  } 
-     
+    this.presentToast('Error inesperado..');
+  }
+
 }
 
 

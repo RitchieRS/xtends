@@ -19,7 +19,7 @@ export interface UserRest{
     nombre: string;
     nombreCompleto: string;
     token: string;
-    confirmaEmail:string;
+    confirmaEmail: string;
 }
 export interface UserRegister{
     name:  string;
@@ -98,7 +98,7 @@ export interface Informacion {
     dirAlcadia:      string;
     dirCd:           string;
     dirCP:           string;
-    
+
 }
 
 export interface NivelesDatos {
