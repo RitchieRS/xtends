@@ -93,7 +93,7 @@ urlImage: "0"
       this.respuestas.obligatorio = this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
-
+      this.isValid=0;
     }
 
   }

@@ -33,7 +33,7 @@ export class MultipleComponent implements OnInit {
   respuestas={
     idPregunta:"",
     tipo:      "",
-    respuesta:  "",
+    respuesta:  [],
     idOpcion: "",
     selected: -1,
     valid:0
@@ -56,15 +56,17 @@ export class MultipleComponent implements OnInit {
      });
      
   }
-  submit(){   
+  submit(opcion){ 
+    
     if(this.unicaRGroup.status=="VALID"){
       
       this.respuestas.idPregunta = this.idStrQuest;
       
-      this.respuestas.respuesta = this.respuestaStr;
+      this.respuestas.respuesta.push(this.respuestaStr);
       this.respuestas.tipo = this.tipo;
       this.respuestas.selected = this.selected;
-      this.isValid = this.respuestaStr == undefined ? 0 :1;
+      this.isValid = 1;
+      this.respuestas.valid =  1;
       this.respuestas.idOpcion = this.idOpcion;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
@@ -72,9 +74,10 @@ export class MultipleComponent implements OnInit {
     }
   }
   onChange(i,value,id){
+    console.log(value);
     this.respuestaStr=value;
     this.idOpcion = id; 
     this.selected=i;  
-    this.submit();    
+     
   }
 }

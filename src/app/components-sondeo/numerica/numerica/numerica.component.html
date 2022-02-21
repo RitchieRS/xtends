@@ -20,12 +20,7 @@
     <form [formGroup]="numericaGroup"  (ngSubmit)="submit()"  >
       <div class="ion-padding-horizontal">
         <ion-item >
-          <ion-input formControlName="numerica"  type="number" value=""></ion-input>
+          <ion-input formControlName="numerica"  type="number"  (change)="submit()" value="{{respuestaStr}}"></ion-input>
         </ion-item>
-        <div class="iup-button-row">
-          <button type="submit"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-            GUARDAR
-          </button>
-        </div>
       </div>
     </form>
