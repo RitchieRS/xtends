@@ -36,7 +36,7 @@ export class CheckInComponent implements OnInit {
               public ngZone: NgZone,
               private router: Router,
               private _mapsAPILoader: MapsAPILoader,
-              private toastCtrl: ToastController) { 
+              private toastCtrl: ToastController) {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.token = localStorage.getItem('token');
     this.lat = 19.4216458;
@@ -94,12 +94,15 @@ export class CheckInComponent implements OnInit {
 
   ngOnInit() {
     (async () => {
-      const data = await this.getMyLocation()
+      const data = await this.getMyLocation();
     })();
   }
 
- 
- 
+  async refrechUbicationLogIn(){
+    const data = await this.getMyLocation();
+  }
+
+
 
   async getMyLocation() {
 

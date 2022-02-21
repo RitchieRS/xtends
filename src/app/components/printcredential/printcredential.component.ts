@@ -21,11 +21,10 @@ export class PrintcredentialComponent {
   pdfObj = null;
 
   constructor(
-    private plt: Platform,
-   private CredenServiceget: InfoService,
+    // private fileOpener: FileOpener,
+    // private plt: Platform,
+    // private CredenServiceget: InfoService,
   ) { }
-
-}
 
   // pdfDownload():void{
   //   const token = localStorage.getItem('token');
@@ -83,7 +82,7 @@ export class PrintcredentialComponent {
   // }
 
 
-
+}
 
 
 
