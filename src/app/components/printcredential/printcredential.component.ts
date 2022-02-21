@@ -18,13 +18,17 @@ import { Platform } from '@ionic/angular';
 })
 export class PrintcredentialComponent {
 
-  pdfObj = null;
+  // pdfObj = null;
 
   constructor(
-    // private fileOpener: FileOpener,
-    // private plt: Platform,
-    // private CredenServiceget: InfoService,
+              private credenServiceget: InfoService,
   ) { }
+
+  credentialTest(){
+    const token = localStorage.getItem('token');
+      this.credenServiceget.getCredential(token)
+        .subscribe( console.log);
+  }
 
   // pdfDownload():void{
   //   const token = localStorage.getItem('token');

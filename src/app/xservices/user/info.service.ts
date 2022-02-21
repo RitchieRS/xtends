@@ -47,7 +47,7 @@ export class InfoService {
         }),
         responseType: 'json' as 'json'
       };
-      return this.http.get<any>(`${environment.API_URL}user/credential`,httpOptions).pipe(
+      return this.http.post<any>(`${environment.API_URL}user/credential`,httpOptions).pipe(
             map(( res:  any)=> {return res;}),
             catchError((err)=> this.handeleError(err))
       );
@@ -226,8 +226,8 @@ export class InfoService {
         }),
         responseType: 'json' as 'json'
       };
-  
-  
+
+
       return this.http.post<any>(`${environment.API_URL}mail`,request ,httpOptions).pipe(
             map(( res :  any)=>{
               console.log(res);

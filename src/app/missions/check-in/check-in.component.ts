@@ -76,11 +76,11 @@ export class CheckInComponent implements OnInit {
 
   async checkIn(){
     //console.log(this.dataCheckIn);
-    
+
     const chek = await this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
        console.log(res)
        this.checkin = res;
- 
+
     })
 
     this.router.navigate(['start-mission/'+this.idPV])
@@ -95,6 +95,7 @@ export class CheckInComponent implements OnInit {
 
   async refrechUbicationLogIn(){
     const data = await this.getMyLocation();
+    this.presentToast('Ubicación actualizada');
   }
 
 
