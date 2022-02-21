@@ -21,7 +21,7 @@
     <form [formGroup]="numericaGroup" >
       <div class="ion-padding-horizontal">
         <ion-item >
-          <ion-input formControlName="numerica" [value]="numericaGroup.get('numerica').value | number : '1.2-2' " (change)="submit()" type="number"   value="{{respuestaStr}}"></ion-input>
+          <ion-input formControlName="numerica"  value="{{respuestaStr}}"></ion-input>
         </ion-item>
       </div>
     </form>

@@ -68,7 +68,7 @@ export class NumericaComponent implements OnInit {
     console.log(this.numericaGroup.status);
     
     if(this.numericaGroup.status=="VALID"){
-      this.respuestas.valid = (this.numericaGroup.get('numerica').value == null ) ? 0 : 1 ;
+      this.respuestas.valid = (this.numericaGroup.get('numerica').value.trim() == '' ) ? 0 : 1 ;
       this.isValid = this.respuestas.valid;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
