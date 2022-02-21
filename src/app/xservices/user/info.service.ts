@@ -38,7 +38,8 @@ export class InfoService {
   }
 
     ///api/user/credential
-    getCredential(token: string): Observable<any| void>{
+    getCredential(token: string): Observable < any | void>{
+      console.log( token );
       const httpOptions = {
         headers: new HttpHeaders({
           'Accept': 'text/html',
