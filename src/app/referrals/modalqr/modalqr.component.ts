@@ -1,4 +1,5 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
@@ -6,14 +7,19 @@ import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
   templateUrl: './modalqr.component.html',
   styleUrls: ['./modalqr.component.scss'],
 })
-export class ModalqrComponent {
+export class ModalqrComponent implements OnInit{
 
 
   @Input() imageqr : string;
-
+  
   constructor(public dialog: MatDialog) {
     console.log(this.imageqr);
    }
+
+
+  ngOnInit(): void {
+    
+  }
   openDialog() {
     this.dialog.open(DialogQr,{
       data: { qrimage: this.imageqr,text:"texto test" },
@@ -34,6 +40,8 @@ export class DialogQr {
     console.log(this.data.text);
     this.urlQR = this.data.qrimage;
   }
+
+ 
   
   
 }

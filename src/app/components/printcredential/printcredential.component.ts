@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+//import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 @Component({
   selector: 'app-printcredential',
@@ -10,7 +10,8 @@ export class PrintcredentialComponent implements OnInit {
 
   content: string;
 
-  constructor(private pdfGenerator: PDFGenerator) { }
+  //constructor(private pdfGenerator: PDFGenerator) { }
+  constructor() { }
 
   pdfDownload() {
     this.content = document.getElementById('Pdfiupck').innerHTML;
@@ -21,12 +22,12 @@ export class PrintcredentialComponent implements OnInit {
       fileName: 'Order-Invoice.pdf'
     };
 
-    this.pdfGenerator.fromData(this.content, options)
+    /*this.pdfGenerator.fromData(this.content, options)
       .then((base64) => {
         console.log('OK', base64);
       }).catch((error) => {
         console.log('error', error);
-      });
+      });*/
 
   }
 

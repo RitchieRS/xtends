@@ -31,6 +31,26 @@ export class CheckinserviceService  {
           catchError((err)=> this.handeleError(err))
     );
   };
+  checkout(token : string, dataCheck : any):Observable<CheckinReq >{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+    return this.http.post<CheckinReq>(`${environment.API_URL}visitas/cheout`,dataCheck,httpOptions).pipe(
+          map(( res : CheckinReq )=> {
+            console.log(res);
+            return res; 
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+
+
   private handeleError(err) : Observable<never>{
     let erroMessage = "An error has ocurred";
     if(err){

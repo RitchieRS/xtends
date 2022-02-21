@@ -8,6 +8,7 @@ import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from '../xservices/auth/login.service';
 
 
 const IMAGE_DIR = 'stored-images';
@@ -126,7 +127,8 @@ export class ProfileComponent implements OnInit {
               private plt: Platform,
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private srvLog: LoginService) { }
 
   ngOnInit() {
     console.log(this.nivelTermo);
@@ -407,8 +409,10 @@ closePanel() {
   }
 
   closeSession() {
-
+     this.srvLog.logauth();
      this.router.navigate(['auth']);
+
+
   }
 
 }

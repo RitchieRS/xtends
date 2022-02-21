@@ -41,7 +41,7 @@ export class HomePage {
         height: 60
     }
   }
-  filterType=[{}];
+  filterType:any;
 
 
   panelOpenState = false;
@@ -75,12 +75,13 @@ export class HomePage {
     this.filterType=[];
     this.storage.getObject('filter').then((filter: any) => { 
 
-      console.log(filter.length)
+      
       
       for (let i = 0; i < filter.length; i++) {
         console.log(filter[i]);
-        this.filterType.push({"nombreActividad" : filter[i]});
+        this.filterType.push( filter[i]);
       }
+     
         //this.filterType.push({"nombreActividad" : filter});
     });
     console.log(this.filterType);
@@ -223,12 +224,19 @@ export class HomePage {
               this.missionsAvalDataFil = this.dataHome.section3.content;
               //values.filter(t=>t.category ==='Science');
               this.missionsAvalData = this.dataHome.section3.content; 
-                
-            
-              
-              console.log(this.missionsAvalData);
-             
+             //Filter Type Mission
+             if(this.filterType.length>0){
+              console.log("filter")
+              const list = this.missionsAvalData.filter(mission => this.filterType.includes(mission.colorServicio))
+              this.missionsAvalDataAux = list.slice(0,5)
+             }else{
               this.missionsAvalDataAux = this.missionsAvalData.slice(0,5)
+             }
+              
+             
+             
+              
+            
               
              }
              /* Misiones Disponibles*/

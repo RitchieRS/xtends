@@ -117,8 +117,16 @@ export class StartMissionComponent  {
       respuestas:[]
     }
 
+<<<<<<< Updated upstream
     
     
+=======
+    this.servMission.getSondeoXmission(this.token,this.dataSondeo).subscribe((res) =>{
+      console.log(res)
+      //this.router.navigate(['start-mission/'+this.idPV])
+   })
+
+>>>>>>> Stashed changes
   }
   
   async ngOnInit() {

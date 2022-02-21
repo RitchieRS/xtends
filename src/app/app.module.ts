@@ -41,7 +41,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
+//import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 
 
@@ -97,7 +97,6 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     }),
   ],
   providers: [
-    PDFGenerator,
     BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,}
   ],

@@ -53,7 +53,7 @@ export class UnicaRadioComponent implements OnInit {
       this.respuestaStr = question.respuesta;
       this.selected = question.selected;
       this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-      console.log(this.respuestaStr);
+      this.storage.setObject(this.idStrQuest,this.respuestas);
      });
      
   }
@@ -67,6 +67,7 @@ export class UnicaRadioComponent implements OnInit {
       this.respuestas.selected = this.selected;
       this.isValid = this.respuestaStr == undefined ? 0 :1;
       this.respuestas.idOpcion = this.idOpcion;
+      this.respuestas.obligatorio  = this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid =0;

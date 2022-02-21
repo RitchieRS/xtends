@@ -41,11 +41,11 @@
               <mat-icon matSuffix>face</mat-icon>
             </mat-form-field>
           </p> -->
-          <form class="example-form">
+          <form [formGroup]="refealGroup"  (ngSubmit)="submit()" class="example-form">
             <p>
             <mat-form-field class="iup-full-width" appearance="outline">
               <mat-label class="mat-label-color-navyblue">Email</mat-label>
-              <input type="email" matInput [formControl]="emailFormControl" placeholder="Eje. miemail@gmail.com">
+              <input type="email" matInput formControlName="email" placeholder="Eje. miemail@gmail.com">
               <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('email requerido')">
                 Por favor, introduce un e-mail válido
               </mat-error>
@@ -57,13 +57,13 @@
           <p>
             <mat-form-field class="iup-full-width" appearance="outline">
               <mat-label type="text" class="mat-label-color-navyblue">Nombre</mat-label>
-              <input matInput>
+              <input formControlName="name" matInput>
             </mat-form-field>
           </p>
           <p>
             <mat-form-field class="iup-full-width" appearance="outline">
               <mat-label type="text" class="mat-label-color-navyblue">Apellido</mat-label>
-              <input matInput>
+              <input formControlName="lastname" matInput>
             </mat-form-field>
           </p>
 
@@ -76,7 +76,7 @@
            </button>
         </ion-col>
         <ion-col size="6" class="ion-text-center">
-          <button mat-dialog-close mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+          <button (click)="submit()" type="submit" mat-dialog-close mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
             ENVIAR
           </button>
        </ion-col>
