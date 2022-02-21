@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-mission-complete',
@@ -6,8 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./mission-complete.component.scss'],
 })
 export class MissionCompleteComponent implements OnInit {
+  idPV: string;
 
-  constructor() { }
+
+  constructor(private router: Router,) { }
+
+  missPending(){
+    this.router.navigate(['pending-mission/'+this.idPV]);
+  }
+
+  homeLink(){
+    this.router.navigate(['home']);
+  }
 
   ngOnInit() {}
 

@@ -30,7 +30,7 @@ export class CheckInComponent implements OnInit {
         height: 60
     }
   }
-  constructor(private checks:CheckinserviceService,
+  constructor(private checks: CheckinserviceService,
               private route: ActivatedRoute,
               private locationService: LocationService,
               public ngZone: NgZone,
@@ -52,8 +52,8 @@ export class CheckInComponent implements OnInit {
      this._mapsAPILoader.load().then(() => {
       //do stuff here
       });
-   
-    
+
+
     /**
      *  "lat": 19.4216458,
     "lgn": -99.0691779
@@ -85,12 +85,12 @@ export class CheckInComponent implements OnInit {
        if(this.isLocationAvailalble==1){
          this.presentToast(this.checkin.resp)
        }else{
-        
+
        }*/
-       
+
     })
 
-  } 
+  }
 
   ngOnInit() {
     (async () => {
@@ -102,7 +102,7 @@ export class CheckInComponent implements OnInit {
  
 
   async getMyLocation() {
-    
+
     const hasPermission = await this.locationService.checkGPSPermission();
     if (hasPermission) {
       if (Capacitor.isNative) {
@@ -115,10 +115,10 @@ export class CheckInComponent implements OnInit {
     else {
 
       const permission = await this.locationService.requestGPSPermission();
-      
+
       if (permission === 'CAN_REQUEST' || permission === 'GOT_PERMISSION') {
         if (Capacitor.isNative) {
-          
+
           const canUseGPS = await this.locationService.askToTurnOnGPS();
           this.postGPSPermission(canUseGPS);
         }
@@ -133,7 +133,7 @@ export class CheckInComponent implements OnInit {
   }
 
   async postGPSPermission(canUseGPS: boolean) {
-  
+
     if (canUseGPS) { this.watchPosition(); }
     else {
       await Toast.show({
@@ -153,7 +153,7 @@ export class CheckInComponent implements OnInit {
           this.lgn = position.coords.longitude
           this.locationService.setLocation(this.lat,this.lgn);
           this.clearWatch();
-          
+
         })
       })
       //alert(`Try Whatch position${this.watchId}`);
@@ -162,7 +162,7 @@ export class CheckInComponent implements OnInit {
   }
 
   clearWatch() {
-    
+
     if (this.watchId != null) {
       Geolocation.clearWatch({ id: this.watchId });
     }

@@ -13,9 +13,10 @@ import { InfoService } from 'src/app/xservices/user/info.service';
 })
 export class FirmComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('firmaDigital', {static:true}) signaturePadElement:any;
-   signaturePad:any;
-   firma:any;
+  @ViewChild('firmaDigital', {static:true})
+   signaturePadElement: any;
+   signaturePad: any;
+   firma: any;
 
   constructor(private firmaService: InfoService) { }
 
@@ -78,13 +79,13 @@ export class FirmComponent implements OnInit, AfterViewInit {
           console.log(rest);
         }
       );
-      // console.log(firmaUrl);
+      console.log(firmaUrl);
     }
    }
 
 
 
-  URLtoBlob(dataURL:any){
+  URLtoBlob(dataURL: any){
    const partes= dataURL.split(';base64,');
    const contentType= partes[0].split(':')[1];
    const raw= window.atob(partes[1]);

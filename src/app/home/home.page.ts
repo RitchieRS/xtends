@@ -73,10 +73,9 @@ export class HomePage {
         console.log(log)
     })
     this.filterType=[];
-    this.storage.getObject('filter').then((filter: any) => { 
+    this.storage.getObject('filter').then((filter: any) => {
 
-      
-      
+    
       for (let i = 0; i < filter.length; i++) {
         console.log(filter[i]);
         this.filterType.push( filter[i]);
@@ -119,7 +118,7 @@ export class HomePage {
 
    }
 
- 
+
 
   tipoServicio(tipo:string):any{
     let type={
@@ -183,9 +182,9 @@ export class HomePage {
           type.url='./assets/icon/location-purplextend.svg';
           break;
         }
-       
+
         default: {
-  
+
         }
         break;
         }
@@ -245,13 +244,13 @@ export class HomePage {
               this.missionsAvalDatamap = this.dataHome.section4.content;
               this.missionAvalmap.content.forEach(element => {
                 element.color = this.pincho(element.colorServicio)
-                            
+
               });
-              
+
               console.log(this.missionsAvalDatamap);
              }
             //console.log(this.dataHome.section1);
-    
+
            // console.log(this.dataHome);
            }
         })

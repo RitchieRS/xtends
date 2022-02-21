@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MissionService } from '../xservices/mission/mission.service';
-import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/missions'
- 
+import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/missions';
+
 @Component({
   selector: 'app-mission',
   templateUrl: './mission.component.html',
@@ -69,14 +69,14 @@ export class MissionComponent  {
         console.log(this.habilidades);
         /* Misiones Activas*/
         if(this.infMission.resp.idTienda != undefined){
-          
+
         }
       }
     })
 
   }
 
-  
+
 
   acceptMissionXProyect(){
     console.log("Start Mission");

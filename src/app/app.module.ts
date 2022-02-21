@@ -98,7 +98,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
   ],
   providers: [
     BarcodeScanner,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy,}
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent],
 

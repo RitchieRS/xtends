@@ -10,7 +10,7 @@ import { InfoService } from 'src/app/xservices/user/info.service';
 })
 export class ModalcodigoComponent implements OnInit{
 
-@Input() codeReco : string;
+@Input() codeReco: string;
 
 constructor(public dialog: MatDialog,private fb : FormBuilder) { 
   console.log(this.codeReco);
