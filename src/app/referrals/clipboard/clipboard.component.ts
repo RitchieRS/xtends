@@ -22,7 +22,7 @@ export class ClipboardComponent implements OnInit {
     const toast = await this.toastCtrl.create({
       message: '¡Código copiado!',
       duration: 2000,
-      color: 'dark',
+      color: 'navybluextend',
       position: 'top',
       mode : 'ios',
     });

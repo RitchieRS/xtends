@@ -21,13 +21,13 @@ export class PrintcredentialComponent {
   // pdfObj = null;
 
   constructor(
-              private credenServiceget: InfoService,
+              private credenService: InfoService,
   ) { }
 
   credentialTest(){
     const token = localStorage.getItem('token');
-      this.credenServiceget.getCredential(token)
-        .subscribe( console.log);
+      this.credenService.dtcCredential(token)
+        .subscribe( console.log );
   }
 
   // pdfDownload():void{

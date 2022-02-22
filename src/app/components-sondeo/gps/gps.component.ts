@@ -14,7 +14,7 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class GpsComponent implements OnInit {
 
-  
+
 
 
 
@@ -40,7 +40,7 @@ export class GpsComponent implements OnInit {
     tipo:      "",
     respuesta:  "",
     valid:0,
-    obligatorio : 0 
+    obligatorio : 0
   }
   dataCheckIn ={};
   lat: any;
@@ -68,9 +68,9 @@ export class GpsComponent implements OnInit {
     }
     this.storage.setObject(this.idStrQuest,this.respuestas);
     });
-   
+
     this.lat = 19.4216458;
-    this.lgn = -99.0691779; 
+    this.lgn = -99.0691779;
   }
 
   submit(){
@@ -85,11 +85,11 @@ export class GpsComponent implements OnInit {
         this.isValid=0;
       }
     })();
-    
+
   }
 
   async getMyLocation() {
-    
+
     const hasPermission = await this.locationService.checkGPSPermission();
     if (hasPermission) {
       if (Capacitor.isNative) {
@@ -102,10 +102,10 @@ export class GpsComponent implements OnInit {
     else {
 
       const permission = await this.locationService.requestGPSPermission();
-      
+
       if (permission === 'CAN_REQUEST' || permission === 'GOT_PERMISSION') {
         if (Capacitor.isNative) {
-          
+
           const canUseGPS = await this.locationService.askToTurnOnGPS();
           this.postGPSPermission(canUseGPS);
         }
@@ -120,7 +120,7 @@ export class GpsComponent implements OnInit {
   }
 
   async postGPSPermission(canUseGPS: boolean) {
-  
+
     if (canUseGPS) { this.watchPosition(); }
     else {
       await Toast.show({
@@ -140,7 +140,7 @@ export class GpsComponent implements OnInit {
           this.lgn = position.coords.longitude
           this.locationService.setLocation(this.lat,this.lgn);
           this.clearWatch();
-          
+
         })
       })
       //alert(`Try Whatch position${this.watchId}`);
@@ -149,7 +149,7 @@ export class GpsComponent implements OnInit {
   }
 
   clearWatch() {
-    
+
     if (this.watchId != null) {
       Geolocation.clearWatch({ id: this.watchId });
     }
@@ -160,6 +160,9 @@ export class GpsComponent implements OnInit {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
     });
     toast.present();
   }

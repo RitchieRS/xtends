@@ -175,6 +175,9 @@ export class StartMissionComponent  {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
     });
     toast.present();
   }
@@ -261,7 +264,7 @@ async sendSondeo(){
           this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
                 console.log(res);
                 //this.router.navigate(['home']);
-               
+
 
           });
           this.router.navigate(['check-out/'+this.idPV.toString()]);

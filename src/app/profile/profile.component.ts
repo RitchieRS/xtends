@@ -12,7 +12,7 @@ import { LoginService } from '../xservices/auth/login.service';
 
 
 const IMAGE_DIR = 'stored-images';
- 
+
 interface LocalFile {
   name: string;
   path: string;
@@ -118,7 +118,7 @@ export class ProfileComponent implements OnInit {
   rfc:      string;
   urlFirma: string;
 
-  
+
   imgDom=false;
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -149,26 +149,26 @@ export class ProfileComponent implements OnInit {
        fechaNacimiento: ['', []],
       movil: ['',[ Validators.pattern("^[0-9]*$")]],
       terminos: [false,[ Validators.required,Validators.required]]
-      
+
 
     });
-    
 
-    this.initData(); 
 
-   
-    
-      
+    this.initData();
+
+
+
+
   }
 
- 
+
   async loadFiles() {
     this.images =[];
     const loading = await this.loadingCtrl.create({
       message: 'Loading data...',
     });
     await loading.present();
- 
+
     Filesystem.readdir({
       path: IMAGE_DIR,
       directory: Directory.Data,
@@ -186,18 +186,18 @@ export class ProfileComponent implements OnInit {
       loading.dismiss();
     });
   }
- 
+
   // Get the actual base64 data of an image
   // base on the name of the file
   async loadFileData(fileNames: string[]) {
     for (let f of fileNames) {
       const filePath = `${IMAGE_DIR}/${f}`;
- 
+
       const readFile = await Filesystem.readFile({
         path: filePath,
         directory: Directory.Data,
       });
- 
+
       this.images.push({
         name: f,
         path: filePath,
@@ -205,18 +205,22 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
- 
+
   // Little helper
   async presentToast(text) {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
+
     });
     toast.present();
   }
- 
 
- 
+
+
   async deleteImage(file: LocalFile) {
     await Filesystem.deleteFile({
         directory: Directory.Data,
@@ -232,11 +236,11 @@ export class ProfileComponent implements OnInit {
         resultType: CameraResultType.Uri,
         source: CameraSource.Camera // Camera, Photos or Prompt!
     });
- 
+
     if (image) {
         this.saveImage(image)
     }
-} 
+}
     async selectDocument() {
       const image = await Camera.getPhoto({
           quality: 90,
@@ -302,7 +306,7 @@ async startUpload(file: LocalFile) {
   const response = await fetch(file.data);
   const blob = await response.blob();
   const formData = new FormData();
-  formData.append('imgDomicilio', blob, file.name); 
+  formData.append('imgDomicilio', blob, file.name);
   console.log(formData);
   this.deleteImage(file)
   //this.uploadData(formData);
@@ -310,7 +314,7 @@ async startUpload(file: LocalFile) {
 
 
   async updateData(){
-    
+
     const token = localStorage.getItem('token');
     console.log("soy un input");
     if(this.userForm.value.terminos==false){
@@ -318,8 +322,8 @@ async startUpload(file: LocalFile) {
       return;
     }
     this.presentToast('Actualizando Información.');
-  
-    
+
+
     ;(await this.srvProfile.updateProfileInformation(token, this.userForm.value, this.imgDomicilio)).subscribe((res) =>{
       if(res){
         this.panelOpenState = false;
@@ -328,7 +332,7 @@ async startUpload(file: LocalFile) {
         this.images.forEach( (file) =>{
           this.deleteImage(file)
          })
-      
+
 
       }
     })
@@ -373,7 +377,7 @@ async startUpload(file: LocalFile) {
             this.nivelTermo[i]=1;
           }
         }
-        
+
         this.userForm.setValue({
           nombre: this.nombre,
           apat: this.apat,
@@ -391,7 +395,7 @@ async startUpload(file: LocalFile) {
           terminos: false
 
         })
-     
+
 
       }
     })
@@ -401,7 +405,7 @@ async startUpload(file: LocalFile) {
     if(name.length==0){
       return "Coloca aquí tu "+ field;
     }
-    
+
   }
 
 closePanel() {

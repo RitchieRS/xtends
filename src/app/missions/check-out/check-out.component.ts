@@ -151,6 +151,9 @@ export class CheckOutComponent implements OnInit {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
     });
     toast.present();
   }

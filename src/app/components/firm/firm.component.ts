@@ -2,6 +2,7 @@ import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { from } from 'rxjs';
 import SignaturePad from 'signature_pad';
 import { InfoService } from 'src/app/xservices/user/info.service';
+import { ToastController } from '@ionic/angular';
 
 
 
@@ -18,7 +19,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
    signaturePad: any;
    firma: any;
 
-  constructor(private firmaService: InfoService) { }
+  constructor(private firmaService: InfoService, private toastCtrl: ToastController) { }
 
   ngAfterViewInit(): void {
     this.signaturePad = new SignaturePad(this.signaturePadElement.nativeElement);
@@ -117,8 +118,22 @@ export class FirmComponent implements OnInit, AfterViewInit {
     const u = this.signaturePad.toDataURL();
     this.enviarf(u, 'firma.png');
     this.firma = u;
-    alert('¡Firma enviada!');
+    // alert('¡Firma enviada!');
+    this.presentToast('¡Firma enviada!');
+
   }
+}
+
+//es el ak del toast
+async presentToast(text) {
+  const toast = await this.toastCtrl.create({
+    message: text,
+    duration: 3000,
+    color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
+  });
+  toast.present();
 }
 
 }

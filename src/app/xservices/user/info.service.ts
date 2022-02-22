@@ -38,7 +38,7 @@ export class InfoService {
   }
 
     ///api/user/credential
-    getCredential(token: string): Observable < any | void>{
+    dtcCredential(token: string): Observable < any | void>{
       console.log( token );
       const httpOptions = {
         headers: new HttpHeaders({
@@ -48,8 +48,12 @@ export class InfoService {
         }),
         responseType: 'json' as 'json'
       };
-      return this.http.post<any>(`${environment.API_URL}user/credential`,httpOptions).pipe(
-            map(( res:  any)=> {return res;}),
+      const request = {};
+      return this.http.post<any>(`${environment.API_URL}user/credential`,request ,httpOptions).pipe(
+        map(( res: any)=> {
+          console.log(res);
+          return res;
+        }),
             catchError((err)=> this.handeleError(err))
       );
     };

@@ -25,20 +25,20 @@ export class FotoSelfComponent implements OnInit {
     paths: [],
     saveImages:[],
   };
-  
+
   constructor(
     private plt: Platform,
     private loadingCtrl: LoadingController,
     private toastCtrl: ToastController,
     private storage: StorageHelperService,
     private srvInf: InfoService
-   
+
     ) { }
 
   ngOnInit() {
     this.idStrQuest="app-foto-self";
     this.respuestas.tipo="app-foto-self";
-    
+
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths= [...question.paths];
       this.imgLgt = this.respuestas.paths.length;
@@ -54,7 +54,7 @@ export class FotoSelfComponent implements OnInit {
       message: 'Loading data...',
     });
     await loading.present();
- 
+
     Filesystem.readdir({
       path: IMAGE_DIR,
       directory: Directory.Data,
@@ -72,14 +72,14 @@ export class FotoSelfComponent implements OnInit {
       loading.dismiss();
     });
   }
- 
+
   // Get the actual base64 data of an image
   // base on the name of the file
   async loadFileData(fileNames: string[]) {
     this.respuestas.saveImages = [];
     for (let f of fileNames) {
       const filePath = `${IMAGE_DIR}/${f}`;
- 
+
       const readFile = await Filesystem.readFile({
         path: filePath,
         directory: Directory.Data,
@@ -92,22 +92,25 @@ export class FotoSelfComponent implements OnInit {
           });
           this.respuestas.saveImages = this.images;
           this.storage.setObject(this.idStrQuest,this.respuestas);
-        
+
       }
     }
   }
- 
+
   // Little helper
   async presentToast(text) {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
     });
     toast.present();
   }
- 
 
- 
+
+
   async deleteImage(file: LocalFile) {
     await Filesystem.deleteFile({
         directory: Directory.Data,
@@ -123,11 +126,11 @@ export class FotoSelfComponent implements OnInit {
         resultType: CameraResultType.Uri,
         source: CameraSource.Camera // Camera, Photos or Prompt!
     });
- 
+
     if (image) {
         this.saveImage(image)
     }
-} 
+}
     async selectDocument() {
       const image = await Camera.getPhoto({
           quality: 90,
@@ -138,7 +141,7 @@ export class FotoSelfComponent implements OnInit {
 
       if (image) {
           this.saveImage(image)
-          
+
       }
     }
 // Create a new file from a capture image
@@ -161,7 +164,7 @@ async saveImage(photo: Photo) {
   this.respuestas.saveImages.push({img64: base64Data});
   this.storage.setObject(this.idStrQuest,this.respuestas);
   this.sendInf();
-  
+
 
 }
 

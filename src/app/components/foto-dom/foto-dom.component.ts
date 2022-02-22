@@ -8,7 +8,7 @@ import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.s
 import { InfoService } from 'src/app/xservices/user/info.service';
 
 
-const IMAGE_DIR = 'stored-images'; 
+const IMAGE_DIR = 'stored-images';
 @Component({
   selector: 'app-foto-dom',
   templateUrl: './foto-dom.component.html',
@@ -29,7 +29,7 @@ export class FotoDomComponent implements OnInit {
     paths: [],
     saveImages:[]
   };
-  
+
   constructor(
     private plt: Platform,
     private loadingCtrl: LoadingController,
@@ -56,7 +56,7 @@ export class FotoDomComponent implements OnInit {
       message: 'Loading data...',
     });
     await loading.present();
- 
+
     Filesystem.readdir({
       path: IMAGE_DIR,
       directory: Directory.Data,
@@ -74,13 +74,13 @@ export class FotoDomComponent implements OnInit {
       loading.dismiss();
     });
   }
- 
+
   // Get the actual base64 data of an image
   // base on the name of the file
   async loadFileData(fileNames: string[]) {
     for (let f of fileNames) {
       const filePath = `${IMAGE_DIR}/${f}`;
- 
+
       const readFile = await Filesystem.readFile({
         path: filePath,
         directory: Directory.Data,
@@ -94,7 +94,7 @@ export class FotoDomComponent implements OnInit {
       }
     }
   }
- 
+
   // Little helper
   async presentToast(text) {
     const toast = await this.toastCtrl.create({
@@ -103,9 +103,9 @@ export class FotoDomComponent implements OnInit {
     });
     toast.present();
   }
- 
 
- 
+
+
   async deleteImage(file: LocalFile) {
     await Filesystem.deleteFile({
         directory: Directory.Data,
@@ -121,11 +121,11 @@ export class FotoDomComponent implements OnInit {
         resultType: CameraResultType.Uri,
         source: CameraSource.Camera // Camera, Photos or Prompt!
     });
- 
+
     if (image) {
         this.saveImage(image)
     }
-} 
+}
     async selectDocument() {
       const image = await Camera.getPhoto({
           quality: 90,
@@ -136,7 +136,7 @@ export class FotoDomComponent implements OnInit {
 
       if (image) {
           this.saveImage(image)
-          
+
       }
     }
 // Create a new file from a capture image
