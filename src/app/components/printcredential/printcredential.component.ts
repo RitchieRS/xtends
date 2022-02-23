@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { InfoService } from 'src/app/xservices/user/info.service';
+import { ToastController } from '@ionic/angular';
 
 
 // import pdfMake from "pdfmake/build/pdfmake";
@@ -22,12 +23,26 @@ export class PrintcredentialComponent {
 
   constructor(
               private credenService: InfoService,
+              private toastCtrl: ToastController,
   ) { }
 
   credentialTest(){
     const token = localStorage.getItem('token');
       this.credenService.dtcCredential(token)
         .subscribe( console.log );
+        this.presentToast('¡Tu credencial se envió a tu mail, imprímela!');
+  }
+
+
+  async presentToast(text) {
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 5000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
+    });
+    toast.present();
   }
 
   // pdfDownload():void{

@@ -9,6 +9,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { StorageHelperService } from '../xservices/storage/storage-helper.service';
 import { InfoService } from '../xservices/user/info.service';
 import { toTypeScript } from '@angular/compiler';
+import { PopoverController} from '@ionic/angular';
+import { PopoverFiltermapComponent } from '../components/popover-filtermap/popover-filtermap.component';
+
 
 @Component({
   selector: 'app-home',
@@ -16,6 +19,7 @@ import { toTypeScript } from '@angular/compiler';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
+
 
   currentIndex = 5;
   itemsMission = [...Array(this.currentIndex).keys()];
@@ -58,7 +62,8 @@ export class HomePage {
               private auth : LoginService,
               public dialog: MatDialog,
               private storage: StorageHelperService,
-              private srvInf: InfoService) {
+              private srvInf: InfoService,
+              private popoverCtrl: PopoverController) {
 
               }
 
@@ -75,12 +80,12 @@ export class HomePage {
     this.filterType=[];
     this.storage.getObject('filter').then((filter: any) => {
 
-    
+
       for (let i = 0; i < filter.length; i++) {
         console.log(filter[i]);
         this.filterType.push( filter[i]);
       }
-     
+
         //this.filterType.push({"nombreActividad" : filter});
     });
     console.log(this.filterType);
@@ -222,7 +227,7 @@ export class HomePage {
               this.missionAval = this.dataHome.section3;
               this.missionsAvalDataFil = this.dataHome.section3.content;
               //values.filter(t=>t.category ==='Science');
-              this.missionsAvalData = this.dataHome.section3.content; 
+              this.missionsAvalData = this.dataHome.section3.content;
              //Filter Type Mission
              if(this.filterType.length>0){
               console.log("filter")
@@ -231,12 +236,12 @@ export class HomePage {
              }else{
               this.missionsAvalDataAux = this.missionsAvalData.slice(0,5)
              }
-              
-             
-             
-              
-            
-              
+
+
+
+
+
+
              }
              /* Misiones Disponibles*/
             if(this.dataHome.section4.content.length>=1){
@@ -256,11 +261,23 @@ export class HomePage {
         })
       }
 
+      async popoverFilterMap(ev: any) {
+        const popover = await this.popoverCtrl.create({
+          component: PopoverFiltermapComponent,
+          event: ev,
+          translucent: false,
+          mode: 'ios',
+          cssClass:'popOver'
+        });
+        await popover.present();
+      }
+
 
 }
 
 
 import { Pipe, PipeTransform } from '@angular/core';
+
 @Pipe({
     name: 'actividad',
     pure: false
@@ -272,4 +289,6 @@ export class Actividad implements PipeTransform {
         }
         return items.filter(item => item.nombreActividad.indexOf(filter.nombreActividad) !== -1);
     }
+
+
 }

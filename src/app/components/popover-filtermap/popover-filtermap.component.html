@@ -1,0 +1,44 @@
+<ion-grid class="ion-no-padding">
+  <ion-row>
+    <ion-col class="ion-text-center">
+      <ion-text color="polarwhite">
+         <h5><ion-icon  name="funnel"></ion-icon> Específica tu búsqueda</h5>
+      </ion-text>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="bg-whitex ion-text-center ion-padding">
+      <section [formGroup]="filterMap">
+        <p class="ion-text-left"><mat-checkbox formControlName="promotoria">Promotoría</mat-checkbox></p>
+        <p class="ion-text-left"><mat-checkbox formControlName="demostradores">Demostradores</mat-checkbox></p>
+        <p class="ion-text-left"><mat-checkbox formControlName="mystery">Mystery Shopper</mat-checkbox></p>
+        <p class="ion-text-left"><mat-checkbox formControlName="anaquelista">Anaquelista</mat-checkbox></p>
+      </section>
+
+      <!-- <section  [formGroup]="filterMap">
+        <p>Selecionados</p>
+        {{filterMap.value | json}}
+      </section> -->
+      <!-- <form>
+      <p>
+        <mat-form-field appearance="outline" class="iup-full-width">
+          <mat-label  class="mat-label-color-navyblue">Tipo de misión</mat-label>
+          <mat-select formControlName="type"  multiple>
+            <mat-optgroup  label="Tipo de trabajo de interés">
+              <mat-option value="skybluextend">Promotor</mat-option>
+              <mat-option value="greenextend">Mistery Shoper</mat-option>
+              <mat-option value="purplextend">Demostración</mat-option>
+            </mat-optgroup>
+          </mat-select>
+        </mat-form-field>
+       </p>
+      <section>
+        <div class="iup-button-row">
+          <button type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">Filtrar <span class="material-icons">chevron_right</span></button>
+        </div>
+      </section>
+      </form> -->
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

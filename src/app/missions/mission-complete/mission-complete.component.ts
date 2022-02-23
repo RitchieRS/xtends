@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-mission-complete',
@@ -12,8 +13,8 @@ export class MissionCompleteComponent implements OnInit {
 
   constructor(private router: Router,) { }
 
-  missPending(){
-    this.router.navigate(['pending-mission/'+this.idPV]);
+  myMissions(){
+    this.router.navigate(['/mymissions/']);
   }
 
   homeLink(){

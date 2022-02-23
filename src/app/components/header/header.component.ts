@@ -60,8 +60,6 @@ async presentPopover(ev: any) {
     cssClass:'popOver'
   });
   await popover.present();
-
-
 }
 
 }

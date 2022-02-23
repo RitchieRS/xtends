@@ -41,6 +41,7 @@ import { FotoIdComponent } from './foto-id/foto-id.component';
 import { FotoCurpComponent } from './foto-curp/foto-curp.component';
 import { FotoSelfComponent } from './foto-self/foto-self.component';
 import { CamBcComponent } from './cam-bc/cam-bc.component';
+import { PopoverFiltermapComponent } from './popover-filtermap/popover-filtermap.component';
 
 
 
@@ -54,6 +55,7 @@ import { CamBcComponent } from './cam-bc/cam-bc.component';
     ZonesComponent,
     HideHeaderDirective,
     PopoverInfoComponent,
+    PopoverFiltermapComponent,
     ModalmissionComponent,
     DialogmissionComponent,
     ModalacceptmissionComponent,
