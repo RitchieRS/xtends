@@ -8,6 +8,7 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { MissionCompleteComponent} from './mission-complete/mission-complete.component';
 import { PendingMissionComponent } from './pending-mission/pending-mission.component';
 import { AgmCoreModule } from '@agm/core';
+import { MissionDetailsComponent } from './mission-details/mission-details.component';
 
 const routes: Routes =[
   {
@@ -37,8 +38,12 @@ const routes: Routes =[
       path: 'mission-complete/:idPV',
       component: MissionCompleteComponent
     },
+    {
+      path: 'mission-detail',
+      component: MissionDetailsComponent
+    },
    ]
-  }
+  },
 ];
 
 @NgModule({

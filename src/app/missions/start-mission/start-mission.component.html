@@ -38,6 +38,7 @@
           </ion-row>
         </ion-grid>
 
+
         <div *ngIf="isLoaded==0" class="body-preload">
           <app-preload></app-preload>
         </div>
@@ -46,7 +47,7 @@
           <ion-row class="ion-no-margin ion-no-padding">
             <ion-col size="12" class="ion-no-margin">
               <mat-accordion *ngFor="let p of preguntas; let i = index"  >
-                  <app-section 
+                  <app-section
                       [capturaSKU]="p.capturaSKU"
                       [idProyecto]="p.idProyecto"
                       [idSondeo]="p.idSondeo"

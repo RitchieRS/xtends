@@ -25,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { AgmCoreModule } from '@agm/core';
 import { CheckOutComponent } from './check-out/check-out.component';
 import { MissionCompleteComponent } from './mission-complete/mission-complete.component';
+import { MissionDetailsComponent } from './mission-details/mission-details.component';
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
@@ -38,6 +39,7 @@ import { MissionCompleteComponent } from './mission-complete/mission-complete.co
     PendingMissionComponent,
     ModalCaptureproductinfoComponent,
     DialogCaptureproductinfoComponent,
+    MissionDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -68,6 +70,7 @@ import { MissionCompleteComponent } from './mission-complete/mission-complete.co
     PendingMissionComponent,
     ModalCaptureproductinfoComponent,
     DialogCaptureproductinfoComponent,
+    MissionDetailsComponent,
   ],
 })
 export class MissionsModule { }
