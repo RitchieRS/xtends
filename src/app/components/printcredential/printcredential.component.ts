@@ -12,20 +12,39 @@ import { Plugin } from '@capacitor/core';
 
 // import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 import { Platform } from '@ionic/angular';
+import { Subscriber } from 'rxjs';
+import { Credenciales } from 'src/app/xmodels/user';
 @Component({
   selector: 'app-printcredential',
   templateUrl: './printcredential.component.html',
   styleUrls: ['./printcredential.component.scss'],
 })
-export class PrintcredentialComponent {
+export class PrintcredentialComponent implements OnInit{
 
   // pdfObj = null;
+
+  mycredential: any;
+
+
 
   constructor(
               private credenService: InfoService,
               private toastCtrl: ToastController,
   ) { }
 
+
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+      this.credenService.getCredentialJpg(token)
+      .subscribe(res => {
+        console.log('Respdtc', res.resp.credenciales.urlCredencialImg)
+        this.mycredential = res.resp.credenciales.urlCredencialImg;
+        console.log(this.mycredential);
+      });
+     
+  }
+
+  //is the btn send credential by mail
   credentialTest(){
     const token = localStorage.getItem('token');
       this.credenService.dtcCredential(token)

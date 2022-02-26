@@ -79,9 +79,12 @@ export interface Curso {
 
 export interface Credenciales {
     puesto:   string;
+    foto:     string;
     imss:     string;
     rfc:      string;
     urlFirma: string;
+    urlCredencialImg: string;
+    urlCredencialPDF: string;
 }
 
 export interface Informacion {
