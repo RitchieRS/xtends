@@ -24,6 +24,7 @@ export class PrintcredentialComponent implements OnInit{
   // pdfObj = null;
 
   mycredential: any;
+  myfirma: any;
 
 
 
@@ -37,11 +38,10 @@ export class PrintcredentialComponent implements OnInit{
     const token = localStorage.getItem('token');
       this.credenService.getCredentialJpg(token)
       .subscribe(res => {
-        console.log('Respdtc', res.resp.credenciales.urlCredencialImg)
-        this.mycredential = res.resp.credenciales.urlCredencialImg;
+        // console.log('Respdtc', res.resp.credenciales.urlCredencialImg)
+        this.mycredential = res.resp.credenciales;
         console.log(this.mycredential);
       });
-     
   }
 
   //is the btn send credential by mail

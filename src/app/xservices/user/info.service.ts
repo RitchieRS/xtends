@@ -58,7 +58,7 @@ export class InfoService {
       );
     };
 
-    ///afgfgfgfgdfgdfgdfdfg
+    ///view credential in app
     getCredentialJpg(token: string): Observable < any | void>{
       const httpOptions = {
         headers: new HttpHeaders({
