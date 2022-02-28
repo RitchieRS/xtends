@@ -5,6 +5,7 @@ import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { CheckinserviceService } from 'src/app/xservices/checkin/checkinservice.service';
 import { LocationService } from 'src/app/xservices/gservice/location.service';
 import { MissionService } from 'src/app/xservices/mission/mission.service';
+// eslint-disable-next-line max-len
 import { DialogCaptureproductinfoComponent } from '../modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
@@ -242,7 +243,7 @@ export class StartMissionComponent  {
 async sendSondeo(){
    try{
           if(this.validSondeo==1){
-          
+
 
           const serve = await  this.presentToast('Enviando respuestas..');
           await this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{

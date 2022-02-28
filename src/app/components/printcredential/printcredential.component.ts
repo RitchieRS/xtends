@@ -39,7 +39,7 @@ export class PrintcredentialComponent implements OnInit{
       this.credenService.getCredentialJpg(token)
       .subscribe(res => {
         // console.log('Respdtc', res.resp.credenciales.urlCredencialImg)
-        this.mycredential = res.resp.credenciales;
+        this.mycredential = res.resp.credenciales.urlCredencialImg;
         console.log(this.mycredential);
       });
   }

@@ -49,6 +49,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 
 
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { TrainingsModule } from './trainings/trainings.module';
 
 
 
@@ -92,6 +93,7 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
     MatTabsModule,
     SignaturePadModule,
     ClipboardModule,
+    TrainingsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),
