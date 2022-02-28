@@ -8,11 +8,14 @@
   </ion-row>
   <ion-row>
     <ion-col class="bg-whitex ion-text-center ion-padding">
-      <section [formGroup]="filterMap">
-        <p class="ion-text-left"><mat-checkbox formControlName="promotoria">Promotoría</mat-checkbox></p>
-        <p class="ion-text-left"><mat-checkbox formControlName="demostradores">Demostradores</mat-checkbox></p>
-        <p class="ion-text-left"><mat-checkbox formControlName="mystery">Mystery Shopper</mat-checkbox></p>
-        <p class="ion-text-left"><mat-checkbox formControlName="anaquelista">Anaquelista</mat-checkbox></p>
+      <section [formGroup]="filterMap"   >
+        <p class="ion-text-left"><mat-checkbox formControlName="promotoria"  >Promotoría</mat-checkbox></p>
+        <p class="ion-text-left"><mat-checkbox formControlName="demostradores"  value="greenextend" >Demostradores</mat-checkbox></p>
+        <p class="ion-text-left"><mat-checkbox formControlName="mistery"  >Mystery Shopper</mat-checkbox></p>
+        <p class="ion-text-left"><mat-checkbox formControlName="anaquelista" > Anaquelista</mat-checkbox></p>
+        <div class="iup-button-row">
+          <button (click)="filter()" type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">Filtrar <span class="material-icons">chevron_right</span></button>
+        </div>
       </section>
 
       <!-- <section  [formGroup]="filterMap">

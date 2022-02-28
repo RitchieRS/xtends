@@ -242,31 +242,16 @@ export class StartMissionComponent  {
 async sendSondeo(){
    try{
           if(this.validSondeo==1){
-          this.respuestasSondeo.idPV = this.idPV.toString();
-          for(let i of this.idRespuestaSondeo.idrespuestas){
+          
 
-                await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
-                      if(question!=null){
-                        this.respuestasSondeo.respuestas.push(question);
-                      }
-                }));
-            }
-            for(let i of this.respuestasSondeo.respuestas){
-                            if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
-                                await Promise.resolve( this.loadFiles(i['paths'],data => {
-                                    i['saveImages'] = data;
-                                }));
-                            }
-
-            }
-
-       const serve = await  this.presentToast('Enviando respuestas..');
-          this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
+          const serve = await  this.presentToast('Enviando respuestas..');
+          await this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
                 console.log(res);
                 //this.router.navigate(['home']);
 
 
           });
+          const enviado = await  this.presentToast('Sondeo Enviado');
           this.router.navigate(['check-out/'+this.idPV.toString()]);
         }else{
           this.presentToast('Antes Valide el sondeo');

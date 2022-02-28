@@ -46,6 +46,7 @@ export class HomePage {
     }
   }
   filterType:any;
+  filterTypeMap:any;
 
 
   panelOpenState = false;
@@ -67,7 +68,7 @@ export class HomePage {
 
               }
 
-  ngOnInit() {
+  async ngOnInit() {
 
     this.lat = Number(localStorage.getItem('lat'));
     this.lng = Number(localStorage.getItem('lng'));
@@ -79,16 +80,24 @@ export class HomePage {
     })
     this.filterType=[];
     this.storage.getObject('filter').then((filter: any) => {
-
-
       for (let i = 0; i < filter.length; i++) {
         console.log(filter[i]);
         this.filterType.push( filter[i]);
       }
-
         //this.filterType.push({"nombreActividad" : filter});
     });
-    console.log(this.filterType);
+
+   await this.storage.getObject('filter-map').then((filterMap: any) => {
+    
+      this.filterTypeMap =  filterMap;
+      /*for (let i = 0; i < filterMap.length; i++) {
+        console.log(filterMap[i]);
+        this.filterTypeMap.push(filterMap[i]);
+      }*/
+ 
+    });
+    console.log(this.filterTypeMap);
+    
 
     this.location = {
       "lat" : Number(this.lat),
@@ -246,10 +255,17 @@ export class HomePage {
              /* Misiones Disponibles*/
             if(this.dataHome.section4.content.length>=1){
               this.missionAvalmap = this.dataHome.section4;
+             
               this.missionsAvalDatamap = this.dataHome.section4.content;
+              if(this.filterTypeMap.length>0){
+                console.log("filter Map")
+                const list = this.missionsAvalDatamap.filter(mission => this.filterTypeMap.includes(mission.colorServicio))
+                this.missionsAvalDataAuxmap = list;
+                this.missionsAvalDatamap = this.missionsAvalDataAuxmap;
+               }
+               
               this.missionAvalmap.content.forEach(element => {
                 element.color = this.pincho(element.colorServicio)
-
               });
 
               console.log(this.missionsAvalDatamap);
@@ -283,7 +299,9 @@ import { Pipe, PipeTransform } from '@angular/core';
     pure: false
 })
 export class Actividad implements PipeTransform {
-    transform(items: any[], filter: any): any {
+    
+  
+  transform(items: any[], filter: any): any {
         if (!items || !filter) {
             return items;
         }
