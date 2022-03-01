@@ -19,15 +19,16 @@
                 <ion-slide>
                   <ion-grid size=12>
                     <ion-text class="ion-text-left">
-                      <video controls="true" src="https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4" width="100%"></video>
                       <h6>
                         Tema 1
                       </h6>
                     </ion-text>
-                    <ion-textarea [(ngModel)]="videoUrl" placeholder="Enter video url">
-                    </ion-textarea>
-                    <ion-button (click)="streamVideo()" expand="full">stream video</ion-button>
+                    <!-- <ion-textarea [(ngModel)]="videoUrl" placeholder="Enter video url">
+                    </ion-textarea> -->
+                    <!-- <ion-button (click)="streamVideo()" expand="full">stream video</ion-button> -->
                     <div style="width: 100%; height: 400px; border: solid 1px blue;">
+                      <video controls="true" src="../../../assets/mp4/video1.mp4" width="100%"></video>
+
                     </div>
                   </ion-grid>
                 </ion-slide>
@@ -39,6 +40,7 @@
                       </h6>
                     </ion-text>
                     <div style="width: 100%; height: 400px; border: solid 1px red;">
+                      <iframe src="https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf" width="100%" height="100%"></iframe>
                     </div>
                   </ion-grid>
 
