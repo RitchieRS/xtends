@@ -20,10 +20,11 @@ export class FotoSelfComponent implements OnInit {
   idStrQuest:string;
   images:LocalFile[];
   respuestas = {
+    idPregunta:"",
     tipo:      "",
     respuesta:  "",
     paths: [],
-    saveImages:[],
+    saveImages:[]
   };
 
   constructor(
@@ -39,12 +40,16 @@ export class FotoSelfComponent implements OnInit {
     this.idStrQuest="app-foto-self";
     this.respuestas.tipo="app-foto-self";
     console.log(this.imgLgt);
-    await this.storage.getObject(this.idStrQuest).then((question: any) => {
-      this.respuestas.paths= [...question.paths];
-      this.imgLgt = this.respuestas.paths.length;
-      console.log(this.imgLgt);
-      this.loadFiles();
-     });
+    try{ await this.storage.getObject(this.idStrQuest).then((question: any) => {
+         
+          this.respuestas.paths= [...question.paths];
+          this.imgLgt = this.respuestas.paths.length >= 1 ? 1 :  0;
+          console.log(this.imgLgt ); 
+          this.loadFiles();
+        });
+      }catch(e){
+        console.log(e);
+      }
 
   }
 
@@ -205,7 +210,7 @@ sendInf() {
             this.images.forEach( (file) =>{
               this.deleteImage(file)
             })
-            this.storage.removeItem(this.idStrQuest);
+            //this.storage.removeItem(this.idStrQuest);
       })
    }
   }

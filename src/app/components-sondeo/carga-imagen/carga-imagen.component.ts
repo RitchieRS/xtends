@@ -29,6 +29,7 @@ export class CargaImagenComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
   respuestas={
     idPregunta:"",
     tipo:      "",
@@ -95,6 +96,7 @@ export class CargaImagenComponent implements OnInit {
                         data: `data:image/jpeg;base64,${readFile.data}`,
                       });
                       this.isValid=1;
+                   
                    }
                 }
               }
@@ -171,7 +173,7 @@ export class CargaImagenComponent implements OnInit {
               this.respuestas.saveImages.push(savedFile);
               
               this.isValid=1;
-            
+              this.checkCompleteChild(this.idPregunta,this.isValid);
               this.loadInformation();
              
               await this.loadFiles();
@@ -252,6 +254,7 @@ export class CargaImagenComponent implements OnInit {
     this.respuestas.tipo = this.tipo;
     this.respuestas.obligatorio = this.obligatorio;
     this.respuestas.valid = 1;
+    this.checkCompleteChild(this.idPregunta,this.isValid);
     //alert(this.respuestas.tipo);
     //alert(this.respuestas.paths[0])
     this.storage.setObject(this.idStrQuest,this.respuestas);

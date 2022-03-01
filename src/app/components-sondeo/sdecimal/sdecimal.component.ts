@@ -29,6 +29,7 @@ export class SdecimalComponent implements OnInit {
   @Input() urlImage: string;
   @Input() idSondeo: string;
   @Input() sku: number;
+  @Input() checkCompleteChild: (args: any) => void;
   /*
   dependePregunta: 61
 dependeRespuesta: 0
@@ -53,6 +54,7 @@ urlImage: "0"
     obligatorio:0
   }
   respuestaStr:string;
+  
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
               private storage: StorageHelperService) { }
@@ -82,6 +84,8 @@ urlImage: "0"
    
   }
 
+  
+
   submit(){
     
     
@@ -92,6 +96,7 @@ urlImage: "0"
       this.isValid = this.respuestas.valid;
       this.respuestas.obligatorio = this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
+      this.checkCompleteChild(this.isValid);
     }else{
       this.isValid=0;
     }

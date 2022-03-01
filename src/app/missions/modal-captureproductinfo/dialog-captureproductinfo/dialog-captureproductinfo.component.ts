@@ -14,6 +14,7 @@ export class DialogCaptureproductinfoComponent implements OnInit {
   idRespuestaSondeo={
     idrespuestas:[]
   }
+  
   complete=0;
   constructor(@Inject(MAT_DIALOG_DATA) public data : {
                                                       img : string,
@@ -29,13 +30,25 @@ export class DialogCaptureproductinfoComponent implements OnInit {
                                                     private dialogRef: MatDialogRef<DialogCaptureproductinfoComponent>) { 
 
 
-                                                      this.preguntas = data.preguntas;
+                                                      
                                                       this.idPregunta = data.idInventario+ '||' ;
                                                       
 
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+    this.preguntas = this.data.preguntas;
+
+    const list = this.preguntas.filter( pregunta => {  console.log(pregunta.dependePregunta); pregunta.dependePregunta == '0' } );
+
+    //const list = this.preguntas.filter(mission => this.filterType.includes(mission.colorServicio))
+            
+  }
+
+  checkCompleteParent = (args: any): void => {
+    console.log(args);
+  }
 
 
 

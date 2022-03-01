@@ -29,6 +29,7 @@ export class AbiertaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
   isValid = 0;
   idStrQuest = "";
   RequiredValue:Validators[]=[];
@@ -57,6 +58,7 @@ export class AbiertaComponent implements OnInit {
       console.log(question);
      this.respuestaStr = question.respuesta;
      this.isValid = this.respuestaStr.trim().length>0 ? 1 : 0;
+     this.checkCompleteChild(this.idPregunta,this.isValid);
      this.respuestas = {
                         idPregunta:this.idStrQuest,
                         tipo:      this.tipo,
@@ -78,6 +80,7 @@ export class AbiertaComponent implements OnInit {
       this.respuestas.valid = ((this.abiertaGoup.get('abierta').value).trim() == '' ) ? 0 : 1 ;
       this.isValid = this.respuestas.valid;
       this.obligatorio =this.obligatorio;
+      this.checkCompleteChild(this.idPregunta,this.isValid);
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid=0;

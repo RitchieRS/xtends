@@ -163,7 +163,7 @@ export class StartMissionComponent  {
 
                 }
           );
-          console.log(this.idRespuestaSondeo.idrespuestas);
+          //console.log(this.idRespuestaSondeo.idrespuestas);
         })
       }catch(e){
         alert(e);
@@ -247,7 +247,7 @@ async sendSondeo(){
 
           const serve = await  this.presentToast('Enviando respuestas..');
           await this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
-                console.log(res);
+                //console.log(res);
                 //this.router.navigate(['home']);
 
 
@@ -304,9 +304,9 @@ async review(){
       this.presentToast('Sondeo Válidado');
     }
 
-    console.log('Validos: '+validTotal)
-    console.log('Obligatorio: '+obligatorioTotal)
-    console.log(this.respuestasSondeo);
+    //console.log('Validos: '+validTotal)
+    //console.log('Obligatorio: '+obligatorioTotal)
+    //console.log(this.respuestasSondeo);
   }catch(e){
     this.presentToast('Error inesperado..');
   }

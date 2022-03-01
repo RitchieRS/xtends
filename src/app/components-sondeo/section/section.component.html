@@ -36,7 +36,8 @@
                           [puntaje]="p.puntaje"
                           [tipo]="p.tipo"
                           [urlImage]="p.urlImage"
-                          [idSondeo]="idSondeoStr" >
+                          [idSondeo]="idSondeoStr" 
+                          [checkCompleteChild]="checkCompleteParent">
       </app-unica-radio>
       </div>
 
@@ -54,7 +55,8 @@
                           [puntaje]="p.puntaje"
                           [tipo]="p.tipo"
                           [urlImage]="p.urlImage"
-                          [idSondeo]="idSondeoStr" >
+                          [idSondeo]="idSondeoStr"
+                          [checkCompleteChild]="checkCompleteParent" >
       </app-carrusel>
       </div>
       <div *ngSwitchCase="'email'" >
@@ -70,7 +72,8 @@
                           [puntaje]="p.puntaje"
                           [tipo]="p.tipo"
                           [urlImage]="p.urlImage"
-                          [idSondeo]="idSondeoStr" >
+                          [idSondeo]="idSondeoStr"
+                          [checkCompleteChild]="checkCompleteParent" >
       </app-email>
       </div>
       <div *ngSwitchCase="'numerica'" >
@@ -86,7 +89,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
                      </app-numerica>
       </div>
       <div *ngSwitchCase="'cargaimagen'" >
@@ -102,7 +106,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr" 
+                      [checkCompleteChild]="checkCompleteParent">
       </app-carga-imagen>
       </div>
       <div *ngSwitchCase="'fecha'" >
@@ -118,7 +123,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr" 
+                      [checkCompleteChild]="checkCompleteParent">
       </app-fecha>
       </div>
       <div *ngSwitchCase="'abierta'" >
@@ -135,7 +141,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" ></app-abierta>
+                      [idSondeo]="idSondeoStr" 
+                      [checkCompleteChild]="checkCompleteParent"></app-abierta>
       </div>
 
       <mat-expansion-panel *ngSwitchCase="'informartiva'" >
@@ -175,7 +182,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
                        ></app-fotografia>
       </div>
 
@@ -195,7 +203,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
                        ></app-multiple>
       </div>
 
@@ -214,7 +223,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
                        ></app-gps>
       </div>
 
@@ -234,7 +244,8 @@
                       [puntaje]="p.puntaje"
                       [tipo]="p.tipo"
                       [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr" >
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
                       ></app-sku>
       </div>
 
