@@ -58,10 +58,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
   }
 // <ENVIAR FIRMA
   enviarf(dataURL:any, nombre:any){
-    if(navigator.userAgent.indexOf('Safari') > -1 && navigator.userAgent.indexOf('Chrome')=== -1){
-      window.open(dataURL);
-    }
-    else{
+   
       const blob = this.URLtoBlob(dataURL);
       // const url = window.URL.createObjectURL(blob);
       // const a = document.createElement('a');
@@ -81,7 +78,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
         }
       );
       console.log(firmaUrl);
-    }
+    
    }
 
 

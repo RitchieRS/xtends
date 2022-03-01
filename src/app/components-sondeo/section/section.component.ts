@@ -23,10 +23,11 @@ isValid = 0;
 idSondeoStr:string;
 
   constructor(private storage: StorageHelperService) { 
-  
+    
   }
 
   ngOnInit() {
+    this.preguntas = this.preguntas.sort((a, b) => (a.orden > b.orden  ) ? 1 : -1)
     this.idSondeoStr = this.idSondeo.toString();
   }
 

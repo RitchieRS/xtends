@@ -147,7 +147,7 @@ export class InfoService {
     };
 
 
-    return this.http.post<any>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}user/photo`,request ,httpOptions).pipe(
           map(( res :  any)=>{
             console.log(res);
             return res;

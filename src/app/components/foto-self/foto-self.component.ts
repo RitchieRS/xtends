@@ -35,11 +35,11 @@ export class FotoSelfComponent implements OnInit {
 
     ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.idStrQuest="app-foto-self";
     this.respuestas.tipo="app-foto-self";
-
-    this.storage.getObject(this.idStrQuest).then((question: any) => {
+    console.log(this.imgLgt);
+    await this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths= [...question.paths];
       this.imgLgt = this.respuestas.paths.length;
       console.log(this.imgLgt);
@@ -90,8 +90,8 @@ export class FotoSelfComponent implements OnInit {
             path: filePath,
             data: `data:image/jpeg;base64,${readFile.data}`,
           });
-          this.respuestas.saveImages = this.images;
-          this.storage.setObject(this.idStrQuest,this.respuestas);
+         // this.respuestas.saveImages = this.images;
+         // this.storage.setObject(this.idStrQuest,this.respuestas);
 
       }
     }
@@ -147,7 +147,7 @@ export class FotoSelfComponent implements OnInit {
 // Create a new file from a capture image
 async saveImage(photo: Photo) {
   const base64Data = await this.readAsBase64(photo);
-
+  console.log(this.imgLgt);
   const fileName = new Date().getTime() + '.jpeg';
   const savedFile = await Filesystem.writeFile({
       path: `${IMAGE_DIR}/${fileName}`,
@@ -161,7 +161,7 @@ async saveImage(photo: Photo) {
   this.loadFiles();
   this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
-  this.respuestas.saveImages.push({img64: base64Data});
+  this.respuestas.saveImages= [{img64: base64Data}];
   this.storage.setObject(this.idStrQuest,this.respuestas);
   this.sendInf();
 

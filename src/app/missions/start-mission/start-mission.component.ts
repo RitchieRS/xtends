@@ -133,7 +133,7 @@ export class StartMissionComponent  {
           this.isLoaded=1;
           this.dataSondeResponse  = res;
           this.idRespuestaSondeo.idrespuestas=[];
-          this.preguntas = this.dataSondeResponse.resp;
+          this.preguntas = this.dataSondeResponse.resp.sort((a, b) => (a.orden > b.orden  ) ? 1 : -1)
           Object.entries(this.dataSondeResponse.resp).forEach(
               ([key, value]) =>{
                   this.idSondeoStr = value['idSondeo'].toString();
