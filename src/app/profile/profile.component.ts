@@ -11,6 +11,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../xservices/auth/login.service';
 
 
+
 const IMAGE_DIR = 'stored-images';
 
 interface LocalFile {
@@ -24,6 +25,9 @@ interface LocalFile {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+
+
+
   habilidades = [
     {
       color:'skybluextend',
@@ -159,6 +163,10 @@ export class ProfileComponent implements OnInit {
 
 
 
+  }
+
+  training(){
+    this.router.navigate(['training']);
   }
 
 
