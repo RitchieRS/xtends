@@ -46,7 +46,9 @@
                       </h6>
                     </ion-text>
                     <div style="width: 100%; height: 400px; border: solid 1px red;">
-                      <iframe src="https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf" width="80%" height="80%"></iframe>
+                      <pdf-viewer [src]="pdfSrc" [render-text]="true" style="display: block; width: 100%; height: 300px;">
+                    </pdf-viewer>
+                      <!-- <iframe src="https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf" width="80%" height="80%"></iframe> -->
                     </div>
                   </ion-grid>
 
@@ -153,7 +155,7 @@
             </button>
           </ion-col>
           <ion-col size="6" class="ion-align-self-center  ion-text-center">
-            <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
               Enviar examen
             </button>
           </ion-col>

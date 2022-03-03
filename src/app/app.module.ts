@@ -43,8 +43,11 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
-import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
+
+// import { FileOpener } from '@ionic-native/file-opener/ngx';
+// import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 // import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 // import { StreamingMedia } from '@awesome-cordova-plugins/streaming-media/ngx';
 
@@ -96,12 +99,13 @@ import { TrainingsModule } from './trainings/trainings.module';
     SignaturePadModule,
     ClipboardModule,
     TrainingsModule,
+    PdfViewerModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),
   ],
   providers: [
-    BarcodeScanner, FileOpener,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent],
