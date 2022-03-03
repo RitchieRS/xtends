@@ -55,6 +55,7 @@
     "cordova-plugin-request-location-accuracy": "^2.3.0",
     "cordova-plugin-streaming-media": "^2.3.0",
     "jetifier": "^2.0.0",
+    "ng2-pdf-viewer": "^8.0.1",
     "pdfmake": "^0.2.4",
     "phonegap-plugin-barcodescanner": "^8.1.0",
     "rxjs": "~6.6.0",

@@ -413,6 +413,8 @@ closePanel() {
   }
 
   closeSession() {
+
+    console.log("cerrar sesion")
      this.srvLog.logauth();
      this.router.navigate(['auth']);
 

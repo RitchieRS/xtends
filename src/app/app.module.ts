@@ -44,7 +44,6 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 
-import { FileOpener } from '@awesome-cordova-plugins/file-opener/ngx';
 // import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
 // import { StreamingMedia } from '@awesome-cordova-plugins/streaming-media/ngx';
 
@@ -101,7 +100,7 @@ import { TrainingsModule } from './trainings/trainings.module';
     }),
   ],
   providers: [
-    BarcodeScanner, FileOpener,
+    BarcodeScanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent],
