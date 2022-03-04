@@ -25,7 +25,7 @@ export class UnicaRadioComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
   isValid = 0;
   selected=-1;
   idStrQuest = "";
@@ -54,7 +54,7 @@ export class UnicaRadioComponent implements OnInit {
       this.respuestaStr = question.respuesta;
       this.selected = question.selected;
       this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-      this.checkCompleteChild(this.idPregunta,this.isValid);
+      this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestaStr);
       this.storage.setObject(this.idStrQuest,this.respuestas);
      });
      
@@ -70,7 +70,7 @@ export class UnicaRadioComponent implements OnInit {
       this.isValid = this.respuestaStr == undefined ? 0 :1;
       this.respuestas.idOpcion = this.idOpcion;
       this.respuestas.obligatorio  = this.obligatorio;
-      this.checkCompleteChild(this.idPregunta,this.isValid);
+      this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestaStr);
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid =0;

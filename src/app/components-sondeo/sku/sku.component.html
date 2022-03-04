@@ -29,7 +29,7 @@
         </ion-col>
         <ion-col class="ion-margin">
           <ion-searchbar outline animated
-            placeholder="{{barcode}}" mode="ios"
+            value="{{barcode}}"  mode="ios"
             [debounce]="500"
           >
           </ion-searchbar>
@@ -52,7 +52,7 @@
           <ion-text color="navyblue" class="ion-text-left"><p><strong>Presencia.</strong></p></ion-text>
         </ion-col>
       </ion-row>
-       <ion-row *ngFor="let producto of productos; let i = index ;" class="ion-margin-horizontal" (click)="openDialog(producto,i+1)">
+       <ion-row *ngFor="let producto of productos ; filter:data ; let i = index " class="ion-margin-horizontal" (click)="openDialog(producto,i+1)">
         <ion-col size="6" class="ion-align-self-center">
           <ion-text color="navyblue" class="ion-text-left"><p>{{producto.nombre}}</p></ion-text>
         </ion-col>

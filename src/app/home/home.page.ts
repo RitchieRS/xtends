@@ -146,8 +146,13 @@ export class HomePage {
 
         break;
       }
-      case  "Mistery": {
+      /*case  "Mistery": {
         type.color='#161949';
+        type.logo="mystery.svg"
+        break;
+      }*#020c3a*/
+      case  "Mistery": {
+        type.color='#020c3a';
         type.logo="mystery.svg"
         break;
       }
@@ -162,10 +167,10 @@ export class HomePage {
         break;
       }
       default: {
-
+        type.color='#020c3a';
+        type.logo="anaqueleo.svg"
       }
-      type.color='#90c04e';
-      type.logo="anaqueleo.svg"
+      
       break;
       }
       return type;
@@ -190,6 +195,10 @@ export class HomePage {
         }
         case  "greenxtend": {
           type.url='./assets/icon/location-greenxtend.svg';
+          break;
+        }
+        case  "navibluextend": {
+          type.url='./assets/icon/location-navibluextend.svg';
           break;
         }
         case "purplextend": {

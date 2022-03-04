@@ -1,6 +1,6 @@
 {
 	"appId": "io.ionic.starter",
-	"appName": "xTendsApp",
+	"appName": "xTendApp",
 	"webDir": "www",
 	"bundledWebRuntime": false,
 	"server": {

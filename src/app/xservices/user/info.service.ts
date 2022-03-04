@@ -29,7 +29,7 @@ export class InfoService {
     localStorage.setItem('nombreCompleto',data.nombreCompleto);
   }
 
-  public logOut(data : UserRest):void{
+  public logOut():void{
     console.log("Start save Data");
     localStorage.setItem('apat',undefined);
     localStorage.setItem('email',undefined);

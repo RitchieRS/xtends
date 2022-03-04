@@ -41,7 +41,7 @@ preguntasAux:any;
     this.idSondeoStr = this.idSondeo.toString();
   }
 
-   checkCompleteParent = (idPregunta: number,isValid:number): void => {
+   checkCompleteParent = (idPregunta: number,isValid:number,respuesta:string): void => {
 
     console.log("analizando dependencias"+idPregunta + " : valid "+ isValid);
     let dependencias = [];
@@ -54,7 +54,7 @@ preguntasAux:any;
           dependencias.forEach((item) => {
               let check =  dependencias = this.preguntas.filter( pregunta => {  return Number(pregunta.dependePregunta) == item.idPregunta } );
               console.log(check);
-              if(check.length==0){
+              if(check.length==0 && respuesta == 'NO'){
                 console.log(item)
                 this.preguntas.push(item);
               }

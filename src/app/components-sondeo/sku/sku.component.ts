@@ -24,6 +24,7 @@ export class SkuComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
+  data:string
   idStrQuest:string
   barcode="Busca el producto";
 

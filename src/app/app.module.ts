@@ -44,8 +44,8 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 
-// import { StreamingMedia } from '@ionic-native/streaming-media/ngx';
-// import { StreamingMedia } from '@awesome-cordova-plugins/streaming-media/ngx';
+
+
 
 
 

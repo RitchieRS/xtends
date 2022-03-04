@@ -29,7 +29,7 @@ export class FechaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
   isValid = 0;
   idStrQuest = "";
   RequiredValue:Validators[]=[Validators.required];
@@ -55,7 +55,7 @@ export class FechaComponent implements OnInit {
      this.respuestaStr = question.respuesta;
      console.log(this.respuestaStr);
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-     this.checkCompleteChild(this.idPregunta,this.isValid);
+     this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
      this.respuestas = {
                       idPregunta:this.idStrQuest,
                       tipo:      this.tipo,
@@ -75,7 +75,7 @@ export class FechaComponent implements OnInit {
       this.respuestas.respuesta = this.abiertaGoup.get('date').value;
       this.respuestas.obligatorio =this.obligatorio;
       this.storage.setObject(this.idStrQuest,this.respuestas);
-      this.checkCompleteChild(this.idPregunta,this.isValid);
+      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
     }else{
       this.isValid = 0;
     }

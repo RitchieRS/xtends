@@ -29,7 +29,7 @@ export class FotografiaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
   respuestas={
     idPregunta:"",
     tipo:      "",
@@ -169,7 +169,7 @@ export class FotografiaComponent implements OnInit {
               this.respuestas.obligatorio = this.obligatorio;
               
               this.isValid=1;
-              this.checkCompleteChild(this.idPregunta,this.isValid);
+              this.checkCompleteChild(this.idPregunta,this.isValid,'NO');
               this.loadInformation();
              
               await this.loadFiles();
@@ -217,7 +217,7 @@ export class FotografiaComponent implements OnInit {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.isValid = question.saveImages.length>0 ? 1 : 0;
-      this.checkCompleteChild(this.idPregunta,this.isValid);
+      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
       this.respuestas.paths= [...question.paths];
       if(question.idPregunta==''){
         this.respuestas.idPregunta = this.idStrQuest;
@@ -249,6 +249,7 @@ export class FotografiaComponent implements OnInit {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.respuestas.idPregunta = this.idStrQuest;
     this.respuestas.tipo = this.tipo;
+    this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
     //alert(this.respuestas.tipo);
     //alert(this.respuestas.paths[0])
     this.storage.setObject(this.idStrQuest,this.respuestas);

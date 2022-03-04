@@ -28,7 +28,7 @@ export class NumericaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
   isValid = 0;
   idStrQuest = "";
   RequiredValue:Validators[];
@@ -55,7 +55,7 @@ export class NumericaComponent implements OnInit {
     this.storage.getObject(this.idStrQuest).then((question: any) => {
      this.respuestaStr = question.respuesta;
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-     this.checkCompleteChild(this.idPregunta,this.isValid);
+     this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
     });
    this.respuestas = {
       idPregunta:this.idStrQuest,
@@ -74,7 +74,7 @@ export class NumericaComponent implements OnInit {
       console.log(this.numericaGroup.get('numerica').value);
       this.respuestas.valid = (this.numericaGroup.get('numerica').value == '' || this.numericaGroup.get('numerica').value === null ) ? 0 : 1 ;
       this.isValid = this.respuestas.valid;
-      this.checkCompleteChild(this.idPregunta,this.isValid);
+      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid = 0;

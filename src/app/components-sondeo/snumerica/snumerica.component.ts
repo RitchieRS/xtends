@@ -55,17 +55,16 @@ urlImage: "0"
   respuestaStr:string;
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
-              private storage: StorageHelperService) { }
+              private storage: StorageHelperService) {
+                this.numericaGroup = this.fb.group({
+                  "numerica": ['', this.RequiredValue],
+                });
+               }
 
   ngOnInit() {
     this.idStrQuest =  this.idSondeo + '||' + this.sku + '||' +this.idPregunta.toString();
     console.log(this.idStrQuest)
-    if(this.obligatorio==1){
-     this.RequiredValue.push(Validators.required);
-    }
-    this.numericaGroup = this.fb.group({
-      "numerica": ['', this.RequiredValue],
-    });
+    
     this.storage.getObject(this.idStrQuest).then((question: any) => {
         this.respuestaStr = question.respuesta.toString();;
         this.isValid = this.respuestaStr.length>0 ? 1 : 0;
@@ -84,15 +83,21 @@ urlImage: "0"
 
   submit(){
     console.log("algo");
-    
-    if(this.numericaGroup.status=="VALID"){
-      this.respuestas.respuesta = this.numericaGroup.get('numerica').value;
-      this.respuestas.valid = (this.numericaGroup.get('numerica').value == null ) ? 0 : 1 ;
-      this.isValid = this.respuestas.valid;
-      this.respuestas.obligatorio = this.obligatorio;
-      this.storage.setObject(this.idStrQuest,this.respuestas);
-    }else{
+    try{
+        console.log(this.numericaGroup.get('numerica').value);
+        console.log("post algo ");
+        if(this.numericaGroup.status=="VALID"){
+          this.respuestas.respuesta = this.numericaGroup.get('numerica').value;
+          this.respuestas.valid = (this.numericaGroup.get('numerica').value == null ) ? 0 : 1 ;
+          this.isValid = this.respuestas.valid;
+          this.respuestas.obligatorio = this.obligatorio;
+          this.storage.setObject(this.idStrQuest,this.respuestas);
+        }else{
 
+        }
+    }
+    catch(e){
+      console.log(e);
     }
 
   }

@@ -2,13 +2,14 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProfileResp, UserProfile } from '../xmodels/user';
+import { Informacion, ProfileResp, UserProfile } from '../xmodels/user';
 import { InfoService } from '../xservices/user/info.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../xservices/auth/login.service';
+
 
 
 const IMAGE_DIR = 'stored-images';
@@ -24,6 +25,9 @@ interface LocalFile {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+
+
+
   habilidades = [
     {
       color:'skybluextend',
@@ -128,7 +132,8 @@ export class ProfileComponent implements OnInit {
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
               public dialog: MatDialog,
-              private srvLog: LoginService) { }
+              private srvLog: LoginService,
+              private infSrv: InfoService) { }
 
   ngOnInit() {
     console.log(this.nivelTermo);
@@ -159,6 +164,10 @@ export class ProfileComponent implements OnInit {
 
 
 
+  }
+
+  training(){
+    this.router.navigate(['training']);
   }
 
 
@@ -415,9 +424,13 @@ closePanel() {
   closeSession() {
 
     console.log("cerrar sesion")
-     this.srvLog.logauth();
-     this.router.navigate(['auth']);
-
+    try{
+      ///alert("cerrar sesion");
+      this.srvLog.logauth();
+      this.router.navigate(['auth']);
+      }catch(e){
+        alert(e);
+      }
 
   }
 

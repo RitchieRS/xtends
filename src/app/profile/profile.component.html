@@ -500,10 +500,10 @@
                       </mat-panel-title>
                     </mat-expansion-panel-header>
                     <div>
-                      <ion-grid class="ion-margin-horizontal">
+                      <ion-grid class="ion-margin-horizontal" >
                         <!-- aquí va el ngFor -->
-                        <ion-row class="ion-margin-bottom" *ngFor="let paso of pasos">
-                          <ion-col size="2" class="ion-align-self-center ion-text-center">
+                        <ion-row (click)="training()" class="ion-margin-bottom" *ngFor="let paso of pasos">
+                          <ion-col  size="2" class="ion-align-self-center ion-text-center">
                               <ion-icon size="small" color="{{paso.colortwo}}" name="{{paso.icon}}"></ion-icon>
                           </ion-col>
                           <ion-col size="7" class="ion-align-self-center">
@@ -516,7 +516,7 @@
                           </ion-col>
                           <ion-col size="3" class="ion-align-self-center ion-text-right">
                             <ion-label>
-                              <ion-text color="cloudysky">
+                              <ion-text color="cloudysky" >
                                 <p class="ion-no-margin">Score</p>
                               </ion-text>
                               <ion-text color="{{paso.colortwo}}">

@@ -37,8 +37,13 @@ export class FooterComponent implements OnInit {
 
   };
   closeSession() {
+    try{
+    //alert("cerrar sesion");
     this.srvLog.logauth();
     this.router.navigate(['auth']);
+    }catch(e){
+      alert(e);
+    }
  }
 
 }

@@ -29,7 +29,7 @@ export class CarruselComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
   respuestas={
     idPregunta:"",
     tipo:      "",
@@ -167,7 +167,7 @@ export class CarruselComponent implements OnInit {
               this.respuestas.saveImages.push(savedFile);
               
               this.isValid=1;
-              this.checkCompleteChild(this.idPregunta,this.isValid);
+              this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
               this.loadInformation();
              
               await this.loadFiles();
@@ -217,7 +217,7 @@ export class CarruselComponent implements OnInit {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.isValid = question.saveImages.length>0 ? 1 : 0;
-      this.checkCompleteChild(this.idPregunta,this.isValid);
+      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
       this.respuestas.paths= [...question.paths];
       console.log(question);
       if(question.idPregunta==''){
