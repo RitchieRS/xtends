@@ -1,10 +1,11 @@
 <div mat-dialog-content>
     <ion-grid class="ion-no-padding">
-      <ion-row [ngClass]="'bg-purplextend'" class="ion-justify-content-end ion-padding">
+      <ion-row [ngClass]="'bg-skybluextend'" class="ion-justify-content-end ion-padding">
         <ion-col size="3">
-            <ion-fab-button mat-dialog-close color="purplextend">
+            <!-- <ion-fab-button mat-dialog-close color="purplextend">
               <ion-icon name="close-outline" color="polarwhite"></ion-icon>
-            </ion-fab-button>
+            </ion-fab-button> -->
+
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -31,6 +32,13 @@
            <button   (click)="missionPending()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
              AHORA <mat-icon >chevron_right</mat-icon>
            </button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" ion-text-end>
+          <button mat-icon-button color="navybluextend" mat-dialog-close aria-label="cerrar">
+            <mat-icon>close</mat-icon>
+          </button>
         </ion-col>
       </ion-row>
     </ion-grid>
