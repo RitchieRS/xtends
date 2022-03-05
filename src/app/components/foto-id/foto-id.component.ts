@@ -38,7 +38,7 @@ export class FotoIdComponent  implements OnInit {
   ngOnInit() {
     this.idStrQuest="app-foto-id";
     this.storage.getObject(this.idStrQuest).then((question: any) => {
-      this.respuestas.paths= [...question.paths];
+      this.respuestas.paths = [...question.paths];
       this.imgLgt = this.respuestas.paths.length;
       console.log(this.respuestas.paths);
       this.loadFiles();
@@ -156,7 +156,7 @@ async saveImage(photo: Photo) {
   // Reload the file list
   // Improve by only loading for the new image and unshifting array!
   this.loadFiles();
-  this.imgLgt=1;
+  
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
   this.respuestas.saveImages.push({img64: base64Data});
   this.storage.setObject(this.idStrQuest,this.respuestas);
@@ -194,12 +194,13 @@ convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
 sendInf() {
   const token = localStorage.getItem('token');
    console.log(this.respuestas);
+   this.imgLgt=1;
    if(this.respuestas.paths.length>0){
       this.srvInf.sendINEFoto(this.respuestas,token).subscribe((res) =>{
             this.images.forEach( (file) =>{
               this.deleteImage(file)
             })
-            this.storage.removeItem(this.idStrQuest);
+           // this.storage.removeItem(this.idStrQuest);
       })
    }
   }

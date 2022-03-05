@@ -140,7 +140,7 @@ export class HomePage {
       logo:""
     };
     switch(tipo) {
-      case "Promotoria": {
+      case 'skybluextend': {
         type.color='#229bd6';
         type.logo="promotoria.svg"
 
@@ -151,17 +151,17 @@ export class HomePage {
         type.logo="mystery.svg"
         break;
       }*#020c3a*/
-      case  "Mistery": {
+      case  'navybluextend': {
         type.color='#020c3a';
         type.logo="mystery.svg"
         break;
       }
-      case "Demostración": {
+      case 'purplextend': {
         type.color='#825aa5';
         type.logo="demostrador.svg"
         break;
       }
-      case "Anaqueleo": {
+      case 'purplextend': {
         type.color='#90c04e';
         type.logo="anaqueleo.svg"
         break;
@@ -197,8 +197,8 @@ export class HomePage {
           type.url='./assets/icon/location-greenxtend.svg';
           break;
         }
-        case  "navibluextend": {
-          type.url='./assets/icon/location-navibluextend.svg';
+        case  "navybluextend": {
+          type.url='./assets/icon/location-navybluextend.svg';
           break;
         }
         case "purplextend": {

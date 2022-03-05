@@ -168,7 +168,7 @@ export class InfoService {
     };
 
 
-    return this.http.post<any>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}user/rfc`,request ,httpOptions).pipe(
           map(( res :  any)=>{
             console.log(res);
             return res;
@@ -210,7 +210,7 @@ export class InfoService {
     };
 
 
-    return this.http.post<any>(`${environment.API_URL}user/iner`,request ,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}user/ine`,request ,httpOptions).pipe(
           map(( res :  any)=>{
             console.log(res);
             return res;

@@ -58,10 +58,10 @@ export class PopoverFiltermapComponent implements OnInit {
             this.storage.setObject('filter-map',this.selected);
      }
      if(mistery){
-           this.selected.push('greenxtend');
+           this.selected.push('navybluextend');
      }else{
           this.selected.forEach((element,index)=>{
-              if(element=='greenxtend') {this.selected.splice(index,1)};
+              if(element=='navybluextend') {this.selected.splice(index,1)};
           });
          this.storage.setObject('filter-map',this.selected);
      }

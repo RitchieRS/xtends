@@ -42,6 +42,7 @@ export class FotoCurpComponent implements OnInit {
       console.log(this.respuestas.paths);
       this.loadFiles();
      });
+    // this.storage.removeItem(this.idStrQuest);
 
 
   }
@@ -86,7 +87,6 @@ export class FotoCurpComponent implements OnInit {
             name: f,
             path: filePath,
             data: `data:image/jpeg;base64,${readFile.data}`,
-
           });
       }
     }
@@ -156,7 +156,7 @@ async saveImage(photo: Photo) {
   this.loadFiles();
   this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
-  this.respuestas.saveImages.push({img64:base64Data});
+  this.respuestas.saveImages =[{img64: base64Data}];
   this.storage.setObject(this.idStrQuest,this.respuestas);
   this.sendInf();
 
@@ -198,7 +198,7 @@ sendInf() {
             this.images.forEach( (file) =>{
               this.deleteImage(file)
             })
-            this.storage.removeItem(this.idStrQuest);
+            //this.storage.removeItem(this.idStrQuest);
       })
    }
   }
