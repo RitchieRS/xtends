@@ -15,6 +15,7 @@ import { ComponentsModule } from '../components/components.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
+import { EvaluationComponent } from './evaluation/evaluation.component';
 
 
 
@@ -26,6 +27,7 @@ import { SwiperModule } from 'swiper/angular';
   declarations: [
     TrainingsListComponent,
     TrainingComponent,
+    EvaluationComponent,
   ],
   imports: [
     CommonModule,
