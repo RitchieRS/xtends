@@ -24,7 +24,7 @@
         </ion-row>
       </ion-grid>
       <ion-grid class="ion-no-padding">
-        <ion-row [ngClass]="'bg-greenxtend'">
+        <ion-row [ngClass]="'bg-skybluextend'">
           <ion-col size="8" class="ion-padding">
            <div class="ion-text-start">
              <ion-label>
@@ -33,7 +33,7 @@
                  <h2><strong>{{nombreActividad}}</strong></h2>
                  <h4 *ngIf="nivel==1" ><ion-icon  name="medal-outline"></ion-icon> Para Nivel Bronce</h4>
                  <h4 *ngIf="nivel==2"><ion-icon   name="medal-outline"></ion-icon> Para Nivel Plata</h4>
-                 <h4 *ngIf="nivel==3"><ion-icon  name="medal-outline"></ion-icon> Para Nivel Dorado</h4> 
+                 <h4 *ngIf="nivel==3"><ion-icon  name="medal-outline"></ion-icon> Para Nivel Dorado</h4>
                </ion-text>
              </ion-label>
            </div>
@@ -66,7 +66,7 @@
                <ion-col>
                  <ion-grid >
                    <ion-row  >
-              
+
                      <ion-col *ngFor="let h of habilidades; let i = index" [ngSwitch]="h.nombreNivel" size="6" size-lg="3">
                       <div *ngIf="i==0"class="iup-car">
                         <div class="box-certificado">
@@ -108,7 +108,7 @@
              <ion-col>
               <section>
                   <div class="iup-button-row">
-                    <app-modalacceptmission></app-modalacceptmission>
+                    <app-modalacceptmission [idPV]="idPV" ></app-modalacceptmission>
                   </div>
               </section>
              </ion-col>

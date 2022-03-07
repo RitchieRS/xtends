@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
+import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
 import { InfoService } from 'src/app/xservices/user/info.service';
 
 
@@ -15,10 +16,12 @@ export class ZonesComponent implements OnInit {
 
   myControl = new FormControl();
   options: string[] = [];
-  selected: string[] = [];
+  selected:string[]=[];
   filteredOptions: Observable<string[]>;
 
-  constructor(private srvInf: InfoService) { }
+  constructor(private srvInf: InfoService,
+              private storage: StorageHelperService
+              ) { }
 
   ngOnInit() {
      const token = localStorage.getItem('token');
@@ -27,18 +30,23 @@ export class ZonesComponent implements OnInit {
       map(value => this._filter(value)),
     );
 
-    let storedCities = JSON.parse(localStorage.getItem("my_colors"));
-    this.options = storedCities;
+     /*let storedCities = JSON.parse(localStorage.getItem("my_colors"));
+     this.selected = storedCities;*/
 
-    /*this.srvInf.getCitiesInformation(token).subscribe((res)=>{
-      
-      Object.keys(res).forEach(val => {
-        console.log(res[val]);
-        this.options.push(res[val].estado+","+res[val].ciudad);
+     this.storage.getObject('zone-stored').then((storedzone: any) => {
+       Object.keys(storedzone).forEach(val => {
+        //console.log(zones[val]);
+        this.selected.push(storedzone[val]);
       });
-      console.log(this.options);
-    })*/
-    this.options = this.ciudades;
+    });
+
+    this.storage.getObject('zone').then((zones: any) => {
+      Object.keys(zones).forEach(val => {
+        //console.log(zones[val]);
+        this.options.push(zones[val].ciudad+","+zones[val].estado);
+      });
+     
+    });
   }
 
   delete(str){
@@ -47,21 +55,31 @@ export class ZonesComponent implements OnInit {
       console.log(element)
       if(element==str) {this.selected.splice(index,1)};
    });
-   localStorage.setItem("my_colors", JSON.stringify(this.selected));
+   this.storage.setObject('zone-stored',this.selected);
+   /*localStorage.setItem("my_colors", JSON.stringify(this.selected));
+   this.storage.getObject('zone-stored').then((storedzone: any) => {
+       this.selected = storedzone;
+    });
+    this.storage.setObject('zone-stored',this.selected);
+   */
    
   }
 
   addOption(option){
-    console.log(option)
+    try{
     this.selected.push(option)
     this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
-    localStorage.setItem("my_colors", JSON.stringify(this.selected));
-    console.dir(this.selected);
+   // localStorage.setItem("my_colors", JSON.stringify(this.selected));
+    this.storage.setObject('zone-stored',this.selected);
+   }catch(e){
+     alert(e);
+   }
+    //this.myControl.reset();
+    //console.dir(this.selected);
   }
 
   private _filter(value: string): string[] {
     const filterValue = value.toLowerCase();
-
     return this.options.filter(option => option.toLowerCase().includes(filterValue));
   }
 
@@ -72,9 +90,9 @@ export class ZonesComponent implements OnInit {
 
 
   ciudades = [
-    "Edo. De México,Tenancingo",
-    "Aguascalientes,Calvillo",
-    "Baja California Norte,Loreto",
+    "Tenancingo,Edo. De México",
+    "Calvillo,Aguascalientes",
+    "LoretoBaja California Norte",
     "Baja California Norte,San Felipe",
     "Baja California Norte,Tecate",
     "Baja California Norte,Tecate",

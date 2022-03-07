@@ -1,0 +1,33 @@
+
+
+      <mat-panel-title>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-text color=navyblue>
+                <h6>{{pregunta}}</h6>
+              </ion-text>
+            </ion-col>
+            <ion-col size="1" *ngIf="isValid==0" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+            <ion-col size="1" *ngIf="isValid==1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </mat-panel-title>
+    
+    <form [formGroup]="unicaRGroup" (ngSubmit)="submit()">
+    <div class="ion-padding-horizontal">
+      <ion-list  radio-group>
+      <ion-item  *ngFor="let radio of opciones; let i = index"   (click)="onChange(i,radio.opcion,radio.idOpcion)" >
+
+        <p> {{radio.opcion}}</p>  <ion-checkbox  [checked]="selected === i"  color="primary" slot="start"></ion-checkbox>
+
+      </ion-item>
+    </ion-list>
+    
+     </div>
+     </form>
+

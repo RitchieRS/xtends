@@ -3,18 +3,20 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  
+  <!-- ---PRELOAD--- -->
+  <!-- <app-preload></app-preload> -->
+
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
      <ion-grid class="bg-polarwhite ion-padding-bottom">
        <ion-row class="ion-padding-horizontal">
          <ion-col size="6" class="ion-text-start ion-align-self-center">
-           <ion-text routerLink="/active-missions" color="navyblue">
+           <ion-text routerLink="/mymissions" color="navyblue">
              <h1 class="ion-no-margin">Misiones activas</h1>
            </ion-text>
 
          </ion-col>
          <ion-col size="6" class="ion-text-end ion-align-self-center">
-           <ion-chip routerLink="/active-missions" class="ion-color ion-color-navyblue chip-outline ">
+           <ion-chip routerLink="/mymissions" class="ion-color ion-color-navyblue chip-outline ">
              <ion-label>Ver todas</ion-label>
              <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
            </ion-chip>
@@ -26,7 +28,12 @@
          <div class="ipck-row-carousel">
            <div *ngIf="isMissionsOn==false" class="ipck-col-carousel ion-padding-vertical">
              <!-- <ITEM - para repetir el ng-repeat> -->
-             <div  class="ipck-item-carousel ion-margin-horizontal" *ngFor="let mission of missionsData">
+
+              <!-- <div *ngIf="isLoaded==0"> -->
+                <div class="body-preload" *ngIf="isLoaded==0">
+                <app-preload></app-preload>
+              </div>
+             <div  class="ipck-item-carousel iup-margin-md" *ngFor="let mission of missionsData">
                <ion-card class="ion-no-margin ion-width-sm border-radius">
                  <ion-item>
                    <div style="width: 50px;" class="ion-margin-end">
@@ -69,8 +76,8 @@
       <div class="ipck-row-carousel">
         <div class="ipck-col-carousel ion-align-items-center">
           <!-- <ITEM - para repetir el ng-repeat> -->
-          <div class="ipck-item-carousel ion-margin-horizontal" *ngFor='let promocion of bannerData'>
-            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-sm shadow border-radius">
+          <div class="ipck-item-carousel iup-margin-md" *ngFor='let promocion of bannerData'>
+            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-xsm shadow border-radius">
                 <ion-row class="ion-align-items-center">
                   <ion-col  size="4" class="ion-text-center">
                     <div class="ion-margin-end-sm">
@@ -83,7 +90,7 @@
                     <div>
                       <ion-card-content class="ion-no-padding">
                         <ion-text color="polarwhite">
-                          <h3 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h3>
+                          <h5 class="ion-text-uppercase"><strong>{{ promocion.titulo }}</strong></h5>
                           <p>{{ promocion.descripcion}}</p>
                         </ion-text>
                       </ion-card-content>
@@ -119,7 +126,7 @@
     <ion-grid>
       <ion-row>
         <!-- <ITEM - para colocar el ngFor> -->
-        <ion-col size="12" size-xl="4" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalDataAux">
+        <ion-col size="12" size-xl="4" size-lg="4" size-md="6" size-sm="6" *ngFor="let available of missionsAvalDataAux  ">
           <ion-grid  class="ion-no-padding border-radius">
             <ion-row>
               <ion-col>
@@ -136,7 +143,7 @@
                                 Colores: {AzulFuerte, mystery = #161949 | AzulCielo, promotor = #229bd6 | Morado, demostrador = #825aa5 | Verde, anaqueleo = #90c04e}
                                 Icons : {mystery.svg | promotoria.svg | demostrador.svg | anaqueleo.svg}
                               -->
-                              <ion-icon [ngStyle]="{color: tipoServicio(available.nombreActividad).color}" class="iup-icon-size-xl" src="../../assets/icon/{{tipoServicio(available.nombreActividad).logo}}"></ion-icon>
+                              <ion-icon [ngStyle]="{color: tipoServicio(available.colorServicio).color}" class="iup-icon-size-xl" src="../../assets/icon/{{tipoServicio(available.colorServicio).logo}}"></ion-icon>
                             </ion-col>
                             <ion-col size="9" class="ion-align-self-center">
                               <ion-label>
@@ -154,9 +161,9 @@
                     </mat-expansion-panel-header>
                          <div>
                               <ion-grid class="ion-no-padding">
-                                <ion-row [ngStyle]="{background:tipoServicio(available.nombreActividad).color}" class="ion-justify-content-center ion-padding">
+                                <ion-row [ngStyle]="{background:tipoServicio(available.colorServicio).color}" class="ion-justify-content-center ion-padding">
                                   <ion-col size="2" class="ion-align-self-center ion-margin-end" >
-                                    <ion-icon [ngStyle]="{color:tipoServicio(available.nombreActividad).color, 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/{{tipoServicio(available.nombreActividad).logo}}" ></ion-icon>
+                                    <ion-icon [ngStyle]="{color:tipoServicio(available.colorServicio).color, 'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl" src="../../assets/icon/{{tipoServicio(available.colorServicio).logo}}" ></ion-icon>
                                   </ion-col>
                                   <ion-col size="6" class="ion-padding-vertical">
                                    <div class="ion-text-start">
@@ -187,7 +194,7 @@
                                            <p>
                                            <strong>Canal</strong> {{ available.detalle.canal}}<br>
                                            <strong>Cadena:</strong> {{ available.detalle.cadena}}<br>
-                                           <strong>Tiempo visita promedio:</strong> {{ available.detalle.tiempo}}
+                                           <strong>Tipo de categoría:</strong> {{ available.detalle.tiempo}}
                                          </p>
                                          </ion-text>
                                        </ion-label>
@@ -251,11 +258,16 @@
 
       </ion-col>
       <ion-col size="6" class="ion-text-end ion-align-self-center">
-        <ion-chip routerLink="/active-missions" class="ion-color ion-color-navyblue chip-outline ">
+        <!-- <ion-chip routerLink="/active-missions" class="ion-color ion-color-navyblue chip-outline ">
           <ion-label>Ver todas</ion-label>
           <ion-icon name="chevron-forward-outline" color="navyblue"></ion-icon>
+        </ion-chip> -->
+        <ion-chip outline color="silverblue" (click)="popoverFilterMap( $event )" expand="block">
+          <ion-icon color="navyblue" name="funnel"></ion-icon>
+          <ion-label color="navyblue">Filtrar</ion-label>
         </ion-chip>
       </ion-col>
+
     </ion-row>
     <ion-row>
       <ion-col size="12">
@@ -294,7 +306,6 @@
         <!-- Modal missiones de los ocion del mapa, hay que cargarles los servicios amigo TEST -->
         <ion-row>
           <ion-col>
-           <app-modalmission></app-modalmission>
           </ion-col>
         </ion-row>
         <!-- /Modal missiones de los ocion del mapa, hay que cargarles los servicios amigo TEST -->

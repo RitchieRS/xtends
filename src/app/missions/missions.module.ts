@@ -14,7 +14,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { ComponentsModule } from '../components/components.module';
-
+import { ComponentsSondeoModule } from '../components-sondeo/components-sondeo.module';
 import { MymissionsComponent } from './mymissions/mymissions.component';
 import { StartMissionComponent } from './start-mission/start-mission.component';
 import { CheckInComponent } from './check-in/check-in.component';
@@ -23,6 +23,9 @@ import { ModalCaptureproductinfoComponent } from './modal-captureproductinfo/mod
 import { DialogCaptureproductinfoComponent } from './modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { AgmCoreModule } from '@agm/core';
+import { CheckOutComponent } from './check-out/check-out.component';
+import { MissionCompleteComponent } from './mission-complete/mission-complete.component';
+import { MissionDetailsComponent } from './mission-details/mission-details.component';
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
@@ -31,9 +34,12 @@ import { AgmCoreModule } from '@agm/core';
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
+    CheckOutComponent,
+    MissionCompleteComponent,
     PendingMissionComponent,
     ModalCaptureproductinfoComponent,
     DialogCaptureproductinfoComponent,
+    MissionDetailsComponent,
   ],
   imports: [
     CommonModule,
@@ -41,6 +47,7 @@ import { AgmCoreModule } from '@agm/core';
     RouterModule,
     IonicModule,
     ComponentsModule,
+    ComponentsSondeoModule,
     CdkAccordionModule,
     MatExpansionModule,
     MatCardModule,
@@ -58,9 +65,12 @@ import { AgmCoreModule } from '@agm/core';
     MymissionsComponent,
     StartMissionComponent,
     CheckInComponent,
+    CheckOutComponent,
+    MissionCompleteComponent,
     PendingMissionComponent,
     ModalCaptureproductinfoComponent,
     DialogCaptureproductinfoComponent,
+    MissionDetailsComponent,
   ],
 })
 export class MissionsModule { }

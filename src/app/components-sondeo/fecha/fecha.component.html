@@ -1,0 +1,36 @@
+
+      <mat-panel-title>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-text color=navyblue>
+                <h6>{{pregunta}}</h6>
+              </ion-text>
+            </ion-col>
+            <ion-col *ngIf="isValid==0" size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+            <ion-col *ngIf="isValid==1"  size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </mat-panel-title>
+
+    <form [formGroup]="abiertaGoup"  (ngSubmit)="submit()"  >
+      <div class="ion-padding-horizontal">
+        <ion-item >
+          <mat-form-field   appearance="outline" class="iup-full-width">
+          <input matInput formControlName="date" value="{{respuestaStr}}" [matDatepicker]="picker"  readonly>
+          <mat-datepicker-toggle matSuffix [for]="picker" ></mat-datepicker-toggle>
+          <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+          </mat-form-field>
+        </ion-item>
+        <div class="iup-button-row">
+          <button   type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            GUARDAR
+          </button>
+        </div>
+      </div>
+   </form>
+

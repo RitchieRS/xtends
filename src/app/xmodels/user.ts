@@ -19,7 +19,7 @@ export interface UserRest{
     nombre: string;
     nombreCompleto: string;
     token: string;
-    confirmaEmail:string;
+    confirmaEmail: string;
 }
 export interface UserRegister{
     name:  string;
@@ -79,9 +79,12 @@ export interface Curso {
 
 export interface Credenciales {
     puesto:   string;
+    foto:     string;
     imss:     string;
     rfc:      string;
     urlFirma: string;
+    urlCredencialImg: string;
+    urlCredencialPDF: string;
 }
 
 export interface Informacion {
@@ -98,7 +101,7 @@ export interface Informacion {
     dirAlcadia:      string;
     dirCd:           string;
     dirCP:           string;
-    
+
 }
 
 export interface NivelesDatos {
@@ -110,3 +113,12 @@ export interface NivelesDatos {
 
 export interface ZonaInteres {
 }
+
+
+export interface InfoCred {
+    puesto?:           string;
+    imss?:             string;
+    rfc?:              string;
+    terminos?:         boolean;
+}
+

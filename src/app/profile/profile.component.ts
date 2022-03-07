@@ -1,17 +1,19 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
-import { ProfileResp, UserProfile } from '../xmodels/user';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Informacion, ProfileResp, UserProfile } from '../xmodels/user';
 import { InfoService } from '../xservices/user/info.service';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Filesystem, Directory } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { MatDialog } from '@angular/material/dialog';
+import { LoginService } from '../xservices/auth/login.service';
+
 
 
 const IMAGE_DIR = 'stored-images';
- 
+
 interface LocalFile {
   name: string;
   path: string;
@@ -23,6 +25,9 @@ interface LocalFile {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
+
+
+
   habilidades = [
     {
       color:'skybluextend',
@@ -106,66 +111,79 @@ export class ProfileComponent implements OnInit {
   fechaNacimiento: Date;
   movil: string;
   userForm: FormGroup;
+  credForm: FormGroup;
   images: LocalFile[] = [];
   nivelXtender:string;
   nivelTermo=([...Array(16).fill(0)]);
   imgDomicilio:LocalFile;
   searchCitiesFiler:string;
-
+  fotoSelfOk=0;
+  signOk=0;
   puesto:   string;
   imss:     string;
   rfc:      string;
   urlFirma: string;
 
-  
+
   imgDom=false;
-  constructor(private route: ActivatedRoute,
+  constructor(private router: Router,
+              private route: ActivatedRoute,
               private srvProfile : InfoService,
               public fb  : FormBuilder,
               private plt: Platform,
               private loadingCtrl: LoadingController,
               private toastCtrl: ToastController,
-              public dialog: MatDialog) { }
+              public dialog: MatDialog,
+              private srvLog: LoginService,
+              private infSrv: InfoService) { }
 
   ngOnInit() {
     console.log(this.nivelTermo);
     this.userForm = this.fb.group({
-       nombre : ['', [Validators.minLength(4)]],
-       apat: ['', [Validators.minLength(4)]],
-       amat: ['', [Validators.minLength(4)]],
-       dirAlcadia : ['', [Validators.minLength(4)]],
-       dirCP: ['',[Validators.pattern("^[0-9]*$"),
-      Validators.minLength(5)]],
-       dirCalle: ['', [Validators.minLength(4)]],
-      dirCd: ['', [Validators.minLength(4)]],
-      dirColonia: ['', [Validators.minLength(4)]],
-      dirNumExt: ['', [Validators.minLength(4)]],
-      dirNumInt: ['', [Validators.minLength(4)]],
-      email: ['', [
-                    Validators.email]],
-       fechaNacimiento: ['', []],
-      movil: ['',[ Validators.pattern("^[0-9]*$")]],
-      terminos: [false,[ Validators.required,Validators.required]]
-      
-
+          nombre : ['', [Validators.minLength(4)]],
+          apat: ['', [Validators.minLength(4)]],
+          amat: ['', [Validators.minLength(4)]],
+          dirAlcadia : ['', [Validators.minLength(4)]],
+          dirCP: ['',[Validators.pattern("^[0-9]*$"),
+          Validators.minLength(5)]],
+          dirCalle: ['', [Validators.minLength(4)]],
+          dirCd: ['', [Validators.minLength(4)]],
+          dirColonia: ['', [Validators.minLength(4)]],
+          dirNumExt: ['', [Validators.minLength(4)]],
+          dirNumInt: ['', [Validators.minLength(4)]],
+          email: ['', [
+                        Validators.email]],
+          fechaNacimiento: ['', []],
+          movil: ['',[ Validators.pattern("^[0-9]*$")]],
+          terminos: [false,[ Validators.required,Validators.required]]
     });
-    
+    this.credForm = this.fb.group({
+      imss : ['', [Validators.minLength(4),Validators.required]],
+      rfc: ['', [Validators.minLength(4),Validators.required]],
+      puesto: ['', [Validators.minLength(4),Validators.required]],
+      terminos: [false,[ Validators.required,Validators.required]]
+});
 
-    this.initData(); 
 
-   
-    
-      
+    this.initData();
+
+
+
+
   }
 
- 
+  training(){
+    this.router.navigate(['training']);
+  }
+
+
   async loadFiles() {
     this.images =[];
     const loading = await this.loadingCtrl.create({
       message: 'Loading data...',
     });
     await loading.present();
- 
+
     Filesystem.readdir({
       path: IMAGE_DIR,
       directory: Directory.Data,
@@ -183,18 +201,18 @@ export class ProfileComponent implements OnInit {
       loading.dismiss();
     });
   }
- 
+
   // Get the actual base64 data of an image
   // base on the name of the file
   async loadFileData(fileNames: string[]) {
     for (let f of fileNames) {
       const filePath = `${IMAGE_DIR}/${f}`;
- 
+
       const readFile = await Filesystem.readFile({
         path: filePath,
         directory: Directory.Data,
       });
- 
+
       this.images.push({
         name: f,
         path: filePath,
@@ -202,18 +220,22 @@ export class ProfileComponent implements OnInit {
       });
     }
   }
- 
+
   // Little helper
   async presentToast(text) {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
+
     });
     toast.present();
   }
- 
 
- 
+
+
   async deleteImage(file: LocalFile) {
     await Filesystem.deleteFile({
         directory: Directory.Data,
@@ -229,11 +251,11 @@ export class ProfileComponent implements OnInit {
         resultType: CameraResultType.Uri,
         source: CameraSource.Camera // Camera, Photos or Prompt!
     });
- 
+
     if (image) {
         this.saveImage(image)
     }
-} 
+}
     async selectDocument() {
       const image = await Camera.getPhoto({
           quality: 90,
@@ -299,15 +321,15 @@ async startUpload(file: LocalFile) {
   const response = await fetch(file.data);
   const blob = await response.blob();
   const formData = new FormData();
-  formData.append('imgDomicilio', blob, file.name); 
+  formData.append('imgDomicilio', blob, file.name);
   console.log(formData);
   this.deleteImage(file)
   //this.uploadData(formData);
 }
 
 
-  async updateData(){
-    
+async updateData(){
+
     const token = localStorage.getItem('token');
     console.log("soy un input");
     if(this.userForm.value.terminos==false){
@@ -315,8 +337,8 @@ async startUpload(file: LocalFile) {
       return;
     }
     this.presentToast('Actualizando Información.');
-  
-    
+
+
     ;(await this.srvProfile.updateProfileInformation(token, this.userForm.value, this.imgDomicilio)).subscribe((res) =>{
       if(res){
         this.panelOpenState = false;
@@ -325,14 +347,59 @@ async startUpload(file: LocalFile) {
         this.images.forEach( (file) =>{
           this.deleteImage(file)
          })
-      
+
 
       }
     })
 
 
   }
+   
+  async updateCredentials(){
+    console.log("soy una credencial")
+    const token = localStorage.getItem('token');
+    console.log(this.credForm.value)
+    
+    if(this.fotoSelfOk==0){
+      this.presentToast('Actualice su fotografía');
+      return;
+    }
+    
+    if(this.signOk==0){
+      this.presentToast('Actualice su firma');
+      return;
+    }
+    if(this.credForm.value.terminos==false){
+      this.presentToast('Acepte los términos y condiciones');
+      return;
+    }
+    console.log(this.credForm.status);
+    if(this.credForm.status=="INVALID"){
+      this.presentToast('LLenen todos los datos requeridos');
+      return;
+    }
 
+    
+    
+    this.presentToast('Actualizando Información.');
+
+
+    ;(await this.srvProfile.updateInformationCredential(token, this.credForm.value)).subscribe((res) =>{
+      if(res){
+        console.log(res);
+        this.panelOpenState = false;
+        this.initData();
+        this.presentToast('Listo.');
+        this.images.forEach( (file) =>{
+          this.deleteImage(file)
+         })
+
+
+      }
+    })
+
+
+  }
 
   initData(){
     const token = localStorage.getItem('token');
@@ -370,7 +437,7 @@ async startUpload(file: LocalFile) {
             this.nivelTermo[i]=1;
           }
         }
-        
+
         this.userForm.setValue({
           nombre: this.nombre,
           apat: this.apat,
@@ -388,7 +455,7 @@ async startUpload(file: LocalFile) {
           terminos: false
 
         })
-     
+
 
       }
     })
@@ -398,11 +465,35 @@ async startUpload(file: LocalFile) {
     if(name.length==0){
       return "Coloca aquí tu "+ field;
     }
-    
+
   }
+
+  checkPhotoCompleteParent = (isValid:number): void => {
+   this.fotoSelfOk = isValid;
+
+  }
+
+  checkSignParent = (isOk:number): void => {
+    this.signOk = isOk;
+ 
+   }
+
 
 closePanel() {
     this.panelOpenState = false;
+  }
+
+  closeSession() {
+
+    console.log("cerrar sesion")
+    try{
+      ///alert("cerrar sesion");
+      this.srvLog.logauth();
+      this.router.navigate(['auth']);
+      }catch(e){
+        alert(e);
+      }
+
   }
 
 }

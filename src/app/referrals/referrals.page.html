@@ -24,7 +24,7 @@
           <ion-row [ngClass]="'bg-navyblue'" class="ion-justify-content-center ion-padding">
             <ion-col size="12" class="ion-align-self-center bg-whitex ion-padding-vertical border-rodondos">
                <ion-text class="ion-text-center" color="navybluextend">
-                 <h2><strong>kahfuiw348573984fh</strong></h2>
+                 <h2><strong>{{code}}</strong></h2>
                </ion-text>
             </ion-col>
           </ion-row>
@@ -34,14 +34,20 @@
     <ion-grid>
       <ion-row>
         <ion-col size="6" class="ion-text-center">
-          <button mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+          <app-modalqr
+              [imageqr]="qrimage">
+            </app-modalqr>
+          <!-- <button mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
             <ion-icon name="qr-code-outline" size="large" class="ion-padding-top" color="primary"></ion-icon> <br> VER CÓDIGO QR
-          </button>
+          </button> -->
         </ion-col>
         <ion-col size="6" class="ion-text-center">
-          <button mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+          <app-modalcodigo
+                        [codeReco]="coder"
+                        ></app-modalcodigo>
+          <!-- <button mat-raised-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
             <ion-icon name="share-social-outline" size="large" class="ion-padding-top" color="primary" ></ion-icon> <br> COMPARTE
-          </button>
+          </button> -->
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -74,7 +80,7 @@
                       Jalapa, Posa Rica
                     </p>
                     <p>
-                      <strong>Tiempo de la visita: </strong>30 mins.
+                      <strong>Tiempo de la visita: </strong>.
                     </p>
                 </ion-text>
                 </ion-col>

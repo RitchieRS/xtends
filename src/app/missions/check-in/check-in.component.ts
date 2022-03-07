@@ -30,13 +30,13 @@ export class CheckInComponent implements OnInit {
         height: 60
     }
   }
-  constructor(private checks:CheckinserviceService,
+  constructor(private checks: CheckinserviceService,
               private route: ActivatedRoute,
               private locationService: LocationService,
               public ngZone: NgZone,
               private router: Router,
               private _mapsAPILoader: MapsAPILoader,
-              private toastCtrl: ToastController,) { 
+              private toastCtrl: ToastController) {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.token = localStorage.getItem('token');
     this.lat = 19.4216458;
@@ -52,8 +52,8 @@ export class CheckInComponent implements OnInit {
      this._mapsAPILoader.load().then(() => {
       //do stuff here
       });
-   
-    
+
+
     /**
      *  "lat": 19.4216458,
     "lgn": -99.0691779
@@ -74,34 +74,34 @@ export class CheckInComponent implements OnInit {
 
 
 
-  checkIn(){
+  async checkIn(){
     //console.log(this.dataCheckIn);
-    this.router.navigate(['start-mission/'+this.idPV])
-    this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
+
+    const chek = await this.checks.checkin(this.token,this.dataCheckIn).subscribe((res) =>{
        console.log(res)
        this.checkin = res;
-       //this.router.navigate(['start-mission/'+this.idPV])
-       /*this.isLocationAvailalble  = this.checkin.idError;
-       if(this.isLocationAvailalble==1){
-         this.presentToast(this.checkin.resp)
-       }else{
-        
-       }*/
-       
+
     })
 
-  } 
+    this.router.navigate(['start-mission/'+this.idPV])
+
+  }
 
   ngOnInit() {
     (async () => {
-      const data = await this.getMyLocation()
+      const data = await this.getMyLocation();
     })();
   }
 
- 
+  async refrechUbicationLogIn(){
+    const data = await this.getMyLocation();
+    this.presentToast('Ubicación actualizada');
+  }
+
+
 
   async getMyLocation() {
-    
+
     const hasPermission = await this.locationService.checkGPSPermission();
     if (hasPermission) {
       if (Capacitor.isNative) {
@@ -114,10 +114,10 @@ export class CheckInComponent implements OnInit {
     else {
 
       const permission = await this.locationService.requestGPSPermission();
-      
+
       if (permission === 'CAN_REQUEST' || permission === 'GOT_PERMISSION') {
         if (Capacitor.isNative) {
-          
+
           const canUseGPS = await this.locationService.askToTurnOnGPS();
           this.postGPSPermission(canUseGPS);
         }
@@ -132,7 +132,7 @@ export class CheckInComponent implements OnInit {
   }
 
   async postGPSPermission(canUseGPS: boolean) {
-  
+
     if (canUseGPS) { this.watchPosition(); }
     else {
       await Toast.show({
@@ -152,7 +152,7 @@ export class CheckInComponent implements OnInit {
           this.lgn = position.coords.longitude
           this.locationService.setLocation(this.lat,this.lgn);
           this.clearWatch();
-          
+
         })
       })
       //alert(`Try Whatch position${this.watchId}`);
@@ -161,7 +161,7 @@ export class CheckInComponent implements OnInit {
   }
 
   clearWatch() {
-    
+
     if (this.watchId != null) {
       Geolocation.clearWatch({ id: this.watchId });
     }
@@ -172,8 +172,16 @@ export class CheckInComponent implements OnInit {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
     });
     toast.present();
+  }
+
+  async refreshUbication(){
+    const data = await this.getMyLocation();
+    this.presentToast("Ubicación actualizada");
   }
 
 

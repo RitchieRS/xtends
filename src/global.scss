@@ -25,6 +25,50 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+agm-map{
+  height: 300px
+}
+
+.body-preload{
+
+  height: 100% !important;
+  width: 100% !important;
+  position: fixed !important;
+  z-index: 99999999999999 !important;
+  // margin: 0px !important;
+  // padding: 0px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // transform: translate(50%, 50%);
+
+  transition: all 1s ease;
+  -o-transition: all 1s ease;
+  -webkit-transition: all 1s ease;
+  }
+  .flex-preload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-items: center;
+  width: 150px !important;
+  height: 150px;
+  background-color: #e3ebf3;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: translate(0%, -70%);
+  }
+
+  .flex-preload>div {
+  background-color: #e3ebf3;
+  color: white;
+  width: 120px;
+  height: 120px;
+  align-self: center;
+  }
+
+
+
 .iup-button-container-close {
   display: flex;
   justify-content: right;
@@ -305,6 +349,9 @@ hr{
 .ipck-item-carousel {
   height: auto;
   font-size: 30px;
+}
+.ion-width-xsm{
+  width: 250px !important;
 }
 .ion-width-sm{
   width: 300px !important;

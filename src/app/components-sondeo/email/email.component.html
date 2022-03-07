@@ -1,0 +1,29 @@
+<div>
+      <mat-panel-title>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-text color=navyblue>
+                <h6>{{pregunta}}</h6>
+              </ion-text>
+            </ion-col>
+            <ion-col *ngIf="isValid==0" size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "navyblue" name="information-circle" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+            <ion-col *ngIf="isValid==1"  size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </mat-panel-title>
+
+    <form [formGroup]="emailGroup"  (ngSubmit)="submit()"  >
+      <div class="ion-padding-horizontal">
+        <ion-item >
+          <ion-input type="email" formControlName="email" placeholder="Escribe aquì tu respuesta" (change)="submit()" value="{{respuestaStr}}"></ion-input>
+        </ion-item>
+        
+      
+      </div>
+   </form>
+</div>

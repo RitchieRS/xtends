@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { HomePage } from './home.page';
+import { Actividad, HomePage } from './home.page';
 import { AgmCoreModule } from '@agm/core';
 import { HomePageRoutingModule } from './home-routing.module';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
@@ -37,6 +37,6 @@ import { ComponentsModule } from '../components/components.module';
     ComponentsModule,
     AgmCoreModule
   ],
-  declarations: [HomePage]
+  declarations: [HomePage,Actividad ]
 })
 export class HomePageModule {}

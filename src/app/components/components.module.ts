@@ -1,7 +1,8 @@
+
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule} from '@ionic/angular';
-
+import { BrowserModule } from '@angular/platform-browser';
 // Materials Angular
 import { MatIconModule } from '@angular/material/icon';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -29,10 +30,18 @@ import { DialogacceptmissionComponent } from './modalacceptmission/dialogacceptm
 import { ModalcheckinComponent } from './modalcheckin/modalcheckin.component';
 import { DialogcheckinComponent } from './modalcheckin/dialogcheckin/dialogcheckin.component';
 import { HeaderTwoComponent } from './header-two/header-two.component';
-import { FirmComponent } from './firm/firm.component';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { SocialShareBtnComponent } from './social-share-btn/social-share-btn.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PrintcredentialComponent } from './printcredential/printcredential.component';
+import { FirmComponent } from './firm/firm.component';
+import { PreloadComponent } from './preload/preload.component';
+import { FotoDomComponent } from './foto-dom/foto-dom.component';
+import { FotoIdComponent } from './foto-id/foto-id.component';
+import { FotoCurpComponent } from './foto-curp/foto-curp.component';
+import { FotoSelfComponent } from './foto-self/foto-self.component';
+import { CamBcComponent } from './cam-bc/cam-bc.component';
+import { PopoverFiltermapComponent } from './popover-filtermap/popover-filtermap.component';
 
 
 
@@ -46,13 +55,21 @@ import { ReactiveFormsModule } from '@angular/forms';
     ZonesComponent,
     HideHeaderDirective,
     PopoverInfoComponent,
+    PopoverFiltermapComponent,
     ModalmissionComponent,
     DialogmissionComponent,
     ModalacceptmissionComponent,
     DialogacceptmissionComponent,
     ModalcheckinComponent,
     DialogcheckinComponent,
+    PrintcredentialComponent,
     FirmComponent,
+    PreloadComponent,
+    FotoIdComponent,
+    FotoDomComponent,
+    FotoCurpComponent,
+    FotoSelfComponent,
+    CamBcComponent
   ],
   exports:[
     FooterComponent,
@@ -67,8 +84,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     DialogacceptmissionComponent,
     ModalcheckinComponent,
     DialogcheckinComponent,
-    FirmComponent,
     SocialShareBtnComponent,
+    PrintcredentialComponent,
+    FirmComponent,
+    PreloadComponent,
+    FotoIdComponent,
+    FotoDomComponent,
+    FotoCurpComponent,
+    FotoSelfComponent,
+    CamBcComponent
   ],
   imports: [
     CommonModule,
@@ -87,6 +111,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatAutocompleteModule,
     SignaturePadModule,
+
   ]
 })
 export class ComponentsModule { }

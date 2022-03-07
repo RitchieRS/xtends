@@ -52,6 +52,7 @@ export interface Section3Content {
     pago:            string;
     nivel:           number;
     detalle:         Detalle;
+    colorServicio:   string;
 }
 
 export interface Detalle {

@@ -13,9 +13,9 @@ export class DialogcheckinComponent implements OnInit {
 
   ngOnInit() {}
 
-  home(){
+  training(){
     this.dialog.closeAll();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/training']);
   }
 
 }

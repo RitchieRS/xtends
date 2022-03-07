@@ -13,14 +13,15 @@ const helper = new JwtHelperService();
 })
 export class HomeService {
 
-  constructor(private http : HttpClient,private saveInfoUsers : InfoService) { }
+  constructor(private http : HttpClient,
+    private saveInfoUsers : InfoService) { }
 
   getDataHome( token : string,location : HomeLocation):Observable<Home| void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
         'Content-Type': 'application/json',
-        'Authorization' : token  
+        'Authorization' : token
       }),
       responseType: 'json' as 'json'
     };
@@ -28,7 +29,7 @@ export class HomeService {
    /*
       "lat": 19.4216458,
       "lgn": -99.0691779
-  } 
+  }
    */
     return this.http.post<Home>(`${environment.API_URL}home`, {
       "lat": 19.4216458,

@@ -8,6 +8,7 @@ import { WalletRoutingModule } from './wallet/wallet-routing.module';
 import { SlidePageRoutingModule } from './slide/slide-routing.module';
 import { MissionsRoutingModule } from './missions/missions-routing.module';
 import { XtendLevelsRoutingModule } from './xtend-levels/xtend-levels-routing.module';
+import { TrainingsRoutingModule } from './trainings/trainings-routing-module';
 
 
 
@@ -60,6 +61,10 @@ const routes: Routes = [
     loadChildren: () => import('./xtend-levels/xtend-levels.module').then( m => m.XtendLevelsModule)
   },
   {
+    path: 'trainings-list',
+    loadChildren: () => import('./trainings/trainings.module').then( m => m.TrainingsModule)
+  },
+  {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
   },
 
@@ -77,7 +82,8 @@ const routes: Routes = [
     ProfileRoutingModule,
     SlidePageRoutingModule,
     MissionsRoutingModule,
-    XtendLevelsRoutingModule
+    XtendLevelsRoutingModule,
+    TrainingsRoutingModule
   ]
 })
 export class AppRoutingModule { }

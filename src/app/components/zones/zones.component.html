@@ -9,7 +9,7 @@
            [formControl]="myControl"
            [matAutocomplete]="auto"  >
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="addOption(option)">
+      <mat-option *ngFor="let option of filteredOptions | async " [value]="option" (click)="addOption(option)">
         <mat-icon matSuffix  class="ion-color-navyblue">add_location_alt</mat-icon> {{option}}
       </mat-option>
     </mat-autocomplete>
@@ -19,8 +19,10 @@
   <ion-icon name="location-outline" color="navyblue"></ion-icon>
   <ion-label><strong>Ubicación Actual</strong></ion-label>
 </ion-chip>
-<ion-chip *ngFor="let option of selected; let i = index " outline color="navyblue" slot="start">
+<ion-chip *ngFor="let option of selected" outline color="navyblue" slot="start">
+  <div  >
   <ion-icon name="location-outline" color="navyblue"></ion-icon>
   <ion-label>{{option}}</ion-label>
   <ion-icon (click)="delete(option)" name="close"></ion-icon>
+  </div>
 </ion-chip>

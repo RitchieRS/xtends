@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { ReqMission, ResMissionAccepted } from 'src/app/xmodels/missions';
@@ -11,17 +11,22 @@ import { DialogacceptmissionComponent } from './dialogacceptmission/dialogaccept
   templateUrl: './modalacceptmission.component.html',
   styleUrls: ['./modalacceptmission.component.scss'],
 })
-export class ModalacceptmissionComponent {
+export class ModalacceptmissionComponent implements OnInit{
 
+  
+  
+  @Input() idPV : number ;
   dataMission : ReqMission;
-  token: string;
+  token:string;
   message = '';
   isMission : ResMissionAccepted;
   accepted = false;
-  idPV=0;
   TextState="Aceptar Misión";
   constructor(public dialog: MatDialog,private route: ActivatedRoute,private srvMission : MissionService) { 
-    this.idPV = Number(localStorage.getItem('idPV'));
+    //this.idPV = Number(localStorage.getItem('idPV'));
+    
+  }
+  ngOnInit(): void {
     this.token = localStorage.getItem('token');
     this.dataMission = {
       "idPV": this.idPV,
@@ -34,10 +39,10 @@ export class ModalacceptmissionComponent {
   }
 
 
-  openMissionAccept(){
+  async openMissionAccept(){
     console.log(this.dataMission);
     this.TextState = "Espere.."
-    this.srvMission.acceptMissionXTiendaProyecto(this.dataMission,this.token).subscribe((res) =>{
+    await this.srvMission.acceptMissionXTiendaProyecto(this.dataMission,this.token).subscribe((res) =>{
       this.isMission = res; 
       if(this.isMission.idError==0){ 
         

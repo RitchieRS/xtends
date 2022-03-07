@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-
+import { FormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -19,7 +19,8 @@ import { WalletModule } from './wallet/wallet.module';
 import { ProfileModule } from './profile/profile.module';
 import { PipesModule } from './pipes/pipes.module';
 import { SlidePageModule } from './slide/slide.module';
-import { XtendLevelsModule } from "./xtend-levels/xtend-levels.module";
+import { XtendLevelsModule } from './xtend-levels/xtend-levels.module';
+import { ComponentsSondeoModule } from './components-sondeo/components-sondeo.module';
 
 // Google Materials Angular
 import { MatCardModule } from '@angular/material/card';
@@ -38,7 +39,17 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
+import { SignaturePadModule } from 'angular2-signaturepad';
+import { ClipboardModule } from '@angular/cdk/clipboard';
+//import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
+
+
+
+
+
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { TrainingsModule } from './trainings/trainings.module';
 
 
 
@@ -50,6 +61,7 @@ import { MissionsModule } from './missions/missions.module';
   [
     BrowserModule,
     IonicModule.forRoot(),
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -61,6 +73,7 @@ import { MissionsModule } from './missions/missions.module';
     MatGridListModule,
     MatIconModule,
     ComponentsModule,
+    ComponentsSondeoModule,
     AuthModule,
     RouterModule,
     MissionModule,
@@ -79,11 +92,17 @@ import { MissionsModule } from './missions/missions.module';
     MatDialogModule,
     MatAutocompleteModule,
     MatTabsModule,
+    SignaturePadModule,
+    ClipboardModule,
+    TrainingsModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy, }],
+  providers: [
+    BarcodeScanner,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
+  ],
   bootstrap: [AppComponent],
 
 })

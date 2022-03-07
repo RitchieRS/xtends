@@ -1,26 +1,51 @@
-<ion-footer>
-  <ion-toolbar style="height: 50px;">
-      <div>
-    <!--<ion-tabs></ion-tabs>-->
-        <ion-tab-bar slot="bottom" class="no-border">
-          <ion-tab-button (click)="back()" tab="schedule">
-            <!-- <ion-icon name="flag-outline" color="primary"></ion-icon> -->
-            <ion-icon name="arrow-back-circle-outline" color="primary"></ion-icon>
-          </ion-tab-button>
+<ion-footer style="background-color: white;">
 
-          <ion-tab-button tab="speakers">
-            <ion-icon (click)="wallet()" name="wallet-outline" color="primary"></ion-icon>
-          </ion-tab-button>
 
-          <ion-tab-button  tab="map" class="">
-            <ion-icon (click)="referrals()" name="people-outline" color="primary"></ion-icon>
-          </ion-tab-button>
+      <div style="height: 56px; ">
 
-          <ion-tab-button  (click)="profile()" tab="about">
-            <ion-icon name="person-circle-outline" color="primary"></ion-icon>
-          </ion-tab-button>
-        </ion-tab-bar>
+        <ion-grid style="padding-top:24px;">
+          <ion-row>
+            <ion-col size="3">
+              <ion-fab vertical="center" horizontal="center">
+              <ion-fab-button (click)="back()"  mode="ios" color="whitex" style="--box-shadow: none; --background: white;">
+                <ion-icon name="arrow-back-circle-outline" color="primary"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+            </ion-col>
+            <ion-col size="3">
+              <ion-fab vertical="center" horizontal="center">
+              <ion-fab-button mode="ios" color="whitex" style="--box-shadow: none; --background: white;">
+                <ion-icon (click)="wallet()" name="wallet-outline" color="primary"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+            </ion-col>
+            <ion-col size="3">
+              <ion-fab vertical="center" horizontal="center">
+              <ion-fab-button  mode="ios" color="whitex" style="--box-shadow: none; --background: white;">
+                <ion-icon (click)="profile()" name="person-outline" color="primary"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+            </ion-col>
+            <ion-col size="3">
+              <ion-fab vertical="center" horizontal="center">
+                <ion-fab-button mode="ios" color="whitex" style="--box-shadow: none; --background: white;">
+                  <ion-icon name="ellipsis-vertical-circle-outline" color="skybluextend"></ion-icon>
+                </ion-fab-button>
+                <ion-fab-list side="top">
+                  <ion-fab-button mode="ios" style="width: 56px; height: 56px;" (click)="referrals()">
+                    <ion-icon size="large" color="skybluextend" name="people-outline"></ion-icon>
+                  </ion-fab-button>
+                  <ion-fab-button mode="ios" style="width: 56px; height: 56px;" (click)="closeSession()">
+                    <ion-icon size="large" color="skybluextend" name="log-out-outline"></ion-icon>
+                  </ion-fab-button>
+                </ion-fab-list>
+              </ion-fab>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
       </div>
-  </ion-toolbar>
+
 </ion-footer>
 

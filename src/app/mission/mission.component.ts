@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { MissionService } from '../xservices/mission/mission.service';
-import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/missions'
- 
+import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/missions';
+
 @Component({
   selector: 'app-mission',
   templateUrl: './mission.component.html',
@@ -43,13 +43,16 @@ export class MissionComponent  {
 
   ];
 
-  constructor(private route: ActivatedRoute,private srvMission : MissionService ) { }
+  idPV:number;
+  constructor(private route: ActivatedRoute,private srvMission : MissionService ) { 
+    this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
+  }
 
   ngOnInit() {
-    const idPV = Number(this.route.snapshot.paramMap.get('idPV'));
+   
     const token = localStorage.getItem('token');
     const dataMission = {
-      "idPV": idPV
+      "idPV": this.idPV
     };
     this.srvMission.keepMissionInfo(dataMission);
     this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
@@ -69,14 +72,14 @@ export class MissionComponent  {
         console.log(this.habilidades);
         /* Misiones Activas*/
         if(this.infMission.resp.idTienda != undefined){
-          
+
         }
       }
     })
 
   }
 
-  
+
 
   acceptMissionXProyect(){
     console.log("Start Mission");

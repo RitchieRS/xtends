@@ -13,9 +13,9 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 export class MovementComponent implements OnInit {
 
   dataWallet:MovimientoResponse;
-  saldoPendiente: number;
-  saldoTotal: number;
-  totalGanado: number;
+  saldoPendiente = 0.0;
+  saldoTotal=  0.0;
+  totalGanado=  0.0;
   movimientos: Movimiento[];
 
   detallemovimientos =[
@@ -61,8 +61,8 @@ export class MovementComponent implements OnInit {
     this.srvWallet.getWalletMovements(token).subscribe((res) =>{
       if(res){
         this.dataWallet = res;
-        this.saldoPendiente = this.dataWallet.saldoPendiente;
-        this.saldoTotal = this.dataWallet.saldoTotal;
+        this.saldoPendiente = (this.dataWallet.saldoPendiente==null) ? 0  : this.dataWallet.saldoPendiente;
+        this.saldoTotal = (this.dataWallet.saldoTotal==null )? 0 :this.dataWallet.saldoTotal;
         this.totalGanado = this.dataWallet.totalGanado;
         this.movimientos = this.dataWallet.movimientos;
      

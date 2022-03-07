@@ -43,7 +43,11 @@ export class LoginService {
   };
 
 
-  logauth(): void{}
+  logauth(): void{
+    localStorage.removeItem('token');
+    this.loggedIn.next(false);
+  }
+  
   private checkToken():void{
     const userToken = localStorage.getItem('token');
     const isExpired = helper.isTokenExpired(userToken);

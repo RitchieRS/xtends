@@ -14,8 +14,8 @@ export class ForgotComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  submitted =false; 
-  constructor(private router: Router,private login : LoginService, private fb : FormBuilder,private toastCtrl: ToastController,) { }
+  submitted =false;
+  constructor(private router: Router,private login : LoginService, private fb : FormBuilder,private toastCtrl: ToastController) { }
 
   get f(): { [key: string]: AbstractControl } {
     return this.forgotForm.controls;
@@ -28,11 +28,11 @@ export class ForgotComponent implements OnInit {
                     Validators.email]],
     });
   }
-  onForgot(): void{  
-    this.submitted =true;  
+  onForgot(): void{
+    this.submitted =true;
    this.presentToast("Se te ha enviado un email.")
-    
-    const formValue = this.forgotForm.value; 
+
+    const formValue = this.forgotForm.value;
     this.login.forgot(formValue).subscribe((res) =>{
         console.log(res['idError']);
         if(res['idError']==0){
@@ -41,16 +41,19 @@ export class ForgotComponent implements OnInit {
           this.isSignUpFailed = true;
         }
       })
-    
+
   }
 
   async presentToast(text) {
     const toast = await this.toastCtrl.create({
       message: text,
       duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
     });
     toast.present();
   }
- 
+
 
 }
