@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { TrainingComponent } from './training/training.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
+import { EvaluationComponent } from './evaluation/evaluation.component';
 
 const routes: Routes = [
   {
@@ -21,7 +22,11 @@ const routes: Routes = [
       {
       path: 'training',
         component: TrainingComponent
-      }
+      },
+      {
+        path: 'evaluation',
+        component: EvaluationComponent
+      },
 
     ]
   }
