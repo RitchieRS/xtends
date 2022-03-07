@@ -28,26 +28,110 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <ion-grid>
-          <ion-row>
-            <ion-col size="12" class="ion-padding">
-              <ion-text color="navyblue">
-                <h6>
-                  Información de la visita.
-                </h6>
-              </ion-text>
 
-            </ion-col>
-            <ion-col size="12" class="ion-padding">
-              <ion-text color="navyblue">
-                <h6>
-                  Registro a la tienda.
-                </h6>
-              </ion-text>
-            </ion-col>
 
-          </ion-row>
-        </ion-grid>
+        <ion-card>
+          <ion-grid>
+            <ion-row class="ion-padding-horizontal">
+              <ion-col size="12" class="ion-no-padding">
+                <ion-text color="navyblue">
+                  <h6>
+                    Información de la visita.
+                  </h6>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-card-content>
+            <mat-accordion>
+              <!-- ESte es el que se repite amigo -->
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <ion-text color="navyblue">
+                        <h3>
+                          Registro
+                        </h3>
+                    </ion-text>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <!-- esto es lo que se despliega pa abajo -->
+                <ion-grid class="ion-margin" >
+                  <ion-row class="ion-margin-bottom">
+                    <ion-col size="12" class="ion-align-self-center">
+                      <ion-label>
+                        <ion-text color="cloudysky">
+                          <p class="ion-no-margin"><strong>Nombre completo</strong></p>
+                          <p>Nicols Tesla Tasla</p>
+                        </ion-text>
+                      </ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-margin-bottom">
+                    <ion-col size="12" class="ion-align-self-center">
+                      <ion-label>
+                        <ion-text color="cloudysky">
+                          <p class="ion-no-margin"><strong>Confirma tu ubicación</strong></p>
+                          <p>Ubicación confirmada</p>
+                        </ion-text>
+                      </ion-label>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                <!-- /esto es lo que se despliega pa abajo -->
+              </mat-expansion-panel>
+              <!-- /ESte es el que se repite amigo -->
+
+
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    <ion-text color="navyblue">
+                        <h3>
+                          Ingreso a la tienda
+                        </h3>
+                    </ion-text>
+                  </mat-panel-title>
+                </mat-expansion-panel-header>
+                <ion-grid class="ion-margin" >
+                  <ion-row class="ion-margin-bottom">
+                    <ion-col size="12" class="ion-align-self-center">
+                      <ion-label>
+                        <ion-text color="cloudysky">
+                          <p class="ion-no-margin"><strong>Te presentaste en recursos humanos</strong></p>
+                          <p>si</p>
+                        </ion-text>
+                      </ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row class="ion-margin-bottom">
+                    <ion-col size="12" class="ion-align-self-center">
+                      <ion-label>
+                        <ion-text color="cloudysky">
+                          <p class="ion-no-margin"><strong>Te presentaste en recursos humanos</strong></p>
+                          <p>no</p>
+                        </ion-text>
+                      </ion-label>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </mat-expansion-panel>
+
+
+            </mat-accordion>
+
+          </ion-card-content>
+        </ion-card>
+
+
+
+
+
+
+
+
+
 
       </ion-card>
     </div>

@@ -25,7 +25,12 @@ export class PrintcredentialComponent implements OnInit{
 
   mycredential: any;
   myfirma: any;
-
+  myfoto: any;
+  myrfc: any;
+  myimss: any;
+  mynombre: any;
+  myapat: any;
+  myamat: any;
 
 
   constructor(
@@ -39,8 +44,15 @@ export class PrintcredentialComponent implements OnInit{
       this.credenService.getCredentialJpg(token)
       .subscribe(res => {
         // console.log('Respdtc', res.resp.credenciales.urlCredencialImg)
-        this.mycredential = res.resp.credenciales.urlCredencialImg;
+        this.mycredential = res.resp.credenciales;
         console.log(this.mycredential);
+        this.myfoto = res.resp.credenciales.foto;
+        this.myrfc = res.resp.credenciales.rfc;
+        this.myfirma = res.resp.credenciales.urlFirma;
+        this.myimss = res.resp.credenciales.imss;
+        this.mynombre = res.resp.informacion.nombre;
+        this.myapat = res.resp.informacion.apat;
+        this.myamat = res.resp.informacion.amat;
       });
   }
 
