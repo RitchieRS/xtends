@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
 import { from } from 'rxjs';
 import SignaturePad from 'signature_pad';
 import { InfoService } from 'src/app/xservices/user/info.service';
@@ -19,6 +19,9 @@ export class FirmComponent implements OnInit, AfterViewInit {
    signaturePad: any;
    firma: any;
 
+
+   @Input() checkSignChild : (isValid:number) => void;
+
   constructor(private firmaService: InfoService, private toastCtrl: ToastController) { }
 
   ngAfterViewInit(): void {
@@ -37,6 +40,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
 
   limpiarFirma(){
     this.signaturePad.clear();
+    this.checkSignChild(0);
   }
 
   descargar(dataURL:any, nombre:any){
@@ -74,7 +78,9 @@ export class FirmComponent implements OnInit, AfterViewInit {
       const token = localStorage.getItem('token');
       this.firmaService.sendFirma(firmaup,token).subscribe(
         rest => {
-          console.log(rest);
+
+          this.checkSignChild(1);
+          //console.log(rest);
         }
       );
       console.log(firmaUrl);

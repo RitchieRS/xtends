@@ -113,3 +113,12 @@ export interface NivelesDatos {
 
 export interface ZonaInteres {
 }
+
+
+export interface InfoCred {
+    puesto?:           string;
+    imss?:             string;
+    rfc?:              string;
+    terminos?:         boolean;
+}
+

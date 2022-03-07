@@ -111,12 +111,14 @@ export class ProfileComponent implements OnInit {
   fechaNacimiento: Date;
   movil: string;
   userForm: FormGroup;
+  credForm: FormGroup;
   images: LocalFile[] = [];
   nivelXtender:string;
   nivelTermo=([...Array(16).fill(0)]);
   imgDomicilio:LocalFile;
   searchCitiesFiler:string;
-
+  fotoSelfOk=0;
+  signOk=0;
   puesto:   string;
   imss:     string;
   rfc:      string;
@@ -138,25 +140,29 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
     console.log(this.nivelTermo);
     this.userForm = this.fb.group({
-       nombre : ['', [Validators.minLength(4)]],
-       apat: ['', [Validators.minLength(4)]],
-       amat: ['', [Validators.minLength(4)]],
-       dirAlcadia : ['', [Validators.minLength(4)]],
-       dirCP: ['',[Validators.pattern("^[0-9]*$"),
-      Validators.minLength(5)]],
-       dirCalle: ['', [Validators.minLength(4)]],
-      dirCd: ['', [Validators.minLength(4)]],
-      dirColonia: ['', [Validators.minLength(4)]],
-      dirNumExt: ['', [Validators.minLength(4)]],
-      dirNumInt: ['', [Validators.minLength(4)]],
-      email: ['', [
-                    Validators.email]],
-       fechaNacimiento: ['', []],
-      movil: ['',[ Validators.pattern("^[0-9]*$")]],
-      terminos: [false,[ Validators.required,Validators.required]]
-
-
+          nombre : ['', [Validators.minLength(4)]],
+          apat: ['', [Validators.minLength(4)]],
+          amat: ['', [Validators.minLength(4)]],
+          dirAlcadia : ['', [Validators.minLength(4)]],
+          dirCP: ['',[Validators.pattern("^[0-9]*$"),
+          Validators.minLength(5)]],
+          dirCalle: ['', [Validators.minLength(4)]],
+          dirCd: ['', [Validators.minLength(4)]],
+          dirColonia: ['', [Validators.minLength(4)]],
+          dirNumExt: ['', [Validators.minLength(4)]],
+          dirNumInt: ['', [Validators.minLength(4)]],
+          email: ['', [
+                        Validators.email]],
+          fechaNacimiento: ['', []],
+          movil: ['',[ Validators.pattern("^[0-9]*$")]],
+          terminos: [false,[ Validators.required,Validators.required]]
     });
+    this.credForm = this.fb.group({
+      imss : ['', [Validators.minLength(4),Validators.required]],
+      rfc: ['', [Validators.minLength(4),Validators.required]],
+      puesto: ['', [Validators.minLength(4),Validators.required]],
+      terminos: [false,[ Validators.required,Validators.required]]
+});
 
 
     this.initData();
@@ -322,7 +328,7 @@ async startUpload(file: LocalFile) {
 }
 
 
-  async updateData(){
+async updateData(){
 
     const token = localStorage.getItem('token');
     console.log("soy un input");
@@ -348,7 +354,52 @@ async startUpload(file: LocalFile) {
 
 
   }
+   
+  async updateCredentials(){
+    console.log("soy una credencial")
+    const token = localStorage.getItem('token');
+    console.log(this.credForm.value)
+    
+    if(this.fotoSelfOk==0){
+      this.presentToast('Actualice su fotografía');
+      return;
+    }
+    
+    if(this.signOk==0){
+      this.presentToast('Actualice su firma');
+      return;
+    }
+    if(this.credForm.value.terminos==false){
+      this.presentToast('Acepte los términos y condiciones');
+      return;
+    }
+    console.log(this.credForm.status);
+    if(this.credForm.status=="INVALID"){
+      this.presentToast('LLenen todos los datos requeridos');
+      return;
+    }
 
+    
+    
+    this.presentToast('Actualizando Información.');
+
+
+    ;(await this.srvProfile.updateInformationCredential(token, this.credForm.value)).subscribe((res) =>{
+      if(res){
+        console.log(res);
+        this.panelOpenState = false;
+        this.initData();
+        this.presentToast('Listo.');
+        this.images.forEach( (file) =>{
+          this.deleteImage(file)
+         })
+
+
+      }
+    })
+
+
+  }
 
   initData(){
     const token = localStorage.getItem('token');
@@ -416,6 +467,17 @@ async startUpload(file: LocalFile) {
     }
 
   }
+
+  checkPhotoCompleteParent = (isValid:number): void => {
+   this.fotoSelfOk = isValid;
+
+  }
+
+  checkSignParent = (isOk:number): void => {
+    this.signOk = isOk;
+ 
+   }
+
 
 closePanel() {
     this.panelOpenState = false;

@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { UserResponse, User, UserRest, ProfileResp, UserProfile, Informacion, Credenciales } from 'src/app/xmodels/user';
+import { UserResponse, User, UserRest, ProfileResp, UserProfile, Informacion, Credenciales, InfoCred } from 'src/app/xmodels/user';
 import { environment } from 'src/environments/environment';
 
 
@@ -127,6 +127,26 @@ export class InfoService {
 
 
     return this.http.post<Informacion>(`${environment.API_URL}user`,infoUser,httpOptions).pipe(
+          map(( res :  any)=> {
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+  async updateInformationCredential(token : string,infoUser:any):Promise<Observable<any | void>>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<any>(`${environment.API_URL}user`,infoUser,httpOptions).pipe(
           map(( res :  any)=> {
             console.log(res);
             return res;

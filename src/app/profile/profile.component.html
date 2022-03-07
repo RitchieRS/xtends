@@ -556,32 +556,33 @@
                           </ion-text>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <form class="iup-form" color="primary">
+                      <form [formGroup]="credForm" class="iup-form"  color="primary">
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">Puesto</mat-label>
-                            <input matInput placeholder="{{puesto}}">
+                            <mat-label class="mat-label-color-navyblue">{{puesto}}</mat-label>
+                            <input formControlName="puesto"   matInput placeholder="Puesto">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">No. IMSS</mat-label>
-                            <input matInput placeholder="{{imss}}">
+                            <mat-label class="mat-label-color-navyblue">{{imss}}</mat-label>
+                            <input  formControlName="imss"  matInput placeholder="NSS">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">RFC</mat-label>
-                            <input matInput placeholder="{{rfc}}">
+                            <mat-label class="mat-label-color-navyblue">{{rfc}}</mat-label>
+                            <input formControlName="rfc"  matInput placeholder="RFC">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
 
                         <section style="margin-top: 10px;">
                           <div class="iup-button-row">
-                            <app-foto-self></app-foto-self>
+                            <app-foto-self
+                            [checkPhotoComplete]="checkPhotoCompleteParent" ></app-foto-self>
                           </div>
                         </section>
                         <hr>
@@ -615,7 +616,8 @@
                                  </ion-col>
                                  <ion-col size="12" class="ion-padding-vertical">
 
-                                    <app-firm></app-firm>
+                                    <app-firm
+                                    [checkSignChild]="checkSignParent"></app-firm>
 
                                 </ion-col>
                                 <ion-col>
@@ -655,14 +657,14 @@
                         <div class="ion-margin-vertical" >
 
                           <ion-item>
-                            <ion-checkbox color="primary"  slot="start"></ion-checkbox><p> Estoy de acuerdo con los términos de confidencialidad</p>
+                            <ion-checkbox color="primary" formControlName="terminos" slot="start"></ion-checkbox><p> Estoy de acuerdo con los términos de confidencialidad</p>
                           </ion-item>
 
                         </div>
                       </form>
                       <section style="margin-top: 10px;">
                         <div class="iup-button-row">
-                          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
+                          <button (click)="updateCredentials()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                           <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
                           <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" id="limpiar" > Limpiar</button>
                         </div>
@@ -692,8 +694,11 @@
                           </ion-text>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <div style="overflow: auto; width: 100%;">
+                      <div *ngIf="printCred==true"style="overflow: auto; width: 100%;">
                         <app-printcredential></app-printcredential>
+                       </div>
+                       <div *ngIf="printCred==false"style="overflow: auto; width: 100%;">
+                        <h1>Debes completar tu perfil.</h1>
                        </div>
                     </mat-expansion-panel>
                   </mat-accordion>

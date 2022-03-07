@@ -1,4 +1,4 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Camera, CameraResultType, CameraSource, Photo } from '@capacitor/camera';
 import { Directory, Filesystem } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
@@ -27,6 +27,8 @@ export class FotoSelfComponent implements OnInit {
     saveImages:[]
   };
 
+  @Input() checkPhotoComplete : (isValid:number) => void;
+
   constructor(
     private plt: Platform,
     private loadingCtrl: LoadingController,
@@ -44,6 +46,7 @@ export class FotoSelfComponent implements OnInit {
          
           this.respuestas.paths= [...question.paths];
           this.imgLgt = this.respuestas.paths.length >= 1 ? 1 :  0;
+          this.checkPhotoComplete(this.imgLgt);
           console.log(this.imgLgt ); 
           this.loadFiles();
         });
@@ -167,6 +170,7 @@ async saveImage(photo: Photo) {
   this.imgLgt=1;
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
   this.respuestas.saveImages= [{img64: base64Data}];
+  this.checkPhotoComplete(this.imgLgt);
   this.storage.setObject(this.idStrQuest,this.respuestas);
   this.sendInf();
 

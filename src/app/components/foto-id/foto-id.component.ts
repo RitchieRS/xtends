@@ -27,6 +27,8 @@ export class FotoIdComponent  implements OnInit {
     saveImages:[]
   };
 
+
+
   constructor(
     private plt: Platform,
     private loadingCtrl: LoadingController,
