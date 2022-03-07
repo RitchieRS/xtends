@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { DialogCaptureproductinfoComponent } from 'src/app/missions/modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
 import { ProductoComponent } from './producto/producto.component';
 
@@ -28,9 +31,25 @@ export class SkuComponent implements OnInit {
   idStrQuest:string
   barcode="Busca el producto";
 
-  constructor(public dialog: MatDialog) { }
+
+  myControl = new FormControl();
+  options: string[] = [];
+  selected:string[]=[];
+  filteredOptions: Observable<string[]>;
+
+  constructor(public dialog: MatDialog) { 
+    
+  }
 
   ngOnInit() {
+
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith('0'),
+      map(value => this._filter(value)),
+    );
+
+    console.log(this.filteredOptions) 
+    
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     console.log(this.idStrQuest);
     console.log(this.productos);
@@ -63,6 +82,12 @@ export class SkuComponent implements OnInit {
                 console.log(this.isValid);
             });
 
+  }
+
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    console.log("Filter");
+    return this.productos.filter(producto => producto.sku === filterValue );
   }
 
   

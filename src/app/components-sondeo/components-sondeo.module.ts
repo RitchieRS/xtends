@@ -14,7 +14,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 
 import { MatCardModule } from '@angular/material/card';
@@ -36,6 +36,9 @@ import { SdecimalComponent } from './sdecimal/sdecimal.component';
 import { SectionComponent } from './section/section.component';
 import { MultipleComponent } from './multiple/multiple.component';
 import { GpsComponent } from './gps/gps.component';
+import { SunicaRadioComponent } from './sunica-radio/sunica-radio.component';
+import { SporcentajeComponent } from './sporcentaje/sporcentaje.component';
+import { SfotografiaComponent } from './sfotografia/sfotografia.component';
 
 
 
@@ -56,7 +59,10 @@ import { GpsComponent } from './gps/gps.component';
     SdecimalComponent,
     SectionComponent,
     MultipleComponent,
-    GpsComponent
+    GpsComponent,
+    SunicaRadioComponent,
+    SporcentajeComponent,
+    SfotografiaComponent
   ],
   exports:[
     AbiertaComponent,
@@ -72,10 +78,14 @@ import { GpsComponent } from './gps/gps.component';
     SdecimalComponent,
     SectionComponent,
     MultipleComponent,
-    GpsComponent
+    GpsComponent,
+    SunicaRadioComponent,
+    SporcentajeComponent,
+    SfotografiaComponent
   ],
   imports: [
     CommonModule,
+    FormsModule,
     IonicModule,
     MatIconModule,
     ReactiveFormsModule,
