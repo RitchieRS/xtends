@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TrainingsRoutingModule } from './trainings-routing-module';
 import { TrainingComponent } from './training/training.component';
@@ -14,13 +14,14 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ComponentsModule } from '../components/components.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
+import { SwiperModule } from 'swiper/angular';
 
 
 
 
 @NgModule({
   schemas:[
-    CUSTOM_ELEMENTS_SCHEMA
+    CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA
   ],
   declarations: [
     TrainingsListComponent,
@@ -40,7 +41,8 @@ import { RouterModule } from '@angular/router';
     CdkAccordionModule,
     ComponentsModule,
     RouterModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    SwiperModule
   ]
 })
 export class TrainingsModule { }
