@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy, Routes } from '@angular/router';
 import { RouterModule } from '@angular/router';
 import { AgmCoreModule } from '@agm/core';
-
+import { FormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy} from '@ionic/angular';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -48,7 +48,6 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 
 
 
-
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { TrainingsModule } from './trainings/trainings.module';
 
@@ -62,6 +61,7 @@ import { TrainingsModule } from './trainings/trainings.module';
   [
     BrowserModule,
     IonicModule.forRoot(),
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,

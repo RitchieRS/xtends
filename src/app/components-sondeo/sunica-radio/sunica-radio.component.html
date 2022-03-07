@@ -1,0 +1,26 @@
+
+      <mat-panel-title>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-text color=navyblue>
+                <h6>{{pregunta}}</h6>
+              </ion-text>
+            </ion-col>
+            
+          </ion-row>
+        </ion-grid>
+      </mat-panel-title>
+    
+    <form [formGroup]="unicaRGroup" (ngSubmit)="submit()">
+    <div class="ion-padding-horizontal">
+      <ion-list  radio-group>
+      <ion-item  *ngFor="let radio of opciones; let i = index"   (click)="onChange(i,radio.opcion,radio.idOpcion)" >
+
+        <p> {{radio.opcion}}</p>  <ion-checkbox  [checked]="selected === i"  color="primary" slot="start"></ion-checkbox>
+
+      </ion-item>
+    </ion-list>
+    
+     </div>
+     </form>

@@ -24,7 +24,7 @@
       <ion-row class="ion-margin-horizontal">
         <ion-col>
           <ion-text color="navyblue">
-            <p class="ion-no-margin"><strong>SKU</strong> 917867</p>
+            <p class="ion-no-margin"><strong>SKU: </strong>{{data.sku}}</p>
           </ion-text>
         </ion-col>
       </ion-row>
@@ -78,6 +78,67 @@
                                 [sku]="data.sku"
                     
                                ></app-sdecimal>
+                  </div>
+                  <div *ngSwitchCase="'unicaRadio'"  > 
+                    <app-sunica-radio
+                                [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [productos]="p.productos"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage"
+                                [idSondeo]="data.idInventario" 
+                                [sku]="data.sku"
+                    
+                               ></app-sunica-radio>
+                  </div>
+
+                  <div *ngSwitchCase="'porcentaje'"  > 
+                    <app-sporcentaje
+                                [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [productos]="p.productos"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage"
+                                [idSondeo]="data.idInventario" 
+                                [sku]="data.sku"
+                    
+                               ></app-sporcentaje>
+                  </div>
+                  <div *ngSwitchCase="'fotografia'"  > 
+                    <app-sfotografia
+                                [dependePregunta]="p.dependePregunta"
+                                [dependeRespuesta]="p.dependeRespuesta"
+                                [idPregunta]="p.idPregunta"
+                                [maximo]="p.maximo"
+                                [minimo]="p.minimo"
+                                [obligatorio]="p.obligatorio"
+                                [opciones]="p.opciones"
+                                [orden]="p.orden"
+                                [pregunta]="p.pregunta"
+                                [productos]="p.productos"
+                                [puntaje]="p.puntaje"
+                                [tipo]="p.tipo"
+                                [urlImage]="p.urlImage"
+                                [idSondeo]="data.idInventario" 
+                                [sku]="data.sku"
+                    
+                               ></app-sfotografia>
                   </div>
 
                     
