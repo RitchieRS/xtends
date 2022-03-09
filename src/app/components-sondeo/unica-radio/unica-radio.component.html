@@ -18,7 +18,7 @@
         </ion-grid>
       </mat-panel-title>
 
-    <form [formGroup]="unicaRGroup" (ngSubmit)="submit()">
+    <form [formGroup]="unicaRGroup" >
     <div class="ion-padding-horizontal">
       <ion-list  radio-group>
       <ion-item  *ngFor="let radio of opciones; let i = index"   (click)="onChange(i,radio.opcion,radio.idOpcion)" >

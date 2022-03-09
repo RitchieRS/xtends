@@ -52,15 +52,16 @@ preguntasAux:any;
           console.log(dependencias);
           console.log(this.preguntas);
           dependencias.forEach((item) => {
-              let check =  dependencias = this.preguntas.filter( pregunta => {  return (Number(pregunta.dependePregunta) == item.idPregunta) || (Number(pregunta.dependeRespuesta) ==  idRespuesta ) } );
-              //console.log(check);
-              if(check.length==0 ){
+              let check =  dependencias = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependePregunta) == item.idPregunta) || (Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
+              console.log(check.length);
+              if(check.length == 0 ){
                 console.log(item)
                 this.preguntas.push(item);
                 let order = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
+
                 this.preguntas = order;
               }else{
-                dependencias = this.preguntas.filter( pregunta => {   return !(Number(pregunta.dependePregunta) == idPregunta) } );
+                dependencias = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) == idPregunta) || (Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
                 this.preguntas = dependencias;
               }
 

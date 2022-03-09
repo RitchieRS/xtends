@@ -45,18 +45,20 @@ export class UnicaRadioComponent implements OnInit {
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
               private storage: StorageHelperService) { }
-  ngOnInit() {
+  async ngOnInit() {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.unicaRGroup = this.fb.group({
       "unicaRadio": ['', this.RequiredValue],
     });
-    this.storage.getObject(this.idStrQuest).then((question: any) => {
+    await this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestaStr = question.respuesta;
       this.selected = question.selected;
       this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-      this.checkCompleteChild(this.idPregunta,this.isValid,question.idOpcion);
+      this.respuestas.idOpcion = question.idOpcion;
+      
       this.storage.setObject(this.idStrQuest,this.respuestas);
      });
+     this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
      
   }
   submit(){   
@@ -69,16 +71,19 @@ export class UnicaRadioComponent implements OnInit {
       this.respuestas.selected = this.selected;
       this.isValid = this.respuestaStr == undefined ? 0 :1;
       this.respuestas.idOpcion = this.idOpcion;
+      console.log(this.respuestas.idOpcion);
       this.respuestas.obligatorio  = this.obligatorio;
-      this.checkCompleteChild(this.idPregunta,this.isValid,this.idOpcion);
+      
       this.storage.setObject(this.idStrQuest,this.respuestas);
+      this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
     }else{
       this.isValid =0;
     }
   }
   onChange(i,value,id){
     this.respuestaStr=value;
-    this.idOpcion = id; 
+    this.idOpcion = Number(id); 
+    console.log(this.idOpcion)
     this.selected=i;  
     this.submit();    
   }
