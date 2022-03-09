@@ -25,17 +25,17 @@ export class MultipleComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number, idRespuesta:number ) => void;
   isValid = 0;
   selected=-1;
   idStrQuest = "";
-  idOpcion =  "";
+  idOpcion =  0;
   RequiredValue:Validators[];
   respuestas={
     idPregunta:"",
     tipo:      "",
     respuesta:  [],
-    idOpcion: "",
+    idOpcion: 0,
     selected: -1,
     valid:0
   };
@@ -53,7 +53,7 @@ export class MultipleComponent implements OnInit {
       this.respuestaStr = question.respuesta;
       this.selected = question.selected;
       this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+      this.checkCompleteChild(this.idPregunta,this.isValid,question.idOpcion);
       console.log(this.respuestaStr);
      });
      
@@ -69,8 +69,9 @@ export class MultipleComponent implements OnInit {
       this.respuestas.selected = this.selected;
       this.isValid = 1;
       this.respuestas.valid =  1;
-      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+      
       this.respuestas.idOpcion = this.idOpcion;
+      this.checkCompleteChild(this.idPregunta,this.isValid,this.idOpcion);
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid =0;

@@ -29,12 +29,13 @@ export class FotografiaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number, idRespuesta:number ) => void;
   respuestas={
     idPregunta:"",
     tipo:      "",
     respuesta:  "",
     paths: [],
+    idOpcion:0,
     saveImages:[],
     obligatorio:0
   };
@@ -169,7 +170,7 @@ export class FotografiaComponent implements OnInit {
               this.respuestas.obligatorio = this.obligatorio;
               
               this.isValid=1;
-              this.checkCompleteChild(this.idPregunta,this.isValid,'NO');
+              this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
               this.loadInformation();
              
               await this.loadFiles();
@@ -217,7 +218,7 @@ export class FotografiaComponent implements OnInit {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.isValid = question.saveImages.length>0 ? 1 : 0;
-      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+      
       this.respuestas.paths= [...question.paths];
       if(question.idPregunta==''){
         this.respuestas.idPregunta = this.idStrQuest;
@@ -225,6 +226,7 @@ export class FotografiaComponent implements OnInit {
         this.respuestas.obligatorio = this.obligatorio;
         this.storage.setObject(this.idStrQuest,this.respuestas);
       }
+      this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
      // alert(this.respuestas.paths[0]);
      // this.storage.setObject(this.idStrQuest,this.respuestas);
       this.loadFiles();
@@ -249,7 +251,7 @@ export class FotografiaComponent implements OnInit {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     this.respuestas.idPregunta = this.idStrQuest;
     this.respuestas.tipo = this.tipo;
-    this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+    this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
     //alert(this.respuestas.tipo);
     //alert(this.respuestas.paths[0])
     this.storage.setObject(this.idStrQuest,this.respuestas);

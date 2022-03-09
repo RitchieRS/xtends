@@ -13,7 +13,7 @@ export class NumericaComponent implements OnInit {
   
 
 
-  public numericaGroup: FormGroup;
+  numericaGroup: FormGroup;
 
   @Input() dependePregunta: number;
   @Input() dependeRespuesta: number;
@@ -28,7 +28,7 @@ export class NumericaComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number, idRespuesta:number ) => void;
   isValid = 0;
   idStrQuest = "";
   RequiredValue:Validators[];
@@ -36,45 +36,50 @@ export class NumericaComponent implements OnInit {
     idPregunta:"",
     tipo:      "",
     respuesta:  "",
-    valid:0
+    valid:0,
+    idOpcion:0
   }
   respuestaStr:string;
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
-              private storage: StorageHelperService) { }
+              private storage: StorageHelperService) { 
+                this.numericaGroup = this.fb.group({
+                  "numerica": ['', this.RequiredValue],
+                });
+              }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     console.log(this.idStrQuest);
     if(this.obligatorio==1){
      this.RequiredValue.push(Validators.required);
     }
-    this.numericaGroup = this.fb.group({
-      "numerica": ['', this.RequiredValue],
-    });
-    this.storage.getObject(this.idStrQuest).then((question: any) => {
+    
+   await this.storage.getObject(this.idStrQuest).then((question: any) => {
      this.respuestaStr = question.respuesta;
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-     this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+     
     });
    this.respuestas = {
       idPregunta:this.idStrQuest,
       tipo:      this.tipo,
       respuesta: this.respuestaStr,
-      valid:this.isValid
+      valid:this.isValid,
+      idOpcion:0
     }
+    this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
    
   }
   
 
   submit(){
-    console.log(this.numericaGroup.status);
-    
+    console.log("Soy un change");
+    console.log(this.numericaGroup);
     if(this.numericaGroup.status=="VALID"){
       console.log(this.numericaGroup.get('numerica').value);
       this.respuestas.valid = (this.numericaGroup.get('numerica').value == '' || this.numericaGroup.get('numerica').value === null ) ? 0 : 1 ;
       this.isValid = this.respuestas.valid;
-      this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+      this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid = 0;

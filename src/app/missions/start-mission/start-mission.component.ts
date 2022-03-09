@@ -242,6 +242,7 @@ export class StartMissionComponent  {
 
 async sendSondeo(){
    try{
+       console.log(this.validSondeo)
           if(this.validSondeo==1){
 
 
@@ -299,14 +300,14 @@ async review(){
                     }
 
     }
-    if(validTotal >=obligatorioTotal){
-      this.validSondeo=1;
-      this.presentToast('Sondeo Válidado');
-    }
+    //if(validTotal >=obligatorioTotal){
+    this.validSondeo=1;
+    this.presentToast('Sondeo Válidado');
+    //}
 
-    //console.log('Validos: '+validTotal)
-    //console.log('Obligatorio: '+obligatorioTotal)
-    //console.log(this.respuestasSondeo);
+     console.log('Validos: '+validTotal)
+     console.log('Obligatorio: '+obligatorioTotal)
+     console.log(this.respuestasSondeo);
   }catch(e){
     this.presentToast('Error inesperado..');
   }

@@ -17,7 +17,7 @@
       </ion-grid>
     </mat-panel-title>
 
-    <form [formGroup]="numericaGroup"  (ngSubmit)="submit()"  >
+    <form [formGroup]="numericaGroup" >
       <div class="ion-padding-horizontal">
         <ion-item >
           <ion-input formControlName="numerica"  type="number"  (change)="submit()" value="{{respuestaStr}}"></ion-input>

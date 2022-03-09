@@ -41,9 +41,9 @@ preguntasAux:any;
     this.idSondeoStr = this.idSondeo.toString();
   }
 
-   checkCompleteParent = (idPregunta: number,isValid:number,respuesta:string): void => {
+   checkCompleteParent = (idPregunta: number,isValid:number,idRespuesta:number): void => {
 
-    console.log("analizando dependencias"+idPregunta + " : valid "+ isValid);
+    console.log("analizando dependencias"+idPregunta + " Depende de id Respuesta" + idRespuesta +" : valid "+ isValid);
     let dependencias = [];
     let dependenciasAx = [];
     let idSPregunta = [];
@@ -52,17 +52,21 @@ preguntasAux:any;
           console.log(dependencias);
           console.log(this.preguntas);
           dependencias.forEach((item) => {
-              let check =  dependencias = this.preguntas.filter( pregunta => {  return Number(pregunta.dependePregunta) == item.idPregunta } );
-              console.log(check);
-              if(check.length==0 && respuesta == 'NO'){
+              let check =  dependencias = this.preguntas.filter( pregunta => {  return (Number(pregunta.dependePregunta) == item.idPregunta) || (Number(pregunta.dependeRespuesta) ==  idRespuesta ) } );
+              //console.log(check);
+              if(check.length==0 ){
                 console.log(item)
                 this.preguntas.push(item);
+                let order = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
+                this.preguntas = order;
+              }else{
+                dependencias = this.preguntas.filter( pregunta => {   return !(Number(pregunta.dependePregunta) == idPregunta) } );
+                this.preguntas = dependencias;
               }
+
+
              
           })
-        }else{
-          dependencias = this.preguntas.filter( pregunta => {   return !(Number(pregunta.dependePregunta) == idPregunta) } );
-          this.preguntas = dependencias;
         }
        
         //console.log(dependencias);

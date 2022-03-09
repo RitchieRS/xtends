@@ -32,7 +32,7 @@ export class GpsComponent implements OnInit {
   @Input() tipo: string;
   @Input() urlImage: string;
   @Input() idSondeo: string;
-  @Input() checkCompleteChild: (idPregunta: number, isValid:number,respuesta:string ) => void;
+  @Input() checkCompleteChild: (idPregunta: number, isValid:number, idRespuesta:number ) => void;
   isValid = 0;
   idStrQuest = "";
   watchId: any;
@@ -41,7 +41,8 @@ export class GpsComponent implements OnInit {
     tipo:      "",
     respuesta:  "",
     valid:0,
-    obligatorio : 0
+    obligatorio : 0,
+    idOpcion : 0
   }
   dataCheckIn ={};
   lat: any;
@@ -60,14 +61,16 @@ export class GpsComponent implements OnInit {
       console.log(question);
      this.respuestaStr = question.respuesta;
      this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-     this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+     
      this.respuestas = {
       idPregunta:this.idStrQuest,
       tipo:      this.tipo,
       respuesta: this.respuestaStr,
       valid: this.isValid,
-      obligatorio: this.obligatorio
+      obligatorio: this.obligatorio,
+      idOpcion:0
     }
+    this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
     this.storage.setObject(this.idStrQuest,this.respuestas);
     });
 
@@ -82,7 +85,7 @@ export class GpsComponent implements OnInit {
         this.respuestas.respuesta = this.lat.toString()+ ','+ this.lgn.toString();
         this.isValid=1;
         this.respuestas.obligatorio = this.obligatorio;
-        this.checkCompleteChild(this.idPregunta,this.isValid,'SI');
+        this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
         this.storage.setObject(this.idStrQuest,this.respuestas);
         this.presentToast("Ubicaciòn actualizada");
       }else{
