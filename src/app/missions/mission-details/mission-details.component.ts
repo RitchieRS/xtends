@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MissionService } from '../../xservices/mission/mission.service';
 
 @Component({
   selector: 'app-mission-details',
@@ -7,8 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MissionDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private dataDetalleMissions: MissionService
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    // this.dataDetalleMissions.getDetailMission()
+    // .subscribe( missionsdetalle => {
+    //   console.log(missionsdetalle);
+    // });
+  }
 
 }

@@ -16,7 +16,7 @@ export class ActiveMissionsPage implements OnInit {
   dataAMission : AMission;
   listMission : ContentMission[];
   reqHome : string;
-  location:HomeLocation;
+  location: HomeLocation;
   lat:any;
   lng:any;
   listMissionlength=0;
@@ -51,6 +51,6 @@ export class ActiveMissionsPage implements OnInit {
      })
   }
 
-  
+
 
 }

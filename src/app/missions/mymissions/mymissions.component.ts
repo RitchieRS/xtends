@@ -12,11 +12,29 @@ export class MymissionsComponent implements OnInit {
   infMission : Mission;
   idPV:number;
   missionDetail: RespMission;
-  constructor(private route: ActivatedRoute,private srvMission : MissionService) { }
+
+  constructor(
+    private route: ActivatedRoute,
+    private srvMission: MissionService,
+    ) { }
 
   async ngOnInit() {
     await this.loadMissionTaken();
+    const token = localStorage.getItem('token');
+
+    this.srvMission.getDetailMission(token)
+    .subscribe( dataDetalleMissions => {
+      // console.log(dataDetalleMissions);
+    });
   }
+
+  // async mostrarDetalleSondeos(){
+  //   const token = localStorage.getItem('token');
+  //   this.srvMission.getDetailMission(token)
+  //   .subscribe( dataDetalleMissions => {
+  //     console.log(dataDetalleMissions);
+  //   });
+  // }
 
 
 
@@ -31,8 +49,8 @@ export class MymissionsComponent implements OnInit {
         this.infMission = res;
 
         this.missionDetail  = this.infMission.resp;
-       
-        
+
+
         /* Misiones Activas*/
         if(this.infMission.resp.idTienda != undefined){
 

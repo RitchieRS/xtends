@@ -11,7 +11,7 @@ import { Sondeo } from 'src/app/xmodels/sondeo';
 })
 export class MissionService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getMissionXTiendaProyecto(request: ReqMission,token : string):Observable<Mission | void>{
     console.log(request);
@@ -23,8 +23,8 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.post<Mission>(`${environment.API_URL}missions`,request ,httpOptions).pipe(
           map(( res :  Mission)=>{
             console.log(res);
@@ -44,8 +44,8 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.post<Mission>(`${environment.API_URL}missions/accept`,request ,httpOptions).pipe(
           map(( res :  Mission)=>{
             console.log(res);
@@ -65,8 +65,8 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.post<Mission>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
           map(( res :  Mission)=>{
             console.log(res);
@@ -86,8 +86,8 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.post<Sondeo>(`${environment.API_URL}sondeos`,request ,httpOptions).pipe(
           map(( res :  Sondeo)=>{
             console.log(res);
@@ -97,7 +97,26 @@ export class MissionService {
     );
   };
 
-  
+  // servicio Detalle de la mision realizada | sondeo
+  getDetailMission(token: string): Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+    return this.http.post<any>(`${environment.API_URL}visitas/view`,httpOptions).pipe(
+          map(( res: any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+
 
   getMissionXuser(token : string):Observable<AMission>{
     const httpOptions = {
@@ -108,8 +127,8 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.get<AMission>(`${environment.API_URL}missions/user`,httpOptions).pipe(
           map(( res :  AMission)=>{
             console.log(res);
@@ -133,7 +152,7 @@ export class MissionService {
   public keepMissionInfo(data : any):void{
     console.log("Start save Data");
     localStorage.setItem('idPV',data.idPV);
-  
+
   }
 
 }

@@ -19,18 +19,18 @@ interface LocalFile {
 
 export class InfoService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
-  public setInformation(data: UserRest):void{
-    console.log("Start save Data");
+  public setInformation(data: UserRest): void{
+    console.log('Start save Data');
     localStorage.setItem('apat',data.apat);
     localStorage.setItem('email',data.email);
     localStorage.setItem('nombre',data.nombre);
     localStorage.setItem('nombreCompleto',data.nombreCompleto);
   }
 
-  public logOut():void{
-    console.log("Start save Data");
+  public logOut(): void{
+    console.log('Start save Data');
     localStorage.setItem('apat',undefined);
     localStorage.setItem('email',undefined);
     localStorage.setItem('nombre',undefined);
