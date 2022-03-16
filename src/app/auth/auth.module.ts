@@ -17,6 +17,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 
 
@@ -29,7 +30,8 @@ import { MatInputModule } from '@angular/material/input';
     RegisterComponent,
     LoginComponent,
     ForgotComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    ConfirmComponent
   ],
   imports: [
     CommonModule,
@@ -48,7 +50,8 @@ import { MatInputModule } from '@angular/material/input';
     RegisterComponent,
     LoginComponent,
     ForgotComponent,
-    RecoveryComponent
+    RecoveryComponent,
+    ConfirmComponent
   ]
 })
 export class AuthModule { }

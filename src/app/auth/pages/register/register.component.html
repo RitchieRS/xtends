@@ -8,7 +8,7 @@
       </ion-row>
 
 
-      <form [formGroup]="registerForm"  (ngSubmit)="onRegister()" >
+      <form [formGroup]="registerForm"   >
         <ion-row class="ion-bg-navyblue bg-navyblue row-vertical-cincuenta">
 
           <ion-col size="12" class="ion-no-padding ion-align-self-center">
@@ -32,17 +32,18 @@
 
                   <ion-text *ngIf="submitted && f.apat.errors" color="danger" class="ion-text-center invalid-feedback">
                     <p *ngIf="f.apat.errors.required">Debe escribir un apellido</p>
-                    <p *ngIf="f.apat.errors.minlength">Debe escrbir mas de 4 caracteres</p>
+                    <p *ngIf="f.apat.errors.minlength">Debe escrbir más de 4 caracteres</p>
                   </ion-text>
 
                 <ion-item class="ion-padding-horizontal">
                   <ion-label  position="floating"><ion-icon name="mail-outline"></ion-icon> E mail</ion-label>
-                  <ion-input formControlName="email" style="color:white;" ></ion-input>
+                  <ion-input pattern="[^\s]*"  formControlName="email" style="color:white;" ></ion-input>
                 </ion-item>
 
                   <ion-text *ngIf="submitted && f.email.errors" color="danger" class="ion-text-center invalid-feedback">
                     <p *ngIf="f.email.errors.required">El email es requerido</p>
                     <p *ngIf="f.email.errors.email">El email es inválido</p>
+                    <p *ngIf="f.email.errors.pattern">Elimine los espacios en blanco</p>
                   </ion-text>
 
                 <ion-item class="ion-padding-horizontal">
@@ -92,7 +93,7 @@
                    </ion-button>
               </ion-col>
               <ion-col>
-                  <ion-button  type="submit" class="ion-margin-top" color="primary">
+                  <ion-button  (click)="onRegister()" type="submit" class="ion-margin-top" color="primary">
                     Regístrate
                     <ion-icon name="chevron-forward-outline"></ion-icon>
                    </ion-button>

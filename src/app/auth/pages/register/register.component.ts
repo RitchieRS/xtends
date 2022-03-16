@@ -19,9 +19,9 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.fb.group({
       "name": ['', [Validators.required,Validators.minLength(4)]],
-      "apat": ['', [Validators.required,Validators.minLength(4)]],
+      "apat": ['', [Validators.required,Validators.minLength(4),Validators.pattern(/^\S*$/)]],
       "email": ['', [Validators.required,
-                    Validators.email]],
+                    Validators.email,Validators.pattern(/^\S*$/)]],
       "phone": ['',[Validators.required, Validators.pattern("^[0-9]*$"),
       Validators.minLength(8)]],
       "pass": ['', [Validators.required,Validators.minLength(6),Validators.maxLength(16)]],
@@ -29,12 +29,23 @@ export class RegisterComponent implements OnInit {
     });
   
   }
-
+  Trim(){
+    console.log('contains spaces')
+  this.registerForm.controls['email'].valueChanges
+    .subscribe(x=>{
+      if(x.includes(' ')){
+        console.log('contains spaces')
+        this.registerForm.controls['email'].setValue(x.trim())
+      }else{
+        console.log('does not contain spaces')
+      }
+    })
+  }
   get f(): { [key: string]: AbstractControl } {
     return this.registerForm.controls;
   }
 
-  onRegister(){
+  async onRegister(){
     this.submitted = true;
     const formValue = this.registerForm.value; 
     if (this.registerForm.invalid) {
@@ -46,10 +57,10 @@ export class RegisterComponent implements OnInit {
     }
     this.confirmPass=false;
     console.log("Todo Ok");
-     this.register.register(formValue).subscribe((res) =>{
+     await this.register.register(formValue).subscribe((res) =>{
       console.log(res['idError']);
       if(res['idError']==0){
-        this.router.navigate(['home'])
+        this.router.navigate(['auth/confirm'])
       }else{
         this.isRegisterFailed = true;
       }

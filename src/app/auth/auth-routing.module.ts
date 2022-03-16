@@ -7,6 +7,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import {MatIconModule} from '@angular/material/icon';
 import {RecoveryComponent} from './pages/recovery/recovery.component';
 import { CheckLoginGuard } from '.././shared/guards/check-login.guard';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
 
 const routes: Routes =[
   {
@@ -30,6 +31,10 @@ const routes: Routes =[
     {
     path: 'recovery',
       component: RecoveryComponent
+    },
+    {
+      path: 'confirm',
+        component: ConfirmComponent
     },
     {
     path: '',
