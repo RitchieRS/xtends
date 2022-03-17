@@ -13,10 +13,20 @@ export class MissionDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.dataDetalleMissions.getDetailMission()
-    // .subscribe( missionsdetalle => {
-    //   console.log(missionsdetalle);
-    // });
+    const token = localStorage.getItem('token');
+    this.dataDetalleMissions.getDetailMission(token)
+    .subscribe( dataDetalleMissions => {
+      console.log(dataDetalleMissions);
+    });
+  }
+
+
+  async mostrarDetalleSondeos(){
+    const token = localStorage.getItem('token');
+    this.dataDetalleMissions.getDetailMission(token)
+    .subscribe( dataDetalleMissions => {
+      console.log(dataDetalleMissions);
+    });
   }
 
 }

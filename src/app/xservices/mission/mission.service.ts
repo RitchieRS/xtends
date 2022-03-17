@@ -13,7 +13,7 @@ export class MissionService {
 
   constructor(private http: HttpClient) { }
 
-  getMissionXTiendaProyecto(request: ReqMission,token : string):Observable<Mission | void>{
+  getMissionXTiendaProyecto(request: ReqMission,token: string): Observable<Mission | void>{
     console.log(request);
     const httpOptions = {
       headers: new HttpHeaders({
@@ -34,7 +34,7 @@ export class MissionService {
     );
   };
 
-  acceptMissionXTiendaProyecto(request: ReqMission,token : string):Observable<ResMissionAccepted >{
+  acceptMissionXTiendaProyecto(request: ReqMission,token: string): Observable<ResMissionAccepted >{
     console.log(request);
     const httpOptions = {
       headers: new HttpHeaders({
@@ -97,7 +97,7 @@ export class MissionService {
     );
   };
 
-  // servicio Detalle de la mision realizada | sondeo
+  // <servicio Detalle de la mision realizada | sondeo>
   getDetailMission(token: string): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
@@ -115,6 +115,31 @@ export class MissionService {
           catchError((err)=> this.handeleError(err))
     );
   };
+  // </servicio Detalle de la mision realizada | sondeo>
+
+
+
+  // <servicio de missiones por estado>
+  // getMissionSondeo(token: string): Observable<AMission>{
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({
+  //       'Accept': 'text/html',
+  //       'Content-Type': 'application/json',
+  //       'Authorization' : token
+  //     }),
+  //     responseType: 'json' as 'json'
+  //   };
+
+
+  //   return this.http.get<any>(`${environment.API_URL}missions/user`,httpOptions).pipe(
+  //         map(( res: any)=>{
+  //           console.log(res);
+  //           return res;
+  //         }),
+  //         catchError((err)=> this.handeleError(err))
+  //   );
+  // };
+  // </servicio de missiones por estado>
 
 
 
@@ -131,7 +156,7 @@ export class MissionService {
 
     return this.http.get<AMission>(`${environment.API_URL}missions/user`,httpOptions).pipe(
           map(( res :  AMission)=>{
-            console.log(res);
+            // console.log(res);
             return res;
           }),
           catchError((err)=> this.handeleError(err))

@@ -9,9 +9,11 @@ import { MissionService } from 'src/app/xservices/mission/mission.service';
   styleUrls: ['./mymissions.component.scss'],
 })
 export class MymissionsComponent implements OnInit {
-  infMission : Mission;
-  idPV:number;
+  infMission: Mission;
+  idPV: number;
   missionDetail: RespMission;
+  puereMissionsActivas: any;
+  puereMissionsComplite: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,29 +24,34 @@ export class MymissionsComponent implements OnInit {
     await this.loadMissionTaken();
     const token = localStorage.getItem('token');
 
-    this.srvMission.getDetailMission(token)
-    .subscribe( dataDetalleMissions => {
-      // console.log(dataDetalleMissions);
+    this.srvMission.getMissionXuser(token)
+    .subscribe( myMissionsAka => {
+      console.log(myMissionsAka);
+    });
+
+    this.srvMission.getMissionXuser(token)
+    .subscribe ( myMissionsActivas => {
+    this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,4);
+    console.log(this.puereMissionsActivas);
+    });
+
+    //Carga las my missions compleat
+    this.srvMission.getMissionXuser(token)
+    .subscribe ( myMissionsComplite => {
+    this.puereMissionsComplite = myMissionsComplite.section2.content.slice(0,4);
+    console.log(this.puereMissionsComplite);
     });
   }
-
-  // async mostrarDetalleSondeos(){
-  //   const token = localStorage.getItem('token');
-  //   this.srvMission.getDetailMission(token)
-  //   .subscribe( dataDetalleMissions => {
-  //     console.log(dataDetalleMissions);
-  //   });
-  // }
-
 
 
   async loadMissionTaken(){
     const token = localStorage.getItem('token');
     const dataMission = {
-      "idPV": this.idPV
+      idPV: this.idPV
     };
     this.srvMission.keepMissionInfo(dataMission);
     await this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
+
       if(res){
         this.infMission = res;
 
@@ -56,7 +63,7 @@ export class MymissionsComponent implements OnInit {
 
         }
       }
-    })
+    });
   }
 
 }
