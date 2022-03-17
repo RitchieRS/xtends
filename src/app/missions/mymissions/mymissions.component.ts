@@ -15,6 +15,7 @@ export class MymissionsComponent implements OnInit {
   puereMissionsActivas: any;
   puereMissionsComplite: any;
 
+
   constructor(
     private route: ActivatedRoute,
     private srvMission: MissionService,
@@ -24,11 +25,13 @@ export class MymissionsComponent implements OnInit {
     await this.loadMissionTaken();
     const token = localStorage.getItem('token');
 
-    this.srvMission.getMissionXuser(token)
-    .subscribe( myMissionsAka => {
-      console.log(myMissionsAka);
-    });
+    // this.srvMission.getMissionXuser(token)
+    // .subscribe( myMissionsAka => {
+    //   console.log(myMissionsAka);
+    //  });
 
+
+    //Carga las my missions disponibles
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsActivas => {
     this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,4);
@@ -41,7 +44,9 @@ export class MymissionsComponent implements OnInit {
     this.puereMissionsComplite = myMissionsComplite.section2.content.slice(0,4);
     console.log(this.puereMissionsComplite);
     });
+
   }
+
 
 
   async loadMissionTaken(){

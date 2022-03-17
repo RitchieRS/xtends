@@ -63,20 +63,20 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <ion-card *ngFor="let valechiles of puereMissionsActivas">
+    <ion-card *ngFor="let missionActiv of puereMissionsActivas">
       <ion-card-content>
         <ion-grid class="ion-no-padding">
           <ion-row class="ion-justify-content-center">
             <ion-col size="2" class="ion-align-self-center ion-margin-end">
               <div style="width: 50px;" class="ion-margin-end">
-                <img src="{{valechiles.logoCliente}}">
+                <img src="{{missionActiv.logoCliente}}">
               </div>
             </ion-col>
             <ion-col size="7" class="ion-align-self-center">
               <ion-label>
                 <ion-text color="cloudysky">
-                  <h2><strong>{{valechiles.cadena}}</strong></h2>
-                  <h3>{{valechiles.proyecto}}</h3>
+                  <h2><strong>{{missionActiv.cadena}}</strong></h2>
+                  <h3>{{missionActiv.proyecto}}</h3>
                   <p>Tipo de categoría.</p>
                 </ion-text>
               </ion-label>
@@ -142,15 +142,15 @@
     </ion-grid>
     <ion-card>
       <ion-card-content>
-        <ion-grid class="ion-no-padding" *ngFor="let valechilestwo of puereMissionsComplite">
+        <ion-grid class="ion-no-padding" *ngFor="let missionComplite of puereMissionsComplite">
           <ion-row class="ion-justify-content-center ion-margin-vertical">
             <ion-col size="10" class="ion-align-self-center">
               <ion-label>
                 <ion-text color="cloudysky">
-                  <h2><strong>{{valechilestwo.cliente}} {{valechilestwo.cadena}}</strong></h2>
-                  <h3>Visita {{valechilestwo.proyecto}}</h3>
-                  <p>{{valechilestwo.sucursal}}</p>
-                  <p>13.oct.2021</p>
+                  <h2><strong>{{missionComplite.cliente}} {{missionComplite.cadena}}</strong></h2>
+                  <h3>Visita {{missionComplite.proyecto}}</h3>
+                  <p>{{missionComplite.sucursal}}</p>
+                  <p>{{missionComplite.fecha | date:'medium'}}</p>
                 </ion-text>
               </ion-label>
             </ion-col>
