@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { DialogCaptureproductinfoComponent } from 'src/app/missions/modal-captureproductinfo/dialog-captureproductinfo/dialog-captureproductinfo.component';
@@ -37,7 +38,7 @@ export class SkuComponent implements OnInit {
   selected:string[]=[];
   filteredOptions: Observable<string[]>;
 
-  constructor(public dialog: MatDialog) { 
+  constructor(public dialog: MatDialog,private toastCtrl: ToastController,) { 
     
   }
 
@@ -57,13 +58,30 @@ export class SkuComponent implements OnInit {
 
   isValid=0;
 
-  receiveBarCode($event) {
+  async receiveBarCode($event) {
     this.barcode = $event
+    let producto = this.productos.filter( producto => {  return producto.sku == this.barcode } );
+    if(producto.length==1)
+        await this.openDialog(producto,0);
+    else
+    this.presentToast('Codigo de Barras no encontrado');
+  }
+
+  async presentToast(text) {
+
+    const toast = await this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      color: 'navybluextend',
+      position: 'top',
+      mode : 'ios',
+    });
+    toast.present();
   }
 
   async openDialog(producto:any,index:number){
     console.log(index);
-    const dialogRef = this.dialog.open(DialogCaptureproductinfoComponent ,{
+      const dialogRef = this.dialog.open(DialogCaptureproductinfoComponent ,{
           data: {
             img : producto.img,
             nombre : producto.nombre,
@@ -80,7 +98,8 @@ export class SkuComponent implements OnInit {
             .then(result => {
                 this.isValid=Number(result);
                 console.log(this.isValid);
-            });
+           
+         });
 
   }
 
