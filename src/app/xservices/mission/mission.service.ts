@@ -107,7 +107,7 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.post<any>(`${environment.API_URL}visitas/view`,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}visitas/view/`,httpOptions).pipe(
           map(( res: any)=>{
             console.log(res);
             return res;

@@ -42,6 +42,10 @@ const routes: Routes =[
       path: 'mission-detail',
       component: MissionDetailsComponent
     },
+    {
+      path: 'mission-detail/:idPV',
+      component: MissionDetailsComponent
+    },
    ]
   },
 ];
