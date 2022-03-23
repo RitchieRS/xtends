@@ -1,0 +1,257 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-text color=navyblue>
+                <h6>{{sondeo}}</h6>
+              </ion-text>
+            </ion-col>
+            <!--<ion-col *ngIf="isValid==0" size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "silverblue" name="shield-outline" style="font-size: 20px;"></ion-icon>
+            </ion-col>
+            <ion-col *ngIf="isValid==1"  size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+              <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+            </ion-col>-->
+          </ion-row>
+        </ion-grid>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+
+    <div *ngFor="let p of respuestas; let i = index" [ngSwitch]="p.tipo" >
+
+      <!--<div *ngSwitchCase="'unicaRadio'" >
+        <app-unica-radio  [dependePregunta]="p.dependePregunta"
+                          [dependeRespuesta]="p.dependeRespuesta"
+                          [idPregunta]="p.idPregunta"
+                          [maximo]="p.maximo"
+                          [minimo]="p.minimo"
+                          [obligatorio]="p.obligatorio"
+                          [opciones]="p.opciones"
+                          [orden]="p.orden"
+                          [respuestas]="p.respuestas"
+                          [puntaje]="p.puntaje"
+                          [tipo]="p.tipo"
+                          [urlImage]="p.urlImage"
+                          [idSondeo]="idSondeoStr"
+                          [checkCompleteChild]="checkCompleteParent">
+      </app-unica-radio>
+      </div>
+
+
+      <div *ngSwitchCase="'carrusel'" >
+        <app-carrusel  [dependePregunta]="p.dependePregunta"
+                          [dependeRespuesta]="p.dependeRespuesta"
+                          [idPregunta]="p.idPregunta"
+                          [maximo]="p.maximo"
+                          [minimo]="p.minimo"
+                          [obligatorio]="p.obligatorio"
+                          [opciones]="p.opciones"
+                          [orden]="p.orden"
+                          [pregunta]="p.pregunta"
+                          [puntaje]="p.puntaje"
+                          [tipo]="p.tipo"
+                          [urlImage]="p.urlImage"
+                          [idSondeo]="idSondeoStr"
+                          [checkCompleteChild]="checkCompleteParent" >
+      </app-carrusel>
+      </div>
+      <div *ngSwitchCase="'email'" >
+        <app-email  [dependePregunta]="p.dependePregunta"
+                          [dependeRespuesta]="p.dependeRespuesta"
+                          [idPregunta]="p.idPregunta"
+                          [maximo]="p.maximo"
+                          [minimo]="p.minimo"
+                          [obligatorio]="p.obligatorio"
+                          [opciones]="p.opciones"
+                          [orden]="p.orden"
+                          [pregunta]="p.pregunta"
+                          [puntaje]="p.puntaje"
+                          [tipo]="p.tipo"
+                          [urlImage]="p.urlImage"
+                          [idSondeo]="idSondeoStr"
+                          [checkCompleteChild]="checkCompleteParent" >
+      </app-email>
+      </div>
+      <div *ngSwitchCase="'numerica'" >
+        <app-numerica [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
+                     </app-numerica>
+      </div>
+      <div *ngSwitchCase="'cargaimagen'" >
+        <app-carga-imagen [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent">
+      </app-carga-imagen>
+      </div>
+      <div *ngSwitchCase="'fecha'" >
+        <app-fecha [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      >
+      </app-fecha>
+      </div>-->
+      <div *ngSwitchCase="'abierta'" >
+        <app-abierta-inf
+        [idPregunta]="p.idPregunta"
+        [pregunta] ="p.pregunta"
+        [respuesta] = "p.respuesta"
+        [tipo] ="p.tipo"
+        ></app-abierta-inf>
+      </div>
+
+      <!--<mat-expansion-panel *ngSwitchCase="'informartiva'" >
+        <mat-expansion-panel-header >
+          <mat-panel-title>
+            <ion-grid>
+              <ion-row class="ion-justify-content-center">
+                <ion-col size="10">
+                  <ion-text color=navyblue>
+                    <h6>{{p.pregunta}}</h6>
+                  </ion-text>
+                </ion-col>
+                <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                  <ion-icon color= "silverblue" name="shield-outline" style="font-size: 20px;"></ion-icon>
+                </ion-col>
+                <ion-col size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
+                  <ion-icon color= "greenxtend" name="shield-checkmark" style="font-size: 20px;"></ion-icon>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+
+      </mat-expansion-panel>
+
+      <div *ngSwitchCase="'fotografia'" >
+        <app-fotografia
+                      [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
+                       ></app-fotografia>
+      </div>
+
+
+
+      <div *ngSwitchCase="'multiple'" >
+        <app-multiple
+                      [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
+                       ></app-multiple>
+      </div>
+
+
+      <div *ngSwitchCase="'gps'" >
+        <app-gps
+                      [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
+                       ></app-gps>
+      </div>
+
+
+      <div *ngSwitchCase="'sku'" >
+        <app-sku
+                      [dependePregunta]="p.dependePregunta"
+                      [dependeRespuesta]="p.dependeRespuesta"
+                      [idPregunta]="p.idPregunta"
+                      [maximo]="p.maximo"
+                      [minimo]="p.minimo"
+                      [obligatorio]="p.obligatorio"
+                      [opciones]="p.opciones"
+                      [orden]="p.orden"
+                      [pregunta]="p.pregunta"
+                      [productos]="p.productos"
+                      [puntaje]="p.puntaje"
+                      [tipo]="p.tipo"
+                      [urlImage]="p.urlImage"
+                      [idSondeo]="idSondeoStr"
+                      [checkCompleteChild]="checkCompleteParent" >
+                      ></app-sku>
+      </div>-->
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+  </mat-expansion-panel>
+</mat-accordion>
+

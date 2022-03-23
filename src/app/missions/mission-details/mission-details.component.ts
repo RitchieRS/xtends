@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { from } from 'rxjs';
 import { MissionService } from '../../xservices/mission/mission.service';
-import { ReqMission, MisionSection3, AMission, ContentMission } from '../../xmodels/missions';
+import { ReqMission, AMission, ContentMission } from '../../xmodels/missions';
 import { __param } from 'tslib';
 
 @Component({
@@ -16,10 +16,9 @@ export class MissionDetailsComponent implements OnInit {
   infoMission: any;
   dataMission: ReqMission;
   datamissionSucursal: any;
-  detalazoChingon: MisionSection3;
-  infMission: AMission;
 
-  missionsection3: MisionSection3;
+  infMission: AMission;
+  preguntas: any;
   missionDetail: ContentMission;
 
   dataSondeo: any;
@@ -29,24 +28,29 @@ export class MissionDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private dataDetalleMissions: MissionService,
   ) {
-    this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
+    
 
    }
 
   ngOnInit() {
+
+    this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
+    console.log(this.idPV);
     const token = localStorage.getItem('token');
     const dataMission = {
       idPV: this.idPV
     };
-
-    this.dataDetalleMissions.keepMissionInfo(dataMission);
-    this.dataDetalleMissions.getValeChiles(dataMission,token)
+    console.log("Inicia Servicio")
+    ///this.dataDetalleMissions.keepMissionInfo(dataMission);
+    this.dataDetalleMissions.srvSondeoMission(token,dataMission,)
     .subscribe( (res) => {
       if(res){
+        console.log("Aqui imprime la respuuesta ")
+        
         this.infMission = res;
-        this.missionsection3  = this.infMission.section3;
-        console.log(this.infMission);
-        console.log(this.missionsection3.content[4].cadena);
+        this.preguntas = res.resp;
+        console.log(this.preguntas)
+        
       }
     });
   }

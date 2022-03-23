@@ -44,9 +44,21 @@
           </ion-grid>
 
           <ion-card-content>
-            <mat-accordion>
+            <mat-accordion *ngFor="let p of preguntas; let i = index" >
+
+                <app-section-inf
+                    [capturaSKU]="p.capturaSKU"
+                    [idProyecto]="p.idProyecto"
+                    [idSondeo]="p.idSondeo"
+                    [iterativo]="p.iterativo"
+                    [obligatorio]="p.obligatorio"
+                    [orden]="p.orden"
+                    [respuestas]="p.respuestas"
+                    [sondeo]="p.sondeo"
+                >
+            </app-section-inf>
               <!-- ESte es el que se repite amigo -->
-              <mat-expansion-panel>
+              <!--<mat-expansion-panel>
                 <mat-expansion-panel-header>
                   <mat-panel-title>
                     <ion-text color="navyblue">
@@ -56,7 +68,7 @@
                     </ion-text>
                   </mat-panel-title>
                 </mat-expansion-panel-header>
-                <!-- esto es lo que se despliega pa abajo -->
+                 esto es lo que se despliega pa abajo 
                 <ion-grid class="ion-margin" >
                   <ion-row class="ion-margin-bottom">
                     <ion-col size="12" class="ion-align-self-center">
@@ -79,9 +91,9 @@
                     </ion-col>
                   </ion-row>
                 </ion-grid>
-                <!-- /esto es lo que se despliega pa abajo -->
+                 /esto es lo que se despliega pa abajo 
               </mat-expansion-panel>
-              <!-- /ESte es el que se repite amigo -->
+              /ESte es el que se repite amigo 
 
 
               <mat-expansion-panel>
@@ -116,7 +128,7 @@
                     </ion-col>
                   </ion-row>
                 </ion-grid>
-              </mat-expansion-panel>
+              </mat-expansion-panel>--->
 
 
             </mat-accordion>
