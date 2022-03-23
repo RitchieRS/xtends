@@ -38,10 +38,10 @@ const routes: Routes =[
       path: 'mission-complete/:idPV',
       component: MissionCompleteComponent
     },
-    {
-      path: 'mission-detail',
-      component: MissionDetailsComponent
-    },
+    // {
+    //   path: 'mission-detail',
+    //   component: MissionDetailsComponent
+    // },
     {
       path: 'mission-detail/:idPV',
       component: MissionDetailsComponent

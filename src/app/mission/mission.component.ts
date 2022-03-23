@@ -15,18 +15,18 @@ export class MissionComponent  {
   missionDetail: RespMission;
   nombreCliente: string;
   nombreActividad: string;
-  nivel : number;
+  nivel: number;
   pago: string;
-  cadena:string;
+  cadena: string;
   ciudad: string;
   estado: string;
   tiempo: string;
-  dataMission : ReqMission;
+  dataMission: ReqMission;
   token: string;
   message = '';
   accepted = false;
   habilidades:Habilidades[];
-  TextState="Enviar";
+  TextState= "Enviar";
   promociones = [
     {
       img:'refiere-a-amigo.png',
@@ -43,19 +43,23 @@ export class MissionComponent  {
 
   ];
 
-  idPV:number;
-  constructor(private route: ActivatedRoute,private srvMission : MissionService ) { 
+  idPV: number;
+  constructor(
+    private route: ActivatedRoute,
+    private srvMission: MissionService )
+    {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
-  }
+    }
 
   ngOnInit() {
-   
+
     const token = localStorage.getItem('token');
     const dataMission = {
       "idPV": this.idPV
     };
     this.srvMission.keepMissionInfo(dataMission);
-    this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
+    this.srvMission.getMissionXTiendaProyecto(dataMission,token)
+    .subscribe((res) =>{
       if(res){
         this.infMission = res;
 

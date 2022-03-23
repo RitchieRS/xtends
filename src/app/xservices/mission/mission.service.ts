@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { ReqMission,Mission, ResMissionAccepted, AMission} from 'src/app/xmodels/missions';
+import { ReqMission, Mission, ResMissionAccepted, AMission, MisionSection3, ContentMission} from 'src/app/xmodels/missions';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Sondeo } from 'src/app/xmodels/sondeo';
@@ -26,7 +26,7 @@ export class MissionService {
 
 
     return this.http.post<Mission>(`${environment.API_URL}missions`,request ,httpOptions).pipe(
-          map(( res :  Mission)=>{
+          map(( res:  Mission)=>{
             console.log(res);
             return res;
           }),
@@ -76,7 +76,7 @@ export class MissionService {
     );
   };
 
-  getSondeoXmission(token : string,request: any):Observable<Sondeo>{
+  getSondeoXmission(token: string, request: any): Observable<Sondeo>{
     console.log(request);
     const httpOptions = {
       headers: new HttpHeaders({
@@ -89,7 +89,7 @@ export class MissionService {
 
 
     return this.http.post<Sondeo>(`${environment.API_URL}sondeos`,request ,httpOptions).pipe(
-          map(( res :  Sondeo)=>{
+          map(( res:  Sondeo)=>{
             console.log(res);
             return res;
           }),
@@ -97,8 +97,9 @@ export class MissionService {
     );
   };
 
-  // <servicio Detalle de la mision realizada | sondeo>
-  getDetailMission(token: string): Observable<any>{
+
+  // <servicio Detalle de la mision | sondeo>
+  srvSondeoMission(token: string): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -115,7 +116,7 @@ export class MissionService {
           catchError((err)=> this.handeleError(err))
     );
   };
-  // </servicio Detalle de la mision realizada | sondeo>
+
 
 
 
@@ -140,6 +141,25 @@ export class MissionService {
   //   );
   // };
   // </servicio de missiones por estado>
+  getValeChiles(request: ReqMission, token: string): Observable<AMission | void>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+    return this.http.get<AMission>(`${environment.API_URL}missions/user`, httpOptions).pipe(
+          map(( res:  AMission)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
 
 
 
@@ -155,13 +175,14 @@ export class MissionService {
 
 
     return this.http.get<AMission>(`${environment.API_URL}missions/user`,httpOptions).pipe(
-          map(( res :  AMission)=>{
-            // console.log(res);
+          map(( res:  AMission)=>{
+            console.log(res);
             return res;
           }),
           catchError((err)=> this.handeleError(err))
     );
   };
+
 
   private handeleError(err) : Observable<never>{
     let erroMessage = "An error has ocurred";
