@@ -12,10 +12,10 @@ import { __param } from 'tslib';
 })
 export class MissionDetailsComponent implements OnInit {
   idPV: number;
-  sucursal: any;
-  infoMission: any;
   dataMission: ReqMission;
+
   datamissionSucursal: any;
+
 
   infMission: AMission;
   preguntas: any;
@@ -26,7 +26,7 @@ export class MissionDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataDetalleMissions: MissionService,
+    private dataSondeoMissions: MissionService,
   ) {
     
 
@@ -40,9 +40,10 @@ export class MissionDetailsComponent implements OnInit {
     const dataMission = {
       idPV: this.idPV
     };
+
     console.log("Inicia Servicio")
     ///this.dataDetalleMissions.keepMissionInfo(dataMission);
-    this.dataDetalleMissions.srvSondeoMission(token,dataMission,)
+    this.dataSondeoMissions.srvSondeoMission(token,dataMission,)
     .subscribe( (res) => {
       if(res){
         console.log("Aqui imprime la respuuesta ")
@@ -51,6 +52,7 @@ export class MissionDetailsComponent implements OnInit {
         this.preguntas = res.resp;
         console.log(this.preguntas)
         
+
       }
     });
   }
