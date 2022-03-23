@@ -99,7 +99,7 @@ export class MissionService {
 
 
   // <servicio Detalle de la mision | sondeo>
-  srvSondeoMission(token: string): Observable<any>{
+  srvSondeoMission(request: ReqMission, token: string): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -108,7 +108,7 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.post<any>(`${environment.API_URL}visitas/view/`,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}visitas/view`, request, httpOptions).pipe(
           map(( res: any)=>{
             console.log(res);
             return res;
@@ -152,7 +152,7 @@ export class MissionService {
       responseType: 'json' as 'json'
     };
 
-    return this.http.get<AMission>(`${environment.API_URL}missions/user`, httpOptions).pipe(
+    return this.http.post<AMission>(`${environment.API_URL}missions/user` ,request ,httpOptions).pipe(
           map(( res:  AMission)=>{
             console.log(res);
             return res;

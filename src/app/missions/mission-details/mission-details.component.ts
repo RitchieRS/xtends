@@ -12,12 +12,8 @@ import { __param } from 'tslib';
 })
 export class MissionDetailsComponent implements OnInit {
   idPV: number;
-  sucursal: any;
-  infoMission: any;
   dataMission: ReqMission;
-  datamissionSucursal: any;
-  detalazoChingon: MisionSection3;
-  infMission: AMission;
+  infoSondeo: AMission;
 
   missionsection3: MisionSection3;
   missionDetail: ContentMission;
@@ -27,7 +23,7 @@ export class MissionDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private dataDetalleMissions: MissionService,
+    private dataSondeoMissions: MissionService,
   ) {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
 
@@ -39,14 +35,12 @@ export class MissionDetailsComponent implements OnInit {
       idPV: this.idPV
     };
 
-    this.dataDetalleMissions.keepMissionInfo(dataMission);
-    this.dataDetalleMissions.getValeChiles(dataMission,token)
+    this.dataSondeoMissions.keepMissionInfo(dataMission);
+    this.dataSondeoMissions.srvSondeoMission(dataMission,token)
     .subscribe( (res) => {
       if(res){
-        this.infMission = res;
-        this.missionsection3  = this.infMission.section3;
-        console.log(this.infMission);
-        console.log(this.missionsection3.content[4].cadena);
+        this.infoSondeo = res;
+        console.log(this.infoSondeo);
       }
     });
   }
