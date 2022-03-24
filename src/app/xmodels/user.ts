@@ -42,12 +42,13 @@ export interface ProfileResp {
     idUsuario:    number;
     nombre:       string;
     email:        string;
-    nivelXtender: string;
+    ///nivelXtender: string;
     nivelesDatos: NivelesDatos;
     informacion:  Informacion;
     zonaInteres:  ZonaInteres;
     capacitacion: Capacitacion;
     credenciales: Credenciales;
+    nivelXtender: NivelXtender;
 }
 
 export interface Capacitacion {
@@ -120,5 +121,17 @@ export interface InfoCred {
     imss?:             string;
     rfc?:              string;
     terminos?:         boolean;
+}
+
+export interface NivelXtender{
+    name: string;
+    partsNivel: PartsNivel;
+}
+
+export interface PartsNivel {
+    uno:    number;
+    dos:    number;
+    tres:   number;
+    cuatro: number;
 }
 

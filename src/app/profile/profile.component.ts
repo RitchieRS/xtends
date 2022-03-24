@@ -1,4 +1,4 @@
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { NUMBER_TYPE, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -123,6 +123,8 @@ export class ProfileComponent implements OnInit {
   imss:     string;
   rfc:      string;
   urlFirma: string;
+  nivelXtenderStr : string;
+  nivelXtenderNum = 0;
 
 
   imgDom=false;
@@ -404,6 +406,7 @@ async updateData(){
   initData(){
     const token = localStorage.getItem('token');
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
+      console.log(res);
       if(res){
         this.userResponse = res;
         this.profileData = this.userResponse.resp;
@@ -421,19 +424,49 @@ async updateData(){
         this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
         this.movil = this.profileData.informacion.movil;
 
-        this.nivelXtender = this.profileData.nivelXtender;
+       // this.nivelXtender = this.profileData.nivelXtender;
 
-        this.datosCompletosStr = this.profileData.nivelesDatos.datosComplemento;
+        /*this.datosCompletosStr = this.profileData.nivelesDatos.datosComplemento;
         this.datosCompletosN = Number(this.datosCompletosStr.substring(0,this.datosCompletosStr.length-1))/100;
         this.referidosPorcentajeStr =  this.profileData.nivelesDatos.referidosInvitados;
         this.referidosPorcentajeN = Number(this.referidosPorcentajeStr.substring(0,this.referidosPorcentajeStr.length-1))/100;
         this.fotoId = this.profileData.nivelesDatos.fotoID;
+        */
         this.puesto = this.profileData.credenciales.puesto;
         this.imss  = this.profileData.credenciales.imss;
         this.rfc  = this.profileData.credenciales.rfc;
         this.urlFirma= this.profileData.credenciales.urlFirma;
+        console.log(this.urlFirma);
+        console.log("algo algo");
+        this.nivelXtenderStr =  this.profileData.nivelXtender.name;
+
+       this.nivelXtenderNum = Number(this.profileData.nivelXtender.partsNivel.uno) +
+                              Number(this.profileData.nivelXtender.partsNivel.dos) +
+                              Number(this.profileData.nivelXtender.partsNivel.tres) +
+                              Number(this.profileData.nivelXtender.partsNivel.cuatro) ;
+
+                              console.log(this.nivelXtenderNum);
+                             
+                              if( this.nivelXtenderStr=='Plata'){
+                                this.nivelXtenderNum += 4;
+                              }
+                              else if ( this.nivelXtenderStr=='Oro'){
+                                this.nivelXtenderNum += 8;
+                              }
+                              else if ( this.nivelXtenderStr=='Elite'){
+                                this.nivelXtenderNum += 12;
+                              }
+                             
+
+
+
+
+      
+       
+       
+        console.log(this.nivelXtenderStr);
         for(var i = 0; i < this.nivelTermo.length; i++){
-          if(i<Number(this.nivelXtender)){
+          if(i<this.nivelXtenderNum){
             this.nivelTermo[i]=1;
           }
         }
