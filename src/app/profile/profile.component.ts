@@ -432,6 +432,11 @@ async updateData(){
         this.referidosPorcentajeN = Number(this.referidosPorcentajeStr.substring(0,this.referidosPorcentajeStr.length-1))/100;
         this.fotoId = this.profileData.nivelesDatos.fotoID;
         */
+
+        this.datosCompletosN = Number(this.profileData.nivelesDatos.datosCompletos)/100;
+        this.fotoId = this.profileData.nivelesDatos.fotoID;
+        this.referidosPorcentajeN  =  Number(this.profileData.nivelesDatos.referidosInvitados)/100;
+        console.log(this.datosCompletosN );
         this.puesto = this.profileData.credenciales.puesto;
         this.imss  = this.profileData.credenciales.imss;
         this.rfc  = this.profileData.credenciales.rfc;

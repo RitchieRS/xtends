@@ -106,7 +106,7 @@ export interface Informacion {
 }
 
 export interface NivelesDatos {
-    datosComplemento:   string;
+    datosCompletos:   string;
     referidosInvitados: string;
     fotoID:             number;
 }
