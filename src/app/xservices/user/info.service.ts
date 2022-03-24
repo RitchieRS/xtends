@@ -146,7 +146,7 @@ export class InfoService {
     };
 
 
-    return this.http.post<any>(`${environment.API_URL}user`,infoUser,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}user/credential`,infoUser,httpOptions).pipe(
           map(( res :  any)=> {
             console.log(res);
             return res;
