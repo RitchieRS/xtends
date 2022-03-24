@@ -1,11 +1,13 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-xtend-levels',
   templateUrl: './xtend-levels.component.html',
   styleUrls: ['./xtend-levels.component.scss'],
 })
-export class XtendLevelsComponent{
+export class XtendLevelsComponent implements OnInit{
+
+  calificacion:string;
 
   niveles = {
     elite: {
@@ -194,8 +196,34 @@ export class XtendLevelsComponent{
   //   },
   // };
 
-
+  nivelTermo=([...Array(16).fill(0)]);
+  nivelXtenderStr:string;
+  nivelXtenderNum=0;
   constructor() { }
+
+
+  ngOnInit(): void {
+    this.nivelXtenderStr = localStorage.getItem('levelx');
+    this.nivelXtenderNum =  Number(localStorage.getItem('levelnum'));
+    if( this.nivelXtenderStr=='Plata'){
+      this.nivelXtenderNum += 4;
+    }
+    else if ( this.nivelXtenderStr=='Oro'){
+      this.nivelXtenderNum += 8;
+    }
+    else if ( this.nivelXtenderStr=='Elite'){
+      this.nivelXtenderNum += 12;
+    }
+
+    for(var i = 0; i < this.nivelTermo.length; i++){
+      if(i<this.nivelXtenderNum){
+        this.nivelTermo[i]=1;
+      }
+    }
+
+    console.log(this.nivelXtenderNum);
+
+  }
 
 
 

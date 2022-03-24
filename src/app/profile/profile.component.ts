@@ -125,6 +125,7 @@ export class ProfileComponent implements OnInit {
   urlFirma: string;
   nivelXtenderStr : string;
   nivelXtenderNum = 0;
+  calificacion:number;
 
 
   imgDom=false;
@@ -423,6 +424,9 @@ async updateData(){
         this.email =  this.profileData.informacion.email;
         this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
         this.movil = this.profileData.informacion.movil;
+        this.calificacion = this.profileData.calificacion;
+
+        
 
        // this.nivelXtender = this.profileData.nivelXtender;
 
@@ -444,6 +448,7 @@ async updateData(){
         console.log(this.urlFirma);
         console.log("algo algo");
         this.nivelXtenderStr =  this.profileData.nivelXtender.name;
+        localStorage.setItem('levelx',this.nivelXtenderStr);
 
        this.nivelXtenderNum = Number(this.profileData.nivelXtender.partsNivel.uno) +
                               Number(this.profileData.nivelXtender.partsNivel.dos) +
@@ -451,6 +456,7 @@ async updateData(){
                               Number(this.profileData.nivelXtender.partsNivel.cuatro) ;
 
                               console.log(this.nivelXtenderNum);
+                             
                              
                               if( this.nivelXtenderStr=='Plata'){
                                 this.nivelXtenderNum += 4;
@@ -461,6 +467,7 @@ async updateData(){
                               else if ( this.nivelXtenderStr=='Elite'){
                                 this.nivelXtenderNum += 12;
                               }
+                              localStorage.setItem('levelnum',this.nivelXtenderNum.toString());
                              
 
 

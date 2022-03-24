@@ -42,7 +42,7 @@ export interface ProfileResp {
     idUsuario:    number;
     nombre:       string;
     email:        string;
-    ///nivelXtender: string;
+    calificacion: number;
     nivelesDatos: NivelesDatos;
     informacion:  Informacion;
     zonaInteres:  ZonaInteres;
@@ -89,6 +89,7 @@ export interface Credenciales {
 }
 
 export interface Informacion {
+
     nombre:          string;
     apat:            string;
     amat:            string;

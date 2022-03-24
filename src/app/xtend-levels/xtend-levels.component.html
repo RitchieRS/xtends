@@ -28,19 +28,19 @@
                     <ion-grid class="ion-no-padding ion-no-margin">
                       <ion-row class="ion-no-padding ion-no-margin">
                         <!-- sub-nivel-bronce 0%-25% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[0]}">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-bronce 25%-50% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[1]}">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-bronce 50%-75% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[2]}">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-bronce 75%-100% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[3]}">
                           <div class="col-subnivel"></div>
                         </ion-col>
                       </ion-row>
@@ -51,19 +51,19 @@
                     <ion-grid class="ion-no-padding ion-no-margin">
                       <ion-row class="ion-no-padding ion-no-margin">
                         <!-- sub-nivel-plata 0%-25% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[4] }">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-plata 25%-50% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[5] }">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-plata 50%-75% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[6] }">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-plata 75%-100% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[7] }">
                           <div class="col-subnivel"></div>
                         </ion-col>
                       </ion-row>
@@ -75,19 +75,19 @@
                     <ion-grid class="ion-no-padding ion-no-margin">
                       <ion-row class="ion-no-padding ion-no-margin">
                         <!-- sub-nivel-Oro 0%-25% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '1'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[8] }">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-Oro 25%-50% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '0'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[9] }">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-Oro 50%-75% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '0'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[10] }">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-Oro 75%-100% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: '0'}">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[11] }">
                           <div class="col-subnivel"></div>
                         </ion-col>
                       </ion-row>
@@ -99,19 +99,19 @@
                     <ion-grid class="ion-no-padding ion-no-margin">
                       <ion-row class="ion-no-padding ion-no-margin">
                         <!-- sub-nivel-Elite 0%-25% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[12]}">
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-Elite 25%-50% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
-                          <div class="col-subnivel "></div>
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[13]}">
+                          <div class="col-subnivel ">{{nivelTermo[0]}}</div>
                         </ion-col>
                         <!-- sub-nivel-Elite 50%-75% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[14]}" >
                           <div class="col-subnivel "></div>
                         </ion-col>
                         <!-- sub-nivel-Elite 75%-100% -->
-                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" style="opacity:0;">
+                        <ion-col size="3" class="ion-no-padding ion-no-margin bg-green" [ngStyle]="{opacity: nivelTermo[15]}">
                           <div class="col-subnivel"></div>
                         </ion-col>
                       </ion-row>
