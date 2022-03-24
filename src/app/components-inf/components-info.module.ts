@@ -22,21 +22,29 @@ import { MatGridListModule } from '@angular/material/grid-list';
 
 import { SectionComponent } from '../components-inf/section/section.component';
 import { AbiertaComponent } from '../components-inf/abierta/abierta.component';
-
-
-
-
+import { UnicaRadioComponent } from '../components-inf/unica-radio/unica-radio.component';
+import { MultipleComponent } from '../components-inf/multiple/multiple.component';
+import { FechaComponent } from '../components-inf/fecha/fecha.component';
+import { EmailComponent } from '../components-inf/email/email.component';
 
 
 
 @NgModule({
   declarations: [
     SectionComponent,
-    AbiertaComponent
+    AbiertaComponent,
+    UnicaRadioComponent,
+    MultipleComponent,
+    FechaComponent,
+    EmailComponent
   ],
   exports:[
     SectionComponent,
-    AbiertaComponent
+    AbiertaComponent,
+    UnicaRadioComponent,
+    MultipleComponent,
+    FechaComponent,
+    EmailComponent
   ],
   imports: [
     CommonModule,

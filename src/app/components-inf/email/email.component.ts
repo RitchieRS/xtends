@@ -1,14 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-email',
+  selector: 'app-email-inf',
   templateUrl: './email.component.html',
   styleUrls: ['./email.component.scss'],
 })
 export class EmailComponent implements OnInit {
+  @Input() idPregunta: number;
+    @Input() pregunta: string;
+    @Input() respuesta: string;
+    @Input() tipo: string;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.pregunta);
+  }
 
 }

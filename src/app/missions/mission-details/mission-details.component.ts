@@ -13,14 +13,10 @@ import { __param } from 'tslib';
 export class MissionDetailsComponent implements OnInit {
   idPV: number;
   dataMission: ReqMission;
-
   datamissionSucursal: any;
-
-
   infMission: AMission;
   preguntas: any;
   missionDetail: ContentMission;
-
   dataSondeo: any;
 
 
@@ -28,7 +24,7 @@ export class MissionDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private dataSondeoMissions: MissionService,
   ) {
-    
+
 
    }
 
@@ -41,17 +37,17 @@ export class MissionDetailsComponent implements OnInit {
       idPV: this.idPV
     };
 
-    console.log("Inicia Servicio")
+    console.log('Inicia Servicio');
     ///this.dataDetalleMissions.keepMissionInfo(dataMission);
-    this.dataSondeoMissions.srvSondeoMission(token,dataMission,)
+    this.dataSondeoMissions.srvSondeoMission(dataMission,token,)
     .subscribe( (res) => {
       if(res){
-        console.log("Aqui imprime la respuuesta ")
-        
+        console.log('Aqui imprime la respuuesta');
+
         this.infMission = res;
         this.preguntas = res.resp;
-        console.log(this.preguntas)
-        
+        console.log(this.preguntas);
+
 
       }
     });

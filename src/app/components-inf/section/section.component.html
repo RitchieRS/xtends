@@ -4,9 +4,9 @@
       <mat-panel-title>
         <ion-grid>
           <ion-row class="ion-justify-content-center">
-            <ion-col size="10">
+            <ion-col size="12">
               <ion-text color=navyblue>
-                <h6>{{sondeo}}</h6>
+                <h3>{{sondeo}}</h3>
               </ion-text>
             </ion-col>
             <!--<ion-col *ngIf="isValid==0" size="1" class="ion-align-self-center ion-text-center iup-margin-top-sm">
@@ -23,26 +23,53 @@
 
     <div *ngFor="let p of respuestas; let i = index" [ngSwitch]="p.tipo" >
      <!---Aqui esta la lista de los tipos pero basate en la que no esta comentada -->
-      <!--<div *ngSwitchCase="'unicaRadio'" >
-        <app-unica-radio  [dependePregunta]="p.dependePregunta"
-                          [dependeRespuesta]="p.dependeRespuesta"
-                          [idPregunta]="p.idPregunta"
-                          [maximo]="p.maximo"
-                          [minimo]="p.minimo"
-                          [obligatorio]="p.obligatorio"
-                          [opciones]="p.opciones"
-                          [orden]="p.orden"
-                          [respuestas]="p.respuestas"
-                          [puntaje]="p.puntaje"
-                          [tipo]="p.tipo"
-                          [urlImage]="p.urlImage"
-                          [idSondeo]="idSondeoStr"
-                          [checkCompleteChild]="checkCompleteParent">
-      </app-unica-radio>
+      <div *ngSwitchCase="'unicaRadio'" >
+        <app-unica-radio-inf
+        [idPregunta]="p.idPregunta"
+        [pregunta] ="p.pregunta"
+        [respuesta] = "p.respuesta"
+        [tipo] ="p.tipo"
+        ></app-unica-radio-inf>
       </div>
 
+      <div *ngSwitchCase="'abierta'" >
+        <app-abierta-inf
+        [idPregunta]="p.idPregunta"
+        [pregunta] ="p.pregunta"
+        [respuesta] = "p.respuesta"
+        [tipo] ="p.tipo"
+        ></app-abierta-inf>
+      </div>
 
-      <div *ngSwitchCase="'carrusel'" >
+      <div *ngSwitchCase="'multiple'" >
+        <app-multiple-inf
+        [idPregunta]="p.idPregunta"
+        [pregunta] ="p.pregunta"
+        [respuesta] = "p.respuesta"
+        [tipo] ="p.tipo"
+        ></app-multiple-inf>
+      </div>
+
+      <div *ngSwitchCase="'fecha'" >
+        <app-fecha-inf
+        [idPregunta]="p.idPregunta"
+        [pregunta] ="p.pregunta"
+        [respuesta] = "p.respuesta"
+        [tipo] ="p.tipo"
+        ></app-fecha-inf>
+      </div>
+
+      <div *ngSwitchCase="'email'" >
+        <app-email-inf
+        [idPregunta]="p.idPregunta"
+        [pregunta] ="p.pregunta"
+        [respuesta] = "p.respuesta"
+        [tipo] ="p.tipo"
+        >
+      </app-email-inf>
+      </div>
+
+      <!--<div *ngSwitchCase="'carrusel'" >
         <app-carrusel  [dependePregunta]="p.dependePregunta"
                           [dependeRespuesta]="p.dependeRespuesta"
                           [idPregunta]="p.idPregunta"
@@ -59,22 +86,7 @@
                           [checkCompleteChild]="checkCompleteParent" >
       </app-carrusel>
       </div>
-      <div *ngSwitchCase="'email'" >
-        <app-email  [dependePregunta]="p.dependePregunta"
-                          [dependeRespuesta]="p.dependeRespuesta"
-                          [idPregunta]="p.idPregunta"
-                          [maximo]="p.maximo"
-                          [minimo]="p.minimo"
-                          [obligatorio]="p.obligatorio"
-                          [opciones]="p.opciones"
-                          [orden]="p.orden"
-                          [pregunta]="p.pregunta"
-                          [puntaje]="p.puntaje"
-                          [tipo]="p.tipo"
-                          [urlImage]="p.urlImage"
-                          [idSondeo]="idSondeoStr"
-                          [checkCompleteChild]="checkCompleteParent" >
-      </app-email>
+
       </div>
       <div *ngSwitchCase="'numerica'" >
         <app-numerica [dependePregunta]="p.dependePregunta"
@@ -110,32 +122,7 @@
                       [checkCompleteChild]="checkCompleteParent">
       </app-carga-imagen>
       </div>
-      <div *ngSwitchCase="'fecha'" >
-        <app-fecha [dependePregunta]="p.dependePregunta"
-                      [dependeRespuesta]="p.dependeRespuesta"
-                      [idPregunta]="p.idPregunta"
-                      [maximo]="p.maximo"
-                      [minimo]="p.minimo"
-                      [obligatorio]="p.obligatorio"
-                      [opciones]="p.opciones"
-                      [orden]="p.orden"
-                      [pregunta]="p.pregunta"
-                      [puntaje]="p.puntaje"
-                      [tipo]="p.tipo"
-                      [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr"
-                      >
-      </app-fecha>
-      </div>-->
-      <div *ngSwitchCase="'abierta'" >
-        <app-abierta-inf
-        [idPregunta]="p.idPregunta"
-        [pregunta] ="p.pregunta"
-        [respuesta] = "p.respuesta"
-        [tipo] ="p.tipo"
-        ></app-abierta-inf>
-      </div>
-
+      -->
       <!--<mat-expansion-panel *ngSwitchCase="'informartiva'" >
         <mat-expansion-panel-header >
           <mat-panel-title>
@@ -180,24 +167,7 @@
 
 
 
-      <div *ngSwitchCase="'multiple'" >
-        <app-multiple
-                      [dependePregunta]="p.dependePregunta"
-                      [dependeRespuesta]="p.dependeRespuesta"
-                      [idPregunta]="p.idPregunta"
-                      [maximo]="p.maximo"
-                      [minimo]="p.minimo"
-                      [obligatorio]="p.obligatorio"
-                      [opciones]="p.opciones"
-                      [orden]="p.orden"
-                      [pregunta]="p.pregunta"
-                      [puntaje]="p.puntaje"
-                      [tipo]="p.tipo"
-                      [urlImage]="p.urlImage"
-                      [idSondeo]="idSondeoStr"
-                      [checkCompleteChild]="checkCompleteParent" >
-                       ></app-multiple>
-      </div>
+
 
 
       <div *ngSwitchCase="'gps'" >
