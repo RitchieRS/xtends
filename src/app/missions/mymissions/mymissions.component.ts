@@ -38,21 +38,21 @@ export class MymissionsComponent implements OnInit {
     //Carga las my missions disponibles
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsActivas => {
-    this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,4);
+    this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
     console.log(this.puereMissionsActivas);
     });
 
     //Carga las my missions a realizar
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsArealizar => {
-    this.puereMissionsArealizar = myMissionsArealizar.section2.content;
+    this.puereMissionsArealizar = myMissionsArealizar.section2.content.slice(0,4);
     console.log(this.puereMissionsArealizar);
     });
 
     //Carga las my missions compleat
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsComplite => {
-    this.puereMissionsComplite = myMissionsComplite.section3.content;
+    this.puereMissionsComplite = myMissionsComplite.section3.content.slice(0,4);
     console.log(this.puereMissionsComplite);
     });
 
