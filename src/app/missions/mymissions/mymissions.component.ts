@@ -16,7 +16,17 @@ export class MymissionsComponent implements OnInit {
   missionDetalleMelleva: any;
   puereMissionsActivas: any;
   puereMissionsArealizar: any;
+  puereMissionsArealizarDtc: any;
   puereMissionsComplite: any;
+  puereMissionsCompliteDtc: any;
+  isLoaded=0;
+  isLoadedArealizar=0;
+  isLoadedComplite=0;
+  currentIndex = 5;
+  currentIndexTwo = 5;
+  totalMissionsTwo: number;
+  totalMissionsOne: number;
+
 
 
   constructor(
@@ -38,24 +48,51 @@ export class MymissionsComponent implements OnInit {
     //Carga las my missions disponibles
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsActivas => {
-    this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
-    console.log(this.puereMissionsActivas);
+    {
+      this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
+       console.log(this.puereMissionsActivas);
+       this.isLoaded=1;
+
+    }
+
+    //   this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
+    // console.log(this.puereMissionsActivas);
     });
 
     //Carga las my missions a realizar
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsArealizar => {
-    this.puereMissionsArealizar = myMissionsArealizar.section2.content.slice(0,4);
+    this.puereMissionsArealizar = myMissionsArealizar.section2.content;
+    this.puereMissionsArealizarDtc = this.puereMissionsArealizar.slice(0,3);
     console.log(this.puereMissionsArealizar);
+    this.isLoadedArealizar=1;
+    this.totalMissionsOne = this.puereMissionsArealizar.length;
     });
 
     //Carga las my missions compleat
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsComplite => {
-    this.puereMissionsComplite = myMissionsComplite.section3.content.slice(0,4);
-    console.log(this.puereMissionsComplite);
+    this.puereMissionsComplite = myMissionsComplite.section3.content;
+    this.puereMissionsCompliteDtc = this.puereMissionsComplite.slice(0,4);
+    console.log(this.puereMissionsComplite.length);
+    this.isLoadedComplite=1;
+    this.totalMissionsTwo = this.puereMissionsComplite.length;
     });
 
+  }
+
+  seeMore(){
+    this.currentIndex += 5;
+    console.log(this.currentIndex);
+    this.puereMissionsArealizarDtc = this.puereMissionsArealizar;
+    this.puereMissionsArealizarDtc = this.puereMissionsArealizarDtc.slice(0,this.currentIndex);
+  }
+
+  seeMoreTwo(){
+    this.currentIndexTwo += 5;
+    console.log(this.currentIndexTwo);
+    this.puereMissionsCompliteDtc = this.puereMissionsComplite;
+    this.puereMissionsCompliteDtc = this.puereMissionsCompliteDtc.slice(0,this.currentIndexTwo);
   }
 
 
