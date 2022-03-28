@@ -230,7 +230,7 @@
                 </mat-expansion-panel-header>
                 <form  [formGroup]="userForm" class="iup-form" color="primary" >
                   <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
+                    <mat-form-field *ngIf="visiblefield >= 1" appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
                       <input formControlName="nombre"  matInput placeholder="Modificar Nombre">
                       <mat-icon matSuffix>edit</mat-icon>
@@ -238,28 +238,28 @@
                   </p>
 
                   <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
+                    <mat-form-field  *ngIf="visiblefield >= 1" appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue"> A. Paterno</mat-label>
                       <input formControlName="apat" matInput placeholder="Modificar A. Paterno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
+                    <mat-form-field  *ngIf="visiblefield >= 1" appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">A. Materno</mat-label>
                       <input formControlName="amat" matInput placeholder="Modificar A. Materno">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
+                    <mat-form-field  *ngIf="visiblefield >= 1" appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">EMail</mat-label>
                       <input formControlName="email" matInput placeholder="Modificar EMail">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
+                    <mat-form-field  *ngIf="visiblefield >= 1" appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue"> Móvil</mat-label>
                       <input formControlName="movil" matInput placeholder="Modificar Móvil">
                       <mat-icon matSuffix>edit</mat-icon>
@@ -267,7 +267,7 @@
                   </p>
 
                   <p>
-                    <mat-form-field appearance="outline" class="iup-full-width">
+                    <mat-form-field  *ngIf="visiblefield >= 1" appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">Fecha de nacimiento</mat-label>
                       <input formControlName="fechaNacimiento" matInput [matDatepicker]="picker" readonly>
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -277,10 +277,14 @@
 
 
                 <ion-grid class="ion-no-margin">
+                     <div  *ngIf="visiblefield >= 2" >
 
-                     <app-foto-id></app-foto-id>
-
+                      <app-foto-id></app-foto-id>
+                     </div>
+                    
+                     <div  *ngIf="visiblefield >= 3" >
                      <app-foto-curp></app-foto-curp>
+                    </div>
 
                   <hr>
                   <ion-row>
@@ -377,7 +381,7 @@
                       <ion-grid class="ion-no-padding">
                         <ion-row class="ion-no-margin">
                           <ion-col size="12">
-                            <section>
+                            <section  *ngIf="visiblefield >= 4">
                              <app-foto-dom></app-foto-dom>
 
                             </section>
@@ -558,11 +562,11 @@
                       </mat-expansion-panel-header>
                       <form [formGroup]="credForm" class="iup-form"  color="primary">
                         <p>
-                          <mat-form-field appearance="outline" class="iup-full-width">
+                          <!--<mat-form-field appearance="outline" class="iup-full-width">
                             <mat-label class="mat-label-color-navyblue">{{puesto}}</mat-label>
                             <input formControlName="puesto"   matInput placeholder="Puesto">
                             <mat-icon matSuffix>edit</mat-icon>
-                          </mat-form-field>
+                          </mat-form-field>-->
                         </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">

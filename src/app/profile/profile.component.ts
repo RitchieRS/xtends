@@ -126,6 +126,7 @@ export class ProfileComponent implements OnInit {
   nivelXtenderStr : string;
   nivelXtenderNum = 0;
   calificacion:number;
+  visiblefield = 0;
 
 
   imgDom=false;
@@ -163,7 +164,6 @@ export class ProfileComponent implements OnInit {
     this.credForm = this.fb.group({
       imss : ['', [Validators.minLength(4),Validators.required]],
       rfc: ['', [Validators.minLength(4),Validators.required]],
-      puesto: ['', [Validators.minLength(4),Validators.required]],
       terminos: [false,[ Validators.required,Validators.required]]
 });
 
@@ -457,15 +457,20 @@ async updateData(){
 
                               console.log(this.nivelXtenderNum);
                              
-                             
-                              if( this.nivelXtenderStr=='Plata'){
+                              if( this.nivelXtenderStr=='Bronce'){
+                                this.visiblefield = 1;
+                              }
+                              else if( this.nivelXtenderStr=='Plata'){
                                 this.nivelXtenderNum += 4;
+                                this.visiblefield = 2;
                               }
                               else if ( this.nivelXtenderStr=='Oro'){
                                 this.nivelXtenderNum += 8;
+                                this.visiblefield = 3;
                               }
                               else if ( this.nivelXtenderStr=='Elite'){
                                 this.nivelXtenderNum += 12;
+                                this.visiblefield = 4;
                               }
                               localStorage.setItem('levelnum',this.nivelXtenderNum.toString());
                              

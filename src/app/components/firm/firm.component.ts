@@ -61,7 +61,7 @@ export class FirmComponent implements OnInit, AfterViewInit {
    }
   }
 // <ENVIAR FIRMA
-  enviarf(dataURL:any, nombre:any){
+  async enviarf(dataURL:any, nombre:any){
    
       const blob = this.URLtoBlob(dataURL);
       // const url = window.URL.createObjectURL(blob);
@@ -76,9 +76,8 @@ export class FirmComponent implements OnInit, AfterViewInit {
         firma64 : firmaUrl
       };
       const token = localStorage.getItem('token');
-      this.firmaService.sendFirma(firmaup,token).subscribe(
+      await this.firmaService.sendFirma(firmaup,token).subscribe(
         rest => {
-
           this.checkSignChild(1);
           //console.log(rest);
         }
