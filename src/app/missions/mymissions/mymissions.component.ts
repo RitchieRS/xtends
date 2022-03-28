@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Mission, RespMission, MisionSection3, ContentMission } from 'src/app/xmodels/missions';
 import { MissionService } from 'src/app/xservices/mission/mission.service';
+import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+
 
 @Component({
   selector: 'app-mymissions',
@@ -9,6 +11,7 @@ import { MissionService } from 'src/app/xservices/mission/mission.service';
   styleUrls: ['./mymissions.component.scss'],
 })
 export class MymissionsComponent implements OnInit {
+
   infMisionMelleva: MisionSection3;
   infMission: Mission;
   idPV: number;
@@ -17,7 +20,8 @@ export class MymissionsComponent implements OnInit {
   puereMissionsActivas: any;
   puereMissionsArealizar: any;
   puereMissionsArealizarDtc: any;
-  puereMissionsComplite: any;
+  // puereMissionsComplite: any;
+  puereMissionsComplite: any [] =  [];
   puereMissionsCompliteDtc: any;
   isLoaded=0;
   isLoadedArealizar=0;
@@ -26,13 +30,39 @@ export class MymissionsComponent implements OnInit {
   currentIndexTwo = 5;
   totalMissionsTwo: number;
   totalMissionsOne: number;
+  dateRangePicker: any;
+  dateRangeStart: any;
+  dateRangeEnd: any;
+  dataFecha: any;
+
+
 
 
 
   constructor(
     private route: ActivatedRoute,
     private srvMission: MissionService,
-    ) { }
+
+    ) {
+
+     }
+
+    dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
+      console.log(dateRangeStart.value);
+      console.log(dateRangeEnd.value);
+    }
+
+
+    filtrarPorFecha(){
+      if(this.dateRangePicker.valid
+        && this.dateRangeStart.value != null
+        && this.dateRangeEnd.value != null){
+          console.log('Rango de fechas');
+      }
+      else{
+        console.log('Herror cabron');
+      }
+    }
 
   async ngOnInit() {
     await this.loadMissionTaken();
@@ -52,11 +82,7 @@ export class MymissionsComponent implements OnInit {
       this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
        console.log(this.puereMissionsActivas);
        this.isLoaded=1;
-
     }
-
-    //   this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
-    // console.log(this.puereMissionsActivas);
     });
 
     //Carga las my missions a realizar
@@ -69,10 +95,12 @@ export class MymissionsComponent implements OnInit {
     this.totalMissionsOne = this.puereMissionsArealizar.length;
     });
 
-    //Carga las my missions compleat
+    //Carga las my missionscompleat
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsComplite => {
     this.puereMissionsComplite = myMissionsComplite.section3.content;
+    this.dataFecha = this.puereMissionsComplite[0].fecha;
+    console.log(this.dataFecha);
     this.puereMissionsCompliteDtc = this.puereMissionsComplite.slice(0,4);
     console.log(this.puereMissionsComplite.length);
     this.isLoadedComplite=1;
@@ -80,6 +108,8 @@ export class MymissionsComponent implements OnInit {
     });
 
   }
+
+
 
   seeMore(){
     this.currentIndex += 5;
