@@ -4,6 +4,7 @@ import { from } from 'rxjs';
 import { MissionService } from '../../xservices/mission/mission.service';
 import { ReqMission, AMission, ContentMission } from '../../xmodels/missions';
 import { __param } from 'tslib';
+import { RespInf, Sondeo, SondeoInf } from 'src/app/xmodels/sondeinf';
 
 @Component({
   selector: 'app-mission-details',
@@ -11,6 +12,10 @@ import { __param } from 'tslib';
   styleUrls: ['./mission-details.component.scss'],
 })
 export class MissionDetailsComponent implements OnInit {
+  
+  sondeInf : SondeoInf;
+  respSondeo : RespInf[];
+  sondeos : Sondeo[];
   idPV: number;
   dataMission: ReqMission;
   datamissionSucursal: any;
@@ -44,9 +49,11 @@ export class MissionDetailsComponent implements OnInit {
       if(res){
         console.log('Aqui imprime la respuuesta');
 
-        this.infMission = res;
-        this.preguntas = res.resp;
-        console.log(this.infMission);
+        this.sondeInf = res;
+        this.respSondeo = this.sondeInf.resp;
+
+        this.preguntas = this.respSondeo[0].sondeos;
+        console.log(this.preguntas);
 
 
       }

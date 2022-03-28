@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
-import { ReqMission, Mission, ResMissionAccepted, AMission, MisionSection3, ContentMission} from 'src/app/xmodels/missions';
+import { ReqMission, Mission, ResMissionAccepted, AMission, ContentMission} from 'src/app/xmodels/missions';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Sondeo } from 'src/app/xmodels/sondeo';
+import { SondeoInf } from 'src/app/xmodels/sondeinf';
 
 @Injectable({
   providedIn: 'root'
@@ -99,7 +100,7 @@ export class MissionService {
 
 
   // <servicio Detalle de la mision | sondeo>
-  srvSondeoMission(request: ReqMission, token: string): Observable<any>{
+  srvSondeoMission(request: ReqMission, token: string): Observable<SondeoInf>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -108,7 +109,7 @@ export class MissionService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.post<any>(`${environment.API_URL}visitas/view`, request, httpOptions).pipe(
+    return this.http.post<ReqMission>(`${environment.API_URL}visitas/view`, request, httpOptions).pipe(
           map(( res: any)=>{
             console.log(res);
             return res;
