@@ -46,7 +46,7 @@ export class MissionDetailsComponent implements OnInit {
 
         this.infMission = res;
         this.preguntas = res.resp;
-        console.log(this.preguntas);
+        console.log(this.infMission);
 
 
       }

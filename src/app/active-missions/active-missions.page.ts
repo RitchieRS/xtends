@@ -21,7 +21,7 @@ export class ActiveMissionsPage implements OnInit {
   lng:any;
   listMissionlength=0;
 
-  constructor(private mision : MissionService) { }
+  constructor(private mision: MissionService) { }
 
   ngOnInit() {
 
