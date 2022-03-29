@@ -165,22 +165,28 @@
 
         <ion-col size="8" class="ion-text-end ion-align-self-center">
 
+          <form [formGroup] = "multas" (ngSubmit) = "doMultas()" class="demo-button">
 
+            <mat-form-field appearance="fill" >
+                <mat-label>Ingrese un rango de fechas</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="StartDate" placeholder="Fecha Inicio">
+                  <input matEndDate formControlName="EndDate" placeholder="Fecha Fin">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
 
+                <mat-error *ngIf="multas.controls.StartDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="multas.controls.EndDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+            </mat-form-field>
 
+              <mat-card-actions class="child">
+                <button class = "button" type="submit" mat-raised-button color="accent">Calcular</button>
+            </mat-card-actions>
+        </form>
 
-          <mat-form-field appearance="fill">
-            <mat-label>fecha inicial | fecha final</mat-label>
-            <mat-date-range-input [rangePicker]="dateRangePicker">
-              <input matStartDate placeholder="Start date" #dateRangeStart>
-              <input matEndDate placeholder="End date" #dateRangeEnd (dateChange)="dateRangeChange(dateRangeStart, dateRangeEnd)">
-            </mat-date-range-input>
-            <mat-datepicker-toggle matPrefix [for]="dateRangePicker"></mat-datepicker-toggle>
-            <mat-date-range-picker #dateRangePicker></mat-date-range-picker>
-          </mat-form-field>
-          <ion-button (click)="filtrarPorFecha()">Filtrar</ion-button>
-
-
+          <!-- <p>Selected range: {{range.value | json}}</p> -->
+          <!-- <ion-button (click)="filtrarPorFecha()">Filtrar</ion-button> -->
         </ion-col>
       </ion-row>
     </ion-grid>

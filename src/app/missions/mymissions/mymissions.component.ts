@@ -12,6 +12,14 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 })
 export class MymissionsComponent implements OnInit {
 
+
+  multas: FormGroup;
+  submitted = false;
+  fechaMiliseg: any;
+  missionsArray: any[]=[];
+  cliente: any;
+
+
   infMisionMelleva: MisionSection3;
   infMission: Mission;
   idPV: number;
@@ -30,10 +38,11 @@ export class MymissionsComponent implements OnInit {
   currentIndexTwo = 5;
   totalMissionsTwo: number;
   totalMissionsOne: number;
-  dateRangePicker: any;
-  dateRangeStart: any;
-  dateRangeEnd: any;
   dataFecha: any;
+  // dateRangePicker: any;
+  // dateRangeStart: any;
+  // dateRangeEnd: any;
+
 
 
 
@@ -42,32 +51,26 @@ export class MymissionsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private srvMission: MissionService,
-
+    private fb: FormBuilder
     ) {
+      this.multas = this.fb.group({
+        StartDate: ['',Validators.required],
+        EndDate: ['',Validators.required],
 
-     }
-
-    dateRangeChange(dateRangeStart: HTMLInputElement, dateRangeEnd: HTMLInputElement) {
-      console.log(dateRangeStart.value);
-      console.log(dateRangeEnd.value);
+      });
     }
 
 
-    filtrarPorFecha(){
-      if(this.dateRangePicker.valid
-        && this.dateRangeStart.value != null
-        && this.dateRangeEnd.value != null){
-          console.log('Rango de fechas');
-      }
-      else{
-        console.log('Herror cabron');
-      }
+    doMultas(){
+      console.log(this.missionsArray);
     }
+
 
   async ngOnInit() {
     await this.loadMissionTaken();
 
     const token = localStorage.getItem('token');
+
 
     // this.srvMission.getMissionXuser(token)
     // .subscribe( myMissionsAka => {
@@ -99,13 +102,23 @@ export class MymissionsComponent implements OnInit {
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsComplite => {
     this.puereMissionsComplite = myMissionsComplite.section3.content;
-    this.dataFecha = this.puereMissionsComplite[0].fecha;
-    console.log(this.dataFecha);
+
+    const fechaMiliseg = Date.now();
+
     this.puereMissionsCompliteDtc = this.puereMissionsComplite.slice(0,4);
     console.log(this.puereMissionsComplite.length);
     this.isLoadedComplite=1;
     this.totalMissionsTwo = this.puereMissionsComplite.length;
+
+    this.missionsArray = this.puereMissionsComplite;
+
+    this.missionsArray.map( element => {
+      if(element.idPV >= 1500){
+        console.log(element.idPV + '|' + element.cliente+ '|' + element.fecha,fechaMiliseg);
+      }
     });
+    });
+
 
   }
 

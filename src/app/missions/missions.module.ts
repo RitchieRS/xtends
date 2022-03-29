@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +27,8 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { MissionCompleteComponent } from './mission-complete/mission-complete.component';
 import { MissionDetailsComponent } from './mission-details/mission-details.component';
 import { ComponentsInformativoModule } from '../components-inf/components-info.module';
+
+
 @NgModule({
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
@@ -61,7 +63,8 @@ import { ComponentsInformativoModule } from '../components-inf/components-info.m
     MatDatepickerModule,
     MatDialogModule,
     MatButtonModule,
-    AgmCoreModule
+    AgmCoreModule,
+    ReactiveFormsModule
   ],
   exports: [
     MymissionsComponent,
