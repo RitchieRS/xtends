@@ -145,39 +145,6 @@ export class MymissionsComponent implements OnInit {
     console.log(this.missionsFiltradas);
   }
 
-  // filterMissionsComplite(){
-  //   this.submitted = true;
-  //   const missionsArray = this.puereMissionsComplite;
-
-  //   const tranformFechas = missionsArray.map(reata => {
-  //     const fechaVerga = new Date(reata.fecha);
-  //     const milsegDtc = fechaVerga.getTime();
-  //     return{
-  //       cliente: reata.cliente,
-  //       cadena: reata.cadena,
-  //       proyecto: reata.pryecto,
-  //       sucursal: reata.sucursal,
-  //       idPV: reata.idPV,
-  //       fecha: reata.fecha,
-  //       fechUnix: milsegDtc,
-  //     };
-  //   });
-
-  //   const lasMerasMissiones = tranformFechas;
-  //   console.log(lasMerasMissiones);
-
-  //   const fechaInicialDPicker = this.missionscomplite.value.StartDate.getTime();
-  //   const fechaFinalDPicker = this.missionscomplite.value.EndDate.getTime();
-  //   console.log(fechaInicialDPicker, fechaFinalDPicker) ;
-
-  //   const missionsEnRangod = putiMissiones =>
-  //   putiMissiones.fechUnix >= fechaInicialDPicker
-  //   && putiMissiones.fechUnix <= fechaFinalDPicker;
-
-  //   const missionsFiltradas = lasMerasMissiones.filter(missionsEnRangod);
-  //   console.log(missionsFiltradas);
-  //   this.missionsFiltradas = missionsFiltradas;
-  // }
 
 
   seeMore(){
