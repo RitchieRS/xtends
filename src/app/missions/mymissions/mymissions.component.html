@@ -157,39 +157,34 @@
 
     <ion-grid class="bg-polarwhite ion-padding-top ion-margin-top">
       <ion-row class="ion-padding-horizontal ion-margin-top">
-        <ion-col size="4" class="ion-text-start ion-align-self-center">
+        <ion-col size="4" class="ion-text-start ion-align-self-top">
           <ion-text color="navyblue">
-            <h5 class="ion-no-margin">Misiones realizadas</h5>
+            <h5 class="ion-no-margin"><br>Misiones realizadas</h5>
           </ion-text>
         </ion-col>
 
         <ion-col size="8" class="ion-text-end ion-align-self-center">
+          <form [formGroup] = "missionscomplitedtc" (ngSubmit) = "filterMissionsComplite()">
+                  <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Periodo</mat-label>
+                    <mat-date-range-input [rangePicker]="picker">
+                      <input matStartDate formControlName="startDate" placeholder="Inicio">
+                      <input matEndDate formControlName="endDate" placeholder="Fin">
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
 
-          <form [formGroup] = "multas" (ngSubmit) = "doMultas()" class="demo-button">
-
-            <mat-form-field appearance="fill" >
-                <mat-label>Ingrese un rango de fechas</mat-label>
-                <mat-date-range-input [rangePicker]="picker">
-                  <input matStartDate formControlName="StartDate" placeholder="Fecha Inicio">
-                  <input matEndDate formControlName="EndDate" placeholder="Fecha Fin">
-                </mat-date-range-input>
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-date-range-picker #picker></mat-date-range-picker>
-
-                <mat-error *ngIf="multas.controls.StartDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-                <mat-error *ngIf="multas.controls.EndDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-            </mat-form-field>
-
-              <mat-card-actions class="child">
-                <button class = "button" type="submit" mat-raised-button color="accent">Calcular</button>
-            </mat-card-actions>
-        </form>
-
-          <!-- <p>Selected range: {{range.value | json}}</p> -->
-          <!-- <ion-button (click)="filtrarPorFecha()">Filtrar</ion-button> -->
+                    <mat-error *ngIf="missionscomplitedtc.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                    <mat-error *ngIf="missionscomplitedtc.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
+                </mat-form-field>
+                  <button type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                    Aplicar filtro
+                </button>
+          </form>
         </ion-col>
       </ion-row>
     </ion-grid>
+
     <ion-grid *ngIf="isLoadedComplite==0">
       <ion-card *ngFor ="let item of [1,1,1,1]">
         <ion-card-content>
@@ -216,7 +211,7 @@
       </ion-card>
     </ion-grid>
     <ion-card>
-      <ion-card-content>
+      <ion-card-content *ngIf="!missionsFiltradas">
         <ion-grid class="ion-no-padding" *ngFor="let missionComplite of puereMissionsCompliteDtc">
           <ion-row class="ion-justify-content-center ion-margin-vertical">
             <ion-col size="10" class="ion-align-self-center">
@@ -251,27 +246,46 @@
             </ion-chip>
           </ion-col>
         </ion-row>
+      </ion-card-content>
 
-        <!-- <ion-grid class="ion-no-padding">
+      <ion-card-content *ngIf="missionsFiltradas">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <button (click)="returnTheFilter()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                Limpiar filtro
+              </button>
+            </ion-col>
+            <ion-col size="12" *ngIf="missionsFiltradas.length==0">
+              <hr>
+              <ion-text color="navybluextend" class="ion-text-center">
+                <h2 class="align">No hay missiones relizadasen este rango de fecha</h2>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid class="ion-no-padding" *ngFor="let missionCompliteFilter of missionsFiltradas">
           <ion-row class="ion-justify-content-center ion-margin-vertical">
             <ion-col size="10" class="ion-align-self-center">
               <ion-label>
                 <ion-text color="cloudysky">
-                  <h2><strong>Shell Autozone</strong></h2>
-                  <h3>Visita Promotoría</h3>
-                  <p>Autozone Satélite</p>
-                  <p>13.oct.2021</p>
+                  <h2><strong>{{missionCompliteFilter.cliente}} {{missionCompliteFilter.cadena}}</strong></h2>
+                  <h3>Visita {{missionCompliteFilter.proyecto}}</h3>
+                  <p>{{missionCompliteFilter.sucursal}}</p>
+                  <p>{{missionCompliteFilter.fecha | date:'medium'}}</p>
                 </ion-text>
               </ion-label>
             </ion-col>
             <ion-col size="1" class="ion-align-self-center ion-margin-end">
-              <button mat-icon-button>
+              <button mat-icon-button routerLink="/mission-detail/{{missionCompliteFilter.idPV}}">
                 <mat-icon class="color-cloudysky">navigate_next</mat-icon>
               </button>
             </ion-col>
           </ion-row>
-        </ion-grid> -->
+          <hr>
+        </ion-grid>
       </ion-card-content>
+
     </ion-card>
 
   </div>

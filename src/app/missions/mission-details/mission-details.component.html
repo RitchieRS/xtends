@@ -7,21 +7,43 @@
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
     <div>
       <ion-card>
+
+
+
         <ion-grid class="ion-no-padding">
-          <ion-row [ngClass]="'bg-skybluextend'">
+          <ion-row [ngClass]="'bg-skybluextend'" *ngIf="isLoadedComplite==0">
             <ion-col size="3" class="ion-padding ion-justify-content-center ion-align-self-center">
               <div class="box-img border-rodondos">
-                <img src="../../assets/img/shell.svg" class="img-full img-icon">
+                <ion-skeleton-text animated style="width: 50px; height: 50px"></ion-skeleton-text>
               </div>
             </ion-col>
             <ion-col size="9" class="ion-padding">
              <div class="ion-text-start">
                <ion-label>
                  <ion-text color="polarwhite">
-                   <h3><strong>Marca</strong></h3>
-                   <h4>Proyecto</h4>
-                   <h4>Tienda la Comer | Santa Jose</h4>
-                   <h4>Ciudad de México</h4>
+                   <h4><ion-skeleton-text animated style="width: 20%; height:10px;"></ion-skeleton-text></h4>
+                   <h3><ion-skeleton-text animated style="width: 30%; height:10px;"></ion-skeleton-text></h3>
+                   <h4><ion-skeleton-text animated style="width: 90%; height:10px;"></ion-skeleton-text></h4>
+                   <h4><ion-skeleton-text animated style="width: 50%; height:10px;"></ion-skeleton-text></h4>
+                 </ion-text>
+               </ion-label>
+             </div>
+            </ion-col>
+          </ion-row>
+          <ion-row [ngClass]="'bg-skybluextend'">
+            <ion-col size="3" class="ion-padding ion-justify-content-center ion-align-self-center">
+              <div class="box-img border-rodondos">
+                <img src="{{logoProyecto}}" class="img-full img-icon">
+              </div>
+            </ion-col>
+            <ion-col size="9" class="ion-padding">
+             <div class="ion-text-start">
+               <ion-label>
+                 <ion-text color="polarwhite">
+                   <h3><strong>{{formato}}</strong></h3>
+                   <h4>{{proyecto}}</h4>
+                   <h4>{{sucursal}}</h4>
+                   <h4>{{estado}}</h4>
                  </ion-text>
                </ion-label>
              </div>
@@ -41,8 +63,15 @@
               </ion-col>
             </ion-row>
           </ion-grid>
-
           <ion-card-content>
+            <mat-accordion *ngIf="isLoadedComplite==0">
+               <mat-expansion-panel *ngFor ="let item of [1,1,1,1,1,1,1,1,1,1,1]">
+                <mat-expansion-panel-header>
+                  <ion-skeleton-text animated style="width: 95%; height: 34px;"></ion-skeleton-text>
+                </mat-expansion-panel-header>
+              </mat-expansion-panel>
+            </mat-accordion>
+
             <mat-accordion *ngFor="let p of preguntas; let i = index" >
 
                 <app-section-inf

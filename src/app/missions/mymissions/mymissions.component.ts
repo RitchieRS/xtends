@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Mission, RespMission, MisionSection3, ContentMission } from 'src/app/xmodels/missions';
 import { MissionService } from 'src/app/xservices/mission/mission.service';
 import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
+import { element } from 'protractor';
+import { clear } from 'console';
 
 
 @Component({
@@ -11,14 +13,21 @@ import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
   styleUrls: ['./mymissions.component.scss'],
 })
 export class MymissionsComponent implements OnInit {
+  missionsFiltradas: any;
+  putiMissiones: any;
+  fecha: any;
+  putaMadreconesto: any;
+  reata: any;
+  newArray: any []=[];
 
-
-  multas: FormGroup;
+  missionscomplitedtc: FormGroup;
   submitted = false;
   fechaMiliseg: any;
   missionsArray: any[]=[];
   cliente: any;
-
+  moonLanding: any;
+  echaVerga: number;
+  milsegDtc: number;
 
   infMisionMelleva: MisionSection3;
   infMission: Mission;
@@ -53,21 +62,20 @@ export class MymissionsComponent implements OnInit {
     private srvMission: MissionService,
     private fb: FormBuilder
     ) {
-      this.multas = this.fb.group({
-        StartDate: ['',Validators.required],
-        EndDate: ['',Validators.required],
-
+      this.missionscomplitedtc = this.fb.group({
+        startDate: ['',Validators.required],
+        endDate: ['',Validators.required],
       });
     }
 
 
-    doMultas(){
-      console.log(this.missionsArray);
-    }
+
 
 
   async ngOnInit() {
+
     await this.loadMissionTaken();
+
 
     const token = localStorage.getItem('token');
 
@@ -103,25 +111,73 @@ export class MymissionsComponent implements OnInit {
     .subscribe ( myMissionsComplite => {
     this.puereMissionsComplite = myMissionsComplite.section3.content;
 
-    const fechaMiliseg = Date.now();
-
     this.puereMissionsCompliteDtc = this.puereMissionsComplite.slice(0,4);
     console.log(this.puereMissionsComplite.length);
     this.isLoadedComplite=1;
     this.totalMissionsTwo = this.puereMissionsComplite.length;
 
-    this.missionsArray = this.puereMissionsComplite;
-
-    this.missionsArray.map( element => {
-      if(element.idPV >= 1500){
-        console.log(element.idPV + '|' + element.cliente+ '|' + element.fecha,fechaMiliseg);
-      }
     });
-    });
-
 
   }
 
+  filterMissionsComplite(){
+    this.submitted = true;
+    if(this.missionscomplitedtc.invalid){
+      return;
+    }
+    const missionsArray = this.puereMissionsComplite;
+
+    const fechaInicialDPicker = this.missionscomplitedtc.value.startDate.getTime();
+    const fechaFinalDPicker = this.missionscomplitedtc.value.endDate.getTime();
+    console.log(fechaInicialDPicker, fechaFinalDPicker) ;
+
+    const missionsEnRangod = putiMissiones =>
+    putiMissiones.fechaUnix >= fechaInicialDPicker
+    && putiMissiones.fechaUnix <= fechaFinalDPicker;
+
+    const missionsFiltradas = missionsArray.filter(missionsEnRangod);
+    console.log(missionsFiltradas);
+    this.missionsFiltradas = missionsFiltradas;
+  }
+
+  returnTheFilter(){
+    this.missionsFiltradas = 0;
+    console.log(this.missionsFiltradas);
+  }
+
+  // filterMissionsComplite(){
+  //   this.submitted = true;
+  //   const missionsArray = this.puereMissionsComplite;
+
+  //   const tranformFechas = missionsArray.map(reata => {
+  //     const fechaVerga = new Date(reata.fecha);
+  //     const milsegDtc = fechaVerga.getTime();
+  //     return{
+  //       cliente: reata.cliente,
+  //       cadena: reata.cadena,
+  //       proyecto: reata.pryecto,
+  //       sucursal: reata.sucursal,
+  //       idPV: reata.idPV,
+  //       fecha: reata.fecha,
+  //       fechUnix: milsegDtc,
+  //     };
+  //   });
+
+  //   const lasMerasMissiones = tranformFechas;
+  //   console.log(lasMerasMissiones);
+
+  //   const fechaInicialDPicker = this.missionscomplite.value.StartDate.getTime();
+  //   const fechaFinalDPicker = this.missionscomplite.value.EndDate.getTime();
+  //   console.log(fechaInicialDPicker, fechaFinalDPicker) ;
+
+  //   const missionsEnRangod = putiMissiones =>
+  //   putiMissiones.fechUnix >= fechaInicialDPicker
+  //   && putiMissiones.fechUnix <= fechaFinalDPicker;
+
+  //   const missionsFiltradas = lasMerasMissiones.filter(missionsEnRangod);
+  //   console.log(missionsFiltradas);
+  //   this.missionsFiltradas = missionsFiltradas;
+  // }
 
 
   seeMore(){
@@ -137,8 +193,6 @@ export class MymissionsComponent implements OnInit {
     this.puereMissionsCompliteDtc = this.puereMissionsComplite;
     this.puereMissionsCompliteDtc = this.puereMissionsCompliteDtc.slice(0,this.currentIndexTwo);
   }
-
-
 
   async loadMissionTaken(){
     const token = localStorage.getItem('token');

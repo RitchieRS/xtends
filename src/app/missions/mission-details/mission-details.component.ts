@@ -12,7 +12,7 @@ import { RespInf, Sondeo, SondeoInf } from 'src/app/xmodels/sondeinf';
   styleUrls: ['./mission-details.component.scss'],
 })
 export class MissionDetailsComponent implements OnInit {
-  
+
   sondeInf : SondeoInf;
   respSondeo : RespInf[];
   sondeos : Sondeo[];
@@ -23,6 +23,14 @@ export class MissionDetailsComponent implements OnInit {
   preguntas: any;
   missionDetail: ContentMission;
   dataSondeo: any;
+  estado: string;
+  logoProyecto: any;
+  sucursal: string;
+  proyecto: string;
+  formato: string;
+
+
+  isLoadedComplite=0;
 
 
   constructor(
@@ -51,7 +59,13 @@ export class MissionDetailsComponent implements OnInit {
 
         this.sondeInf = res;
         this.respSondeo = this.sondeInf.resp;
+        this.estado = this.sondeInf.resp[0].estado;
+        this.logoProyecto = this.sondeInf.resp[0].logoProyecto;
+        this.sucursal = this.sondeInf.resp[0].sucursal;
+        this.proyecto = this.sondeInf.resp[0].proyecto;
+        this.formato = this.sondeInf.resp[0].formato;
 
+        this.isLoadedComplite=1;
         this.preguntas = this.respSondeo[0].sondeos;
         console.log(this.preguntas);
 
