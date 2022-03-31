@@ -9,6 +9,7 @@ import { Filesystem, Directory } from '@capacitor/filesystem';
 import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../xservices/auth/login.service';
+import { Subject } from 'rxjs';
 
 
 
@@ -127,6 +128,7 @@ export class ProfileComponent implements OnInit {
   nivelXtenderNum = 0;
   calificacion:number;
   visiblefield = 0;
+  printCredential= true;
 
 
   imgDom=false;
@@ -178,6 +180,8 @@ export class ProfileComponent implements OnInit {
   training(){
     this.router.navigate(['training']);
   }
+
+  
 
 
   async loadFiles() {
@@ -345,13 +349,10 @@ async updateData(){
     ;(await this.srvProfile.updateProfileInformation(token, this.userForm.value, this.imgDomicilio)).subscribe((res) =>{
       if(res){
         this.panelOpenState = false;
+        this.printCredential  = true;
         this.initData();
         this.presentToast('Listo.');
-        this.images.forEach( (file) =>{
-          this.deleteImage(file)
-         })
-
-
+      
       }
     })
 
@@ -391,11 +392,10 @@ async updateData(){
       if(res){
         console.log(res);
         this.panelOpenState = false;
+        this.printCredential = false;
         this.initData();
-        this.presentToast('Listo.');
-        this.images.forEach( (file) =>{
-          this.deleteImage(file)
-         })
+        this.presentToast('Listo! Imprime tu credencial.');
+        
 
 
       }
@@ -525,7 +525,6 @@ async updateData(){
 
   checkSignParent = (isOk:number): void => {
     this.signOk = isOk;
- 
    }
 
 
