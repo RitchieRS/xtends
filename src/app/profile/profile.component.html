@@ -698,9 +698,17 @@
                           </ion-text>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
-                      <div style="overflow: auto; width: 100%;">
-                        <app-printcredential></app-printcredential>
-                       </div>
+                      <div [hidden]="printCredential" style="overflow: auto; width: 100%;">
+                        <app-printcredential ></app-printcredential>
+                      </div>
+
+                      <div [hidden]="!printCredential" >
+                        <ion-text color="navyblue">
+                          <h3>
+                            Actualiza "Datos Personales", antes de solicitar tu credencial.
+                          </h3>
+                      </ion-text>
+                      </div>
 
 
 
