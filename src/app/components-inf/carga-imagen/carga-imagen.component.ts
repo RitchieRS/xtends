@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-multiple-inf',
-  templateUrl: './multiple.component.html',
-  styleUrls: ['./multiple.component.scss'],
+  selector: 'app-carga-imagen-inf',
+  templateUrl: './carga-imagen.component.html',
+  styleUrls: ['./carga-imagen.component.scss'],
 })
-export class MultipleComponent implements OnInit {
-    @Input() idPregunta: number;
+export class CargaImagenComponent implements OnInit {
+  @Input() idPregunta: number;
     @Input() pregunta: string;
     @Input() respuesta: string;
     @Input() tipo: string;

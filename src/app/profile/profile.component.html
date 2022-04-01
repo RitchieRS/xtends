@@ -281,7 +281,7 @@
 
                       <app-foto-id></app-foto-id>
                      </div>
-                    
+
                      <div  *ngIf="visiblefield >= 3" >
                      <app-foto-curp></app-foto-curp>
                     </div>
@@ -698,23 +698,44 @@
                           </ion-text>
                         </mat-panel-title>
                       </mat-expansion-panel-header>
+
+                      <!-- <preloader skeleton>-->
+                        <div  *ngIf="printCredential" class="box bg-crenetial" style='background-image: url(../../../assets/img/fondoCredencial.png);'>
+
+                          <div class="foto bg-center-xy"><ion-skeleton-text animated style="width: 100%; height:100%;"></ion-skeleton-text></div>
+
+                          <div class="textunoa">
+                            <strong><ion-skeleton-text animated style="width: 20%; height:10px; margin-left: auto; margin-right: auto;"></ion-skeleton-text></strong>
+                          </div>
+                          <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
+                          <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
+                          <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
+                          <div class="firma bg-center-xy"> <ion-skeleton-text animated style="width: 100%; height:90%; text-align: center;"></ion-skeleton-text> </div>
+                        </div>
+                      <!-- <preloader skeleton>-->
+
                       <div [hidden]="printCredential" style="overflow: auto; width: 100%;">
                         <app-printcredential ></app-printcredential>
                       </div>
 
-                      <div [hidden]="!printCredential" >
-                        <ion-text color="navyblue">
-                          <h3>
-                            Actualiza "Datos Personales", antes de solicitar tu credencial.
-                          </h3>
-                      </ion-text>
-                      </div>
+                      <ion-grid [hidden]="!printCredential">
+                        <ion-row>
+                          <ion-col>
+                            <ion-text color="navyblue" class="ion-text-center">
+                              <h3>
+                                Actualiza "Datos Personales", antes de solicitar tu credencial.
+                              </h3>
+                          </ion-text>
+                          </ion-col>
+                        </ion-row>
+                      </ion-grid>
 
 
 
 
 
-                       
+
+
                     </mat-expansion-panel>
                   </mat-accordion>
                 </div>

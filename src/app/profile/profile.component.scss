@@ -1,0 +1,83 @@
+.box{
+  width: 214px;
+  height: 270px;
+  border: solid 1px grey;
+  border-style: dotted;
+  position: relative;
+  margin-top: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.bg-crenetial{
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
+.bx-log{
+  position: relative;
+  width: 91px;
+  height: 25px;
+  margin:10px auto 10px auto;
+  border: solid 1px white;
+}
+
+.foto{
+  position: relative;
+  width: 72px;
+  height: 88px;
+  margin: 20px auto 0px auto;
+  // border: solid 1px grey;
+}
+.textuno{
+  position: relative;
+  width: 50%;
+  height: 12px;
+  margin: 8px auto 0px auto;
+  /* border: solid 1px blue; */
+  font-size: 10px;
+  text-align: center;
+  color:black;
+}
+.textunoa{
+  position: relative;
+  width: 50%;
+  height: 11px;
+  margin: 10px auto 0px auto;
+  /* border: solid 1px blue; */
+  font-size: 8px;
+  text-align: center;
+  color:black;
+}
+.textdos{
+  position: relative;
+  width: 50%;
+  height: 11px;
+  margin: 5px auto 0px auto;
+  /* border: solid 1px blue; */
+  font-size: 8px;
+  text-align: center;
+  color:black;
+}
+.textdosa{
+  position: relative;
+  width: 50%;
+  height: 11px;
+  margin: 5px auto 0px auto;
+  /* border: solid 1px blue; */
+  font-size: 8px;
+  text-align: center;
+  color:black;
+}
+.firma{
+  position: relative;
+  width: 100px;
+  height: 45px;
+  margin: 8px auto 0px auto;
+  border: solid 1px white;
+  font-size: 8px;
+  text-align: center;
+}
+.bg-center-xy{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size:contain;
+}

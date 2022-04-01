@@ -26,8 +26,13 @@ import { UnicaRadioComponent } from '../components-inf/unica-radio/unica-radio.c
 import { MultipleComponent } from '../components-inf/multiple/multiple.component';
 import { FechaComponent } from '../components-inf/fecha/fecha.component';
 import { EmailComponent } from '../components-inf/email/email.component';
-
-
+import { SunicaRadioComponent } from '../components-inf/sunica-radio/sunica-radio.component';
+import { NumericaComponent } from '../components-inf/numerica/numerica.component';
+import { CarruselComponent } from '../components-inf/carrusel/carrusel.component';
+import { CargaImagenComponent } from '../components-inf/carga-imagen/carga-imagen.component';
+import { FotografiaComponent } from '../components-inf/fotografia/fotografia.component';
+import { GpsComponent } from '../components-inf/gps/gps.component';
+import { SkuComponent } from '../components-inf/sku/sku.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +41,14 @@ import { EmailComponent } from '../components-inf/email/email.component';
     UnicaRadioComponent,
     MultipleComponent,
     FechaComponent,
-    EmailComponent
+    EmailComponent,
+    NumericaComponent,
+    CarruselComponent,
+    CargaImagenComponent,
+    FotografiaComponent,
+    GpsComponent,
+    SkuComponent,
+    SunicaRadioComponent
   ],
   exports:[
     SectionComponent,
@@ -44,7 +56,14 @@ import { EmailComponent } from '../components-inf/email/email.component';
     UnicaRadioComponent,
     MultipleComponent,
     FechaComponent,
-    EmailComponent
+    EmailComponent,
+    NumericaComponent,
+    CarruselComponent,
+    CargaImagenComponent,
+    FotografiaComponent,
+    GpsComponent,
+    SkuComponent,
+    SunicaRadioComponent,
   ],
   imports: [
     CommonModule,
