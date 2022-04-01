@@ -6,10 +6,12 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./fotografia.component.scss'],
 })
 export class FotografiaComponent implements OnInit {
+
   @Input() idPregunta: number;
     @Input() pregunta: string;
     @Input() respuesta: string;
     @Input() tipo: string;
+
 
   constructor() { }
 

@@ -55,7 +55,7 @@ export class MissionDetailsComponent implements OnInit {
     this.dataSondeoMissions.srvSondeoMission(dataMission,token,)
     .subscribe( (res) => {
       if(res){
-        console.log('Aqui imprime la respuuesta');
+        console.log('Aqui imprime la respuesta');
 
         this.sondeInf = res;
         this.respSondeo = this.sondeInf.resp;

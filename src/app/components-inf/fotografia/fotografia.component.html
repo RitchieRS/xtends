@@ -1,4 +1,4 @@
-<mat-panel-title>
+  <mat-panel-title>
   <ion-grid>
     <ion-row class="ion-justify-content-center">
       <ion-col size="10">
@@ -18,12 +18,16 @@
 
 
   <div class="ion-padding-horizontal">
-    <ion-list>
-    <ion-item >
-      <ion-text color="cloudysky">
-      <p> {{respuesta}}</p>
-    </ion-text>
-    </ion-item>
-  </ion-list>
-
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngIf="this.respuesta.length > 17">
+        <img style= "width:220px; height: auto;" src="{{respuesta}}" />
+      </ion-col>
+      <ion-col *ngIf="this.respuesta.length <= 16">
+        <ion-text color="cloudysky" class="ion-text-center">
+           <p>No se subio ninguna imagen</p>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
    </div>
