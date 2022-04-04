@@ -1,11 +1,11 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-sunica-radio-inf',
-  templateUrl: './sunica-radio.component.html',
-  styleUrls: ['./sunica-radio.component.scss'],
+  selector: 'app-sfotografia-inf',
+  templateUrl: './sfotografia.component.html',
+  styleUrls: ['./sfotografia.component.scss'],
 })
-export class SunicaRadioComponent implements OnInit {
+export class SfotografiaComponent implements OnInit {
   @Input() idPregunta: number;
   @Input() pregunta: string;
   @Input() respuesta: string;
@@ -14,6 +14,7 @@ export class SunicaRadioComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.pregunta);
-    console.log('SUNICA-RADIO');
+    console.log('Sfotografia');
   }
+
 }

@@ -14,7 +14,7 @@ export class DialogCaptureproductinfoComponent implements OnInit {
   idRespuestaSondeo={
     idrespuestas:[]
   }
-  
+
   complete=0;
   constructor(@Inject(MAT_DIALOG_DATA) public data : {
                                                       img : string,
@@ -27,12 +27,12 @@ export class DialogCaptureproductinfoComponent implements OnInit {
                                                       idInventario: string
                                                     },
                                                     private storage: StorageHelperService,
-                                                    private dialogRef: MatDialogRef<DialogCaptureproductinfoComponent>) { 
+                                                    private dialogRef: MatDialogRef<DialogCaptureproductinfoComponent>) {
 
 
-                                                      
+
                                                       this.idPregunta = data.idInventario+ '||' ;
-                                                      
+
 
   }
 
@@ -43,7 +43,7 @@ export class DialogCaptureproductinfoComponent implements OnInit {
     const list = this.preguntas.filter( pregunta => {  console.log(pregunta.dependePregunta); pregunta.dependePregunta == '0' } );
 
     //const list = this.preguntas.filter(mission => this.filterType.includes(mission.colorServicio))
-            
+
   }
 
   checkCompleteParent = (args: any): void => {
@@ -54,12 +54,12 @@ export class DialogCaptureproductinfoComponent implements OnInit {
 
   async submit(){
 
-    let validRes = 0; 
-    let mandatory = 0; 
+    let validRes = 0;
+    let mandatory = 0;
     this.idRespuestaSondeo.idrespuestas=[];
     Object.entries(this.preguntas).forEach(
-      ([key, value]) =>{ 
-          
+      ([key, value]) =>{
+
           this.valueid = value['idPregunta'];
           this.idRespuestaSondeo.idrespuestas.push(this.valueid);
           if(value['obligatorio']>0){
@@ -75,23 +75,23 @@ export class DialogCaptureproductinfoComponent implements OnInit {
   }
 
 
-  this.dialogRef.close(this.complete);  
+  this.dialogRef.close(this.complete);
   }
 
   async countValid():Promise<number>{
     let countValid=0;
     let count=0;
-    for(let i of this.idRespuestaSondeo.idrespuestas){ 
+    for(let i of this.idRespuestaSondeo.idrespuestas){
       //   alert(i)
           console.log(this.idPregunta +  i.toString()+'||'+ count);
           await Promise.resolve(this.storage.getObject(this.idPregunta +  i.toString()+'||'+ count ).then((question: any) => {
           //  alert("Finish");
           count++;
-  
+
           if(question.valid==1){
             countValid = this.data.index;
           }
-     
+
           }));
       }
       return countValid;

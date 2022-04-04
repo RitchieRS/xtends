@@ -24,18 +24,18 @@ idSondeoStr:string;
 
 preguntasAux:any;
 
-  constructor(private storage: StorageHelperService) { 
-    
+  constructor(private storage: StorageHelperService) {
+
   }
 
   ngOnInit() {
-    
+
     console.log(this.respuestas);
     //console.log(independientes)
     //console.log(this.preguntasAux);
     this.idSondeoStr = this.idSondeo.toString();
   }
 
-  
+
 
 }

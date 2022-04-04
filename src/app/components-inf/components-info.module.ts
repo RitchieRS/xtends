@@ -33,6 +33,11 @@ import { CargaImagenComponent } from '../components-inf/carga-imagen/carga-image
 import { FotografiaComponent } from '../components-inf/fotografia/fotografia.component';
 import { GpsComponent } from '../components-inf/gps/gps.component';
 import { SkuComponent } from '../components-inf/sku/sku.component';
+import { SnumericaComponent } from '../components-inf/snumerica/snumerica.component';
+import { SporcentajeComponent } from '../components-inf/sporcentaje/sporcentaje.component';
+import { SdecimalComponent } from '../components-inf/sdecimal/sdecimal.component';
+import { SfotografiaComponent } from '../components-inf/sfotografia/sfotografia.component';
+
 
 @NgModule({
   declarations: [
@@ -48,7 +53,11 @@ import { SkuComponent } from '../components-inf/sku/sku.component';
     FotografiaComponent,
     GpsComponent,
     SkuComponent,
-    SunicaRadioComponent
+    SunicaRadioComponent,
+    SnumericaComponent,
+    SporcentajeComponent,
+    SdecimalComponent,
+    SfotografiaComponent,
   ],
   exports:[
     SectionComponent,
@@ -64,6 +73,10 @@ import { SkuComponent } from '../components-inf/sku/sku.component';
     GpsComponent,
     SkuComponent,
     SunicaRadioComponent,
+    SnumericaComponent,
+    SporcentajeComponent,
+    SdecimalComponent,
+    SfotografiaComponent,
   ],
   imports: [
     CommonModule,

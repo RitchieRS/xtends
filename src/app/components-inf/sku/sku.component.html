@@ -18,12 +18,77 @@
 
 
   <div class="ion-padding-horizontal">
+    <ion-list *ngFor="let dtc of productos; let i = index">
+      <ion-item >
+        <ion-text color="cloudysky">
+        <p> {{dtc.descripcion}}</p>
+        <p> {{dtc.sku}}</p>
+        <p> {{dtc.nombre}}</p>
+        <p> {{dtc.sku}}</p>
+        <p> {{dtc.presencia}}</p>
+        <p> {{dtc.presentacion}}</p>
+        <img src="{{dtc.img}}" style="width: 100px; height: auto;">
+      </ion-text>
+      <div>
+        <p></p>
+      </div>
+      <div *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo" >
+        <div *ngSwitchCase="'numerica'" >
+          <app-snumerica-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-snumerica-inf>
+        </div>
+        <div *ngSwitchCase="'fotografia'" >
+          <app-sfotografia-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-sfotografia-inf>
+        </div>
+        <div *ngSwitchCase="'porcentaje'" >
+          <app-sporcentaje-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-sporcentaje-inf>
+        </div>
+        <div *ngSwitchCase="'decimal'" >
+          <app-sdecimal-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-sdecimal-inf>
+          <div *ngSwitchCase="'unicaRadio'" >
+            <app-sunica-radio-inf
+            [idPregunta]="p.idPregunta"
+            [pregunta] ="p.pregunta"
+            [respuesta] = "p.respuesta"
+            [tipo] ="p.tipo"
+            ></app-sunica-radio-inf>
+          </div>
+        </div>
+      </div>
+
+      </ion-item>
+    </ion-list>
     <ion-list>
     <ion-item >
       <ion-text color="cloudysky">
-      <p> {{respuesta}}</p>
+      <!-- <p> {{tipo}}</p> -->
     </ion-text>
+    <!-- <div *ngFor="let lbrg of productos[0].preguntas">
+      <p> {{lbrg.idPregunta}}</p>
+      <p> {{lbrg.pregunta}}</p>
+      <p> {{lbrg.tipo}}</p>
+
+    </div> -->
+
     </ion-item>
   </ion-list>
-
    </div>

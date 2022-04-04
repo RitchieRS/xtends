@@ -13,7 +13,7 @@ import { ProductoComponent } from './producto/producto.component';
   styleUrls: ['./sku.component.scss'],
 })
 export class SkuComponent implements OnInit {
-  
+
   @Input() dependePregunta: number;
   @Input() dependeRespuesta: number;
   @Input() idPregunta: number;
@@ -38,8 +38,8 @@ export class SkuComponent implements OnInit {
   selected:string[]=[];
   filteredOptions: Observable<string[]>;
 
-  constructor(public dialog: MatDialog,private toastCtrl: ToastController,) { 
-    
+  constructor(public dialog: MatDialog,private toastCtrl: ToastController,) {
+
   }
 
   ngOnInit() {
@@ -49,8 +49,8 @@ export class SkuComponent implements OnInit {
       map(value => this._filter(value)),
     );
 
-    console.log(this.filteredOptions) 
-    
+    console.log(this.filteredOptions)
+
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
     console.log(this.idStrQuest);
     console.log(this.productos);
@@ -98,7 +98,7 @@ export class SkuComponent implements OnInit {
             .then(result => {
                 this.isValid=Number(result);
                 console.log(this.isValid);
-           
+
          });
 
   }
@@ -109,6 +109,6 @@ export class SkuComponent implements OnInit {
     return this.productos.filter(producto => producto.sku === filterValue );
   }
 
-  
+
 
 }
