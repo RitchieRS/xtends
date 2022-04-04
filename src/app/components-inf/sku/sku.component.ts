@@ -13,7 +13,7 @@ export class SkuComponent implements OnInit {
     @Input() productos: any[];
     @Input() tipo: string;
 
-    // productos: any [];
+
 
   constructor(
   ) {
@@ -22,6 +22,5 @@ export class SkuComponent implements OnInit {
   ngOnInit() {
 
   }
-
 
 }

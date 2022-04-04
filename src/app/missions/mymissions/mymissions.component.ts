@@ -127,9 +127,9 @@ export class MymissionsComponent implements OnInit {
     }
     const missionsArray = this.puereMissionsComplite;
 
-    const fechaInicialDPicker = this.missionscomplitedtc.value.startDate.getTime();
-    const fechaFinalDPicker = this.missionscomplitedtc.value.endDate.getTime();
-    console.log(fechaInicialDPicker, fechaFinalDPicker) ;
+    const fechaInicialDPicker = this.missionscomplitedtc.value.startDate.getTime()-42366000;
+    const fechaFinalDPicker = this.missionscomplitedtc.value.endDate.getTime()+42366000;
+    console.log(fechaInicialDPicker-42366000, fechaFinalDPicker+42366000) ;
 
     const missionsEnRangod = putiMissiones =>
     putiMissiones.fechaUnix >= fechaInicialDPicker
