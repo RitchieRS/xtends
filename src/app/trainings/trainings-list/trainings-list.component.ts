@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { HabilidadesService } from '../../xservices/habilidades/habilidades.service';
 
 @Component({
   selector: 'app-trainings-list',
@@ -7,8 +9,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TrainingsListComponent implements OnInit {
 
-  constructor() { }
+  idHabilidad: number;
+  token: string;
+  dataHabilidades: any;
 
-  ngOnInit() {}
+  constructor(
+    private route: ActivatedRoute,
+    private srvHabilidades: HabilidadesService,
+  ) {
+    this.idHabilidad = Number(this.route.snapshot.paramMap.get('idHabilidad'));
+  }
+
+  ngOnInit() {
+    const token = localStorage.getItem('token');
+    const dataHabilidades = { "idHabilidades": this.idHabilidad };
+
+    this.srvHabilidades.postHabilidades(dataHabilidades, token).subscribe(
+      (res) => {
+
+      }
+    );
+  }
 
 }

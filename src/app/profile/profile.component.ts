@@ -31,12 +31,11 @@ export class ProfileComponent implements OnInit {
 
   habilidades = [
     {
+      idHabilidad:'1',
       color:'skybluextend',
-      colortwo:'primary',
-      tipo:'Básico de Promotoría',
+      nombre:'Básico de Promotoría',
       avance:'0.5',
       icon:'promotoria.svg',
-      // pasos:['1. Ingresox','2. Documentación','3. Ubicación', '4. Limpieza', '5. Precios']
     },
     {
       color:'greenxtend',
@@ -181,7 +180,7 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['training']);
   }
 
-  
+
 
 
   async loadFiles() {
@@ -352,23 +351,23 @@ async updateData(){
         this.printCredential  = true;
         this.initData();
         this.presentToast('Listo.');
-      
+
       }
     })
 
 
   }
-   
+
   async updateCredentials(){
     console.log("soy una credencial")
     const token = localStorage.getItem('token');
     console.log(this.credForm.value)
-    
+
     if(this.fotoSelfOk==0){
       this.presentToast('Actualice su fotografía');
       return;
     }
-    
+
     if(this.signOk==0){
       this.presentToast('Actualice su firma');
       return;
@@ -383,8 +382,8 @@ async updateData(){
       return;
     }
 
-    
-    
+
+
     this.presentToast('Actualizando Información.');
 
 
@@ -395,7 +394,7 @@ async updateData(){
         this.printCredential = false;
         this.initData();
         this.presentToast('Listo! Imprime tu credencial.');
-        
+
 
 
       }
@@ -426,7 +425,7 @@ async updateData(){
         this.movil = this.profileData.informacion.movil;
         this.calificacion = this.profileData.calificacion;
 
-        
+
 
        // this.nivelXtender = this.profileData.nivelXtender;
 
@@ -456,7 +455,7 @@ async updateData(){
                               Number(this.profileData.nivelXtender.partsNivel.cuatro) ;
 
                               console.log(this.nivelXtenderNum);
-                             
+
                               if( this.nivelXtenderStr=='Bronce'){
                                 this.visiblefield = 1;
                               }
@@ -473,14 +472,14 @@ async updateData(){
                                 this.visiblefield = 4;
                               }
                               localStorage.setItem('levelnum',this.nivelXtenderNum.toString());
-                             
 
 
 
 
-      
-       
-       
+
+
+
+
         console.log(this.nivelXtenderStr);
         for(var i = 0; i < this.nivelTermo.length; i++){
           if(i<this.nivelXtenderNum){

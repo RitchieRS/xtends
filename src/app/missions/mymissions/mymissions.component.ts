@@ -14,7 +14,7 @@ import { clear } from 'console';
 })
 export class MymissionsComponent implements OnInit {
   missionsFiltradas: any;
-  putiMissiones: any;
+  putiMissiones: number;
   fecha: any;
   putaMadreconesto: any;
   reata: any;
