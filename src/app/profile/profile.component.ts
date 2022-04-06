@@ -29,22 +29,22 @@ export class ProfileComponent implements OnInit {
 
 
 
-  habilidades = [
-    {
-      idHabilidad:'1',
-      color:'skybluextend',
-      nombre:'Básico de Promotoría',
-      avance:'0.5',
-      icon:'promotoria.svg',
-    },
-    {
-      color:'greenxtend',
-      colortwo:'success',
-      tipo:'Fotografía Anaquel',
-      avance:'0.25',
-      icon:'anaqueleo.svg',
-    },
-  ];
+  // habilidades = [
+  //   {
+  //     color:'greenxtend',
+  //     colortwo:'success',
+  //     tipo:'Fotografía Anaquel',
+  //     avance:'0.25',
+  //     icon:'anaqueleo.svg',
+  //   },
+  //   {
+  //     color:'greenxtend',
+  //     colortwo:'success',
+  //     tipo:'Fotografía Anaquel',
+  //     avance:'0.25',
+  //     icon:'anaqueleo.svg',
+  //   },
+  // ];
   pasos = [
     {
       color:'#90c04e',
@@ -87,6 +87,9 @@ export class ProfileComponent implements OnInit {
       score:'4/9'
     },
   ];
+
+  habilidades: any;
+
   selectedTrabajoInteres: string;
   selectedZonaInteres: string;
   panelOpenState: boolean = false;
@@ -129,7 +132,6 @@ export class ProfileComponent implements OnInit {
   visiblefield = 0;
   printCredential= true;
 
-
   imgDom=false;
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -170,8 +172,6 @@ export class ProfileComponent implements OnInit {
 
 
     this.initData();
-
-
 
 
   }
@@ -395,8 +395,6 @@ async updateData(){
         this.initData();
         this.presentToast('Listo! Imprime tu credencial.');
 
-
-
       }
     })
 
@@ -424,7 +422,6 @@ async updateData(){
         this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
         this.movil = this.profileData.informacion.movil;
         this.calificacion = this.profileData.calificacion;
-
 
 
        // this.nivelXtender = this.profileData.nivelXtender;
@@ -503,7 +500,11 @@ async updateData(){
           movil: this.movil,
           terminos: false
 
-        })
+        });
+
+        //ESB | Habilidades
+        this.habilidades = this.profileData.capacitacion.habilidades;
+        console.log(this.habilidades);
 
 
       }

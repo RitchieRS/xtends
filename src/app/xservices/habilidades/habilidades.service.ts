@@ -13,7 +13,7 @@ export class HabilidadesService {
 
   constructor(private http: HttpClient) { }
 
-  postHabilidades(request: any, token: string): Observable<any>{
+  getHabilidades(token: string): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -22,7 +22,7 @@ export class HabilidadesService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.post<any>(`${environment.API_URL}training`, request, httpOptions).pipe(
+    return this.http.get<any>(`${environment.API_URL}trainings/104`, httpOptions).pipe(
           map(( res: any)=>{
             console.log(res);
             return res;

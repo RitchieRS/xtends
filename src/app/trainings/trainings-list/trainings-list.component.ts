@@ -9,22 +9,20 @@ import { HabilidadesService } from '../../xservices/habilidades/habilidades.serv
 })
 export class TrainingsListComponent implements OnInit {
 
-  idHabilidad: number;
+  idcurso: number;
   token: string;
   dataHabilidades: any;
 
   constructor(
     private route: ActivatedRoute,
     private srvHabilidades: HabilidadesService,
-  ) {
-    this.idHabilidad = Number(this.route.snapshot.paramMap.get('idHabilidad'));
-  }
+  ) {}
 
   ngOnInit() {
     const token = localStorage.getItem('token');
-    const dataHabilidades = { "idHabilidades": this.idHabilidad };
 
-    this.srvHabilidades.postHabilidades(dataHabilidades, token).subscribe(
+
+    this.srvHabilidades.getHabilidades(token).subscribe(
       (res) => {
 
       }
