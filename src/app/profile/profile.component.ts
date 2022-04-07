@@ -45,50 +45,60 @@ export class ProfileComponent implements OnInit {
   //     icon:'anaqueleo.svg',
   //   },
   // ];
-  pasos = [
-    {
-      color:'#90c04e',
-      colortwo:'success',
-      icon:'checkmark-circle',
-      title:'1. Ingreso a tienda por persona',
-      video:'Video 30 seg.',
-      score:'8/9'
-    },
-    {
-      color:'#90c04e',
-      colortwo:'success',
-      icon:'checkmark-circle',
-      title:'2. Documentación y credencial',
-      video:'Video 30 seg.',
-      score:'7/9'
-    },
-    {
-      color:'#90c04e',
-      colortwo:'success',
-      icon:'checkmark-circle',
-      title:'3. Ubicación de productos',
-      video:'Video 30 seg.',
-      score:'6/9'
-    },
-    {
-      color:'#90c04e',
-      colortwo:'danger',
-      icon:'close-circle',
-      title:'4. Limpieza y acomodo de anaquel',
-      video:'Video 30 seg.',
-      score:'5/9'
-    },
-    {
-      color:'#90c04e',
-      colortwo:'navyblue',
-      icon:'play-circle',
-      title:'5. Precios y Descuentos',
-      video:'Video 30 seg.',
-      score:'4/9'
-    },
-  ];
+  // pasos = [
+  //   {
+  //     color:'#90c04e',
+  //     colortwo:'success',
+  //     icon:'checkmark-circle',
+  //     title:'1. Ingreso a tienda por persona',
+  //     video:'Video 30 seg.',
+  //     score:'8/9'
+  //   },
+  //   {
+  //     color:'#90c04e',
+  //     colortwo:'success',
+  //     icon:'checkmark-circle',
+  //     title:'2. Documentación y credencial',
+  //     video:'Video 30 seg.',
+  //     score:'7/9'
+  //   },
+  //   {
+  //     color:'#90c04e',
+  //     colortwo:'success',
+  //     icon:'checkmark-circle',
+  //     title:'3. Ubicación de productos',
+  //     video:'Video 30 seg.',
+  //     score:'6/9'
+  //   },
+  //   {
+  //     color:'#90c04e',
+  //     colortwo:'danger',
+  //     icon:'close-circle',
+  //     title:'4. Limpieza y acomodo de anaquel',
+  //     video:'Video 30 seg.',
+  //     score:'5/9'
+  //   },
+  //   {
+  //     color:'#90c04e',
+  //     colortwo:'navyblue',
+  //     icon:'play-circle',
+  //     title:'5. Precios y Descuentos',
+  //     video:'Video 30 seg.',
+  //     score:'4/9'
+  //   },
+  // ];
 
   habilidades: any;
+  habilidadesok: any;
+  cabrona: any;
+  avance: number;
+  colorServicio: string;
+  habilidad: string;
+  iconServicio: string;
+  cursosok: any;
+  cursos: any;
+  cursosberg: any;
+
 
   selectedTrabajoInteres: string;
   selectedZonaInteres: string;
@@ -131,6 +141,7 @@ export class ProfileComponent implements OnInit {
   calificacion:number;
   visiblefield = 0;
   printCredential= true;
+
 
   imgDom=false;
   constructor(private router: Router,
@@ -307,7 +318,7 @@ private async readAsBase64(photo: Photo) {
 
       return await this.convertBlobToBase64(blob) as string;
   }
-}
+};
 
 // Helper function
 convertBlobToBase64 = (blob: Blob) => new Promise((resolve, reject) => {
@@ -504,11 +515,21 @@ async updateData(){
 
         //ESB | Habilidades
         this.habilidades = this.profileData.capacitacion.habilidades;
-        console.log(this.habilidades);
+        this.habilidadesok = Object.values(this.habilidades);
+        console.log(this.habilidadesok);
 
-
+        const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
+        {
+         return {
+           avance: habilidadesoktwo.avance,
+           cursos: habilidadesoktwo.cursos,
+        }
+        });
+        console.log(this.habilidades)
+        console.log(this.habilidadesok)
+        console.log(cabrona);
       }
-    })
+    });
   }
 
   isFull(name: string,field:string){

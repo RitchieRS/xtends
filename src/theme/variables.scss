@@ -107,6 +107,8 @@
   --ion-color-greenxtend-shade: #7fb73f;
   --ion-color-greenxtend-tint: #7fb73f;
 
+
+
   /** redxtend **/
   --ion-color-redxtend: #eb445a;
   --ion-color-redxtend-rgb: 235, 68, 90;
@@ -257,6 +259,7 @@
   --ion-color-shade: var(--ion-color-greenxtend-shade) !important;
   --ion-color-tint:var(--ion-color-greenxtend-tint) !important;
   --ion-border-color:var(--ion-border-color);
+  --ion-color-base-rgb: var(--ion-color-greenxtend) !important;
 }
 
 /** redxtend = red Color XTEND **/
