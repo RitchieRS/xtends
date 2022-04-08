@@ -56,27 +56,44 @@ export interface Capacitacion {
 }
 
 export interface Habilidades {
+    // lo comento esb
     // "Envío de información por plataforma": EnvíoDeInformaciónPorPlataforma;
     // "Ingreso a tienda por personal":       EnvíoDeInformaciónPorPlataforma;
+    idHabilidad:   number;
+    habilidad:     string;
+    servicio:      string;
+    colorServicio: string;
+    iconServicio:  string;
+    avance:        number;
+    cursos:        CursoHead[];
 }
 
-export interface EnvíoDeInformaciónPorPlataforma {
-    color:  Color;
-    cursos: Curso[];
+export interface CursoHead {
+    idCurso: number;
+    tipo:    string;
+    nombre:  string;
+    avance:  number;
 }
+
+// lo comento esb
+// export interface EnvíoDeInformaciónPorPlataforma {
+//     color:  Color;
+//     cursos: Curso[];
+// }
 
 export interface Color {
     color: string;
 }
 
-export interface Curso {
-    nombre:          string;
-    mecanica:        string;
-    puntajePosible:  number;
-    puntajeObtenido: number;
-    score:           number;
-    aprobado:        number;
-}
+// lo comento esb
+// export interface Curso {
+//     nombre:          string;
+//     mecanica:        string;
+//     puntajePosible:  number;
+//     puntajeObtenido: number;
+//     score:           number;
+//     aprobado:        number;
+// }
 
 export interface Credenciales {
     puesto:   string;

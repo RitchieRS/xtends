@@ -98,6 +98,7 @@ export class ProfileComponent implements OnInit {
   cursosok: any;
   cursos: any;
   cursosberg: any;
+  idCurso: number;
 
 
   selectedTrabajoInteres: string;
@@ -187,7 +188,7 @@ export class ProfileComponent implements OnInit {
 
   }
 
-  training(){
+  trainingGo(){
     this.router.navigate(['training']);
   }
 
@@ -482,12 +483,6 @@ async updateData(){
                               localStorage.setItem('levelnum',this.nivelXtenderNum.toString());
 
 
-
-
-
-
-
-
         console.log(this.nivelXtenderStr);
         for(var i = 0; i < this.nivelTermo.length; i++){
           if(i<this.nivelXtenderNum){
@@ -523,6 +518,7 @@ async updateData(){
          return {
            avance: habilidadesoktwo.avance,
            cursos: habilidadesoktwo.cursos,
+         
         }
         });
         console.log(this.habilidades)

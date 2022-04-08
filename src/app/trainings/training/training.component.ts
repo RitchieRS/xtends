@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, ViewChild,} from '@angular/core';
 import { HabilidadesService } from '../../xservices/habilidades/habilidades.service';
-
+import { __param } from 'tslib';
 
 // import Swiper core and required modules
 import SwiperCore, { FreeMode, Navigation, Thumbs } from 'swiper';
@@ -31,6 +31,7 @@ export class TrainingComponent implements OnInit {
   urlMaterial3:  string;
   urlMaterial4:  string;
   urlMaterial5:  string;
+  idCursoRecuperao: number;
 
   thumbsSwiper: any;
 
@@ -47,6 +48,10 @@ export class TrainingComponent implements OnInit {
 
 
   ngOnInit() {
+    this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
+    console.log(this.idCurso);
+    const idCursoRecuperao = this.idCurso;
+    console.log(idCursoRecuperao);
     const token = localStorage.getItem('token');
     this.srvCursos.getHabilidades(token).subscribe(
       (res) => {
@@ -64,6 +69,8 @@ export class TrainingComponent implements OnInit {
         }
         );
   }
+
+  
 
 
 
