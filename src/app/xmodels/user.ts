@@ -56,8 +56,8 @@ export interface Capacitacion {
 }
 
 export interface Habilidades {
-    "Envío de información por plataforma": EnvíoDeInformaciónPorPlataforma;
-    "Ingreso a tienda por personal":       EnvíoDeInformaciónPorPlataforma;
+    // "Envío de información por plataforma": EnvíoDeInformaciónPorPlataforma;
+    // "Ingreso a tienda por personal":       EnvíoDeInformaciónPorPlataforma;
 }
 
 export interface EnvíoDeInformaciónPorPlataforma {

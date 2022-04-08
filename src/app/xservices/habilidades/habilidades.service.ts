@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
+import { CursoIntf } from 'src/app/xmodels/curso';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class HabilidadesService {
 
   constructor(private http: HttpClient) { }
 
-  getHabilidades(token: string): Observable<any>{
+  getHabilidades(token: string): Observable<CursoIntf>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -22,8 +23,8 @@ export class HabilidadesService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.get<any>(`${environment.API_URL}trainings/104`, httpOptions).pipe(
-          map(( res: any)=>{
+    return this.http.get<CursoIntf>(`${environment.API_URL}trainings/104`, httpOptions).pipe(
+          map(( res )=>{
             console.log(res);
             return res;
           }),
