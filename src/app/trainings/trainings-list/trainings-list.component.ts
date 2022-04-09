@@ -37,25 +37,25 @@ export class TrainingsListComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
 
-    this.srvCursos.getHabilidades(token).subscribe(
-      (res) => {
-         this.cursodts = res.resp.cursos[0];
-         console.log(this.cursodts);
-         this.tipoCurso = this.cursodts.tipoCurso;
-         this.nombreCurso = this.cursodts.nombreCurso;
-         this.temaCurso = this.cursodts.temaCurso;
-         this.mecanicaCurso = this.cursodts.mecanicaCurso;
-         this.urlMaterial1 = this.cursodts.urlMaterial1;
-         this.urlMaterial2 = this.cursodts.urlMaterial2;
-         this.urlMaterial3 = this.cursodts.urlMaterial3;
-         this.urlMaterial4 = this.cursodts.urlMaterial4;
-         this.urlMaterial5 = this.cursodts.urlMaterial5;
-      }
-    );
-    
+    // this.srvCursos.getHabilidades(token).subscribe(
+    //   (res) => {
+    //      this.cursodts = res.resp.cursos[0];
+    //      console.log(this.cursodts);
+    //      this.tipoCurso = this.cursodts.tipoCurso;
+    //      this.nombreCurso = this.cursodts.nombreCurso;
+    //      this.temaCurso = this.cursodts.temaCurso;
+    //      this.mecanicaCurso = this.cursodts.mecanicaCurso;
+    //      this.urlMaterial1 = this.cursodts.urlMaterial1;
+    //      this.urlMaterial2 = this.cursodts.urlMaterial2;
+    //      this.urlMaterial3 = this.cursodts.urlMaterial3;
+    //      this.urlMaterial4 = this.cursodts.urlMaterial4;
+    //      this.urlMaterial5 = this.cursodts.urlMaterial5;
+    //   }
+    // );
+
   }
 
 }

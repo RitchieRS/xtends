@@ -511,21 +511,29 @@ async updateData(){
         //ESB | Habilidades
         this.habilidades = this.profileData.capacitacion.habilidades;
         this.habilidadesok = Object.values(this.habilidades);
-        console.log(this.habilidadesok);
+        console.log(this.habilidades);
 
         const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
         {
          return {
            avance: habilidadesoktwo.avance,
            cursos: habilidadesoktwo.cursos,
-         
         }
         });
-        console.log(this.habilidades)
-        console.log(this.habilidadesok)
+        // console.log(this.habilidades)
+        // console.log(this.habilidadesok)
         console.log(cabrona);
+        // this.cursos = this.habilidades.cursos[];
+        // console.log(this.cursos);
+        // const aaaCursos = cabrona[0].cursos;
+
+        // console.log(aaaCursos);
       }
     });
+  }
+
+  getIdCurso(){
+
   }
 
   isFull(name: string,field:string){

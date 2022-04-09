@@ -39,7 +39,7 @@ export class TrainingComponent implements OnInit {
   // videoUrl='https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4';
   constructor(private http: HttpClient,
     private   route: ActivatedRoute,
-              private srvCursos: HabilidadesService, 
+              private srvCursos: HabilidadesService,
   ) { }
   // constructor(private fileOpener: FileOpener) { }
   // constructor(private stream: StreamingMedia) { }
@@ -48,12 +48,15 @@ export class TrainingComponent implements OnInit {
 
 
   ngOnInit() {
+
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
     console.log(this.idCurso);
-    const idCursoRecuperao = this.idCurso;
-    console.log(idCursoRecuperao);
+
+    const idCurso = this.idCurso;
+    console.log(idCurso);
+
     const token = localStorage.getItem('token');
-    this.srvCursos.getHabilidades(token).subscribe(
+    this.srvCursos.getHabilidades(token, idCurso).subscribe(
       (res) => {
          this.cursodts = res.resp.cursos[0];
          console.log(this.cursodts);
@@ -70,7 +73,7 @@ export class TrainingComponent implements OnInit {
         );
   }
 
-  
+
 
 
 

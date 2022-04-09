@@ -14,7 +14,7 @@ export class HabilidadesService {
 
   constructor(private http: HttpClient) { }
 
-  getHabilidades(token: string): Observable<CursoIntf>{
+  getHabilidades(token: string, idCurso: any): Observable<CursoIntf>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -23,7 +23,7 @@ export class HabilidadesService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.get<CursoIntf>(`${environment.API_URL}trainings/104`, httpOptions).pipe(
+    return this.http.get<CursoIntf>(`${environment.API_URL}trainings/${idCurso.toString()}`, httpOptions).pipe(
           map(( res )=>{
             console.log(res);
             return res;

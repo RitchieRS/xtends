@@ -1,6 +1,7 @@
 export interface CursoIntf {
     idError: number;
     resp:    RespCurso;
+
 }
 
 export interface RespCurso {
