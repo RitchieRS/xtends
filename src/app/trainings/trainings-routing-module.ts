@@ -20,7 +20,7 @@ const routes: Routes = [
 
       },
       {
-      path: 'training',
+      path: 'training/:idCurso/:name',
         component: TrainingComponent
       },
       {
