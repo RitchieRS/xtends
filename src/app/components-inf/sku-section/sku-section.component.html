@@ -1,0 +1,46 @@
+<div class="ion-padding-horizontal">
+  <div  *ngFor="let pregunta of preguntas; let i = index"  >
+   
+    <ion-list>
+      <ion-item *ngFor="let p of pregunta" [ngSwitch]="p.tipo">
+
+        <div *ngSwitchCase="'porcentaje'" >
+          <app-porcentaje-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-porcentaje-inf>
+        </div>
+
+        <div *ngSwitchCase="'numerica'" >
+          <app-snumerica-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-snumerica-inf>
+        </div>
+        <div *ngSwitchCase="'fotografia'" >
+          <app-sfotografia-inf
+          [idPregunta]="p.idPregunta"
+          [pregunta] ="p.pregunta"
+          [respuesta] = "p.respuesta"
+          [tipo] ="p.tipo"
+          ></app-sfotografia-inf>
+        </div>
+        <div *ngSwitchCase="'unicaRadio'" >
+            <app-sunica-radio-inf
+            [idPregunta]="p.idPregunta"
+            [pregunta] ="p.pregunta"
+            [respuesta] = "p.respuesta"
+            [tipo] ="p.tipo"
+            ></app-sunica-radio-inf>
+        </div>
+      
+
+      </ion-item>
+    </ion-list>
+  </div>
+  
+   </div>

@@ -32,6 +32,7 @@ export class TrainingComponent implements OnInit {
   urlMaterial4:  string;
   urlMaterial5:  string;
   idCursoRecuperao: number;
+  name: string;
 
   thumbsSwiper: any;
 
@@ -50,6 +51,7 @@ export class TrainingComponent implements OnInit {
   ngOnInit() {
 
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
+    this.name = this.route.snapshot.paramMap.get('name');
     console.log(this.idCurso);
 
     const idCurso = this.idCurso;

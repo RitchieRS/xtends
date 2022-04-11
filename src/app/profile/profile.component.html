@@ -518,7 +518,7 @@
                               </ion-text>
                             </ion-label>
                           </ion-col>
-                          <ion-col size="3" class="ion-align-self-center ion-text-right" routerLink="/training/{{curso.idCurso}}">
+                          <ion-col size="3" class="ion-align-self-center ion-text-right" [routerLink]="['/training', curso.idCurso,habilidad.servicio ]">
                             <ion-icon name="arrow-forward-outline"></ion-icon>
                             <!-- <ion-label>
                               <ion-text color="cloudysky" >
