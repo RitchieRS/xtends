@@ -28,11 +28,18 @@
         <p> {{dtc.presencia}}</p>
         <p> {{dtc.presentacion}}</p>
         <img src="{{dtc.img}}" style="width: 100px; height: auto;">
+
+        <app-sku-section
+        [preguntas]="dtc.preguntas"></app-sku-section>
+       
       </ion-text>
       <div>
         <p></p>
       </div>
-      <div *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo" >
+      <!--<div *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo" >
+
+
+       
         <div *ngSwitchCase="'numerica'" >
           <app-snumerica-inf
           [idPregunta]="p.idPregunta"
@@ -73,7 +80,7 @@
             ></app-sunica-radio-inf>
           </div>
         </div>
-      </div>
+      </div>-->
 
       </ion-item>
     </ion-list>

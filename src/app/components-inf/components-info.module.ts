@@ -37,6 +37,8 @@ import { SnumericaComponent } from '../components-inf/snumerica/snumerica.compon
 import { SporcentajeComponent } from '../components-inf/sporcentaje/sporcentaje.component';
 import { SdecimalComponent } from '../components-inf/sdecimal/sdecimal.component';
 import { SfotografiaComponent } from '../components-inf/sfotografia/sfotografia.component';
+import { SkuSectionComponent } from './sku-section/sku-section.component';
+import { PorcentajeComponent } from './porcentaje/porcentaje.component';
 
 
 @NgModule({
@@ -58,6 +60,8 @@ import { SfotografiaComponent } from '../components-inf/sfotografia/sfotografia.
     SporcentajeComponent,
     SdecimalComponent,
     SfotografiaComponent,
+    SkuSectionComponent,
+    PorcentajeComponent
   ],
   exports:[
     SectionComponent,
@@ -77,6 +81,8 @@ import { SfotografiaComponent } from '../components-inf/sfotografia/sfotografia.
     SporcentajeComponent,
     SdecimalComponent,
     SfotografiaComponent,
+    SkuSectionComponent,
+    PorcentajeComponent
   ],
   imports: [
     CommonModule,

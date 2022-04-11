@@ -9,18 +9,20 @@ import { Component, Input, OnInit } from '@angular/core';
 export class SkuComponent implements OnInit {
 
     @Input() idPregunta: number;
-    @Input() pregunta: string;
+
     @Input() productos: any[];
+    @Input() respuestas: any[];
     @Input() tipo: string;
 
 
 
   constructor(
   ) {
+ 
   }
 
   ngOnInit() {
-
+    console.log(this.productos);
   }
 
 }
