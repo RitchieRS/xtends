@@ -42,7 +42,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
-import { SwiperModule } from 'swiper/angular';
+
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 
@@ -98,7 +98,6 @@ import { TrainingsModule } from './trainings/trainings.module';
     SignaturePadModule,
     ClipboardModule,
     TrainingsModule,
-    SwiperModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),

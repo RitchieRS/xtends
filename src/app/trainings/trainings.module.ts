@@ -14,7 +14,7 @@ import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ComponentsModule } from '../components/components.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { RouterModule } from '@angular/router';
-import { SwiperModule } from 'swiper/angular';
+
 import { EvaluationComponent } from './evaluation/evaluation.component';
 
 
@@ -44,7 +44,7 @@ import { EvaluationComponent } from './evaluation/evaluation.component';
     ComponentsModule,
     RouterModule,
     MatDatepickerModule,
-    SwiperModule
+    
   ]
 })
 export class TrainingsModule { }
