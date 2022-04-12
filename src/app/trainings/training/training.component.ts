@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation, ViewChild,} from '@angular/core';
 import { HabilidadesService } from '../../xservices/habilidades/habilidades.service';
 import { __param } from 'tslib';
+import { Location } from '@angular/common';
 
 // import Swiper core and required modules
 import SwiperCore, { FreeMode, Navigation, Thumbs } from 'swiper';
@@ -41,6 +42,7 @@ export class TrainingComponent implements OnInit {
   constructor(private http: HttpClient,
     private   route: ActivatedRoute,
               private srvCursos: HabilidadesService,
+              private location: Location,
   ) { }
   // constructor(private fileOpener: FileOpener) { }
   // constructor(private stream: StreamingMedia) { }
@@ -74,6 +76,11 @@ export class TrainingComponent implements OnInit {
         }
         );
   }
+  back() : void{
+
+    this.location.back();
+
+  };
 
 
 

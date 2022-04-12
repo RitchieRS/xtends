@@ -90,6 +90,7 @@
   --ion-color-skybluextend-contrast-rgb: 255,255,255;
   --ion-color-skybluextend-shade: #1a88bb;
   --ion-color-skybluextend-tint: #35a4d9;
+  
 
   /** purplextend **/
   --ion-color-purplextend: #825aa5;
@@ -106,6 +107,7 @@
   --ion-color-greenxtend-contrast-rgb: 255, 255, 255;
   --ion-color-greenxtend-shade: #7fb73f;
   --ion-color-greenxtend-tint: #7fb73f;
+  
 
 
 
@@ -202,11 +204,13 @@
   /** Variable Background XTEND Red **/
   --ion-background-color-red: #eb445a;
 
-
+  
+  
 
 
 
   --ion-font-family: "Montserrat";
+  
 }
 
 
@@ -260,6 +264,7 @@
   --ion-color-tint:var(--ion-color-greenxtend-tint) !important;
   --ion-border-color:var(--ion-border-color);
   --ion-color-base-rgb: var(--ion-color-greenxtend) !important;
+  // --buffer-background: var(--buffer-background) !important;
 }
 
 /** redxtend = red Color XTEND **/

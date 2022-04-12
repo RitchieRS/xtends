@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { HabilidadesService } from '../../xservices/habilidades/habilidades.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Informacion, ProfileResp, UserProfile } from '../../xmodels/user';
+import { InfoService } from '../../xservices/user/info.service';
 
 
 
@@ -10,52 +11,30 @@ import { HabilidadesService } from '../../xservices/habilidades/habilidades.serv
   styleUrls: ['./trainings-list.component.scss'],
 })
 export class TrainingsListComponent implements OnInit {
-  // cursos: RespCurso[];
-  // idcurso: number;
-  // token: string;
-  // dataHabilidades: string;
-  // infCurso: string;
-  // tipoCurso: string;
-  // nombreCurso: string;
-  // mecanicaCurso: string;
-  // temaCurso: string;
-  cursodts: any;
-  idCurso:       number;
-  tipoCurso:     string;
-  nombreCurso:   string;
-  temaCurso:     string;
-  mecanicaCurso: string;
-  urlMaterial1:  string;
-  urlMaterial2:  string;
-  urlMaterial3:  string;
-  urlMaterial4:  string;
-  urlMaterial5:  string;
+  habilidades: any;
+  profileData : ProfileResp;
+  habilidadesok: any;
+  userResponse : UserProfile;
 
   constructor(
-    private route: ActivatedRoute,
-    private srvCursos: HabilidadesService,
+              private router: Router,
+              private route: ActivatedRoute,
+              private srvProfile : InfoService,
   ) {}
 
   ngOnInit() {
-    // const token = localStorage.getItem('token');
+    const token = localStorage.getItem('token');
+    this.srvProfile.getProfileInformation(token).subscribe((res) =>{
+      console.log(res);
+      if(res){
+        this.userResponse = res;
+        this.profileData = this.userResponse.resp;
+        this.habilidades = this.profileData.capacitacion.habilidades;
+       
+        console.log(this.habilidades);
 
-
-    // this.srvCursos.getHabilidades(token).subscribe(
-    //   (res) => {
-    //      this.cursodts = res.resp.cursos[0];
-    //      console.log(this.cursodts);
-    //      this.tipoCurso = this.cursodts.tipoCurso;
-    //      this.nombreCurso = this.cursodts.nombreCurso;
-    //      this.temaCurso = this.cursodts.temaCurso;
-    //      this.mecanicaCurso = this.cursodts.mecanicaCurso;
-    //      this.urlMaterial1 = this.cursodts.urlMaterial1;
-    //      this.urlMaterial2 = this.cursodts.urlMaterial2;
-    //      this.urlMaterial3 = this.cursodts.urlMaterial3;
-    //      this.urlMaterial4 = this.cursodts.urlMaterial4;
-    //      this.urlMaterial5 = this.cursodts.urlMaterial5;
-    //   }
-    // );
-
+      }
+    });
   }
 
 }
