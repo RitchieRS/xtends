@@ -4,8 +4,6 @@
   <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
     <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
         <ion-card>
-           
-               
                 <div>
                   <mat-accordion>
                   <!-- Aqui  va el ngFor -->
@@ -39,7 +37,9 @@
                         <!-- aquí va el ngFor -->
                         <ion-row  class="ion-margin-bottom" *ngFor="let curso of habilidad.cursos" [routerLink]="['/training', curso.idCurso,habilidad.servicio ]">
                           <ion-col  size="2" class="ion-align-self-center ion-text-center">
-                              <ion-icon size="small" color="{{curso.colortwo}}" name="{{curso.icon}}"></ion-icon>
+                              <ion-icon *ngIf="curso.avance == 0" size="small" color="navyblue" name="play-circle"></ion-icon>
+                              <ion-icon *ngIf="curso.avance == 1" size="small" color="greenxtend" name="checkmark-circle"></ion-icon>
+                              <ion-icon *ngIf="curso.avance == 2" size="small" color="redxtend" name="close-circle"></ion-icon>
                           </ion-col>
                           <ion-col size="7" class="ion-align-self-center">
                             <ion-label>
@@ -61,7 +61,6 @@
                             </ion-label> -->
                           </ion-col>
                         </ion-row>
-            
                       </ion-grid>
                     </div>
                   </mat-expansion-panel>

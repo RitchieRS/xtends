@@ -14,7 +14,8 @@ export class TrainingsListComponent implements OnInit {
   habilidades: any;
   profileData : ProfileResp;
   habilidadesok: any;
-  userResponse : UserProfile;
+  userResponse: UserProfile;
+  avanceCurso: number; 
 
   constructor(
               private router: Router,
@@ -30,8 +31,9 @@ export class TrainingsListComponent implements OnInit {
         this.userResponse = res;
         this.profileData = this.userResponse.resp;
         this.habilidades = this.profileData.capacitacion.habilidades;
-       
+        
         console.log(this.habilidades);
+       
 
       }
     });
