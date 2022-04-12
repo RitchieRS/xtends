@@ -21,6 +21,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
 // >>>>>>> refs/remotes/origin/main
 import { EvaluationComponent } from './evaluation/evaluation.component';
+import { TestComponent } from './test/test.component';
 
 
 
@@ -33,6 +34,7 @@ import { EvaluationComponent } from './evaluation/evaluation.component';
     TrainingsListComponent,
     TrainingComponent,
     EvaluationComponent,
+    TestComponent,
   ],
   imports: [
     CommonModule,
