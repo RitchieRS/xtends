@@ -15,7 +15,7 @@ export class DialogcheckinComponent implements OnInit {
 
   training(){
     this.dialog.closeAll();
-    this.router.navigate(['/training']);
+    this.router.navigate(['trainings-list']);
   }
 
 }

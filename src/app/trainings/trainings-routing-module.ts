@@ -9,11 +9,11 @@ const routes: Routes = [
   {
     path:'',
     children:[
-      {
+     /* {
         path:'main',
         component: TrainingsListComponent
 
-      },
+      },*/
       {
         path: 'trainings-list',
         component: TrainingsListComponent
