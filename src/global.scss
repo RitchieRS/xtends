@@ -26,6 +26,11 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+.overflow-visible{
+  white-space: initial !important;
+}
+
+
 .progres-bar-grey {
   background: var(--buffer-background);
 }
