@@ -14,7 +14,7 @@ export class TestService {
     private http: HttpClient
   ) { }
 
-  getTest(token: string): Observable<any>{
+  getTest(token: string, idCurso: any): Observable<any>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -23,7 +23,7 @@ export class TestService {
       }),
       responseType: 'json' as 'json'
     };
-    return this.http.get<any>(`${environment.API_URL}trainings/sondeo/104`, httpOptions).pipe(
+    return this.http.get<any>(`${environment.API_URL}trainings/sondeo/${idCurso.toString()}`, httpOptions).pipe(
           map(( res )=>{
             console.log(res);
             return res;

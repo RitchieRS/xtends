@@ -28,7 +28,7 @@ const routes: Routes = [
         component: EvaluationComponent
       },
       {
-        path: 'test',
+        path: 'test/:idCurso',
         component: TestComponent
       },
 

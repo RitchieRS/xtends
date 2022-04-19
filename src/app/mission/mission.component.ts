@@ -14,6 +14,7 @@ export class MissionComponent  {
   infMission : Mission;
   missionDetail: RespMission;
   nombreCliente: string;
+  imgCliente: string;
   nombreActividad: string;
   nivel: number;
   pago: string;
@@ -65,6 +66,7 @@ export class MissionComponent  {
 
         this.missionDetail  = this.infMission.resp;
         this.nombreCliente =this.missionDetail.nombreCliente;
+        this.imgCliente = this.missionDetail.imgCliente;
         this.nombreActividad = this.missionDetail.nombreActividad;
         this.pago = this.missionDetail.pago;
         this.nivel = this.missionDetail.nivel;

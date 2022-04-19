@@ -11,6 +11,7 @@ export interface RespMission {
     idTienda:        number;
     idProyecto:      number;
     nombreCliente:   string;
+    imgCliente:   string;
     nombreActividad: string;
     pago:            string;
     nivel:           number;

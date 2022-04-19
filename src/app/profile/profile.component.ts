@@ -513,16 +513,16 @@ async updateData(){
         this.habilidadesok = Object.values(this.habilidades);
         console.log(this.habilidades);
 
-        const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
-        {
-         return {
-           avance: habilidadesoktwo.avance,
-           cursos: habilidadesoktwo.cursos,
-        }
-        });
+        // const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
+        // {
+        //  return {
+        //    avance: habilidadesoktwo.avance,
+        //    cursos: habilidadesoktwo.cursos,
+        // }
+        // });
         // console.log(this.habilidades)
         // console.log(this.habilidadesok)
-        console.log(cabrona);
+        // console.log(cabrona);
         // this.cursos = this.habilidades.cursos[];
         // console.log(this.cursos);
         // const aaaCursos = cabrona[0].cursos;

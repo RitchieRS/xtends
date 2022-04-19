@@ -15,7 +15,8 @@ export class TrainingsListComponent implements OnInit {
   profileData : ProfileResp;
   habilidadesok: any;
   userResponse: UserProfile;
-  avanceCurso: number; 
+  avanceCurso: number;
+  isLoaded=0;
 
   constructor(
               private router: Router,
@@ -27,14 +28,14 @@ export class TrainingsListComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
       console.log(res);
+      
       if(res){
+        this.isLoaded=1;
         this.userResponse = res;
         this.profileData = this.userResponse.resp;
         this.habilidades = this.profileData.capacitacion.habilidades;
-        
         console.log(this.habilidades);
-       
-
+        console.log(this.isLoaded);
       }
     });
   }
