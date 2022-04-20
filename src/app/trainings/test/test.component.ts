@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { TestService } from 'src/app/xservices/test/test.service';
 import { ActivatedRoute } from '@angular/router';
 import { __param } from 'tslib';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-test',
@@ -19,6 +20,7 @@ export class TestComponent implements OnInit {
     private http: HttpClient,
     private route: ActivatedRoute,
     private srvTest: TestService,
+    private location: Location,
   ) { }
 
   ngOnInit() {
@@ -38,5 +40,11 @@ export class TestComponent implements OnInit {
         }
         );
   }
+
+  back(): void{
+
+    this.location.back();
+
+  };
 
 }
