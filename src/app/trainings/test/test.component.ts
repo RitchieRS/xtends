@@ -11,16 +11,21 @@ import { __param } from 'tslib';
 })
 export class TestComponent implements OnInit {
   idCurso: number;
+  namee: string;
+  colorr: string;
+  iconn: string;
 
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private srvTest: TestService,
-    
   ) { }
 
   ngOnInit() {
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
+    this.namee = this.route.snapshot.paramMap.get('namee');
+    this.iconn = this.route.snapshot.paramMap.get('iconn');
+    this.colorr = this.route.snapshot.paramMap.get('colorr');
     console.log(this.idCurso);
 
     const idCurso = this.idCurso;
@@ -29,7 +34,7 @@ export class TestComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.srvTest.getTest(token, idCurso).subscribe(
       (res) => {
-         
+
         }
         );
   }

@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TrainingComponent } from './training/training.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { EvaluationComponent } from './evaluation/evaluation.component';
-import { TestComponent} from './test/test.component'
+import { TestComponent} from './test/test.component';
 const routes: Routes = [
   {
     path:'',
@@ -20,7 +20,7 @@ const routes: Routes = [
 
       },
       {
-      path: 'training/:idCurso/:name',
+      path: 'training/:idCurso/:namee/:iconn/:colorr',
         component: TrainingComponent
       },
       {
@@ -28,7 +28,7 @@ const routes: Routes = [
         component: EvaluationComponent
       },
       {
-        path: 'test/:idCurso',
+        path: 'test/:idCurso/:namee/:iconn/:colorr',
         component: TestComponent
       },
 

@@ -33,7 +33,11 @@ export class TrainingComponent implements OnInit {
   urlMaterial4:  string;
   urlMaterial5:  string;
   idCursoRecuperao: number;
-  name: string;
+  namee: string;
+  colorr: string;
+  iconn: string;
+  typeFile: string;
+
 
   thumbsSwiper: any;
 
@@ -53,7 +57,9 @@ export class TrainingComponent implements OnInit {
   ngOnInit() {
 
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
-    this.name = this.route.snapshot.paramMap.get('name');
+    this.namee = this.route.snapshot.paramMap.get('namee');
+    this.iconn = this.route.snapshot.paramMap.get('iconn');
+    this.colorr = this.route.snapshot.paramMap.get('colorr');
     console.log(this.idCurso);
 
     const idCurso = this.idCurso;
@@ -73,6 +79,10 @@ export class TrainingComponent implements OnInit {
          this.urlMaterial3 = this.cursodts.urlMaterial3;
          this.urlMaterial4 = this.cursodts.urlMaterial4;
          this.urlMaterial5 = this.cursodts.urlMaterial5;
+
+         this.typeFile = this.urlMaterial2.substr(-4);
+         console.log(this.typeFile);
+
         }
         );
   }

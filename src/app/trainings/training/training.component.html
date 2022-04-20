@@ -10,13 +10,14 @@
           <ion-row>
             <ion-col size="2" class="ion-align-self-center">
 
-                <ion-icon size="large" src="../../../assets/icon/promotoria.svg" color="skybluextend"></ion-icon>
+                <!-- <ion-icon size="large" src="../../../assets/icon/promotoria.svg" color="skybluextend"></ion-icon> -->
+                <ion-icon size="large" src="../../../assets/icon/{{iconn}}.svg" color="{{colorr}}"></ion-icon>
 
             </ion-col>
             <ion-col size="10" class="ion-align-self-center">
               <ion-label>
                 <ion-text color="navybluextend">
-                  <h2 class="ion-no-margin">{{name}}</h2>
+                  <h2 class="ion-no-margin">{{namee}}</h2>
                   <!-- <p>Avance</p>
                   <ion-progress-bar color="skybluextend" value="0.5"
                   class="border-radius-xl height-progress ion-margin-vertical">
@@ -32,13 +33,13 @@
                 </p>
               </ion-text>
              </ion-col>
-             <ion-col size="12">
+             <!-- <ion-col size="12">
               <ion-segment scrollable mode="md">
                 <a href="{{ urlMaterial2 }}">
-                <ion-segment-button> 
-                  
+                <ion-segment-button>
+
                   <mat-icon >download_for_offline</mat-icon>
-                
+
                 </ion-segment-button>
               </a>
                 <ion-segment-button value="heart">
@@ -48,7 +49,7 @@
                   <ion-icon name="pin"></ion-icon>
                 </ion-segment-button>
               </ion-segment>
-             </ion-col>
+             </ion-col> -->
           </ion-row>
         </ion-grid>
 
@@ -101,9 +102,16 @@
         </ng-template>
       </swiper> -->
       <ion-grid>
-        <ion-row>
-          <ion-col>
-            <video controls="true" src="{{ urlMaterial1 }}"  width="100%" height="450px" style="background-color: black;"></video>
+        <ion-row [ngSwitch]= "typeFile">
+          <ion-col *ngSwitchCase="'.mp4'">
+            <video  controls="true" src="{{ urlMaterial1 }}"  width="100%" height="450px" style="background-color: black;"></video>
+          </ion-col>
+          <ion-col *ngSwitchCase="'.pdf'">
+            <div style="width:100%; height: 450px; border: solid 1px red;">
+              <a href="{{ urlMaterial2 }}">
+              <p>Descarga pdf</p>
+            </a>
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -117,7 +125,7 @@
             </button>
           </ion-col>
           <ion-col size="6" class="ion-align-self-center  ion-text-center">
-            <button  mat-stroked-button routerLink="/test/{{idCurso}}" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <button  mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
               Prueba
             </button>
           </ion-col>
