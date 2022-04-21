@@ -13,13 +13,11 @@ import { MatCardModule } from '@angular/material/card';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { ComponentsModule } from '../components/components.module';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-// <<<<<<< HEAD
-// import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-// =======
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { SwiperModule } from 'swiper/angular';
-// >>>>>>> refs/remotes/origin/main
+
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import { TestComponent } from './test/test.component';
 
@@ -51,7 +49,8 @@ import { TestComponent } from './test/test.component';
     ComponentsModule,
     RouterModule,
     MatDatepickerModule,
-    
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class TrainingsModule { }

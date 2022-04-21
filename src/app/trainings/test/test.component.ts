@@ -42,9 +42,7 @@ export class TestComponent implements OnInit {
   }
 
   back(): void{
-
     this.location.back();
-
   };
 
 }
