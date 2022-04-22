@@ -26,45 +26,33 @@
       </ion-card-header>
 
       <ion-card-content>
-        <form>
+        <form (submit)="submit()" [formGroup]="examenForm">
         <ion-grid>
           <ion-row>
-            <ion-col size="12" class="ion-margin-bottom">
+            <ion-col size="12" class="ion-margin-bottom" *ngFor="let pregunta of preguntasExamen">
               <ion-list>
                 <ion-radio-group value="" mode="md">
                   <ion-list-header>
                     <ion-label>
                       <ion-text color="navybluextend" class="ion-text-left">
                         <h2><strong>
-                          1.- Que pasa si no llevas botas de seguridad?
+                          {{pregunta.pregunta}}
                         </strong></h2>
                       </ion-text>
                     </ion-label>
                   </ion-list-header>
 
-                  <ion-item>
-                    <ion-label>
+                  <ion-item *ngFor="let opcioness of pregunta.opciones">
+                    <ion-label >
                       <ion-text color="navybluextend">
                         <p class="overflow-visible">
-                          Me dejan pasar sin pex
+                          {{opcioness.opcion}}
                         </p>
                       </ion-text>
                     </ion-label>
-                    <ion-radio slot="end" mode="md" value="biff"></ion-radio>
+                    <ion-radio formControlName="respuestaExamen" slot="end" mode="md" value="{{opcioness.idOpcion}}"></ion-radio>
                   </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p class="overflow-visible">
-                          Me prestan unas usadas con hongos
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="end" mode="md" value="griff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
+                  <!-- <ion-item>
                     <ion-label>
                       <ion-text color="navybluextend">
                         <p class="overflow-visible">
@@ -73,7 +61,7 @@
                       </ion-text>
                     </ion-label>
                     <ion-radio slot="end" mode="md" value="buford"></ion-radio>
-                  </ion-item>
+                  </ion-item> -->
                 </ion-radio-group>
               </ion-list>
             </ion-col>
@@ -136,7 +124,7 @@
                     </button>
                   </ion-col>
                   <ion-col size="6" class="ion-align-self-center  ion-text-center">
-                    <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                    <button  type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                       Calificar
                     </button>
                   </ion-col>
