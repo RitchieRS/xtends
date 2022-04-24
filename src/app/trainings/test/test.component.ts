@@ -4,7 +4,7 @@ import { TestService } from 'src/app/xservices/test/test.service';
 import { ActivatedRoute } from '@angular/router';
 import { __param } from 'tslib';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-test',
@@ -18,9 +18,11 @@ export class TestComponent implements OnInit {
   iconn: string;
   dataExamen: any = {};
   preguntasExamen: any;
-  opcionesRespuestas : any;
+  opcionesRespuestas: any;
   opciones: any;
-  
+  public examenForm: FormGroup;
+
+
 
   constructor(
     private http: HttpClient,
@@ -29,13 +31,14 @@ export class TestComponent implements OnInit {
     private location: Location,
     private formBuilder: FormBuilder,
   ) { }
-  examenForm = this.formBuilder.group({
-    respuestaExamen:[],
-  });
+
 
 
   ngOnInit() {
-     
+    this.examenForm = this.formBuilder.group({
+      respuestaExamen:['', Validators.required],
+    });
+
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
     this.namee = this.route.snapshot.paramMap.get('namee');
     this.iconn = this.route.snapshot.paramMap.get('iconn');
@@ -53,15 +56,12 @@ export class TestComponent implements OnInit {
 
         this.preguntasExamen = this.dataExamen.preguntas;
         console.log(this.preguntasExamen);
-
-        
-        
         }
         );
   }
 
   submit(){
-    console.log(this.examenForm.value)
+    console.log(this.examenForm.value);
   }
 
   back(): void{
