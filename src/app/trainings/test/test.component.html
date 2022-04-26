@@ -35,19 +35,27 @@
               <!-- <label for="cars">{{pregunta.pregunta}}</label>
               <select name="cars" id="cars" formControlName="respuestaExamen">
                 <option *ngFor="let opcioness of pregunta.opciones" value="{{opcioness.opcion}}">{{opcioness.opcion}}</option>
-              </select> -->
-
-              <!-- <p>{{pregunta.pregunta}}</p>
+              </select>
+              <p>{{pregunta.pregunta}}</p>
               <div *ngFor="let opcioness of pregunta.opciones">
                 <input type="radio" formControlName="respuestaExamen"
                 value="{{opcioness.opcion}}">
                 <label>{{opcioness.opcion}}</label>
               </div> -->
+              <label for="cars">{{pregunta.pregunta}}</label>
+              <select name="cars" id="cars" formControlName="respuestaExamen">
+                <option *ngFor="let opcioness of pregunta.opciones" value="{{opcioness.opcion}}">{{opcioness.opcion}}</option>
+              </select>
+              <!-- <p>{{pregunta.pregunta}}</p>
+              <div *ngFor="let opcioness of pregunta.opciones">
+                <input type="radio" formControlName="respuestaExamen"
+                value="{{opcioness.opcion}}">
+              </div> -->
 
 
 
 
- <ion-list >
+ <!-- <ion-list>
   <ion-radio-group mode="md" >
     <ion-list-header>
       <ion-label>
@@ -67,11 +75,10 @@
           </p>
         </ion-text>
       </ion-label>
-      <!-- <input type="radio" formControlName="respuestaExamen" value="{{opcioness.idOpcion}}" style="opacity: 0.1;"> -->
-      <ion-radio slot="end" mode="md" ></ion-radio>
+      <ion-radio slot="end" mode="md" type="radio"  value="{{opcioness.idOpcion}}" ></ion-radio>
     </ion-item>
   </ion-radio-group>
-</ion-list>
+</ion-list> -->
 
 
             </ion-col>
@@ -141,7 +148,7 @@
                     </button>
                   </ion-col>
                   <ion-col size="6" class="ion-align-self-center  ion-text-center">
-                    <button   type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                    <button  routerLink="/evaluation" type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                       Calificar
                     </button>
                   </ion-col>

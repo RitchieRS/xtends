@@ -20,6 +20,7 @@ import { SwiperModule } from 'swiper/angular';
 
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import { TestComponent } from './test/test.component';
+import { TrainingCompletedComponent } from './training-completed/training-completed.component';
 
 
 
@@ -33,6 +34,7 @@ import { TestComponent } from './test/test.component';
     TrainingComponent,
     EvaluationComponent,
     TestComponent,
+    TrainingCompletedComponent,
   ],
   imports: [
     CommonModule,

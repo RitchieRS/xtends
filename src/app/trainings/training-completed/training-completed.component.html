@@ -1,0 +1,72 @@
+<ion-header #header>
+  <app-header-two titulo="Examen"></app-header-two>
+</ion-header>
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-card>
+      <ion-card-header>
+        <ion-grid class="ion-no-margin">
+          <ion-row>
+            <ion-col size="12">
+              <ion-text color="navybluextend ion-text-center">
+                <h1><strong>
+                  ¡Felicidades!
+                </strong></h1>
+              </ion-text>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-header>
+      <ion-card-content>
+
+              <ion-grid>
+                <ion-row>
+                  <ion-col size="12" class="ion-text-center">
+                  <ion-text color="navybluextend">
+                    <h3><strong>
+                      Ya tienes la Habilidad Promotoriá formación básica completada.
+                    </strong></h3>
+                  </ion-text>
+                </ion-col>
+                </ion-row>
+
+                <ion-row class="ion-align-items-center">
+                  <ion-col size="12" class="ion-margin-vertical ion-align-self-center">
+                    <div style="width: 200px; margin: auto;">
+                      <ion-icon style="width: 200px; height: 200px;" src="../../../assets/icon/promotoria.svg" color="skybluextend"></ion-icon>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12" class="ion-margin-bottom ion-text-center" >
+                    <ion-text color="navybluextend">
+                      <h2><strong>
+                        !Ahora ya tienes el conocimiento para ejecutar tus misiones de la mejor manera!<br><br>
+                      </strong></h2>
+                    </ion-text>
+                    <ion-text color="navybluextend">
+                       <h2><strong>
+                         No olvides que puedes seguir especializándote.
+                        </strong></h2>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                    <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                       Inicio
+                    </button>
+                  </ion-col>
+                  <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                    <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                      Missiones
+                    </button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+      </ion-card-content>
+
+
+    </ion-card>
+  </div>
+
+</ion-content>
+<app-footer></app-footer>

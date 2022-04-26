@@ -26,6 +26,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+.bg-img-xy{
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size:contain;
+}
+
+
 .overflow-visible{
   white-space: initial !important;
 }

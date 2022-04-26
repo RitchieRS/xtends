@@ -5,6 +5,7 @@ import { TrainingComponent } from './training/training.component';
 import { TrainingsListComponent } from './trainings-list/trainings-list.component';
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import { TestComponent} from './test/test.component';
+import { TrainingCompletedComponent } from './training-completed/training-completed.component';
 const routes: Routes = [
   {
     path:'',
@@ -31,7 +32,10 @@ const routes: Routes = [
         path: 'test/:idCurso/:namee/:iconn/:colorr',
         component: TestComponent
       },
-
+      {
+        path: 'training-completed',
+        component: TrainingCompletedComponent
+      },
     ]
   }
 ];

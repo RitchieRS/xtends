@@ -26,7 +26,7 @@ interface LocalFile {
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-
+  disableSelect = new FormControl(false);
 
 
   // habilidades = [

@@ -31,6 +31,7 @@ export class UnicaRadioComponent implements OnInit {
   idStrQuest = "";
   idOpcion =  0;
   RequiredValue:Validators[];
+
   respuestas={
     idPregunta:"",
     tipo:      "",
@@ -40,7 +41,7 @@ export class UnicaRadioComponent implements OnInit {
     valid:0,
     obligatorio:0
   };
-  
+
   respuestaStr:string;
   constructor(private fb : FormBuilder,
               private toastCtrl: ToastController,
@@ -55,17 +56,17 @@ export class UnicaRadioComponent implements OnInit {
       this.selected = question.selected;
       this.isValid = this.respuestaStr.length>0 ? 1 : 0;
       this.respuestas.idOpcion = question.idOpcion;
-      
+
       this.storage.setObject(this.idStrQuest,this.respuestas);
      });
      this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
-     
+
   }
-  submit(){   
+  submit(){
     if(this.unicaRGroup.status=="VALID"){
-      
+
       this.respuestas.idPregunta = this.idStrQuest;
-      
+
       this.respuestas.respuesta = this.respuestaStr;
       this.respuestas.tipo = this.tipo;
       this.respuestas.selected = this.selected;
@@ -73,7 +74,7 @@ export class UnicaRadioComponent implements OnInit {
       this.respuestas.idOpcion = this.idOpcion;
       console.log(this.respuestas.idOpcion);
       this.respuestas.obligatorio  = this.obligatorio;
-      
+
       this.storage.setObject(this.idStrQuest,this.respuestas);
       this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
     }else{
@@ -82,9 +83,9 @@ export class UnicaRadioComponent implements OnInit {
   }
   onChange(i,value,id){
     this.respuestaStr=value;
-    this.idOpcion = Number(id); 
+    this.idOpcion = Number(id);
     console.log(this.idOpcion)
-    this.selected=i;  
-    this.submit();    
+    this.selected=i;
+    this.submit();
   }
 }

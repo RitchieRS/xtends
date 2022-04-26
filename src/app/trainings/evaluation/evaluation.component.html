@@ -1,5 +1,5 @@
 <ion-header #header>
-  <app-header-two titulo="Capacitación"></app-header-two>
+  <app-header-two titulo="Resultado"></app-header-two>
 </ion-header>
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
@@ -26,115 +26,102 @@
       </ion-card-header>
       <ion-card-content>
 
-              <ion-list>
-                <ion-radio-group value="" mode="ios">
-                  <ion-list-header>
-                    <ion-label>
-                      <ion-text color="navybluextend" class="ion-text-left">
-                        <h2><strong>
-                          1.- Que pasa si no llevas botas de seguridad?
-                        </strong></h2>
-                      </ion-text>
-                    </ion-label>
-                  </ion-list-header>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p>
-                          Me dejan pasar sin pex
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="start" mode="ios" value="biff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p>
-                          Me prestan unas usadas con hongos
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="start" mode="ios" value="griff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p>
-                          Te regrezan a tu casa por que se te avizo,  Te regrezan a tu casa por que se te avizo
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="start" mode="ios" value="buford"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-
-
-                <ion-radio-group value="" mode="ios">
-                  <ion-list-header>
-                    <ion-label>
-                      <ion-text color="navybluextend" class="ion-text-left">
-                        <h2><strong>
-                          2.- Que pasa si no llevas botas de seguridad?
-                        </strong></h2>
-                      </ion-text>
-                    </ion-label>
-                  </ion-list-header>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p>
-                          Me dejan pasar sin pex
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="start" mode="ios" value="biff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p>
-                          Me prestan unas usadas con hongos
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="start" mode="ios" value="griff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p>
-                          Te regrezan a tu casa por que se te avizo,  Te regrezan a tu casa por que se te avizo
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="start" mode="ios" value="buford"></ion-radio>
-                  </ion-item>
-                </ion-radio-group>
-              </ion-list>
-
-              <ion-grid class="ion-margin-vertical">
+              <ion-grid>
                 <ion-row>
+                  <ion-col size="12" class="ion-text-center">
+                    <ion-text color="navybluextend">
+                      <h2><strong>
+                        Este es el resultado de tu prueba
+                      </strong></h2>
+                    </ion-text>
+                  </ion-col>
+                </ion-row>
+                <!-- aqui va el cambio de si *ngSwitch REPROBADO-->
+                <ion-row>
+                  <ion-col size="12" class="ion-margin-vertical">
+                    <div class="bg-img-xy ion-align-self-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
+                        <ion-text color="polarwhite" class="ion-text-center">
+                          <h1 style="font-size: 5em; line-height: 2.2em;"><strong>5</strong></h1>
+                       </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12" class="ion-text-center">
+                    <ion-text color="navybluextend">
+                      <h1><strong>
+                        <span style="color:#eb445a !important;">10</span>/20
+                      </strong></h1>
+                    </ion-text>
+                  </ion-col>
+
+                  <ion-col size="12" class="ion-margin-bottom ion-text-center">
+                    <ion-text color="navybluextend">
+                      <h2><strong>
+                        !LO SENTIMOS!
+                      </strong></h2>
+                    </ion-text>
+                    <ion-text color="cloudysky">
+                       <h2>
+                         Desafortunadamente tu puntuación es menor al mínimo requerido para poder adquirir esta habilidad.<br>
+                         Favor de intentarlo de nuevo.
+                       </h2>
+                    </ion-text>
+                  </ion-col>
                   <ion-col size="6" class="ion-align-self-center  ion-text-center">
-                    <button routerLink="/training" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                    <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                        Atras
                     </button>
                   </ion-col>
                   <ion-col size="6" class="ion-align-self-center  ion-text-center">
                     <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                      Calificar
+                      Repetir
                     </button>
                   </ion-col>
                 </ion-row>
+
+                <!-- aqui va el cambio de si *ngSwitch APROBADO -->
+                <ion-row>
+                  <ion-col size="12" class="ion-margin-vertical">
+                    <div class="bg-img-xy ion-align-self-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
+                        <ion-text color="polarwhite" class="ion-text-center">
+                          <h1 style="font-size: 5em; line-height: 2.2em;"><strong>9</strong></h1>
+                       </ion-text>
+                    </div>
+                  </ion-col>
+
+                  <ion-col size="12" class="ion-text-center ion-text-center">
+                    <ion-text color="navybluextend">
+                      <h1><strong>
+                        <span style="color: #90c04e !important;">18</span>/20
+                      </strong></h1>
+                    </ion-text>
+                  </ion-col>
+
+                  <ion-col size="12" class="ion-margin-bottom ion-text-center">
+                    <ion-text color="navybluextend">
+                      <h2><strong>
+                        !FELICIDADES!
+                      </strong></h2>
+                    </ion-text>
+                    <ion-text color="cloudysky ion-text-center">
+                       <h2>
+                         Haz adquirido la Promotoría Basica, !suerte en tus siguientes misiones¡
+                       </h2>
+                    </ion-text>
+                  </ion-col>
+                  <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                       Atras
+                    </button>
+                  </ion-col>
+                  <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                    <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                      Ir a habilidades
+                    </button>
+                  </ion-col>
+                </ion-row>
+
               </ion-grid>
-
-
       </ion-card-content>
 
 
