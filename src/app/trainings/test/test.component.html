@@ -27,120 +27,79 @@
 
       <ion-card-content>
 
-        <form (submit)="submit()" [formGroup]="examenForm">
+
         <ion-grid>
           <ion-row>
-            <ion-col size="12" class="ion-margin-bottom" *ngFor="let pregunta of preguntasExamen; let i = index">
-
-              <!-- <label for="cars">{{pregunta.pregunta}}</label>
-              <select name="cars" id="cars" formControlName="respuestaExamen">
-                <option *ngFor="let opcioness of pregunta.opciones" value="{{opcioness.opcion}}">{{opcioness.opcion}}</option>
-              </select>
-              <p>{{pregunta.pregunta}}</p>
-              <div *ngFor="let opcioness of pregunta.opciones">
-                <input type="radio" formControlName="respuestaExamen"
-                value="{{opcioness.opcion}}">
-                <label>{{opcioness.opcion}}</label>
-              </div> -->
-              <label for="cars">{{pregunta.pregunta}}</label>
-              <select name="cars" id="cars" formControlName="respuestaExamen">
-                <option *ngFor="let opcioness of pregunta.opciones" value="{{opcioness.opcion}}">{{opcioness.opcion}}</option>
-              </select>
-              <!-- <p>{{pregunta.pregunta}}</p>
-              <div *ngFor="let opcioness of pregunta.opciones">
-                <input type="radio" formControlName="respuestaExamen"
-                value="{{opcioness.opcion}}">
-              </div> -->
-
-
-
-
- <!-- <ion-list>
-  <ion-radio-group mode="md" >
-    <ion-list-header>
-      <ion-label>
-        <ion-text color="navybluextend" class="ion-text-left">
-          <h2><strong>
-            {{pregunta.pregunta}}
-          </strong></h2>
-        </ion-text>
-      </ion-label>
-    </ion-list-header>
-
-    <ion-item *ngFor="let opcioness of pregunta.opciones">
-      <ion-label>
-        <ion-text color="navybluextend">
-          <p class="overflow-visible">
-            {{opcioness.opcion}}
-          </p>
-        </ion-text>
-      </ion-label>
-      <ion-radio slot="end" mode="md" type="radio"  value="{{opcioness.idOpcion}}" ></ion-radio>
-    </ion-item>
-  </ion-radio-group>
-</ion-list> -->
-
-
+            <ion-col size="4" class="ion-margin-bottom">
+              <ion-text>
+                {{points}} Puntos
+              </ion-text>
             </ion-col>
-
-
-
-
-
-            <!-- <ion-col size="12" class="ion-margin-bottom">
+            <ion-col size="4" class="ion-margin-bottom">
+              <ion-text>
+                pregunta {{currentQuestion+1}} de {{questionList.length}}
+              </ion-text>
+            </ion-col>
+            <ion-col size="4" class="ion-margin-bottom">
+              <ion-text>
+                time: {{counter}} sec
+              </ion-text>
+            </ion-col>
+            <ion-col size=12>
+              <ion-progress-bar color="primary" value="{{progress}}"></ion-progress-bar>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
               <ion-list>
-                <ion-radio-group value="" mode="md">
+                <ion-radio-group mode="md" >
                   <ion-list-header>
                     <ion-label>
                       <ion-text color="navybluextend" class="ion-text-left">
                         <h2><strong>
-                          2.- Que pasa si no llevas botas de seguridad?
+                          {{questionList[currentQuestion]?.pregunta}}
                         </strong></h2>
                       </ion-text>
                     </ion-label>
                   </ion-list-header>
-
-                  <ion-item>
+                  <ion-item *ngFor="let option of questionList[currentQuestion]?.opciones" (click)= "answer(currentQuestion+1, option)">
                     <ion-label>
                       <ion-text color="navybluextend">
                         <p class="overflow-visible">
-                          Me dejan pasar sin pex
+                         {{option.opcion}}
                         </p>
                       </ion-text>
                     </ion-label>
-                    <ion-radio slot="end" mode="md" value="biff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p class="overflow-visible">
-                          Me prestan unas usadas con hongos
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="end" mode="md" value="griff"></ion-radio>
-                  </ion-item>
-
-                  <ion-item>
-                    <ion-label>
-                      <ion-text color="navybluextend">
-                        <p class="overflow-visible">
-                          Te regrezan a tu casa por que se te avizo,  Te regrezan a tu casa por que se te avizo
-                        </p>
-                      </ion-text>
-                    </ion-label>
-                    <ion-radio slot="end" mode="md" value="buford"></ion-radio>
+                    <ion-radio slot="end" mode="md"></ion-radio>
                   </ion-item>
                 </ion-radio-group>
               </ion-list>
-            </ion-col> -->
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="4">
+              <button [disabled]="currentQuestion==0" (click)= "previousQuestion()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                <ion-icon name="chevron-back-outline"></ion-icon>
+             </button>
+            </ion-col>
+            <ion-col size="4">
+              <button (click)="resetQuiz()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                <ion-icon name="refresh-outline"></ion-icon>
+             </button>
+            </ion-col>
+            <ion-col size="4">
+              <button (click)= "nextQuestions()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                <ion-icon name="chevron-forward-outline"></ion-icon>
+             </button>
+            </ion-col>
           </ion-row>
         </ion-grid>
 
 
 
-              <ion-grid class="ion-margin-vertical">
+              <!-- <ion-grid class="ion-margin-vertical">
                 <ion-row>
                   <ion-col size="6" class="ion-align-self-center  ion-text-center">
                     <button (click)="back()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
@@ -153,10 +112,9 @@
                     </button>
                   </ion-col>
                 </ion-row>
-              </ion-grid>
+              </ion-grid> -->
 
 
-        </form>
       </ion-card-content>
 
 

@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { __param } from 'tslib';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-test',
@@ -21,6 +22,18 @@ export class TestComponent implements OnInit {
   opcionesRespuestas: any;
   opciones: any;
   public examenForm: FormGroup;
+
+  public questionList: any = [];
+  public currentQuestion: number = 0;
+  public points: number = 0;
+  counter=60;
+  correctAnswer: number = 0;
+  inCorrectAnswer: number = 0;
+  interval$: any;
+  public resultado: number;
+  numberPreguntas: number;
+  progress: number = 0;
+
 
 
 
@@ -44,11 +57,18 @@ export class TestComponent implements OnInit {
     this.iconn = this.route.snapshot.paramMap.get('iconn');
     this.colorr = this.route.snapshot.paramMap.get('colorr');
     console.log(this.idCurso);
-
     const idCurso = this.idCurso;
-    console.log(idCurso);
-
+    // console.log(idCurso);
     const token = localStorage.getItem('token');
+
+    this.getAllQuestions();
+    this.startCounter();
+
+  }
+  getAllQuestions(){
+    this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
+    const token = localStorage.getItem('token');
+    const idCurso = this.idCurso;
     this.srvTest.getTest(token, idCurso).subscribe(
       (res) => {
         this.dataExamen = res.resp[0];
@@ -56,9 +76,81 @@ export class TestComponent implements OnInit {
 
         this.preguntasExamen = this.dataExamen.preguntas;
         console.log(this.preguntasExamen);
+        this.questionList = this.preguntasExamen;
         }
         );
   }
+
+  nextQuestions(){
+   this.currentQuestion++;
+  };
+
+  previousQuestion(){
+    this.currentQuestion--;
+  };
+
+  answer(currentQno: number, option: any ){
+    if(option.puntos === 10){
+       this.points+=10;
+       this.getProgress();
+       this.correctAnswer++;
+       this.currentQuestion++;
+    }else{
+      this.points-=10;
+      this.currentQuestion++;
+      this.inCorrectAnswer++;
+      this.getProgress();
+    }
+  }
+
+  startCounter(){
+    this.interval$= interval(1000)
+    .subscribe(val=>{
+      this.counter--;
+        if(this.counter===0){
+           this.currentQuestion++;
+           this.counter= 60;
+           this.points-=10;
+        };
+    });
+    setTimeout(()=>{
+      this.interval$.unsubscribe();
+    },6000000);
+  };
+
+  stopCounter(){
+    this.interval$.unsubscribe();
+    this.counter= 0;
+  };
+
+  restCounter(){
+    this.stopCounter();
+    this.counter= 60;
+    this.startCounter();
+
+  };
+
+  resetQuiz(){
+    this.restCounter();
+    this.getAllQuestions();
+    this.points= 0;
+    this.counter= 60;
+    this.currentQuestion=0;
+    this.progress= 0;
+  };
+
+  getProgress(){
+    this.progress = this.currentQuestion/this.questionList.length;
+    return this.progress;
+  }
+
+
+
+
+
+
+
+
 
   submit(){
     console.log(this.examenForm.value);
