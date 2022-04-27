@@ -749,12 +749,13 @@
                   </mat-panel-title>
                 </mat-expansion-panel-header>
                 <div class="ion-padding-horizontal">
+                  <form  [formGroup]="bancoForm">
                   <ion-text color="navyblue">
                     <p>Configura los datos de la cuenta donde se depositará</p>
                   </ion-text>
                   <mat-form-field appearance="outline" class="iup-full-width">
                     <mat-label>Banco</mat-label>
-                    <mat-select [disabled]="disableSelect.value">
+                    <mat-select formControlName="banco" [disabled]="disableSelect.value">
                       <mat-option value="option1">BBVA</mat-option>
                       <mat-option value="option2">Banamex</mat-option>
                       <mat-option value="option3">Banorte</mat-option>
@@ -763,21 +764,21 @@
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">Nombre beneficiario</mat-label>
-                      <input matInput placeholder="Modificar Beneficiario">
+                      <input formControlName="bancoTitular" matInput placeholder="Modificar Beneficiario">
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">Cuenta CLABE</mat-label>
-                      <input matInput placeholder="Modificar CLABE">
+                      <input  formControlName="bancoClabe" matInput placeholder="Modificar CLABE" numeric>
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
                   <p>
                     <mat-form-field appearance="outline" class="iup-full-width">
                       <mat-label class="mat-label-color-navyblue">No. de tarjeta de débito</mat-label>
-                      <input matInput placeholder="Modificar No. de tarjeta">
+                      <input formControlName="bancoTarjeta" matInput placeholder="Modificar No. de tarjeta" numeric>
                       <mat-icon matSuffix>edit</mat-icon>
                     </mat-form-field>
                   </p>
@@ -786,7 +787,7 @@
                       <ion-col size="12">
                         <ion-list>
                           <ion-item>
-                            <ion-checkbox formControlName="terminos" color="primary"  slot="start" mode="ios"></ion-checkbox>
+                            <ion-checkbox formControlName="terminos"   color="primary"  slot="start" mode="ios"></ion-checkbox>
                             <ion-text color="navybluextend">
                               <p> 2. Estoy de acuerdo con los términos de confidencialidad</p>
                             </ion-text>
@@ -797,11 +798,12 @@
                   </ion-grid>
                   <section style="margin-top: 10px;">
                     <div class="iup-button-row">
-                      <button mat-stroked-button type="submit" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
+                      <button mat-stroked-button (click) = "updateBanco()" type="submit" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                       <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
                       <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                     </div>
                   </section>
+                </form>
                 </div>
               </mat-expansion-panel>
             </mat-accordion>

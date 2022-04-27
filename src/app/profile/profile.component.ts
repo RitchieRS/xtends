@@ -126,6 +126,7 @@ export class ProfileComponent implements OnInit {
   movil: string;
   userForm: FormGroup;
   credForm: FormGroup;
+  bancoForm: FormGroup;
   images: LocalFile[] = [];
   nivelXtender:string;
   nivelTermo=([...Array(16).fill(0)]);
@@ -180,7 +181,21 @@ export class ProfileComponent implements OnInit {
       imss : ['', [Validators.minLength(4),Validators.required]],
       rfc: ['', [Validators.minLength(4),Validators.required]],
       terminos: [false,[ Validators.required,Validators.required]]
-});
+     });
+
+     this.bancoForm = this.fb.group({
+      dirCP : ['', [Validators.minLength(4),Validators.required]],
+      banco : ['', [Validators.minLength(4),Validators.required]],
+      bancoTitular: ['', [Validators.minLength(4),Validators.required]],
+      bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(18), Validators.required]],
+      bancoTarjeta: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(15), Validators.required]],
+      terminos: [false,[ Validators.required,Validators.required]]
+     });
+
+
+
+
+
 
 
     this.initData();
@@ -413,6 +428,9 @@ async updateData(){
 
   }
 
+
+
+
   initData(){
     const token = localStorage.getItem('token');
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
@@ -567,6 +585,35 @@ closePanel() {
       }catch(e){
         alert(e);
       }
+
+  }
+
+  async updateBanco(){
+    console.log(this.bancoForm.value);
+    const token = localStorage.getItem('token');
+    if(this.bancoForm.value.terminos==false){
+      this.presentToast('Acepte los términos y condiciones');
+      return;
+    }
+    console.log(this.credForm.status);
+    if(this.bancoForm.status=="INVALID"){
+      this.presentToast('LLenen todos los datos requeridos');
+      return;
+    }
+
+    this.presentToast('Actualizando Información.');
+
+
+     ;(await this.srvProfile.updateBankInformation(token, this.userForm.value)).subscribe((res) =>{
+      if(res){
+        this.panelOpenState = false;
+        this.printCredential  = true;
+        this.initData();
+        this.presentToast('Listo.');
+
+      }
+    })
+
 
   }
 
