@@ -26,14 +26,20 @@ export class TestComponent implements OnInit {
   public questionList: any = [];
   public currentQuestion: number = 0;
   public points: number = 0;
+  public resultado: number;
   counter=60;
   correctAnswer: number = 0;
   inCorrectAnswer: number = 0;
   interval$: any;
-  public resultado: number;
-  numberPreguntas: number;
   progress: number = 0;
-
+  qualification: number = 0;
+  isQuizCompleted: boolean = false;
+  pushCalificacion: number;
+  resultadoCurso: any = [
+    {
+      idCurso: 1,
+      resultado: 0,
+    }];
 
 
 
@@ -64,7 +70,10 @@ export class TestComponent implements OnInit {
     this.getAllQuestions();
     this.startCounter();
 
-  }
+    this.pushCalificacion = this.qualification;
+    console.log(this.pushCalificacion);
+  };
+
   getAllQuestions(){
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
     const token = localStorage.getItem('token');
@@ -90,16 +99,31 @@ export class TestComponent implements OnInit {
   };
 
   answer(currentQno: number, option: any ){
+    if(currentQno === this.questionList.length){
+      setTimeout(()=>{
+        this.isQuizCompleted = true;
+        this.stopCounter();
+       },900);
+
+    }
     if(option.puntos === 10){
-       this.points+=10;
-       this.getProgress();
+       this.points+=1;
        this.correctAnswer++;
-       this.currentQuestion++;
+       setTimeout(()=>{
+        this.currentQuestion++;
+        this.restCounter();
+       this.getProgress();
+       },900);
+       this.getQualification();
+
     }else{
-      this.points-=10;
-      this.currentQuestion++;
+      // this.points-=1;
       this.inCorrectAnswer++;
-      this.getProgress();
+      setTimeout(()=>{
+        this.currentQuestion++;
+        this.restCounter();
+       this.getProgress();
+       },900);
     }
   }
 
@@ -110,7 +134,7 @@ export class TestComponent implements OnInit {
         if(this.counter===0){
            this.currentQuestion++;
            this.counter= 60;
-           this.points-=10;
+           this.points-=1;
         };
     });
     setTimeout(()=>{
@@ -135,26 +159,36 @@ export class TestComponent implements OnInit {
     this.getAllQuestions();
     this.points= 0;
     this.counter= 60;
-    this.currentQuestion=0;
+    this.currentQuestion= 0;
+    this.correctAnswer= 0;
     this.progress= 0;
+    this.qualification = 0;
+    this.isQuizCompleted = false;
   };
 
   getProgress(){
-    this.progress = this.currentQuestion/this.questionList.length;
+    this.progress = (this.currentQuestion/this.questionList.length);
     return this.progress;
+  };
+
+  getQualification(){
+    this.qualification = ((this.correctAnswer/this.questionList.length)*10);
+    return this.qualification;
+  };
+
+  enviarResultado(){
+    this.resultadoCurso[0].idCurso = this.idCurso;
+    this.resultadoCurso[0].resultado = this.getQualification();
+    console.log(this.resultadoCurso);
+
+    const token = localStorage.getItem('token');
+    this.srvTest.postTest(token, this.resultadoCurso);
   }
-
-
-
-
-
-
-
 
 
   submit(){
     console.log(this.examenForm.value);
-  }
+  };
 
   back(): void{
     this.location.back();

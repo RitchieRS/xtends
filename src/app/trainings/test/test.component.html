@@ -25,9 +25,7 @@
         </ion-grid>
       </ion-card-header>
 
-      <ion-card-content>
-
-
+      <ion-card-content *ngIf="!isQuizCompleted">
         <ion-grid>
           <ion-row>
             <ion-col size="4" class="ion-margin-bottom">
@@ -78,19 +76,19 @@
               </ion-list>
             </ion-col>
           </ion-row>
-          <ion-row>
-            <ion-col size="4">
+          <ion-row class="ion-margin-top">
+            <ion-col size="4" class="ion-text-center">
               <button [disabled]="currentQuestion==0" (click)= "previousQuestion()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                 <ion-icon name="chevron-back-outline"></ion-icon>
              </button>
             </ion-col>
-            <ion-col size="4">
+            <ion-col size="4" class="ion-text-center">
               <button (click)="resetQuiz()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                 <ion-icon name="refresh-outline"></ion-icon>
              </button>
             </ion-col>
-            <ion-col size="4">
-              <button (click)= "nextQuestions()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <ion-col size="4" class="ion-text-center">
+              <button [disabled]="currentQuestion+1==questionList.length" (click)= "nextQuestions()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                 <ion-icon name="chevron-forward-outline"></ion-icon>
              </button>
             </ion-col>
@@ -99,23 +97,129 @@
 
 
 
-              <!-- <ion-grid class="ion-margin-vertical">
+
+              <ion-grid class="ion-margin-vertical">
                 <ion-row>
-                  <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                  <ion-col size="12" class="ion-align-self-center  ion-text-center">
                     <button (click)="back()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                       Atras
+                      <ion-icon name="chevron-back-outline"></ion-icon> Capacitación
                     </button>
                   </ion-col>
-                  <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                  <!-- <ion-col size="6" class="ion-align-self-center  ion-text-center">
                     <button  routerLink="/evaluation" type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                       Calificar
                     </button>
-                  </ion-col>
+                  </ion-col> -->
                 </ion-row>
-              </ion-grid> -->
+              </ion-grid>
 
 
       </ion-card-content>
+
+
+
+        <ion-card-content *ngIf="isQuizCompleted">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col size="12" class="ion-text-center">
+                      <ion-text color="navybluextend">
+                        <h2><strong>
+                          Este es el resultado de tu prueba
+                        </strong></h2>
+                      </ion-text>
+                    </ion-col>
+                  </ion-row>
+
+                  <!-- aqui va el cambio de si *ngSwitch REPROBADO-->
+                  <ion-row *ngIf="qualification <= 7">
+                    <ion-col size="12" class="ion-margin-vertical">
+                      <div class="bg-img-xy ion-align-self-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
+                          <ion-text color="polarwhite" class="ion-text-center">
+                            <h1 style="font-size: 5em; line-height: 2.2em;"><strong>{{qualification}}</strong></h1>
+                         </ion-text>
+                      </div>
+                    </ion-col>
+
+                    <ion-col size="12" class="ion-text-center">
+                      <ion-text color="navybluextend">
+                        <h1><strong>
+                          <span style="color:#eb445a !important;">{{correctAnswer}}</span>/{{questionList.length}}
+                        </strong></h1>
+                      </ion-text>
+                    </ion-col>
+
+                    <ion-col size="12" class="ion-margin-bottom ion-text-center">
+                      <ion-text color="navybluextend">
+                        <h2><strong>
+                          !LO SENTIMOS!
+                        </strong></h2>
+                      </ion-text>
+                      <ion-text color="cloudysky">
+                         <h2>
+                           Desafortunadamente tu puntuación es menor al mínimo requerido para poder adquirir esta habilidad.<br>
+                           Favor de intentarlo de nuevo.
+                         </h2>
+                      </ion-text>
+                    </ion-col>
+                    <ion-col size="6" class="ion-align-self-center  ion-text-center" >
+                      <button  routerLink="/trainings-list" (click)="enviarResultado()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                         Salir
+                      </button>
+                    </ion-col>
+                    <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                      <button  (click)="resetQuiz()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                        Repetir
+                      </button>
+                    </ion-col>
+                  </ion-row>
+
+                  <!-- aqui va el cambio de si *ngSwitch APROBADO -->
+                  <ion-row *ngIf="qualification >= 8">
+                    <ion-col size="12" class="ion-margin-vertical">
+                      <div class="bg-img-xy ion-align-self-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
+                          <ion-text color="polarwhite" class="ion-text-center">
+                            <h1 style="font-size: 5em; line-height: 2.2em;"><strong>{{qualification}}</strong></h1>
+                         </ion-text>
+                      </div>
+                    </ion-col>
+
+                    <ion-col size="12" class="ion-text-center ion-text-center">
+                      <ion-text color="navybluextend">
+                        <h1><strong>
+                          <span style="color: #90c04e !important;">{{correctAnswer}}</span>/{{questionList.length}}
+                        </strong></h1>
+                      </ion-text>
+                    </ion-col>
+
+                    <ion-col size="12" class="ion-margin-bottom ion-text-center">
+                      <ion-text color="navybluextend">
+                        <h2><strong>
+                          !FELICIDADES!
+                        </strong></h2>
+                      </ion-text>
+                      <ion-text color="cloudysky ion-text-center">
+                         <h2>
+                           Haz adquirido la Promotoría Basica, !suerte en tus siguientes misiones¡
+                         </h2>
+                      </ion-text>
+                    </ion-col>
+                    <!-- <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                      <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                         Atras
+                      </button>
+                    </ion-col> -->
+                    <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                      <button routerLink="/trainings-list" (click)="enviarResultado()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                        Ir a habilidades
+                      </button>
+                    </ion-col>
+                  </ion-row>
+
+                </ion-grid>
+        </ion-card-content>
+
+
+
 
 
     </ion-card>
