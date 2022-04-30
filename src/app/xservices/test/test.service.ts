@@ -45,7 +45,7 @@ export class TestService {
     };
 
 
-    return this.http.post<any>(`${environment.API_URL}endpointquemandaheidi`,request ,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}trainings/send`,request ,httpOptions).pipe(
           map(( res:  any)=>{
             console.log(res);
             return res;
