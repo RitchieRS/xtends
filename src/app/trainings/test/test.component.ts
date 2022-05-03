@@ -14,6 +14,8 @@ import { interval } from 'rxjs';
 })
 export class TestComponent implements OnInit {
   idCurso: number;
+  sumaPuntajeQtns: number;
+  totalPuntaje: number;
   namee: string;
   colorr: string;
   iconn: string;
@@ -74,6 +76,7 @@ export class TestComponent implements OnInit {
 
     this.pushCalificacion = this.qualification;
     console.log(this.pushCalificacion);
+
   };
 
   getAllQuestions(){
@@ -88,9 +91,21 @@ export class TestComponent implements OnInit {
         this.preguntasExamen = this.dataExamen.preguntas;
         console.log(this.preguntasExamen);
         this.questionList = this.preguntasExamen;
+        this.sumaPuntajeQtns = this.sumPuntajeQtns();
+
+        // for(const i = 0 ; i < this.questionList.puntaje.length; i++){
+        //    this.sumatoriaPuntajeQuestions += this.questionList.puntaje.length[i];
+        // };
+
         }
         );
   }
+  sumPuntajeQtns(){
+   const totalPuntaje = this.preguntasExamen.map(item => item.puntaje)
+   .reduce((prev, curr) => prev + curr, 0);
+   console.log(totalPuntaje);
+   return totalPuntaje;
+  };
 
   nextQuestions(){
    this.currentQuestion++;
@@ -108,13 +123,13 @@ export class TestComponent implements OnInit {
        },900);
 
     }
-    if(option.puntos === 10){
-       this.points+=1;
+    if(option.puntos >= 1){
+       this.points+=option.puntos;
        this.correctAnswer++;
        setTimeout(()=>{
         this.currentQuestion++;
         this.restCounter();
-       this.getProgress();
+        this.getProgress();
        },900);
        this.getQualification();
 
@@ -136,7 +151,7 @@ export class TestComponent implements OnInit {
         if(this.counter===0){
            this.currentQuestion++;
            this.counter= 60;
-           this.points-=1;
+          //  this.points-=0;
         };
     });
     setTimeout(()=>{
@@ -174,7 +189,8 @@ export class TestComponent implements OnInit {
   };
 
   getQualification(){
-    this.qualification = ((this.correctAnswer/this.questionList.length)*10);
+    this.qualification = ((this.points/this.sumaPuntajeQtns)*10);
+    // console.log(Math.round(this.qualification));
     return this.qualification;
   };
 

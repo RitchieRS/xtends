@@ -27,21 +27,26 @@
 
       <ion-card-content *ngIf="!isQuizCompleted">
         <ion-grid>
-          <ion-row>
+          <ion-row class="ion-align-items-center">
             <ion-col size="4" class="ion-margin-bottom">
               <ion-text>
-                {{points}} Puntos
+                <p>{{points}} Puntos de {{sumaPuntajeQtns}}</p>
               </ion-text>
             </ion-col>
-            <ion-col size="4" class="ion-margin-bottom">
-              <ion-text>
-                pregunta {{currentQuestion+1}} de {{questionList.length}}
+            <ion-col size="4" class="ion-margin-bottom ion-text-center">
+              <ion-text color="navybluextend">
+                <p>Pregunta {{currentQuestion+1}} de {{questionList.length}}</p>
               </ion-text>
+
             </ion-col>
-            <ion-col size="4" class="ion-margin-bottom">
-              <ion-text>
-                time: {{counter}} sec
-              </ion-text>
+            <ion-col size="4" class="ion-margin-bottom ion-text-center">
+              <ion-chip outline color="primary">
+                <ion-icon name="hourglass-outline"></ion-icon>
+                <ion-label>{{counter}}s.</ion-label>
+              </ion-chip>
+              <!-- <ion-text color="navybluextend">
+                <h3><span ><ion-icon name="hourglass-outline"></ion-icon></span> {{counter}} sec</h3>
+              </ion-text> -->
             </ion-col>
             <ion-col size=12>
               <ion-progress-bar color="primary" value="{{progress}}"></ion-progress-bar>
@@ -77,25 +82,23 @@
             </ion-col>
           </ion-row>
           <ion-row class="ion-margin-top">
-            <ion-col size="4" class="ion-text-center">
+            <!-- <ion-col size="4" class="ion-text-center">
               <button [disabled]="currentQuestion==0" (click)= "previousQuestion()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                 <ion-icon name="chevron-back-outline"></ion-icon>
              </button>
-            </ion-col>
-            <ion-col size="4" class="ion-text-center">
+            </ion-col> -->
+            <ion-col size="12" class="ion-text-center">
               <button (click)="resetQuiz()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
-                <ion-icon name="refresh-outline"></ion-icon>
+                <ion-icon name="refresh-outline"></ion-icon> Reinicia el examen
              </button>
             </ion-col>
-            <ion-col size="4" class="ion-text-center">
-              <button [disabled]="currentQuestion+1==questionList.length" (click)= "nextQuestions()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <!-- <ion-col size="4" class="ion-text-center">
+              <button [disabled]="currentQuestion === 1" (click)= "nextQuestions()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                 <ion-icon name="chevron-forward-outline"></ion-icon>
              </button>
-            </ion-col>
+            </ion-col> -->
           </ion-row>
         </ion-grid>
-
-
 
 
               <ion-grid class="ion-margin-vertical">
@@ -146,6 +149,9 @@
                           <span style="color:#eb445a !important;">{{correctAnswer}}</span>/{{questionList.length}}
                         </strong></h1>
                       </ion-text>
+                      <ion-text color="navybluextend">
+                        <p>{{points}} Puntos de {{sumaPuntajeQtns}}</p>
+                      </ion-text>
                     </ion-col>
 
                     <ion-col size="12" class="ion-margin-bottom ion-text-center">
@@ -188,6 +194,9 @@
                         <h1><strong>
                           <span style="color: #90c04e !important;">{{correctAnswer}}</span>/{{questionList.length}}
                         </strong></h1>
+                      </ion-text>
+                      <ion-text color="navybluextend">
+                        <p>{{points}} Puntos de {{sumaPuntajeQtns}}</p>
                       </ion-text>
                     </ion-col>
 
