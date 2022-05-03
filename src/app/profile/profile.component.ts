@@ -187,9 +187,10 @@ export class ProfileComponent implements OnInit {
       dirCP : ['', [Validators.minLength(4),Validators.required]],
       banco : ['', [Validators.minLength(4),Validators.required]],
       bancoTitular: ['', [Validators.minLength(4),Validators.required]],
-      bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(18), Validators.required]],
-      bancoTarjeta: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(15), Validators.required]],
-      terminos: [false,[ Validators.required,Validators.required]]
+      bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(18)]],
+      bancoTarjeta: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(15)]],
+      terminos: [false,[ Validators.required,Validators.required]],
+      terminos2: [false,[ Validators.required,Validators.required]]
      });
 
 
@@ -596,10 +597,46 @@ closePanel() {
       return;
     }
     console.log(this.credForm.status);
-    if(this.bancoForm.status=="INVALID"){
+    /*if(this.bancoForm.status=="INVALID"){
       this.presentToast('LLenen todos los datos requeridos');
       return;
+    }*/
+    /*
+    bancoClabe: 
+      bancoTarjeta:
+    */
+   console.log(this.bancoForm.get('bancoTitular').value.length );
+    if(this.bancoForm.get('bancoTitular').value.length < 3 ){
+        this.presentToast('Ingrese un beneficiario ');
+        return;
     }
+
+    console.log(this.bancoForm.status);
+
+    if(this.bancoForm.get('bancoClabe').value.length == 0 && this.bancoForm.get('bancoTarjeta').value.length == 0 ){
+      this.presentToast('Ingrese almenos un metodo válido');
+      return;
+    }
+    if(this.bancoForm.get('bancoClabe').value.length > 0 ){
+      if(this.bancoForm.get('bancoClabe').value.length < 18){
+        this.presentToast('Ingrese CLABE válida');
+        return;
+      }
+    }
+    if(this.bancoForm.get('bancoTarjeta').value.length > 0 ){
+      if(this.bancoForm.get('bancoTarjeta').value.length < 16){
+        this.presentToast('Ingrese una tarjeta válida');
+        return;
+      }
+    }
+
+    /*
+  
+    else if(this.bancoForm.get('bancoTarjeta').value.length < 15){
+      this.presentToast('Ingrese una cuenta válida');
+      return;
+    }*/
+   
 
     this.presentToast('Actualizando Información.');
 
