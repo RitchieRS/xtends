@@ -27,6 +27,7 @@ export class TestComponent implements OnInit {
   public currentQuestion: number = 0;
   public points: number = 0;
   public resultado: number;
+  public totalPuntos: number;
   counter=60;
   correctAnswer: number = 0;
   inCorrectAnswer: number = 0;
@@ -37,8 +38,9 @@ export class TestComponent implements OnInit {
   pushCalificacion: number;
   resultadoCurso: any = [
     {
-      idCurso: 1,
+      idCurso: 0,
       resultado: 0,
+      totalPuntos: 0,
     }];
 
 
@@ -179,6 +181,8 @@ export class TestComponent implements OnInit {
   enviarResultado(){
     this.resultadoCurso[0].idCurso = this.idCurso;
     this.resultadoCurso[0].resultado = this.getQualification();
+    this.resultadoCurso[0].totalPuntos = this.correctAnswer;
+
     console.log(this.resultadoCurso);
 
     const token = localStorage.getItem('token');
