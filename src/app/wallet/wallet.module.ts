@@ -21,6 +21,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { EarnedMoneyComponent } from './earned-money/earned-money.component';
 import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.component';
+import { TransferOrderComponent } from './transfer-order/transfer-order.component';
 
 
 
@@ -34,6 +35,7 @@ import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.co
     MovementComponent,
     EarnedMoneyComponent,
     PromotoriaRepseComponent,
+    TransferOrderComponent,
   ],
   imports: [
     CommonModule,
@@ -52,13 +54,14 @@ import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.co
     CdkAccordionModule,
     ComponentsModule,
     RouterModule,
-    MatDatepickerModule
+    MatDatepickerModule,
   ],
   exports:[
     WalletComponent,
     MovementComponent,
     EarnedMoneyComponent,
     PromotoriaRepseComponent,
+    TransferOrderComponent,
   ]
 })
 

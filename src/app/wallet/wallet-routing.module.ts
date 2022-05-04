@@ -5,6 +5,7 @@ import { WalletComponent } from './wallet/wallet.component';
 import { MovementComponent } from './movement/movement.component';
 import { EarnedMoneyComponent } from './earned-money/earned-money.component';
 import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.component';
+import { TransferOrderComponent } from './transfer-order/transfer-order.component';
 
 const routes: Routes =[
   {
@@ -31,7 +32,11 @@ const routes: Routes =[
     {
       path: 'promotoria-repse',
         component: PromotoriaRepseComponent
-      },
+    },
+    {
+       path: 'transfer-order',
+         component: TransferOrderComponent
+    },
    ]
   }
 ];
