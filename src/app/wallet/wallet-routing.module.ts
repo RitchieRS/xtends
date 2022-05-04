@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import {MatIconModule} from '@angular/material/icon';
 import { WalletComponent } from './wallet/wallet.component';
 import { MovementComponent } from './movement/movement.component';
+import { EarnedMoneyComponent } from './earned-money/earned-money.component';
+import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.component';
 
 const routes: Routes =[
   {
@@ -21,8 +23,15 @@ const routes: Routes =[
     {
     path: '',
       component: WalletComponent
-    }
-
+    },
+    {
+    path: 'earned-money',
+      component: EarnedMoneyComponent
+    },
+    {
+      path: 'promotoria-repse',
+        component: PromotoriaRepseComponent
+      },
    ]
   }
 ];

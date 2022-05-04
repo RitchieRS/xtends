@@ -27,6 +27,7 @@ interface LocalFile {
 })
 export class ProfileComponent implements OnInit {
   disableSelect = new FormControl(false);
+  isLoaded=0;
 
 
   // habilidades = [
@@ -531,6 +532,7 @@ async updateData(){
         this.habilidades = this.profileData.capacitacion.habilidades;
         this.habilidadesok = Object.values(this.habilidades);
         console.log(this.habilidades);
+        this.isLoaded=1;
 
         // const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
         // {
@@ -602,7 +604,7 @@ closePanel() {
       return;
     }*/
     /*
-    bancoClabe: 
+    bancoClabe:
       bancoTarjeta:
     */
    console.log(this.bancoForm.get('bancoTitular').value.length );
@@ -631,12 +633,12 @@ closePanel() {
     }
 
     /*
-  
+
     else if(this.bancoForm.get('bancoTarjeta').value.length < 15){
       this.presentToast('Ingrese una cuenta válida');
       return;
     }*/
-   
+
 
     this.presentToast('Actualizando Información.');
 

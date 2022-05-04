@@ -115,8 +115,6 @@
                   </ion-col> -->
                 </ion-row>
               </ion-grid>
-
-
       </ion-card-content>
 
 
@@ -134,7 +132,7 @@
                   </ion-row>
 
                   <!-- aqui va el cambio de si *ngSwitch REPROBADO-->
-                  <ion-row *ngIf="qualification <= 7">
+                  <ion-row *ngIf="points < dataExamen.puntajeMin">
                     <ion-col size="12" class="ion-margin-vertical">
                       <div class="bg-img-xy ion-align-self-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
                           <ion-text color="polarwhite" class="ion-text-center">
@@ -172,7 +170,7 @@
                          Salir
                       </button>
                     </ion-col>
-                    <ion-col size="6" class="ion-align-self-center  ion-text-center">
+                    <ion-col size="6" class="ion-align-self-center  ion-text-center" (click)="enviarResultado()">
                       <button  (click)="resetQuiz()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                         Repetir
                       </button>
@@ -180,7 +178,7 @@
                   </ion-row>
 
                   <!-- aqui va el cambio de si *ngSwitch APROBADO -->
-                  <ion-row *ngIf="qualification >= 8">
+                  <ion-row *ngIf="points >= dataExamen.puntajeMin">
                     <ion-col size="12" class="ion-margin-vertical">
                       <div class="bg-img-xy ion-align-self-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
                           <ion-text color="polarwhite" class="ion-text-center">

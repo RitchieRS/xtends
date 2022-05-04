@@ -2,7 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { WalletComponent } from './wallet/wallet.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { CdkAccordionModule } from '@angular/cdk/accordion';
 import { MatCardModule } from '@angular/material/card';
@@ -12,11 +12,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { WalletRoutingModule } from './wallet-routing.module';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+
 import { ComponentsModule } from '../components/components.module';
 import { MovementComponent } from './movement/movement.component';
 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { EarnedMoneyComponent } from './earned-money/earned-money.component';
+import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.component';
 
 
 
@@ -27,11 +31,15 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 
   declarations: [
     WalletComponent,
-    MovementComponent
+    MovementComponent,
+    EarnedMoneyComponent,
+    PromotoriaRepseComponent,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
+    MatCheckboxModule,
     IonicModule,
     WalletRoutingModule,
     MatIconModule,
@@ -48,7 +56,9 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
   ],
   exports:[
     WalletComponent,
-    MovementComponent
+    MovementComponent,
+    EarnedMoneyComponent,
+    PromotoriaRepseComponent,
   ]
 })
 

@@ -14,8 +14,11 @@ import { interval } from 'rxjs';
 })
 export class TestComponent implements OnInit {
   idCurso: number;
+  puntajeMin: number;
   sumaPuntajeQtns: number;
   totalPuntaje: number;
+  prev: number;
+  curr: number;
   namee: string;
   colorr: string;
   iconn: string;
@@ -30,13 +33,13 @@ export class TestComponent implements OnInit {
   public points: number = 0;
   public resultado: number;
   public totalPuntos: number;
-  counter=60;
+  counter=6;
   correctAnswer: number = 0;
   inCorrectAnswer: number = 0;
   interval$: any;
   progress: number = 0;
   qualification: number = 0;
-  isQuizCompleted: boolean = false;
+  isQuizCompleted: boolean;
   pushCalificacion: number;
   resultadoCurso: any = [
     {
@@ -92,11 +95,6 @@ export class TestComponent implements OnInit {
         console.log(this.preguntasExamen);
         this.questionList = this.preguntasExamen;
         this.sumaPuntajeQtns = this.sumPuntajeQtns();
-
-        // for(const i = 0 ; i < this.questionList.puntaje.length; i++){
-        //    this.sumatoriaPuntajeQuestions += this.questionList.puntaje.length[i];
-        // };
-
         }
         );
   }
@@ -150,13 +148,16 @@ export class TestComponent implements OnInit {
       this.counter--;
         if(this.counter===0){
            this.currentQuestion++;
-           this.counter= 60;
+           this.counter= 6;
           //  this.points-=0;
+          if(this.currentQuestion === this.questionList.length){
+            this.isQuizCompleted = true;
+          };
         };
     });
     setTimeout(()=>{
       this.interval$.unsubscribe();
-    },6000000);
+    },600000);
   };
 
   stopCounter(){
@@ -166,7 +167,7 @@ export class TestComponent implements OnInit {
 
   restCounter(){
     this.stopCounter();
-    this.counter= 60;
+    this.counter= 6;
     this.startCounter();
 
   };
@@ -175,7 +176,7 @@ export class TestComponent implements OnInit {
     this.restCounter();
     this.getAllQuestions();
     this.points= 0;
-    this.counter= 60;
+    this.counter= 6;
     this.currentQuestion= 0;
     this.correctAnswer= 0;
     this.progress= 0;
@@ -203,8 +204,8 @@ export class TestComponent implements OnInit {
 
     const token = localStorage.getItem('token');
     this.srvTest.postTest(token, this.resultadoCurso);
+    this.isQuizCompleted = true;
   }
-
 
   submit(){
     console.log(this.examenForm.value);
