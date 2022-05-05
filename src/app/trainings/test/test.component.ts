@@ -198,7 +198,7 @@ export class TestComponent implements OnInit {
   enviarResultado(){
     this.resultadoCurso[0].idCurso = this.idCurso;
     this.resultadoCurso[0].resultado = this.getQualification();
-    this.resultadoCurso[0].totalPuntos = this.correctAnswer;
+    this.resultadoCurso[0].totalPuntos = this.points;
 
     console.log(this.resultadoCurso);
 
