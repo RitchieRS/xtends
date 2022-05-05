@@ -33,7 +33,7 @@ export class TestComponent implements OnInit {
   public points: number = 0;
   public resultado: number;
   public totalPuntos: number;
-  counter=6;
+  counter=60;
   correctAnswer: number = 0;
   inCorrectAnswer: number = 0;
   interval$: any;
@@ -148,7 +148,7 @@ export class TestComponent implements OnInit {
       this.counter--;
         if(this.counter===0){
            this.currentQuestion++;
-           this.counter= 6;
+           this.counter= 60;
           //  this.points-=0;
           if(this.currentQuestion === this.questionList.length){
             this.isQuizCompleted = true;
@@ -157,7 +157,7 @@ export class TestComponent implements OnInit {
     });
     setTimeout(()=>{
       this.interval$.unsubscribe();
-    },600000);
+    },6000000);
   };
 
   stopCounter(){
@@ -167,7 +167,7 @@ export class TestComponent implements OnInit {
 
   restCounter(){
     this.stopCounter();
-    this.counter= 6;
+    this.counter= 60;
     this.startCounter();
 
   };
@@ -176,7 +176,7 @@ export class TestComponent implements OnInit {
     this.restCounter();
     this.getAllQuestions();
     this.points= 0;
-    this.counter= 6;
+    this.counter= 60;
     this.currentQuestion= 0;
     this.correctAnswer= 0;
     this.progress= 0;
