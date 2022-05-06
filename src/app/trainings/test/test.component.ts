@@ -48,6 +48,8 @@ export class TestComponent implements OnInit {
       totalPuntos: 0,
     }];
 
+    isLoadedComplite=0;
+
 
 
   constructor(
@@ -90,11 +92,11 @@ export class TestComponent implements OnInit {
       (res) => {
         this.dataExamen = res.resp[0];
         console.log(this.dataExamen);
-
         this.preguntasExamen = this.dataExamen.preguntas;
         console.log(this.preguntasExamen);
         this.questionList = this.preguntasExamen;
         this.sumaPuntajeQtns = this.sumPuntajeQtns();
+        this.isLoadedComplite=1;
         }
         );
   }
@@ -145,6 +147,7 @@ export class TestComponent implements OnInit {
   startCounter(){
     this.interval$= interval(1000)
     .subscribe(val=>{
+      
       this.counter--;
         if(this.counter===0){
            this.currentQuestion++;

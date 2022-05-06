@@ -40,6 +40,8 @@ export class TrainingComponent implements OnInit {
 
 
   thumbsSwiper: any;
+  buttonDisabled: boolean;
+
 
   // videoUrldtc = 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4';
   // videoUrl='https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4';
@@ -79,10 +81,14 @@ export class TrainingComponent implements OnInit {
          this.urlMaterial3 = this.cursodts.urlMaterial3;
          this.urlMaterial4 = this.cursodts.urlMaterial4;
          this.urlMaterial5 = this.cursodts.urlMaterial5;
-
          this.typeFile = this.urlMaterial2.substr(-4);
          console.log(this.typeFile);
-
+         if(this.typeFile.length==0){
+          console.log('valio medres y no hay curso');
+          this.buttonDisabled = true;
+         }else{
+          this.buttonDisabled = false;
+         }
         }
         );
   }

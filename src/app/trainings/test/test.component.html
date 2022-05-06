@@ -3,7 +3,7 @@
 </ion-header>
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
-    <ion-card>
+    <ion-card >
       <ion-card-header>
         <ion-grid class="ion-no-margin">
           <ion-row>
@@ -24,8 +24,18 @@
           </ion-row>
         </ion-grid>
       </ion-card-header>
-
-      <ion-card-content *ngIf="!isQuizCompleted">
+      <ion-card *ngIf="isLoadedComplite==0">
+        <ion-card-content>
+         <p><ion-skeleton-text animated style="width: 90%; height:20px;"></ion-skeleton-text></p><br><br>
+         <p><ion-skeleton-text animated style="width: 90%; height:5px;"></ion-skeleton-text></p><br><br>
+         <h1><ion-skeleton-text animated style="width: 90%; height:20px;"></ion-skeleton-text></h1>
+         <h3><ion-skeleton-text animated style="width: 30%; height:10px;"></ion-skeleton-text></h3>
+         <h3><ion-skeleton-text animated style="width: 30%; height:10px;"></ion-skeleton-text></h3>
+         <h3><ion-skeleton-text animated style="width: 30%; height:10px;"></ion-skeleton-text></h3>
+        </ion-card-content>
+         
+       </ion-card>      
+      <ion-card-content *ngIf="!isQuizCompleted && isLoadedComplite==1 ">
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="4" class="ion-margin-bottom">
@@ -54,6 +64,7 @@
           </ion-row>
         </ion-grid>
         <ion-grid>
+        
           <ion-row>
             <ion-col>
               <ion-list>

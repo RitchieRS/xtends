@@ -30,9 +30,9 @@
       </ion-card>
         <ion-card>
                 <div class="ion-margin">
-                  <mat-accordion>
+                  <mat-accordion >
                   <!-- Aqui  va el ngFor -->
-                  <mat-expansion-panel class="mat-expansion-inter" *ngFor="let habilidad of habilidades">
+                  <mat-expansion-panel class="mat-expansion-inter"  *ngFor="let habilidad of habilidades">
                     <mat-expansion-panel-header>
                       <mat-panel-title>
                         <ion-grid class="ion-no-margin">
@@ -59,7 +59,7 @@
                     </mat-expansion-panel-header>
                     <div>
 
-                      <ion-grid class="ion-margin-horizontal" >
+                      <ion-grid class="ion-margin-horizontal">
 
                         <!-- aquí va el ngFor -->
                         <ion-row  class="ion-margin-bottom" *ngFor="let curso of habilidad.cursos" [routerLink]="['/training', curso.idCurso, habilidad.servicio, habilidad.iconServicio, habilidad.colorServicio ]">
