@@ -60,7 +60,8 @@ export class RegisterComponent implements OnInit {
      await this.register.register(formValue).subscribe((res) =>{
       console.log(res['idError']);
       if(res['idError']==0){
-        this.router.navigate(['auth/confirm'])
+        this.registerForm.reset();
+        this.router.navigate(['auth/confirm']);
       }else{
         this.isRegisterFailed = true;
       }

@@ -437,7 +437,7 @@
                   <div class="iup-button-row">
                     <button mat-stroked-button type="submit" (click)="updateData()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                     <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
-                    <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
+                    <button mat-stroked-button (click)="clearData()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                   </div>
                 </section>
               </form>
@@ -606,7 +606,7 @@
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
                             <mat-label class="mat-label-color-navyblue">{{rfc}}</mat-label>
-                            <input formControlName="rfc"  matInput placeholder="RFC">
+                            <input formControlName="rfc" (input)="rfc.setValue(rfc.value.toUpperCase())"  matInput placeholder="RFC">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
@@ -698,7 +698,7 @@
                         <div class="iup-button-row">
                           <button (click)="updateCredentials()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                           <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
-                          <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" id="limpiar" > Limpiar</button>
+                          <button mat-stroked-button (click)="clearCred()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" id="limpiar" > Limpiar</button>
                         </div>
                       </section>
 
@@ -781,9 +781,9 @@
                   <mat-form-field appearance="outline" class="iup-full-width">
                     <mat-label>Banco</mat-label>
                     <mat-select formControlName="banco" [disabled]="disableSelect.value">
-                      <mat-option value="option1">BBVA</mat-option>
-                      <mat-option value="option2">Banamex</mat-option>
-                      <mat-option value="option3">Banorte</mat-option>
+                      <mat-option value="BBVA">BBVA</mat-option>
+                      <mat-option value="Banamex">Banamex</mat-option>
+                      <mat-option value="Banorte">Banorte</mat-option>
                     </mat-select>
                   </mat-form-field>
                   <p>
@@ -833,7 +833,7 @@
                     <div class="iup-button-row">
                       <button mat-stroked-button (click) = "updateBanco()" type="submit" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                       <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
-                      <button mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
+                      <button mat-stroked-button (click)="clearDataBanck()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                     </div>
                   </section>
                 </form>

@@ -148,7 +148,7 @@ export class LoginComponent implements OnInit {
   async shareElement(){
     console.log("Hola Soy un share");
     await Share.share({
-      title: 'Usen xtend de mi compa',
+      title: 'Unete al equipo de trabajo xtend',
       text: 'xTendsApp',
       url: 'https://xtendapp.com/',
       dialogTitle: 'Comparte con tus amigos.',

@@ -188,8 +188,8 @@ export class ProfileComponent implements OnInit {
       dirCP : ['', [Validators.minLength(4),Validators.required]],
       banco : ['', [Validators.minLength(4),Validators.required]],
       bancoTitular: ['', [Validators.minLength(4),Validators.required]],
-      bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(18)]],
-      bancoTarjeta: ['',[  Validators.pattern("^[0-9]*$"),Validators.minLength(15)]],
+      bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.maxLength(18)]],
+      bancoTarjeta: ['',[  Validators.pattern("^[0-9]*$"),Validators.maxLength(15)]],
       terminos: [false,[ Validators.required,Validators.required]],
       terminos2: [false,[ Validators.required,Validators.required]]
      });
@@ -654,6 +654,17 @@ closePanel() {
     })
 
 
+  }
+
+  clearData(){
+    this.userForm.reset();
+  }
+
+  clearCred(){
+    this.credForm.reset();
+  }
+  clearDataBanck(){
+    this.bancoForm.reset();
   }
 
 }
