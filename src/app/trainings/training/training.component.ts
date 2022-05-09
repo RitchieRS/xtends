@@ -41,6 +41,7 @@ export class TrainingComponent implements OnInit {
 
   thumbsSwiper: any;
   buttonDisabled: boolean;
+  opacityAka: number;
 
 
   // videoUrldtc = 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4';
@@ -86,8 +87,10 @@ export class TrainingComponent implements OnInit {
          if(this.typeFile.length==0){
           console.log('valio medres y no hay curso');
           this.buttonDisabled = true;
+          this.opacityAka = 0.5 ;
          }else{
           this.buttonDisabled = false;
+          this.opacityAka = 1 ;
          }
         }
         );

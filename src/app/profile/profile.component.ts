@@ -10,6 +10,9 @@ import { LoadingController, Platform, ToastController } from '@ionic/angular';
 import { MatDialog } from '@angular/material/dialog';
 import { LoginService } from '../xservices/auth/login.service';
 import { Subject } from 'rxjs';
+import { IonRouterOutlet } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
+
 
 
 
@@ -156,7 +159,9 @@ export class ProfileComponent implements OnInit {
               private toastCtrl: ToastController,
               public dialog: MatDialog,
               private srvLog: LoginService,
-              private infSrv: InfoService) { }
+              private infSrv: InfoService,
+              private routerOutlet: IonRouterOutlet,
+              private modalController: ModalController,) { }
 
   ngOnInit() {
     console.log(this.nivelTermo);
@@ -204,6 +209,8 @@ export class ProfileComponent implements OnInit {
 
 
   }
+
+
 
   trainingGo(){
     this.router.navigate(['training']);

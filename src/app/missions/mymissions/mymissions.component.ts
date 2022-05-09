@@ -48,6 +48,9 @@ export class MymissionsComponent implements OnInit {
   totalMissionsTwo: number;
   totalMissionsOne: number;
   dataFecha: any;
+  siOnoHay: number;
+  siOnoHayco: number;
+
   // dateRangePicker: any;
   // dateRangeStart: any;
   // dateRangeEnd: any;
@@ -86,13 +89,20 @@ export class MymissionsComponent implements OnInit {
     //  });
 
 
-    //Carga las my missions disponibles
+    //Carga las my missions Activas
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsActivas => {
     {
       this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
        console.log(this.puereMissionsActivas);
        this.isLoaded=1;
+       if(this.puereMissionsActivas === 'N'){
+        // console.log('SFDHSDHDGSHFGHSFGHFGD');
+        this.siOnoHay=0;
+       }else{
+        // console.log('412341342134231');
+        this.siOnoHay=1;
+       }
     }
     });
 
@@ -104,6 +114,11 @@ export class MymissionsComponent implements OnInit {
     console.log(this.puereMissionsArealizar);
     this.isLoadedArealizar=1;
     this.totalMissionsOne = this.puereMissionsArealizar.length;
+    if(this.puereMissionsArealizar === 'No hay misisones haciendo por el momento.'){
+      this.siOnoHay=0;
+    }else{
+      this.siOnoHay=1;
+    }
     });
 
     //Carga las my missionscompleat
@@ -113,9 +128,15 @@ export class MymissionsComponent implements OnInit {
 
     this.puereMissionsCompliteDtc = this.puereMissionsComplite.slice(0,4);
     console.log(this.puereMissionsComplite.length);
+    console.log(this.puereMissionsCompliteDtc);
     this.isLoadedComplite=1;
     this.totalMissionsTwo = this.puereMissionsComplite.length;
 
+    if(this.puereMissionsCompliteDtc === 'No h'){
+      this.siOnoHayco=0;
+    }else{
+      this.siOnoHayco=1;
+    }
     });
 
   }
