@@ -90,7 +90,7 @@
   --ion-color-skybluextend-contrast-rgb: 255,255,255;
   --ion-color-skybluextend-shade: #1a88bb;
   --ion-color-skybluextend-tint: #35a4d9;
-  
+
 
   /** purplextend **/
   --ion-color-purplextend: #825aa5;
@@ -107,8 +107,6 @@
   --ion-color-greenxtend-contrast-rgb: 255, 255, 255;
   --ion-color-greenxtend-shade: #7fb73f;
   --ion-color-greenxtend-tint: #7fb73f;
-  
-
 
 
   /** redxtend **/
@@ -118,6 +116,14 @@
   --ion-color-redxtend-contrast-rgb: 255, 255, 255;
   --ion-color-redxtend-shade: #cf3c4f;
   --ion-color-redxtend-tint: #ed576b;
+
+  /** yellowxtend **/
+  --ion-color-yellowxtend: #FDDD00;
+  --ion-color-yellowxtend-rgb: 235, 68, 90;
+  --ion-color-yellowxtend-contrast:  #020c3a;
+  --ion-color-yellowxtend-contrast-rgb: 255, 255, 255;
+  --ion-color-yellowxtend-shade: #FDDD00;
+  --ion-color-yellowxtend-tint: #FDDD00;
 
 
   /** Variables color XTEND Extend Navy Blue **/
@@ -204,13 +210,13 @@
   /** Variable Background XTEND Red **/
   --ion-background-color-red: #eb445a;
 
-  
-  
+
+
 
 
 
   --ion-font-family: "Montserrat";
-  
+
 }
 
 
@@ -275,6 +281,17 @@
   --ion-color-contrast-rgb: var(--ion-color-redxtend-contrast-rgb) !important;
   --ion-color-shade: var(--ion-color-redxtend-shade) !important;
   --ion-color-tint:var(--ion-color-redxtend-tint) !important;
+  --ion-border-color:var(--ion-border-color);
+}
+
+/** redxtend = yellow Color XTEND **/
+.ion-color-yellowxtend{
+  --ion-color-base:var(--ion-color-yellowxtend) !important;
+  --ion-color-rgb:var(--ion-color-yellowxtend-rgb) !important;
+  --ion-color-contrast:var(--ion-color-yellowxtend-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-yellowxtend-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-yellowxtend-shade) !important;
+  --ion-color-tint:var(--ion-color-yellowxtend-tint) !important;
   --ion-border-color:var(--ion-border-color);
 }
 
@@ -439,6 +456,7 @@
   .bg-purplextend{background-color: var(--ion-background-color-purple);}
   .bg-greenxtend{background-color: var(--ion-background-color-green);}
   .bg-redxtend{background-color: var(--ion-background-color-red);}
+  .bg-yellowxtend{background-color: var(--ion-background-color-yellow);}
 
 
 // @media (prefers-color-scheme: dark) {
