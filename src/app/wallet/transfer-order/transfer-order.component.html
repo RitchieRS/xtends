@@ -111,22 +111,23 @@
             </ion-col>
           </ion-row>
           <ion-row class="ion-align-items-center">
-            <ion-col size="12" class="ion-text-center" style="height: 90px;">
-              <ion-fab vertical="center" horizontal="center">
+            <ion-col size="12" class="ion-margin-bottom ion-text-center">
+              <ion-button fill="outline" size="small"><ion-icon name="download-outline"></ion-icon> Descargar</ion-button>
+              <!-- <ion-fab vertical="center" horizontal="center">
                 <ion-fab-button color="polarwhite">
                   <ion-icon name="download-outline"></ion-icon>
                 </ion-fab-button>
-              </ion-fab>
+              </ion-fab> -->
             </ion-col>
           </ion-row>
           <ion-row>
             <ion-col size="6" class="ion-text-left">
-              <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
+              <button routerLink="/wallet/earned-money" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
                 OTRA TRANSFERENCIA
               </button>
             </ion-col>
             <ion-col size="6" class="ion-text-right">
-              <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
+              <button routerLink="/wallet/main" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
                 CERRAR
               </button>
             </ion-col>
