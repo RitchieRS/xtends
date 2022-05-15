@@ -1,3 +1,5 @@
+import { expressionType } from '@angular/compiler/src/output/output_ast';
+
 export interface WalletResponse {
     saldoTotal:     number;
     saldoPendiente: number;
@@ -19,3 +21,32 @@ export interface Servicio {
     img:    null;
 }
 
+export interface EarnedMoney {
+  saldoTotal: number;
+  detalle: Detalle[];
+}
+
+export interface Detalle {
+  idLog: number;
+  nombreCliente: string;
+  nombreServicio: string;
+  saldo: number;
+  detalle: string;
+  fecha: string;
+}
+
+export interface Transfer {
+  nombre: string;
+  email: string;
+  banco: string;
+  bancoClabe: string;
+}
+
+
+export interface MoneyTransfer {
+  idUsuario: number;
+  nombreBenef: string;
+  cuenta: string;
+  saldo: number;
+  noOperacion: number;
+}

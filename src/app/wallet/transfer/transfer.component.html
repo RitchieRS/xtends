@@ -28,7 +28,7 @@
                   Saldo
                 </p>
                 <h1 class="iup-txt-xxl" style="margin-top: 5px !important;">
-                  $2000.00 mx
+                  {{saldoTotal | currency}} mx
                 </h1>
               </ion-text>
             </ion-col>
@@ -63,12 +63,12 @@
                     <ion-col>
                       <ion-text color="skybluextend"  style="font-weight: 600;">
                         <p>
-                          Pedro Ramírez López
+                          {{nombre}}
                         </p>
                       </ion-text>
                       <ion-text color="cloudysky">
                         <p>
-                          Banco Azteca
+                          {{banco}}
                         </p>
                       </ion-text>
                     </ion-col>
@@ -83,7 +83,7 @@
                       </ion-text>
                       <ion-text color="cloudysky">
                         <p>
-                          01976152524617162524
+                          {{bancoClabe}}
                         </p>
                       </ion-text>
                     </ion-col>
@@ -98,7 +98,7 @@
                       </ion-text>
                       <ion-text color="cloudysky">
                         <p>
-                          predrop123@gmail.com
+                          {{email}}
                         </p>
                       </ion-text>
                     </ion-col>
