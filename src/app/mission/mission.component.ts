@@ -45,11 +45,13 @@ export class MissionComponent  {
   ];
 
   idPV: number;
+  colorServicio: string;
   constructor(
     private route: ActivatedRoute,
     private srvMission: MissionService )
     {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
+    this.colorServicio = this.route.snapshot.paramMap.get('colorServicio');
     }
 
   ngOnInit() {

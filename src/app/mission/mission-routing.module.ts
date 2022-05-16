@@ -4,7 +4,7 @@ import { MissionComponent } from './mission.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'mission/:idPV/:colorServicio/:nombreActividad/:estado/:ciudad',
     component: MissionComponent,
   }
 ];

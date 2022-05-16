@@ -215,7 +215,7 @@
                                  <section style="margin-top: 10px;">
                                   <div class="iup-button-row">
                                     <app-social-share-btn></app-social-share-btn>
-                                    <button routerLink="/mission/{{available.idPV}}"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
+                                    <button [routerLink]="['/mission', available.idPV , available.colorServicio,available.nombreActividad,available.estado,available.ciudad ]"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
                                       Ver detalles <mat-icon >chevron_right</mat-icon>
                                     </button>
                                   </div>

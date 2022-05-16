@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
 import { Router } from '@angular/router';
 import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content, HomeLocation, Section4Content, Section4 } from '../xmodels/home';
@@ -18,7 +18,7 @@ import { PopoverFiltermapComponent } from '../components/popover-filtermap/popov
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage {
+export class HomePage implements OnInit {
 
 
   currentIndex = 5;
