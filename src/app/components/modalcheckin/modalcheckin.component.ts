@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute,ActivationStart,Router, RouterOutlet, } from '@angular/router';
 import { CheckinReq } from 'src/app/xmodels/checkin';
@@ -19,6 +19,7 @@ export class ModalcheckinComponent {
   accepted = false;
   idPV=0;
   trainingComplete=true;
+  
   @ViewChild(RouterOutlet) outlet: RouterOutlet;
   constructor(public dialog: MatDialog,private route: ActivatedRoute,private srvMission : MissionService,private router: Router) { 
     this.idPV = Number(localStorage.getItem('idPV'));

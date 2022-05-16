@@ -16,6 +16,7 @@ export class ModalacceptmissionComponent implements OnInit{
   
   
   @Input() idPV : number ;
+  @Input() colorServicio:string;
   dataMission : ReqMission;
   token:string;
   message = '';
@@ -57,7 +58,9 @@ export class ModalacceptmissionComponent implements OnInit{
         
       }else{
         
-        this.dialog.open(DialogcheckinComponent)
+        this.dialog.open(DialogcheckinComponent,{data: { 
+          colorServicio: this.colorServicio
+        }})
 
       }
   

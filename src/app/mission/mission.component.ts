@@ -64,8 +64,8 @@ export class MissionComponent  {
     this.srvMission.getMissionXTiendaProyecto(dataMission,token)
     .subscribe((res) =>{
       if(res){
+        
         this.infMission = res;
-
         this.missionDetail  = this.infMission.resp;
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.imgCliente = this.missionDetail.imgCliente;
