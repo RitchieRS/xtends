@@ -26,6 +26,8 @@ export class TestComponent implements OnInit {
   preguntasExamen: any;
   opcionesRespuestas: any;
   opciones: any;
+  quizPassed: boolean;
+
   public examenForm: FormGroup;
 
   public questionList: any = [];
@@ -93,11 +95,20 @@ export class TestComponent implements OnInit {
       (res) => {
         this.dataExamen = res.resp[0];
         console.log(this.dataExamen);
-        this.preguntasExamen = this.dataExamen.preguntas;
-        console.log(this.preguntasExamen);
-        this.questionList = this.preguntasExamen;
-        this.sumaPuntajeQtns = this.sumPuntajeQtns();
-        this.isLoadedComplite=1;
+        if(this.dataExamen.puntajeActual >= this.dataExamen.puntajeMin){
+           console.log(this.dataExamen.puntajeActual);
+           console.log(this.dataExamen.puntajeMin);
+           this.isLoadedComplite=1;
+           this.quizPassed = true;
+        }else{
+          console.log('aqui cargamos el examen');
+          this.preguntasExamen = this.dataExamen.preguntas;
+          console.log(this.preguntasExamen);
+          this.questionList = this.preguntasExamen;
+          this.sumaPuntajeQtns = this.sumPuntajeQtns();
+          this.isLoadedComplite=1;
+        }
+
         }
         );
   }

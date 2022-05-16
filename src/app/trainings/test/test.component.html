@@ -33,9 +33,59 @@
          <h3><ion-skeleton-text animated style="width: 30%; height:10px;"></ion-skeleton-text></h3>
          <h3><ion-skeleton-text animated style="width: 30%; height:10px;"></ion-skeleton-text></h3>
         </ion-card-content>
-
        </ion-card>
-      <ion-card-content *ngIf="!isQuizCompleted && isLoadedComplite==1 ">
+
+       <ion-card *ngIf="quizPassed">
+        <ion-card-content>
+          <ion-grid>
+           <ion-row>
+             <ion-col size="12" class="ion-margin-vertical">
+               <div class="bg-img-xy ion-align-self-center ion-text-center" style="background-image: url(../../../assets/icon/globo-blue.svg); width: 200px; height: 200px; margin: auto;">
+                    <ion-icon color="polarwhite" name="checkmark-outline" style="font-size: 100px; margin-top: 40px;"></ion-icon>
+               </div>
+             </ion-col>
+
+             <ion-col size="12" class="ion-text-center ion-text-center">
+               <ion-text color="navybluextend">
+                 <h1><strong>
+                   <span style="color: #90c04e !important;">{{dataExamen.puntajeActual}}</span>/{{100}}
+                 </strong></h1>
+               </ion-text>
+               <ion-text color="navybluextend">
+                 <p>Puntos</p>
+               </ion-text>
+             </ion-col>
+
+             <ion-col size="12" class="ion-margin-bottom ion-text-center">
+               <ion-text color="navybluextend">
+                 <h2><strong>
+                   !FELICIDADES!
+                 </strong></h2>
+               </ion-text>
+               <ion-text color="cloudysky ion-text-center">
+                  <h2>
+                    Haz adquirido la Promotoría Basica, !suerte en tus siguientes misiones¡
+                  </h2>
+               </ion-text>
+             </ion-col>
+             <ion-col size="6" class="ion-align-self-center  ion-text-center">
+               <button routerLink="/trainings-list" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                  Salir
+               </button>
+             </ion-col>
+             <ion-col size="6" class="ion-align-self-center  ion-text-center" >
+               <button routerLink="/trainings-list" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                 Ir a habilidades
+               </button>
+             </ion-col>
+           </ion-row>
+          </ion-grid>
+        </ion-card-content>
+      </ion-card>
+
+
+
+      <ion-card-content *ngIf="!isQuizCompleted && isLoadedComplite==1 && !quizPassed">
         <ion-grid>
           <ion-row class="ion-align-items-center">
             <ion-col size="4" class="ion-margin-bottom">
