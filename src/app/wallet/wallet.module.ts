@@ -20,7 +20,7 @@ import { MovementComponent } from './movement/movement.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { EarnedMoneyComponent } from './earned-money/earned-money.component';
-import { PromotoriaRepseComponent } from './promotoria-repse/promotoria-repse.component';
+import { TransferComponent } from './transfer/transfer.component';
 import { TransferOrderComponent } from './transfer-order/transfer-order.component';
 
 
@@ -34,7 +34,7 @@ import { TransferOrderComponent } from './transfer-order/transfer-order.componen
     WalletComponent,
     MovementComponent,
     EarnedMoneyComponent,
-    PromotoriaRepseComponent,
+    TransferComponent,
     TransferOrderComponent,
   ],
   imports: [
@@ -60,7 +60,7 @@ import { TransferOrderComponent } from './transfer-order/transfer-order.componen
     WalletComponent,
     MovementComponent,
     EarnedMoneyComponent,
-    PromotoriaRepseComponent,
+    TransferComponent,
     TransferOrderComponent,
   ]
 })

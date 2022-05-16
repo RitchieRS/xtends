@@ -24,7 +24,8 @@
             <ion-col>
               <ion-text color="cloudysky">
                 <h1 class="iup-txt-xxl">
-                  $1500 mx
+                  <!-- $2000 mx -->
+                  {{saldoTotal | currency}} mx
                 </h1>
               </ion-text>
             </ion-col>
@@ -34,81 +35,64 @@
     </div>
     <div>
       <ion-card class="ion-padding">
-        <ion-grid class="ion-no-margin">
-          <!-- <ion-row>
-            <ion-col size="12" class="ion-no-padding">
-              <ion-text>
-                Promotoría REPSE:
+        <ion-grid class="ion-no-margin" *ngFor="let detalleMyMoney of detalleAka">
+          <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom" style="border-bottom: solid 1px #D8DBE3;">
+            <ion-col size="6" class="ion-no-padding ion-text-left">
+              <ion-text color="cloudysky">
+                <p style="font-weight: 600;">
+                  {{detalleMyMoney.nombreServicio}}
+                </p>
+              </ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-no-padding ion-text-center">
+              <ion-text color="cloudysky">
+                <p style="font-weight: 600;">
+                  {{detalleMyMoney.saldo | currency}}
+                </p>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+          <!-- <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom" style="border-bottom: solid 1px #D8DBE3;">
+            <ion-col size="6" class="ion-no-padding ion-text-left">
+              <ion-text color="cloudysky">
+                <p style="font-weight: 600;">
+                  Mystery shopper:
+                </p>
+              </ion-text>
+            </ion-col>
+            <ion-col size="6" class="ion-no-padding ion-text-center">
+              <ion-text color="cloudysky">
+                <p style="font-weight: 600;">
+                  $800.00
+                </p>
               </ion-text>
             </ion-col>
           </ion-row> -->
-          <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom" style="border-bottom: solid 1px #D8DBE3;">
-            <ion-col size="4" class="ion-no-padding ion-text-left">
+          <!-- <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom" style="border-bottom: solid 1px #D8DBE3;">
+            <ion-col size="6" class="ion-no-padding ion-text-left">
               <ion-text color="cloudysky">
                 <p style="font-weight: 600;">
-                  Promotoría REPSE:
-                </p>
-              </ion-text>
-            </ion-col>
-            <ion-col size="4" class="ion-no-padding ion-text-center">
-              <ion-text color="cloudysky">
-                <p style="font-weight: 600;">
-                  $1,000.00
-                </p>
-              </ion-text>
-            </ion-col>
-            <ion-col size="4" class="ion-no-padding ion-text-right">
-              <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
-                TRANSFERIR
-              </button>
-            </ion-col>
-          </ion-row>
-
-          <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom" style="border-bottom: solid 1px #D8DBE3;">
-            <ion-col size="4" class="ion-no-padding ion-text-left">
-              <ion-text color="cloudysky">
-                <p style="font-weight: 600;">
-                  Promotoría independiente:<br><br>
-                  Mystery shopper:<br><br>
                   Analista:
                 </p>
               </ion-text>
             </ion-col>
-            <ion-col size="4" class="ion-no-padding ion-text-center">
+            <ion-col size="6" class="ion-no-padding ion-text-center">
               <ion-text color="cloudysky">
                 <p style="font-weight: 600;">
-                  $1,560.00
+                  $200.00
                 </p>
               </ion-text>
             </ion-col>
-            <ion-col size="4" class="ion-no-padding ion-text-right">
-              <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
-                TRANSFERIR
-              </button>
-            </ion-col>
-          </ion-row>
-
-          <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom" style="border-bottom: solid 1px #D8DBE3;">
-            <ion-col size="4" class="ion-no-padding ion-text-left">
-              <ion-text color="cloudysky">
-                <p style="font-weight: 600;">
-                  Demostraciones:
-                </p>
-              </ion-text>
-            </ion-col>
-            <ion-col size="4" class="ion-no-padding ion-text-center">
-              <ion-text color="cloudysky">
-                <p style="font-weight: 600;">
-                  $1,000.00
-                </p>
-              </ion-text>
-            </ion-col>
-            <ion-col size="4" class="ion-no-padding ion-text-right">
-              <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
-                TRANSFERIR
-              </button>
-            </ion-col>
-          </ion-row>
+          </ion-row> -->
+        </ion-grid>
+        <ion-grid>
+            <ion-row class="ion-align-items-center ion-padding-bottom ion-margin-bottom">
+              <ion-col size="12" class="ion-no-padding ion-text-center">
+                <button  routerLink="/wallet/transfer" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend ion-text-uppercase">
+                  TRANSFERIR
+                </button>
+              </ion-col>
+            </ion-row>
         </ion-grid>
       </ion-card>
     </div>

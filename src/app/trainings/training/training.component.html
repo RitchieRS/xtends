@@ -107,17 +107,17 @@
             <video  controls="true" src="{{ urlMaterial1 }}"  width="100%" height="450px" style="background-color: black;"></video>
           </ion-col>
           <ion-col *ngSwitchCase="'.pdf'">
-            <div style="width:100%; height: 450px;">
-              <a href="{{ urlMaterial2 }}">
-              <p>Descarga pdf</p>
-            </a>
+            <div style="width:100%; height: 250px;" class="ion-text-center">
+              <ion-button href="{{ urlMaterial2 }}" fill="outline">
+                <ion-icon name="reader-outline"></ion-icon> VER PDF
+              </ion-button>
             </div>
           </ion-col>
           <ion-col *ngSwitchCase="''">
-            <div style="width:100%; height: 450px;">
+            <div style="width:100%; height: 250px; text-align: center;">
               <ion-text color="navybluextend">
                 <h1>Estamos preparando el material para el curso</h1>
-              </ion-text> 
+              </ion-text>
             </div>
           </ion-col>
         </ion-row>
@@ -131,7 +131,8 @@
             </button>
           </ion-col>
           <ion-col size="6" class="ion-align-self-center  ion-text-center">
-            <button  disabled="{{buttonDisabled}}" mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+            <button  mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+              <!-- este es con la condicional si hay curso o no<button  mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" disabled="{{buttonDisabled}}" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" [ngStyle]="{'opacity': opacityAka}"></button> -->
               Examen
             </button>
           </ion-col>

@@ -26,6 +26,8 @@ export class TestComponent implements OnInit {
   preguntasExamen: any;
   opcionesRespuestas: any;
   opciones: any;
+  quizPassed: boolean;
+
   public examenForm: FormGroup;
 
   public questionList: any = [];
@@ -41,12 +43,12 @@ export class TestComponent implements OnInit {
   qualification: number = 0;
   isQuizCompleted: boolean;
   pushCalificacion: number;
-  resultadoCurso: any = [
+  resultadoCurso: any =
     {
       idCurso: 0,
       resultado: 0,
       totalPuntos: 0,
-    }];
+    };
 
     isLoadedComplite=0;
 
@@ -82,6 +84,7 @@ export class TestComponent implements OnInit {
     this.pushCalificacion = this.qualification;
     console.log(this.pushCalificacion);
 
+
   };
 
   getAllQuestions(){
@@ -92,11 +95,20 @@ export class TestComponent implements OnInit {
       (res) => {
         this.dataExamen = res.resp[0];
         console.log(this.dataExamen);
-        this.preguntasExamen = this.dataExamen.preguntas;
-        console.log(this.preguntasExamen);
-        this.questionList = this.preguntasExamen;
-        this.sumaPuntajeQtns = this.sumPuntajeQtns();
-        this.isLoadedComplite=1;
+        if(this.dataExamen.puntajeActual >= this.dataExamen.puntajeMin){
+           console.log(this.dataExamen.puntajeActual);
+           console.log(this.dataExamen.puntajeMin);
+           this.isLoadedComplite=1;
+           this.quizPassed = true;
+        }else{
+          console.log('aqui cargamos el examen');
+          this.preguntasExamen = this.dataExamen.preguntas;
+          console.log(this.preguntasExamen);
+          this.questionList = this.preguntasExamen;
+          this.sumaPuntajeQtns = this.sumPuntajeQtns();
+          this.isLoadedComplite=1;
+        }
+
         }
         );
   }
@@ -147,7 +159,7 @@ export class TestComponent implements OnInit {
   startCounter(){
     this.interval$= interval(1000)
     .subscribe(val=>{
-      
+
       this.counter--;
         if(this.counter===0){
            this.currentQuestion++;
@@ -199,16 +211,26 @@ export class TestComponent implements OnInit {
   };
 
   enviarResultado(){
-    this.resultadoCurso[0].idCurso = this.idCurso;
-    this.resultadoCurso[0].resultado = this.getQualification();
-    this.resultadoCurso[0].totalPuntos = this.points;
+    this.resultadoCurso.idCurso = this.idCurso;
+    this.resultadoCurso.resultado = this.getQualification();
+    this.resultadoCurso.totalPuntos = this.points;
 
     console.log(this.resultadoCurso);
+    console.log(JSON.stringify(this.resultadoCurso));
+
 
     const token = localStorage.getItem('token');
-    this.srvTest.postTest(token, this.resultadoCurso);
+    const resultadoCursoJson = JSON.stringify(this.resultadoCurso);
+    console.log(resultadoCursoJson);
+    this.srvTest.postTest(token, this.resultadoCurso).subscribe(
+      (res) => {
+        console.log(res);
+        }
+    );
     this.isQuizCompleted = true;
   }
+
+
 
   submit(){
     console.log(this.examenForm.value);
