@@ -13,13 +13,27 @@
        <ion-row class="ion-justify-content-center">
 
          <ion-col size="12" class="ion-padding">
-           <ion-text class="ion-text-center">
+           <ion-text class="ion-text-center" [ngSwitch]="colorServicio">
               <h4>
-                <div [ngSwitch]="colorServicio">
-                  <div *ngSwitchCase="'navybluextend'">Mystery CHoper</div>
-                 
-                </div>
+                Para poder aceptar esta misión necesitas haber cursado la habilidad
               </h4>
+                  <h4 *ngSwitchCase="'navybluextend'">Mystery Shopper</h4>
+                  <h4 *ngSwitchCase="'skybluextend'">Promotoría</h4>
+                  <h4 *ngSwitchCase="'purplextend'">Demostrador</h4>
+                  <h4 *ngSwitchCase="'greenxtend'">Anaqueleo</h4>
+                  <h4 *ngSwitchCase="'yellowxtend'">Analista</h4>
+              <h4>
+
+              </h4>
+
+                <!-- <div [ngSwitch]="colorServicio">
+                  <div *ngSwitchCase="'navybluextend'">Mystery Shopper</div>
+                  <div *ngSwitchCase="'skybluextend'">Promotoría</div>
+                  <div *ngSwitchCase="'purplextend'">Demostrador</div>
+                  <div *ngSwitchCase="'greenxtend'">Anaqueleo</div>
+                  <div *ngSwitchCase="'yellowxtend'">Analista</div>
+                </div> -->
+
            </ion-text>
         </ion-col>
        </ion-row>
