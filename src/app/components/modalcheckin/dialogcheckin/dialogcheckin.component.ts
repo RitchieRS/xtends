@@ -19,6 +19,10 @@ export class DialogcheckinComponent implements OnInit {
     this.dialog.closeAll();
     console.log(this.colorServicio)
     this.router.navigate(['trainings-list/'+this.colorServicio]);
+
+    
   }
+
+
 
 }
