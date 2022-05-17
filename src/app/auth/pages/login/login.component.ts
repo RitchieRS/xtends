@@ -63,7 +63,10 @@ export class LoginComponent implements OnInit {
 
     this.login.login(formValue).subscribe((res) =>{
         console.log(res['idError']);
+       
         if(res['idError']==0){
+          console.log(res);
+          localStorage.setItem('idUser',res['resp'].usuario.id);
           localStorage.setItem('new','1');
           this.router.navigate(['home'])
         }else{

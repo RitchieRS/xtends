@@ -52,7 +52,8 @@ export class ModalacceptmissionComponent implements OnInit{
         
         this.dialog.open(DialogacceptmissionComponent, {
           data: { message: this.message ,
-                  idPV: this.idPV
+                  idPV: this.idPV,
+                  colorServicio: this.colorServicio
                 },
         })
         
