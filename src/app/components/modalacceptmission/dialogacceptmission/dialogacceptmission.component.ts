@@ -9,13 +9,15 @@ import { ActivationStart, Router, RouterOutlet } from '@angular/router';
 })
 export class DialogacceptmissionComponent implements OnInit {
   
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {message:string,idPV:string },private router: Router,private matDialog: MatDialog) {
+  colorServicio:string;
+  constructor(@Inject(MAT_DIALOG_DATA) public data: {message:string,idPV:string,colorServicio : string },private router: Router,private matDialog: MatDialog) {
     
-
+    this.colorServicio =  data.colorServicio;
    }
    @ViewChild(RouterOutlet) outlet: RouterOutlet;
    ngOnInit() {
+
+    console.log(this.colorServicio);
     this.router.events.subscribe(e => {
       if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
         this.outlet.deactivate();

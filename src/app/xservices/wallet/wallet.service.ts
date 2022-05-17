@@ -25,7 +25,7 @@ export class WalletService {
 
     const request = {};
 
-    return this.http.post<WalletResponse>(`${environment.API_URL}wallet`,request ,httpOptions).pipe(
+    return this.http.get<WalletResponse>(`${environment.API_URL}wallet`,httpOptions).pipe(
           map(( res : WalletResponse)=>{
             console.log(res);
             return res;
@@ -46,7 +46,7 @@ export class WalletService {
 
     const request = {};
 
-    return this.http.post<MovimientoResponse>(`${environment.API_URL}wallet/details`,request ,httpOptions).pipe(
+    return this.http.get<MovimientoResponse>(`${environment.API_URL}wallet/details`,httpOptions).pipe(
           map(( res : MovimientoResponse)=>{
             console.log(res);
             return res;
@@ -93,7 +93,7 @@ export class WalletService {
     );
   };
 
-  postMoneyTransfer(token: string): Observable<MoneyTransfer | void>{
+  postMoneyTransfer(token: string,request:any): Observable<MoneyTransfer | void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -103,7 +103,7 @@ export class WalletService {
       responseType: 'json' as 'json'
     };
 
-    const request = {};
+   // const request = {};
 
     return this.http.post<MoneyTransfer>(`${environment.API_URL}wallet/transfer`,request ,httpOptions).pipe(
           map(( res: MoneyTransfer)=>{
