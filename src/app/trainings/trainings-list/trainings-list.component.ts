@@ -17,6 +17,7 @@ export class TrainingsListComponent implements OnInit {
   userResponse: UserProfile;
   avanceCurso: number;
   isLoaded=0;
+  colorServicio: string;
 
   constructor(
               private router: Router,
@@ -26,6 +27,7 @@ export class TrainingsListComponent implements OnInit {
 
   ngOnInit() {
     const token = localStorage.getItem('token');
+    this.colorServicio = this.route.snapshot.paramMap.get('colorServicio');
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
       console.log(res);
       
@@ -34,6 +36,9 @@ export class TrainingsListComponent implements OnInit {
         this.userResponse = res;
         this.profileData = this.userResponse.resp;
         this.habilidades = this.profileData.capacitacion.habilidades;
+        const list = this.habilidades.filter(habilidad => (habilidad.colorServicio == this.colorServicio  && habilidad.colorServicio !="" ) );
+        this.habilidades = list;
+        //this.missionsAvalDataAux = list.slice(0,5)
         console.log(this.habilidades);
         console.log(this.isLoaded);
       }
