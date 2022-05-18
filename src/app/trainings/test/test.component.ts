@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TestService } from 'src/app/xservices/test/test.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { __param } from 'tslib';
 import { Location } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -43,6 +43,7 @@ export class TestComponent implements OnInit {
   qualification: number = 0;
   isQuizCompleted: boolean;
   pushCalificacion: number;
+  colorServicio: string;
   resultadoCurso: any =
     {
       idCurso: 0,
@@ -60,6 +61,7 @@ export class TestComponent implements OnInit {
     private srvTest: TestService,
     private location: Location,
     private formBuilder: FormBuilder,
+    private router: Router
   ) { }
 
 
@@ -73,7 +75,7 @@ export class TestComponent implements OnInit {
     this.namee = this.route.snapshot.paramMap.get('namee');
     this.iconn = this.route.snapshot.paramMap.get('iconn');
     this.colorr = this.route.snapshot.paramMap.get('colorr');
-    console.log(this.idCurso);
+    console.log(this.colorr);
     const idCurso = this.idCurso;
     // console.log(idCurso);
     const token = localStorage.getItem('token');
@@ -86,6 +88,7 @@ export class TestComponent implements OnInit {
 
 
   };
+
 
   getAllQuestions(){
     this.idCurso = Number(this.route.snapshot.paramMap.get('idCurso'));
@@ -228,6 +231,17 @@ export class TestComponent implements OnInit {
         }
     );
     this.isQuizCompleted = true;
+  }
+
+  goHabilidades(){
+    this.colorServicio = this.colorr;
+    console.log(this.colorServicio);
+    this.router.navigate(['trainings-list/'+this.colorServicio]);
+  }
+
+  dosInOneClick(){
+    this.enviarResultado();
+    this.goHabilidades();
   }
 
 

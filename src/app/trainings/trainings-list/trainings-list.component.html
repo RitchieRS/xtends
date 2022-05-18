@@ -7,7 +7,7 @@
         <div>
         <ion-card-content>
           <ion-grid class="ion-no-padding">
-            <ion-row class="ion-justify-content-center ion-margin ion-padding" *ngFor ="let item of [1,1,1,1,1,1,1,1,1,1,1]">
+            <ion-row class="ion-justify-content-center ion-margin ion-padding" *ngFor ="let item of [1,1,1,1,1]">
               <ion-col size="2" class="ion-align-self-center ion-margin-end">
                 <ion-skeleton-text animated style="width: 37px; height: 37px; border-radius:50%;"></ion-skeleton-text>
               </ion-col>
@@ -46,6 +46,7 @@
                               <ion-label>
                                 <ion-text color="cloudysky">
                                   <h2 class="ion-no-margin">{{habilidad.servicio}}</h2>
+                                  <p class="ion-no-margin"><strong>{{habilidad.habilidad}}</strong></p>
                                   <p>Avance</p>
                                   <ion-progress-bar  color="{{habilidad.colorServicio}}"  value="{{habilidad.avance}}"
                                   class="border-radius-xl height-progress ion-margin-vertical progres-bar-grey">

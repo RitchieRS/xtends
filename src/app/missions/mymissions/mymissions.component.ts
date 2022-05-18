@@ -43,13 +43,14 @@ export class MymissionsComponent implements OnInit {
   isLoaded=0;
   isLoadedArealizar=0;
   isLoadedComplite=0;
-  currentIndex = 5;
-  currentIndexTwo = 5;
+  currentIndex = 2;
+  currentIndexTwo = 2;
   totalMissionsTwo: number;
   totalMissionsOne: number;
   dataFecha: any;
-  siOnoHay: number;
+  siOnoHayAct: number;
   siOnoHayco: number;
+  siOnoHayArealizar: number;
 
   // dateRangePicker: any;
   // dateRangeStart: any;
@@ -97,11 +98,11 @@ export class MymissionsComponent implements OnInit {
        console.log(this.puereMissionsActivas);
        this.isLoaded=1;
        if(this.puereMissionsActivas === 'N'){
-        // console.log('SFDHSDHDGSHFGHSFGHFGD');
-        this.siOnoHay=0;
+        console.log('SFDHSDHDGSHFGHSFGHFGD');
+        this.siOnoHayAct=0;
        }else{
-        // console.log('412341342134231');
-        this.siOnoHay=1;
+        console.log('412341342134231');
+        this.siOnoHayAct=1;
        }
     }
     });
@@ -115,9 +116,9 @@ export class MymissionsComponent implements OnInit {
     this.isLoadedArealizar=1;
     this.totalMissionsOne = this.puereMissionsArealizar.length;
     if(this.puereMissionsArealizar === 'No hay misisones haciendo por el momento.'){
-      this.siOnoHay=0;
+      this.siOnoHayArealizar=0;
     }else{
-      this.siOnoHay=1;
+      this.siOnoHayArealizar=1;
     }
     });
 

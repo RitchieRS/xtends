@@ -64,7 +64,7 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <ion-card *ngIf="siOnoHay==0">
+    <ion-card *ngIf="siOnoHayAct==0">
       <ion-card-content>
         <ion-grid class="ion-no-padding">
           <ion-row class="ion-justify-content-center">
@@ -127,7 +127,8 @@
         </ion-card-content>
       </ion-card>
     </ion-grid>
-    <div *ngIf="siOnoHay==1">
+    <!-- estas son misiones disponibles cuando hay-->
+    <div *ngIf="siOnoHayArealizar==1">
     <ion-card *ngFor="let missionActiv of puereMissionsArealizarDtc">
       <ion-card-content>
         <ion-grid class="ion-no-padding">
@@ -155,7 +156,6 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-
     <ion-grid class="ion-margin-bottom">
       <ion-row class="ion-no-margin">
         <ion-col class="ion-text-center ion-no-margin" *ngIf="currentIndex<=totalMissionsOne">
@@ -172,9 +172,9 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+    </div>
 
-    <ion-card *ngIf="siOnoHay==0">
+    <ion-card *ngIf="siOnoHayArealizar==0">
       <ion-card-content>
         <ion-grid class="ion-no-padding">
           <ion-row class="ion-justify-content-center">
