@@ -94,7 +94,7 @@ export class MymissionsComponent implements OnInit {
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsActivas => {
     {
-      this.puereMissionsActivas = myMissionsActivas.section1.content.slice(0,1);
+      this.puereMissionsActivas = myMissionsActivas.section2.content.slice(0,1);
        console.log(this.puereMissionsActivas);
        this.isLoaded=1;
        if(this.puereMissionsActivas === 'N'){
@@ -110,7 +110,7 @@ export class MymissionsComponent implements OnInit {
     //Carga las my missions a realizar
     this.srvMission.getMissionXuser(token)
     .subscribe ( myMissionsArealizar => {
-    this.puereMissionsArealizar = myMissionsArealizar.section2.content;
+    this.puereMissionsArealizar = myMissionsArealizar.section1.content;
     this.puereMissionsArealizarDtc = this.puereMissionsArealizar.slice(0,3);
     console.log(this.puereMissionsArealizar);
     this.isLoadedArealizar=1;
