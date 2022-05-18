@@ -27,7 +27,7 @@ interface LocalFile {
   templateUrl: './start-mission.component.html',
   styleUrls: ['./start-mission.component.scss'],
 })
-export class StartMissionComponent  {
+export class StartMissionComponent implements OnInit  {
   images: LocalFile[] = [];
   dataSondeResponse : Sondeo
   isLoaded=0;
@@ -125,7 +125,7 @@ export class StartMissionComponent  {
 
   }
 
-  async ngOnInit() {
+  ngOnInit() {
 
     try{
       console.log("start mission fill information")
