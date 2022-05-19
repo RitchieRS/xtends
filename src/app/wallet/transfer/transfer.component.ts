@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ToastController } from '@ionic/angular';
+import { ModalController, ToastController } from '@ionic/angular';
+import { PageTerminosBancComponent } from 'src/app/components/modal-term-banc/page-terminos-banc/page-terminos-banc.component';
+import { PageTransferFondosComponent } from 'src/app/components/modal-term-banc/page-transfer-fondos/page-transfer-fondos.component';
 import { EarnedMoney, Transfer } from 'src/app/xmodels/wallet';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 
@@ -20,26 +22,27 @@ export class TransferComponent implements OnInit {
   dataEarnedMoney: EarnedMoney;
   saldoTotal: number;
   formTransfer: FormGroup ;
-  idUsuario:number;
+  terminos1: boolean;
+  idUsuario: number;
       resTran = {
         "idUsuario" : "",
         "nombreBenef" : "",
         "cuenta" : "",
         "saldo" : "",
         "noOperacion" : ""
-    }
+    };
   constructor(
     private http: HttpClient,
     private route: ActivatedRoute,
     private srvWallet: WalletService,
-    public fb  : FormBuilder,
+    public fb: FormBuilder,
     private toastCtrl: ToastController,
+    private modalController: ModalController,
   ) { }
 
   async ngOnInit() {
     this.idUsuario = Number(localStorage.getItem('idUser'));
-    
-    
+
     this.formTransfer = this.fb.group({
       noOperacion : ['58302'],
       nombreBenef:[''],
@@ -53,9 +56,30 @@ export class TransferComponent implements OnInit {
      this.getSaldo();
   }
 
+// modalSiNo(){
+
+// }
+
+  async openModalBanc(){
+      const modal = await this.modalController.create({
+        component: PageTerminosBancComponent,
+        cssClass: 'small-modal'
+      });
+      this.terminos1 = true;
+      await modal.present();
+ }
+
+   async openModalTransferencia(){
+    const modal = await this.modalController.create({
+      component: PageTransferFondosComponent,
+      cssClass: 'small-modal'
+    });
+    await modal.present();
+  }
+
    getDataTransfer(){
     const token = localStorage.getItem('token');
-    
+
     this.srvWallet.getTransfer(token).subscribe(
       (res) => {
         this.dataForTransfer = res;
@@ -83,7 +107,7 @@ export class TransferComponent implements OnInit {
   //}
 
   async requestTransfer(){
-  
+
     const token = localStorage.getItem('token');
 
     const saldoSol = Number(this.formTransfer.value.saldo);
@@ -132,7 +156,6 @@ export class TransferComponent implements OnInit {
       color: 'navybluextend',
       position: 'top',
       mode : 'ios',
-
     });
     toast.present();
   }

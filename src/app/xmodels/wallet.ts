@@ -49,4 +49,7 @@ export interface MoneyTransfer {
   cuenta: string;
   saldo: number;
   noOperacion: number;
+
 }
+
+

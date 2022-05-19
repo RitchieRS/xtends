@@ -2,7 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { UserResponse, User, UserRest, ProfileResp, UserProfile, Informacion, Credenciales, InfoCred } from 'src/app/xmodels/user';
+import { UserResponse, User, UserRest,
+         ProfileResp, UserProfile, Informacion,
+         Credenciales, InfoCred, InfoBank } from 'src/app/xmodels/user';
 import { environment } from 'src/environments/environment';
 
 
@@ -136,7 +138,7 @@ export class InfoService {
   };
 
 
-  async updateBankInformation(token : string,infoUser: Informacion):Promise<Observable<Informacion | void>>{
+  async updateBankInformation(token: string, infoUser: InfoBank): Promise< Observable <InfoBank | void> >{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -146,9 +148,8 @@ export class InfoService {
       responseType: 'json' as 'json'
     };
 
-
-    return this.http.post<Informacion>(`${environment.API_URL}user`,infoUser,httpOptions).pipe(
-          map(( res :  any)=> {
+    return this.http.post<InfoBank>(`${environment.API_URL}user/bank`,infoUser,httpOptions).pipe(
+          map(( res:  any)=> {
             console.log(res);
             return res;
           }),

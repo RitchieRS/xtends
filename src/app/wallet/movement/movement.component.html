@@ -74,7 +74,7 @@
       <ion-grid>
         <ion-row >
           <ion-col size="12" class="ion-text-center ion-align-self-center">
-            <mat-form-field appearance="outline">
+            <!-- <mat-form-field appearance="outline">
               <mat-label>Periodo</mat-label>
               <mat-date-range-input [rangePicker]="picker">
                 <input matStartDate placeholder="Inicio">
@@ -82,12 +82,113 @@
               </mat-date-range-input>
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-date-range-picker #picker></mat-date-range-picker>
+            </mat-form-field> -->
+            <form [formGroup] = "movimientosdtc" (ngSubmit) = "filterMovimientos()">
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-label>Periodo</mat-label>
+                <mat-date-range-input [rangePicker]="picker">
+                  <input matStartDate formControlName="startDate" placeholder="Inicio">
+                  <input matEndDate formControlName="endDate" placeholder="Fin">
+                </mat-date-range-input>
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-date-range-picker #picker></mat-date-range-picker>
+
+                <mat-error *ngIf="movimientosdtc.controls.startDate.hasError('matStartDateInvalid')">Invalid start date</mat-error>
+                <mat-error *ngIf="movimientosdtc.controls.endDate.hasError('matEndDateInvalid')">Invalid end date</mat-error>
             </mat-form-field>
+              <button type="submit" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                Filtrar
+            </button>
+      </form>
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-grid class="ion-no-margin ion-no-padding" *ngFor='let detallemovimiento of movimientos'>
-        <ion-row class="ion-no-margin ion-no-padding">
+      <ion-grid *ngIf="movimientosFiltradas">
+        <ion-row>
+          <ion-col size="12" *ngIf="movimientosFiltradas.length==0">
+            <hr>
+            <ion-text color="navybluextend" class="ion-text-center">
+              <p class="align">No hay movimientos relizados en este rango de fecha</p>
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-margin ion-no-padding" *ngFor="let movFil of movimientosFiltradas">
+          <ion-col size="12" class="ion-no-margin ion-no-padding">
+            <mat-accordion>
+              <mat-expansion-panel style="margin: 0px; padding: 0px; box-shadow:0px 0px 0px 0px;">
+                <mat-expansion-panel-header style="margin: 0px 0px 0px 0px; padding: 0px 16px 0px 0px;">
+                  <mat-panel-title>
+                    <ion-grid class="ion-no-margin ion-no-padding">
+                    <!-- aqui va lo del cambio de color dependiendo del status de su pago: [ngStyle]="{borderLeft: '4px solid #7fb73f'}"-->
+                    <!-- {{detallemovimiento.color}} -->
+                    <ion-row  class="ion-padding-start ion-margin-vertical" [ngStyle]="{'borderLeft': '4px solid '+ movFil.color}">
+                      <ion-col size="6" class="iup-border-bottom-grey">
+                         <ion-grid class="ion-no-margin ion-no-padding">
+                           <ion-row>
+                             <ion-col size="12" class="ion-align-self-end  ion-padding-bottom">
+                               <ion-text color="cloudysky ">
+                                 <h6 class="ion-no-margin" style="font-weight: 600;">{{movFil.nombreCliente}}</h6>
+                                 <p class="ion-no-margin">{{movFil.nombreServicio}}</p>
+                               </ion-text>
+                             </ion-col>
+                             <ion-col size="12" class="ion-align-self-end ion-no-padding">
+                              <ion-text color="cloudysky">
+                                <p class="ion-no-margin">{{movFil.fecha | date:'short' }}</p>
+                              </ion-text>
+                            </ion-col>
+                           </ion-row>
+                         </ion-grid>
+                      </ion-col>
+                      <ion-col size="6" class="ion-align-self-end iup-border-bottom-grey">
+                        <ion-text color="cloudysky" class="ion-text-right ion-text-end">
+                          <h6 class="ion-no-margin ion-padding-horizontal"><span style="font-weight: 600;" [ngStyle]="{color: 'cloudysky'}">${{movFil.saldo}}</span> MX</h6>
+                        </ion-text>
+                        <ion-text color="cloudysky" class="ion-text-right ion-text-end">
+                          <p class="ion-no-margin ion-padding-horizontal">{{movFil.estatus}}</p>
+                        </ion-text>
+                      </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                      <ion-col>
+
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                  </mat-panel-title>
+
+                </mat-expansion-panel-header>
+                <ion-gris>
+                  <ion-row>
+                    <ion-col class="ion-padding-horizontal">
+                      <p class="ion-no-margin">
+                        {{movFil.detalle}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Cadena: {{movFil.cadena}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Sucursal: {{movFil.sucursal}}
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                </ion-gris>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="ion-text-center">
+            <button (click)="returnTheFilter()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+              Limpiar filtro
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+      <ion-grid class="ion-no-margin ion-no-padding" *ngIf="!movimientosFiltradas">
+        <ion-row class="ion-no-margin ion-no-padding" *ngFor='let detallemovimiento of movimientos'>
           <ion-col class="ion-no-margin ion-no-padding">
             <mat-accordion>
               <mat-expansion-panel style="margin: 0px; padding: 0px; box-shadow:0px 0px 0px 0px;">

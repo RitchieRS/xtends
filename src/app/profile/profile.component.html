@@ -812,20 +812,10 @@
                     <ion-row>
                       <ion-col size="12">
                         <ion-list>
-                          <ion-item>
-                            <ion-text color="navybluextend">
-                              <p> Leer terminos y condiciones</p>
-                            </ion-text>
-                          </ion-item>
                         </ion-list>
                         <ion-list>
-                          <ion-item>
-                            <ion-text color="navybluextend">
-                              <p> Leer terminos y condiciones</p>
-                            </ion-text>
-                          </ion-item>
-                          <ion-item>
-                            <ion-checkbox  formControlName="terminos2" color="primary"  slot="start" mode="ios"></ion-checkbox>
+                          <ion-item (click)="openModalBanc()">
+                            <ion-checkbox  formControlName="terminosBanco" color="primary"  slot="start" mode="ios"></ion-checkbox>
                             <ion-text color="navybluextend">
                               <p> Estoy de acuerdo con los términos de confidencialidad</p>
                             </ion-text>
@@ -841,7 +831,7 @@
                     <div class="iup-button-row">
                       <button mat-stroked-button (click) = "updateBanco()" type="submit" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> Guardar</button>
                       <button mat-stroked-button (click) = "closePanel()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Cancelar</button>
-                      <button mat-stroked-button (click)="clearDataBanck()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
+                      <button mat-stroked-button (click)= "clearDataBanck()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" > Limpiar</button>
                     </div>
                   </section>
                 </form>
@@ -857,6 +847,8 @@
                     Cerrar sesión
                     <mat-icon aria-hidden="false">logout</mat-icon>
                   </button>
+                  <!-- <app-modal-term-banc></app-modal-term-banc> -->
+
                 </ion-col>
               </ion-row>
             </ion-grid>

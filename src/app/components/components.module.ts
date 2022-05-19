@@ -42,6 +42,9 @@ import { FotoCurpComponent } from './foto-curp/foto-curp.component';
 import { FotoSelfComponent } from './foto-self/foto-self.component';
 import { CamBcComponent } from './cam-bc/cam-bc.component';
 import { PopoverFiltermapComponent } from './popover-filtermap/popover-filtermap.component';
+import { ModalTermBancComponent } from './modal-term-banc/modal-term-banc.component';
+import { PageTerminosBancComponent } from './modal-term-banc/page-terminos-banc/page-terminos-banc.component';
+import { PageTransferFondosComponent } from './modal-term-banc/page-transfer-fondos/page-transfer-fondos.component';
 
 
 
@@ -69,7 +72,10 @@ import { PopoverFiltermapComponent } from './popover-filtermap/popover-filtermap
     FotoDomComponent,
     FotoCurpComponent,
     FotoSelfComponent,
-    CamBcComponent
+    CamBcComponent,
+    ModalTermBancComponent,
+    PageTerminosBancComponent,
+    PageTransferFondosComponent
   ],
   exports:[
     FooterComponent,
@@ -92,7 +98,10 @@ import { PopoverFiltermapComponent } from './popover-filtermap/popover-filtermap
     FotoDomComponent,
     FotoCurpComponent,
     FotoSelfComponent,
-    CamBcComponent
+    CamBcComponent,
+    ModalTermBancComponent,
+    PageTerminosBancComponent,
+    PageTransferFondosComponent
   ],
   imports: [
     CommonModule,

@@ -12,6 +12,7 @@ import { LoginService } from '../xservices/auth/login.service';
 import { Subject } from 'rxjs';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
+import { PageTerminosBancComponent } from '../components/modal-term-banc/page-terminos-banc/page-terminos-banc.component';
 
 
 
@@ -161,7 +162,8 @@ export class ProfileComponent implements OnInit {
               private srvLog: LoginService,
               private infSrv: InfoService,
               private routerOutlet: IonRouterOutlet,
-              private modalController: ModalController,) { }
+              private modalController: ModalController,
+              ) { }
 
   ngOnInit() {
     console.log(this.nivelTermo);
@@ -195,8 +197,8 @@ export class ProfileComponent implements OnInit {
       bancoTitular: ['', [Validators.minLength(4),Validators.required]],
       bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.maxLength(18)]],
       bancoTarjeta: ['',[  Validators.pattern("^[0-9]*$"),Validators.maxLength(15)]],
-      terminos: [false,[ Validators.required,Validators.required]],
-      terminos2: [false,[ Validators.required,Validators.required]]
+      terminosBanco: [false,[ Validators.required,Validators.required]]
+      // terminos2: [false,[ Validators.required,Validators.required]]
      });
 
 
@@ -209,6 +211,14 @@ export class ProfileComponent implements OnInit {
 
 
   }
+
+  async openModalBanc(){
+    const modal = await this.modalController.create({
+      component: PageTerminosBancComponent,
+      cssClass: 'small-modal'
+    });
+    await modal.present();
+ }
 
 
 
@@ -601,7 +611,7 @@ closePanel() {
   async updateBanco(){
     console.log(this.bancoForm.value);
     const token = localStorage.getItem('token');
-    if(this.bancoForm.value.terminos==false){
+    if(this.bancoForm.value.terminosBanco==false){
       this.presentToast('Acepte los términos y condiciones');
       return;
     }
@@ -656,6 +666,7 @@ closePanel() {
         this.printCredential  = true;
         this.initData();
         this.presentToast('Listo.');
+        console.log('si jalo el envio');
 
       }
     })

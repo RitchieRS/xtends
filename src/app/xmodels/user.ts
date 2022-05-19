@@ -123,6 +123,16 @@ export interface Informacion {
 
 }
 
+export interface InfoBank {
+  banco: string;
+  bancoClabe: number;
+  bancoTarjeta: number;
+  bancoTitular: string;
+  terminosBanco: boolean;
+}
+
+
+
 export interface NivelesDatos {
     datosCompletos:   string;
     referidosInvitados: string;
