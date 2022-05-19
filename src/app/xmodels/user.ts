@@ -120,6 +120,11 @@ export interface Informacion {
     dirAlcadia:      string;
     dirCd:           string;
     dirCP:           string;
+    banco: string;
+    bancoClabe: number;
+    bancoTarjeta: number;
+    bancoTitular: string;
+        
 
 }
 

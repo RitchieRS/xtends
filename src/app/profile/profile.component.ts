@@ -105,6 +105,15 @@ export class ProfileComponent implements OnInit {
   cursosberg: any;
   idCurso: number;
 
+  banco: string;
+  bancoClabe: string;
+  bancoTarjeta : string;
+  bancoTitular: string;
+
+  msgClabe = "Modificar CLABE";
+  msgTitular = "Nombre Beneficiario";
+  msgTarjeta = "Nombre Beneficiario";
+
 
   selectedTrabajoInteres: string;
   selectedZonaInteres: string;
@@ -148,7 +157,7 @@ export class ProfileComponent implements OnInit {
   calificacion:number;
   visiblefield = 0;
   printCredential= true;
-
+  
 
   imgDom=false;
   constructor(private router: Router,
@@ -205,9 +214,11 @@ export class ProfileComponent implements OnInit {
 
 
 
+   
 
-
-    this.initData();
+  
+    
+   this.initData();
 
 
   }
@@ -233,6 +244,7 @@ export class ProfileComponent implements OnInit {
     this.images =[];
     const loading = await this.loadingCtrl.create({
       message: 'Loading data...',
+      
     });
     await loading.present();
 
@@ -527,6 +539,31 @@ async updateData(){
           }
         }
 
+
+        
+
+      /* try{
+        
+        
+        this.bancoTarjeta =  this.profileData.informacion.bancoTarjeta.toString();
+        this.bancoTitular = this.profileData.informacion.bancoTitular.toString();
+       }catch(e){
+         console.log(e);
+       }*/
+
+      
+       
+           
+        // 
+        //this.bancoTarjeta = this.bancoTarjeta.toString().length>0 ? "No. de tarjeta de débito": this.bancoTarjeta ; 
+        /*this.bancoTitular = this.bancoTitular.toString().length>0 ? "Nombre beneficiario": this.bancoTitular.toString() ; 
+
+        console.log(this.msgClabe);
+        console.log(this.bancoTarjeta );
+        console.log(this.bancoTitular);*/
+
+  
+
         this.userForm.setValue({
           nombre: this.nombre,
           apat: this.apat,
@@ -542,7 +579,6 @@ async updateData(){
           fechaNacimiento:this.fechaNacimiento,
           movil: this.movil,
           terminos: false
-
         });
 
         //ESB | Habilidades
@@ -551,6 +587,12 @@ async updateData(){
         console.log(this.habilidades);
         this.isLoaded=1;
 
+        this.bancoClabe = this.profileData.informacion.bancoClabe.toString();
+        this.bancoTitular = this.profileData.informacion.bancoTitular;
+        this.bancoTarjeta = this.profileData.informacion.bancoTarjeta.toString();
+        this.msgClabe = this.bancoClabe.toString.length>0 ? "Nombre Beneficiario": this.bancoClabe.toString() ;
+        this.msgTitular = this.bancoTitular.toString.length>0 ? "Modificar CLABE": this.bancoTitular.toString() ;
+        this.msgTarjeta = this.bancoTarjeta.toString.length>0 ? "No. de tarjeta de débito": this.bancoTarjeta.toString() ;
         // const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
         // {
         //  return {
