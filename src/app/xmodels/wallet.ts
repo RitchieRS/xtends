@@ -45,10 +45,14 @@ export interface Transfer {
 
 export interface MoneyTransfer {
   idUsuario: number;
-  nombreBenef: string;
+  banco: string;
+  beneficiario: string;
   cuenta: string;
+  email: string;
+  fecha: string;
+  noOperacion: string;
+  nombre: string;
   saldo: number;
-  noOperacion: number;
 
 }
 

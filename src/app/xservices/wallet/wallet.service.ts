@@ -136,7 +136,7 @@ export class WalletService {
   };
 
 
-  getTransferExitosa(token: string,noOperacion : string): Observable<any>{
+  getTransferExitosa(token: string, noOperacion: string): Observable<MoneyTransfer>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -146,8 +146,8 @@ export class WalletService {
       responseType: 'json' as 'json'
     };
 
-    return this.http.get<any>(`${environment.API_URL}wallet/transfer/details/${noOperacion}`,httpOptions).pipe(
-          map(( res: any)=>{
+    return this.http.get<MoneyTransfer>(`${environment.API_URL}wallet/transfer/details/${noOperacion}`,httpOptions).pipe(
+          map(( res: MoneyTransfer)=>{
             console.log(res);
             return res;
           }),
