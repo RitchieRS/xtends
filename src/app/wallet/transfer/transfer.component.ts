@@ -45,8 +45,8 @@ export class TransferComponent implements OnInit {
     this.idUsuario = Number(localStorage.getItem('idUser'));
 
     this.formTransfer = this.fb.group({
-      noOperacion : ['58302'],
       nombreBenef:[''],
+      banco:[''],
       cuenta:[''],
       idUsuario: [this.idUsuario ],
       terminos1: [false,[ Validators.required]],
@@ -115,6 +115,7 @@ export class TransferComponent implements OnInit {
 
     this.formTransfer.controls['cuenta'].setValue(this.bancoClabe);
     this.formTransfer.controls['nombreBenef'].setValue(this.nombre);
+    this.formTransfer.controls['banco'].setValue(this.banco);
 
 
     if(saldoSol > this.saldoTotal  ){
