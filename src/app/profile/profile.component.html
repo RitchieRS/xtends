@@ -2,7 +2,23 @@
   <app-header-two titulo="Perfil"></app-header-two>
 </ion-header>
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+  <div *ngIf="isLoadedProfile==0" class="flex-center-xy">
+   <div class="flex-inter img-in-circulo">
+      <img src="../../../assets/img/preloadxtend.gif" width="120">
+    </div>
+  </div>
+
+    <!-- <ion-grid *ngIf="isLoadedProfile==0" style="height: 100%; background-color: aquamarine;">
+      <ion-row class="ion-align-items-end">
+        <ion-col size="12" class="ion-text-center" style="border:blue solid 1px;">
+          <div style="height: 120px; width: 120px; border: solid 1px red; border-radius: 50%; background-color: #e3ebf3; overflow: hidden;">
+            <img src="../../../assets/img/preloadxtend.gif" width="120">
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+  <div *ngIf="isLoadedProfile==1" class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
       <ion-card>
         <ion-card-content routerLink="/xtend-levels">
           <ion-grid>
@@ -591,22 +607,17 @@
                       </mat-expansion-panel-header>
                       <form [formGroup]="credForm" class="iup-form"  color="primary">
                         <p>
-                          <!--<mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">{{puesto}}</mat-label>
-                            <input formControlName="puesto"   matInput placeholder="Puesto">
-                            <mat-icon matSuffix>edit</mat-icon>
-                          </mat-form-field>-->
-                        </p>
-                        <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">{{imss}}</mat-label>
+                            <!-- <mat-label  class="mat-label-color-navyblue">IMSS</mat-label> -->
+                            <mat-label  class="mat-label-color-navyblue">{{imss}}</mat-label>
                             <input  formControlName="imss"  matInput placeholder="NSS">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
                         </p>
                         <p>
                           <mat-form-field appearance="outline" class="iup-full-width">
-                            <mat-label class="mat-label-color-navyblue">{{rfc}}</mat-label>
+                            <!-- <mat-label  class="mat-label-color-navyblue">RFC</mat-label> -->
+                            <mat-label  class="mat-label-color-navyblue">{{rfc}}</mat-label>
                             <input formControlName="rfc" (input)="rfc.setValue(rfc.value.toUpperCase())"  matInput placeholder="RFC">
                             <mat-icon matSuffix>edit</mat-icon>
                           </mat-form-field>
@@ -728,23 +739,22 @@
                         </mat-panel-title>
                       </mat-expansion-panel-header>
 
-                      <!-- <preloader skeleton>-->
-                        <!-- <div  *ngIf="printCredential" class="box bg-crenetial" style='background-image: url(../../../assets/img/fondoCredencial.png);'>
-
-                          <div class="foto bg-center-xy"><ion-skeleton-text animated style="width: 100%; height:100%;"></ion-skeleton-text></div>
-
-                          <div class="textunoa">
-                            <strong><ion-skeleton-text animated style="width: 20%; height:10px; margin-left: auto; margin-right: auto;"></ion-skeleton-text></strong>
-                          </div>
-                          <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
-                          <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
-                          <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
-                          <div class="firma bg-center-xy"> <ion-skeleton-text animated style="width: 100%; height:90%; text-align: center;"></ion-skeleton-text> </div>
-                        </div> -->
-                      <!-- <preloader skeleton>-->
-
                       <div [hidden]="printCredential" style="overflow: auto; width: 100%;">
-                        <app-printcredential ></app-printcredential>
+                        <!-- <preloader skeleton>-->
+                          <!-- <div class="box bg-crenetial" style='background-image: url(../../../assets/img/fondoCredencial.png);'>
+
+                            <div class="foto bg-center-xy"><ion-skeleton-text animated style="width: 100%; height:100%;"></ion-skeleton-text></div>
+
+                            <div class="textunoa">
+                              <strong><ion-skeleton-text animated style="width: 20%; height:10px; margin-left: auto; margin-right: auto;"></ion-skeleton-text></strong>
+                            </div>
+                            <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
+                            <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
+                            <div class="textdos"><ion-skeleton-text animated style="width: 50%; height:100%;  margin-left: auto; margin-right: auto;"></ion-skeleton-text></div>
+                            <div class="firma bg-center-xy"> <ion-skeleton-text animated style="width: 100%; height:90%; text-align: center;"></ion-skeleton-text> </div>
+                          </div> -->
+                        <!-- <preloader skeleton>-->
+                        <app-printcredential></app-printcredential>
                       </div>
 
                       <ion-grid [hidden]="!printCredential">

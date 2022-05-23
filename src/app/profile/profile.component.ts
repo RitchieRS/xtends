@@ -1,5 +1,5 @@
 import { NUMBER_TYPE, THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ɵConsole } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Informacion, ProfileResp, UserProfile } from '../xmodels/user';
@@ -32,6 +32,8 @@ interface LocalFile {
 export class ProfileComponent implements OnInit {
   disableSelect = new FormControl(false);
   isLoaded=0;
+  isLoadedProfile=0;
+
 
 
   // habilidades = [
@@ -157,7 +159,7 @@ export class ProfileComponent implements OnInit {
   calificacion:number;
   visiblefield = 0;
   printCredential= true;
-  
+
 
   imgDom=false;
   constructor(private router: Router,
@@ -214,10 +216,10 @@ export class ProfileComponent implements OnInit {
 
 
 
-   
 
-  
-    
+
+
+
    this.initData();
 
 
@@ -244,7 +246,7 @@ export class ProfileComponent implements OnInit {
     this.images =[];
     const loading = await this.loadingCtrl.create({
       message: 'Loading data...',
-      
+
     });
     await loading.present();
 
@@ -483,6 +485,7 @@ async updateData(){
         this.fechaNacimiento = this.profileData.informacion.fechaNacimiento;
         this.movil = this.profileData.informacion.movil;
         this.calificacion = this.profileData.calificacion;
+        this.isLoadedProfile=1;
 
 
        // this.nivelXtender = this.profileData.nivelXtender;
@@ -500,6 +503,7 @@ async updateData(){
         console.log(this.datosCompletosN );
         this.puesto = this.profileData.credenciales.puesto;
         this.imss  = this.profileData.credenciales.imss;
+        console.log(this.imss);
         this.rfc  = this.profileData.credenciales.rfc;
         this.urlFirma= this.profileData.credenciales.urlFirma;
         console.log(this.urlFirma);
@@ -540,29 +544,29 @@ async updateData(){
         }
 
 
-        
+
 
       /* try{
-        
-        
+
+
         this.bancoTarjeta =  this.profileData.informacion.bancoTarjeta.toString();
         this.bancoTitular = this.profileData.informacion.bancoTitular.toString();
        }catch(e){
          console.log(e);
        }*/
 
-      
-       
-           
-        // 
-        //this.bancoTarjeta = this.bancoTarjeta.toString().length>0 ? "No. de tarjeta de débito": this.bancoTarjeta ; 
-        /*this.bancoTitular = this.bancoTitular.toString().length>0 ? "Nombre beneficiario": this.bancoTitular.toString() ; 
+
+
+
+        //
+        //this.bancoTarjeta = this.bancoTarjeta.toString().length>0 ? "No. de tarjeta de débito": this.bancoTarjeta ;
+        /*this.bancoTitular = this.bancoTitular.toString().length>0 ? "Nombre beneficiario": this.bancoTitular.toString() ;
 
         console.log(this.msgClabe);
         console.log(this.bancoTarjeta );
         console.log(this.bancoTitular);*/
 
-  
+
 
         this.userForm.setValue({
           nombre: this.nombre,

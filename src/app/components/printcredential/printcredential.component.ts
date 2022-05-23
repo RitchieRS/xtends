@@ -31,6 +31,7 @@ export class PrintcredentialComponent implements OnInit{
   mynombre: any;
   myapat: any;
   myamat: any;
+  // isLoadCreden=0;
 
 
   constructor(
@@ -53,6 +54,7 @@ export class PrintcredentialComponent implements OnInit{
         this.mynombre = res.resp.informacion.nombre;
         this.myapat = res.resp.informacion.apat;
         this.myamat = res.resp.informacion.amat;
+        // this.isLoadCreden=1;
       });
   }
 

@@ -85,6 +85,23 @@ agm-map{
   height: 120px;
   align-self: center;
   }
+  .img-in-circulo{
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .flex-center-xy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .flex-inter{
+   background-color: #e3ebf3;
+   width: 100px;
+   height: 100px;
+  }
 
 
 

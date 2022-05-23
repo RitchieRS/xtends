@@ -16,7 +16,7 @@ export class WalletComponent implements OnInit {
   saldoTotal=0.00;
 
   constructor(private route: ActivatedRoute,private srvWallet : WalletService) { }
-  
+
   ngOnInit() {
     const token = localStorage.getItem('token');
     this.srvWallet.getWalletInformation(token).subscribe((res) =>{
@@ -24,11 +24,11 @@ export class WalletComponent implements OnInit {
         console.log(res);
         this.dataWallet = res;
         this.saldoPendiente = (this.dataWallet.saldoPendiente == null ) ? 0:this.dataWallet.saldoPendiente;
-        this.saldoTotal = this.dataWallet.saldoTotal==null ? 0: this.saldoTotal ; 
+        // this.saldoTotal = this.dataWallet.saldoTotal==null ? 0: this.saldoTotal;
+        this.saldoTotal = this.dataWallet.saldoTotal;
         this.servicios = this.dataWallet.servicios;
-        
       }
-    })
+    });
   }
 
 }

@@ -7,8 +7,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./transfer-order.component.scss'],
 })
 export class TransferOrderComponent implements OnInit {
-  
-
 
   noOperacion:number;
   constructor( private route: ActivatedRoute) { }
