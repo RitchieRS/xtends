@@ -10,7 +10,7 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 })
 export class WalletComponent implements OnInit {
 
-  dataWallet : WalletResponse;
+  dataWallet: WalletResponse;
   servicios: Servicio[];
   saldoPendiente= 0.00;
   saldoTotal=0.00;

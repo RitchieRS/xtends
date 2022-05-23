@@ -55,7 +55,7 @@ export class WalletService {
   //   );
   // };
 
-  getWalletMovements(token : string):Observable<MovimientoResponse | void>{
+  getWalletMovements(token: string): Observable<MovimientoResponse | void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -68,7 +68,7 @@ export class WalletService {
     const request = {};
 
     return this.http.get<MovimientoResponse>(`${environment.API_URL}wallet/movements`,httpOptions).pipe(
-          map(( res : MovimientoResponse)=>{
+          map(( res: MovimientoResponse)=>{
             console.log(res);
             return res;
           }),
@@ -128,6 +128,26 @@ export class WalletService {
 
     return this.http.post<MoneyTransfer>(`${environment.API_URL}wallet/transfer`,request ,httpOptions).pipe(
           map(( res: MoneyTransfer)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+
+  getTransferExitosa(token: string): Observable<any>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+    return this.http.get<any>(`${environment.API_URL}wallet/transfer/detail`,httpOptions).pipe(
+          map(( res: any)=>{
             console.log(res);
             return res;
           }),
