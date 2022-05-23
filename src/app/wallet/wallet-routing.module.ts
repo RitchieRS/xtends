@@ -34,7 +34,7 @@ const routes: Routes =[
         component: TransferComponent
     },
     {
-       path: 'transfer-order',
+       path: 'transfer-order/:noOperacion',
          component: TransferOrderComponent
     },
    ]

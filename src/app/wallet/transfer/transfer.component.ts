@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { PageTerminosBancComponent } from 'src/app/components/modal-term-banc/page-terminos-banc/page-terminos-banc.component';
 import { PageTransferFondosComponent } from 'src/app/components/modal-term-banc/page-transfer-fondos/page-transfer-fondos.component';
@@ -38,6 +38,7 @@ export class TransferComponent implements OnInit {
     public fb: FormBuilder,
     private toastCtrl: ToastController,
     private modalController: ModalController,
+    private router: Router
   ) { }
 
   async ngOnInit() {
@@ -131,7 +132,7 @@ export class TransferComponent implements OnInit {
     }
 
 
-    console.log(this.formTransfer.value);
+    //console.log(this.formTransfer.value);
 
 
 
@@ -140,9 +141,15 @@ export class TransferComponent implements OnInit {
 
     ;(await this.srvWallet.postMoneyTransfer(token, this.formTransfer.value)).subscribe((res) =>{
       if(res){
-        console.log(res);
-        this.presentToast('Tu dinero ha sido solicitado.');
 
+        console.log(res);
+        
+        let operacion = res['resp'].noOperacion;
+      //  console.log(operacion)
+        this.presentToast('Tu número de operacion es:'+ res.noOperacion);
+       //console.log('transfer-order/'+operacion);
+        this.router.navigate(['transfer-order/'+operacion]);
+      
       }
     })
 

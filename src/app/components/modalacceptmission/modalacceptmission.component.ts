@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { ReqMission, ResMissionAccepted } from 'src/app/xmodels/missions';
 import { MissionService } from 'src/app/xservices/mission/mission.service';
 import { DialogcheckinComponent } from '../modalcheckin/dialogcheckin/dialogcheckin.component';
@@ -23,7 +24,10 @@ export class ModalacceptmissionComponent implements OnInit{
   isMission : ResMissionAccepted;
   accepted = false;
   TextState="Aceptar Misión";
-  constructor(public dialog: MatDialog,private route: ActivatedRoute,private srvMission : MissionService) { 
+  constructor(public dialog: MatDialog,private route: ActivatedRoute,
+              private srvMission : MissionService,
+              private toastCtrl: ToastController,
+              private router: Router) { 
     //this.idPV = Number(localStorage.getItem('idPV'));
     
   }
@@ -38,6 +42,20 @@ export class ModalacceptmissionComponent implements OnInit{
     
     
   }
+
+    // Little helper
+  async presentToast(text) {
+      const toast = await this.toastCtrl.create({
+        message: text,
+        duration: 3000,
+        color: 'navybluextend',
+        position: 'top',
+        mode : 'ios',
+  
+      });
+      toast.present();
+    }
+  
 
 
   async openMissionAccept(){
@@ -57,8 +75,13 @@ export class ModalacceptmissionComponent implements OnInit{
                 },
         })
         
-      }else{
-        
+      }
+      else if(this.isMission.idError==2){
+        this.presentToast("Esta Misión ya esta en Mis misiones");
+        this.router.navigate(['mymissions']);
+      }
+      else{
+        //MANDA A HABILIDADES$
         this.dialog.open(DialogcheckinComponent,{data: { 
           colorServicio: this.colorServicio
         }})

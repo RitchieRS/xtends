@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-transfer-order',
@@ -6,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./transfer-order.component.scss'],
 })
 export class TransferOrderComponent implements OnInit {
+  
 
-  constructor() { }
 
-  ngOnInit() {}
+  noOperacion:number;
+  constructor( private route: ActivatedRoute) { }
+
+
+
+
+  ngOnInit() {
+    this.noOperacion = Number(this.route.snapshot.paramMap.get('noOperacion'));
+  }
 
 }
