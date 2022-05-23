@@ -9,7 +9,7 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 })
 export class TransferOrderComponent implements OnInit {
   idAk: number;
-  noOperacion: number;
+  noOperacion: string;
   dataTransfer: any;
   fechaOrden: string;
   nOperation: string;
@@ -27,13 +27,13 @@ export class TransferOrderComponent implements OnInit {
 
 
   ngOnInit() {
-    this.noOperacion = Number(this.route.snapshot.paramMap.get('noOperacion'));
+    this.noOperacion = this.route.snapshot.paramMap.get('noOperacion');
     this.getTranExitoz();
   }
 
   getTranExitoz(){
     const token = localStorage.getItem('token');
-    this.srvWallet.getTransferExitosa(token).subscribe((res) =>{
+    this.srvWallet.getTransferExitosa(token,this.noOperacion).subscribe((res) =>{
       if(res){
         console.log(res);
         this.dataTransfer = res;
