@@ -53,7 +53,8 @@
                    </ion-label>
                  </ion-item>
                  <ion-fab  vertical="bottom" horizontal="end" >
-                  <button routerLink="/mission/{{mission.idPV}}" mat-icon-button>
+                   <!--{{mission.idPV}}-->
+                  <button [routerLink]="['/mission', mission.idPV , 'greenxtend',mission.nombreActividad,mission.estado,mission.ciudad ]"  mat-icon-button>
                     <mat-icon class="color-cloudysky">navigate_next</mat-icon>
                   </button>
                 </ion-fab>

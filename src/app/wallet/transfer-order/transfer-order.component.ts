@@ -38,7 +38,6 @@ export class TransferOrderComponent implements OnInit {
       (res) =>{
         console.log(res);
         this.dataTransfer = res['resp'];
-
         this.baroSolicitado = this.dataTransfer.saldo;
         console.log(this.baroSolicitado);
         this.fechaOrden = this.dataTransfer.fecha;
