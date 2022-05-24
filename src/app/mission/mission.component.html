@@ -24,7 +24,7 @@
         </ion-row>
       </ion-grid>
       <ion-grid class="ion-no-padding">
-        <ion-row class="bg-{{colorServicio}}">
+        <ion-row class="bg-{{colorSrv}}">
           <ion-col size="8" class="ion-padding">
            <div class="ion-text-start">
              <ion-label>
@@ -78,8 +78,7 @@
                     <ion-col size="6" size-lg="3" *ngFor="let habilidadok of habilidades">
                       <div class="iup-car">
                         <div class="box-certificado">
-                          <!-- <ion-icon color="{{colorServicio}}" style="font-size: 64px;" src="../../assets/icon/demostrador.svg"></ion-icon> -->
-                          <ion-icon color="{{colorServicio}}" style="font-size: 64px;" ></ion-icon>
+                          <ion-icon color="{{colorSrv}}" style="font-size: 64px;" src="../../assets/icon/{{iconSrv}}.svg"></ion-icon>
                         </div>
                         <ion-text color="navyblue" class="ion-text-center"><p>{{habilidadok.nombreHabilidad}}</p></ion-text>
                       </div>

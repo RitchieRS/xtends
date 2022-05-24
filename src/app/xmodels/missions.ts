@@ -17,6 +17,8 @@ export interface RespMission {
     nivel:           number;
     detalle:         Detalle;
     habilidades:     Habilidades[];
+    iconServicio: string;
+    colorServicio: string;
 }
 
 export interface Detalle {

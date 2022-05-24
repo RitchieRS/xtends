@@ -26,7 +26,9 @@ export class MissionComponent  {
   token: string;
   message = '';
   accepted = false;
-  habilidades:Habilidades[];
+  habilidades: Habilidades[];
+  iconSrv: string;
+  colorSrv: string;
   TextState= "Enviar";
   // promociones = [
   //   {
@@ -68,6 +70,9 @@ export class MissionComponent  {
         this.infMission = res;
         this.missionDetail  = this.infMission.resp;
         console.log(this.missionDetail);
+        this.iconSrv = this.missionDetail.iconServicio;
+        this.colorSrv = this.missionDetail.colorServicio;
+
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.imgCliente = this.missionDetail.imgCliente;
         this.nombreActividad = this.missionDetail.nombreActividad;
@@ -95,3 +100,4 @@ export class MissionComponent  {
   }
 
 }
+
