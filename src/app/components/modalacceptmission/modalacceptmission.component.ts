@@ -78,7 +78,7 @@ export class ModalacceptmissionComponent implements OnInit{
       }
       else if(this.isMission.idError==2){
         this.presentToast("Esta Misión ya esta en Mis misiones");
-        this.router.navigate(['mymissions']);
+        this.router.navigate(['start-mission/'+this.idPV]);
       }
       else{
         //MANDA A HABILIDADES$

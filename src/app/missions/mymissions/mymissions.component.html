@@ -148,7 +148,7 @@
               </ion-label>
             </ion-col>
             <ion-col size="1" class="ion-align-self-center ion-margin-end">
-              <button mat-icon-button routerLink="/mission/{{missionActiv.idPV}}">
+              <button mat-icon-button [routerLink]="['/mission', missionActiv.idPV , 'greenxtend',missionActiv.nombreActividad,missionActiv.estado,missionActiv.ciudad ]" >
                 <mat-icon class="color-cloudysky">navigate_next</mat-icon>
               </button>
             </ion-col>
