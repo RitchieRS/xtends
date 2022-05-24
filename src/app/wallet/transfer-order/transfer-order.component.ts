@@ -11,7 +11,7 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 export class TransferOrderComponent implements OnInit {
   idAk: number;
   noOperacion: string;
-  dataTransfer: MoneyTransfer;
+  dataTransferok: MoneyTransfer;
   fechaOrden: string;
   nOperation: string;
   cuentaBen: string;
@@ -37,15 +37,14 @@ export class TransferOrderComponent implements OnInit {
     this.srvWallet.getTransferExitosa(token,this.noOperacion).subscribe(
       (res) =>{
         console.log(res);
-        this.dataTransfer = res['resp'];
-
-        this.baroSolicitado = this.dataTransfer.saldo;
+        this.dataTransferok = res['resp'];
+        this.baroSolicitado = this.dataTransferok.saldo;
         console.log(this.baroSolicitado);
-        this.fechaOrden = this.dataTransfer.fecha;
-        this.nOperation = this.dataTransfer.noOperacion;
-        this.cuentaBen = this.dataTransfer.cuenta;
-        this.nombreBen = this.dataTransfer.beneficiario;
-        this.banco = this.dataTransfer.banco;
+        this.fechaOrden = this.dataTransferok.fecha;
+        this.nOperation = this.dataTransferok.noOperacion;
+        this.cuentaBen = this.dataTransferok.cuenta;
+        this.nombreBen = this.dataTransferok.beneficiario;
+        this.banco = this.dataTransferok.banco;
         // this.mail = this.dataTransfer.mail;
     });
   }

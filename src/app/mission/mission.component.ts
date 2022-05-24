@@ -28,21 +28,21 @@ export class MissionComponent  {
   accepted = false;
   habilidades:Habilidades[];
   TextState= "Enviar";
-  promociones = [
-    {
-      img:'refiere-a-amigo.png',
-      titulo:'Refiere a un amigo y gana dinero',
-      texto:'Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.',
-      btnlink:''
-    },
-    {
-      img:'minisu.png',
-      titulo:'Refiere a un amigo y gana dinero',
-      texto:'Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.',
-      btnlink:''
-    },
+  // promociones = [
+  //   {
+  //     img:'refiere-a-amigo.png',
+  //     titulo:'Refiere a un amigo y gana dinero',
+  //     texto:'Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.',
+  //     btnlink:''
+  //   },
+  //   {
+  //     img:'minisu.png',
+  //     titulo:'Refiere a un amigo y gana dinero',
+  //     texto:'Si conoces a alguien que este interesado en realizar actividades en Punto de Venta, refiérelo y gana $200 pesos.',
+  //     btnlink:''
+  //   },
 
-  ];
+  // ];
 
   idPV: number;
   colorServicio: string;
@@ -64,9 +64,10 @@ export class MissionComponent  {
     this.srvMission.getMissionXTiendaProyecto(dataMission,token)
     .subscribe((res) =>{
       if(res){
-        
+
         this.infMission = res;
         this.missionDetail  = this.infMission.resp;
+        console.log(this.missionDetail);
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.imgCliente = this.missionDetail.imgCliente;
         this.nombreActividad = this.missionDetail.nombreActividad;

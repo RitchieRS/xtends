@@ -8,10 +8,18 @@ import { ActivationStart, Router, RouterOutlet } from '@angular/router';
   styleUrls: ['./dialogacceptmission.component.scss'],
 })
 export class DialogacceptmissionComponent implements OnInit {
-  
+
   colorServicio:string;
-  constructor(@Inject(MAT_DIALOG_DATA) public data: {message:string,idPV:string,colorServicio : string },private router: Router,private matDialog: MatDialog) {
-    
+  constructor(
+    @Inject(MAT_DIALOG_DATA)
+    public data: {
+      message:string,
+      idPV:string,
+      colorServicio : string
+    },
+    private router: Router,
+    private matDialog: MatDialog) {
+
     this.colorServicio =  data.colorServicio;
    }
    @ViewChild(RouterOutlet) outlet: RouterOutlet;
@@ -21,7 +29,7 @@ export class DialogacceptmissionComponent implements OnInit {
     this.router.events.subscribe(e => {
       if (e instanceof ActivationStart && e.snapshot.outlet === "administration")
         this.outlet.deactivate();
-    }); 
+    });
    }
 
 
@@ -34,10 +42,10 @@ export class DialogacceptmissionComponent implements OnInit {
       this.router.navigate(['pending-mission/'+this.data.idPV])
     }
 
- 
-  
 
-  
+
+
+
 
 
 }

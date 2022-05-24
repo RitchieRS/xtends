@@ -88,16 +88,16 @@ export class HomePage implements OnInit {
     });
 
    await this.storage.getObject('filter-map').then((filterMap: any) => {
-    
+
       this.filterTypeMap =  filterMap;
       /*for (let i = 0; i < filterMap.length; i++) {
         console.log(filterMap[i]);
         this.filterTypeMap.push(filterMap[i]);
       }*/
- 
+
     });
     console.log(this.filterTypeMap);
-    
+
 
     this.location = {
       "lat" : Number(this.lat),
@@ -143,7 +143,6 @@ export class HomePage implements OnInit {
       case 'skybluextend': {
         type.color='#229bd6';
         type.logo="promotoria.svg"
-
         break;
       }
       /*case  "Mistery": {
@@ -170,7 +169,7 @@ export class HomePage implements OnInit {
         type.color='#020c3a';
         type.logo="anaqueleo.svg"
       }
-      
+
       break;
       }
       return type;
@@ -264,7 +263,7 @@ export class HomePage implements OnInit {
              /* Misiones Disponibles*/
             if(this.dataHome.section4.content.length>=1){
               this.missionAvalmap = this.dataHome.section4;
-             
+
               this.missionsAvalDatamap = this.dataHome.section4.content;
               if(this.filterTypeMap.length>0){
                 console.log("filter Map")
@@ -272,7 +271,7 @@ export class HomePage implements OnInit {
                 this.missionsAvalDataAuxmap = list;
                 this.missionsAvalDatamap = this.missionsAvalDataAuxmap;
                }
-               
+
               this.missionAvalmap.content.forEach(element => {
                 element.color = this.pincho(element.colorServicio)
               });
@@ -308,8 +307,8 @@ import { Pipe, PipeTransform } from '@angular/core';
     pure: false
 })
 export class Actividad implements PipeTransform {
-    
-  
+
+
   transform(items: any[], filter: any): any {
         if (!items || !filter) {
             return items;
