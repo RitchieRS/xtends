@@ -103,6 +103,9 @@ export class TestComponent implements OnInit {
            console.log(this.dataExamen.puntajeMin);
            this.isLoadedComplite=1;
            this.quizPassed = true;
+        }else if(this.dataExamen.preguntas.length === 0){
+            console.log('no hay examen compa');
+            this.isLoadedComplite=2;
         }else{
           console.log('aqui cargamos el examen');
           this.preguntasExamen = this.dataExamen.preguntas;

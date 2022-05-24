@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { WalletResponse, EarnedMoney, Transfer, MoneyTransfer } from 'src/app/xmodels/wallet';
+import { WalletResponse, EarnedMoney, Transfer, MoneyTransfer, OrdenTransfer } from 'src/app/xmodels/wallet';
 import { MovimientoResponse } from 'src/app/xmodels/movements';
 
 @Injectable({
@@ -136,7 +136,7 @@ export class WalletService {
   };
 
 
-  getTransferExitosa(token: string, noOperacion: string): Observable<MoneyTransfer>{
+  getTransferExitosa(token: string, noOperacion: string): Observable<OrdenTransfer>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -146,8 +146,8 @@ export class WalletService {
       responseType: 'json' as 'json'
     };
 
-    return this.http.get<MoneyTransfer>(`${environment.API_URL}wallet/transfer/details/${noOperacion}`,httpOptions).pipe(
-          map(( res: MoneyTransfer)=>{
+    return this.http.get<OrdenTransfer>(`${environment.API_URL}wallet/transfer/details/${noOperacion}`,httpOptions).pipe(
+          map(( res: OrdenTransfer)=>{
             console.log(res);
             return res;
           }),

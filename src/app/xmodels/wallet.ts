@@ -42,6 +42,11 @@ export interface Transfer {
   bancoClabe: string;
 }
 
+export interface OrdenTransfer{
+  idError: number;
+  resp: MoneyTransfer;
+}
+
 
 export interface MoneyTransfer {
   idUsuario: number;

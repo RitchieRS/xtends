@@ -35,6 +35,13 @@
         </ion-card-content>
        </ion-card>
 
+       <ion-card *ngIf="isLoadedComplite==2">
+        <ion-card-content>
+         <p>NO hay examen compa</p>
+
+        </ion-card-content>
+       </ion-card>
+
        <ion-card *ngIf="quizPassed">
         <ion-card-content>
           <ion-grid>
