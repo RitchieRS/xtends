@@ -25,6 +25,11 @@ export interface Section1Content {
     actividad:       string;
     fechaAlta:       Date;
     pago:            string;
+    colorServicio: string;
+    iconServicio: string;
+    ciudad: string;
+    estado: string;
+    idPV: number;
 }
 
 export interface Section2 {
@@ -53,6 +58,7 @@ export interface Section3Content {
     nivel:           number;
     detalle:         Detalle;
     colorServicio:   string;
+    iconServicio: string;
 }
 
 export interface Detalle {

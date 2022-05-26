@@ -9,6 +9,7 @@ import { SlidePageRoutingModule } from './slide/slide-routing.module';
 import { MissionsRoutingModule } from './missions/missions-routing.module';
 import { XtendLevelsRoutingModule } from './xtend-levels/xtend-levels-routing.module';
 import { TrainingsRoutingModule } from './trainings/trainings-routing-module';
+import { HelpPageRoutingModule } from './help/help-routing.module';
 
 
 
@@ -65,6 +66,10 @@ const routes: Routes = [
     loadChildren: () => import('./trainings/trainings.module').then( m => m.TrainingsModule)
   },
   {
+    path: 'help',
+    loadChildren: () => import('./help/help.module').then( m => m.HelpPageModule)
+  },
+  {
     path: '**', redirectTo: 'auth', pathMatch: 'full',
   },
 
@@ -83,7 +88,8 @@ const routes: Routes = [
     SlidePageRoutingModule,
     MissionsRoutingModule,
     XtendLevelsRoutingModule,
-    TrainingsRoutingModule
+    TrainingsRoutingModule,
+    HelpPageRoutingModule
   ]
 })
 export class AppRoutingModule { }

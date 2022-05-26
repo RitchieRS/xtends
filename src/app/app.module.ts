@@ -22,6 +22,9 @@ import { SlidePageModule } from './slide/slide.module';
 import { XtendLevelsModule } from './xtend-levels/xtend-levels.module';
 import { ComponentsSondeoModule } from './components-sondeo/components-sondeo.module';
 import { ComponentsInformativoModule } from './components-inf/components-info.module';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
+import { TrainingsModule } from './trainings/trainings.module';
+import { HelpPageModule } from './help/help.module';
 
 // Google Materials Angular
 import { MatCardModule } from '@angular/material/card';
@@ -50,8 +53,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 
 
 
-import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
-import { TrainingsModule } from './trainings/trainings.module';
+
 
 
 
@@ -98,6 +100,7 @@ import { TrainingsModule } from './trainings/trainings.module';
     SignaturePadModule,
     ClipboardModule,
     TrainingsModule,
+    HelpPageModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),

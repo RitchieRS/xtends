@@ -1,0 +1,54 @@
+<ion-header #header>
+  <app-header-two titulo="Ayuda"></app-header-two>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-text color="navyblue" class="ion-text-left">
+                <h2>¿Necesitas ayuda?</h2>
+              </ion-text>
+              <ion-text color="cloudysky" class="ion-text-left">
+                <h3>
+                  Consulta nuestras preguntas frecuentes o ponte en contacto con nosotros.
+                </h3>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+          <!-- Item as a Button -->
+          <ion-item button lines="none">
+
+            <ion-icon slot="start" color="navyblue" name="help-outline"></ion-icon>
+            <ion-label color="navyblue">
+              Preguntas frecuentes
+            </ion-label>
+          </ion-item>
+          <!-- Item as a Button -->
+          <ion-item button lines="none">
+            <ion-icon slot="start" color="navyblue" name="logo-whatsapp"></ion-icon>
+            <ion-label color="navyblue">
+              WhatsApp
+            </ion-label>
+          </ion-item>
+          <ion-item button lines="none">
+            <ion-icon slot="start" color="navyblue" name="mail-outline"></ion-icon>
+            <ion-label color="navyblue">
+              Email
+            </ion-label>
+          </ion-item>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+</ion-content>
+

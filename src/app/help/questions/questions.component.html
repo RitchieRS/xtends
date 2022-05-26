@@ -1,0 +1,66 @@
+<ion-header #header>
+  <app-header-two titulo="Ayuda"></app-header-two>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-text color="navyblue" class="ion-text-left">
+                <h2>Preguntas frecuentes</h2>
+              </ion-text>
+              <ion-text color="cloudysky" class="ion-text-left">
+                <h3>
+                  Para poder resolver tus dudas; consulta nuestra base de datos:
+                </h3>
+              </ion-text>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="12">
+              <mat-accordion>
+                <mat-expansion-panel>
+                  <mat-expansion-panel-header>
+                    <mat-panel-title>
+                      ¿Cómo puedo recuperar mi clave?
+                    </mat-panel-title>
+
+                  </mat-expansion-panel-header>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col>
+                        <ion-text>
+                          <h3>
+                            Una vez que te registraste, la aplicación
+enviará un correo con tu password y usuario;si perdiste este correo, o aún así, no puedes
+hacer login con tu password, puedes
+restablecer la contraseña.<br><br>
+1. Abre el APP Xtend.<br>
+2. Da clic en la frase ¿olvidaste tu
+contraseña?.3. Recibirás las instrucciones en tu correo.
+                          </h3>
+                        </ion-text>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </mat-expansion-panel>
+
+              </mat-accordion>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
