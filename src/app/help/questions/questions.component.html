@@ -96,7 +96,7 @@ contraseña?.3. Recibirás las instrucciones en tu correo.
           <ion-row>
             <ion-col size="12">
               <mat-accordion>
-                <mat-expansion-panel *ngFor="let infoPreguntas of cheData">
+                <mat-expansion-panel *ngFor="let infoPreguntas of dataQuestion">
                   <mat-expansion-panel-header>
                     <mat-panel-title>
                       <ion-text color="navyblue" class="ion-text-left">
@@ -109,10 +109,10 @@ contraseña?.3. Recibirás las instrucciones en tu correo.
                     <ion-row>
                       <ion-col>
                         <ion-text color="cloudysky" class="ion-text-left">
-                          <h3>
+
                             <div [innerHTML]="infoPreguntas.respuesta"></div>
                             <!-- {{infoPreguntas.respuesta}} -->
-                          </h3>
+
                         </ion-text>
                       </ion-col>
                     </ion-row>
