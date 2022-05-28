@@ -49,15 +49,6 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
 
-
-
-
-
-
-
-
-
-
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
