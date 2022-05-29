@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Help, RespHelp } from 'src/app/xmodels/help';
+import { RespHelp } from 'src/app/xmodels/help';
 import { HelpService } from 'src/app/xservices/help/help.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-questions',
@@ -12,7 +13,8 @@ export class QuestionsComponent implements OnInit {
   dataQuestion: RespHelp[];
 
   constructor(
-    private srvHelp: HelpService
+    private srvHelp: HelpService,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -24,5 +26,9 @@ export class QuestionsComponent implements OnInit {
       }
     });
   }
+
+  back(): void{
+    this.location.back();
+  };
 
 }
