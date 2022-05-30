@@ -16,7 +16,8 @@ const routes: Routes = [
 
       },*/
       {
-        path: 'trainings-list/:colorServicio',
+
+      path: 'trainings-list/:colorServicio/:idCliente/:idProyecto',
         component: TrainingsListComponent
 
       },

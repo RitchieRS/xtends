@@ -18,6 +18,8 @@ export class ModalacceptmissionComponent implements OnInit{
   
   @Input() idPV : number ;
   @Input() colorServicio:string;
+  @Input() idProyecto:string;
+  @Input() idCliente : string;
   dataMission : ReqMission;
   token:string;
   message = '';
@@ -83,7 +85,9 @@ export class ModalacceptmissionComponent implements OnInit{
       else{
         //MANDA A HABILIDADES$
         this.dialog.open(DialogcheckinComponent,{data: { 
-          colorServicio: this.colorServicio
+          colorServicio: this.colorServicio,
+          idProyecto: this.idProyecto,
+          idCliente: this.idCliente
         }})
 
       }

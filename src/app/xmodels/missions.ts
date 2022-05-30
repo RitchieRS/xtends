@@ -9,7 +9,7 @@ export interface Mission{
 
 export interface RespMission {
     idTienda:        number;
-    idProyecto:      number;
+    idProyecto:      string;
     nombreCliente:   string;
     imgCliente:   string;
     nombreActividad: string;

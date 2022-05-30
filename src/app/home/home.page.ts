@@ -260,16 +260,23 @@ export class HomePage implements OnInit {
 
 
              }
+             
              /* Misiones Disponibles*/
             if(this.dataHome.section4.content.length>=1){
+              
               this.missionAvalmap = this.dataHome.section4;
+              
 
               this.missionsAvalDatamap = this.dataHome.section4.content;
               if(this.filterTypeMap.length>0){
-                console.log("filter Map")
+                console.log("filter Map");
+                console.log(this.filterTypeMap)
                 const list = this.missionsAvalDatamap.filter(mission => this.filterTypeMap.includes(mission.colorServicio))
                 this.missionsAvalDataAuxmap = list;
                 this.missionsAvalDatamap = this.missionsAvalDataAuxmap;
+
+                console.log("Section 4");
+                console.log(this.missionsAvalDatamap );
                }
 
               this.missionAvalmap.content.forEach(element => {
@@ -277,7 +284,7 @@ export class HomePage implements OnInit {
               });
 
               console.log(this.missionsAvalDatamap);
-             }
+            }
             //console.log(this.dataHome.section1);
 
            // console.log(this.dataHome);

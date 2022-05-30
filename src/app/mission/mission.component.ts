@@ -27,6 +27,7 @@ export class MissionComponent  {
   message = '';
   accepted = false;
   habilidades: Habilidades[];
+  idProyecto : string; 
   iconSrv: string;
   colorSrv: string;
   TextState= "Enviar";
@@ -72,7 +73,7 @@ export class MissionComponent  {
         console.log(this.missionDetail);
         this.iconSrv = this.missionDetail.iconServicio;
         this.colorSrv = this.missionDetail.colorServicio;
-
+        this.idProyecto =  this.missionDetail.idProyecto;
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.imgCliente = this.missionDetail.imgCliente;
         this.nombreActividad = this.missionDetail.nombreActividad;
