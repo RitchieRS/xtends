@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ModalController, ToastController } from '@ionic/angular';
 import { PageTerminosBancComponent } from 'src/app/components/modal-term-banc/page-terminos-banc/page-terminos-banc.component';
 import { PageTransferFondosComponent } from 'src/app/components/modal-term-banc/page-transfer-fondos/page-transfer-fondos.component';
-import { EarnedMoney, Transfer } from 'src/app/xmodels/wallet';
+import { EarnedMoney, RespTransfer } from 'src/app/xmodels/wallet';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 
 @Component({
@@ -14,12 +14,12 @@ import { WalletService } from 'src/app/xservices/wallet/wallet.service';
   styleUrls: ['./transfer.component.scss'],
 })
 export class TransferComponent implements OnInit {
-  dataForTransfer: Transfer;
+  dataForTransfer: any;
   nombre: string;
   banco: string;
   bancoClabe: string;
   email: string;
-  dataEarnedMoney: EarnedMoney;
+  dataEarnedMoney: any;
   saldoTotal: number;
   formTransfer: FormGroup ;
   terminos1: boolean;
@@ -83,7 +83,7 @@ export class TransferComponent implements OnInit {
 
     this.srvWallet.getTransfer(token).subscribe(
       (res) => {
-        this.dataForTransfer = res;
+        this.dataForTransfer = res.resp;
         this.nombre = this.dataForTransfer.nombre;
         this.banco = this.dataForTransfer.banco;
         this.bancoClabe = this.dataForTransfer.bancoClabe;
@@ -96,7 +96,7 @@ export class TransferComponent implements OnInit {
     const token = localStorage.getItem('token');
     this.srvWallet.getEarnedMoney(token).subscribe(
       (res) => {
-        this.dataEarnedMoney = res;
+        this.dataEarnedMoney = res.resp;
         this.saldoTotal = this.dataEarnedMoney.saldoTotal;
       }
     );
@@ -144,13 +144,13 @@ export class TransferComponent implements OnInit {
       if(res){
 
         console.log(res);
-        
+
         let operacion = res['resp'].noOperacion;
       //  console.log(operacion)
         this.presentToast('Tu número de operacion es:'+ res.noOperacion);
        //console.log('transfer-order/'+operacion);
         this.router.navigate(['transfer-order/'+operacion]);
-      
+
       }
     })
 

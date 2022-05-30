@@ -1,3 +1,7 @@
+export interface Movimiento{
+  idError: number;
+  resp: MovimientoResponse[];
+}
 export interface MovimientoResponse {
     sucursal: any;
     nombreServicio: any;

@@ -1,4 +1,9 @@
-import { expressionType } from '@angular/compiler/src/output/output_ast';
+// import { expressionType } from '@angular/compiler/src/output/output_ast';
+
+export interface Wallet{
+  idError: number;
+  resp: WalletResponse[];
+}
 
 export interface WalletResponse {
     saldoTotal:     number;
@@ -21,7 +26,13 @@ export interface Servicio {
     img:    null;
 }
 
-export interface EarnedMoney {
+
+export interface EarnedMoney{
+  idError: number;
+  resp: RespEarnedMoney[];
+}
+
+export interface RespEarnedMoney {
   saldoTotal: number;
   detalle: Detalle[];
 }
@@ -36,6 +47,11 @@ export interface Detalle {
 }
 
 export interface Transfer {
+  idError: number;
+  resp: RespTransfer[];
+}
+
+export interface RespTransfer {
   nombre: string;
   email: string;
   banco: string;

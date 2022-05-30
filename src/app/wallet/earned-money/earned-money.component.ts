@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
-import { EarnedMoney, Detalle} from 'src/app/xmodels/wallet';
+import { RespEarnedMoney, Detalle} from 'src/app/xmodels/wallet';
 
 
 
@@ -13,8 +13,8 @@ import { EarnedMoney, Detalle} from 'src/app/xmodels/wallet';
 })
 export class EarnedMoneyComponent implements OnInit {
 
-  dataEarnedMoney: EarnedMoney;
-  saldoTotal: number;
+  dataEarnedMoney: any;
+  saldoTotal: any;
   detalleAka: Detalle[];
 
   constructor(
@@ -28,7 +28,7 @@ export class EarnedMoneyComponent implements OnInit {
     this.srvWallet.getEarnedMoney(token).subscribe(
       (res) => {
         console.log(res);
-        this.dataEarnedMoney = res;
+        this.dataEarnedMoney = res.resp;
         this.saldoTotal = this.dataEarnedMoney.saldoTotal;
         console.log(this.saldoTotal);
 

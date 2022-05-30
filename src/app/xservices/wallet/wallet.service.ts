@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { WalletResponse, EarnedMoney, Transfer, MoneyTransfer, OrdenTransfer } from 'src/app/xmodels/wallet';
-import { MovimientoResponse } from 'src/app/xmodels/movements';
+import { Wallet, EarnedMoney, Transfer, MoneyTransfer, OrdenTransfer } from 'src/app/xmodels/wallet';
+import { Movimiento } from 'src/app/xmodels/movements';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class WalletService {
 
   constructor(private http: HttpClient) { }
 
-  getWalletInformation(token : string):Observable<WalletResponse | void>{
+  getWalletInformation(token : string):Observable<Wallet | void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -25,8 +25,8 @@ export class WalletService {
 
     const request = {};
 
-    return this.http.get<WalletResponse>(`${environment.API_URL}wallet`,httpOptions).pipe(
-          map(( res : WalletResponse)=>{
+    return this.http.get<Wallet>(`${environment.API_URL}wallet`,httpOptions).pipe(
+          map(( res : Wallet)=>{
             console.log(res);
             return res;
           }),
@@ -55,7 +55,7 @@ export class WalletService {
   //   );
   // };
 
-  getWalletMovements(token: string): Observable<MovimientoResponse | void>{
+  getWalletMovements(token: string): Observable<Movimiento | void>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -67,8 +67,8 @@ export class WalletService {
 
     const request = {};
 
-    return this.http.get<MovimientoResponse>(`${environment.API_URL}wallet/movements`,httpOptions).pipe(
-          map(( res: MovimientoResponse)=>{
+    return this.http.get<Movimiento>(`${environment.API_URL}wallet/movements`,httpOptions).pipe(
+          map(( res: Movimiento)=>{
             console.log(res);
             return res;
           }),
