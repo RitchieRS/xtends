@@ -86,6 +86,12 @@ export class MissionComponent  {
         this.estado = this.missionDetail.detalle.estado;
         this.habilidades = this.missionDetail.habilidades;
         console.log(this.habilidades);
+
+
+
+
+
+        
         /* Misiones Activas*/
         if(this.infMission.resp.idTienda != undefined){
 
