@@ -28,6 +28,7 @@ export class MissionComponent  {
   accepted = false;
   habilidades: Habilidades[];
   idProyecto : string; 
+  idCliente = 0;
   iconSrv: string;
   colorSrv: string;
   TextState= "Enviar";

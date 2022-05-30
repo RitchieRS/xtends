@@ -118,6 +118,7 @@ export class HomePage implements OnInit {
 
   actionPin(mission : any){
     console.log("Hola soy un pincho");
+    console.log(mission);
     this.dialog.open(DialogmissionComponent,{
                                             data:{
                                               canal: mission.canal,
@@ -126,7 +127,8 @@ export class HomePage implements OnInit {
                                               estado: mission.estado,
                                               idPV: mission.idPV,
                                               sucursal: mission.sucursal,
-                                              tiempo: mission.tiempo
+                                              tiempo: mission.tiempo,
+                                              nombreActividad: mission.nombreActividad
                                             }
                                           });
 
@@ -135,6 +137,8 @@ export class HomePage implements OnInit {
 
 
   tipoServicio(tipo:string):any{
+
+    console.log(tipo);
     let type={
       color:"",
       logo:""
@@ -160,7 +164,7 @@ export class HomePage implements OnInit {
         type.logo="demostrador.svg"
         break;
       }
-      case 'purplextend': {
+      case 'greenxtend': {
         type.color='#90c04e';
         type.logo="anaqueleo.svg"
         break;
@@ -176,6 +180,7 @@ export class HomePage implements OnInit {
     }
 
     pincho(tipo:string):any{
+      console.log(tipo);
       let type = {
             url: './assets/icon/location-redxtend.svg',
             scaledSize: {

@@ -19,6 +19,7 @@ export class DialogmissionComponent implements OnInit {
                                                       tiempo: string,
                                                       nivel: string,
                                                       precio: string,
+                                                      nombreActividad:string
 
                                                     },
                                                     private router: Router,
@@ -35,7 +36,9 @@ export class DialogmissionComponent implements OnInit {
 
   missionPending(): void{
     this.matDialog.closeAll();
-    this.router.navigate(['pending-mission/'+this.data.idPV])
+   ///greenxtend/Promotoria/CDMX/Venustiano%20Carranza
+   this.router.navigate(['mission/'+this.data.idPV+'/'+this.data.nombreActividad+'/'+this.data.colorServicio+'/'+this.data.estado+'/'+this.data.ciudad])
+   /// this.router.navigate(['pending-mission/'+this.data.idPV])
   }
 
   tipoServicio(tipo:string):any{
