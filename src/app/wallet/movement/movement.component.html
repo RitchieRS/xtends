@@ -126,10 +126,15 @@
                          <ion-grid class="ion-no-margin ion-no-padding">
                            <ion-row>
                              <ion-col size="12" class="ion-align-self-end  ion-padding-bottom">
-                               <ion-text color="cloudysky ">
-                                 <h6 class="ion-no-margin" style="font-weight: 600;">{{movFil.nombreCliente}}</h6>
-                                 <p class="ion-no-margin">{{movFil.nombreServicio}}.</p>
-                               </ion-text>
+                              <ion-text color="cloudysky" *ngIf="movFil.saldo > 0">
+                                <h6 class="ion-no-margin" style="font-weight: 600;" >{{movFil.nombreCliente}}</h6>
+                                <h6 class="ion-no-margin" style="font-weight: 600;" >Retiro a cuenta</h6>
+                                <p class="ion-no-margin">{{movFil.nombreServicio}}</p>
+                              </ion-text>
+                              <ion-text color="cloudysky" *ngIf="movFil.saldo < 0">
+                               <h6 class="ion-no-margin" style="font-weight: 600;" *ngIf="movFil.saldo < 0">Retiro a cuenta</h6>
+                               <!-- <p class="ion-no-margin">{{detallemovimiento.banco}} | {{detallemovimiento.cuenta}}</p> -->
+                             </ion-text>
                              </ion-col>
                              <ion-col size="12" class="ion-align-self-end ion-no-padding">
                               <ion-text color="cloudysky">
@@ -158,7 +163,7 @@
                   </mat-panel-title>
 
                 </mat-expansion-panel-header>
-                <ion-gris>
+                <ion-grid class="ion-margin-horizontal" *ngIf="movFil.saldo > 0">
                   <ion-row>
                     <ion-col class="ion-padding-horizontal">
                       <p class="ion-no-margin">
@@ -172,7 +177,23 @@
                       </p>
                     </ion-col>
                   </ion-row>
-                </ion-gris>
+                </ion-grid>
+
+                <ion-grid class="ion-margin-horizontal" *ngIf="movFil.saldo < 0">
+                  <ion-row>
+                    <ion-col class="ion-padding-horizontal">
+                      <p class="ion-no-margin">
+                        {{movFil.detalle}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Banco: {{movFil.banco}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Cuenta: {{movFil.cuenta}}
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
               </mat-expansion-panel>
             </mat-accordion>
           </ion-col>
@@ -202,10 +223,15 @@
                          <ion-grid class="ion-no-margin ion-no-padding">
                            <ion-row>
                              <ion-col size="12" class="ion-align-self-end  ion-padding-bottom">
-                               <ion-text color="cloudysky ">
-                                 <h6 class="ion-no-margin" style="font-weight: 600;">{{detallemovimiento.nombreCliente}}.</h6>
+                               <ion-text color="cloudysky" *ngIf="detallemovimiento.saldo > 0">
+                                 <h6 class="ion-no-margin" style="font-weight: 600;" >{{detallemovimiento.nombreCliente}}</h6>
+                                 <h6 class="ion-no-margin" style="font-weight: 600;" >Retiro a cuenta</h6>
                                  <p class="ion-no-margin">{{detallemovimiento.nombreServicio}}</p>
                                </ion-text>
+                               <ion-text color="cloudysky" *ngIf="detallemovimiento.saldo < 0">
+                                <h6 class="ion-no-margin" style="font-weight: 600;" *ngIf="detallemovimiento.saldo < 0">Retiro a cuenta</h6>
+                                <!-- <p class="ion-no-margin">{{detallemovimiento.banco}} | {{detallemovimiento.cuenta}}</p> -->
+                              </ion-text>
                              </ion-col>
                              <ion-col size="12" class="ion-align-self-end ion-no-padding">
                               <ion-text color="cloudysky">
@@ -234,7 +260,7 @@
                   </mat-panel-title>
 
                 </mat-expansion-panel-header>
-                <ion-gris>
+                <ion-grid class="ion-margin-horizontal" *ngIf="detallemovimiento.saldo > 0">
                   <ion-row>
                     <ion-col class="ion-padding-horizontal">
                       <p class="ion-no-margin">
@@ -248,7 +274,23 @@
                       </p>
                     </ion-col>
                   </ion-row>
-                </ion-gris>
+                </ion-grid>
+
+                <ion-grid class="ion-margin-horizontal" *ngIf="detallemovimiento.saldo < 0">
+                  <ion-row>
+                    <ion-col class="ion-padding-horizontal">
+                      <p class="ion-no-margin">
+                        {{detallemovimiento.detalle}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Banco: {{detallemovimiento.banco}}
+                      </p>
+                      <p class="ion-no-margin">
+                        Cuenta: {{detallemovimiento.cuenta}}
+                      </p>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
               </mat-expansion-panel>
             </mat-accordion>
           </ion-col>

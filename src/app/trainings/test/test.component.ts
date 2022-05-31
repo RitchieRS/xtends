@@ -23,6 +23,7 @@ export class TestComponent implements OnInit {
   colorr: string;
   iconn: string;
   dataExamen: any = {};
+  respDataExamen: any;
   preguntasExamen: any;
   opcionesRespuestas: any;
   opciones: any;
@@ -96,16 +97,19 @@ export class TestComponent implements OnInit {
     const idCurso = this.idCurso;
     this.srvTest.getTest(token, idCurso).subscribe(
       (res) => {
+        this.respDataExamen = res.resp;
+        console.log(this.respDataExamen.length);
         this.dataExamen = res.resp[0];
         console.log(this.dataExamen);
-        if(this.dataExamen.puntajeActual >= this.dataExamen.puntajeMin){
-           console.log(this.dataExamen.puntajeActual);
-           console.log(this.dataExamen.puntajeMin);
-           this.isLoadedComplite=1;
-           this.quizPassed = true;
-        }else if(this.dataExamen.preguntas.length === 0){
-            console.log('no hay examen compa');
+        if(this.respDataExamen.length <= 0){
+          console.log('no hay examen compa');
             this.isLoadedComplite=2;
+
+        }else if(this.dataExamen.puntajeActual >= this.dataExamen.puntajeMin){
+          console.log(this.dataExamen.puntajeActual);
+          console.log(this.dataExamen.puntajeMin);
+          this.isLoadedComplite=1;
+          this.quizPassed = true;
         }else{
           console.log('aqui cargamos el examen');
           this.preguntasExamen = this.dataExamen.preguntas;

@@ -25,6 +25,7 @@ export class MovementComponent implements OnInit {
   movimientosFiltradas: any;
 
   nombreCliente: any;
+  banco: string;
   nombreServicio: any;
   cadena: Movimiento[];
 
@@ -49,7 +50,12 @@ export class MovementComponent implements OnInit {
         this.saldoPendiente = (this.dataWallet.saldoPendiente==null) ? 0  : this.dataWallet.saldoPendiente;
         this.saldoTotal = (this.dataWallet.saldoTotal==null )? 0 :this.dataWallet.saldoTotal;
         this.totalGanado = this.dataWallet.totalGanado;
-        this.movimientos = this.dataWallet.movimientos;
+        this.movimientos = this.dataWallet.movimientos.sort( (a, b) => {
+          if(a.fechaUnix < b.fechaUnix){
+            return 1;
+          }
+            return -1;
+        });
         this.movimientos.forEach((move: Movimiento) => {
           move.color = this.color(move.idEstatus);
       });
@@ -67,9 +73,9 @@ export class MovementComponent implements OnInit {
     }
     const movimientosArray = this.movimientos;
 
-    const fechaInicialDPicker = this.movimientosdtc.value.startDate.getTime()-42366000;
-    const fechaFinalDPicker = this.movimientosdtc.value.endDate.getTime()+42366000;
-    console.log(fechaInicialDPicker-42366000, fechaFinalDPicker+42366000) ;
+    const fechaInicialDPicker = this.movimientosdtc.value.startDate.getTime()-162366000;
+    const fechaFinalDPicker = this.movimientosdtc.value.endDate.getTime()+162366000;
+    console.log(fechaInicialDPicker-162366000, fechaFinalDPicker+162366000) ;
 
     const missionsEnRangod = putiMovimientos =>
     putiMovimientos.fechaUnix >= fechaInicialDPicker
@@ -85,26 +91,26 @@ export class MovementComponent implements OnInit {
     console.log(this.movimientosFiltradas);
   }
 
-  color(idColor:number):string{
-  let colorEx ="#7fb73f";
+  color(idColor: number): string{
+  let colorEx ='#7fb73f';
   console.log(idColor);
   switch(idColor) {
     case 1: {
-      colorEx ="#7fb73f";
+      colorEx ='#7fb73f';
       break;
     }
     case 2: {
-      colorEx ="#825aa5";
+      colorEx ='#825aa5';
       break;
     }
     case 3: {
-      colorEx ="#229bd6";
+      colorEx ='#229bd6';
       break;
     }
     default: {
 
     }
-      colorEx ="#7fb73f";
+      colorEx ='#7fb73f';
       break;
     }
     return colorEx;
