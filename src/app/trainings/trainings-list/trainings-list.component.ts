@@ -31,7 +31,7 @@ export class TrainingsListComponent implements OnInit {
               private srvHabilidad :  HabilidadesService 
   ) {}
 
-  async ngOnInit() {
+  ngOnInit() {
     const token = localStorage.getItem('token');
     this.colorServicio = this.route.snapshot.paramMap.get('colorServicio');
     this.idCliente = this.route.snapshot.paramMap.get('idCliente');
@@ -62,6 +62,9 @@ export class TrainingsListComponent implements OnInit {
             //this.missionsAvalDataAux = list.slice(0,5)
             console.log(this.habilidades);
             console.log(this.isLoaded);
+
+
+            
           }
         });
 
