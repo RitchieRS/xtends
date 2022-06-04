@@ -62,7 +62,8 @@ export class TestComponent implements OnInit {
     private srvTest: TestService,
     private location: Location,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    
   ) { }
 
 
@@ -241,9 +242,10 @@ export class TestComponent implements OnInit {
   }
 
   goHabilidades(){
-    this.colorServicio = this.colorr;
-    console.log(this.colorServicio);
-    this.router.navigate(['trainings-list/'+this.colorServicio]);
+  //this.colorServicio = this.colorr;
+   //console.log(this.colorServicio);
+   this.location.back();
+   // this.router.navigate(['trainings-list/'+this.colorServicio]);
   }
 
   dosInOneClick(){
