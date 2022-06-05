@@ -63,7 +63,7 @@ export class TestComponent implements OnInit {
     private location: Location,
     private formBuilder: FormBuilder,
     private router: Router,
-    
+
   ) { }
 
 
@@ -244,7 +244,7 @@ export class TestComponent implements OnInit {
   goHabilidades(){
   //this.colorServicio = this.colorr;
    //console.log(this.colorServicio);
-   this.location.back();
+   this.location.historyGo(-2);
    // this.router.navigate(['trainings-list/'+this.colorServicio]);
   }
 
