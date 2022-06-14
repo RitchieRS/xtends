@@ -17,6 +17,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ClipboardComponent } from './clipboard/clipboard.component';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { ReferMissionComponent } from './refer-mission/refer-mission.component';
+import { DialogReferEnviadoComponent } from './dialog-refer-enviado/dialog-refer-enviado.component';
+import { ReferNoRegisComponent } from './refer-no-regis/refer-no-regis.component';
 
 
 @NgModule({
@@ -44,12 +47,18 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     ModalcodigoComponent,
     DialogCodigo,
     ClipboardComponent,
+    ReferMissionComponent,
+    DialogReferEnviadoComponent,
+    ReferNoRegisComponent,
   ],
   exports:[
     ModalqrComponent,
     ModalcodigoComponent,
     DialogCodigo,
     ClipboardComponent,
+    ReferMissionComponent,
+    DialogReferEnviadoComponent,
+    ReferNoRegisComponent,
   ]
 })
 export class ReferralsPageModule {}

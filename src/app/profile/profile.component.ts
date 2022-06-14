@@ -662,7 +662,7 @@ closePanel() {
       return;
     }
     console.log(this.credForm.status);
-    /*if(this.bancoForm.status=="INVALID"){
+    /*if(this.bancoForm.status=="INVALID"){[[[[[{{}``´´`[[]]}]]]]]
       this.presentToast('LLenen todos los datos requeridos');
       return;
     }*/

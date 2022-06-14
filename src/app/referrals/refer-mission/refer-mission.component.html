@@ -1,0 +1,124 @@
+<ion-header #header>
+  <app-header-two titulo="Referidos"></app-header-two>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-card>
+      <div>
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-justify-content-center ion-padding bg-navybluextend">
+          <ion-col size="12" class="ion-padding-vertical">
+           <div class="ion-text-start">
+             <ion-label>
+               <ion-text color="polarwhite">
+                 <h2><strong>Refiere esta misión</strong></h2>
+
+               </ion-text>
+             </ion-label>
+           </div>
+          </ion-col>
+
+        </ion-row>
+        <ion-row style="background-color: white;" class="ion-justify-content-center ion-padding">
+          <ion-col size="12" class="ion-padding-vertical">
+           <div class="ion-text-start">
+             <ion-label>
+               <ion-text color="blue">
+                 <p>Estás a punto de referir esta misión, por favor llena los datos de tu referido:</p>
+
+               </ion-text>
+             </ion-label>
+           </div>
+          </ion-col>
+
+        </ion-row>
+           <ion-row class="ion-justify-content-center ion-padding bg-primary">
+             <ion-col size="2" class="ion-align-self-center ion-margin-end" >
+                 <ion-icon color="skybluextend" [ngStyle]="{'background-color':'white', 'border-radius':'50%'}" class="iup-icon-size-xl " src="../../assets/icon/promo_inde.svg" ></ion-icon>
+               </ion-col>
+               <ion-col size="6" class="ion-padding-vertical">
+                <div class="ion-text-start">
+                  <ion-label>
+                    <ion-text color="polarwhite">
+                      <h2><strong>Promotoría</strong></h2>
+                      <h4>Aceites sintéticos para auto.</h4>
+                    </ion-text>
+                  </ion-label>
+                </div>
+               </ion-col>
+               <ion-col size="3" class="ion-padding">
+                <div class="ion-text-end">
+                  <ion-label>
+                    <ion-text color="polarwhite">
+                      <p>pago</p>
+                      <h2><strong>$200</strong></h2>
+                    </ion-text>
+                  </ion-label>
+                </div>
+              </ion-col>
+             </ion-row>
+           </ion-grid>
+           </div>
+
+           <div>
+             <ion-card class="ion-padding ion-margin-top">
+                 <ion-label >
+                   <ion-text color="cloudysky">
+                     <p>
+                     <strong>Canal</strong> Especializado<br>
+                     <strong>Cadena:</strong> Autozone<br>
+                     <strong>Tipo de categoría:</strong> Jalapa, Veracrúz
+                     Poza Rica, Veracruz
+                   </p>
+                   </ion-text>
+                 </ion-label>
+             </ion-card>
+           </div>
+           <div>
+             <ion-card class="ion-padding ion-margin-top">
+               <form class="iup-form" color="primary">
+                 <p>
+                   <mat-form-field  appearance="outline" class="iup-full-width">
+                     <mat-label class="mat-label-color-navyblue">E-mail</mat-label>
+                     <input  matInput placeholder="E-mail">
+                     <mat-icon matSuffix>edit</mat-icon>
+                   </mat-form-field>
+                 </p>
+                 <p>
+                   <mat-form-field appearance="outline" class="iup-full-width">
+                     <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
+                     <input   matInput placeholder="Nombre">
+                     <mat-icon matSuffix>edit</mat-icon>
+                   </mat-form-field>
+                 </p>
+
+                 <p>
+                   <mat-form-field  appearance="outline" class="iup-full-width">
+                     <mat-label class="mat-label-color-navyblue"> Apellido</mat-label>
+                     <input  matInput placeholder="Apellido">
+                     <mat-icon matSuffix>edit</mat-icon>
+                   </mat-form-field>
+                 </p>
+                 <ion-grid class="ion-padding-vertical">
+                   <ion-row>
+                    <ion-col>
+                        <div class="iup-button-row">
+                          <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                            CANCELAR
+                          </button>
+                          <button (click)="openModalReferEnviada()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                            ENVIAR
+                          </button>
+                        </div>
+                    </ion-col>
+                   </ion-row>
+                 </ion-grid>
+               </form>
+
+             </ion-card>
+           </div>
+    </ion-card>
+  </div>
+</ion-content>
+<app-footer></app-footer>

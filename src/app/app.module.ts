@@ -25,6 +25,7 @@ import { ComponentsInformativoModule } from './components-inf/components-info.mo
 import { BarcodeScanner } from '@ionic-native/barcode-scanner/ngx';
 import { TrainingsModule } from './trainings/trainings.module';
 import { HelpPageModule } from './help/help.module';
+import { ReferralsPageModule } from './referrals/referrals.module';
 
 // Google Materials Angular
 import { MatCardModule } from '@angular/material/card';
@@ -45,6 +46,8 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MissionsModule } from './missions/missions.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+
+
 
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
 
@@ -92,6 +95,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
     ClipboardModule,
     TrainingsModule,
     HelpPageModule,
+    ReferralsPageModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyAXg0fE1pWSZNf4ARJsb303OwYJGCaJT_4',
     }),

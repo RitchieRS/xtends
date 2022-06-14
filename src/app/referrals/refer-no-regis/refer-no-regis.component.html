@@ -1,0 +1,77 @@
+<ion-header #header>
+  <app-header-two titulo="Referidos"></app-header-two>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
+    <ion-card>
+      <div>
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-justify-content-center ion-padding bg-navybluextend">
+          <ion-col size="12" class="ion-padding-vertical">
+           <div class="ion-text-start">
+             <ion-label>
+               <ion-text color="polarwhite">
+                 <h2><strong>Referido no registrado</strong></h2>
+
+               </ion-text>
+             </ion-label>
+           </div>
+          </ion-col>
+
+        </ion-row>
+        <ion-row style="background-color: white;" class="ion-justify-content-center ion-padding">
+          <ion-col size="12" class="ion-padding-vertical">
+           <div class="ion-text-start">
+             <ion-label>
+               <ion-text color="blue">
+                 <p>
+                  Detectamos que tu referido no es un Xtender; por favor copia el siguiente texto y envíalo vía <strong>WhatsApp</strong> a tu referido, para poder redimir tu incentivo, es importante que copies todo el texto y tu recomendado se registre y acepte la misión.
+                 </p>
+
+               </ion-text>
+             </ion-label>
+           </div>
+          </ion-col>
+
+        </ion-row>
+           </ion-grid>
+           </div>
+
+           <div>
+             <ion-card class="ion-padding ion-margin-top">
+                  <ion-text class="ion-text-center" color="navybluextend" style="display: none;">
+                    <ion-textarea  rows="8" cols="1" mode="ios" color="navybluextend" id="clipboard-example-textarea" [(ngModel)]="txtForCopy"></ion-textarea>
+                  </ion-text>
+                 <ion-label >
+                   <ion-text color="cloudysky">
+                    <p>
+                      Te recomiendo esta misión para realizarse en <strong>{{textoDos}}</strong> ¿te interesa la chamba?
+<br><br>
+Actividades: xtendapp/miisiones/gbshenks.jpgCódigo: <strong>{{textoCinco}}</strong>
+<br><br>
+Ingresa al siguiente sitio y registra tus datos y el código.
+<br><br>
+Https://xtendapp.com/misiones_referidos
+                    </p>
+                   </ion-text>
+                 </ion-label>
+             </ion-card>
+           </div>
+           <div>
+                 <ion-grid class="ion-padding-vertical">
+                   <ion-row>
+                    <ion-col>
+                        <div class="iup-button-row">
+                          <button [cdkCopyToClipboard]="txtForCopy"  (click)="presentToast()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                            COPIAR
+                          </button>
+                        </div>
+                    </ion-col>
+                   </ion-row>
+                 </ion-grid>
+           </div>
+    </ion-card>
+  </div>
+</ion-content>
+<app-footer></app-footer>

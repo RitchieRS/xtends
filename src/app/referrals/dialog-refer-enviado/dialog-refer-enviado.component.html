@@ -1,0 +1,46 @@
+<ion-header translucent>
+  <ion-toolbar>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon size="large" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" scrollEvents="true">
+  <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc">
+    <ion-grid class=" ion-padding-bottom">
+      <ion-row class="ion-justify-content-center ion-padding bg-navybluextend">
+        <ion-col size="12" class="ion-padding-vertical">
+         <div class="ion-text-start">
+           <ion-label>
+             <ion-text color="polarwhite" class="ion-text-center">
+               <h2><strong>Referencia enviada</strong></h2>
+             </ion-text>
+           </ion-label>
+         </div>
+        </ion-col>
+
+      </ion-row>
+      <ion-row class="ion-padding">
+        <ion-col size="12" class="ion-text-start ion-align-self-center">
+          <ion-text routerLink="/mymissions" color="navyblue">
+            <!-- <h1>
+              dgdsgdfgdfgdf
+            </h1> -->
+            <p class="ion-no-margin">
+              Recuerda que para redimir tu incentivo, es importante que tu recomendado se registre, acepte la misión.
+              <br><br>
+              Con esta recomendación, puedes ganar $200.00
+            </p>
+          </ion-text>
+        </ion-col>
+        <ion-col size="12" class="ion-text-center">
+          <ion-button (click)="dismiss()">De acuerdo</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

@@ -10,6 +10,7 @@ import { MissionsRoutingModule } from './missions/missions-routing.module';
 import { XtendLevelsRoutingModule } from './xtend-levels/xtend-levels-routing.module';
 import { TrainingsRoutingModule } from './trainings/trainings-routing-module';
 import { HelpPageRoutingModule } from './help/help-routing.module';
+import { ReferralsPageRoutingModule } from './referrals/referrals-routing.module';
 
 
 
@@ -89,7 +90,8 @@ const routes: Routes = [
     MissionsRoutingModule,
     XtendLevelsRoutingModule,
     TrainingsRoutingModule,
-    HelpPageRoutingModule
+    HelpPageRoutingModule,
+    ReferralsPageRoutingModule
   ]
 })
 export class AppRoutingModule { }

@@ -121,17 +121,15 @@ export interface Informacion {
     dirCd:           string;
     dirCP:           string;
     banco: string;
-    bancoClabe: number;
-    bancoTarjeta: number;
+    bancoClabe: string;
+    bancoTarjeta: string;
     bancoTitular: string;
-        
-
 }
 
 export interface InfoBank {
   banco: string;
-  bancoClabe: number;
-  bancoTarjeta: number;
+  bancoClabe: string;
+  bancoTarjeta: string;
   bancoTitular: string;
   terminosBanco: boolean;
 }
