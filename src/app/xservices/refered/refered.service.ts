@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { ReqMission,Mission, ResMissionAccepted, AMission} from 'src/app/xmodels/missions';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { ReferedQR } from 'src/app/xmodels/refered';
+import { ReferedQR, MissionsRef } from 'src/app/xmodels/refered';
 @Injectable({
   providedIn: 'root'
 })
@@ -24,8 +24,8 @@ export class ReferedService {
       }),
       responseType: 'json' as 'json'
     };
-  
-    
+
+
     return this.http.get<any>(`${environment.API_URL}referred`,httpOptions).pipe(
           map(( res :  ReferedQR)=>{
             console.log(res);
@@ -34,13 +34,13 @@ export class ReferedService {
           catchError((err)=> this.handeleError(err))
     );
   };
-   private handeleError(err) : Observable<never>{
+
+   private handeleError(err): Observable<never>{
     let erroMessage = "An error has ocurred";
     if(err){
       erroMessage  = `Err code:${err.message}`;
     }
     window.alert(erroMessage);
     return throwError(erroMessage);
-
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MissionsRef } from '../xmodels/refered';
 import { ReferedService } from '../xservices/refered/refered.service';
 
 @Component({
@@ -8,11 +9,11 @@ import { ReferedService } from '../xservices/refered/refered.service';
 })
 export class ReferralsPage implements OnInit {
 
-  token:string;
-  coder:string;
-  code:string;
-
-  qrimage:string;
+  token: string;
+  coder: string;
+  code: string;
+  missionsRef: any;
+  qrimage: string;
 
   constructor(private srvRefe: ReferedService) { }
 
@@ -22,7 +23,12 @@ export class ReferralsPage implements OnInit {
      this.code = res.resp.codigoRecomendado;
      this.qrimage = res.resp.urlQR;
      localStorage.setItem('referido', this.code);
-    })  
+
+     this.missionsRef = res.resp.missiones;
+     console.log(this.missionsRef);
+    });
   }
+
+
 
 }
