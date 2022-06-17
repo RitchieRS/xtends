@@ -62,7 +62,7 @@
             </ion-col>
           </ion-row>
         </ion-grid>
-        <ion-card class="ion-no-padding ion-no-margin border-radius">
+        <ion-card *ngFor="let missRef of misionesRe" class="ion-no-padding ion-margin-vertical border-radius">
           <ion-card-content class="ion-no-padding">
             <ion-grid>
               <ion-row class="ion-align-items-center">
@@ -74,13 +74,13 @@
                 <ion-col size="8" class="ion-align-items-center">
                   <ion-text color="cloudysky" class="ion-text-wrap">
                     <h2><strong>Shell</strong></h2>
-                    <p>Promotoría en Autozone</p>
+                    <p>{{missRef.nombreActividad}}</p>
                     <p class="iup-margin-top-md">
-                      <strong>Ciudades:</strong><br>
-                      Jalapa, Posa Rica.
+                      <strong>Ciudad:</strong><br>
+                      {{missRef.detalle.ciudad}}
                     </p>
                     <p>
-                      <strong>Tiempo de la visita: </strong>.
+                      <strong>Tiempo de la visita: {{missRef.detalle.tiempo}}</strong>.
                     </p>
                 </ion-text>
                 </ion-col>

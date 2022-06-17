@@ -7,7 +7,7 @@ export interface Resp {
     idUsuario:         number;
     codigoRecomendado: string;
     urlQR:             string;
-    missiones: MissionsRef;
+    misiones: MissionsRef;
 }
 
 export interface MissionsRef {

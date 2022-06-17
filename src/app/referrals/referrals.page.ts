@@ -12,8 +12,10 @@ export class ReferralsPage implements OnInit {
   token: string;
   coder: string;
   code: string;
-  missionsRef: any;
   qrimage: string;
+
+  misionesRe: any;
+
 
   constructor(private srvRefe: ReferedService) { }
 
@@ -24,8 +26,8 @@ export class ReferralsPage implements OnInit {
      this.qrimage = res.resp.urlQR;
      localStorage.setItem('referido', this.code);
 
-     this.missionsRef = res.resp.missiones;
-     console.log(this.missionsRef);
+     this.misionesRe = Object.values(res.resp.misiones);
+     console.log(this.misionesRe);
     });
   }
 
