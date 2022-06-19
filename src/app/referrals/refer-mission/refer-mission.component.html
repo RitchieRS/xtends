@@ -76,18 +76,18 @@
            </div>
            <div>
              <ion-card class="ion-padding ion-margin-top">
-               <form class="iup-form" color="primary">
+               <form [formGroup]="formMissionRef" (submit)="submit()" class="iup-form" color="primary">
                  <p>
                    <mat-form-field  appearance="outline" class="iup-full-width">
                      <mat-label class="mat-label-color-navyblue">E-mail</mat-label>
-                     <input  matInput placeholder="E-mail">
+                     <input formControlName="eMail" matInput placeholder="E-mail">
                      <mat-icon matSuffix>edit</mat-icon>
                    </mat-form-field>
                  </p>
                  <p>
                    <mat-form-field appearance="outline" class="iup-full-width">
                      <mat-label class="mat-label-color-navyblue">Nombre</mat-label>
-                     <input   matInput placeholder="Nombre">
+                     <input formControlName="firstName"  matInput placeholder="Nombre">
                      <mat-icon matSuffix>edit</mat-icon>
                    </mat-form-field>
                  </p>
@@ -95,7 +95,7 @@
                  <p>
                    <mat-form-field  appearance="outline" class="iup-full-width">
                      <mat-label class="mat-label-color-navyblue"> Apellido</mat-label>
-                     <input  matInput placeholder="Apellido">
+                     <input formControlName="lastName" matInput placeholder="Apellido">
                      <mat-icon matSuffix>edit</mat-icon>
                    </mat-form-field>
                  </p>
@@ -103,10 +103,11 @@
                    <ion-row>
                     <ion-col>
                         <div class="iup-button-row">
-                          <button  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                          <button  (click)="clearForm()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
                             CANCELAR
                           </button>
-                          <button (click)="openModalReferEnviada()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                          <button type="submit"  [disabled]="formMissionRef.invalid" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+                            <!-- <button (click)="openModalReferEnviada()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"></button> -->
                             ENVIAR
                           </button>
                         </div>

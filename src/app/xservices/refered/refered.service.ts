@@ -36,6 +36,27 @@ export class ReferedService {
     );
   };
 
+  mailMisionRef(token: string, request: any): Observable<any>{
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+
+    return this.http.post<any>(`${environment.API_URL}referred/send`,request ,httpOptions).pipe(
+          map(( res:  any)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
   // getMissRefPorIdPV(token: string): Observable<ReferedQR>{
   //   const httpOptions = {
   //     headers: new HttpHeaders({
