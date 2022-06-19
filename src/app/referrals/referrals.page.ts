@@ -16,8 +16,13 @@ export class ReferralsPage implements OnInit {
 
   misionesRe: any;
 
+  srvRefTest: any;
+  laVenenoza: any;
 
-  constructor(private srvRefe: ReferedService) { }
+
+  constructor(
+    private srvRefe: ReferedService,
+    ) { }
 
   ngOnInit() {
     this.token = localStorage.getItem('token');
@@ -28,6 +33,10 @@ export class ReferralsPage implements OnInit {
 
      this.misionesRe = Object.values(res.resp.misiones);
      console.log(this.misionesRe);
+
+    //  this.srvRefe.getMissRefPorIdPV(this.token).subscribe(() =>{
+
+    //  });
     });
   }
 
