@@ -26,6 +26,7 @@ export class ReferMissionComponent implements OnInit {
   cadenaMis: string;
   sucursalMis: string;
   formMissionRef: FormGroup;
+  respuestaDelMail: any;
 
   constructor(
     public dialog: MatDialog,
@@ -70,18 +71,34 @@ export class ReferMissionComponent implements OnInit {
       console.warn(this.formMissionRef.value);
 
       const token = localStorage.getItem('token');
-      const mailData = {
+      const datosForMail = {
         idPV: this.formMissionRef.get('idPV').value,
         email: this.formMissionRef.get('eMail').value,
         nombre: this.formMissionRef.get('firstName').value,
         apellido: this.formMissionRef.get('lastName').value,
       };
-      console.log( mailData );
-      this.srvMissRef.mailMisionRef(token,mailData).subscribe((res)=>{
+      console.log( datosForMail );
+      this.srvMissRef.mailMisionRef(token, datosForMail).subscribe((res)=>{
         console.log(res);
-       this.presentToast('¡Se ha enviado el mail con exito!');
+        this.presentToast('¡Se ha enviado el mail con exito!');
+        this.respuestaDelMail = res.resp.value;
+        console.log(this.respuestaDelMail);
+
+        if(this.respuestaDelMail === 1){
+           this.openModalReferEnviada();
+           console.log('respuesta 0 reencia a l otra pagina');
+        }else{
+           console.log('respuesta 0');
+           this.openModalReferEnviada();
+           console.log('respuesta 1');
+        }
+
       });
     }
+
+    renviarPagina(){
+
+    };
 
     async presentToast(text) {
       const toast = await this.toastCtrl.create({
@@ -96,9 +113,9 @@ export class ReferMissionComponent implements OnInit {
 
   clearForm(){
     this.formMissionRef.patchValue({
-      idPV:[this.idPVMissRef],
-        eMail:'',
-        firstName:'',
+        idPV: this.idPVMissRef,
+        eMail: '',
+        firstName: '',
         lastName: '',
     });
   }
@@ -112,6 +129,15 @@ export class ReferMissionComponent implements OnInit {
     });
     await modal.present();
  }
+
+ async reenviarOtra(){
+  const modal = await this.modalController.create({
+    component: DialogReferEnviadoComponent,
+    cssClass: 'small-modal'
+  });
+  await modal.present();
+}
+
 
 
 }
