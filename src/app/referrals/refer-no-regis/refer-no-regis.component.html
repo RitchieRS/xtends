@@ -1,8 +1,18 @@
-<ion-header #header>
+<!-- <ion-header #header>
   <app-header-two titulo="Referidos"></app-header-two>
+</ion-header> -->
+<ion-header translucent>
+  <ion-toolbar>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-icon size="large" name="close-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
+<ion-content [fullscreen]="true" scrollEvents="true">
   <div class="iup-box-center padding-top-menu-dtc padding-bottom-dtc bg-polarwhite">
     <ion-card>
       <div>
@@ -74,4 +84,4 @@ Https://xtendapp.com/misiones_referidos
     </ion-card>
   </div>
 </ion-content>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

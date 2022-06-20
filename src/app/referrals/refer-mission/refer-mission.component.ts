@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalController, ToastController } from '@ionic/angular';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, NgForm, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DialogReferEnviadoComponent } from '../dialog-refer-enviado/dialog-refer-enviado.component';
+import { ReferNoRegisComponent } from '../refer-no-regis/refer-no-regis.component';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ReferedService } from 'src/app/xservices/refered/refered.service';
 import { SpawnSyncOptionsWithStringEncoding } from 'child_process';
+
+
+
 
 @Component({
   selector: 'app-refer-mission',
@@ -27,6 +31,7 @@ export class ReferMissionComponent implements OnInit {
   sucursalMis: string;
   formMissionRef: FormGroup;
   respuestaDelMail: any;
+
 
   constructor(
     public dialog: MatDialog,
@@ -61,9 +66,9 @@ export class ReferMissionComponent implements OnInit {
 
     this.formMissionRef = this.fb.group({
         idPV:[this.idPVMissRef],
-        eMail:['', Validators.required],
+        eMail:['', Validators.required, Validators.email],
         firstName:['', Validators.required],
-        lastName: ['', Validators.required]
+        lastName: ['', Validators.required],
     });
   }
 
@@ -85,20 +90,16 @@ export class ReferMissionComponent implements OnInit {
         console.log(this.respuestaDelMail);
 
         if(this.respuestaDelMail === 1){
-           this.openModalReferEnviada();
-           console.log('respuesta 0 reencia a l otra pagina');
+          this.openModalReferEnviada();
+          console.log('respuesta 1');
         }else{
+           this.noRegistrado();
            console.log('respuesta 0');
-           this.openModalReferEnviada();
-           console.log('respuesta 1');
         }
 
       });
     }
 
-    renviarPagina(){
-
-    };
 
     async presentToast(text) {
       const toast = await this.toastCtrl.create({
@@ -130,9 +131,9 @@ export class ReferMissionComponent implements OnInit {
     await modal.present();
  }
 
- async reenviarOtra(){
+ async noRegistrado(){
   const modal = await this.modalController.create({
-    component: DialogReferEnviadoComponent,
+    component: ReferNoRegisComponent,
     cssClass: 'small-modal'
   });
   await modal.present();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-refer-no-regis',
@@ -30,7 +31,8 @@ export class ReferNoRegisComponent implements OnInit {
      };
 
   constructor(
-    private toastCtrl: ToastController
+    private toastCtrl: ToastController,
+    private modalCtrl: ModalController
   ) { }
 
   ngOnInit() {
@@ -53,6 +55,10 @@ export class ReferNoRegisComponent implements OnInit {
       mode : 'ios',
     });
     toast.present();
+  }
+
+  dismiss() {
+    this.modalCtrl.dismiss();
   }
 
 }
