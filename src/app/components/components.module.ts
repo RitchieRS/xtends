@@ -45,6 +45,8 @@ import { PopoverFiltermapComponent } from './popover-filtermap/popover-filtermap
 import { ModalTermBancComponent } from './modal-term-banc/modal-term-banc.component';
 import { PageTerminosBancComponent } from './modal-term-banc/page-terminos-banc/page-terminos-banc.component';
 import { PageTransferFondosComponent } from './modal-term-banc/page-transfer-fondos/page-transfer-fondos.component';
+import { FacebookShareComponent } from './facebook-share/facebook-share.component';
+import { InstagramShareComponent } from './instagram-share/instagram-share.component';
 
 
 
@@ -75,7 +77,9 @@ import { PageTransferFondosComponent } from './modal-term-banc/page-transfer-fon
     CamBcComponent,
     ModalTermBancComponent,
     PageTerminosBancComponent,
-    PageTransferFondosComponent
+    PageTransferFondosComponent,
+    FacebookShareComponent,
+    InstagramShareComponent
   ],
   exports:[
     FooterComponent,
@@ -101,7 +105,9 @@ import { PageTransferFondosComponent } from './modal-term-banc/page-transfer-fon
     CamBcComponent,
     ModalTermBancComponent,
     PageTerminosBancComponent,
-    PageTransferFondosComponent
+    PageTransferFondosComponent,
+    FacebookShareComponent,
+    InstagramShareComponent
   ],
   imports: [
     CommonModule,

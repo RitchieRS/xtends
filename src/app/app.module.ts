@@ -47,6 +47,8 @@ import { MissionsModule } from './missions/missions.module';
 import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 
 
 //import { PDFGenerator } from '@ionic-native/pdf-generator/ngx';
@@ -102,6 +104,7 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
   ],
   providers: [
     BarcodeScanner,
+    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent],
