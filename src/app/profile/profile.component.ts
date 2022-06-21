@@ -585,6 +585,8 @@ async updateData(){
           terminos: false
         });
 
+        
+
         //ESB | Habilidades
         this.habilidades = this.profileData.capacitacion.habilidades;
         this.habilidadesok = Object.values(this.habilidades);
@@ -597,6 +599,11 @@ async updateData(){
         this.msgClabe = this.bancoClabe.toString.length>0 ? "Nombre Beneficiario": this.bancoClabe.toString() ;
         this.msgTitular = this.bancoTitular.toString.length>0 ? "Modificar CLABE": this.bancoTitular.toString() ;
         this.msgTarjeta = this.bancoTarjeta.toString.length>0 ? "No. de tarjeta de débito": this.bancoTarjeta.toString() ;
+
+        this.bancoForm.setValue({ 
+          bancoTitular: this.bancoTitular,  
+          bancoClabe: this.msgClabe
+        });
         // const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
         // {
         //  return {
@@ -629,6 +636,7 @@ async updateData(){
 
   checkPhotoCompleteParent = (isValid:number): void => {
    this.fotoSelfOk = isValid;
+   console.log(this.fotoSelfOk);
 
   }
 

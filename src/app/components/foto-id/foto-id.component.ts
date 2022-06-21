@@ -38,10 +38,11 @@ export class FotoIdComponent  implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.idStrQuest="app-foto-id";
+    this.idStrQuest="app-foto-id" + localStorage.getItem('idUser') ;
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths = [...question.paths];
-      this.imgLgt = this.respuestas.paths.length;
+      this.imgLgt = this.respuestas.paths.length >= 1 ? 1 :  0;
+      this.imgLgt=0;
       console.log(this.respuestas.paths);
       this.loadFiles();
      });
@@ -162,7 +163,7 @@ async saveImage(photo: Photo) {
   this.respuestas.paths.push(`${IMAGE_DIR}/${fileName}`);
   this.respuestas.saveImages.push({img64: base64Data});
   this.storage.setObject(this.idStrQuest,this.respuestas);
-  this.sendInf();
+  //this.sendInf();
 }
 
 // https://ionicframework.com/docs/angular/your-first-app/3-saving-photos

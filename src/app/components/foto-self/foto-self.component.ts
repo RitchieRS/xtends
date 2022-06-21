@@ -39,18 +39,21 @@ export class FotoSelfComponent implements OnInit {
     ) { }
 
   async ngOnInit() {
-    this.idStrQuest="app-foto-self";
-    this.respuestas.tipo="app-foto-self";
+    this.idStrQuest="app-foto-self" + localStorage.getItem('idUser') ;
+    this.respuestas.tipo="app-foto-self"  + localStorage.getItem('idUser') ;
     console.log(this.imgLgt);
     try{ await this.storage.getObject(this.idStrQuest).then((question: any) => {
-         
+         console.log(question.paths);
           this.respuestas.paths= [...question.paths];
           this.imgLgt = this.respuestas.paths.length >= 1 ? 1 :  0;
           this.checkPhotoComplete(this.imgLgt);
+          console.log("Foto id check")
           console.log(this.imgLgt ); 
           this.loadFiles();
         });
       }catch(e){
+        this.imgLgt = 0;
+        this.checkPhotoComplete(this.imgLgt);
         console.log(e);
       }
 

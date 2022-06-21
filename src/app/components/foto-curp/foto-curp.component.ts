@@ -18,6 +18,7 @@ export class FotoCurpComponent implements OnInit {
   imgLgt=0;
   idStrQuest:string;
   images:LocalFile[];
+  idStorage:string;
   respuestas = {
     idPregunta:"",
     tipo:      "",
@@ -35,7 +36,8 @@ export class FotoCurpComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.idStrQuest="app-foto-curp";
+    
+    this.idStrQuest="app-foto-curp" + localStorage.getItem('idUser') 
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths= [...question.paths];
       this.imgLgt = this.respuestas.paths.length;

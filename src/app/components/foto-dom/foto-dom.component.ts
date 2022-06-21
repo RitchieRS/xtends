@@ -39,7 +39,7 @@ export class FotoDomComponent implements OnInit {
     ) { }
 
   ngOnInit() {
-    this.idStrQuest="app-foto-dom";
+    this.idStrQuest="app-foto-dom" + localStorage.getItem('idUser') ;
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       this.respuestas.paths= [...question.paths];
       this.imgLgt = this.respuestas.paths.length;
