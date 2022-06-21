@@ -219,7 +219,9 @@ export class TestComponent implements OnInit {
     this.qualification = ((this.points/this.sumaPuntajeQtns)*10);
     // console.log(Math.round(this.qualification));
     return this.qualification;
+
   };
+
 
   enviarResultado(){
     this.resultadoCurso.idCurso = this.idCurso;
