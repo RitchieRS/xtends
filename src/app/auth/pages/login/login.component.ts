@@ -17,7 +17,7 @@ import {
 })
 export class LoginComponent implements OnInit {
 
-  
+
   public loginForm: FormGroup;
   isSuccessful = false;
   isSignUpFailed = false;
@@ -26,19 +26,19 @@ export class LoginComponent implements OnInit {
   lng: any;
   watchId: any;
   constructor(private router: Router,
-              private login : LoginService, 
+              private login : LoginService,
               private fb : FormBuilder,
               public ngZone: NgZone,
-              private locationService: LocationService) { 
-                
+              private locationService: LocationService) {
+
     this.lat = 19.4216458;
-  
+
     this.lng = -99.0691779;
 
     if(localStorage.getItem('new')==null){
       this.router.navigate(['slide'])
     }
-  
+
   }
 
   ngOnInit() {
@@ -46,16 +46,16 @@ export class LoginComponent implements OnInit {
       "user": ['', [Validators.required,Validators.minLength(4)]],
       "pass": ['', [Validators.required,Validators.minLength(4)]]
     });
-    
+
     (async () => {
       const data = await this.getMyLocation()
     })();
-  
+
   }
 
-  onLogin(): void{      
- 
-    
+  onLogin(): void{
+
+
     const formValue = this.loginForm.value;
     formValue.lat = this.lat;
     formValue.lng = this.lng;
@@ -63,7 +63,7 @@ export class LoginComponent implements OnInit {
 
     this.login.login(formValue).subscribe((res) =>{
         console.log(res['idError']);
-       
+
         if(res['idError']==0){
           console.log(res);
           localStorage.setItem('idUser',res['resp'].usuario.id);
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
           this.isSignUpFailed = true;
         }
       })
-    
+
   }
   logChange(event) {
     console.log(event);
@@ -83,7 +83,7 @@ export class LoginComponent implements OnInit {
   }
 
   async getMyLocation() {
-    
+
     const hasPermission = await this.locationService.checkGPSPermission();
     if (hasPermission) {
       if (Capacitor.isNative) {
@@ -96,10 +96,10 @@ export class LoginComponent implements OnInit {
     else {
 
       const permission = await this.locationService.requestGPSPermission();
-      
+
       if (permission === 'CAN_REQUEST' || permission === 'GOT_PERMISSION') {
         if (Capacitor.isNative) {
-          
+
           const canUseGPS = await this.locationService.askToTurnOnGPS();
           this.postGPSPermission(canUseGPS);
         }
@@ -114,7 +114,7 @@ export class LoginComponent implements OnInit {
   }
 
   async postGPSPermission(canUseGPS: boolean) {
-  
+
     if (canUseGPS) { this.watchPosition(); }
     else {
       await Toast.show({
@@ -134,7 +134,7 @@ export class LoginComponent implements OnInit {
           this.lng = position.coords.longitude
           this.locationService.setLocation(this.lat,this.lng);
           this.clearWatch();
-          
+
         })
       })
       //alert(`Try Whatch position${this.watchId}`);
@@ -153,7 +153,7 @@ export class LoginComponent implements OnInit {
     await Share.share({
       title: 'Unete al equipo de trabajo xtend',
       text: 'xTendsApp',
-      url: 'https://xtendapp.com/',
+      url: 'https://install.appcenter.ms/users/benjas-sl77/apps/xtends/distribution_groups/allusersxtends',
       dialogTitle: 'Comparte con tus amigos.',
     });
   }

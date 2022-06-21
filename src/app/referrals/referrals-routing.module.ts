@@ -18,7 +18,7 @@ const routes: Routes = [
       },
 
       {
-       path: 'refer-mission/:idPV/:nombreActividad/:colorServicio/:pago/:descripcion/:canal/:sucursal',
+       path: 'refer-mission/:idPV/:nombreActividad/:colorServicio/:iconServicio/:pago/:descripcion/:canal/:sucursal',
        component: ReferMissionComponent
       },
 

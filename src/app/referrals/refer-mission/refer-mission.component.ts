@@ -24,6 +24,7 @@ export class ReferMissionComponent implements OnInit {
   tiempoMiss: string;
   nombreActividadMis: string;
   colorServicioMis: string;
+  iconServicioMis: string;
   pagoMis: string;
   descripcionMis: string;
   canalMis: string;
@@ -45,6 +46,7 @@ export class ReferMissionComponent implements OnInit {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.nombreActividadMis = this.route.snapshot.paramMap.get('nombreActividad');
     this.colorServicioMis = this.route.snapshot.paramMap.get('colorServicio');
+    this.iconServicioMis = this.route.snapshot.paramMap.get('iconServicio');
     this.pagoMis = this.route.snapshot.paramMap.get('pago');
     this.descripcionMis = this.route.snapshot.paramMap.get('descripcion');
     this.canalMis = this.route.snapshot.paramMap.get('canal');
@@ -58,6 +60,7 @@ export class ReferMissionComponent implements OnInit {
     console.log(this.idPVMissRef);
     console.log(this.nombreActividadMis);
     console.log(this.colorServicioMis);
+    console.log(this.iconServicioMis);
     console.log(this.pagoMis);
     console.log(this.descripcionMis);
     console.log(this.canalMis);
@@ -65,11 +68,24 @@ export class ReferMissionComponent implements OnInit {
     console.log(this.sucursalMis);
 
     this.formMissionRef = this.fb.group({
-        idPV:[this.idPVMissRef],
-        eMail:['', Validators.required, Validators.email],
-        firstName:['', Validators.required],
-        lastName: ['', Validators.required],
-    });
+      idPV:[this.idPVMissRef],
+      email:['', [Validators.required, Validators.email]],
+      firstName:['', [Validators.required, Validators.minLength(2)]],
+      lastName: ['', [Validators.required, Validators.minLength(2)]],
+  });
+  }
+
+
+  get email(){
+    return this.formMissionRef.get('email');
+  }
+
+  get firstName(){
+    return this.formMissionRef.get('firstName');
+  }
+
+  get lastName(){
+    return this.formMissionRef.get('lastName');
   }
 
   submit(){

@@ -68,7 +68,7 @@
               <ion-row class="ion-align-items-center">
                 <ion-col size="2">
                   <div style="width: 40px;" class="ion-margin-end">
-                    <img src="./../../assets/img/shell.svg">
+                    <img src="{{missRef.logoCliente}}">
                   </div>
                 </ion-col>
                 <ion-col size="8" class="ion-align-items-center">
@@ -85,7 +85,7 @@
                 </ion-text>
                 </ion-col>
                 <ion-col size="2" class="ion-align-items-center">
-                    <button mat-icon-button [routerLink]="['/refer-mission/', missRef.idPV, missRef.nombreActividad, missRef.colorServicio, missRef.pago, missRef.descripcion, missRef.detalle.canal, missRef.detalle.sucursal]">
+                    <button mat-icon-button [routerLink]="['/refer-mission/', missRef.idPV, missRef.nombreActividad, missRef.colorServicio, missRef.iconServicio, missRef.pago, missRef.descripcion, missRef.detalle.canal, missRef.detalle.sucursal]">
                       <mat-icon class="color-cloudysky">navigate_next</mat-icon>
                     </button>
                 </ion-col>
