@@ -78,7 +78,7 @@
         <div class="ipck-col-carousel ion-align-items-center">
           <!-- <ITEM - para repetir el ng-repeat> -->
           <div class="ipck-item-carousel iup-margin-md" *ngFor='let promocion of bannerData'>
-            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-xsm shadow border-radius">
+            <ion-card class="ion-no-margin ion-padding bg-nightblue ion-width-xsm shadow border-radius" routerLink="/{{ promocion.ruta }}">
                 <ion-row class="ion-align-items-center">
                   <ion-col  size="4" class="ion-text-center">
                     <div class="ion-margin-end-sm">
