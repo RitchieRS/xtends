@@ -209,7 +209,7 @@ export class HomePage implements OnInit {
           type.url='./assets/icon/location-purplextend.svg';
           break;
         }
-
+       
         default: {
 
         }

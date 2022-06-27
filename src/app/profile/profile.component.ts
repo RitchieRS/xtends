@@ -596,12 +596,12 @@ async updateData(){
         this.bancoClabe = this.profileData.informacion.bancoClabe.toString();
         this.bancoTitular = this.profileData.informacion.bancoTitular;
         this.bancoTarjeta = this.profileData.informacion.bancoTarjeta.toString();
-        this.msgClabe = this.bancoClabe.toString.length>0 ? "Nombre Beneficiario": this.bancoClabe.toString() ;
-        this.msgTitular = this.bancoTitular.toString.length>0 ? "Modificar CLABE": this.bancoTitular.toString() ;
-        this.msgTarjeta = this.bancoTarjeta.toString.length>0 ? "No. de tarjeta de débito": this.bancoTarjeta.toString() ;
+        this.msgClabe = this.bancoClabe.toString.length>0 || this.bancoClabe != 'undefined' ? "Nombre Beneficiario": this.bancoClabe ;
+        this.msgTitular = this.bancoTitular.toString.length>0 || this.bancoTitular != 'undefined'  ? "Modificar CLABE": this.bancoTitular ;
+        this.msgTarjeta = this.bancoTarjeta.toString.length>0 || this.bancoTarjeta != 'undefined'? "No. de tarjeta de débito": this.bancoTarjeta ;
 
         this.bancoForm.setValue({ 
-          bancoTitular: this.bancoTitular,  
+          bancoTitular: this.msgTitular,  
           bancoClabe: this.msgClabe
         });
         // const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
@@ -712,11 +712,12 @@ closePanel() {
 
 
     this.presentToast('Actualizando Información.');
+    this.panelOpenState = false;
 
 
      ;(await this.srvProfile.updateBankInformation(token, this.userForm.value)).subscribe((res) =>{
       if(res){
-        this.panelOpenState = false;
+        
         this.printCredential  = true;
         this.initData();
         this.presentToast('Listo.');
