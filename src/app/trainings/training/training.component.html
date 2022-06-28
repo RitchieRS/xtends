@@ -104,11 +104,11 @@
       <ion-grid>
         <ion-row [ngSwitch]= "typeFile">
           <ion-col *ngSwitchCase="'.mp4'">
-            <video  controls="true" src="{{ urlMaterial1 }}"  width="100%" height="450px" style="background-color: black;"></video>
+            <video  #chingadovideo controls="true" src="{{ urlMaterial1 }}"  width="100%" height="450px" style="background-color: #1e9ad5;"></video>
           </ion-col>
           <ion-col *ngSwitchCase="'.pdf'">
             <div style="width:100%; height: 250px;" class="ion-text-center">
-              <ion-button href="{{ urlMaterial2 }}" fill="outline">
+              <ion-button href="{{ urlMaterial1 }}" fill="outline">
                 <ion-icon name="reader-outline"></ion-icon> VER PDF
               </ion-button>
             </div>
@@ -130,8 +130,12 @@
                Atras
             </button>
           </ion-col>
-          <ion-col size="6" class="ion-align-self-center  ion-text-center">
-            <button  mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+          <ion-col [ngSwitch]= "typeFile" size="6" class="ion-align-self-center  ion-text-center">
+            <button *ngSwitchCase="'.mp4'" mat-stroked-button (click)="btnPrueba()" [routerLink]="['/test', idCurso, namee, iconn, colorr]" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+              <!-- este es con la condicional si hay curso o no<button  mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" disabled="{{buttonDisabled}}" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" [ngStyle]="{'opacity': opacityAka}"></button> -->
+              Examen
+            </button>
+            <button *ngSwitchCase="'.pdf'" mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
               <!-- este es con la condicional si hay curso o no<button  mat-stroked-button [routerLink]="['/test', idCurso, namee, iconn, colorr]" disabled="{{buttonDisabled}}" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" [ngStyle]="{'opacity': opacityAka}"></button> -->
               Examen
             </button>

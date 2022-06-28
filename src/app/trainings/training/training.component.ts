@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, ViewEncapsulation, ViewChild,} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ElementRef, ViewChild, OnDestroy, Renderer2} from '@angular/core';
 import { HabilidadesService } from '../../xservices/habilidades/habilidades.service';
 import { __param } from 'tslib';
 import { Location } from '@angular/common';
-
+// import { Plugins } from '@capacitor/core';
+// const { CapacitorVideoPlayer, Divice } = Plugins;
 // import Swiper core and required modules
 import SwiperCore, { FreeMode, Navigation, Thumbs } from 'swiper';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { style } from '@angular/animations';
+// import { url } from 'inspector';
 SwiperCore.use([FreeMode, Navigation, Thumbs]);
 
 // import { FileOpener } from '@ionic-native/file-opener/ngx';
@@ -14,13 +18,14 @@ SwiperCore.use([FreeMode, Navigation, Thumbs]);
 // import { StreamingMedia, StreamingVideoOptions } from '@ionic-native/streaming-media/ngx';
 // import { StreamingMedia, StreamingVideoOptions } from '@awesome-cordova-plugins/streaming-media/ngx';
 
-
 @Component({
   selector: 'app-training',
   templateUrl: './training.component.html',
   styleUrls: ['./training.component.scss'],
 })
-export class TrainingComponent implements OnInit {
+export class TrainingComponent implements OnInit, OnDestroy {
+  @ViewChild('chingadovideo') chingadoVideo: ElementRef;
+
   cursodts: any;
   idCurso:       number;
   tipoCurso:     string;
@@ -42,6 +47,9 @@ export class TrainingComponent implements OnInit {
   thumbsSwiper: any;
   buttonDisabled: boolean;
   opacityAka: number;
+  player: any;
+
+  srvCuseSubscribe: Subscription;
 
 
   // videoUrldtc = 'https://file-examples-com.github.io/uploads/2017/04/file_example_MP4_640_3MG.mp4';
@@ -50,10 +58,12 @@ export class TrainingComponent implements OnInit {
     private   route: ActivatedRoute,
               private srvCursos: HabilidadesService,
               private location: Location,
+              private renderer: Renderer2,
   ) { }
   // constructor(private fileOpener: FileOpener) { }
   // constructor(private stream: StreamingMedia) { }
   // pdfSrc='https://file-examples-com.github.io/uploads/2017/10/file-sample_150kB.pdf';
+
 
 
 
@@ -69,7 +79,7 @@ export class TrainingComponent implements OnInit {
     console.log(idCurso);
 
     const token = localStorage.getItem('token');
-    this.srvCursos.getHabilidades(token, idCurso).subscribe(
+    this.srvCuseSubscribe = this.srvCursos.getHabilidades(token, idCurso).subscribe(
       (res) => {
          this.cursodts = res.resp.cursos[0];
          console.log(this.cursodts);
@@ -84,7 +94,7 @@ export class TrainingComponent implements OnInit {
          this.urlMaterial5 = this.cursodts.urlMaterial5;
          this.typeFile = this.urlMaterial1.substr(-4);
          console.log(this.typeFile);
-         if(this.typeFile.length==0){
+         if(this.typeFile.length === 0){
           console.log('valio medres y no hay curso');
           this.buttonDisabled = true;
           this.opacityAka = 0.5 ;
@@ -95,11 +105,39 @@ export class TrainingComponent implements OnInit {
         }
         );
   }
-  back() : void{
 
+
+  btnPrueba(){
+    const destryVideo = this.chingadoVideo.nativeElement;
+    console.log(destryVideo);
+    this.renderer.setAttribute(destryVideo, 'src', this.urlMaterial1);
+    // this.renderer.setStyle(this.chingadoVideo.nativeElement, 'display', 'none');
+    // this.renderer.setAttribute(destryVideo, 'width', '50%');
+  }
+
+  // elchingadoVideo(){
+  //   this.renderer.pause(this.myVideo.nativeElement);
+  // }
+
+  back(): void{
     this.location.back();
-
   };
+
+  ngOnDestroy() {
+    console.log('ngOnDestroy()');
+    this.srvCuseSubscribe.unsubscribe();
+  }
+
+  // playVideo(){
+  //   var ulr = "https://tutorial.techaltum.com/images/techaltum.mp4";
+  //   CapacitorVideoPlayer.initPlayer({
+  //      mode: mode,
+  //      url: url,
+  //      playerId: "vplayer",
+  //      componentTag: "vplayer",
+  //   });
+  // }
+
 
 
 
