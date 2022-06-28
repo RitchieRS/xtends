@@ -94,7 +94,7 @@ export class ReferMissionComponent implements OnInit {
       const token = localStorage.getItem('token');
       const datosForMail = {
         idPV: this.formMissionRef.get('idPV').value,
-        email: this.formMissionRef.get('eMail').value,
+        email: this.formMissionRef.get('email').value,
         nombre: this.formMissionRef.get('firstName').value,
         apellido: this.formMissionRef.get('lastName').value,
       };
