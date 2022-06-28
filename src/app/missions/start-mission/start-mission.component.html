@@ -40,7 +40,19 @@
 
 
         <div *ngIf="isLoaded==0" class="body-preload">
-          <app-preload></app-preload>
+          <ion-grid>
+            <ion-row>
+              <ion-col size="12" class="ion-text-center">
+                <app-preload></app-preload>
+              </ion-col>
+              <ion-col size="12" class="ion-text-center">
+                <ion-text>
+                  <p>Cargando datos</p>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
         </div>
 
         <ion-grid class="ion-no-margin ion-no-padding">

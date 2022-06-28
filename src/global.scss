@@ -80,11 +80,19 @@ agm-map{
 
   .flex-preload>div {
   background-color: #e3ebf3;
-  color: white;
   width: 120px;
   height: 120px;
   align-self: center;
+  text-align: center;
   }
+
+  .flex-preload>div>p {
+    margin-top: -8px;
+    color: #161949;
+    font-size: 10px;
+    }
+
+
   .img-in-circulo{
     border-radius: 50%;
     overflow: hidden;
