@@ -46,7 +46,7 @@ export class HomePage implements OnInit {
     }
   }
   filterType:any;
-  filterTypeMap:any;
+  filterTypeMap=[];
 
 
   panelOpenState = false;
@@ -138,7 +138,7 @@ export class HomePage implements OnInit {
 
   tipoServicio(tipo:string):any{
 
-    console.log(tipo);
+   // console.log(tipo);
     let type={
       color:"",
       logo:""
@@ -267,6 +267,7 @@ export class HomePage implements OnInit {
              }
              
              /* Misiones Disponibles*/
+             this.filterTypeMap = new Array();
             if(this.dataHome.section4.content.length>=1){
               
               this.missionAvalmap = this.dataHome.section4;
@@ -283,8 +284,9 @@ export class HomePage implements OnInit {
                 console.log("Section 4");
                 console.log(this.missionsAvalDatamap );
                }
-
+               console.log( this.missionAvalmap);
               this.missionAvalmap.content.forEach(element => {
+               
                 element.color = this.pincho(element.colorServicio)
               });
 
