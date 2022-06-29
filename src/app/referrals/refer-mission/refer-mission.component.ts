@@ -11,6 +11,7 @@ import { SpawnSyncOptionsWithStringEncoding } from 'child_process';
 
 
 
+
 @Component({
   selector: 'app-refer-mission',
   templateUrl: './refer-mission.component.html',
@@ -32,6 +33,7 @@ export class ReferMissionComponent implements OnInit {
   sucursalMis: string;
   formMissionRef: FormGroup;
   respuestaDelMail: any;
+  algo: string;
 
 
   constructor(
@@ -66,6 +68,7 @@ export class ReferMissionComponent implements OnInit {
     console.log(this.canalMis);
     console.log(this.cadenaMis);
     console.log(this.sucursalMis);
+
 
     this.formMissionRef = this.fb.group({
       idPV:[this.idPVMissRef],
@@ -111,6 +114,7 @@ export class ReferMissionComponent implements OnInit {
         }else{
            this.noRegistrado();
            console.log('respuesta 0');
+           console.log(this.sucursalMis);
         }
 
       });
@@ -150,10 +154,14 @@ export class ReferMissionComponent implements OnInit {
  async noRegistrado(){
   const modal = await this.modalController.create({
     component: ReferNoRegisComponent,
-    cssClass: 'small-modal'
+    cssClass: 'small-modal',
+    componentProps:{
+      laSucursal: this.sucursalMis,
+    }
   });
   await modal.present();
 }
+
 
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 
@@ -8,6 +8,8 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./refer-no-regis.component.scss'],
 })
 export class ReferNoRegisComponent implements OnInit {
+  @Input() laSucursal: string;
+
   txtForCopy: string;
   textoUno: string;
   textoDos: string;
@@ -17,8 +19,6 @@ export class ReferNoRegisComponent implements OnInit {
   textoSeis: string;
   evrytingtxtForCopy: string;
   el: string;
-
-
 
   evrytingTxt =
      {
@@ -33,11 +33,11 @@ export class ReferNoRegisComponent implements OnInit {
   constructor(
     private toastCtrl: ToastController,
     private modalCtrl: ModalController
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.textoUno = this.evrytingTxt.txt1;
-    this.textoDos = this.evrytingTxt.txt2;
+    this.textoDos = this.laSucursal;
     this.textoTres = this.evrytingTxt.txt3;
     this.textoCuatro = this.evrytingTxt.txt4;
     this.textoCinco = this.evrytingTxt.txt5;
