@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
     this.locationService.setLocation(this.lat,this.lng);
 
     this.login.login(formValue).subscribe((res) =>{
-        console.log(res['idError']);
+        console.log(res);
 
         if(res['idError']==0){
           console.log(res);

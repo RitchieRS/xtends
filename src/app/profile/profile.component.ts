@@ -203,7 +203,6 @@ export class ProfileComponent implements OnInit {
      });
 
      this.bancoForm = this.fb.group({
-      dirCP : ['', [Validators.minLength(4),Validators.required]],
       banco : ['', [Validators.minLength(4),Validators.required]],
       bancoTitular: ['', [Validators.minLength(4),Validators.required]],
       bancoClabe: ['',[  Validators.pattern("^[0-9]*$"),Validators.maxLength(18)]],
@@ -601,8 +600,11 @@ async updateData(){
         this.msgTarjeta = this.bancoTarjeta.toString.length>0 || this.bancoTarjeta != 'undefined'? "No. de tarjeta de débito": this.bancoTarjeta ;
 
         this.bancoForm.setValue({ 
-          bancoTitular: this.msgTitular,  
-          bancoClabe: this.msgClabe
+          banco: this.profileData.informacion.banco,
+          bancoTitular: this.profileData.informacion.bancoTitular,  
+          bancoClabe: this.profileData.informacion.bancoClabe,
+          bancoTarjeta:  this.profileData.informacion.bancoTarjeta,
+          terminosBanco: false
         });
         // const cabrona = this.habilidadesok.map(function(habilidadesoktwo)
         // {
@@ -715,7 +717,7 @@ closePanel() {
     this.panelOpenState = false;
 
 
-     ;(await this.srvProfile.updateBankInformation(token, this.userForm.value)).subscribe((res) =>{
+     ;(await this.srvProfile.updateBankInformation(token, this.bancoForm.value)).subscribe((res) =>{
       if(res){
         
         this.printCredential  = true;
