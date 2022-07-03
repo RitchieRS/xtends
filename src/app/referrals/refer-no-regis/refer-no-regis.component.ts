@@ -9,6 +9,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class ReferNoRegisComponent implements OnInit {
   @Input() laSucursal: string;
+  @Input() laInfografia: string;
 
   txtForCopy: string;
   textoUno: string;
@@ -17,17 +18,21 @@ export class ReferNoRegisComponent implements OnInit {
   textoCuatro: string;
   textoCinco: string;
   textoSeis: string;
+  textSiete: string;
+
   evrytingtxtForCopy: string;
   el: string;
+  ligaInfografia: string;
 
   evrytingTxt =
      {
-       txt1: 'Te recomiendo esta misión para realizarse en',
-       txt2: 'Nuevo León',
+       txt1: 'Te recomiendo esta misión para realizarse en ',
+      //  txt2: 'Nuevo León',
        txt3: '¿te interesa la chamba?',
-       txt4: 'Actividades: xtendapp/miisiones/gbshenks.jpgCódigo:',
-       txt5: 'DONSUNN71279SD',
-       txt6: 'https://xtendapp.com/misiones_referidos',
+       txt4: 'Actividades:',
+       txt5: 'Código: ',
+       txt6: 'DONSUNN71279SD',
+       txt7: 'https://xtendapp.com/misiones_referidos',
      };
 
   constructor(
@@ -41,9 +46,16 @@ export class ReferNoRegisComponent implements OnInit {
     this.textoTres = this.evrytingTxt.txt3;
     this.textoCuatro = this.evrytingTxt.txt4;
     this.textoCinco = this.evrytingTxt.txt5;
+    this.ligaInfografia = this.laInfografia;
     this.textoSeis = this.evrytingTxt.txt6;
+    this.textSiete = this.evrytingTxt.txt7;
 
-    this.txtForCopy = this.textoUno + this.textoDos + this.textoTres + this.textoCuatro + this.textoCinco + this.textoSeis;
+    // eslint-disable-next-line max-len
+    this.txtForCopy = this.textoUno +  ' '
+    + this.textoDos+  ' | ' + this.textoTres+  ' | '
+    + this.textoCuatro + ' ' + this.ligaInfografia + ' '
+    + this.textoCinco + this.textoSeis+  ' | '
+    + this.textSiete;
   }
 
   async presentToast() {

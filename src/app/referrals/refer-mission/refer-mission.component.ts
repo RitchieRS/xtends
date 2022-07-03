@@ -31,6 +31,7 @@ export class ReferMissionComponent implements OnInit {
   canalMis: string;
   cadenaMis: string;
   sucursalMis: string;
+  infografiaMis: string;
   formMissionRef: FormGroup;
   respuestaDelMail: any;
   algo: string;
@@ -54,6 +55,8 @@ export class ReferMissionComponent implements OnInit {
     this.canalMis = this.route.snapshot.paramMap.get('canal');
     this.cadenaMis = this.route.snapshot.paramMap.get('cadena');
     this.sucursalMis = this.route.snapshot.paramMap.get('sucursal');
+    this.infografiaMis = this.route.snapshot.paramMap.get('infografia');
+
    }
 
 
@@ -68,6 +71,7 @@ export class ReferMissionComponent implements OnInit {
     console.log(this.canalMis);
     console.log(this.cadenaMis);
     console.log(this.sucursalMis);
+    console.log(this.infografiaMis);
 
 
     this.formMissionRef = this.fb.group({
@@ -92,8 +96,8 @@ export class ReferMissionComponent implements OnInit {
   }
 
   submit(){
+      this.presentToast('¡Procesando info!');
       console.warn(this.formMissionRef.value);
-
       const token = localStorage.getItem('token');
       const datosForMail = {
         idPV: this.formMissionRef.get('idPV').value,
@@ -104,15 +108,16 @@ export class ReferMissionComponent implements OnInit {
       console.log( datosForMail );
       this.srvMissRef.mailMisionRef(token, datosForMail).subscribe((res)=>{
         console.log(res);
-        this.presentToast('¡Se ha enviado el mail con exito!');
         this.respuestaDelMail = res.resp.value;
         console.log(this.respuestaDelMail);
 
         if(this.respuestaDelMail === 1){
+          // this.presentToast('¡Se ha enviado el mail con exito!');
           this.openModalReferEnviada();
           console.log('respuesta 1');
         }else{
            this.noRegistrado();
+          //  this.presentToast('Copia esta info y manda por whatsapp');
            console.log('respuesta 0');
            console.log(this.sucursalMis);
         }
@@ -126,7 +131,7 @@ export class ReferMissionComponent implements OnInit {
         message: text,
         duration: 2000,
         color: 'navybluextend',
-        position: 'top',
+        position: 'middle',
         mode : 'ios',
       });
       toast.present();
@@ -157,6 +162,7 @@ export class ReferMissionComponent implements OnInit {
     cssClass: 'small-modal',
     componentProps:{
       laSucursal: this.sucursalMis,
+      laInfografia: this.infografiaMis,
     }
   });
   await modal.present();
