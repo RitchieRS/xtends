@@ -32,11 +32,7 @@ export class TrainingComponent implements OnInit, OnDestroy {
   nombreCurso:   string;
   temaCurso:     string;
   mecanicaCurso: string;
-  urlMaterial1:  string;
-  urlMaterial2:  string;
-  urlMaterial3:  string;
-  urlMaterial4:  string;
-  urlMaterial5:  string;
+  urlMaterial:  string;
   idCursoRecuperao: number;
   namee: string;
   colorr: string;
@@ -87,12 +83,8 @@ export class TrainingComponent implements OnInit, OnDestroy {
          this.nombreCurso = this.cursodts.nombreCurso;
          this.temaCurso = this.cursodts.temaCurso;
          this.mecanicaCurso = this.cursodts.mecanicaCurso;
-         this.urlMaterial1 = this.cursodts.urlMaterial1;
-         this.urlMaterial2 = this.cursodts.urlMaterial2;
-         this.urlMaterial3 = this.cursodts.urlMaterial3;
-         this.urlMaterial4 = this.cursodts.urlMaterial4;
-         this.urlMaterial5 = this.cursodts.urlMaterial5;
-         this.typeFile = this.urlMaterial1.substr(-4);
+         this.urlMaterial = this.cursodts.urlMaterial;
+         this.typeFile = this.urlMaterial.substr(-4);
          console.log(this.typeFile);
          if(this.typeFile.length === 0){
           console.log('valio medres y no hay curso');
@@ -110,7 +102,7 @@ export class TrainingComponent implements OnInit, OnDestroy {
   btnPrueba(){
     const destryVideo = this.chingadoVideo.nativeElement;
     console.log(destryVideo);
-    this.renderer.setAttribute(destryVideo, 'src', this.urlMaterial1);
+    this.renderer.setAttribute(destryVideo, 'src', this.urlMaterial);
     // this.renderer.setStyle(this.chingadoVideo.nativeElement, 'display', 'none');
     // this.renderer.setAttribute(destryVideo, 'width', '50%');
   }

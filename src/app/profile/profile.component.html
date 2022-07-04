@@ -2,11 +2,14 @@
   <app-header-two titulo="Perfil"></app-header-two>
 </ion-header>
 <ion-content [fullscreen]="true" scrollEvents="true" [appHideHeader]="header">
-  <div *ngIf="isLoadedProfile==0" class="flex-center-xy">
+  <div class="body-preload" *ngIf="isLoadedProfile==0">
+    <app-preload></app-preload>
+  </div>
+  <!-- <div *ngIf="isLoadedProfile==0" class="flex-center-xy">
    <div class="flex-inter img-in-circulo">
       <img src="../../../assets/img/preloadxtend.gif" width="120">
     </div>
-  </div>
+  </div> -->
 
     <!-- <ion-grid *ngIf="isLoadedProfile==0" style="height: 100%; background-color: aquamarine;">
       <ion-row class="ion-align-items-end">

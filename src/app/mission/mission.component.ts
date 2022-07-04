@@ -11,7 +11,7 @@ import { Mission ,RespMission,Habilidades, ReqMission } from '../xmodels/mission
 })
 export class MissionComponent  {
 
-  infMission : Mission;
+  infMission: Mission;
   missionDetail: RespMission;
   nombreCliente: string;
   imgCliente: string;
@@ -27,10 +27,11 @@ export class MissionComponent  {
   message = '';
   accepted = false;
   habilidades: Habilidades[];
-  idProyecto : string; 
+  idProyecto : string;
   idCliente = 0;
   iconSrv: string;
   colorSrv: string;
+  infografia: string;
   TextState= "Enviar";
   // promociones = [
   //   {
@@ -77,6 +78,7 @@ export class MissionComponent  {
         this.idProyecto =  this.missionDetail.idProyecto;
         this.nombreCliente =this.missionDetail.nombreCliente;
         this.imgCliente = this.missionDetail.imgCliente;
+        this.infografia = this.missionDetail.infografia;
         this.nombreActividad = this.missionDetail.nombreActividad;
         this.pago = this.missionDetail.pago;
         this.nivel = this.missionDetail.nivel;
