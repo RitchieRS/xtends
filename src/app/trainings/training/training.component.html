@@ -104,11 +104,11 @@
       <ion-grid>
         <ion-row [ngSwitch]= "typeFile">
           <ion-col *ngSwitchCase="'.mp4'">
-            <video  #chingadovideo controls="true" src="{{ urlMaterial1 }}"  width="100%" height="450px" style="background-color: #1e9ad5;"></video>
+            <video  #chingadovideo controls="true" src="{{ urlMaterial }}"  width="100%" height="450px" style="background-color: #1e9ad5;"></video>
           </ion-col>
           <ion-col *ngSwitchCase="'.pdf'">
             <div style="width:100%; height: 250px;" class="ion-text-center">
-              <ion-button href="{{ urlMaterial1 }}" fill="outline">
+              <ion-button href="{{ urlMaterial }}" fill="outline">
                 <ion-icon name="reader-outline"></ion-icon> VER PDF
               </ion-button>
             </div>
