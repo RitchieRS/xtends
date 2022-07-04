@@ -16,7 +16,10 @@ export class ZonesComponent implements OnInit {
 
   myControl = new FormControl();
   options: string[] = [];
-  selected:string[]=[];
+  cities: number[] = [];
+  option:string;
+  optionsSend: any;
+  selected:string[][]=[];
   filteredOptions: Observable<string[]>;
 
   constructor(private srvInf: InfoService,
@@ -35,27 +38,48 @@ export class ZonesComponent implements OnInit {
 
      this.storage.getObject('zone-stored').then((storedzone: any) => {
        Object.keys(storedzone).forEach(val => {
-        //console.log(zones[val]);
+        console.log(storedzone[val]);
         this.selected.push(storedzone[val]);
       });
     });
 
     this.storage.getObject('zone').then((zones: any) => {
       Object.keys(zones).forEach(val => {
-        //console.log(zones[val]);
-        this.options.push(zones[val].ciudad+","+zones[val].estado);
+       // console.log(zones);
+        this.options.push(zones[val].idCiudad+"-"+zones[val].ciudad+","+zones[val].estado);
       });
      
     });
   }
 
-  delete(str){
+  async delete(str){
     console.log("delete")
     this.selected.forEach((element,index)=>{
       console.log(element)
       if(element==str) {this.selected.splice(index,1)};
    });
    this.storage.setObject('zone-stored',this.selected);
+
+   this.storage.getObject('zone-stored').then((storedzone: any) => {
+    Object.keys(storedzone).forEach(val => {
+    // console.log(storedzone[val].split("-").shift());
+     this.cities.push(parseInt(storedzone[val].split("-").shift()))
+
+     //this.selected.push(storedzone[val]);
+   });
+ });
+
+ let cities = {
+  "ciudades":this.cities
+ }
+   
+   
+   const token = localStorage.getItem('token');
+
+   await this.srvInf.updateInteresZones(cities,token).subscribe((res)=>{
+        console.log(res);
+   })
+  
    /*localStorage.setItem("my_colors", JSON.stringify(this.selected));
    this.storage.getObject('zone-stored').then((storedzone: any) => {
        this.selected = storedzone;
@@ -67,15 +91,51 @@ export class ZonesComponent implements OnInit {
 
   addOption(option){
     try{
+    
     this.selected.push(option)
+    this.myControl.reset();
     this.selected = this.selected.filter((n, i) => this.selected.indexOf(n) === i);
    // localStorage.setItem("my_colors", JSON.stringify(this.selected));
     this.storage.setObject('zone-stored',this.selected);
+    this.resetSearch();
    }catch(e){
      alert(e);
    }
     //this.myControl.reset();
     //console.dir(this.selected);
+  }
+
+ async resetSearch(){
+  this.cities=[];
+    this.filteredOptions = this.myControl.valueChanges.pipe(
+      startWith(''),
+      map(value => this._filter(value)),
+    );
+
+ await this.storage.getObject('zone-stored').then((storedzone: any) => {
+      Object.keys(storedzone).forEach(val => {
+      // console.log(storedzone[val].split("-").shift());
+       this.cities.push(parseInt(storedzone[val].split("-").shift()))
+
+
+       //this.selected.push(storedzone[val]);
+     });
+     let cities = {
+      "ciudades":this.cities
+     }
+  
+     const token = localStorage.getItem('token');
+  
+     this.srvInf.updateInteresZones(cities,token).subscribe((res)=>{
+          console.log(res);
+     })
+   });
+
+   
+
+     /*let storedCities = JSON.parse(localStorage.getItem("my_colors"));
+     this.selected = storedCities;*/
+
   }
 
   private _filter(value: string): string[] {

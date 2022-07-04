@@ -283,6 +283,8 @@ export class InfoService {
     );
   };
 
+
+
     // SERVICIO DE FIRMA
     sendMail(token : string, request : any):Observable<any>{
       console.log(request);
@@ -304,6 +306,32 @@ export class InfoService {
             catchError((err)=> this.handeleError(err))
       );
     };
+
+
+    // SERVICIO ZONAS EN LAS QUE TE MUEVES
+    updateInteresZones(request: any ,token: string): Observable<any>{
+      console.log(request);
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Accept': 'text/html',
+          'Content-Type': 'application/json',
+          'Authorization' : token,
+          'timeout': '600000'
+        }),
+        responseType: 'json' as 'json'
+      };
+  
+  
+      return this.http.post<any>(`${environment.API_URL}user/cities`,request ,httpOptions).pipe(
+            map(( res:  any)=>{
+              console.log(res);
+              return res;
+            }),
+            catchError((err)=> this.handeleError(err))
+      );
+    };
+
+
   private handeleError(err) : Observable<never>{
     let erroMessage = "An error has ocurred";
     if(err){

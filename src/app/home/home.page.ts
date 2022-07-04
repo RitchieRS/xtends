@@ -221,6 +221,7 @@ export class HomePage implements OnInit {
 
      loadZones():void{
         this.srvInf.getCitiesInformation(this.reqHome).subscribe((res)=>{
+          console.log(res);
           this.storage.setObject('zone', res);
          })
       }
