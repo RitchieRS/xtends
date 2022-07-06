@@ -46,22 +46,46 @@ preguntasAux:any;
     console.log("analizando dependencias"+idPregunta + " Depende de id Respuesta" + idRespuesta +" : valid "+ isValid);
     let dependencias = [];
     let dependenciasAx = [];
+    const auxArrSeen = new Set();
+    //this.preguntas = this.preguntasAux;
+    this.preguntas = this.preguntas.filter(el => {
+      const duplicate = auxArrSeen.has(el.idPregunta);
+      auxArrSeen.add(el.idPregunta);
+      return !duplicate;
+    });
     let idSPregunta = [];
         if(isValid==1){
           dependencias = this.preguntasAux.filter( pregunta => {  return Number(pregunta.dependePregunta) == idPregunta } );
           console.log(dependencias);
           console.log(this.preguntas);
           dependencias.forEach((item) => {
-              let check =  dependencias = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependePregunta) == item.idPregunta) || (Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
-              console.log(check.length);
+            //((Number(pregunta.dependePregunta) == item.idPregunta) || 
+              let check =  dependencias = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
+              console.log("Check length : "+check.length);
+              console.log("Check item : "+item)
               if(check.length == 0 ){
-                console.log(item)
+                
                 this.preguntas.push(item);
                 let order = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
 
+               /*const filteredArr = order.filter(el => {
+                  const duplicate = auxArrSeen.has(el.idPregunta);
+                  auxArrSeen.add(el.idPregunta);
+                  return !duplicate;
+                });
+
+                order = filteredArr;*/
+
                 this.preguntas = order;
               }else{
-                dependencias = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) == idPregunta) || (Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
+                //(Number(pregunta.dependePregunta) == idPregunta) && 
+                dependencias = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) == idPregunta) && (Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
+                /*const filteredArr = dependencias.filter(el => {
+                  const duplicate = auxArrSeen.has(el.idPregunta);
+                  auxArrSeen.add(el.idPregunta);
+                  return !duplicate;
+                });
+                dependencias =  filteredArr;*/
                 this.preguntas = dependencias;
               }
 
@@ -70,7 +94,7 @@ preguntasAux:any;
           })
         }
        
-        //console.log(dependencias);
+        console.log(dependencias);
   }
 
 }
