@@ -33,7 +33,7 @@ preguntasAux:any;
     this.preguntas = this.preguntas.sort((a, b) => (a.orden > b.orden  ) ? 1 : -1);
     this.preguntasAux = this.preguntas;
     
-    const independientes = this.preguntas.filter( pregunta => {  return Number(pregunta.dependePregunta) == 0 } );
+    const independientes = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependePregunta) == 0 ) &&  (Number(pregunta.dependeRespuesta == 0 ) ) ) } );
     this.preguntas = independientes;
     //console.log(dependencias);
     //console.log(independientes)
@@ -54,13 +54,14 @@ preguntasAux:any;
       return !duplicate;
     });
     let idSPregunta = [];
-        if(isValid==1){
+        if(isValid==1 && idRespuesta !=0 ){
           dependencias = this.preguntasAux.filter( pregunta => {  return Number(pregunta.dependePregunta) == idPregunta } );
+          console.log("Dependencias 1")
           console.log(dependencias);
           console.log(this.preguntas);
           dependencias.forEach((item) => {
             //((Number(pregunta.dependePregunta) == item.idPregunta) || 
-              let check =  dependencias = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
+              let check =  dependencias = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependeRespuesta) ===  idRespuesta )) } );
               console.log("Check length : "+check.length);
               console.log("Check item : "+item)
               if(check.length == 0 ){
@@ -79,7 +80,9 @@ preguntasAux:any;
                 this.preguntas = order;
               }else{
                 //(Number(pregunta.dependePregunta) == idPregunta) && 
-                dependencias = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) == idPregunta) && (Number(pregunta.dependeRespuesta) ==  idRespuesta )) } );
+                dependencias = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) === idPregunta) && (Number(pregunta.dependeRespuesta) ===  idRespuesta )) } );
+                console.log("Dependencias 2")
+                console.log(dependencias)
                 /*const filteredArr = dependencias.filter(el => {
                   const duplicate = auxArrSeen.has(el.idPregunta);
                   auxArrSeen.add(el.idPregunta);
