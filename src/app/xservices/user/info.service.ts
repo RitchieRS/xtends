@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { SocialShare } from 'src/app/xmodels/social';
 import { UserResponse, User, UserRest,
          ProfileResp, UserProfile, Informacion,
          Credenciales, InfoCred, InfoBank } from 'src/app/xmodels/user';
@@ -324,6 +325,27 @@ export class InfoService {
   
       return this.http.post<any>(`${environment.API_URL}user/cities`,request ,httpOptions).pipe(
             map(( res:  any)=>{
+              console.log(res);
+              return res;
+            }),
+            catchError((err)=> this.handeleError(err))
+      );
+    };
+
+    getSocialShare(tipo:string): Observable<SocialShare>{
+  
+      const httpOptions = {
+        headers: new HttpHeaders({
+          'Accept': 'text/html',
+          'Content-Type': 'application/json',
+          'timeout': '600000'
+        }),
+        responseType: 'json' as 'json'
+      };
+  
+  
+      return this.http.get<SocialShare>(`${environment.API_URL}social/${tipo}`,httpOptions).pipe(
+            map(( res:  SocialShare)=>{
               console.log(res);
               return res;
             }),

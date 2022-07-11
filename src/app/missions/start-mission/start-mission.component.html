@@ -74,8 +74,8 @@
             </ion-col>
             <ion-col *ngIf="isLoaded==1" size="12" class="ion-margin">
               <div class="iup-button-row">
-                <button mat-stroked-button (click)="sendSondeo()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> ENVIAR</button>
-                <button mat-stroked-button (click)="review()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> REVISAR</button>
+                <button mat-stroked-button *ngIf="validSondeo==1"  (click)="sendSondeo()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> ENVIAR</button>
+                <button mat-stroked-button *ngIf="validSondeo==0"  (click)="review()" class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend"> REVISAR</button>
               </div>
             </ion-col>
           </ion-row>
