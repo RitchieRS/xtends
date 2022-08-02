@@ -20,3 +20,31 @@ export interface Curso {
     urlMaterial4:  string;
     urlMaterial5:  string;
 }
+
+
+
+export interface HabilidadesAll {
+    habiliades: Habiliadelist[];
+}
+
+export interface Habiliadelist {
+    idHabilidad:   number;
+    habilidad:     string;
+    servicio:      string;
+    colorServicio: string;
+    iconServicio:  string;
+    avance:        number;
+    cursos:        Curso[];
+}
+
+export interface Curso {
+    idCurso: number;
+    tipo:    Tipo;
+    nombre:  string;
+    avance:  number;
+}
+
+export enum Tipo {
+    Básica = "Básica",
+}
+

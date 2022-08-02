@@ -16,7 +16,7 @@ export class ReferedService {
    }
 
 
-   getCodeRefered(token: string): Observable<ReferedQR>{
+   getCodeRefered(token: string,position : any): Observable<ReferedQR>{
     const httpOptions = {
       headers: new HttpHeaders({
         'Accept': 'text/html',
@@ -27,7 +27,7 @@ export class ReferedService {
     };
 
 
-    return this.http.get<any>(`${environment.API_URL}referred`,httpOptions).pipe(
+    return this.http.post<any>(`${environment.API_URL}referred`,position,httpOptions).pipe(
           map(( res:  any)=>{
             console.log(res);
             return res;

@@ -3,6 +3,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { Share } from '@capacitor/share';
 import { Social, SocialShare } from 'src/app/xmodels/social';
 import { InfoService } from 'src/app/xservices/user/info.service';
+import { InfoFacebook, Resp } from 'src/app/xmodels/facebook';
 @Component({
   selector: 'app-instagram-share',
   templateUrl: './instagram-share.component.html',
@@ -13,8 +14,8 @@ export class InstagramShareComponent implements OnInit {
   constructor(private socialSharing: SocialSharing,private srvPerfil: InfoService) { }
 
   
-  resp:SocialShare;
-  respuesta:Social;
+  resp:InfoFacebook;
+  respuesta:Resp;
 
   text:string;
   url:string;
@@ -26,7 +27,7 @@ export class InstagramShareComponent implements OnInit {
       console.log(res);
       this.resp = res;
       if(this.resp.idError==0){
-        this.respuesta =  this.resp[0];
+        this.respuesta =  this.resp.resp[0];
         this.text = this.respuesta.mensaje;
         this.url = this.respuesta.img;
       }

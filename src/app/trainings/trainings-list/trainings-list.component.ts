@@ -48,15 +48,15 @@ export class TrainingsListComponent implements OnInit {
         //const list = this.missionsAvalDatamap.filter(mission => this.filterTypeMap.includes(mission.colorServicio))
       });
 
-      this.srvProfile.getProfileInformation(token).subscribe((res) =>{
+      this.srvHabilidad.getAll(token).subscribe((res) =>{
     
         console.log(res);
           
           if(res){
             this.isLoaded=1;
-            this.userResponse = res;
-            this.profileData = this.userResponse.resp;
-            this.habilidades = this.profileData.capacitacion.habilidades;
+            //this.userResponse = res;
+           
+            this.habilidades = res.habiliades;
             const list = this.habilidades.filter(habilidad => (this.idsHabilidad.includes(habilidad.idHabilidad)) );
             this.habilidades = list;
             //this.missionsAvalDataAux = list.slice(0,5)

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
+import { InfoFacebook } from 'src/app/xmodels/facebook';
 import { SocialShare } from 'src/app/xmodels/social';
 import { UserResponse, User, UserRest,
          ProfileResp, UserProfile, Informacion,
@@ -332,7 +333,7 @@ export class InfoService {
       );
     };
 
-    getSocialShare(tipo:string): Observable<SocialShare>{
+    getSocialShare(tipo:string): Observable<InfoFacebook>{
   
       const httpOptions = {
         headers: new HttpHeaders({
@@ -344,8 +345,8 @@ export class InfoService {
       };
   
   
-      return this.http.get<SocialShare>(`${environment.API_URL}social/${tipo}`,httpOptions).pipe(
-            map(( res:  SocialShare)=>{
+      return this.http.get<InfoFacebook>(`${environment.API_URL}social/${tipo}`,httpOptions).pipe(
+            map(( res:  InfoFacebook)=>{
               console.log(res);
               return res;
             }),

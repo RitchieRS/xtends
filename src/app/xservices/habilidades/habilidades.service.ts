@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { CursoIntf } from 'src/app/xmodels/curso';
+import { CursoIntf, HabilidadesAll} from 'src/app/xmodels/curso';
 import { FHabilidad } from 'src/app/xmodels/filter-habilidad';
 
 
@@ -44,6 +44,26 @@ export class HabilidadesService {
     };
     ///api/skills/idCliente/idProyecto
     return this.http.get<FHabilidad>(`${environment.API_URL}skills/${idCliente}/${idProyecto}`, httpOptions).pipe(
+          map(( res )=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+
+  getAll(token: string): Observable<HabilidadesAll>{
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+    ///api/skills/idCliente/idProyecto
+    return this.http.get<HabilidadesAll>(`${environment.API_URL}user/skills`, httpOptions).pipe(
           map(( res )=>{
             console.log(res);
             return res;

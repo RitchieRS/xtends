@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { InfoFacebook, Resp } from 'src/app/xmodels/facebook';
 import { Social, SocialShare } from 'src/app/xmodels/social';
 import { InfoService } from 'src/app/xservices/user/info.service';
 @Component({
@@ -10,8 +11,8 @@ import { InfoService } from 'src/app/xservices/user/info.service';
 export class FacebookShareComponent implements OnInit {
   
   constructor(private socialSharing: SocialSharing, private srvPerfil: InfoService ) { }
-  resp:SocialShare;
-  respuesta:Social;
+  resp:InfoFacebook;
+  respuesta:Resp;
 
   text:string;
   url:string;
@@ -22,7 +23,7 @@ export class FacebookShareComponent implements OnInit {
       console.log(res);
       this.resp = res;
       if(this.resp.idError==0){
-        this.respuesta =  this.resp[0];
+        this.respuesta =  this.resp.resp[0];
         this.text = this.respuesta.mensaje;
         this.url = this.respuesta.img;
       }

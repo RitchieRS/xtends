@@ -78,7 +78,7 @@ export class MymissionsComponent implements OnInit {
 
   async ngOnInit() {
 
-    await this.loadMissionTaken();
+   // await this.loadMissionTaken();
 
 
     const token = localStorage.getItem('token');
@@ -183,10 +183,10 @@ export class MymissionsComponent implements OnInit {
     this.puereMissionsCompliteDtc = this.puereMissionsCompliteDtc.slice(0,this.currentIndexTwo);
   }
 
-  async loadMissionTaken(){
+  /*async loadMissionTaken(){
     const token = localStorage.getItem('token');
     const dataMission = {
-      idPV: this.idPV
+      idPV: 18 //this.idPV
     };
     this.srvMission.keepMissionInfo(dataMission);
     await this.srvMission.getMissionXTiendaProyecto(dataMission,token).subscribe((res) =>{
@@ -197,13 +197,13 @@ export class MymissionsComponent implements OnInit {
         this.missionDetail  = this.infMission.resp;
 
 
-        /* Misiones Activas*/
+        /* Misiones Activas
         if(this.infMission.resp.idTienda != undefined){
 
         }
       }
     });
-  }
+  }*/
 
 
   // async loadMissionTakenTwo(){

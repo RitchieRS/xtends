@@ -13,6 +13,7 @@ import { Subject } from 'rxjs';
 import { IonRouterOutlet } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { PageTerminosBancComponent } from '../components/modal-term-banc/page-terminos-banc/page-terminos-banc.component';
+import { HabilidadesService } from '../xservices/habilidades/habilidades.service';
 
 
 
@@ -174,6 +175,7 @@ export class ProfileComponent implements OnInit {
               private infSrv: InfoService,
               private routerOutlet: IonRouterOutlet,
               private modalController: ModalController,
+              private srvHabilidad :  HabilidadesService 
               ) { }
 
   ngOnInit() {
@@ -465,6 +467,20 @@ async updateData(){
 
   initData(){
     const token = localStorage.getItem('token');
+
+
+    this.srvHabilidad.getAll(token).subscribe((res) =>{
+    
+      console.log(res);
+        
+        if(res){
+          this.isLoaded=1;
+          //this.userResponse = res;
+         
+          this.habilidades = res.habiliades;
+        
+        }
+      });
     this.srvProfile.getProfileInformation(token).subscribe((res) =>{
       console.log(res);
       if(res){
@@ -500,13 +516,13 @@ async updateData(){
         this.fotoId = this.profileData.nivelesDatos.fotoID;
         this.referidosPorcentajeN  =  Number(this.profileData.nivelesDatos.referidosInvitados)/100;
         console.log(this.datosCompletosN );
-        this.puesto = this.profileData.credenciales.puesto;
-        this.imss  = this.profileData.credenciales.imss;
-        console.log(this.imss);
-        this.rfc  = this.profileData.credenciales.rfc;
-        this.urlFirma= this.profileData.credenciales.urlFirma;
-        console.log(this.urlFirma);
-        console.log("algo algo");
+        //this.puesto = this.profileData.credenciales.puesto;
+        //this.imss  = this.profileData.credenciales.imss;
+        //console.log(this.imss);
+        //this.rfc  = this.profileData.credenciales.rfc;
+        //this.urlFirma= this.profileData.credenciales.urlFirma;
+        //console.log(this.urlFirma);
+        
         this.nivelXtenderStr =  this.profileData.nivelXtender.name;
         localStorage.setItem('levelx',this.nivelXtenderStr);
 
@@ -516,7 +532,7 @@ async updateData(){
                               Number(this.profileData.nivelXtender.partsNivel.cuatro) ;
 
                               console.log(this.nivelXtenderNum);
-
+                              console.log(this.nivelXtenderStr);
                               if( this.nivelXtenderStr=='Bronce'){
                                 this.visiblefield = 1;
                               }
@@ -587,9 +603,9 @@ async updateData(){
         
 
         //ESB | Habilidades
-        this.habilidades = this.profileData.capacitacion.habilidades;
-        this.habilidadesok = Object.values(this.habilidades);
-        console.log(this.habilidades);
+        //this.habilidades = this.profileData.capacitacion.habilidades;
+        //this.habilidadesok = Object.values(this.habilidades);
+        //console.log(this.habilidades);
         this.isLoaded=1;
 
         this.bancoClabe = this.profileData.informacion.bancoClabe.toString();

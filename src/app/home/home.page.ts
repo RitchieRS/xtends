@@ -311,6 +311,10 @@ export class HomePage implements OnInit {
         await popover.present();
       }
 
+      filteredPreferences = (): void => {
+        //callback code here
+      }
+
 
 }
 
