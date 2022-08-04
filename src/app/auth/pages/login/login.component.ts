@@ -1,14 +1,16 @@
 import { Component, OnInit, NgZone } from '@angular/core';
 import { LoginService } from 'src/app/xservices/auth/login.service';
 import { FormGroup,Validators, FormBuilder } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Share } from '@capacitor/share';
 import { Capacitor, Plugins } from "@capacitor/core";
 import { LocationService } from "src/app//xservices/gservice/location.service"
 const { Toast } = Plugins;
+import { App } from '@capacitor/app';
 import {
   Geolocation
 } from '@capacitor/geolocation';
+import { HabilidadesService } from 'src/app/xservices/habilidades/habilidades.service';
 
 @Component({
   selector: 'app-login',
@@ -28,8 +30,10 @@ export class LoginComponent implements OnInit {
   constructor(private router: Router,
               private login : LoginService,
               private fb : FormBuilder,
+              private route :ActivatedRoute,
               public ngZone: NgZone,
-              private locationService: LocationService) {
+              private locationService: LocationService,
+              private srvHabilidad :  HabilidadesService) {
 
     this.lat = 19.4216458;
 
@@ -39,9 +43,27 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['slide'])
     }
 
+    route.params.subscribe(val => {
+      
+      App.addListener('backButton', ({ canGoBack }) => {
+        App.exitApp();
+      });
+      
+      this.ngOnInit() ;
+    })
+
   }
 
+ 
+           
+  
+
   ngOnInit() {
+    const token =  localStorage.getItem('token');
+    
+    if(token !== undefined){
+      this.router.navigate(['home'])
+    }
     this.loginForm = this.fb.group({
       "user": ['', [Validators.required,Validators.minLength(4)]],
       "pass": ['', [Validators.required,Validators.minLength(4)]]
@@ -50,6 +72,13 @@ export class LoginComponent implements OnInit {
     (async () => {
       const data = await this.getMyLocation()
     })();
+
+
+    
+
+   
+
+    
 
   }
 

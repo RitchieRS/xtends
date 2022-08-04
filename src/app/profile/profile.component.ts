@@ -672,6 +672,7 @@ closePanel() {
     console.log("cerrar sesion")
     try{
       ///alert("cerrar sesion");
+      localStorage.setItem('token',undefined);
       this.srvLog.logauth();
       this.router.navigate(['auth']);
       }catch(e){

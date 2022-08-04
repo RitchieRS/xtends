@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content, HomeLocation, Section4Content, Section4 } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
 import { TransitionCheckState } from '@angular/material/checkbox';
@@ -64,7 +64,12 @@ export class HomePage implements OnInit {
               public dialog: MatDialog,
               private storage: StorageHelperService,
               private srvInf: InfoService,
-              private popoverCtrl: PopoverController) {
+              private popoverCtrl: PopoverController,
+              private router: Router) {
+              const token =  localStorage.getItem('token');
+                if(token !== undefined){
+                  this.router.navigate(['auth'])
+                }
 
               }
 

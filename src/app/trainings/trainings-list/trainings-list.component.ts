@@ -28,9 +28,16 @@ export class TrainingsListComponent implements OnInit {
               private router: Router,
               private route: ActivatedRoute,
               private srvProfile : InfoService,
-              private srvHabilidad :  HabilidadesService 
-  ) {}
+              private srvHabilidad :  HabilidadesService,
+           
+  ) {
+    route.params.subscribe(val => {
+      this.ngOnInit() ;
+    })
 
+  }
+
+  
   ngOnInit() {
     const token = localStorage.getItem('token');
     this.colorServicio = this.route.snapshot.paramMap.get('colorServicio');

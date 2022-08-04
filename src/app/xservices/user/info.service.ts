@@ -31,6 +31,7 @@ export class InfoService {
     localStorage.setItem('email',data.email);
     localStorage.setItem('nombre',data.nombre);
     localStorage.setItem('nombreCompleto',data.nombreCompleto);
+    localStorage.setItem('token',data.token);
   }
 
   public logOut(): void{
@@ -39,6 +40,7 @@ export class InfoService {
     localStorage.setItem('email',undefined);
     localStorage.setItem('nombre',undefined);
     localStorage.setItem('nombreCompleto',undefined);
+    localStorage.setItem('token',undefined);
   }
 
     ///api/user/credential
