@@ -48,6 +48,7 @@ import { SignaturePadModule } from 'angular2-signaturepad';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+import { AuthGuard } from './xservices/authguard/auth.guard.service';
 
 
 
@@ -105,6 +106,7 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
   providers: [
     BarcodeScanner,
     SocialSharing,
+    AuthGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
   ],
   bootstrap: [AppComponent],

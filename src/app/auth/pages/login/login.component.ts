@@ -43,10 +43,16 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['slide'])
     }
 
+    
+    console.log(this.router.url=='/auth');
     route.params.subscribe(val => {
-      
+
       App.addListener('backButton', ({ canGoBack }) => {
-        App.exitApp();
+        
+        if(this.router.url=='/auth'){
+          App.exitApp();
+        }
+        
       });
       
       this.ngOnInit() ;
@@ -60,8 +66,8 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     const token =  localStorage.getItem('token');
-    
-    if(token !== undefined){
+    console.log(token != undefined);
+    if(token != undefined ||  token !== null ){
       this.router.navigate(['home'])
     }
     this.loginForm = this.fb.group({

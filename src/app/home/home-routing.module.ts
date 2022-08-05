@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '../xservices/authguard/auth.guard.service';
 import { HomePage } from './home.page';
 
 const routes: Routes = [
   {
     path: '',
+    //redirectTo: '/auth',
+    canActivate:[AuthGuard],
     component: HomePage,
   }
 ];
@@ -14,6 +17,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
 
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
+  providers :[AuthGuard]
 })
 export class HomePageRoutingModule {}

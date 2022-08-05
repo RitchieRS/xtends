@@ -6,6 +6,7 @@ import { ReferralsPage } from './referrals.page';
 import { ReferMissionComponent } from './refer-mission/refer-mission.component';
 import { CommonModule } from '@angular/common';
 import { ReferNoRegisComponent } from './refer-no-regis/refer-no-regis.component';
+import { AuthGuard } from '../xservices/authguard/auth.guard.service';
 
 const routes: Routes = [
   {

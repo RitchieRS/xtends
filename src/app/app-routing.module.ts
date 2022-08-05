@@ -11,6 +11,7 @@ import { XtendLevelsRoutingModule } from './xtend-levels/xtend-levels-routing.mo
 import { TrainingsRoutingModule } from './trainings/trainings-routing-module';
 import { HelpPageRoutingModule } from './help/help-routing.module';
 import { ReferralsPageRoutingModule } from './referrals/referrals-routing.module';
+import { AuthGuard } from './xservices/authguard/auth.guard.service';
 
 
 
@@ -18,11 +19,12 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule),
-    canActivate:[CheckLoginGuard]
+    //canActivate:[AuthGuard]
   },
 
   {
     path: 'home',
+    canActivate:[AuthGuard],
     loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   },
   {
@@ -92,6 +94,7 @@ const routes: Routes = [
     TrainingsRoutingModule,
     HelpPageRoutingModule,
     ReferralsPageRoutingModule
-  ]
+  ],
+  providers: [AuthGuard]
 })
 export class AppRoutingModule { }

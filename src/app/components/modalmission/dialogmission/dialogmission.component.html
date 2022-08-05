@@ -57,7 +57,15 @@
 
        <section style="margin: 10px 16px 0px 16px;">
         <div class="iup-button-row">
-          <app-social-share-btn></app-social-share-btn>
+          <!--<app-social-share-btn></app-social-share-btn>-->
+
+          
+            <button (click)="shareMission()"  mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend">
+              <mat-icon>share</mat-icon> Compartir
+            </button>
+          
+
+          <!--routerLink]="['/refer-mission/', missRef.idPV, missRef.nombreActividad, missRef.colorServicio, missRef.iconServicio, missRef.pago, missRef.descripcion, missRef.detalle.canal, missRef.detalle.sucursal, missRef.infografia]"-->
           <button (click)="missionPending()" mat-stroked-button class="mat-btn-xtend-navyblue-stroked lb-btn-skybluextend" >
             Ver detalles <mat-icon >chevron_right</mat-icon>
           </button>

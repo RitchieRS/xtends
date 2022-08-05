@@ -15,6 +15,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatInputModule } from '@angular/material/input';
 
 import { ComponentsModule } from '../components/components.module';
+import { AuthGuard } from '../xservices/authguard/auth.guard.service';
 
 
 
@@ -37,6 +38,8 @@ import { ComponentsModule } from '../components/components.module';
     ComponentsModule,
     AgmCoreModule
   ],
-  declarations: [HomePage,Actividad ]
+  declarations: [HomePage,Actividad 
+  ],
+  providers:[AuthGuard]
 })
 export class HomePageModule {}

@@ -19,7 +19,12 @@ export class DialogmissionComponent implements OnInit {
                                                       tiempo: string,
                                                       nivel: string,
                                                       precio: string,
-                                                      nombreActividad:string
+                                                      nombreActividad:string,
+                                                      iconServicio: string,
+                                                      pago: string,
+                                                      descripcion: string,
+                                                      infografia: string
+
 
                                                     },
                                                     private router: Router,
@@ -38,6 +43,13 @@ export class DialogmissionComponent implements OnInit {
     this.matDialog.closeAll();
    ///greenxtend/Promotoria/CDMX/Venustiano%20Carranza
    this.router.navigate(['mission/'+this.data.idPV+'/'+this.data.nombreActividad+'/'+this.data.colorServicio+'/'+this.data.estado+'/'+this.data.ciudad])
+   /// this.router.navigate(['pending-mission/'+this.data.idPV])
+  }
+
+  shareMission(): void{
+    this.matDialog.closeAll();
+   ///greenxtend/Promotoria/CDMX/Venustiano%20Carranza
+   this.router.navigate(['refer-mission/'+this.data.idPV +"/"+ this.data.nombreActividad +"/"+ this.data.colorServicio +"/"+ this.data.iconServicio+"/"+this.data.pago+"/"+this.data.descripcion+"/"+this.data.canal +"/"+this.data.sucursal+"/"+this.data.infografia ])
    /// this.router.navigate(['pending-mission/'+this.data.idPV])
   }
 

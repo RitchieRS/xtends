@@ -35,67 +35,6 @@ export class ProfileComponent implements OnInit {
   isLoaded=0;
   isLoadedProfile=0;
 
-
-
-  // habilidades = [
-  //   {
-  //     color:'greenxtend',
-  //     colortwo:'success',
-  //     tipo:'Fotografía Anaquel',
-  //     avance:'0.25',
-  //     icon:'anaqueleo.svg',
-  //   },
-  //   {
-  //     color:'greenxtend',
-  //     colortwo:'success',
-  //     tipo:'Fotografía Anaquel',
-  //     avance:'0.25',
-  //     icon:'anaqueleo.svg',
-  //   },
-  // ];
-  // pasos = [
-  //   {
-  //     color:'#90c04e',
-  //     colortwo:'success',
-  //     icon:'checkmark-circle',
-  //     title:'1. Ingreso a tienda por persona',
-  //     video:'Video 30 seg.',
-  //     score:'8/9'
-  //   },
-  //   {
-  //     color:'#90c04e',
-  //     colortwo:'success',
-  //     icon:'checkmark-circle',
-  //     title:'2. Documentación y credencial',
-  //     video:'Video 30 seg.',
-  //     score:'7/9'
-  //   },
-  //   {
-  //     color:'#90c04e',
-  //     colortwo:'success',
-  //     icon:'checkmark-circle',
-  //     title:'3. Ubicación de productos',
-  //     video:'Video 30 seg.',
-  //     score:'6/9'
-  //   },
-  //   {
-  //     color:'#90c04e',
-  //     colortwo:'danger',
-  //     icon:'close-circle',
-  //     title:'4. Limpieza y acomodo de anaquel',
-  //     video:'Video 30 seg.',
-  //     score:'5/9'
-  //   },
-  //   {
-  //     color:'#90c04e',
-  //     colortwo:'navyblue',
-  //     icon:'play-circle',
-  //     title:'5. Precios y Descuentos',
-  //     video:'Video 30 seg.',
-  //     score:'4/9'
-  //   },
-  // ];
-
   habilidades: any;
   habilidadesok: any;
   cabrona: any;
@@ -176,7 +115,25 @@ export class ProfileComponent implements OnInit {
               private routerOutlet: IonRouterOutlet,
               private modalController: ModalController,
               private srvHabilidad :  HabilidadesService 
-              ) { }
+              ) {
+                route.params.subscribe(val => {
+                  this.validAccess();
+                 })
+
+               }
+
+               validAccess():void{
+                const token =  localStorage.getItem('token');
+                          //alert(token == undefined)
+                          //alert(token === null)
+                          this.isLoaded=0;
+                          if(token == undefined ||  token === null ){
+                            this.router.navigate(['auth']);
+
+                          }
+              }
+
+              
 
   ngOnInit() {
     console.log(this.nivelTermo);

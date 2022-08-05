@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import {  Servicio, WalletResponse} from 'src/app/xmodels/wallet';
 import { WalletService } from 'src/app/xservices/wallet/wallet.service';
 import { Location } from '@angular/common';
@@ -23,8 +23,23 @@ export class WalletComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private srvWallet: WalletService,
-    private location: Location
-    ) { }
+    private location: Location,
+    private router: Router ) { 
+     
+      route.params.subscribe(val => {
+        this.validAccess();
+       })
+    }
+
+
+    validAccess():void{
+      const token =  localStorage.getItem('token');
+                //alert(token == undefined)
+                //alert(token === null)
+                if(token == undefined ||  token === null ){
+                  this.router.navigate(['auth'])
+                }
+    }
 
   ngOnInit() {
     const token = localStorage.getItem('token');

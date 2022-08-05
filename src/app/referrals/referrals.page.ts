@@ -34,6 +34,11 @@ export class ReferralsPage implements OnInit {
               public ngZone: NgZone,
               private srvRefe: ReferedService,
               private locationService: LocationService) {
+
+                const token =  localStorage.getItem('token');
+                if(token == undefined ||  token === null ){
+                  this.router.navigate(['auth'])
+                }
               
 
     this.lat = 19.4216458;

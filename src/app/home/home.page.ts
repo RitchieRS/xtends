@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { HomeService  } from 'src/app/xservices/home/home.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot , Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Home, Section1, Section1Content,Section3,Section3Content,Section2,Section2Content, HomeLocation, Section4Content, Section4 } from '../xmodels/home';
 import { LoginService } from '../xservices/auth/login.service';
 import { TransitionCheckState } from '@angular/material/checkbox';
@@ -18,7 +18,7 @@ import { PopoverFiltermapComponent } from '../components/popover-filtermap/popov
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit  {
 
 
   currentIndex = 5;
@@ -65,13 +65,30 @@ export class HomePage implements OnInit {
               private storage: StorageHelperService,
               private srvInf: InfoService,
               private popoverCtrl: PopoverController,
+              private route :ActivatedRoute,
               private router: Router) {
-              const token =  localStorage.getItem('token');
-                if(token !== undefined){
-                  this.router.navigate(['auth'])
-                }
+              
+              
+              
+              route.params.subscribe(val => {
+                this.isLoaded=0;
+                this.validAccess();
+              })
+
+              //console.log(auth.isLogged);
 
               }
+
+  validAccess():void{
+    const token =  localStorage.getItem('token');
+              //alert(token == undefined)
+              //alert(token === null)
+              if(token == undefined ||  token === null ){
+                this.router.navigate(['auth'])
+              }
+  }
+
+  
 
   async ngOnInit() {
 
@@ -133,7 +150,11 @@ export class HomePage implements OnInit {
                                               idPV: mission.idPV,
                                               sucursal: mission.sucursal,
                                               tiempo: mission.tiempo,
-                                              nombreActividad: mission.nombreActividad
+                                              nombreActividad: mission.nombreActividad,
+                                              iconServicio: mission.iconServicio,
+                                              pago: mission.pago,
+                                              descripcion:mission.descripcion,
+                                              infografia: mission.infografia
                                             }
                                           });
 
@@ -232,8 +253,10 @@ export class HomePage implements OnInit {
       }
       loadDataMission():void{
         this.homeService.getDataHome(this.reqHome, this.location ).subscribe((res) =>{
-          console.log(res);
+          //onsole.log();
+         
           this.isLoaded=1;
+          let resp  = res['idError']; 
            if(res){
             this.dataHome=  res;
             //console.log(this.dataHome);
@@ -298,10 +321,16 @@ export class HomePage implements OnInit {
 
               console.log(this.missionsAvalDatamap);
             }
+
+           
             //console.log(this.dataHome.section1);
 
            // console.log(this.dataHome);
            }
+          if(res['idError']==1){
+            localStorage.setItem('token',undefined);
+            this.router.navigate(['auth'])
+          }
         })
       }
 
@@ -325,6 +354,8 @@ export class HomePage implements OnInit {
 
 
 import { Pipe, PipeTransform } from '@angular/core';
+import { nullSafeIsEquivalent } from '@angular/compiler/src/output/output_ast';
+import { Observable } from 'rxjs';
 
 @Pipe({
     name: 'actividad',
