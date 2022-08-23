@@ -71,8 +71,12 @@ export class HomePage implements OnInit  {
               
               
               route.params.subscribe(val => {
-                this.isLoaded=0;
+                //this.isLoaded=0;
+                this.reqHome = localStorage.getItem('token');
+                this.loadZones()
+                this.loadDataMission();
                 this.validAccess();
+                
               })
 
               //console.log(auth.isLogged);
@@ -125,9 +129,8 @@ export class HomePage implements OnInit  {
       "lat" : Number(this.lat),
       "lgn" : Number(this.lng)
     }
-    this.reqHome = localStorage.getItem('token');
-    this.loadZones()
-    this.loadDataMission();
+    
+   
   }
 
   seeMore(){
