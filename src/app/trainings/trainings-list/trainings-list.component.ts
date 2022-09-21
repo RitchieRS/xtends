@@ -44,7 +44,7 @@ export class TrainingsListComponent implements OnInit {
     this.idCliente = this.route.snapshot.paramMap.get('idCliente');
     this.idProyecto = this.route.snapshot.paramMap.get('idProyecto');
   
-
+    console.log("Requets: idCliente" + this.idCliente + "IdProyecto" + this.idProyecto )
     this.srvHabilidad.getXProyect(token, this.idCliente, this.idProyecto).subscribe((res) => {
 
       this.respuestaHabiliad = res.resp;

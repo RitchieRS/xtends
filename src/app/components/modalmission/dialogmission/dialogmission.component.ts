@@ -48,8 +48,10 @@ export class DialogmissionComponent implements OnInit {
 
   shareMission(): void{
     this.matDialog.closeAll();
+    console.log('refer-mission/'+this.data.idPV +"/"+ this.data.nombreActividad +"/"+ this.data.colorServicio +"/"+ this.data.iconServicio+"/"+this.data.pago+"/"+this.data.descripcion+"/"+this.data.canal +"/"+this.data.sucursal+"/"+this.data.infografia)
    ///greenxtend/Promotoria/CDMX/Venustiano%20Carranza
-   this.router.navigate(['refer-mission/'+this.data.idPV +"/"+ this.data.nombreActividad +"/"+ this.data.colorServicio +"/"+ this.data.iconServicio+"/"+this.data.pago+"/"+this.data.descripcion+"/"+this.data.canal +"/"+this.data.sucursal+"/"+this.data.infografia ])
+   this.router.navigate(['refer-mission/'+this.data.idPV +"/"+ this.data.nombreActividad +"/"+ this.data.colorServicio +"/"+ this.data.iconServicio+"/"+this.data.pago+"/"+this.data.descripcion+"/Canal/"+this.data.sucursal+"/undefined"])
+   ///refer-mission/:idPV/:nombreActividad/:colorServicio/:iconServicio/:pago/:descripcion/:canal/:sucursal/:infografia
    /// this.router.navigate(['pending-mission/'+this.data.idPV])
   }
 
