@@ -18,7 +18,7 @@
              <ion-input formControlName="pass"  type="password" id="passfield"  ></ion-input>
            </ion-item>
            <ion-text color="danger" *ngIf="isSignUpFailed" class="invalid-feedback ion-text-center">
-            <p>Usuario Inválido.</p>
+            <p>{{messag_serv}}</p>
            </ion-text>
            <ion-grid>
              <ion-row class="ion-justify-content-center">

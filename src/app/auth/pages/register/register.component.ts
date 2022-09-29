@@ -13,7 +13,8 @@ export class RegisterComponent implements OnInit {
   isRegisterFailed = false;
   confirmPass = false;
   errorMessage = '';
-  submitted =false; 
+  submitted =false;
+  messag_serv : string; 
   constructor(private router: Router,private register : LoginService, private fb : FormBuilder) { }
 
   ngOnInit() {
@@ -63,6 +64,7 @@ export class RegisterComponent implements OnInit {
         this.registerForm.reset();
         this.router.navigate(['auth/confirm']);
       }else{
+        this.messag_serv=res['resp'];
         this.isRegisterFailed = true;
       }
     }) 

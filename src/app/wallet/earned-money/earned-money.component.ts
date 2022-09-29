@@ -29,7 +29,7 @@ export class EarnedMoneyComponent implements OnInit {
       (res) => {
         console.log(res);
         this.dataEarnedMoney = res.resp;
-        this.saldoTotal = this.dataEarnedMoney.saldoTotal;
+        this.saldoTotal = this.dataEarnedMoney.saldoTotal!=null || this.dataEarnedMoney.saldoTotal != undefined || this.dataEarnedMoney.saldoTotal != "" ? this.dataEarnedMoney.saldoTotal: "0.00" ;
         console.log(this.saldoTotal);
 
         this.detalleAka = this.dataEarnedMoney.detalle;

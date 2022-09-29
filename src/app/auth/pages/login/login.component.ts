@@ -11,6 +11,8 @@ import {
   Geolocation
 } from '@capacitor/geolocation';
 import { HabilidadesService } from 'src/app/xservices/habilidades/habilidades.service';
+import { HomeService } from 'src/app/xservices/home/home.service';
+import { HomeLocation } from 'src/app/xmodels/home';
 
 @Component({
   selector: 'app-login',
@@ -27,13 +29,16 @@ export class LoginComponent implements OnInit {
   lat: any;
   lng: any;
   watchId: any;
+  messag_serv:string;
+  location:HomeLocation;
   constructor(private router: Router,
               private login : LoginService,
               private fb : FormBuilder,
               private route :ActivatedRoute,
               public ngZone: NgZone,
               private locationService: LocationService,
-              private srvHabilidad :  HabilidadesService) {
+              private srvHabilidad :  HabilidadesService,
+              private homeService : HomeService) {
 
     this.lat = 19.4216458;
 
@@ -68,7 +73,17 @@ export class LoginComponent implements OnInit {
     const token =  localStorage.getItem('token');
     console.log(token != undefined);
     if(token != undefined ||  token !== null ){
-      this.router.navigate(['home'])
+      this.location = {
+        "lat" : Number(this.lat),
+        "lgn" : Number(this.lng)
+      }
+      
+      this.homeService.getDataHome(token, this.location ).subscribe((res) =>{
+        if(res['idError']==0){
+          this.router.navigate(['home'])
+        }
+      })
+      
     }
     this.loginForm = this.fb.group({
       "user": ['', [Validators.required,Validators.minLength(4)]],
@@ -95,16 +110,17 @@ export class LoginComponent implements OnInit {
     formValue.lat = this.lat;
     formValue.lng = this.lng;
     this.locationService.setLocation(this.lat,this.lng);
-
+    
     this.login.login(formValue).subscribe((res) =>{
         console.log(res);
-
+        
         if(res['idError']==0){
           console.log(res);
           localStorage.setItem('idUser',res['resp'].usuario.id);
           localStorage.setItem('new','1');
           this.router.navigate(['home'])
         }else{
+          this.messag_serv=res['resp'];
           this.isSignUpFailed = true;
         }
       })

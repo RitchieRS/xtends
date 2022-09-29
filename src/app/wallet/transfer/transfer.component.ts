@@ -97,7 +97,7 @@ export class TransferComponent implements OnInit {
     this.srvWallet.getEarnedMoney(token).subscribe(
       (res) => {
         this.dataEarnedMoney = res.resp;
-        this.saldoTotal = this.dataEarnedMoney.saldoTotal;
+        this.saldoTotal = this.dataEarnedMoney.saldoTotal!= null || this.dataEarnedMoney.saldoTotal!= undefined || this.dataEarnedMoney.saldoTotal!=""  ? this.dataEarnedMoney.saldoTotal: "0.00";
       }
     );
   }
