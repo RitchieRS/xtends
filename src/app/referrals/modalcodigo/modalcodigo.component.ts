@@ -40,7 +40,7 @@ export class DialogCodigo implements OnInit{
   public refealGroup: FormGroup;
   ngOnInit(): void {
     this.refealGroup = this.fb.group({
-      "email": ['', [Validators.required]],
+      "email": ['', [Validators.required, Validators.email]],
       "name": ['', [Validators.required]],
       "lastname": ['', [Validators.required]],
     });
