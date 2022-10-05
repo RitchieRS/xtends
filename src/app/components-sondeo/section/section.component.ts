@@ -54,42 +54,38 @@ preguntasAux:any;
       return !duplicate;
     });
     let idSPregunta = [];
+    //&& idRespuesta !=0
         if(isValid==1 && idRespuesta !=0 ){
-          dependencias = this.preguntasAux.filter( pregunta => {  return Number(pregunta.dependePregunta) == idPregunta } );
-          console.log("Dependencias 1")
-          console.log(dependencias);
-          console.log(this.preguntas);
+          dependencias = this.preguntasAux.filter( 
+            pregunta => {  
+              console.log("dependeRespuesta:" + pregunta.dependeRespuesta + " - "+ (pregunta.dependeRespuesta  == 0) + " dependePregunta" + pregunta.dependePregunta + "-" +Number(idPregunta) )
+              return (Number(pregunta.dependePregunta) == Number(idPregunta)  || Number(pregunta.dependeRespuesta) == idRespuesta )} );
+
+          dependenciasAx = this.preguntasAux.filter( 
+                pregunta => {  
+                  return (Number(pregunta.dependePregunta) == Number(idPregunta) && Number(pregunta.dependeRespuesta) == Number(idRespuesta)) } );
+          
+          console.log("Dependencias Size 1 : " + dependencias.length);
+          console.log("Dependencias Size 2 : " + dependenciasAx.length);
+   
           dependencias.forEach((item) => {
-            //((Number(pregunta.dependePregunta) == item.idPregunta) || 
-              let check =  dependencias = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependeRespuesta) ===  idRespuesta )) } );
-              console.log("Check length : "+check.length);
-              console.log("Check item : "+item)
+            console.log("Dependende RES: " + item.dependeRespuesta);
+            console.log("Dependende PRE: " + item.dependePregunta);
+            console.log("Dependende RES: " + idRespuesta);
+            console.log("Dependende PRE: " + idPregunta);
+          
+            let check = this.preguntas.filter(obj => {return obj.idPregunta == item.idPregunta });
+              console.log("Filtro Dependencias ")
+
               if(check.length == 0 ){
-                
                 this.preguntas.push(item);
                 let order = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
-
-               /*const filteredArr = order.filter(el => {
-                  const duplicate = auxArrSeen.has(el.idPregunta);
-                  auxArrSeen.add(el.idPregunta);
-                  return !duplicate;
-                });
-
-                order = filteredArr;*/
-
                 this.preguntas = order;
               }else{
-                //(Number(pregunta.dependePregunta) == idPregunta) && 
-                dependencias = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) === idPregunta) && (Number(pregunta.dependeRespuesta) ===  idRespuesta )) } );
-                console.log("Dependencias 2")
-                console.log(dependencias)
-                /*const filteredArr = dependencias.filter(el => {
-                  const duplicate = auxArrSeen.has(el.idPregunta);
-                  auxArrSeen.add(el.idPregunta);
-                  return !duplicate;
-                });
-                dependencias =  filteredArr;*/
-                this.preguntas = dependencias;
+                console.log("Entra al if sin dudas chavon ")
+                 dependencias = this.preguntas.filter( pregunta => {   return !(((Number(pregunta.idPregunta) == Number(item.idPregunta)) )) } );
+
+                 this.preguntas = dependencias.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
               }
 
 
@@ -97,7 +93,7 @@ preguntasAux:any;
           })
         }
        
-        console.log(dependencias);
+       // console.log(dependencias);
   }
 
 }

@@ -99,6 +99,10 @@ export class ReferMissionComponent implements OnInit {
       this.presentToast('¡Procesando info!');
       console.warn(this.formMissionRef.value);
       const token = localStorage.getItem('token');
+      if(this.formMissionRef.valid!=true){
+        this.presentToast('¡Ingrese datos correctos!');
+        return;
+      }
       const datosForMail = {
         idPV: this.formMissionRef.get('idPV').value,
         email: this.formMissionRef.get('email').value,

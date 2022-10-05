@@ -46,6 +46,18 @@ export class DialogCodigo implements OnInit{
     });
   }
 
+  get email(){
+    return this.refealGroup.get('email');
+  }
+
+  get firstName(){
+    return this.refealGroup.get('name');
+  }
+
+  get lastName(){
+    return this.refealGroup.get('lastname');
+  }
+
     submit(){
       console.log("abierta");
 
@@ -54,7 +66,10 @@ export class DialogCodigo implements OnInit{
         type: "referred",
         email:this.refealGroup.get('email').value
       }
-      console.log(mailData );
+      if(this.refealGroup.valid==false){
+        this.presentToast('¡Ingrese datos correctos!');
+        return
+      }
 
       this.infSrv.sendMail(token,mailData).subscribe((res) =>{
        console.log(res);
