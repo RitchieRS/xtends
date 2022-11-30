@@ -144,7 +144,8 @@ export class StartMissionComponent implements OnInit  {
 
                           this.idPreguntaStr = value['idPregunta'].toString();
                           this.productosAx = value['productos'];
-                          if(this.productosAx!==undefined){
+                          console.log("Productos"+this.productosAx.length+"")
+                          if(this.productosAx.length!=0){
                             Object.entries(this.productosAx).forEach(
                               ([key, value]) =>{
                                 this.idSkuStr = value['sku'].toString();
@@ -156,9 +157,9 @@ export class StartMissionComponent implements OnInit  {
                                 })
                             })
 
-                          }else{
-                            this.idRespuestaSondeo.idrespuestas.push(this.idSondeoStr+'||'+this.idPreguntaStr);
-                          }
+                            }else{
+                              this.idRespuestaSondeo.idrespuestas.push(this.idSondeoStr+'||'+this.idPreguntaStr);
+                            }
                     })
 
                 }
@@ -183,28 +184,31 @@ export class StartMissionComponent implements OnInit  {
     toast.present();
   }
 
-  async loadFiles(paths:any, callback: (param:any) => any) {
+   loadFiles(paths:any, callback: (param:any) => any) {
     let imgResult = [];
-    const loading = await this.loadingCtrl.create({
-      message: 'Recopilando...',
-    });
-    await loading.present();
+    
+   
+    //oading.present();
 
     Filesystem.readdir({
       path: IMAGE_DIR,
       directory: Directory.Data,
     }).then(async result => {
+      console.log(result.files);
+      console.log(paths);
         imgResult = await Promise.resolve( this.loadFileData(result.files,paths))
+        
     },
       async (err) => {
         // Folder does not yet exists!
+        console.log("Folder does not yet exists!");
         await Filesystem.mkdir({
           path: IMAGE_DIR,
           directory: Directory.Data,
         });
       }
     ).then(_ => {
-      loading.dismiss();
+      //loading.dismiss();
        callback(imgResult);
     });
   }
@@ -227,7 +231,7 @@ export class StartMissionComponent implements OnInit  {
                 data: `data:image/jpeg;base64,${readFile.data}`,
                 recursive: true
             });
-            ///console.log(imgResult);
+            console.log(imgResult);
             return imgResult
         }
     }
@@ -242,7 +246,7 @@ export class StartMissionComponent implements OnInit  {
 
 async sendSondeo(){
    try{
-       console.log(this.validSondeo)
+       console.log(this.respuestasSondeo)
           if(this.validSondeo==1){
 
 
@@ -254,6 +258,10 @@ async sendSondeo(){
 
           });
          // const enviado = await  this.presentToast('Sondeo Enviado');
+         for(let i of this.idRespuestaSondeo.idrespuestas){
+           console.log(i);
+          this.storage.removeItem(i.toString())
+         }
           this.router.navigate(['check-out/'+this.idPV.toString()]);
         }else{
           this.presentToast('Antes valide el sondeo');
@@ -276,17 +284,21 @@ async review(){
    try{
   let obligatorioTotal=0;
   let validTotal=0;
+  
    this.respuestasSondeo.respuestas=[];
    this.respuestasSondeo.idPV = this.idPV.toString();
    for(let i of this.idRespuestaSondeo.idrespuestas){
         await Promise.resolve(this.storage.getObject(i.toString()).then((question: any) => {
+          
               if(question!=null){
                 this.respuestasSondeo.respuestas.push(question);
               }
         }));
     }
-    for(let i of this.respuestasSondeo.respuestas){
 
+    
+    for(let i of this.respuestasSondeo.respuestas){
+      
                     if(i['tipo'] == 'fotografia' || i['tipo'] == 'carrusel' || i['tipo'] == 'cargaimagen'){
                         await Promise.resolve( this.loadFiles(i['paths'],data => {
                             i['saveImages'] = data;
@@ -307,6 +319,7 @@ async review(){
 
      console.log('Validos: '+validTotal)
      console.log('Obligatorio: '+obligatorioTotal)
+     this.respuestasSondeo.respuestas = this.respuestasSondeo.respuestas.slice(0,10);
      console.log(this.respuestasSondeo);
   }catch(e){
     this.presentToast('Error inesperado..');

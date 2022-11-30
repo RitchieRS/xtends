@@ -94,7 +94,7 @@ export class MissionService {
             console.log(res);
             return res;
           }),
-          catchError((err)=> this.handeleError(err))
+          //catchError((err)=> this.handeleError(err))
     );
   };
 
@@ -114,7 +114,7 @@ export class MissionService {
             console.log(res);
             return res;
           }),
-          catchError((err)=> this.handeleError(err))
+         // catchError((err)=> this.handeleError(err))
     );
   };
 

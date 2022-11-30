@@ -62,6 +62,7 @@ export class FotografiaComponent implements OnInit {
                   path: IMAGE_DIR,
                   directory: Directory.Data,
                 }).then(result => {
+                  
                   this.loadFileData(result.files);
                 },
                   async (err) => {
@@ -252,9 +253,12 @@ export class FotografiaComponent implements OnInit {
     this.respuestas.idPregunta = this.idStrQuest;
     this.respuestas.tipo = this.tipo;
     this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
-    //alert(this.respuestas.tipo);
-    //alert(this.respuestas.paths[0])
+    console.log("Set paths");
+    console.log(this.respuestas)
     this.storage.setObject(this.idStrQuest,this.respuestas);
+    this.storage.getObject(this.idStrQuest).then((question: any) => {
+      console.log(question)
+    });
   }
 
 }

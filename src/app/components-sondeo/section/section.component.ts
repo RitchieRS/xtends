@@ -43,57 +43,29 @@ preguntasAux:any;
 
    checkCompleteParent = (idPregunta: number,isValid:number,idRespuesta:number): void => {
 
-    console.log("analizando dependencias"+idPregunta + " Depende de id Respuesta" + idRespuesta +" : valid "+ isValid);
+    //console.log("analizando dependencias"+idPregunta + " Depende de id Respuesta" + idRespuesta +" : valid "+ isValid);
     let dependencias = [];
     let dependenciasAx = [];
     const auxArrSeen = new Set();
-    //this.preguntas = this.preguntasAux;
-    this.preguntas = this.preguntas.filter(el => {
-      const duplicate = auxArrSeen.has(el.idPregunta);
-      auxArrSeen.add(el.idPregunta);
-      return !duplicate;
-    });
-    let idSPregunta = [];
-    //&& idRespuesta !=0
+        this.preguntas = this.preguntas.filter(el => {
+          const duplicate = auxArrSeen.has(el.idPregunta);
+          auxArrSeen.add(el.idPregunta);
+          return !duplicate;
+        });
         if(isValid==1 && idRespuesta !=0 ){
           dependencias = this.preguntasAux.filter( 
-            pregunta => {  
-              console.log("dependeRespuesta:" + pregunta.dependeRespuesta + " - "+ (pregunta.dependeRespuesta  == 0) + " dependePregunta" + pregunta.dependePregunta + "-" +Number(idPregunta) )
-              return (Number(pregunta.dependePregunta) == Number(idPregunta)  || Number(pregunta.dependeRespuesta) == idRespuesta )} );
-
-          dependenciasAx = this.preguntasAux.filter( 
-                pregunta => {  
-                  return (Number(pregunta.dependePregunta) == Number(idPregunta) && Number(pregunta.dependeRespuesta) == Number(idRespuesta)) } );
-          
-          console.log("Dependencias Size 1 : " + dependencias.length);
-          console.log("Dependencias Size 2 : " + dependenciasAx.length);
-   
+            pregunta => {  return (Number(pregunta.dependePregunta) == Number(idPregunta)  || Number(pregunta.dependeRespuesta) == idRespuesta )} );
           dependencias.forEach((item) => {
-            console.log("Dependende RES: " + item.dependeRespuesta);
-            console.log("Dependende PRE: " + item.dependePregunta);
-            console.log("Dependende RES: " + idRespuesta);
-            console.log("Dependende PRE: " + idPregunta);
-          
             let check = this.preguntas.filter(obj => {return obj.idPregunta == item.idPregunta });
-              console.log("Filtro Dependencias ")
-
               if(check.length == 0 ){
                 this.preguntas.push(item);
-                let order = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
-                this.preguntas = order;
+                this.preguntas = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
               }else{
-                console.log("Entra al if sin dudas chavon ")
                  dependencias = this.preguntas.filter( pregunta => {   return !(((Number(pregunta.idPregunta) == Number(item.idPregunta)) )) } );
-
                  this.preguntas = dependencias.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
-              }
-
-
-             
+              } 
           })
         }
-       
-       // console.log(dependencias);
   }
 
 }

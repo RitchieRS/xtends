@@ -31,7 +31,7 @@ export class NumericaComponent implements OnInit {
   @Input() checkCompleteChild: (idPregunta: number, isValid:number, idRespuesta:number ) => void;
   isValid = 0;
   idStrQuest = "";
-  RequiredValue:Validators[];
+  RequiredValue:Validators[]=[];
   respuestas={
     idPregunta:"",
     tipo:      "",
@@ -48,19 +48,17 @@ export class NumericaComponent implements OnInit {
                 });
               }
 
-  async ngOnInit() {
+  ngOnInit() {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
-    console.log(this.idStrQuest);
+    
     if(this.obligatorio==1){
      this.RequiredValue.push(Validators.required);
     }
     
-   await this.storage.getObject(this.idStrQuest).then((question: any) => {
-     this.respuestaStr = question.respuesta;
-     this.isValid = this.respuestaStr.length>0 ? 1 : 0;
-     
-    });
-   this.respuestas = {
+   this.storage.getObject(this.idStrQuest).then((question: any) => {
+     this.respuestaStr = question.respuesta.toString();
+     this.isValid = this.respuestaStr.length > 0 ? 1 : 0;
+     this.respuestas = {
       idPregunta:this.idStrQuest,
       tipo:      this.tipo,
       respuesta: this.respuestaStr,
@@ -68,21 +66,26 @@ export class NumericaComponent implements OnInit {
       idOpcion:0
     }
     this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
+    
+    });
+   
    
   }
   
 
   submit(){
-    console.log("Soy un change");
-    console.log(this.numericaGroup);
+   
     if(this.numericaGroup.status=="VALID"){
-      console.log(this.numericaGroup.get('numerica').value);
+     
       this.respuestas.valid = (this.numericaGroup.get('numerica').value == '' || this.numericaGroup.get('numerica').value === null ) ? 0 : 1 ;
+      
       this.isValid = this.respuestas.valid;
+      this.isValid = this.respuestas.respuesta=this.numericaGroup.get('numerica').value;
       this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
       this.storage.setObject(this.idStrQuest,this.respuestas);
     }else{
       this.isValid = 0;
+
     }
 
   }

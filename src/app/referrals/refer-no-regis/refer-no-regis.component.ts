@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-
+import { Share } from '@capacitor/share';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 @Component({
   selector: 'app-refer-no-regis',
   templateUrl: './refer-no-regis.component.html',
@@ -32,12 +33,13 @@ export class ReferNoRegisComponent implements OnInit {
        txt4: 'Actividades:',
        txt5: 'Código: ',
        txt6: 'DONSUNN71279SD',
-       txt7: 'https://xtendapp.com/misiones_referidos',
+       txt7: 'https://xtendapp.com/referidos/recomendacion_xtender',
      };
 
   constructor(
     private toastCtrl: ToastController,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private socialSharing: SocialSharing
   ) {}
 
   ngOnInit() {
@@ -50,9 +52,11 @@ export class ReferNoRegisComponent implements OnInit {
     this.textoSeis = this.evrytingTxt.txt6;
     this.textSiete = this.evrytingTxt.txt7;
 
+    
+
     // eslint-disable-next-line max-len
     this.txtForCopy = this.textoUno +  ' '
-    + this.textoDos+  ' | ' + this.textoTres+  ' | '
+    + this.textoDos+  ' | '
     + this.textoCuatro + ' ' + this.ligaInfografia + ' '
     + this.textoCinco + this.textoSeis+  ' | '
     + this.textSiete;
@@ -66,6 +70,7 @@ export class ReferNoRegisComponent implements OnInit {
       position: 'top',
       mode : 'ios',
     });
+    this.socialSharing.shareViaWhatsApp(this.txtForCopy , 'https://xtendapp.com/images/infografia_appxtend_2-02.png' , null )
     toast.present();
   }
 

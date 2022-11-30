@@ -64,7 +64,7 @@ export class SkuComponent implements OnInit {
     if(producto.length==1)
         await this.openDialog(producto,0);
     else
-       this.presentToast('Codigo de Barras no encontrado');
+       this.presentToast('Código de Barras no encontrado');
   }
 
   async presentToast(text) {
@@ -80,7 +80,7 @@ export class SkuComponent implements OnInit {
   }
 
   async openDialog(producto:any,index:number){
-      alert(producto.img);
+      //alert(producto.img);
       const dialogRef = this.dialog.open(DialogCaptureproductinfoComponent ,{
           data: {
             img : producto.img,
