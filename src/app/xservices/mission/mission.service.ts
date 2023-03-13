@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { ReqMission, Mission, ResMissionAccepted, AMission, ContentMission} from 'src/app/xmodels/missions';
 import { catchError, map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Sondeo } from 'src/app/xmodels/sondeo';
+import { DetalleSondeo, Sondeo } from 'src/app/xmodels/sondeo';
 import { SondeoInf } from 'src/app/xmodels/sondeinf';
 
 @Injectable({
@@ -67,9 +67,34 @@ export class MissionService {
       responseType: 'json' as 'json'
     };
 
-
-    return this.http.post<Mission>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+//https://cyimi79hoi.execute-api.us-west-2.amazonaws.com
+    //return this.http.post<Mission>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+      return this.http.post<Mission>(`https://cyimi79hoi.execute-api.us-west-2.amazonaws.com/api/visitas/sondeo`,request ,httpOptions).pipe(
           map(( res :  Mission)=>{
+            console.log(res);
+            return res;
+          }),
+          catchError((err)=> this.handeleError(err))
+    );
+  };
+
+
+  getSondeoDetalle(request : any ,token : string):Observable<DetalleSondeo >{
+    console.log('sondeoDetalle');
+    console.log(request);
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Accept': 'text/html',
+        'Content-Type': 'application/json',
+        'Authorization' : token
+      }),
+      responseType: 'json' as 'json'
+    };
+
+//https://cyimi79hoi.execute-api.us-west-2.amazonaws.com
+    //return this.http.post<Mission>(`${environment.API_URL}visitas/sondeo`,request ,httpOptions).pipe(
+      return this.http.post< any >(`${environment.API_URL}missions`,request ,httpOptions).pipe(
+          map(( res :  DetalleSondeo)=>{
             console.log(res);
             return res;
           }),

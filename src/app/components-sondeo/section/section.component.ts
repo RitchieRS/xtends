@@ -28,24 +28,18 @@ preguntasAux:any;
   constructor(private storage: StorageHelperService) { 
     
   }
-
   ngOnInit() {
     this.preguntas = this.preguntas.sort((a, b) => (a.orden > b.orden  ) ? 1 : -1);
     this.preguntasAux = this.preguntas;
-    
     const independientes = this.preguntas.filter( pregunta => {  return ((Number(pregunta.dependePregunta) == 0 ) &&  (Number(pregunta.dependeRespuesta == 0 ) ) ) } );
     this.preguntas = independientes;
-    //console.log(dependencias);
-    //console.log(independientes)
-    //console.log(this.preguntasAux);
     this.idSondeoStr = this.idSondeo.toString();
   }
-
-   checkCompleteParent = (idPregunta: number,isValid:number,idRespuesta:number): void => {
-
-    //console.log("analizando dependencias"+idPregunta + " Depende de id Respuesta" + idRespuesta +" : valid "+ isValid);
+  checkCompleteParent = (idPregunta: number,isValid:number,idRespuesta:number): void => {
+    console.log("section idPregunta"+idPregunta + "Depende Respuesta" + idRespuesta)
+    //dependePregunta
+    this.preguntas = this.preguntas.filter( pregunta => {   return !((Number(pregunta.dependePregunta) == idPregunta )) } );
     let dependencias = [];
-    let dependenciasAx = [];
     const auxArrSeen = new Set();
         this.preguntas = this.preguntas.filter(el => {
           const duplicate = auxArrSeen.has(el.idPregunta);
@@ -54,14 +48,14 @@ preguntasAux:any;
         });
         if(isValid==1 && idRespuesta !=0 ){
           dependencias = this.preguntasAux.filter( 
-            pregunta => {  return (Number(pregunta.dependePregunta) == Number(idPregunta)  || Number(pregunta.dependeRespuesta) == idRespuesta )} );
+            pregunta => {  return (Number(pregunta.dependePregunta) == Number(idPregunta)  && Number(pregunta.dependeRespuesta) == idRespuesta )} );
           dependencias.forEach((item) => {
-            let check = this.preguntas.filter(obj => {return obj.idPregunta == item.idPregunta });
+            let check = this.preguntas.filter(obj => {return Number(obj.idPregunta) == Number(item.idPregunta) });
               if(check.length == 0 ){
                 this.preguntas.push(item);
                 this.preguntas = this.preguntas.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
               }else{
-                 dependencias = this.preguntas.filter( pregunta => {   return !(((Number(pregunta.idPregunta) == Number(item.idPregunta)) )) } );
+                 dependencias = this.preguntas.filter( pregunta => {   return !((   (Number(pregunta.idPregunta) == Number(item.idPregunta))   && Number(pregunta.dependePregunta) == Number(idPregunta) &&  Number(pregunta.dependeRespuesta) == idRespuesta ) ) } );
                  this.preguntas = dependencias.sort((a, b) => (a.orden< b.orden) ? -1 : 1);
               } 
           })

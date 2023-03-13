@@ -9,6 +9,8 @@ const { Toast } = Plugins;
 import { Geolocation } from '@capacitor/geolocation';
 import { MapsAPILoader } from '@agm/core';
 import { ToastController } from '@ionic/angular';
+import { MissionService } from 'src/app/xservices/mission/mission.service';
+import { Detalle } from 'src/app/xmodels/missions';
 @Component({
   selector: 'app-check-in',
   templateUrl: './check-in.component.html',
@@ -23,6 +25,12 @@ export class CheckInComponent implements OnInit {
   checkin : CheckinReq;
   watchId: any;
   isLocationAvailalble=0;
+  colorServicio: string;
+  nombreCliente: string;
+  nombreActividad : string;
+  iconServicio: string;
+  detalleMision : Detalle;
+  ciudad : string;
   pinchoLocation= {
     url: './assets/icon/location-navybluextend.svg',
     scaledSize: {
@@ -36,9 +44,11 @@ export class CheckInComponent implements OnInit {
               public ngZone: NgZone,
               private router: Router,
               private _mapsAPILoader: MapsAPILoader,
-              private toastCtrl: ToastController) {
+              private toastCtrl: ToastController,
+              private srvMission : MissionService) {
     this.idPV = Number(this.route.snapshot.paramMap.get('idPV'));
     this.token = localStorage.getItem('token');
+   
     this.lat = 19.4216458;
     this.lgn = -99.0691779;
 
@@ -91,6 +101,21 @@ export class CheckInComponent implements OnInit {
     (async () => {
       const data = await this.getMyLocation();
     })();
+
+    const dataMission = {
+      "idPV": this.idPV
+    };
+    const token =  localStorage.getItem('token');
+    this.srvMission.getSondeoDetalle(dataMission,token).subscribe((res)=>{
+      if(res){
+        console.log(res.resp.colorServicio);
+        this.nombreCliente = res.resp.nombreCliente;
+        this.colorServicio = res.resp.colorServicio;
+        this.nombreActividad = res.resp.nombreActividad;
+        this.ciudad = res.resp.detalle.ciudad;
+
+      }
+    })
   }
 
   async refrechUbicationLogIn(){

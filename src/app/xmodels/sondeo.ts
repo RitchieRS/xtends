@@ -1,3 +1,6 @@
+import { HabilidadesService } from "../xservices/habilidades/habilidades.service";
+import { Habilidades } from "./missions";
+
 export interface Sondeo {
     idError: number;
     resp:    Resp[];
@@ -60,5 +63,36 @@ export interface ProductoPregunta {
     orden:            number;
     minimo:           number;
     maximo:           number;
+}
+
+export interface DetalleSondeo {
+    idError: number;
+    resp:    Resp;
+}
+
+export interface Resp {
+    idPV:            number;
+    idUsuario:       number;
+    idTienda:        number;
+    idProyecto:      number;
+    nombreCliente:   string;
+    nombreActividad: string;
+    pago:            string;
+    nivel:           number;
+    imgCliente:      string;
+    detalle:         Detalle;
+    habilidades:     Habilidades[];
+    colorServicio:   string;
+    iconServicio:    string;
+    infografia:      string;
+}
+
+export interface Detalle {
+    canal:    string;
+    cadena:   string;
+    sucursal: string;
+    tiempo:   string;
+    estado:   string;
+    ciudad:   string;
 }
 

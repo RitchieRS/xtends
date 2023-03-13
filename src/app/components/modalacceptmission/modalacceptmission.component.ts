@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
-import { ReqMission, ResMissionAccepted } from 'src/app/xmodels/missions';
+import { ReqMission, ResMissionAccepted, RespMission } from 'src/app/xmodels/missions';
 import { MissionService } from 'src/app/xservices/mission/mission.service';
 import { DialogcheckinComponent } from '../modalcheckin/dialogcheckin/dialogcheckin.component';
 import { DialogacceptmissionComponent } from './dialogacceptmission/dialogacceptmission.component';
@@ -20,6 +20,13 @@ export class ModalacceptmissionComponent implements OnInit{
   @Input() colorServicio:string;
   @Input() idProyecto:string;
   @Input() idCliente : string;
+  @Input() missionDetail : RespMission;
+  @Input() iconServicio : string;
+  @Input() imgCliente : string;
+  @Input() nombreActividad : string;
+  @Input() nombreCliente : String;
+  @Input() pago : string;
+
   dataMission : ReqMission;
   token:string;
   message = '';
@@ -73,16 +80,34 @@ export class ModalacceptmissionComponent implements OnInit{
         this.dialog.open(DialogacceptmissionComponent, {
           data: { message: this.message ,
                   idPV: this.idPV,
-                  colorServicio: this.colorServicio
-                },
+                  colorServicio: this.colorServicio,
+                  iconServicio: this.iconServicio,
+                  imgCliente : this.imgCliente,
+                  nombreActividad: this.nombreActividad,
+                  nombreCliente : this.nombreCliente,
+                  pago : this.pago
+          },
         })
         
       }
-      else if(this.isMission.idError==2){
-        this.presentToast("Esta Misión ya esta en Mis misiones");
-        this.router.navigate(['start-mission/'+this.idPV]);
-      }
       else{
+        this.dialog.open(DialogacceptmissionComponent, {
+          data: { message: this.message ,
+                  idPV: this.idPV,
+                  colorServicio: this.colorServicio,
+                  iconServicio: this.iconServicio,
+                  imgCliente : this.imgCliente,
+                  nombreActividad: this.nombreActividad,
+                  nombreCliente : this.nombreCliente,
+                  pago : this.pago
+                },
+        })
+      }
+      //else if(this.isMission.idError==2){
+        //this.presentToast("Esta Misión ya esta en Mis misiones");
+        //this.router.navigate(['start-mission/'+this.idPV]);
+      //}
+      /*else{
         //MANDA A HABILIDADES$
         this.dialog.open(DialogcheckinComponent,{data: { 
           colorServicio: this.colorServicio,
@@ -90,7 +115,7 @@ export class ModalacceptmissionComponent implements OnInit{
           idCliente: this.idCliente
         }})
 
-      }
+      }*/
   
     })
   }

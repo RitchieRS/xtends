@@ -231,7 +231,7 @@ export class StartMissionComponent implements OnInit  {
                 data: `data:image/jpeg;base64,${readFile.data}`,
                 recursive: true
             });
-            console.log(imgResult);
+            //console.log(imgResult);
             return imgResult
         }
     }
@@ -246,11 +246,12 @@ export class StartMissionComponent implements OnInit  {
 
 async sendSondeo(){
    try{
-       console.log(this.respuestasSondeo)
+       //console.log(this.respuestasSondeo)
           if(this.validSondeo==1){
 
 
           const serve = await  this.presentToast('Enviando respuestas..');
+          console.log(this.respuestasSondeo);
           await this.servMission.sendSondeo(this.respuestasSondeo,this.token,).subscribe((res) =>{
                 //console.log(res);
                 //this.router.navigate(['home']);
@@ -259,7 +260,7 @@ async sendSondeo(){
           });
          // const enviado = await  this.presentToast('Sondeo Enviado');
          for(let i of this.idRespuestaSondeo.idrespuestas){
-           console.log(i);
+           //console.log(i);
           this.storage.removeItem(i.toString())
          }
           this.router.navigate(['check-out/'+this.idPV.toString()]);

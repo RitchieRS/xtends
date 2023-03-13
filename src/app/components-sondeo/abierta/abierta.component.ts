@@ -57,7 +57,7 @@ export class AbiertaComponent implements OnInit {
     });
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       console.log(question);
-     this.respuestaStr = question.respuesta;
+     this.respuestaStr = question.respuesta == null ?  "" :question.respuesta ;
      this.isValid = this.respuestaStr.trim().length>0 ? 1 : 0;
      
      this.respuestas = {
@@ -76,12 +76,15 @@ export class AbiertaComponent implements OnInit {
   }
 
   submit(){
-    console.log("abierta");
+    console.log("abierta"+this.idStrQuest);
     if(this.abiertaGoup.status=="VALID"){
       console.log((this.abiertaGoup.get('abierta').value));
       this.respuestas.respuesta = this.abiertaGoup.get('abierta').value;
       this.respuestas.valid = ((this.abiertaGoup.get('abierta').value).trim() == '' ) ? 0 : 1 ;
       this.isValid = this.respuestas.valid;
+      this.respuestas.tipo = this.tipo;
+      this.respuestas.idPregunta = this.idStrQuest;
+      
       this.obligatorio =this.obligatorio;
       this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
       this.storage.setObject(this.idStrQuest,this.respuestas);

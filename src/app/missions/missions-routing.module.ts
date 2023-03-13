@@ -27,7 +27,7 @@ const routes: Routes =[
       component: CheckInComponent
     },
     {
-      path: 'pending-mission/:idPV',
+      path: 'pending-mission/:idPV/:colorServicio/:nombreCliente/:nombreActividad',
        component: PendingMissionComponent
     },
     {

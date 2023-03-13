@@ -56,6 +56,7 @@ export class GpsComponent implements OnInit {
 
   ngOnInit() {
     this.idStrQuest =  this.idSondeo + '||' + this.idPregunta.toString();
+    
     console.log(this.idStrQuest);
     this.storage.getObject(this.idStrQuest).then((question: any) => {
       console.log(question);
@@ -84,7 +85,9 @@ export class GpsComponent implements OnInit {
       if(this.lat){
         this.respuestas.respuesta = this.lat.toString()+ ','+ this.lgn.toString();
         this.isValid=1;
+        this.respuestas.tipo = this.tipo;
         this.respuestas.obligatorio = this.obligatorio;
+        this.respuestas.idPregunta = this.idStrQuest;
         this.checkCompleteChild(this.idPregunta,this.isValid,this.respuestas.idOpcion);
         this.storage.setObject(this.idStrQuest,this.respuestas);
         this.presentToast("Ubicaciòn actualizada");

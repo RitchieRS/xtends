@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
@@ -25,6 +25,18 @@ export class PopoverFiltermapComponent implements OnInit {
 
    selected:string[]=[];
 
+
+
+   
+
+
+
+
+
+
+
+
+   
   ngOnInit() {}
 
   filter(){
