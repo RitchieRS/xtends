@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { StorageHelperService } from 'src/app/xservices/storage/storage-helper.service';
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-section',
@@ -18,6 +19,7 @@ isValid = 0;
 @Input() iterativo: number;
 @Input() obligatorio: number;
 @Input() orden: number;
+@Input() linkWeb: string;
 @Input() preguntas: any[];
 @Input() sondeo: string [];
 
@@ -26,6 +28,10 @@ idSondeoStr:string;
 preguntasAux:any;
 
   constructor(private storage: StorageHelperService) { 
+    Browser.addListener('browserPageLoaded',()=>{
+      console.log('');
+    })
+    
     
   }
   ngOnInit() {
@@ -60,6 +66,10 @@ preguntasAux:any;
               } 
           })
         }
+  }
+
+  async openPage(linkWeb : string){
+    await Browser.open({toolbarColor:"#f4dc41",url:linkWeb+'idSeccion='+this.idSondeo})
   }
 
 }

@@ -29,6 +29,7 @@
     "@awesome-cordova-plugins/streaming-media": "^5.39.1",
     "@capacitor/android": "3.3.3",
     "@capacitor/app": "^1.0.7",
+    "@capacitor/browser": "^0.3.0",
     "@capacitor/camera": "^1.2.4",
     "@capacitor/core": "^3.4.0",
     "@capacitor/filesystem": "^1.1.0",

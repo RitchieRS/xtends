@@ -23,6 +23,8 @@
 
     <div *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo" >
 
+      
+
       <div *ngSwitchCase="'unicaRadio'" >
         <app-unica-radio  [dependePregunta]="p.dependePregunta"
                           [dependeRespuesta]="p.dependeRespuesta"
@@ -40,6 +42,10 @@
                           [checkCompleteChild]="checkCompleteParent">
       </app-unica-radio>
       </div>
+   <div *ngIf="linkWeb.length>0">
+    <ion-button (click)="openPage(linkWeb)">Video</ion-button>
+   </div>
+      
 
 
       <div *ngSwitchCase="'carrusel'" >
