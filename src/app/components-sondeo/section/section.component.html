@@ -19,7 +19,7 @@
         </ion-grid>
       </mat-panel-title>
     </mat-expansion-panel-header>
-
+    <app-web ></app-web>
 
     <div *ngFor="let p of preguntas; let i = index" [ngSwitch]="p.tipo" >
 
@@ -42,9 +42,11 @@
                           [checkCompleteChild]="checkCompleteParent">
       </app-unica-radio>
       </div>
-   <div *ngIf="linkWeb.length>0">
-    <ion-button (click)="openPage(linkWeb)">Video</ion-button>
-   </div>
+      <div *ngIf="linkWeb.length>0">
+        
+      </div>
+
+      <app-web ></app-web>
       
 
 
